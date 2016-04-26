@@ -12,6 +12,7 @@ High level design goals:
 * Much improved week view
 * Remove the year view as it doesn't really add much value
 * Create an abstraction layer around the drag, drop and resizing of events so the user can allow any drag and drop library to be used
+* Extract business logic from the angular1 calendar into a separate module that can be shared between both calendars (the dist files will have it bundled though for an easier developer experience)
 
 Prior art:
 * https://github.com/mattlewis92/angular-bootstrap-calendar
