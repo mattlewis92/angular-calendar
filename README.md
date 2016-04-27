@@ -11,7 +11,8 @@ High level design goals:
 * Handle bigger amounts of events
 * Much improved week view
 * Remove the year view as it doesn't really add much value
-* Create an abstraction layer around the drag, drop and resizing of events so the user can allow any drag and drop library to be used
+* Support rendering in a webworker / server side
+* Use only angular2 APIs for drag / drop and resizing rather than interact.js -> create separate modules for each of these
 * Extract business logic from the angular1 calendar into a separate module that can be shared between both calendars (the dist files will have it bundled though for an easier developer experience)
 
 Prior art:
