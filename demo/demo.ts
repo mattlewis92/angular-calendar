@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
-import {HelloWorld} from './../angular2-calendar';
+import {CalendarMonthView} from './../angular2-calendar';
 
 @Component({
   selector: 'demo-app',
-  directives: [HelloWorld],
-  template: '<hello-world></hello-world>'
+  directives: [CalendarMonthView],
+  template: '<mwl-calendar-month-view [date]="date"></mwl-calendar-month-view>'
 })
-export class DemoApp {}
+export class DemoApp {
+  private date: Date = new Date();
+}

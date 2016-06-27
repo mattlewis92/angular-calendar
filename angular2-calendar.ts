@@ -1,8 +1,8 @@
-import {HelloWorld} from './src/helloWorld.component';
+import {CalendarMonthView} from './src/calendarMonthView.component';
 
-export * from './src/helloWorld.component';
+export * from './src/calendarMonthView.component';
 
 // for angular-cli
 export default {
-  directives: [HelloWorld]
+  directives: [CalendarMonthView]
 };
