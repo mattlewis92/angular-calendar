@@ -10,7 +10,7 @@ import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing'
 import * as moment from 'moment';
 import {CalendarMonthView} from './../angular2-calendar';
 
-describe('hello-world component', () => {
+describe('calendarMonthView component', () => {
 
   let builder: TestComponentBuilder;
   beforeEach(inject([TestComponentBuilder], (tcb) => {

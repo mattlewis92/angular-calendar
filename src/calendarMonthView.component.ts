@@ -6,10 +6,7 @@ import {
 import {NgFor, SlicePipe, NgIf} from '@angular/common';
 import * as moment from 'moment';
 import {Moment} from 'moment';
-
-interface CalendarDay {
-  date: Moment;
-}
+import {CalendarDay} from './interfaces';
 
 @Component({
   selector: 'mwl-calendar-month-view',
