@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
 import * as moment from 'moment';
 import {Moment} from 'moment';
-import {CalendarDay} from './interfaces';
+import {NgFor} from '@angular/common';
+import {CalendarDay, CalendarEvent} from './interfaces';
 
-const DAYS_IN_WEEK = 7;
+const DAYS_IN_WEEK: number = 7;
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -35,11 +36,13 @@ const DAYS_IN_WEEK = 7;
     .day-headers .header:hover {
       background-color: #ededed;
     }
-  `]
+  `],
+  directives: [NgFor]
 })
 export class CalendarWeekView {
 
   @Input() date: Date;
+  @Input() events: CalendarEvent[] = [];
 
   private days: CalendarDay[];
 

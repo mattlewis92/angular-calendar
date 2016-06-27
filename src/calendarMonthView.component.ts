@@ -3,10 +3,10 @@ import {
   OnChanges,
   Input
 } from '@angular/core';
-import {NgFor, SlicePipe, NgIf} from '@angular/common';
+import {NgFor, SlicePipe} from '@angular/common';
 import * as moment from 'moment';
 import {Moment} from 'moment';
-import {CalendarDay} from './interfaces';
+import {CalendarDay, CalendarEvent} from './interfaces';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -47,12 +47,13 @@ import {CalendarDay} from './interfaces';
       margin-right: 15px;
     }
   `],
-  directives: [NgFor, NgIf],
+  directives: [NgFor],
   pipes: [SlicePipe]
 })
 export class CalendarMonthView implements OnChanges {
 
   @Input() date: Date;
+  @Input() events: CalendarEvent[] = [];
 
   private days: CalendarDay[];
   private monthOffsets: number[];
