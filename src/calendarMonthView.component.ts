@@ -14,8 +14,9 @@ import {CalendarDay, CalendarEvent} from './interfaces';
     <div class="month-view">
       <div class="cell-row" *ngFor="let rowIndex of monthOffsets trackBy rowIndex">
         <div class="cell" *ngFor="let day of days | slice : rowIndex : rowIndex + 7 trackBy day">
-          <span class="day-number">{{ day.date.format('D') }}</span>
-          <div class="clearfix"></div>
+          <div class="cell-top">
+            <span class="day-number">{{ day.date.format('D') }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -31,6 +32,9 @@ import {CalendarDay, CalendarEvent} from './interfaces';
       float: left;
       flex: 1;
       min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
     .cell:not(:last-child) {
       border-right: 1px solid #e1e1e1;
@@ -42,9 +46,24 @@ import {CalendarDay, CalendarEvent} from './interfaces';
       font-size: 1.2em;
       font-weight: 400;
       opacity: 0.5;
-      float: right;
       margin-top: 15px;
       margin-right: 15px;
+      float: right;
+      margin-bottom: 10px;
+    }
+    .events {
+      display: flex;
+      flex: 1;
+      align-items: flex-end;
+      margin: 3px;
+      margin-bottom: -2px;
+    }
+    .event {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 2px;
     }
   `],
   directives: [NgFor],
