@@ -28,7 +28,7 @@ import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-
            </div>
         </div>
         <div class="col-md-4">
-          <h3>Calendar title goes here</h3>
+          <h3>Calendar title will go here</h3>
         </div>
         <div class="col-md-4">
           <div class="btn-group">
