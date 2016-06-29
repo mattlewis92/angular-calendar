@@ -89,5 +89,8 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "calendar-utils": "0.0.1"
   }
 }

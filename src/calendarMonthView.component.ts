@@ -6,7 +6,7 @@ import {
 import {NgFor, SlicePipe} from '@angular/common';
 import * as moment from 'moment';
 import {Moment} from 'moment';
-import {CalendarDay, CalendarEvent} from './interfaces';
+import {CalendarEvent, WeekDay} from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -74,7 +74,7 @@ export class CalendarMonthView implements OnChanges {
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
 
-  private days: CalendarDay[];
+  private days: WeekDay[];
   private monthOffsets: number[];
 
   ngOnChanges(changes: any): void {
