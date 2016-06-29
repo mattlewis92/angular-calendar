@@ -69,22 +69,22 @@ export class DemoApp {
     color: '#FAE3E3'
   }, {
     start: moment().startOf('week').add(6, 'days').toDate(),
-    end: moment().startOf('week').add(7, 'days').toDate(),
+    end: moment().endOf('week').toDate(),
     title: 'I should be last',
     color: '#FAE3E3'
   }, {
     start: moment().startOf('week').add(1, 'minutes').add(6, 'days').toDate(),
-    end: moment().startOf('week').add(7, 'days').toDate(),
+    end: moment().endOf('week').toDate(),
     title: 'I should be last',
     color: '#FAE3E3'
   }, {
     start: moment().startOf('week').add(2, 'minutes').add(6, 'days').toDate(),
-    end: moment().startOf('week').add(7, 'days').toDate(),
+    end: moment().endOf('week').toDate(),
     title: 'I should be last',
     color: '#FAE3E3'
   }, {
     start: moment().startOf('week').add(3, 'minutes').add(6, 'days').toDate(),
-    end: moment().startOf('week').add(7, 'days').toDate(),
+    end: moment().endOf('week').toDate(),
     title: 'I should be last',
     color: '#FAE3E3'
   }, {
