@@ -1,19 +1,23 @@
 import {
   Component,
   OnChanges,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import {
   NgFor,
   NgIf,
   SlicePipe
 } from '@angular/common';
+import * as moment from 'moment';
 import {
   CalendarEvent,
   WeekDay,
   MonthView,
   getWeekViewHeader,
-  getMonthView
+  getMonthView,
+  MonthViewDay
 } from 'calendar-utils';
 
 @Component({
@@ -26,27 +30,36 @@ import {
         </div>
       </div>
       <div class="days">
-        <div class="cell-row" *ngFor="let rowIndex of view.rowOffsets">
-          <div
-            class="cell day-cell"
-            *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
-            [class.past]="day.isPast"
-            [class.today]="day.isToday"
-            [class.future]="day.isFuture"
-            [class.weekend]="day.isWeekend"
-            [class.in-month]="day.inMonth"
-            [class.out-month]="!day.inMonth"
-            [class.has-events]="day.events.length > 0">
-            <div class="cell-top">
-              <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
-              <span class="day-number">{{ day.date.format('D') }}</span>
+        <div *ngFor="let rowIndex of view.rowOffsets">
+          <div class="cell-row">
+            <div
+              class="cell day-cell"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
+              [class.past]="day.isPast"
+              [class.today]="day.isToday"
+              [class.future]="day.isFuture"
+              [class.weekend]="day.isWeekend"
+              [class.in-month]="day.inMonth"
+              [class.out-month]="!day.inMonth"
+              [class.has-events]="day.events.length > 0"
+              (click)="dayClicked.emit({day: day})">
+              <div class="cell-top">
+                <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
+                <span class="day-number">{{ day.date.format('D') }}</span>
+              </div>
+              <div class="events">
+                <span
+                  class="event"
+                  *ngFor="let event of day.events"
+                  [style.backgroundColor]="event.color.primary">
+                </span>
+              </div>
             </div>
-            <div class="events">
-              <span
-                class="event"
-                *ngFor="let event of day.events"
-                [style.backgroundColor]="event.color.primary">
-              </span>
+          </div>
+          <div class="slidebox" *ngIf="openRowIndex === rowIndex && openDay?.events.length > 0">
+            <div *ngFor="let event of openDay.events">
+              <span class="event" [style.backgroundColor]="event.color.primary"></span>
+              {{ event.title }}
             </div>
           </div>
         </div>
@@ -69,6 +82,10 @@ import {
     }
     .days {
       border: 1px solid #e1e1e1;
+      border-bottom: 0px;
+    }
+    .cell-top {
+      min-height: 62px;
     }
     .cell-row {
       display: flex;
@@ -86,7 +103,7 @@ import {
     .day-cell:not(:last-child) {
       border-right: 1px solid #e1e1e1;
     }
-    .days .cell-row:not(:last-child) {
+    .days .cell-row {
       border-bottom: 1px solid #e1e1e1;
     }
     .day-events-total {
@@ -145,6 +162,12 @@ import {
     .day-cell.today .day-number {
       font-size: 1.9em;
     }
+    .slidebox {
+      padding: 20px;
+      color: white;
+      background-color: #555;
+      box-shadow: inset 0 0 15px 0 rgba(0,0,0,.5);
+    }
   `],
   directives: [NgFor, NgIf],
   pipes: [SlicePipe]
@@ -153,9 +176,13 @@ export class CalendarMonthView implements OnChanges {
 
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
+  @Input() slideBoxIsOpen: boolean = false;
+  @Output() dayClicked: EventEmitter<any> = new EventEmitter();
 
   private columnHeaders: WeekDay[];
   private view: MonthView;
+  private openRowIndex: number;
+  private openDay: MonthViewDay;
 
   ngOnChanges(changes: any): void {
 
@@ -170,6 +197,17 @@ export class CalendarMonthView implements OnChanges {
         events: this.events,
         viewDate: this.date
       });
+    }
+
+    if (changes.slideBoxIsOpen || changes.date) {
+      if (this.slideBoxIsOpen === true) {
+        this.openDay = this.view.days.find(day => day.date.isSame(moment(this.date).startOf('day')));
+        const index: number = this.view.days.indexOf(this.openDay);
+        this.openRowIndex = Math.floor(index / 7) * 7;
+      } else {
+        this.openRowIndex = null;
+        this.openDay = null;
+      }
     }
 
   }

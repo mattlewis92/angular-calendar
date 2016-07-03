@@ -10,6 +10,9 @@ import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-
     h3 {
       margin: 0;
     }
+    .container {
+      padding-bottom: 50px;
+    }
   `],
   template: `
     <div class="container">
@@ -40,8 +43,18 @@ import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-
       </div>
       <br>
       <div [ngSwitch]="view">
-        <mwl-calendar-month-view *ngSwitchCase="'month'" [date]="date" [events]="events"></mwl-calendar-month-view>
-        <mwl-calendar-week-view *ngSwitchCase="'week'" [date]="date" [events]="events"></mwl-calendar-week-view>
+        <mwl-calendar-month-view
+          *ngSwitchCase="'month'"
+          [date]="date"
+          [events]="events"
+          [slideBoxIsOpen]="slideBoxIsOpen"
+          (dayClicked)="dayClicked($event.day.date.toDate())">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view
+          *ngSwitchCase="'week'"
+          [date]="date"
+          [events]="events">
+        </mwl-calendar-week-view>
       </div>
     </div>
   `
@@ -150,6 +163,8 @@ export class DemoApp {
     }
   }];
 
+  private slideBoxIsOpen: boolean = false;
+
   constructor() {
 
     for (let i: number = 0; i < 7; i++) {
@@ -177,6 +192,17 @@ export class DemoApp {
 
   today(): void {
     this.date = new Date();
+  }
+
+  dayClicked(day: Date): void {
+    if (moment(day).startOf('month').isSame(moment(this.date).startOf('month'))) {
+      if (this.date.getTime() === day.getTime() && this.slideBoxIsOpen === true) {
+        this.slideBoxIsOpen = false;
+      } else {
+        this.slideBoxIsOpen = true;
+        this.date = day;
+      }
+    }
   }
 
 }
