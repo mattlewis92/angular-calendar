@@ -17,7 +17,7 @@ describe('calendarWeekView component', () => {
     builder = tcb;
   }));
 
-  it('should be a test', async(() => {
+  it('should generate the week view', async(() => {
     builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
       fixture.componentInstance.date = moment('2016-06-29').toDate();
       fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});

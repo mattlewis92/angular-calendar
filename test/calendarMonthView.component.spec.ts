@@ -17,7 +17,7 @@ describe('calendarMonthView component', () => {
     builder = tcb;
   }));
 
-  it('should be a test', async(() => {
+  it('should generate the month view', async(() => {
     builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
       fixture.componentInstance.date = moment('2016-06-27').toDate();
       fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});
