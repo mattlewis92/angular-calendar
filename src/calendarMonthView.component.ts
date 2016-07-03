@@ -32,7 +32,8 @@ interface MonthDay extends WeekDay {
             [class.future]="day.isFuture"
             [class.weekend]="day.isWeekend"
             [class.in-month]="day.inMonth"
-            [class.out-month]="!day.inMonth">
+            [class.out-month]="!day.inMonth"
+            [class.has-events]="day.events.length > 0">
             <div class="cell-top">
               <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
               <span class="day-number">{{ day.date.format('D') }}</span>
@@ -54,13 +55,13 @@ interface MonthDay extends WeekDay {
       text-align: center;
       font-weight: bolder;
     }
-    .header:hover {
+    .cell-row:hover {
       background-color: #fafafa;
     }
     .header .cell {
       padding: 5px 0;
     }
-    .header .cell:hover {
+    .cell-row .cell:hover {
       background-color: #ededed;
     }
     .days {
@@ -125,6 +126,9 @@ interface MonthDay extends WeekDay {
       display: inline-block;
       margin: 2px;
     }
+    .day-cell.in-month.has-events {
+      cursor: pointer;
+    }
     .day-cell.out-month .day-number {
       opacity: 0.1;
       cursor: default;
@@ -172,7 +176,7 @@ export class CalendarMonthView implements OnChanges {
           isFuture: date.isAfter(today.clone().endOf('day')),
           isWeekend: [0, 6].indexOf(date.day()) > -1,
           inMonth: date.clone().startOf('month').isSame(moment(this.date).startOf('month')),
-          events: [...this.events, ...this.events]
+          events: []
         });
       }
 
