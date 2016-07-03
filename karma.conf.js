@@ -11,7 +11,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'source-map-support'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -41,7 +41,7 @@ module.exports = function(config) {
           test: /\.ts$/, loader: 'ts', exclude: /node_modules/
         }],
         postLoaders: [{
-          test: /\.ts$/,
+          test: /src\/.+\.ts$/,
           exclude: /(test|node_modules)/,
           loader: 'istanbul-instrumenter'
         }]
@@ -50,21 +50,38 @@ module.exports = function(config) {
         emitErrors: !WATCH,
         failOnHint: false
       },
+      ts: {
+        compilerOptions: {
+          sourceMap: false,
+          inlineSourceMap: true
+        }
+      },
       plugins: WATCH ? [] : [new webpack.NoErrorsPlugin()]
     },
 
     coverageReporter: {
       reporters: [{
-        type: 'text-summary'
-      }, {
-        type: 'html'
+        type: 'json',
+        subdir: '.',
+        file: 'coverage-final.json'
       }]
+    },
+
+    remapIstanbulReporter: {
+      src: 'coverage/coverage-final.json',
+      reports: {
+        lcovonly: 'coverage/lcov.info',
+        html: 'coverage/html',
+        'text-summary': null
+      },
+      timeoutNotCreated: 5000,
+      timeoutNoMoreFiles: 1000
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
 
     // web server port
     port: 9876,
