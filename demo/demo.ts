@@ -16,13 +16,13 @@ import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-
       <div class="row text-center">
         <div class="col-md-4">
            <div class="btn-group">
-             <div class="btn btn-primary">
+             <div class="btn btn-primary" (click)="decrement()">
                Previous
              </div>
-             <div class="btn btn-default">
+             <div class="btn btn-default" (click)="today()">
                Today
              </div>
-             <div class="btn btn-primary">
+             <div class="btn btn-primary" (click)="increment()">
                Next
              </div>
            </div>
@@ -126,6 +126,18 @@ export class DemoApp {
       }
     }
 
+  }
+
+  increment(): void {
+    this.date = moment(this.date).add(1, this.view).toDate();
+  }
+
+  decrement(): void {
+    this.date = moment(this.date).subtract(1, this.view).toDate();
+  }
+
+  today(): void {
+    this.date = new Date();
   }
 
 }
