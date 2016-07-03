@@ -3,13 +3,14 @@ import {
   OnChanges,
   Input
 } from '@angular/core';
-import {NgFor, SlicePipe} from '@angular/common';
+import {NgFor, NgIf, SlicePipe} from '@angular/common';
 import * as moment from 'moment';
 import {Moment} from 'moment';
 import {CalendarEvent, WeekDay, getWeekViewHeader} from 'calendar-utils';
 
 interface MonthDay extends WeekDay {
   inMonth: boolean;
+  events: CalendarEvent[];
 }
 
 @Component({
@@ -33,7 +34,15 @@ interface MonthDay extends WeekDay {
             [class.in-month]="day.inMonth"
             [class.out-month]="!day.inMonth">
             <div class="cell-top">
+              <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
               <span class="day-number">{{ day.date.format('D') }}</span>
+            </div>
+            <div class="events">
+              <span
+                class="event"
+                *ngFor="let event of events"
+                [style.backgroundColor]="event.color">
+              </span>
             </div>
           </div>
         </div>
@@ -76,6 +85,22 @@ interface MonthDay extends WeekDay {
     .days .cell-row:not(:last-child) {
       border-bottom: 1px solid #e1e1e1;
     }
+    .day-events-total {
+      margin-top: 18px;
+      margin-left: 10px;
+      background-color: #b94a48;
+      display: inline-block;
+      min-width: 10px;
+      padding: 3px 7px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      color: white;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-radius: 10px;
+    }
     .day-number {
       font-size: 1.2em;
       font-weight: 400;
@@ -113,7 +138,7 @@ interface MonthDay extends WeekDay {
       font-size: 1.9em;
     }
   `],
-  directives: [NgFor],
+  directives: [NgFor, NgIf],
   pipes: [SlicePipe]
 })
 export class CalendarMonthView implements OnChanges {
@@ -145,7 +170,8 @@ export class CalendarMonthView implements OnChanges {
           isToday: date.isSame(today),
           isFuture: date.isAfter(today.clone().endOf('day')),
           isWeekend: [0, 6].indexOf(date.day()) > -1,
-          inMonth: date.clone().startOf('month').isSame(moment(this.date).startOf('month'))
+          inMonth: date.clone().startOf('month').isSame(moment(this.date).startOf('month')),
+          events: []
         });
       }
 
