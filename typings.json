@@ -6,6 +6,9 @@
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504"
   },
   "globalDevDependencies": {
-    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255"
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "mocha": "registry:dt/mocha#2.2.5+20160619032855",
+    "sinon": "registry:dt/sinon#1.16.0+20160517064723",
+    "sinon-chai": "registry:dt/sinon-chai#2.7.0+20160317120654"
   }
 }

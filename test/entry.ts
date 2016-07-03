@@ -2,17 +2,17 @@ import 'es6-shim';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/long-stack-trace-zone';
-import 'zone.js/dist/jasmine-patch';
 import 'zone.js/dist/async-test';
 import 'rxjs';
-import {
-  setBaseTestProviders
-} from '@angular/core/testing';
+import {setBaseTestProviders} from '@angular/core/testing';
 import {
   TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
   TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
 } from '@angular/platform-browser-dynamic/testing';
+import {use} from 'chai';
+import * as sinonChai from 'sinon-chai';
 
+use(sinonChai);
 setBaseTestProviders(TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS);
 
 declare var require: any;

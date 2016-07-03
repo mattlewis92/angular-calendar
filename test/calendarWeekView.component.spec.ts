@@ -1,13 +1,11 @@
 import {
-  describe,
-  it,
-  expect,
-  beforeEach,
   inject,
-  async
+  async,
+  TestComponentBuilder,
+  ComponentFixture
 } from '@angular/core/testing';
-import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing';
 import * as moment from 'moment';
+import {expect} from 'chai';
 import {CalendarWeekView} from './../angular2-calendar';
 
 describe('calendarWeekView component', () => {
@@ -21,8 +19,8 @@ describe('calendarWeekView component', () => {
     builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
       fixture.componentInstance.date = moment('2016-06-29').toDate();
       fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});
-      expect(fixture.componentInstance.days.length).toEqual(7);
-      expect(fixture.componentInstance.days[0].date.toDate()).toEqual(moment('2016-06-26').toDate());
+      expect(fixture.componentInstance.days.length).to.equal(7);
+      expect(fixture.componentInstance.days[0].date.toDate()).to.deep.equal(moment('2016-06-26').toDate());
     });
   }));
 

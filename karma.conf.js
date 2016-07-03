@@ -11,7 +11,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'source-map-support'],
+    frameworks: ['mocha', 'source-map-support'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -31,7 +31,10 @@ module.exports = function(config) {
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
-        extensions: ['', '.ts', '.js']
+        extensions: ['', '.ts', '.js'],
+        alias: {
+          sinon: 'sinon/pkg/sinon'
+        }
       },
       module: {
         preLoaders: [{
@@ -39,6 +42,8 @@ module.exports = function(config) {
         }],
         loaders: [{
           test: /\.ts$/, loader: 'ts', exclude: /node_modules/
+        }, {
+          test: /sinon.js$/, loader: 'imports?define=>false,require=>false'
         }],
         postLoaders: [{
           test: /src\/.+\.ts$/,
