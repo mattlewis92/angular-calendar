@@ -34,7 +34,7 @@ import {
             class="event"
             [class.border-left-rounded]="!event.extendsLeft"
             [class.border-right-rounded]="!event.extendsRight"
-            [style.backgroundColor]="event.event.color">
+            [style.backgroundColor]="event.event.color.secondary">
             <a href="javascript:;">{{ event.event.title }}</a>
           </div>
         </div>

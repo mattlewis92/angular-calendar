@@ -3,15 +3,18 @@ import {
   OnChanges,
   Input
 } from '@angular/core';
-import {NgFor, NgIf, SlicePipe} from '@angular/common';
-import * as moment from 'moment';
-import {Moment} from 'moment';
-import {CalendarEvent, WeekDay, getWeekViewHeader} from 'calendar-utils';
-
-interface MonthDay extends WeekDay {
-  inMonth: boolean;
-  events: CalendarEvent[];
-}
+import {
+  NgFor,
+  NgIf,
+  SlicePipe
+} from '@angular/common';
+import {
+  CalendarEvent,
+  WeekDay,
+  MonthView,
+  getWeekViewHeader,
+  getMonthView
+} from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -23,10 +26,10 @@ interface MonthDay extends WeekDay {
         </div>
       </div>
       <div class="days">
-        <div class="cell-row" *ngFor="let rowIndex of monthOffsets">
+        <div class="cell-row" *ngFor="let rowIndex of view.rowOffsets">
           <div
             class="cell day-cell"
-            *ngFor="let day of days | slice : rowIndex : rowIndex + 7"
+            *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
             [class.past]="day.isPast"
             [class.today]="day.isToday"
             [class.future]="day.isFuture"
@@ -42,7 +45,7 @@ interface MonthDay extends WeekDay {
               <span
                 class="event"
                 *ngFor="let event of day.events"
-                [style.backgroundColor]="event.color">
+                [style.backgroundColor]="event.color.primary">
               </span>
             </div>
           </div>
@@ -151,40 +154,22 @@ export class CalendarMonthView implements OnChanges {
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
 
-  private days: MonthDay[];
-  private monthOffsets: number[];
   private columnHeaders: WeekDay[];
+  private view: MonthView;
 
   ngOnChanges(changes: any): void {
 
     if (changes.date) {
-
       this.columnHeaders = getWeekViewHeader({
         viewDate: this.date
       });
+    }
 
-      const start: Moment = moment(this.date).startOf('month').startOf('week');
-      const end: Moment = moment(this.date).endOf('month').endOf('week');
-      this.days = [];
-      for (let i: number = 0; i < end.diff(start, 'days') + 1; i++) {
-        const date = start.clone().add(i, 'days');
-        const today = moment().startOf('day');
-        this.days.push({
-          date,
-          isPast: date.isBefore(today),
-          isToday: date.isSame(today),
-          isFuture: date.isAfter(today.clone().endOf('day')),
-          isWeekend: [0, 6].indexOf(date.day()) > -1,
-          inMonth: date.clone().startOf('month').isSame(moment(this.date).startOf('month')),
-          events: []
-        });
-      }
-
-      const rows: number = Math.floor(this.days.length / 7);
-      this.monthOffsets = [];
-      for (let i: number = 0; i < rows; i++) {
-        this.monthOffsets.push(i * 7);
-      }
+    if (changes.date || changes.events) {
+      this.view = getMonthView({
+        events: this.events,
+        viewDate: this.date
+      });
     }
 
   }
