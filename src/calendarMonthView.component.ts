@@ -40,7 +40,7 @@ interface MonthDay extends WeekDay {
             <div class="events">
               <span
                 class="event"
-                *ngFor="let event of events"
+                *ngFor="let event of day.events"
                 [style.backgroundColor]="event.color">
               </span>
             </div>
@@ -111,11 +111,12 @@ interface MonthDay extends WeekDay {
       margin-bottom: 10px;
     }
     .events {
-      display: flex;
       flex: 1;
       align-items: flex-end;
       margin: 3px;
-      margin-bottom: -2px;
+      line-height: 10px;
+      display: flex;
+      flex-wrap: wrap;
     }
     .event {
       width: 10px;
@@ -171,7 +172,7 @@ export class CalendarMonthView implements OnChanges {
           isFuture: date.isAfter(today.clone().endOf('day')),
           isWeekend: [0, 6].indexOf(date.day()) > -1,
           inMonth: date.clone().startOf('month').isSame(moment(this.date).startOf('month')),
-          events: []
+          events: [...this.events, ...this.events]
         });
       }
 
