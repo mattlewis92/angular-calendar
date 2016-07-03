@@ -90,6 +90,11 @@ import {
     .header.weekend span {
       color: darkred;
     }
+    .event, .header {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   `],
   directives: [NgFor]
 })
