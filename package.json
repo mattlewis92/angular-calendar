@@ -35,11 +35,11 @@
   },
   "homepage": "https://github.com/mattlewis92/angular2-calendar#readme",
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.3",
-    "@angular/compiler": "2.0.0-rc.3",
-    "@angular/core": "2.0.0-rc.3",
-    "@angular/platform-browser": "2.0.0-rc.3",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.3",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
     "commitizen": "~2.8.1",
     "concurrently": "~2.1.0",
     "conventional-changelog": "~1.1.0",
@@ -75,7 +75,7 @@
     "zone.js": "~0.6.12"
   },
   "peerDependencies": {
-    "@angular/core": "2.0.0-rc.3",
+    "@angular/core": "2.0.0-rc.4",
     "moment": "~2.13.0"
   },
   "files": [
