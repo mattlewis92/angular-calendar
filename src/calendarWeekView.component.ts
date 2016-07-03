@@ -70,7 +70,6 @@ import {
     .event {
       padding: 0 10px;
       font-size: 12px;
-      margin-bottom: 3px;
       margin-left: 2px;
       margin-right: 2px;
       height: 30px;
