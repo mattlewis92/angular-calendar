@@ -168,6 +168,10 @@ import {
       background-color: #555;
       box-shadow: inset 0 0 15px 0 rgba(0,0,0,.5);
     }
+    .slidebox .event {
+      position: relative;
+      top: 2px;
+    }
   `],
   directives: [NgFor, NgIf],
   pipes: [SlicePipe]
