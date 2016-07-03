@@ -13,9 +13,15 @@ import {
   template: `
     <div class="week-view">
       <div class="day-headers">
-        <div class="header" *ngFor="let day of days trackBy day">
+        <div
+          class="header"
+          *ngFor="let day of days trackBy day"
+          [class.past]="day.isPast"
+          [class.today]="day.isToday"
+          [class.future]="day.isFuture"
+          [class.weekend]="day.isWeekend">
           <b>{{ day.date.format('dddd') }}</b><br>
-          <small>{{ day.date.format('D MMM') }}</small>
+          <span>{{ day.date.format('D MMM') }}</span>
         </div>
       </div>
       <div *ngFor="let eventRow of eventRows">
@@ -54,15 +60,21 @@ import {
     .day-headers .header:hover {
       background-color: #ededed;
     }
+    .day-headers span {
+      font-weight: 400;
+      opacity: 0.5;
+    }
     .event-container {
       display: inline-block;
     }
     .event {
-      padding: 3px 10px;
+      padding: 0 10px;
       font-size: 12px;
       margin-bottom: 3px;
       margin-left: 2px;
       margin-right: 2px;
+      height: 30px;
+      line-height: 30px;
     }
     .border-left-rounded {
       border-top-left-radius: 5px;
@@ -71,6 +83,12 @@ import {
     .border-right-rounded {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+    }
+    .header.today {
+      background-color: #e8fde7;
+    }
+    .header.weekend span {
+      color: darkred;
     }
   `],
   directives: [NgFor]
