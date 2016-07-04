@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NgSwitch} from '@angular/common';
 import * as moment from 'moment';
+import {UnitOfTime} from 'moment';
 import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-calendar';
 
 @Component({
@@ -61,7 +62,7 @@ import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-
 })
 export class DemoApp {
 
-  private view: string = 'month';
+  private view: UnitOfTime = 'month';
 
   private date: Date = new Date();
 
