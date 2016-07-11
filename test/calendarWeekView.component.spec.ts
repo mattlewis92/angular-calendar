@@ -24,4 +24,18 @@ describe('calendarWeekView component', () => {
     });
   }));
 
+  it('should emit on the dayClicked output', async(() => {
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      fixture.componentInstance.date = moment('2016-06-29').toDate();
+      fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});
+      fixture.detectChanges();
+      fixture.componentInstance.onDayClicked.subscribe(val => {
+        expect(val).to.deep.equal({
+          date: fixture.componentInstance.days[0].date.toDate()
+        });
+      });
+      fixture.nativeElement.querySelector('.header').click();
+    });
+  }));
+
 });
