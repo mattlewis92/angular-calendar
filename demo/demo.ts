@@ -67,103 +67,105 @@ export class DemoApp {
 
   private date: Date = new Date();
 
-  private events: CalendarEvent[] = [{
-    start: moment().startOf('week').add(4, 'days').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'A final event',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
+  private events: CalendarEvent[] = [
+    {
+      start: moment().startOf('week').add(4, 'days').toDate(),
+      end: moment().startOf('week').add(5, 'days').toDate(),
+      title: 'A final event',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').add(1, 'minutes').add(4, 'days').toDate(),
+      end: moment().startOf('week').add(5, 'days').toDate(),
+      title: 'A final event',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').add(2, 'minutes').add(4, 'days').toDate(),
+      end: moment().startOf('week').add(5, 'days').toDate(),
+      title: 'A final event',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').add(6, 'days').toDate(),
+      end: moment().endOf('week').toDate(),
+      title: 'I should be last',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').add(1, 'minutes').add(6, 'days').toDate(),
+      end: moment().endOf('week').toDate(),
+      title: 'I should be last',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').add(2, 'minutes').add(6, 'days').toDate(),
+      end: moment().endOf('week').toDate(),
+      title: 'I should be last',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').add(3, 'minutes').add(6, 'days').toDate(),
+      end: moment().endOf('week').toDate(),
+      title: 'I should be last',
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+      }
+    }, {
+      start: moment().startOf('week').toDate(),
+      end: moment().startOf('week').add(5, 'days').toDate(),
+      title: 'Another event',
+      color: {
+        primary: '#e3bc08',
+        secondary: '#FDF1BA'
+      }
+    }, {
+      start: moment().startOf('week').add(1, 'minutes').toDate(),
+      end: moment().startOf('week').add(5, 'days').toDate(),
+      title: 'Another event',
+      color: {
+        primary: '#e3bc08',
+        secondary: '#FDF1BA'
+      }
+    }, {
+      start: moment().startOf('week').subtract(3, 'days').toDate(),
+      end: moment().endOf('week').add(3, 'days').toDate(),
+      title: 'My event',
+      color: {
+        primary: '#1e90ff',
+        secondary: '#D1E8FF'
+      }
+    }, {
+      start: moment().startOf('week').add(1, 'days').toDate(),
+      end: moment().startOf('week').add(3, 'days').toDate(),
+      title: '3 day event',
+      color: {
+        primary: '#1e90ff',
+        secondary: '#D1E8FF'
+      }
+    }, {
+      start: moment().startOf('week').add(1, 'days').toDate(),
+      end: moment().startOf('week').add(2, 'days').toDate(),
+      title: '2 day event',
+      color: {
+        primary: '#1e90ff',
+        secondary: '#D1E8FF'
+      }
     }
-  }, {
-    start: moment().startOf('week').add(1, 'minutes').add(4, 'days').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'A final event',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    }
-  }, {
-    start: moment().startOf('week').add(2, 'minutes').add(4, 'days').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'A final event',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    }
-  }, {
-    start: moment().startOf('week').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    }
-  }, {
-    start: moment().startOf('week').add(1, 'minutes').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    }
-  }, {
-    start: moment().startOf('week').add(2, 'minutes').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    }
-  }, {
-    start: moment().startOf('week').add(3, 'minutes').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    }
-  }, {
-    start: moment().startOf('week').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'Another event',
-    color: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
-    }
-  }, {
-    start: moment().startOf('week').add(1, 'minutes').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'Another event',
-    color: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
-    }
-  }, {
-    start: moment().startOf('week').subtract(3, 'days').toDate(),
-    end: moment().endOf('week').add(3, 'days').toDate(),
-    title: 'My event',
-    color: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    }
-  }, {
-    start: moment().startOf('week').add(1, 'days').toDate(),
-    end: moment().startOf('week').add(3, 'days').toDate(),
-    title: '3 day event',
-    color: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    }
-  }, {
-    start: moment().startOf('week').add(1, 'days').toDate(),
-    end: moment().startOf('week').add(2, 'days').toDate(),
-    title: '2 day event',
-    color: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    }
-  }];
+  ];
 
   private slideBoxIsOpen: boolean = false;
 
@@ -177,11 +179,33 @@ export class DemoApp {
           color: {
             primary: '#1e90ff',
             secondary: '#D1E8FF'
-          }
+          },
+          actions: [
+            {
+              label: `Log Title`,
+              click: (event: CalendarEvent) => {
+                console.log(event.title);
+              }
+            },
+            {
+              label: `Delete`,
+              click: (event: CalendarEvent) => {
+                this.delete(event);
+              }
+            }
+          ]
         });
       }
     }
 
+  }
+
+  delete(event: CalendarEvent) {
+    let index = this.events.indexOf(event);
+    this.events = [
+      ...this.events.slice(0, index),
+      ...this.events.slice(index + 1, -1)
+      ];
   }
 
   increment(): void {
