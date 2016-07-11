@@ -43,4 +43,23 @@ describe('calendarMonthView component', () => {
     });
   }));
 
+  it('should add a custom CSS class to events', () => {
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        cssClass: 'foo',
+        title: 'foo',
+        color: {
+          primary: 'blue'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4) .events .event').classList.contains('foo')).to.be.true;
+      fixture.destroy();
+    });
+  });
+
 });

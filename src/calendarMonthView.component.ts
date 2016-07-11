@@ -13,6 +13,7 @@ import {
 import {
   NgFor,
   NgIf,
+  NgClass,
   SlicePipe
 } from '@angular/common';
 import * as moment from 'moment';
@@ -57,13 +58,16 @@ import {
                 <span
                   class="event"
                   *ngFor="let event of day.events"
-                  [style.backgroundColor]="event.color.primary">
+                  [style.backgroundColor]="event.color.primary"
+                  [ngClass]="event?.cssClass">
                 </span>
               </div>
             </div>
           </div>
           <div class="slidebox" @collapse *ngIf="openRowIndex === rowIndex && openDay?.events.length > 0">
-            <div *ngFor="let event of openDay.events">
+            <div
+              *ngFor="let event of openDay.events"
+              [ngClass]="event?.cssClass">
               <span class="event" [style.backgroundColor]="event.color.primary"></span>
               {{ event.title }}
             </div>
@@ -180,7 +184,7 @@ import {
       top: 2px;
     }
   `],
-  directives: [NgFor, NgIf],
+  directives: [NgFor, NgIf, NgClass],
   pipes: [SlicePipe],
   animations: [
     trigger('collapse', [

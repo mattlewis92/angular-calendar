@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {NgFor} from '@angular/common';
+import {NgFor, NgClass} from '@angular/common';
 import {
   WeekDay,
   CalendarEvent,
@@ -15,7 +15,7 @@ import {
       <div class="day-headers">
         <div
           class="header"
-          *ngFor="let day of days trackBy day"
+          *ngFor="let day of days"
           [class.past]="day.isPast"
           [class.today]="day.isToday"
           [class.future]="day.isFuture"
@@ -28,14 +28,15 @@ import {
       <div *ngFor="let eventRow of eventRows">
         <div
           class="event-container"
-          *ngFor="let event of eventRow.row trackBy event"
+          *ngFor="let event of eventRow.row"
           [style.width]="((100 / 7) * event.span) + '%'"
           [style.marginLeft]="((100 / 7) * event.offset) + '%'">
           <div
             class="event"
             [class.border-left-rounded]="!event.extendsLeft"
             [class.border-right-rounded]="!event.extendsRight"
-            [style.backgroundColor]="event.event.color.secondary">
+            [style.backgroundColor]="event.event.color.secondary"
+            [ngClass]="event.event?.cssClass">
             <a href="javascript:;">{{ event.event.title }}</a>
           </div>
         </div>
@@ -96,7 +97,7 @@ import {
       white-space: nowrap;
     }
   `],
-  directives: [NgFor]
+  directives: [NgFor, NgClass]
 })
 export class CalendarWeekView {
 
