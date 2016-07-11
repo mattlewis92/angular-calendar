@@ -43,7 +43,7 @@ describe('calendarMonthView component', () => {
     });
   }));
 
-  it('should add a custom CSS class to events', () => {
+  it('should add a custom CSS class to events', async(() => {
     builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
       fixture.componentInstance.date = moment('2016-06-27').toDate();
       fixture.componentInstance.events = [{
@@ -60,6 +60,20 @@ describe('calendarMonthView component', () => {
       expect(fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4) .events .event').classList.contains('foo')).to.be.true;
       fixture.destroy();
     });
-  });
+  }));
+
+  it('should add a custom CSS class to days via the cell modifier', async(() => {
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.cellModifier = day => {
+        day.cssClass = 'foo';
+        return day;
+      };
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.days .cell').classList.contains('foo')).to.be.true;
+      fixture.destroy();
+    });
+  }));
 
 });

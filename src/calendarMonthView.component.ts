@@ -5,7 +5,6 @@ import {
   Output,
   EventEmitter,
   trigger,
-  state,
   style,
   transition,
   animate
@@ -49,6 +48,7 @@ import {
               [class.out-month]="!day.inMonth"
               [class.has-events]="day.events.length > 0"
               [class.open]="day === openDay"
+              [ngClass]="day?.cssClass"
               (click)="dayClicked.emit({day: day})">
               <div class="cell-top">
                 <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
@@ -204,6 +204,7 @@ export class CalendarMonthView implements OnChanges {
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
   @Input() slideBoxIsOpen: boolean = false;
+  @Input() cellModifier: Function;
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
 
   private columnHeaders: WeekDay[];
@@ -223,6 +224,12 @@ export class CalendarMonthView implements OnChanges {
       this.view = getMonthView({
         events: this.events,
         viewDate: this.date
+      });
+      this.view.days = this.view.days.map(day => {
+        if (this.cellModifier) {
+          return this.cellModifier(day);
+        }
+        return day;
       });
     }
 

@@ -25,31 +25,31 @@ describe('calendarTitle pipe', () => {
     builder = tcb;
   }));
 
-  it('should give the month view title', () => {
+  it('should give the month view title', async(() => {
     builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
       fixture.componentInstance.date = new Date('2016-01-01');
       fixture.componentInstance.view = 'month';
       fixture.detectChanges();
       expect(fixture.nativeElement.innerHTML).to.equal('January 2016');
     });
-  });
+  }));
 
-  it('should give the week view title', () => {
+  it('should give the week view title', async(() => {
     builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
       fixture.componentInstance.date = new Date('2016-01-04');
       fixture.componentInstance.view = 'week';
       fixture.detectChanges();
       expect(fixture.nativeElement.innerHTML).to.equal('Week 1 of 2016');
     });
-  });
+  }));
 
-  it('should give the day view title', () => {
+  it('should give the day view title', async(() => {
     builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
       fixture.componentInstance.date = new Date('2016-01-01');
       fixture.componentInstance.view = 'day';
       fixture.detectChanges();
       expect(fixture.nativeElement.innerHTML).to.equal('Friday 1 January, 2016');
     });
-  });
+  }));
 
 });
