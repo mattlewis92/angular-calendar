@@ -2,11 +2,12 @@ import {Component} from '@angular/core';
 import {NgSwitch} from '@angular/common';
 import * as moment from 'moment';
 import {UnitOfTime} from 'moment';
-import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-calendar';
+import {CalendarMonthView, CalendarWeekView, CalendarEvent, CalendarTitle} from './../angular2-calendar';
 
 @Component({
   selector: 'demo-app',
   directives: [NgSwitch, CalendarMonthView, CalendarWeekView],
+  pipes: [CalendarTitle],
   styles: [`
     h3 {
       margin: 0;
@@ -32,7 +33,7 @@ import {CalendarMonthView, CalendarWeekView, CalendarEvent} from './../angular2-
            </div>
         </div>
         <div class="col-md-4">
-          <h3>Calendar title will go here</h3>
+          <h3>{{ date | calendarTitle:view }}</h3>
         </div>
         <div class="col-md-4">
           <div class="btn-group">
