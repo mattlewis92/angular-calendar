@@ -3,7 +3,12 @@ import {
   OnChanges,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
 } from '@angular/core';
 import {
   NgFor,
@@ -57,7 +62,7 @@ import {
               </div>
             </div>
           </div>
-          <div class="slidebox" *ngIf="openRowIndex === rowIndex && openDay?.events.length > 0">
+          <div class="slidebox" @collapse *ngIf="openRowIndex === rowIndex && openDay?.events.length > 0">
             <div *ngFor="let event of openDay.events">
               <span class="event" [style.backgroundColor]="event.color.primary"></span>
               {{ event.title }}
@@ -176,7 +181,19 @@ import {
     }
   `],
   directives: [NgFor, NgIf],
-  pipes: [SlicePipe]
+  pipes: [SlicePipe],
+  animations: [
+    trigger('collapse', [
+      transition('void => *', [
+        style({height: 0}),
+        animate(150, style({height: '*'}))
+      ]),
+      transition('* => void', [
+        style({height: '*'}),
+        animate(150, style({height: 0}))
+      ])
+    ])
+  ]
 })
 export class CalendarMonthView implements OnChanges {
 
