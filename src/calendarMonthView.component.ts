@@ -49,6 +49,7 @@ import {
               [class.has-events]="day.events.length > 0"
               [class.open]="day === openDay"
               [ngClass]="day?.cssClass"
+              [style.backgroundColor]="day.backgroundColor"
               (click)="dayClicked.emit({day: day})">
               <div class="cell-top">
                 <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
@@ -59,7 +60,9 @@ import {
                   class="event"
                   *ngFor="let event of day.events"
                   [style.backgroundColor]="event.color.primary"
-                  [ngClass]="event?.cssClass">
+                  [ngClass]="event?.cssClass"
+                  (mouseenter)="toggleDayHighlight(event, true)"
+                  (mouseleave)="toggleDayHighlight(event, false)">
                 </span>
               </div>
             </div>
@@ -244,6 +247,16 @@ export class CalendarMonthView implements OnChanges {
       }
     }
 
+  }
+
+  toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
+    this.view.days.forEach(day => {
+      if (isHighlighted && day.events.indexOf(event) > -1) {
+        day.backgroundColor = event.color.secondary;
+      } else {
+        delete day.backgroundColor;
+      }
+    });
   }
 
 }

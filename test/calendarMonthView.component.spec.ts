@@ -8,6 +8,13 @@ import * as moment from 'moment';
 import {expect} from 'chai';
 import {CalendarMonthView} from './../angular2-calendar';
 
+const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
+  const event: Event = document.createEvent('Event');
+  Object.assign(event, eventData);
+  event.initEvent(eventType, true, true);
+  target.dispatchEvent(event);
+};
+
 describe('calendarMonthView component', () => {
 
   let builder: TestComponentBuilder;
@@ -73,6 +80,31 @@ describe('calendarMonthView component', () => {
       fixture.detectChanges();
       expect(fixture.nativeElement.querySelector('.days .cell').classList.contains('foo')).to.be.true;
       fixture.destroy();
+    });
+  }));
+
+  it('should add the highlight class to events on mouse over', async(() => {
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const event: HTMLElement = fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4) .events .event');
+      const day: HTMLElement = fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4)');
+      triggerDomEvent('mouseenter', event);
+      fixture.detectChanges();
+      expect(day.style.backgroundColor).to.equal('rgb(238, 238, 238)');
+      triggerDomEvent('mouseleave', event);
+      fixture.detectChanges();
+      expect(day.style.backgroundColor).to.be.equal('');
     });
   }));
 
