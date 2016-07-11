@@ -42,6 +42,7 @@ import {
               [class.in-month]="day.inMonth"
               [class.out-month]="!day.inMonth"
               [class.has-events]="day.events.length > 0"
+              [class.open]="day === openDay"
               (click)="dayClicked.emit({day: day})">
               <div class="cell-top">
                 <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
@@ -77,7 +78,8 @@ import {
     .header .cell {
       padding: 5px 0;
     }
-    .cell-row .cell:hover {
+    .cell-row .cell:hover,
+    .cell.has-events.open {
       background-color: #ededed;
     }
     .days {
