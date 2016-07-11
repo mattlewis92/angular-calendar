@@ -52,4 +52,13 @@ describe('calendarTitle pipe', () => {
     });
   }));
 
+  it('should not throw if no valid view is given', async(() => {
+    builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
+      fixture.componentInstance.date = new Date('2016-01-01');
+      fixture.componentInstance.view = 'unknown';
+      fixture.detectChanges();
+      expect(fixture.nativeElement.innerHTML).to.equal('');
+    });
+  }));
+
 });
