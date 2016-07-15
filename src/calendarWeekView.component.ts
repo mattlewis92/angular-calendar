@@ -8,6 +8,7 @@ import {
   getWeekView
 } from 'calendar-utils';
 
+
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
@@ -43,60 +44,6 @@ import {
       </div>
     </div>
   `,
-  styles: [`
-    .day-headers {
-      display: flex;
-      margin-bottom: 3px;
-      border: 1px solid #e1e1e1;
-      margin-left: 2px;
-      margin-right: 2px;
-    }
-    .day-headers .header {
-      flex: 1;
-      text-align: center;
-      padding: 5px;
-    }
-    .day-headers .header:not(:last-child) {
-      border-right: solid 1px #e1e1e1;
-    }
-    .day-headers .header:hover {
-      background-color: #ededed;
-    }
-    .day-headers span {
-      font-weight: 400;
-      opacity: 0.5;
-    }
-    .event-container {
-      display: inline-block;
-    }
-    .event {
-      padding: 0 10px;
-      font-size: 12px;
-      margin-left: 2px;
-      margin-right: 2px;
-      height: 30px;
-      line-height: 30px;
-    }
-    .border-left-rounded {
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-    .border-right-rounded {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
-    .header.today {
-      background-color: #e8fde7;
-    }
-    .header.weekend span {
-      color: darkred;
-    }
-    .event, .header {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  `],
   directives: [NgFor, NgClass]
 })
 export class CalendarWeekView {

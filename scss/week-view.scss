@@ -1,0 +1,58 @@
+/** 
+** @Calendar Week Styles
+**/
+@import 'variables';
+.week-view { 
+ .day-headers {
+      display: flex;
+      margin-bottom: 3px;
+      border: $default-border;
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+    .day-headers .header {
+      flex: 1;
+      text-align: center;
+      padding: 5px;
+    }
+    .day-headers .header:not(:last-child) {
+      border-right: $default-border;
+    }
+    .day-headers .header:hover {
+      background-color: #ededed;
+    }
+    .day-headers span {
+      font-weight: 400;
+      opacity: 0.5;
+    }
+    .event-container {
+      display: inline-block;
+    }
+    .event {
+      padding: 0 10px;
+      font-size: 12px;
+      margin-left: 2px;
+      margin-right: 2px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .border-left-rounded {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .border-right-rounded {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    .header.today {
+      background-color: #e8fde7;
+    }
+    .header.weekend span {
+      color: darkred;
+    }
+    .event, .header {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+}
