@@ -28,7 +28,7 @@ import {
 @Component({
   selector: 'mwl-calendar-month-view',
   template: `
-    <div class="month-view">
+    <div class="calendar-month-view">
       <div class="cell-row header">
         <div class="cell" *ngFor="let header of columnHeaders">
           {{ header.date.format('dddd') }}

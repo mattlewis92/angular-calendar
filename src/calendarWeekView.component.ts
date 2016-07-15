@@ -12,7 +12,7 @@ import {
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
-    <div class="week-view">
+    <div class="calendar-week-view">
       <div class="day-headers">
         <div
           class="header"
