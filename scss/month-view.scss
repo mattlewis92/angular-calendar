@@ -1,112 +1,113 @@
 @import 'variables';
-/** 
+
+/**
 ** @Calendar Month Styles
 **/
-.month-view { 
+.month-view {
   .header {
-      text-align: center;
-      font-weight: bolder;
-    }
-    .cell-row:hover {
-      background-color: #fafafa;
-    }
-    .header .cell {
-      padding: 5px 0;
-    }
-    .cell-row .cell:hover,
-    .cell.has-events.open {
-      background-color: #ededed;
-    }
-    .days {
-      border: $default-border;
-      border-bottom: 0px;
-    }
-    .cell-top {
-      min-height: 62px;
-    }
-    .cell-row {
-      display: flex;
-    }
-    .cell {
-      float: left;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .day-cell {
-      min-height: 100px;
-    }
-    .day-cell:not(:last-child) {
-      border-right: $default-border;
-    }
-    .days .cell-row {
-      border-bottom: $default-border;
-    }
-    .day-events-total {
-      margin-top: 18px;
-      margin-left: 10px;
-      background-color: #b94a48;
-      display: inline-block;
-      min-width: 10px;
-      padding: 3px 7px;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1;
-      color: white;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: middle;
-      border-radius: 10px;
-    }
-    .day-number {
-      font-size: 1.2em;
-      font-weight: 400;
-      opacity: 0.5;
-      margin-top: 15px;
-      margin-right: 15px;
-      float: right;
-      margin-bottom: 10px;
-    }
-    .events {
-      flex: 1;
-      align-items: flex-end;
-      margin: 3px;
-      line-height: 10px;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .event {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      margin: 2px;
-    }
-    .day-cell.in-month.has-events {
-      cursor: pointer;
-    }
-    .day-cell.out-month .day-number {
-      opacity: 0.1;
-      cursor: default;
-    }
-    .day-cell.weekend .day-number {
-      color: darkred;
-    }
-    .day-cell.today {
-      background-color: #e8fde7;
-    }
-    .day-cell.today .day-number {
-      font-size: 1.9em;
-    }
-    .slidebox {
-      padding: 20px;
-      color: white;
-      background-color: #555;
-      box-shadow: inset 0 0 15px 0 rgba(0,0,0,.5);
-    }
-    .slidebox .event {
-      position: relative;
-      top: 2px;
-    }
+    text-align: center;
+    font-weight: bolder;
+  }
+  .cell-row:hover {
+    background-color: #fafafa;
+  }
+  .header .cell {
+    padding: 5px 0;
+  }
+  .cell-row .cell:hover,
+  .cell.has-events.open {
+    background-color: #ededed;
+  }
+  .days {
+    border: $default-border;
+    border-bottom: 0px;
+  }
+  .cell-top {
+    min-height: 62px;
+  }
+  .cell-row {
+    display: flex;
+  }
+  .cell {
+    float: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .day-cell {
+    min-height: 100px;
+  }
+  .day-cell:not(:last-child) {
+    border-right: $default-border;
+  }
+  .days .cell-row {
+    border-bottom: $default-border;
+  }
+  .day-events-total {
+    margin-top: 18px;
+    margin-left: 10px;
+    background-color: #b94a48;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+  }
+  .day-number {
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-top: 15px;
+    margin-right: 15px;
+    float: right;
+    margin-bottom: 10px;
+  }
+  .events {
+    flex: 1;
+    align-items: flex-end;
+    margin: 3px;
+    line-height: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .event {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+  }
+  .day-cell.in-month.has-events {
+    cursor: pointer;
+  }
+  .day-cell.out-month .day-number {
+    opacity: 0.1;
+    cursor: default;
+  }
+  .day-cell.weekend .day-number {
+    color: darkred;
+  }
+  .day-cell.today {
+    background-color: #e8fde7;
+  }
+  .day-cell.today .day-number {
+    font-size: 1.9em;
+  }
+  .slidebox {
+    padding: 20px;
+    color: white;
+    background-color: #555;
+    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, .5);
+  }
+  .slidebox .event {
+    position: relative;
+    top: 2px;
+  }
 }

@@ -3,7 +3,6 @@ import {NgSwitch} from '@angular/common';
 import * as moment from 'moment';
 import {UnitOfTime} from 'moment';
 import {CalendarMonthView, CalendarWeekView, CalendarEvent, CalendarTitle} from './../angular2-calendar';
-
 import '../scss/main.scss';
 
 @Component({
