@@ -28,7 +28,6 @@ import {
 @Component({
   selector: 'mwl-calendar-month-view',
   template: `
-  <div class="calendar-month-view">
     <div class="month-view">
       <div class="cell-row header">
         <div class="cell" *ngFor="let header of columnHeaders">
@@ -79,7 +78,6 @@ import {
         </div>
       </div>
     </div>
-   </div> 
   `,
   directives: [NgFor, NgIf, NgClass],
   pipes: [SlicePipe],
