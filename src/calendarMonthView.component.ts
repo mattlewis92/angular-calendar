@@ -73,6 +73,9 @@ import {
               [ngClass]="event?.cssClass">
               <span class="event" [style.backgroundColor]="event.color.primary"></span>
               {{ event.title }}
+              <ul *ngIf="event.actions">
+                <li *ngFor="let action of event.actions" (click)="action.click(event)">{{action.label}}</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -101,6 +104,7 @@ export class CalendarMonthView implements OnChanges {
   @Input() slideBoxIsOpen: boolean = false;
   @Input() cellModifier: Function;
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
+  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
   private columnHeaders: WeekDay[];
   private view: MonthView;
@@ -128,7 +132,7 @@ export class CalendarMonthView implements OnChanges {
       });
     }
 
-    if (changes.slideBoxIsOpen || changes.date) {
+    if (changes.slideBoxIsOpen || changes.date || changes.events) {
       if (this.slideBoxIsOpen === true) {
         this.openDay = this.view.days.find(day => day.date.isSame(moment(this.date).startOf('day')));
         const index: number = this.view.days.indexOf(this.openDay);
