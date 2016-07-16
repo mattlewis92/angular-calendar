@@ -20,6 +20,18 @@ module.exports = {
       commonjs: '@angular/common',
       commonjs2: '@angular/common',
       amd: '@angular/common'
+    },
+    'rxjs/Subject': {
+      root: ['rx', 'Subject'],
+      commonjs: 'rxjs/Subject',
+      commonjs2: 'rxjs/Subject',
+      amd: 'rxjs/Subject'
+    },
+    'rxjs/Subscription': {
+      root: ['rx', 'Subscription'],
+      commonjs: 'rxjs/Subscription',
+      commonjs2: 'rxjs/Subscription',
+      amd: 'rxjs/Subscription'
     }
   },
   devtool: 'source-map',

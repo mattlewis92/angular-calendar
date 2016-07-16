@@ -8,7 +8,10 @@ import {
   style,
   transition,
   animate,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import {
   NgFor,
@@ -26,6 +29,8 @@ import {
   getMonthView,
   MonthViewDay
 } from 'calendar-utils';
+import {Subject} from 'rxjs/Subject';
+import {Subscription} from 'rxjs/Subscription';
 import {CalendarDate} from './calendarDate.pipe';
 
 @Component({
@@ -108,12 +113,13 @@ import {CalendarDate} from './calendarDate.pipe';
     ])
   ]
 })
-export class CalendarMonthView implements OnChanges {
+export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
   @Input() slideBoxIsOpen: boolean = false;
   @Input() cellModifier: Function;
+  @Input() refresh: Subject<any>;
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
@@ -121,42 +127,78 @@ export class CalendarMonthView implements OnChanges {
   private view: MonthView;
   private openRowIndex: number;
   private openDay: MonthViewDay;
+  private refreshSubscription: Subscription;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    if (this.refresh) {
+      this.refreshSubscription = this.refresh.subscribe(() => {
+        this.refreshAll();
+        this.cdr.markForCheck();
+      });
+    }
+  }
 
   ngOnChanges(changes: any): void {
 
     if (changes.date) {
-      this.columnHeaders = getWeekViewHeader({
-        viewDate: this.date
-      });
+      this.refreshHeader();
     }
 
     if (changes.date || changes.events) {
-      this.view = getMonthView({
-        events: this.events,
-        viewDate: this.date
-      });
-      this.view.days = this.view.days.map(day => {
-        if (this.cellModifier) {
-          return this.cellModifier(day);
-        }
-        return day;
-      });
+      this.refreshBody();
     }
 
     if (changes.slideBoxIsOpen || changes.date || changes.events) {
-      if (this.slideBoxIsOpen === true) {
-        this.openDay = this.view.days.find(day => day.date.isSame(moment(this.date).startOf('day')));
-        const index: number = this.view.days.indexOf(this.openDay);
-        this.openRowIndex = Math.floor(index / 7) * 7;
-      } else {
-        this.openRowIndex = null;
-        this.openDay = null;
-      }
+      this.refreshSlideBox();
     }
 
   }
 
-  toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
+  ngOnDestroy(): void {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
+  }
+
+  private refreshHeader(): void {
+    this.columnHeaders = getWeekViewHeader({
+      viewDate: this.date
+    });
+  }
+
+  private refreshBody(): void {
+    this.view = getMonthView({
+      events: this.events,
+      viewDate: this.date
+    });
+    this.view.days = this.view.days.map(day => {
+      if (this.cellModifier) {
+        return this.cellModifier(day);
+      }
+      return day;
+    });
+  }
+
+  private refreshSlideBox(): void {
+    if (this.slideBoxIsOpen === true) {
+      this.openDay = this.view.days.find(day => day.date.isSame(moment(this.date).startOf('day')));
+      const index: number = this.view.days.indexOf(this.openDay);
+      this.openRowIndex = Math.floor(index / 7) * 7;
+    } else {
+      this.openRowIndex = null;
+      this.openDay = null;
+    }
+  }
+
+  private refreshAll(): void {
+    this.refreshHeader();
+    this.refreshBody();
+    this.refreshSlideBox();
+  }
+
+  private toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
     this.view.days.forEach(day => {
       if (isHighlighted && day.events.indexOf(event) > -1) {
         day.backgroundColor = event.color.secondary;

@@ -9,6 +9,8 @@ import * as moment from 'moment';
 import {expect} from 'chai';
 import {spy} from 'sinon';
 import {CalendarMonthView, CalendarConfig} from './../angular2-calendar';
+import {Subject} from 'rxjs/Subject';
+import {CalendarEvent} from 'calendar-utils/dist/src/calendarUtils';
 
 const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
   const event: Event = document.createEvent('Event');
@@ -166,6 +168,28 @@ describe('calendarMonthView component', () => {
       title.click();
     });
 
+  }));
+
+  it('should refresh the view when the refresh observable', async(() => {
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.refresh = new Subject();
+      fixture.componentInstance.ngOnInit();
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.ngOnChanges({date: {}});
+      const event: CalendarEvent = {
+        start: new Date('2016-06-01'),
+        end: new Date('2016-06-02'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'lightblue'
+        }
+      };
+      fixture.componentInstance.events.push(event);
+      fixture.componentInstance.refresh.next(true);
+      expect(fixture.componentInstance.view.days[3].events).to.deep.equal([event]);
+      fixture.destroy();
+    });
   }));
 
 });
