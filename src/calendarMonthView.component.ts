@@ -13,7 +13,8 @@ import {
   NgFor,
   NgIf,
   NgClass,
-  SlicePipe
+  SlicePipe,
+  DatePipe
 } from '@angular/common';
 import * as moment from 'moment';
 import {
@@ -24,6 +25,7 @@ import {
   getMonthView,
   MonthViewDay
 } from 'calendar-utils';
+import {CalendarDate} from './calendarDate.pipe';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -31,7 +33,7 @@ import {
     <div class="calendar-month-view">
       <div class="cell-row header">
         <div class="cell" *ngFor="let header of columnHeaders">
-          {{ header.date.format('dddd') }}
+          {{ header.date | calendarDate:'month':'columnHeader' }}
         </div>
       </div>
       <div class="days">
@@ -53,7 +55,7 @@ import {
               (click)="dayClicked.emit({day: day})">
               <div class="cell-top">
                 <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
-                <span class="day-number">{{ day.date.format('D') }}</span>
+                <span class="day-number">{{ day.date | calendarDate:'month':'dayNumber' }}</span>
               </div>
               <div class="events">
                 <span
@@ -89,7 +91,8 @@ import {
     </div>
   `,
   directives: [NgFor, NgIf, NgClass],
-  pipes: [SlicePipe],
+  pipes: [SlicePipe, CalendarDate],
+  providers: [DatePipe],
   animations: [
     trigger('collapse', [
       transition('void => *', [

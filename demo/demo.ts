@@ -1,14 +1,22 @@
 import {Component} from '@angular/core';
-import {NgSwitch} from '@angular/common';
+import {NgSwitch, DatePipe} from '@angular/common';
 import * as moment from 'moment';
 import {UnitOfTime} from 'moment';
-import {EventAction} from 'calendar-utils';
-import {CalendarMonthView, CalendarWeekView, CalendarEvent, CalendarTitle} from './../angular2-calendar';
+import {
+  CalendarMonthView,
+  CalendarWeekView,
+  CalendarEvent,
+  CalendarTitle,
+  CalendarEventAction,
+  CalendarConfig,
+  CalendarDate
+} from './../angular2-calendar';
 
 @Component({
   selector: 'demo-app',
   directives: [NgSwitch, CalendarMonthView, CalendarWeekView],
   pipes: [CalendarTitle],
+  providers: [CalendarConfig, DatePipe, CalendarDate],
   styles: [`
     h3 {
       margin: 0;
@@ -68,7 +76,7 @@ export class DemoApp {
 
   private date: Date = new Date();
 
-  private actions: EventAction[] = [{
+  private actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     click: (event: CalendarEvent): void => {
       console.log('Edit event', event);

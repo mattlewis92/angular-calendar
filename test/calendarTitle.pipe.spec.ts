@@ -3,11 +3,12 @@ import {
   inject,
   async,
   TestComponentBuilder,
-  ComponentFixture
+  ComponentFixture,
+  addProviders
 } from '@angular/core/testing';
-import * as moment from 'moment';
 import {expect} from 'chai';
-import {CalendarTitle} from './../angular2-calendar';
+import {DatePipe} from '@angular/common';
+import {CalendarTitle, CalendarConfig, CalendarDate} from './../angular2-calendar';
 
 @Component({
   template: '{{ date | calendarTitle:view }}',
@@ -19,6 +20,12 @@ class TestCmp {
 }
 
 describe('calendarTitle pipe', () => {
+
+  beforeEach(() => {
+    const config: CalendarConfig = new CalendarConfig();
+    config.dateFormatter = 'moment';
+    addProviders([{provide: CalendarConfig, useValue: config}, CalendarDate, DatePipe]);
+  });
 
   let builder: TestComponentBuilder;
   beforeEach(inject([TestComponentBuilder], (tcb) => {
@@ -52,12 +59,11 @@ describe('calendarTitle pipe', () => {
     });
   }));
 
-  it('should not throw if no valid view is given', async(() => {
+  it('should throw if no valid view is given', async(() => {
     builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
       fixture.componentInstance.date = new Date('2016-01-01');
       fixture.componentInstance.view = 'unknown';
-      fixture.detectChanges();
-      expect(fixture.nativeElement.innerHTML).to.equal('');
+      expect(() => fixture.detectChanges()).to.throw();
     });
   }));
 

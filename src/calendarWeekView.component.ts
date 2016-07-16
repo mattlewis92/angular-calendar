@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {NgFor, NgClass} from '@angular/common';
+import {NgFor, NgClass, DatePipe} from '@angular/common';
 import {
   WeekDay,
   CalendarEvent,
@@ -7,7 +7,7 @@ import {
   getWeekViewHeader,
   getWeekView
 } from 'calendar-utils';
-
+import {CalendarDate} from './calendarDate.pipe';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -22,8 +22,8 @@ import {
           [class.future]="day.isFuture"
           [class.weekend]="day.isWeekend"
           (click)="dayClicked.emit({date: day.date.toDate()})">
-          <b>{{ day.date.format('dddd') }}</b><br>
-          <span>{{ day.date.format('D MMM') }}</span>
+          <b>{{ day.date | calendarDate:'week':'columnHeader' }}</b><br>
+          <span>{{ day.date | calendarDate:'week':'columnSubHeader' }}</span>
         </div>
       </div>
       <div *ngFor="let eventRow of eventRows">
@@ -49,7 +49,9 @@ import {
       </div>
     </div>
   `,
-  directives: [NgFor, NgClass]
+  directives: [NgFor, NgClass],
+  pipes: [CalendarDate],
+  providers: [DatePipe]
 })
 export class CalendarWeekView {
 

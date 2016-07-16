@@ -2,12 +2,13 @@ import {
   inject,
   async,
   TestComponentBuilder,
-  ComponentFixture
+  ComponentFixture,
+  addProviders
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import {expect} from 'chai';
 import {spy} from 'sinon';
-import {CalendarMonthView} from './../angular2-calendar';
+import {CalendarMonthView, CalendarConfig} from './../angular2-calendar';
 
 const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
   const event: Event = document.createEvent('Event');
@@ -17,6 +18,10 @@ const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Elem
 };
 
 describe('calendarMonthView component', () => {
+
+  beforeEach(() => {
+    addProviders([CalendarConfig]);
+  });
 
   let builder: TestComponentBuilder;
   beforeEach(inject([TestComponentBuilder], (tcb) => {

@@ -1,27 +1,15 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import * as moment from 'moment';
+import {CalendarDate} from './calendarDate.pipe';
 
 @Pipe({
   name: 'calendarTitle'
 })
 export class CalendarTitle implements PipeTransform {
 
+  constructor(private calendarDatePipe: CalendarDate) {}
+
   transform(viewDate: Date, view: string): string {
-
-    switch (view) {
-      case 'month':
-        return moment(viewDate).format('MMMM YYYY');
-
-      case 'week':
-        return moment(viewDate).format('[Week] W [of] YYYY');
-
-      case 'day':
-        return moment(viewDate).format('dddd D MMMM, YYYY');
-
-      default:
-        return '';
-    }
-
+    return this.calendarDatePipe.transform(viewDate, view, 'title');
   }
 
 }
