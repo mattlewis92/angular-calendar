@@ -45,6 +45,8 @@ module.exports = function(config) {
           test: /\.ts$/, loader: 'ts', exclude: /node_modules/
         }, {
           test: /sinon.js$/, loader: 'imports?define=>false,require=>false'
+        }, {
+          test: /\.scss$/, loader: 'style!css!sass'
         }],
         postLoaders: [{
           test: /src\/.+\.ts$/,

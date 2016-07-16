@@ -1,3 +1,4 @@
+import './scss/main.scss';
 import {CalendarMonthView} from './src/calendarMonthView.component';
 import {CalendarWeekView} from './src/calendarWeekView.component';
 import {CalendarTitle} from './src/calendarTitle.pipe';

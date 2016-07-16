@@ -1,4 +1,5 @@
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './angular2-calendar.ts',
@@ -33,6 +34,10 @@ module.exports = {
           declaration: true
         }
       }
+    }, {
+      test: /\.scss/,
+      loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!sass?sourceMap'),
+      exclude: /node_modules/
     }]
   },
   resolve: {
@@ -43,6 +48,7 @@ module.exports = {
       syntax: 'scss',
       context: 'scss',
       failOnError: true
-    })
+    }),
+    new ExtractTextPlugin('./css/angular2-calendar.css')
   ]
 };
