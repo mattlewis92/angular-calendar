@@ -1,3 +1,5 @@
+import {CalendarEvent} from 'calendar-utils';
+
 export class CalendarConfig {
 
   dateFormatter: 'angular' | 'moment' = 'angular';
@@ -35,6 +37,15 @@ export class CalendarConfig {
       title: {
         moment: 'dddd D MMMM, YYYY'
       }
+    }
+  };
+
+  eventTitles: any = {
+    month(event: CalendarEvent): string {
+      return event.title;
+    },
+    week(event: CalendarEvent): string {
+      return event.title;
     }
   };
 

@@ -18,6 +18,7 @@ import {
   getWeekView
 } from 'calendar-utils';
 import {CalendarDate} from './calendarDate.pipe';
+import {CalendarEventTitle} from './calendarEventTitle.pipe';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -54,7 +55,7 @@ import {Subscription} from 'rxjs/Subscription';
             <a
               class="event-title"
               href="javascript:;"
-              [innerHtml]="event.event.title"
+              [innerHtml]="event.event | calendarEventTitle:'week'"
               (click)="eventClicked.emit({event: event.event})">
             </a>
           </div>
@@ -63,7 +64,7 @@ import {Subscription} from 'rxjs/Subscription';
     </div>
   `,
   directives: [NgFor, NgClass],
-  pipes: [CalendarDate],
+  pipes: [CalendarDate, CalendarEventTitle],
   providers: [DatePipe]
 })
 export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {

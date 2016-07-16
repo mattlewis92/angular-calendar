@@ -21,8 +21,10 @@ const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Elem
 
 describe('calendarMonthView component', () => {
 
+  let config: CalendarConfig;
   beforeEach(() => {
-    addProviders([CalendarConfig]);
+    config = new CalendarConfig();
+    addProviders([{provide: CalendarConfig, useValue: config}]);
   });
 
   let builder: TestComponentBuilder;
@@ -189,6 +191,29 @@ describe('calendarMonthView component', () => {
       fixture.componentInstance.refresh.next(true);
       expect(fixture.componentInstance.view.days[3].events).to.deep.equal([event]);
       fixture.destroy();
+    });
+  }));
+
+  it('should allow the event title to be customised by the calendarConfig provider', async(() => {
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      config.eventTitles.month = (event: CalendarEvent) => {
+        return `foo ${event.title}`;
+      };
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: 'bar',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        }
+      }];
+      fixture.componentInstance.slideBoxIsOpen = true;
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const title: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-title');
+      expect(title.innerHTML).to.equal('foo bar');
     });
   }));
 

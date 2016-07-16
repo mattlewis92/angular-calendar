@@ -12,8 +12,10 @@ import {Subject} from 'rxjs/Rx';
 
 describe('calendarWeekView component', () => {
 
+  let config: CalendarConfig;
   beforeEach(() => {
-    addProviders([CalendarConfig]);
+    config = new CalendarConfig();
+    addProviders([{provide: CalendarConfig, useValue: config}]);
   });
 
   let builder: TestComponentBuilder;
@@ -107,6 +109,29 @@ describe('calendarWeekView component', () => {
       expect(fixture.componentInstance.eventRows[0].row[0].event).to.deep.equal(event);
       fixture.destroy();
     });
+  }));
+
+  it('should allow the event title to be customised by the calendarConfig provider', async(() => {
+
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      config.eventTitles.week = (event: CalendarEvent) => {
+        return `foo ${event.title}`;
+      };
+      fixture.componentInstance.date = moment('2016-06-01').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'bar',
+        color: {
+          primary: 'blue'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const title: HTMLElement = fixture.nativeElement.querySelector('.event-title');
+      expect(title.innerHTML).to.equal('foo bar');
+    });
+
   }));
 
 });

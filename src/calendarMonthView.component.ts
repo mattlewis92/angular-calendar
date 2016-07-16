@@ -32,6 +32,7 @@ import {
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 import {CalendarDate} from './calendarDate.pipe';
+import {CalendarEventTitle} from './calendarEventTitle.pipe';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -81,7 +82,12 @@ import {CalendarDate} from './calendarDate.pipe';
               *ngFor="let event of openDay.events"
               [ngClass]="event?.cssClass">
               <span class="event" [style.backgroundColor]="event.color.primary"></span>
-              <a class="event-title" href="javascript:;" [innerHTML]="event.title" (click)="eventClicked.emit({event: event})"></a>
+              <a
+                class="event-title"
+                href="javascript:;"
+                [innerHTML]="event | calendarEventTitle:'month'"
+                (click)="eventClicked.emit({event: event})">
+              </a>
               <span *ngIf="event.actions" class="event-actions">
                 <a
                   class="event-action"
@@ -98,7 +104,7 @@ import {CalendarDate} from './calendarDate.pipe';
     </div>
   `,
   directives: [NgFor, NgIf, NgClass],
-  pipes: [SlicePipe, CalendarDate],
+  pipes: [SlicePipe, CalendarDate, CalendarEventTitle],
   providers: [DatePipe],
   animations: [
     trigger('collapse', [
