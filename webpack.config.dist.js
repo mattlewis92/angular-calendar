@@ -1,3 +1,5 @@
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+
 module.exports = {
   entry: './angular2-calendar.ts',
   output: {
@@ -35,5 +37,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.ts', '.js']
-  }
+  },
+  plugins: [
+    new StyleLintPlugin({
+      syntax: 'scss',
+      context: 'scss',
+      failOnError: true
+    })
+  ]
 };

@@ -1,6 +1,3 @@
-/**
-** @Calendar Week Styles
-**/
 @import 'variables';
 
 .calendar-week-view {
@@ -51,7 +48,8 @@
   .header.weekend span {
     color: darkred;
   }
-  .event, .header {
+  .event,
+  .header {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

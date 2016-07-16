@@ -1,6 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const WATCH = process.argv.indexOf('--watch') > -1;
 
 module.exports = function(config) {
@@ -61,7 +62,14 @@ module.exports = function(config) {
           inlineSourceMap: true
         }
       },
-      plugins: WATCH ? [] : [new webpack.NoErrorsPlugin()]
+      plugins: WATCH ? [] : [
+        new webpack.NoErrorsPlugin(),
+        new StyleLintPlugin({
+          syntax: 'scss',
+          context: 'scss',
+          failOnError: true
+        })
+      ]
     },
 
     coverageReporter: {

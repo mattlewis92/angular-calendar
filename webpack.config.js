@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
@@ -14,8 +15,8 @@ module.exports = {
     }],
     loaders: [{
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
-    },{
-        test: /\.scss$/, loader: 'style!css!sass'
+    }, {
+      test: /\.scss$/, loader: 'style!css!sass'
     }]
   },
   resolve: {
@@ -33,6 +34,10 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
+    }),
+    new StyleLintPlugin({
+      syntax: 'scss',
+      context: 'scss'
     })
   ]
 };
