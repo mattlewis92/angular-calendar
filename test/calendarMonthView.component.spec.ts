@@ -170,7 +170,7 @@ describe('calendarMonthView component', () => {
 
   }));
 
-  it('should refresh the view when the refresh observable', async(() => {
+  it('should refresh the view when the refresh observable is emitted on', async(() => {
     builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
       fixture.componentInstance.refresh = new Subject();
       fixture.componentInstance.ngOnInit();

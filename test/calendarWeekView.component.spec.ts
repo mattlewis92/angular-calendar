@@ -7,7 +7,8 @@ import {
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import {expect} from 'chai';
-import {CalendarWeekView, CalendarConfig} from './../angular2-calendar';
+import {CalendarWeekView, CalendarConfig, CalendarEvent} from './../angular2-calendar';
+import {Subject} from 'rxjs/Rx';
 
 describe('calendarWeekView component', () => {
 
@@ -84,6 +85,28 @@ describe('calendarWeekView component', () => {
       title.click();
     });
 
+  }));
+
+  it('should refresh the view when the refresh observable is emitted on', async(() => {
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      fixture.componentInstance.refresh = new Subject();
+      fixture.componentInstance.ngOnInit();
+      fixture.componentInstance.date = moment('2016-06-01').toDate();
+      fixture.componentInstance.ngOnChanges({date: {}});
+      const event: CalendarEvent = {
+        start: new Date('2016-06-01'),
+        end: new Date('2016-06-02'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'lightblue'
+        }
+      };
+      fixture.componentInstance.events.push(event);
+      fixture.componentInstance.refresh.next(true);
+      expect(fixture.componentInstance.eventRows[0].row[0].event).to.deep.equal(event);
+      fixture.destroy();
+    });
   }));
 
 });

@@ -1,4 +1,14 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnChanges,
+  OnInit,
+  OnDestroy
+} from '@angular/core';
 import {NgFor, NgClass, DatePipe} from '@angular/common';
 import {
   WeekDay,
@@ -8,6 +18,8 @@ import {
   getWeekView
 } from 'calendar-utils';
 import {CalendarDate} from './calendarDate.pipe';
+import {Subject} from 'rxjs/Subject';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -54,33 +66,63 @@ import {CalendarDate} from './calendarDate.pipe';
   pipes: [CalendarDate],
   providers: [DatePipe]
 })
-export class CalendarWeekView {
+export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
+  @Input() refresh: Subject<any>;
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
   private days: WeekDay[];
   private eventRows: WeekViewEventRow[] = [];
+  private refreshSubscription: Subscription;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    if (this.refresh) {
+      this.refreshSubscription = this.refresh.subscribe(() => {
+        this.refreshAll();
+        this.cdr.markForCheck();
+      });
+    }
+  }
 
   ngOnChanges(changes: any): void {
 
     if (changes.date) {
-      this.days = getWeekViewHeader({
-        viewDate: this.date
-      });
+      this.refreshHeader();
     }
 
     if (changes.events || changes.date) {
-
-      this.eventRows = getWeekView({
-        events: this.events,
-        viewDate: this.date
-      });
-
+      this.refreshBody();
     }
 
+  }
+
+  ngOnDestroy(): void {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
+  }
+
+  private refreshHeader(): void {
+    this.days = getWeekViewHeader({
+      viewDate: this.date
+    });
+  }
+
+  private refreshBody(): void {
+    this.eventRows = getWeekView({
+      events: this.events,
+      viewDate: this.date
+    });
+  }
+
+  private refreshAll(): void {
+    this.refreshHeader();
+    this.refreshBody();
   }
 
 }
