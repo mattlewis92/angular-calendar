@@ -21,7 +21,7 @@ import {
           [class.today]="day.isToday"
           [class.future]="day.isFuture"
           [class.weekend]="day.isWeekend"
-          (click)="onDayClicked.emit({date: day.date.toDate()})">
+          (click)="dayClicked.emit({date: day.date.toDate()})">
           <b>{{ day.date.format('dddd') }}</b><br>
           <span>{{ day.date.format('D MMM') }}</span>
         </div>
@@ -55,7 +55,7 @@ export class CalendarWeekView {
 
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
-  @Output() onDayClicked: EventEmitter<any> = new EventEmitter();
+  @Output() dayClicked: EventEmitter<any> = new EventEmitter();
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
   private days: WeekDay[];

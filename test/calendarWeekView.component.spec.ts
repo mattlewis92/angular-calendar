@@ -29,7 +29,7 @@ describe('calendarWeekView component', () => {
       fixture.componentInstance.date = moment('2016-06-29').toDate();
       fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});
       fixture.detectChanges();
-      fixture.componentInstance.onDayClicked.subscribe(val => {
+      fixture.componentInstance.dayClicked.subscribe(val => {
         expect(val).to.deep.equal({
           date: fixture.componentInstance.days[0].date.toDate()
         });
