@@ -1,4 +1,4 @@
-import './scss/main.scss';
+import './scss/angular2-calendar.scss';
 import {CalendarMonthView} from './src/calendarMonthView.component';
 import {CalendarWeekView} from './src/calendarWeekView.component';
 import {CalendarTitle} from './src/calendarTitle.pipe';
