@@ -71,7 +71,7 @@ import {CalendarDate} from './calendarDate.pipe';
               </div>
             </div>
           </div>
-          <div class="slidebox" @collapse *ngIf="openRowIndex === rowIndex && openDay?.events.length > 0">
+          <div class="slidebox" @collapse *ngIf="openRowIndex === rowIndex">
             <div
               *ngFor="let event of openDay.events"
               [ngClass]="event?.cssClass">

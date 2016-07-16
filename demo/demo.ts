@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NgSwitch, DatePipe} from '@angular/common';
 import * as moment from 'moment';
-import {UnitOfTime} from 'moment';
+import {UnitOfTime, Moment} from 'moment';
 import {
   CalendarMonthView,
   CalendarWeekView,
@@ -59,7 +59,7 @@ import {
           [date]="date"
           [events]="events"
           [slideBoxIsOpen]="slideBoxIsOpen"
-          (dayClicked)="dayClicked($event.day.date.toDate())">
+          (dayClicked)="dayClicked($event.day)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view
           *ngSwitchCase="'week'"
@@ -228,13 +228,13 @@ export class DemoApp {
     this.date = new Date();
   }
 
-  dayClicked(day: Date): void {
-    if (moment(day).startOf('month').isSame(moment(this.date).startOf('month'))) {
-      if (this.date.getTime() === day.getTime() && this.slideBoxIsOpen === true) {
+  dayClicked({date, events}: {date: Moment, events: CalendarEvent[]}): void {
+    if (moment(date).startOf('month').isSame(moment(this.date).startOf('month'))) {
+      if ((this.date.getTime() === date.toDate().getTime() && this.slideBoxIsOpen === true) || events.length === 0) {
         this.slideBoxIsOpen = false;
       } else {
         this.slideBoxIsOpen = true;
-        this.date = day;
+        this.date = date.toDate();
       }
     }
   }
