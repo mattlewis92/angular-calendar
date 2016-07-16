@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {NgFor, NgClass, DatePipe} from '@angular/common';
 import {
   WeekDay,
@@ -11,6 +11,7 @@ import {CalendarDate} from './calendarDate.pipe';
 
 @Component({
   selector: 'mwl-calendar-week-view',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="calendar-week-view">
       <div class="day-headers">

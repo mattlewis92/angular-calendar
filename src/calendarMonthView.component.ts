@@ -7,7 +7,8 @@ import {
   trigger,
   style,
   transition,
-  animate
+  animate,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   NgFor,
@@ -29,6 +30,7 @@ import {CalendarDate} from './calendarDate.pipe';
 
 @Component({
   selector: 'mwl-calendar-month-view',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="calendar-month-view">
       <div class="cell-row header">
