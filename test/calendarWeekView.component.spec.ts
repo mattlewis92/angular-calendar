@@ -57,4 +57,28 @@ describe('calendarWeekView component', () => {
     });
   }));
 
+  it('should call the event clicked callback', async(() => {
+
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      fixture.componentInstance.date = moment('2016-06-01').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: '<span>foo</span>',
+        color: {
+          primary: 'blue'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const title: HTMLElement = fixture.nativeElement.querySelector('.event-title');
+      expect(title.innerHTML).to.equal('<span>foo</span>');
+      fixture.componentInstance.eventClicked.subscribe(val => {
+        expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
+      });
+      title.click();
+    });
+
+  }));
+
 });

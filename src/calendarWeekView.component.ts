@@ -38,7 +38,12 @@ import {
             [class.border-right-rounded]="!event.extendsRight"
             [style.backgroundColor]="event.event.color.secondary"
             [ngClass]="event.event?.cssClass">
-            <a href="javascript:;">{{ event.event.title }}</a>
+            <a
+              class="event-title"
+              href="javascript:;"
+              [innerHtml]="event.event.title"
+              (click)="eventClicked.emit({event: event.event})">
+            </a>
           </div>
         </div>
       </div>
@@ -51,6 +56,7 @@ export class CalendarWeekView {
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
   @Output() onDayClicked: EventEmitter<any> = new EventEmitter();
+  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
   private days: WeekDay[];
   private eventRows: WeekViewEventRow[] = [];
