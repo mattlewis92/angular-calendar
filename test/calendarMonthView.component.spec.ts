@@ -137,4 +137,30 @@ describe('calendarMonthView component', () => {
 
   }));
 
+  it('should call the event clicked callback', async(() => {
+
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: '<span>foo</span>',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        }
+      }];
+      fixture.componentInstance.slideBoxIsOpen = true;
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const title: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-title');
+      expect(title.innerHTML).to.equal('<span>foo</span>');
+      fixture.componentInstance.eventClicked.subscribe(val => {
+        expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
+      });
+      title.click();
+    });
+
+  }));
+
 });

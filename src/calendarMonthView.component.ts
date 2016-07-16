@@ -72,7 +72,7 @@ import {
               *ngFor="let event of openDay.events"
               [ngClass]="event?.cssClass">
               <span class="event" [style.backgroundColor]="event.color.primary"></span>
-              {{ event.title }}
+              <a class="event-title" href="javascript:;" [innerHTML]="event.title" (click)="eventClicked.emit({event: event})"></a>
               <span *ngIf="event.actions" class="event-actions">
                 <a
                   class="event-action"
@@ -110,6 +110,7 @@ export class CalendarMonthView implements OnChanges {
   @Input() slideBoxIsOpen: boolean = false;
   @Input() cellModifier: Function;
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
+  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
   private columnHeaders: WeekDay[];
   private view: MonthView;
