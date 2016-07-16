@@ -6,6 +6,7 @@ import {
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import {expect} from 'chai';
+import {spy} from 'sinon';
 import {CalendarMonthView} from './../angular2-calendar';
 
 const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
@@ -106,6 +107,34 @@ describe('calendarMonthView component', () => {
       fixture.detectChanges();
       expect(day.style.backgroundColor).to.be.equal('');
     });
+  }));
+
+  it('should add event actions to the slidebox', async(() => {
+
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        },
+        actions: [{
+          label: '<i class="fa fa-fw fa-times"></i>',
+          click: spy()
+        }]
+      }];
+      fixture.componentInstance.slideBoxIsOpen = true;
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const action: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-action');
+      expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
+      action.click();
+      expect(fixture.componentInstance.events[0].actions[0].click).to.have.been.calledWith(fixture.componentInstance.events[0]);
+    });
+
   }));
 
 });

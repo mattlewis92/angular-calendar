@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NgSwitch} from '@angular/common';
 import * as moment from 'moment';
 import {UnitOfTime} from 'moment';
+import {EventAction} from 'calendar-utils';
 import {CalendarMonthView, CalendarWeekView, CalendarEvent, CalendarTitle} from './../angular2-calendar';
 
 @Component({
@@ -67,6 +68,18 @@ export class DemoApp {
 
   private date: Date = new Date();
 
+  private actions: EventAction[] = [{
+    label: '<i class="fa fa-fw fa-pencil"></i>',
+    click: (event: CalendarEvent): void => {
+      console.log('Edit event', event);
+    }
+  }, {
+    label: '<i class="fa fa-fw fa-times"></i>',
+    click: (event: CalendarEvent): void => {
+      this.events = this.events.filter(iEvent => iEvent !== event);
+    }
+  }];
+
   private events: CalendarEvent[] = [{
     start: moment().startOf('week').add(4, 'days').toDate(),
     end: moment().startOf('week').add(5, 'days').toDate(),
@@ -74,7 +87,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(1, 'minutes').add(4, 'days').toDate(),
     end: moment().startOf('week').add(5, 'days').toDate(),
@@ -82,7 +96,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(2, 'minutes').add(4, 'days').toDate(),
     end: moment().startOf('week').add(5, 'days').toDate(),
@@ -90,7 +105,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(6, 'days').toDate(),
     end: moment().endOf('week').toDate(),
@@ -98,7 +114,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(1, 'minutes').add(6, 'days').toDate(),
     end: moment().endOf('week').toDate(),
@@ -106,7 +123,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(2, 'minutes').add(6, 'days').toDate(),
     end: moment().endOf('week').toDate(),
@@ -114,7 +132,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(3, 'minutes').add(6, 'days').toDate(),
     end: moment().endOf('week').toDate(),
@@ -122,7 +141,8 @@ export class DemoApp {
     color: {
       primary: '#ad2121',
       secondary: '#FAE3E3'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').toDate(),
     end: moment().startOf('week').add(5, 'days').toDate(),
@@ -130,7 +150,8 @@ export class DemoApp {
     color: {
       primary: '#e3bc08',
       secondary: '#FDF1BA'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(1, 'minutes').toDate(),
     end: moment().startOf('week').add(5, 'days').toDate(),
@@ -146,7 +167,8 @@ export class DemoApp {
     color: {
       primary: '#1e90ff',
       secondary: '#D1E8FF'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(1, 'days').toDate(),
     end: moment().startOf('week').add(3, 'days').toDate(),
@@ -154,7 +176,8 @@ export class DemoApp {
     color: {
       primary: '#1e90ff',
       secondary: '#D1E8FF'
-    }
+    },
+    actions: this.actions
   }, {
     start: moment().startOf('week').add(1, 'days').toDate(),
     end: moment().startOf('week').add(2, 'days').toDate(),
@@ -162,7 +185,8 @@ export class DemoApp {
     color: {
       primary: '#1e90ff',
       secondary: '#D1E8FF'
-    }
+    },
+    actions: this.actions
   }];
 
   private slideBoxIsOpen: boolean = false;
