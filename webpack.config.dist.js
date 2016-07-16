@@ -1,3 +1,5 @@
+const autoprefixer = require('autoprefixer');
+const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -48,7 +50,7 @@ module.exports = {
       }
     }, {
       test: /\.scss/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!sass?sourceMap'),
+      loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss!sass?sourceMap'),
       exclude: /node_modules/
     }]
   },
@@ -62,5 +64,16 @@ module.exports = {
       failOnError: true
     }),
     new ExtractTextPlugin('./css/angular2-calendar.css')
+  ],
+  postcss: [
+    autoprefixer({
+      browsers: [
+        '> 1%',
+        'last 4 versions',
+        'last 20 Chrome versions',
+        'last 20 Firefox versions'
+      ]
+    }),
+    postCssFlexibility
   ]
 };
