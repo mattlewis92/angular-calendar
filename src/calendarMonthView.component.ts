@@ -40,16 +40,16 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
   template: `
     <div class="calendar-month-view">
       <div class="cell-row header">
-        <div class="cell" *ngFor="let header of columnHeaders">
+        <div class="cell" *ngFor="let header of columnHeaders; trackBy:trackByItem">
           {{ header.date | calendarDate:'month':'columnHeader' }}
         </div>
       </div>
       <div class="days">
-        <div *ngFor="let rowIndex of view.rowOffsets">
+        <div *ngFor="let rowIndex of view.rowOffsets; trackBy:trackByItem">
           <div class="cell-row">
             <div
               class="cell day-cell"
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7; trackBy:trackByItem"
               [class.past]="day.isPast"
               [class.today]="day.isToday"
               [class.future]="day.isFuture"
@@ -68,7 +68,7 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
               <div class="events">
                 <span
                   class="event"
-                  *ngFor="let event of day.events"
+                  *ngFor="let event of day.events; trackBy:trackByItem"
                   [style.backgroundColor]="event.color.primary"
                   [ngClass]="event?.cssClass"
                   (mouseenter)="toggleDayHighlight(event, true)"
@@ -79,7 +79,7 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
           </div>
           <div class="slidebox" @collapse *ngIf="openRowIndex === rowIndex">
             <div
-              *ngFor="let event of openDay.events"
+              *ngFor="let event of openDay.events; trackBy:trackByItem"
               [ngClass]="event?.cssClass">
               <span class="event" [style.backgroundColor]="event.color.primary"></span>
               <a
@@ -92,7 +92,7 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
                 <a
                   class="event-action"
                   href="javascript:;"
-                  *ngFor="let action of event.actions"
+                  *ngFor="let action of event.actions; trackBy:trackByItem"
                   (click)="action.click(event)"
                   [innerHtml]="action.label">
                 </a>
@@ -212,6 +212,10 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
         delete day.backgroundColor;
       }
     });
+  }
+
+  private trackByItem(index: number, obj: any): any {
+    return obj;
   }
 
 }

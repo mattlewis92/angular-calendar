@@ -30,7 +30,7 @@ import {Subscription} from 'rxjs/Subscription';
       <div class="day-headers">
         <div
           class="header"
-          *ngFor="let day of days"
+          *ngFor="let day of days; trackBy:trackByItem"
           [class.past]="day.isPast"
           [class.today]="day.isToday"
           [class.future]="day.isFuture"
@@ -40,10 +40,10 @@ import {Subscription} from 'rxjs/Subscription';
           <span>{{ day.date | calendarDate:'week':'columnSubHeader' }}</span>
         </div>
       </div>
-      <div *ngFor="let eventRow of eventRows">
+      <div *ngFor="let eventRow of eventRows; trackBy:trackByItem">
         <div
           class="event-container"
-          *ngFor="let event of eventRow.row"
+          *ngFor="let event of eventRow.row; trackBy:trackByItem"
           [style.width]="((100 / 7) * event.span) + '%'"
           [style.marginLeft]="((100 / 7) * event.offset) + '%'">
           <div
@@ -124,6 +124,10 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
+  }
+
+  private trackByItem(index: number, obj: any): any {
+    return obj;
   }
 
 }
