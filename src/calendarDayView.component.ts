@@ -109,6 +109,16 @@ export class CalendarDayView implements OnChanges {
 
     }
 
+    /**
+     * TODO
+     * event positioning
+     * handle no event end dates
+     * respect day view start, end, split
+     * add css class if event starts or ends on a different day
+     * event title and actions
+     * move business logic into calendar utils
+     */
+
     if (changes.date || changes.events) {
       const startOfDay: Date = moment(this.date).startOf('day').toDate();
       const endOfDay: Date = moment(this.date).endOf('day').toDate();
