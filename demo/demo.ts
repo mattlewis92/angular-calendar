@@ -5,6 +5,7 @@ import {UnitOfTime, Moment} from 'moment';
 import {
   CalendarMonthView,
   CalendarWeekView,
+  CalendarDayView,
   CalendarEvent,
   CalendarTitle,
   CalendarEventAction,
@@ -14,7 +15,7 @@ import {
 
 @Component({
   selector: 'demo-app',
-  directives: [NgSwitch, CalendarMonthView, CalendarWeekView],
+  directives: [NgSwitch, CalendarMonthView, CalendarWeekView, CalendarDayView],
   pipes: [CalendarTitle],
   providers: [CalendarConfig, DatePipe, CalendarDate],
   styles: [`
@@ -66,6 +67,11 @@ import {
           [date]="date"
           [events]="events">
         </mwl-calendar-week-view>
+        <mwl-calendar-day-view
+          *ngSwitchCase="'day'"
+          [date]="date"
+          [events]="events">
+        </mwl-calendar-day-view>
       </div>
     </div>
   `

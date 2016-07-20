@@ -35,7 +35,12 @@ export class CalendarConfig {
     },
     day: {
       title: {
+        angular: 'EEEE d MMMM, yyyy',
         moment: 'dddd D MMMM, YYYY'
+      },
+      hour: {
+        angular: 'ha',
+        moment: 'ha'
       }
     }
   };
