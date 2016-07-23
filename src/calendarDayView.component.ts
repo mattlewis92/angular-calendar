@@ -75,7 +75,7 @@ export class CalendarDayView implements OnChanges {
 
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
-  @Input() hourSegmentLength: number = 2;
+  @Input() hourSegments: number = 2;
   @Input() start: Time = {hour: 0, minute: 0};
   @Input() end: Time = {hour: 23, minute: 59};
   private hours: DayViewHour[] = [];
@@ -89,11 +89,11 @@ export class CalendarDayView implements OnChanges {
       this.hours = [];
       const startOfView: Moment = moment(this.date).startOf('day').hour(this.start.hour).minute(this.start.minute);
       const endOfView: Moment = moment(this.date).endOf('day').startOf('minute').hour(this.end.hour).minute(this.end.minute);
-      const segmentDuration: number = 60 / this.hourSegmentLength;
+      const segmentDuration: number = 60 / this.hourSegments;
       const startOfDay: Moment = moment(this.date).startOf('day');
       for (let i: number = 0; i < 24; i++) {
         const segments: DayViewHourSegment[] = [];
-        for (let j: number = 0; j < this.hourSegmentLength; j++) {
+        for (let j: number = 0; j < this.hourSegments; j++) {
           const date: Moment = startOfDay.clone().add(i, 'hours').add(j * segmentDuration, 'minutes');
           if (date >= startOfView && date < endOfView) {
             segments.push({
