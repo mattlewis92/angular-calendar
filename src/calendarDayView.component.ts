@@ -4,11 +4,6 @@ import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} fro
 import {CalendarDate} from './calendarDate.pipe';
 import {CalendarEventTitle} from './calendarEventTitle.pipe';
 
-interface Time {
-  hour: number;
-  minute: number;
-}
-
 const EVENT_WIDTH: number = 150;
 const SEGMENT_HEIGHT: number = 30;
 
@@ -71,8 +66,10 @@ export class CalendarDayView implements OnChanges {
   @Input() date: Date;
   @Input() events: CalendarEvent[] = [];
   @Input() hourSegments: number = 2;
-  @Input() start: Time = {hour: 0, minute: 0};
-  @Input() end: Time = {hour: 23, minute: 59};
+  @Input() dayStartHour: number = 0;
+  @Input() dayStartMinute: number = 0;
+  @Input() dayEndHour: number = 23;
+  @Input() dayEndMinute: number = 59;
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
   @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
   private hours: DayViewHour[] = [];
@@ -81,24 +78,36 @@ export class CalendarDayView implements OnChanges {
 
   ngOnChanges(changes: any): void {
 
-    if (changes.date) {
+    if (changes.date || changes.dayStartHour || changes.dayStartMinute || changes.dayEndHour || changes.dayEndMinute) {
 
       this.hours = getDayViewHourGrid({
         viewDate: this.date,
         hourSegments: this.hourSegments,
-        dayStart: this.start,
-        dayEnd: this.end
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        }
       });
 
     }
 
-    if (changes.date || changes.events) {
+    if (changes.date || changes.events || changes.dayStartHour || changes.dayStartMinute || changes.dayEndHour || changes.dayEndMinute) {
       this.view = getDayView({
         events: this.events,
         viewDate: this.date,
         hourSegments: this.hourSegments,
-        dayStart: this.start,
-        dayEnd: this.end,
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        },
         eventWidth: EVENT_WIDTH,
         segmentHeight: SEGMENT_HEIGHT
       });

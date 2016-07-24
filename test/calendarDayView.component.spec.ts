@@ -140,4 +140,26 @@ describe('CalendarDayView component', () => {
 
   }));
 
+  it('should update the hour grid and event list when the day start changes', async(() => {
+    builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
+      fixture.componentInstance.date = moment('2016-06-29').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-06-29'),
+        title: 'foo',
+        color: {
+          primary: '',
+          secondary: ''
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.componentInstance.hours.length).to.equal(24);
+      expect(fixture.componentInstance.view.events.length).to.equal(1);
+      fixture.componentInstance.dayStartHour = 6;
+      fixture.componentInstance.ngOnChanges({dayStartHour: {}});
+      expect(fixture.componentInstance.hours.length).to.equal(18);
+      expect(fixture.componentInstance.view.events.length).to.equal(0);
+    });
+  }));
+
 });
