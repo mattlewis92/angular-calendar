@@ -110,11 +110,11 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
     trigger('collapse', [
       transition('void => *', [
         style({height: 0}),
-        animate(150, style({height: '*'}))
+        animate('150ms linear', style({height: '*'}))
       ]),
       transition('* => void', [
         style({height: '*'}),
-        animate(150, style({height: 0}))
+        animate('150ms linear', style({height: 0}))
       ])
     ])
   ]
