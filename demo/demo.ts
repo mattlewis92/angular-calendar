@@ -84,12 +84,12 @@ export class DemoApp {
 
   private actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
-    onClick: (event: CalendarEvent): void => {
+    onClick: ({event}: {event: CalendarEvent}): void => {
       console.log('Edit event', event);
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',
-    onClick: (event: CalendarEvent): void => {
+    onClick: ({event}: {event: CalendarEvent}): void => {
       this.events = this.events.filter(iEvent => iEvent !== event);
     }
   }];

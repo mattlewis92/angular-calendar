@@ -53,7 +53,8 @@ const SEGMENT_HEIGHT: number = 30;
                 class="event-action"
                 href="javascript:;"
                 *ngFor="let action of dayEvent.event.actions; trackBy:trackByItem"
-                (click)="action.onClick(dayEvent.event)"
+                (click)="action.onClick({event: dayEvent.event})"
+                [ngClass]="action.cssClass"
                 [innerHtml]="action.label">
               </a>
             </span>

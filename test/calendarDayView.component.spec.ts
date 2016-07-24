@@ -177,15 +177,17 @@ describe('CalendarDayView component', () => {
         },
         actions: [{
           label: '<i class="fa fa-fw fa-times"></i>',
-          onClick: spy()
+          onClick: spy(),
+          cssClass: 'foo'
         }]
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
       const action: HTMLElement = fixture.nativeElement.querySelector('.event .event-action');
       expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
+      expect(action.classList.contains('foo')).to.be.true;
       action.click();
-      expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith(fixture.componentInstance.events[0]);
+      expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith({event: fixture.componentInstance.events[0]});
     });
 
   }));
