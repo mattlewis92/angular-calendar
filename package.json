@@ -7,7 +7,7 @@
   "typings": "./angular2-calendar.d.ts",
   "scripts": {
     "prestart": "typings install",
-    "start": "concurrently \"webpack-dev-server\" \"npm run test:watch\" \"open http://localhost:8000\"",
+    "start": "concurrently --raw \"webpack-dev-server\" \"npm run test:watch\" \"open http://localhost:8000\"",
     "build:demo": "webpack -p",
     "build:dist": "webpack --config webpack.config.dist.js",
     "pretest": "typings install",
