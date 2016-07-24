@@ -132,7 +132,7 @@ describe('calendarMonthView component', () => {
         },
         actions: [{
           label: '<i class="fa fa-fw fa-times"></i>',
-          click: spy()
+          onClick: spy()
         }]
       }];
       fixture.componentInstance.slideBoxIsOpen = true;
@@ -141,7 +141,7 @@ describe('calendarMonthView component', () => {
       const action: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-action');
       expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
       action.click();
-      expect(fixture.componentInstance.events[0].actions[0].click).to.have.been.calledWith(fixture.componentInstance.events[0]);
+      expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith(fixture.componentInstance.events[0]);
     });
 
   }));

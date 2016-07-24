@@ -93,7 +93,7 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
                   class="event-action"
                   href="javascript:;"
                   *ngFor="let action of event.actions; trackBy:trackByItem"
-                  (click)="action.click(event)"
+                  (click)="action.onClick(event)"
                   [innerHtml]="action.label">
                 </a>
               </span>
