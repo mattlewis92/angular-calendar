@@ -54,7 +54,7 @@ export class CalendarConfig {
       return event.title;
     },
     day(event: CalendarEvent): string {
-      return `<b>${moment(event.start).format('HH:mm')}</b> - ${event.title}`;
+      return event.title;
     }
   };
 
