@@ -60,7 +60,7 @@ describe('CalendarDayView component', () => {
           event: fixture.componentInstance.events[0]
         });
       });
-      fixture.nativeElement.querySelector('.event a').click();
+      fixture.nativeElement.querySelector('.cal-event a').click();
     });
   }));
 
@@ -77,7 +77,7 @@ describe('CalendarDayView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.event').classList.contains('foo')).to.be.true;
+      expect(fixture.nativeElement.querySelector('.cal-event').classList.contains('foo')).to.be.true;
       fixture.destroy();
     });
   }));
@@ -91,7 +91,7 @@ describe('CalendarDayView component', () => {
       fixture.componentInstance.hourSegmentClicked.subscribe(val => {
         expect(val).to.deep.equal({date: moment('2016-06-01').startOf('day').add(1, 'hour').add(30, 'minutes').toDate()});
       });
-      fixture.nativeElement.querySelectorAll('.hour-col-time .hour-segment')[3].click();
+      fixture.nativeElement.querySelectorAll('.cal-hour-col-time .cal-hour-segment')[3].click();
     });
 
   }));
@@ -135,7 +135,7 @@ describe('CalendarDayView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const title: HTMLElement = fixture.nativeElement.querySelector('.event-title');
+      const title: HTMLElement = fixture.nativeElement.querySelector('.cal-event-title');
       expect(title.innerHTML).to.equal('foo bar');
     });
 
@@ -182,7 +182,7 @@ describe('CalendarDayView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const action: HTMLElement = fixture.nativeElement.querySelector('.event .event-action');
+      const action: HTMLElement = fixture.nativeElement.querySelector('.cal-event .cal-event-action');
       expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
       expect(action.classList.contains('foo')).to.be.true;
       action.click();
@@ -203,7 +203,7 @@ describe('CalendarDayView component', () => {
       fixture.componentInstance.eventWidth = 300;
       fixture.componentInstance.ngOnChanges({date: {}, events: {}, eventWidth: {}});
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.event').style.width).to.equal('299px');
+      expect(fixture.nativeElement.querySelector('.cal-event').style.width).to.equal('299px');
       fixture.destroy();
     });
   }));

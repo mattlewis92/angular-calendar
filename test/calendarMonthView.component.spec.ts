@@ -74,7 +74,10 @@ describe('calendarMonthView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4) .events .event').classList.contains('foo')).to.be.true;
+      const event: HTMLElement = fixture.nativeElement.querySelector(
+        '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      );
+      expect(event.classList.contains('foo')).to.be.true;
       fixture.destroy();
     });
   }));
@@ -88,7 +91,7 @@ describe('calendarMonthView component', () => {
       };
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.days .cell').classList.contains('foo')).to.be.true;
+      expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.be.true;
       fixture.destroy();
     });
   }));
@@ -107,8 +110,10 @@ describe('calendarMonthView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const event: HTMLElement = fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4) .events .event');
-      const day: HTMLElement = fixture.nativeElement.querySelector('.days .cell-row .cell:nth-child(4)');
+      const event: HTMLElement = fixture.nativeElement.querySelector(
+        '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      );
+      const day: HTMLElement = fixture.nativeElement.querySelector('.cal-days .cal-cell-row .cal-cell:nth-child(4)');
       triggerDomEvent('mouseenter', event);
       fixture.detectChanges();
       expect(day.style.backgroundColor).to.equal('rgb(238, 238, 238)');
@@ -139,7 +144,7 @@ describe('calendarMonthView component', () => {
       fixture.componentInstance.slideBoxIsOpen = true;
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const action: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-action');
+      const action: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-action');
       expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
       expect(action.classList.contains('foo')).to.be.true;
       action.click();
@@ -164,7 +169,7 @@ describe('calendarMonthView component', () => {
       fixture.componentInstance.slideBoxIsOpen = true;
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const title: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-title');
+      const title: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-title');
       expect(title.innerHTML).to.equal('<span>foo</span>');
       fixture.componentInstance.eventClicked.subscribe(val => {
         expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
@@ -214,7 +219,7 @@ describe('calendarMonthView component', () => {
       fixture.componentInstance.slideBoxIsOpen = true;
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const title: HTMLElement = fixture.nativeElement.querySelector('.slidebox .event-title');
+      const title: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-title');
       expect(title.innerHTML).to.equal('foo bar');
     });
   }));

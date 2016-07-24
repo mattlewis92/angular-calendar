@@ -42,7 +42,7 @@ describe('calendarWeekView component', () => {
           date: fixture.componentInstance.days[0].date.toDate()
         });
       });
-      fixture.nativeElement.querySelector('.header').click();
+      fixture.nativeElement.querySelector('.cal-header').click();
     });
   }));
 
@@ -60,7 +60,7 @@ describe('calendarWeekView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.event-container .event').classList.contains('foo')).to.be.true;
+      expect(fixture.nativeElement.querySelector('.cal-event-container .cal-event').classList.contains('foo')).to.be.true;
       fixture.destroy();
     });
   }));
@@ -79,7 +79,7 @@ describe('calendarWeekView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const title: HTMLElement = fixture.nativeElement.querySelector('.event-title');
+      const title: HTMLElement = fixture.nativeElement.querySelector('.cal-event-title');
       expect(title.innerHTML).to.equal('<span>foo</span>');
       fixture.componentInstance.eventClicked.subscribe(val => {
         expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
@@ -128,7 +128,7 @@ describe('calendarWeekView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      const title: HTMLElement = fixture.nativeElement.querySelector('.event-title');
+      const title: HTMLElement = fixture.nativeElement.querySelector('.cal-event-title');
       expect(title.innerHTML).to.equal('foo bar');
     });
 
