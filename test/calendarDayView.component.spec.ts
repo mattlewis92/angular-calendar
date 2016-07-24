@@ -28,39 +28,46 @@ describe('CalendarDayView component', () => {
       fixture.componentInstance.date = moment('2016-06-29').toDate();
       fixture.componentInstance.events = [{
         start: new Date('2016-06-29'),
-        title: 'foo'
+        title: 'foo',
+        color: {
+          primary: '',
+          secondary: ''
+        }
       }];
-      fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       expect(fixture.componentInstance.view.events.length).to.equal(1);
       expect(fixture.componentInstance.view.events[0].event).to.equal(fixture.componentInstance.events[0]);
       expect(fixture.componentInstance.hours.length).to.equal(24);
     });
   }));
 
-  xit('should emit on the eventClicked output', async(() => {
+  it('should call the event clicked callback', async(() => {
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
       fixture.componentInstance.date = moment('2016-06-29').toDate();
       fixture.componentInstance.events = [{
         start: new Date('2016-06-29'),
-        title: 'foo'
+        title: 'foo',
+        color: {
+          primary: '',
+          secondary: ''
+        }
       }];
-      fixture.componentInstance.ngOnChanges({date: fixture.componentInstance.date});
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
       fixture.componentInstance.eventClicked.subscribe(val => {
         expect(val).to.deep.equal({
-          event: fixture.componentInstance.events[0].event
+          event: fixture.componentInstance.events[0]
         });
       });
-      fixture.nativeElement.querySelector('.header').click();
+      fixture.nativeElement.querySelector('.event a').click();
     });
   }));
 
-  xit('should add a custom CSS class to events', async(() => {
+  it('should add a custom CSS class to events', async(() => {
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
       fixture.componentInstance.date = moment('2016-06-01').toDate();
       fixture.componentInstance.events = [{
-        start: new Date('2016-05-30'),
-        end: new Date('2016-06-02'),
+        start: new Date('2016-06-01'),
         cssClass: 'foo',
         title: 'foo',
         color: {
@@ -69,31 +76,21 @@ describe('CalendarDayView component', () => {
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.event-container .event').classList.contains('foo')).to.be.true;
+      expect(fixture.nativeElement.querySelector('.event').classList.contains('foo')).to.be.true;
       fixture.destroy();
     });
   }));
 
-  xit('should call the event clicked callback', async(() => {
+  it('should call the hour segment clicked callback', async(() => {
 
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
       fixture.componentInstance.date = moment('2016-06-01').toDate();
-      fixture.componentInstance.events = [{
-        start: new Date('2016-05-30'),
-        end: new Date('2016-06-02'),
-        title: '<span>foo</span>',
-        color: {
-          primary: 'blue'
-        }
-      }];
-      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.componentInstance.ngOnChanges({date: {}});
       fixture.detectChanges();
-      const title: HTMLElement = fixture.nativeElement.querySelector('.event-title');
-      expect(title.innerHTML).to.equal('<span>foo</span>');
-      fixture.componentInstance.eventClicked.subscribe(val => {
-        expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
+      fixture.componentInstance.hourSegmentClicked.subscribe(val => {
+        expect(val).to.deep.equal({date: moment('2016-06-01').startOf('day').add(1, 'hour').add(30, 'minutes').toDate()});
       });
-      title.click();
+      fixture.nativeElement.querySelectorAll('.hour-col-time .hour-segment')[3].click();
     });
 
   }));
@@ -120,10 +117,10 @@ describe('CalendarDayView component', () => {
     });
   }));
 
-  xit('should allow the event title to be customised by the calendarConfig provider', async(() => {
+  it('should allow the event title to be customised by the calendarConfig provider', async(() => {
 
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
-      config.eventTitles.week = (event: CalendarEvent) => {
+      config.eventTitles.day = (event: CalendarEvent) => {
         return `foo ${event.title}`;
       };
       fixture.componentInstance.date = moment('2016-06-01').toDate();

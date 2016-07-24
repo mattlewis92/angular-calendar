@@ -1,5 +1,5 @@
-import {Component, ChangeDetectionStrategy, Input, OnChanges} from '@angular/core';
-import {NgFor, NgIf, DatePipe} from '@angular/common';
+import {Component, ChangeDetectionStrategy, Input, OnChanges, Output, EventEmitter} from '@angular/core';
+import {NgFor, NgIf, NgClass, DatePipe} from '@angular/common';
 import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
 import {CalendarDate} from './calendarDate.pipe';
 import {CalendarEventTitle} from './calendarEventTitle.pipe';
@@ -14,7 +14,7 @@ const SEGMENT_HEIGHT: number = 30;
 
 @Component({
   selector: 'mwl-calendar-day-view',
-  directives: [NgFor, NgIf],
+  directives: [NgFor, NgIf, NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
   pipes: [CalendarDate, CalendarEventTitle],
   providers: [DatePipe],
@@ -23,7 +23,10 @@ const SEGMENT_HEIGHT: number = 30;
       <div class="hour-rows">
         <div class="hour-col-time">
           <div class="hour" *ngFor="let hour of hours; trackBy:trackByItem">
-            <div class="hour-segment" *ngFor="let segment of hour.segments; trackBy:trackByItem">
+            <div
+              class="hour-segment"
+              *ngFor="let segment of hour.segments; trackBy:trackByItem"
+              (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
               <div *ngIf="segment.isStart" class="time">
                 {{ segment.date | calendarDate:'day':'hour' }}
               </div>
@@ -42,8 +45,14 @@ const SEGMENT_HEIGHT: number = 30;
             [style.backgroundColor]="dayEvent.event.color.secondary"
             [style.borderColor]="dayEvent.event.color.primary"
             [class.border-top-rounded]="!dayEvent.extendsTop"
-            [class.border-bottom-rounded]="!dayEvent.extendsBottom">
-            <a href="javascript:;" [innerHtml]="dayEvent.event | calendarEventTitle:'day'"></a>
+            [class.border-bottom-rounded]="!dayEvent.extendsBottom"
+            [ngClass]="dayEvent.event.cssClass">
+            <a
+              class="event-title"
+              href="javascript:;"
+              [innerHtml]="dayEvent.event | calendarEventTitle:'day'"
+              (click)="eventClicked.emit({event: dayEvent.event})">
+            </a>
           </div>
           <div>
             <div class="hour" *ngFor="let hour of hours; trackBy:trackByItem" [style.minWidth.px]="view?.width">
@@ -64,6 +73,8 @@ export class CalendarDayView implements OnChanges {
   @Input() hourSegments: number = 2;
   @Input() start: Time = {hour: 0, minute: 0};
   @Input() end: Time = {hour: 23, minute: 59};
+  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+  @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
   private hours: DayViewHour[] = [];
   private view: DayView;
   private width: number = 0;
