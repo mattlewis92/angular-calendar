@@ -68,6 +68,7 @@
     "moment": "~2.14.1",
     "node-sass": "3.8.0",
     "phantomjs-prebuilt": "~2.1.7",
+    "postcss-class-prefix": "~0.3.0",
     "postcss-flexibility": "~1.1.0",
     "postcss-loader": "~0.9.1",
     "reflect-metadata": "~0.1.3",

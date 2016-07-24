@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const postCssClassPrefix = require('postcss-class-prefix');
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
     loaders: [{
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
     }, {
-      test: /\.scss$/, loader: 'style!css!sass'
+      test: /\.scss$/, loader: 'style!css!postcss!sass'
     }]
   },
   resolve: {
@@ -39,5 +40,8 @@ module.exports = {
       syntax: 'scss',
       context: 'scss'
     })
+  ],
+  postcss: [
+    postCssClassPrefix('cal-')
   ]
 };

@@ -26,15 +26,15 @@ import {Subscription} from 'rxjs/Subscription';
   selector: 'mwl-calendar-week-view',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="calendar-week-view">
-      <div class="day-headers">
+    <div class="cal-week-view">
+      <div class="cal-day-headers">
         <div
-          class="header"
+          class="cal-header"
           *ngFor="let day of days; trackBy:trackByItem"
-          [class.past]="day.isPast"
-          [class.today]="day.isToday"
-          [class.future]="day.isFuture"
-          [class.weekend]="day.isWeekend"
+          [class.cal-past]="day.isPast"
+          [class.cal-today]="day.isToday"
+          [class.cal-future]="day.isFuture"
+          [class.cal-weekend]="day.isWeekend"
           (click)="dayClicked.emit({date: day.date.toDate()})">
           <b>{{ day.date | calendarDate:'week':'columnHeader' }}</b><br>
           <span>{{ day.date | calendarDate:'week':'columnSubHeader' }}</span>
@@ -42,18 +42,18 @@ import {Subscription} from 'rxjs/Subscription';
       </div>
       <div *ngFor="let eventRow of eventRows; trackBy:trackByItem">
         <div
-          class="event-container"
+          class="cal-event-container"
           *ngFor="let event of eventRow.row; trackBy:trackByItem"
           [style.width]="((100 / 7) * event.span) + '%'"
           [style.marginLeft]="((100 / 7) * event.offset) + '%'">
           <div
-            class="event"
-            [class.border-left-rounded]="!event.extendsLeft"
-            [class.border-right-rounded]="!event.extendsRight"
+            class="cal-event"
+            [class.cal-border-left-rounded]="!event.extendsLeft"
+            [class.cal-border-right-rounded]="!event.extendsRight"
             [style.backgroundColor]="event.event.color.secondary"
             [ngClass]="event.event?.cssClass">
             <a
-              class="event-title"
+              class="cal-event-title"
               href="javascript:;"
               [innerHtml]="event.event | calendarEventTitle:'week'"
               (click)="eventClicked.emit({event: event.event})">

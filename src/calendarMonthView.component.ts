@@ -38,36 +38,36 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
   selector: 'mwl-calendar-month-view',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="calendar-month-view">
-      <div class="cell-row header">
-        <div class="cell" *ngFor="let header of columnHeaders; trackBy:trackByItem">
+    <div class="cal-month-view">
+      <div class="cal-cell-row cal-header">
+        <div class="cal-cell" *ngFor="let header of columnHeaders; trackBy:trackByItem">
           {{ header.date | calendarDate:'month':'columnHeader' }}
         </div>
       </div>
-      <div class="days">
+      <div class="cal-days">
         <div *ngFor="let rowIndex of view.rowOffsets; trackBy:trackByItem">
-          <div class="cell-row">
+          <div class="cal-cell-row">
             <div
-              class="cell day-cell"
+              class="cal-cell cal-day-cell"
               *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7; trackBy:trackByItem"
-              [class.past]="day.isPast"
-              [class.today]="day.isToday"
-              [class.future]="day.isFuture"
-              [class.weekend]="day.isWeekend"
-              [class.in-month]="day.inMonth"
-              [class.out-month]="!day.inMonth"
-              [class.has-events]="day.events.length > 0"
-              [class.open]="day === openDay"
+              [class.cal-past]="day.isPast"
+              [class.cal-today]="day.isToday"
+              [class.cal-future]="day.isFuture"
+              [class.cal-weekend]="day.isWeekend"
+              [class.cal-in-month]="day.inMonth"
+              [class.cal-out-month]="!day.inMonth"
+              [class.cal-has-events]="day.events.length > 0"
+              [class.cal-open]="day === openDay"
               [ngClass]="day?.cssClass"
               [style.backgroundColor]="day.backgroundColor"
               (click)="dayClicked.emit({day: day})">
-              <div class="cell-top">
-                <span class="day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
-                <span class="day-number">{{ day.date | calendarDate:'month':'dayNumber' }}</span>
+              <div class="cal-cell-top">
+                <span class="cal-day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
+                <span class="cal-day-number">{{ day.date | calendarDate:'month':'dayNumber' }}</span>
               </div>
-              <div class="events">
+              <div class="cal-events">
                 <span
-                  class="event"
+                  class="cal-event"
                   *ngFor="let event of day.events; trackBy:trackByItem"
                   [style.backgroundColor]="event.color.primary"
                   [ngClass]="event?.cssClass"
@@ -77,20 +77,20 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
               </div>
             </div>
           </div>
-          <div class="slidebox" @collapse *ngIf="openRowIndex === rowIndex">
+          <div class="cal-slidebox" @collapse *ngIf="openRowIndex === rowIndex">
             <div
               *ngFor="let event of openDay.events; trackBy:trackByItem"
               [ngClass]="event?.cssClass">
-              <span class="event" [style.backgroundColor]="event.color.primary"></span>
+              <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
               <a
-                class="event-title"
+                class="cal-event-title"
                 href="javascript:;"
                 [innerHTML]="event | calendarEventTitle:'month'"
                 (click)="eventClicked.emit({event: event})">
               </a>
-              <span *ngIf="event.actions" class="event-actions">
+              <span *ngIf="event.actions" class="cal-event-actions">
                 <a
-                  class="event-action"
+                  class="cal-event-action"
                   href="javascript:;"
                   *ngFor="let action of event.actions; trackBy:trackByItem"
                   (click)="action.onClick({event: event})"

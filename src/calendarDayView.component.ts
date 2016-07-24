@@ -23,24 +23,24 @@ const SEGMENT_HEIGHT: number = 30;
   pipes: [CalendarDate, CalendarEventTitle],
   providers: [DatePipe],
   template: `
-    <div class="calendar-day-view">
-      <div class="hour-rows">
-        <div class="hour-col-time">
-          <div class="hour" *ngFor="let hour of hours; trackBy:trackByItem">
+    <div class="cal-day-view">
+      <div class="cal-hour-rows">
+        <div class="cal-hour-col-time">
+          <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByItem">
             <div
-              class="hour-segment"
+              class="cal-hour-segment"
               *ngFor="let segment of hour.segments; trackBy:trackByItem"
               (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
-              <div *ngIf="segment.isStart" class="time">
+              <div *ngIf="segment.isStart" class="cal-time">
                 {{ segment.date | calendarDate:'day':'hour' }}
               </div>
               &nbsp;
             </div>
           </div>
         </div>
-        <div class="hour-col-events">
+        <div class="cal-hour-col-events">
           <div
-            class="event"
+            class="cal-event"
             *ngFor="let dayEvent of view?.events; trackBy:trackByItem"
             [style.marginTop.px]="dayEvent.top"
             [style.marginLeft.px]="dayEvent.left"
@@ -48,18 +48,18 @@ const SEGMENT_HEIGHT: number = 30;
             [style.width.px]="dayEvent.width - 1"
             [style.backgroundColor]="dayEvent.event.color.secondary"
             [style.borderColor]="dayEvent.event.color.primary"
-            [class.border-top-rounded]="!dayEvent.extendsTop"
-            [class.border-bottom-rounded]="!dayEvent.extendsBottom"
+            [class.cal-border-top-rounded]="!dayEvent.extendsTop"
+            [class.cal-border-bottom-rounded]="!dayEvent.extendsBottom"
             [ngClass]="dayEvent.event.cssClass">
             <a
-              class="event-title"
+              class="cal-event-title"
               href="javascript:;"
               [innerHtml]="dayEvent.event | calendarEventTitle:'day'"
               (click)="eventClicked.emit({event: dayEvent.event})">
             </a>
-            <span *ngIf="dayEvent.event.actions" class="event-actions">
+            <span *ngIf="dayEvent.event.actions" class="cal-event-actions">
               <a
-                class="event-action"
+                class="cal-event-action"
                 href="javascript:;"
                 *ngFor="let action of dayEvent.event.actions; trackBy:trackByItem"
                 (click)="action.onClick({event: dayEvent.event})"
@@ -69,8 +69,8 @@ const SEGMENT_HEIGHT: number = 30;
             </span>
           </div>
           <div>
-            <div class="hour" *ngFor="let hour of hours; trackBy:trackByItem" [style.minWidth.px]="view?.width">
-              <div class="hour-segment" *ngFor="let segment of hour.segments; trackBy:trackByItem">
+            <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByItem" [style.minWidth.px]="view?.width">
+              <div class="cal-hour-segment" *ngFor="let segment of hour.segments; trackBy:trackByItem">
                 &nbsp;
               </div>
             </div>
