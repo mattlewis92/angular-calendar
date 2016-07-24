@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import {expect} from 'chai';
 import {CalendarDayView, CalendarConfig, CalendarEvent} from './../angular2-calendar';
 import {Subject} from 'rxjs/Rx';
+import {spy} from 'sinon';
 
 describe('CalendarDayView component', () => {
 
@@ -160,6 +161,33 @@ describe('CalendarDayView component', () => {
       expect(fixture.componentInstance.hours.length).to.equal(18);
       expect(fixture.componentInstance.view.events.length).to.equal(0);
     });
+  }));
+
+  it('should add event actions to each event', async(() => {
+
+    builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        },
+        actions: [{
+          label: '<i class="fa fa-fw fa-times"></i>',
+          onClick: spy()
+        }]
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const action: HTMLElement = fixture.nativeElement.querySelector('.event .event-action');
+      expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
+      action.click();
+      expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith(fixture.componentInstance.events[0]);
+    });
+
   }));
 
 });
