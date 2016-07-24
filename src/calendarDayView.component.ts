@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input, OnChanges} from '@angular/core';
-import {NgFor, NgIf} from '@angular/common';
+import {NgFor, NgIf, DatePipe} from '@angular/common';
 import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
 import {CalendarDate} from './calendarDate.pipe';
 import {CalendarEventTitle} from './calendarEventTitle.pipe';
@@ -17,6 +17,7 @@ const SEGMENT_HEIGHT: number = 30;
   directives: [NgFor, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
   pipes: [CalendarDate, CalendarEventTitle],
+  providers: [DatePipe],
   template: `
     <div class="calendar-day-view">
       <div class="hour-rows">
