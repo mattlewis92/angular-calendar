@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import {CalendarEvent} from 'calendar-utils';
 
 export class CalendarConfig {
@@ -35,7 +36,12 @@ export class CalendarConfig {
     },
     day: {
       title: {
+        angular: 'EEEE d MMMM, yyyy',
         moment: 'dddd D MMMM, YYYY'
+      },
+      hour: {
+        angular: 'ha',
+        moment: 'ha'
       }
     }
   };
@@ -45,6 +51,9 @@ export class CalendarConfig {
       return event.title;
     },
     week(event: CalendarEvent): string {
+      return event.title;
+    },
+    day(event: CalendarEvent): string {
       return event.title;
     }
   };

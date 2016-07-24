@@ -5,6 +5,7 @@ import {UnitOfTime, Moment} from 'moment';
 import {
   CalendarMonthView,
   CalendarWeekView,
+  CalendarDayView,
   CalendarEvent,
   CalendarTitle,
   CalendarEventAction,
@@ -14,7 +15,7 @@ import {
 
 @Component({
   selector: 'demo-app',
-  directives: [NgSwitch, CalendarMonthView, CalendarWeekView],
+  directives: [NgSwitch, CalendarMonthView, CalendarWeekView, CalendarDayView],
   pipes: [CalendarTitle],
   providers: [CalendarConfig, DatePipe, CalendarDate],
   styles: [`
@@ -66,6 +67,11 @@ import {
           [date]="date"
           [events]="events">
         </mwl-calendar-week-view>
+        <mwl-calendar-day-view
+          *ngSwitchCase="'day'"
+          [date]="date"
+          [events]="events">
+        </mwl-calendar-day-view>
       </div>
     </div>
   `
@@ -78,12 +84,12 @@ export class DemoApp {
 
   private actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
-    click: (event: CalendarEvent): void => {
+    onClick: ({event}: {event: CalendarEvent}): void => {
       console.log('Edit event', event);
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',
-    click: (event: CalendarEvent): void => {
+    onClick: ({event}: {event: CalendarEvent}): void => {
       this.events = this.events.filter(iEvent => iEvent !== event);
     }
   }];
