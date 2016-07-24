@@ -4,7 +4,6 @@ import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} fro
 import {CalendarDate} from './calendarDate.pipe';
 import {CalendarEventTitle} from './calendarEventTitle.pipe';
 
-const EVENT_WIDTH: number = 150;
 const SEGMENT_HEIGHT: number = 30;
 
 @Component({
@@ -80,6 +79,7 @@ export class CalendarDayView implements OnChanges {
   @Input() dayStartMinute: number = 0;
   @Input() dayEndHour: number = 23;
   @Input() dayEndMinute: number = 59;
+  @Input() eventWidth: number = 150;
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
   @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
   private hours: DayViewHour[] = [];
@@ -88,7 +88,13 @@ export class CalendarDayView implements OnChanges {
 
   ngOnChanges(changes: any): void {
 
-    if (changes.date || changes.dayStartHour || changes.dayStartMinute || changes.dayEndHour || changes.dayEndMinute) {
+    if (
+      changes.date ||
+      changes.dayStartHour ||
+      changes.dayStartMinute ||
+      changes.dayEndHour ||
+      changes.dayEndMinute
+    ) {
 
       this.hours = getDayViewHourGrid({
         viewDate: this.date,
@@ -105,7 +111,15 @@ export class CalendarDayView implements OnChanges {
 
     }
 
-    if (changes.date || changes.events || changes.dayStartHour || changes.dayStartMinute || changes.dayEndHour || changes.dayEndMinute) {
+    if (
+      changes.date ||
+      changes.events ||
+      changes.dayStartHour ||
+      changes.dayStartMinute ||
+      changes.dayEndHour ||
+      changes.dayEndMinute ||
+      changes.eventWidth
+    ) {
       this.view = getDayView({
         events: this.events,
         viewDate: this.date,
@@ -118,7 +132,7 @@ export class CalendarDayView implements OnChanges {
           hour: this.dayEndHour,
           minute: this.dayEndMinute
         },
-        eventWidth: EVENT_WIDTH,
+        eventWidth: this.eventWidth,
         segmentHeight: SEGMENT_HEIGHT
       });
     }

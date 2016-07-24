@@ -164,7 +164,6 @@ describe('CalendarDayView component', () => {
   }));
 
   it('should add event actions to each event', async(() => {
-
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
       fixture.componentInstance.date = moment('2016-06-27').toDate();
       fixture.componentInstance.events = [{
@@ -189,7 +188,24 @@ describe('CalendarDayView component', () => {
       action.click();
       expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith({event: fixture.componentInstance.events[0]});
     });
+  }));
 
+  it('should allow the event width to be customised', async(() => {
+    builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
+      fixture.componentInstance.date = moment('2016-06-01').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-06-01'),
+        title: 'foo',
+        color: {
+          primary: 'blue'
+        }
+      }];
+      fixture.componentInstance.eventWidth = 300;
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}, eventWidth: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.event').style.width).to.equal('299px');
+      fixture.destroy();
+    });
   }));
 
 });
