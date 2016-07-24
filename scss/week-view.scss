@@ -42,12 +42,12 @@
     line-height: 30px;
   }
 
-  .border-left-rounded {
+  .event.starts-within-week {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
 
-  .border-right-rounded {
+  .event.ends-within-week {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }

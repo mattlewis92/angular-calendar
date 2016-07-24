@@ -48,8 +48,8 @@ const SEGMENT_HEIGHT: number = 30;
             [style.width.px]="dayEvent.width - 1"
             [style.backgroundColor]="dayEvent.event.color.secondary"
             [style.borderColor]="dayEvent.event.color.primary"
-            [class.cal-border-top-rounded]="!dayEvent.extendsTop"
-            [class.cal-border-bottom-rounded]="!dayEvent.extendsBottom"
+            [class.cal-starts-within-day]="!dayEvent.extendsTop"
+            [class.cal-ends-within-day]="!dayEvent.extendsBottom"
             [ngClass]="dayEvent.event.cssClass">
             <a
               class="cal-event-title"

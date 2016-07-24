@@ -48,8 +48,8 @@ import {Subscription} from 'rxjs/Subscription';
           [style.marginLeft]="((100 / 7) * event.offset) + '%'">
           <div
             class="cal-event"
-            [class.cal-border-left-rounded]="!event.extendsLeft"
-            [class.cal-border-right-rounded]="!event.extendsRight"
+            [class.cal-starts-within-week]="!event.extendsLeft"
+            [class.cal-ends-within-week]="!event.extendsRight"
             [style.backgroundColor]="event.event.color.secondary"
             [ngClass]="event.event?.cssClass">
             <a
