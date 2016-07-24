@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import {CalendarEvent} from 'calendar-utils';
 
 export class CalendarConfig {
@@ -51,6 +52,9 @@ export class CalendarConfig {
     },
     week(event: CalendarEvent): string {
       return event.title;
+    },
+    day(event: CalendarEvent): string {
+      return `<b>${moment(event.start).format('HH:mm')}</b> - ${event.title}`;
     }
   };
 

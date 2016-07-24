@@ -29,7 +29,9 @@
     border: solid 1px;
     padding: 5px;
     font-size: 12px;
-    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .hour-col-time,
@@ -52,6 +54,16 @@
     border-right: solid 1px #e1e1e1;
     border-top: solid 1px #e1e1e1;
     border-bottom: solid 1px #e1e1e1;
+  }
+
+  .border-top-rounded {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .border-bottom-rounded {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 
 }
