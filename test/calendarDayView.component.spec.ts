@@ -96,7 +96,7 @@ describe('CalendarDayView component', () => {
 
   }));
 
-  xit('should refresh the view when the refresh observable is emitted on', async(() => {
+  it('should refresh the view when the refresh observable is emitted on', async(() => {
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
       fixture.componentInstance.refresh = new Subject();
       fixture.componentInstance.ngOnInit();
@@ -113,7 +113,7 @@ describe('CalendarDayView component', () => {
       };
       fixture.componentInstance.events.push(event);
       fixture.componentInstance.refresh.next(true);
-      expect(fixture.componentInstance.eventRows[0].row[0].event).to.deep.equal(event);
+      expect(fixture.componentInstance.view.events[0].event).to.deep.equal(event);
       fixture.destroy();
     });
   }));

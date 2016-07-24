@@ -1,6 +1,16 @@
-import {Component, ChangeDetectionStrategy, Input, OnChanges, Output, EventEmitter} from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef
+} from '@angular/core';
 import {NgFor, NgIf, NgClass, DatePipe} from '@angular/common';
 import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
+import {Subject} from 'rxjs/Subject';
+import {Subscription} from 'rxjs/Subscription';
 import {CalendarDate} from './calendarDate.pipe';
 import {CalendarEventTitle} from './calendarEventTitle.pipe';
 
@@ -80,11 +90,30 @@ export class CalendarDayView implements OnChanges {
   @Input() dayEndHour: number = 23;
   @Input() dayEndMinute: number = 59;
   @Input() eventWidth: number = 150;
+  @Input() refresh: Subject<any>;
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
   @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
   private hours: DayViewHour[] = [];
   private view: DayView;
   private width: number = 0;
+  private refreshSubscription: Subscription;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    if (this.refresh) {
+      this.refreshSubscription = this.refresh.subscribe(() => {
+        this.refreshAll();
+        this.cdr.markForCheck();
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
+  }
 
   ngOnChanges(changes: any): void {
 
@@ -95,20 +124,7 @@ export class CalendarDayView implements OnChanges {
       changes.dayEndHour ||
       changes.dayEndMinute
     ) {
-
-      this.hours = getDayViewHourGrid({
-        viewDate: this.date,
-        hourSegments: this.hourSegments,
-        dayStart: {
-          hour: this.dayStartHour,
-          minute: this.dayStartMinute
-        },
-        dayEnd: {
-          hour: this.dayEndHour,
-          minute: this.dayEndMinute
-        }
-      });
-
+      this.refreshHourGrid();
     }
 
     if (
@@ -120,27 +136,51 @@ export class CalendarDayView implements OnChanges {
       changes.dayEndMinute ||
       changes.eventWidth
     ) {
-      this.view = getDayView({
-        events: this.events,
-        viewDate: this.date,
-        hourSegments: this.hourSegments,
-        dayStart: {
-          hour: this.dayStartHour,
-          minute: this.dayStartMinute
-        },
-        dayEnd: {
-          hour: this.dayEndHour,
-          minute: this.dayEndMinute
-        },
-        eventWidth: this.eventWidth,
-        segmentHeight: SEGMENT_HEIGHT
-      });
+      this.refreshView();
     }
 
   }
 
   private trackByItem(index: number, obj: any): any {
     return obj;
+  }
+
+  private refreshHourGrid(): void {
+    this.hours = getDayViewHourGrid({
+      viewDate: this.date,
+      hourSegments: this.hourSegments,
+      dayStart: {
+        hour: this.dayStartHour,
+        minute: this.dayStartMinute
+      },
+      dayEnd: {
+        hour: this.dayEndHour,
+        minute: this.dayEndMinute
+      }
+    });
+  }
+
+  private refreshView(): void {
+    this.view = getDayView({
+      events: this.events,
+      viewDate: this.date,
+      hourSegments: this.hourSegments,
+      dayStart: {
+        hour: this.dayStartHour,
+        minute: this.dayStartMinute
+      },
+      dayEnd: {
+        hour: this.dayEndHour,
+        minute: this.dayEndMinute
+      },
+      eventWidth: this.eventWidth,
+      segmentHeight: SEGMENT_HEIGHT
+    });
+  }
+
+  private refreshAll(): void {
+    this.refreshHourGrid();
+    this.refreshView();
   }
 
 }
