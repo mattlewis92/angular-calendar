@@ -113,6 +113,6 @@
     }
   },
   "dependencies": {
-    "calendar-utils": "0.0.13"
+    "calendar-utils": "0.0.15"
   }
 }
