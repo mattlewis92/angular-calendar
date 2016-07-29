@@ -24,6 +24,28 @@ const SEGMENT_HEIGHT: number = 30;
   providers: [DatePipe],
   template: `
     <div class="cal-day-view">
+      <div
+        class="cal-all-day-event"
+        *ngFor="let event of view.allDayEvents; trackBy:event"
+        [style.backgroundColor]="event.color.secondary"
+        [style.borderColor]="event.color.primary">
+        <a
+          class="cal-event-title"
+          href="javascript:;"
+          [innerHtml]="event | calendarEventTitle:'day'"
+          (click)="eventClicked.emit({event: event})">
+        </a>
+        <span *ngIf="event.actions" class="cal-event-actions">
+          <a
+            class="cal-event-action"
+            href="javascript:;"
+            *ngFor="let action of event.actions; trackBy:trackByItem"
+            (click)="action.onClick({event: event})"
+            [ngClass]="action.cssClass"
+            [innerHtml]="action.label">
+          </a>
+        </span>
+      </div>
       <div class="cal-hour-rows">
         <div class="cal-hour-col-time">
           <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByItem">

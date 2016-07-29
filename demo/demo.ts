@@ -181,7 +181,8 @@ export class DemoApp {
       primary: '#1e90ff',
       secondary: '#D1E8FF'
     },
-    actions: this.actions
+    actions: this.actions,
+    allDay: true
   }, {
     start: moment().startOf('week').add(1, 'days').toDate(),
     end: moment().startOf('week').add(3, 'days').toDate(),

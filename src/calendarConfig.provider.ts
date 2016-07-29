@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 import {CalendarEvent} from 'calendar-utils';
 
 export class CalendarConfig {
