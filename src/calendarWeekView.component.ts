@@ -69,11 +69,30 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 
+  /**
+   * The current view date
+   */
   @Input() date: Date;
+
+  /**
+   * An array of events to display on view
+   */
   @Input() events: CalendarEvent[] = [];
+
+  /**
+   * An observable that when emitted on will re-render the current view
+   */
   @Input() refresh: Subject<any>;
-  @Output() dayClicked: EventEmitter<any> = new EventEmitter();
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Called when a header week day is clicked
+   */
+  @Output() dayClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
+
+  /**
+   * Called when the event title is clicked
+   */
+  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
   private days: WeekDay[];
   private eventRows: WeekViewEventRow[] = [];

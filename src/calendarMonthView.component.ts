@@ -122,13 +122,40 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
 })
 export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
+  /**
+   * The current view date
+   */
   @Input() date: Date;
+
+  /**
+   * An array of events to display on view
+   */
   @Input() events: CalendarEvent[] = [];
+
+  /**
+   * Whether the slidebox is opened or not
+   */
   @Input() slideBoxIsOpen: boolean = false;
+
+  /**
+   * A function that will be called before each cell is rendered
+   */
   @Input() cellModifier: Function;
+
+  /**
+   * An observable that when emitted on will re-render the current view
+   */
   @Input() refresh: Subject<any>;
-  @Output() dayClicked: EventEmitter<any> = new EventEmitter();
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Called when the day cell is clicked
+   */
+  @Output() dayClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
+
+  /**
+   * Called when the event title is clicked
+   */
+  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
   private columnHeaders: WeekDay[];
   private view: MonthView;

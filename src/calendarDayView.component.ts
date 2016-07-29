@@ -104,17 +104,61 @@ const SEGMENT_HEIGHT: number = 30;
 })
 export class CalendarDayView implements OnChanges {
 
+  /**
+   * The current view date
+   */
   @Input() date: Date;
+
+  /**
+   * An array of events to display on view
+   */
   @Input() events: CalendarEvent[] = [];
+
+  /**
+   * The number of segments in an hour. Must be <= 6
+   */
   @Input() hourSegments: number = 2;
+
+  /**
+   * The day start hours in 24 hour time. Must be 0-23
+   */
   @Input() dayStartHour: number = 0;
+
+  /**
+   * The day start minutes. Must be 0-59
+   */
   @Input() dayStartMinute: number = 0;
+
+  /**
+   * The day end hours in 24 hour time. Must be 0-23
+   */
   @Input() dayEndHour: number = 23;
+
+  /**
+   * The day end minutes. Must be 0-59
+   */
   @Input() dayEndMinute: number = 59;
+
+  /**
+   * The width in pixels of each event on the view
+   */
   @Input() eventWidth: number = 150;
+
+  /**
+   * An observable that when emitted on will re-render the current view
+   */
   @Input() refresh: Subject<any>;
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
-  @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Called when an event title is clicked
+   */
+  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+
+  /**
+   * Called when an hour segment is clicked
+   */
+  @Output() hourSegmentClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
+
   private hours: DayViewHour[] = [];
   private view: DayView;
   private width: number = 0;
