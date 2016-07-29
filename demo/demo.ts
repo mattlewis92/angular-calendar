@@ -95,8 +95,7 @@ export class DemoApp {
   }];
 
   private events: CalendarEvent[] = [{
-    start: moment().startOf('week').add(4, 'days').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
+    start: moment().startOf('month').startOf('week').toDate(),
     title: 'A final event',
     color: {
       primary: '#ad2121',
