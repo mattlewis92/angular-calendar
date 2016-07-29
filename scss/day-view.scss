@@ -1,30 +1,30 @@
 @import 'variables';
 
-.day-view {
+.cal-day-view {
 
-  .hour:nth-child(odd) {
+  .cal-hour:nth-child(odd) {
     background-color: #fafafa;
   }
 
-  .hour-segment {
+  .cal-hour-segment {
     height: 30px;
   }
 
-  .hour:not(:last-child) .hour-segment,
-  .hour:last-child .hour-segment:not(:last-child) {
+  .cal-hour:not(:last-child) .cal-hour-segment,
+  .cal-hour:last-child .cal-hour-segment:not(:last-child) {
     border-bottom: thin dashed #e1e1e1;
   }
 
-  .time {
+  .cal-time {
     font-weight: bold;
     padding-top: 5px;
   }
 
-  .hour-segment:hover {
+  .cal-hour-segment:hover {
     background-color: #ededed;
   }
 
-  .event {
+  .cal-event {
     position: absolute;
     border: solid 1px;
     padding: 5px;
@@ -34,22 +34,22 @@
     white-space: nowrap;
   }
 
-  .event.starts-within-day {
+  .cal-event.cal-starts-within-day {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
 
-  .event.ends-within-day {
+  .cal-event.cal-ends-within-day {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
 
-  .hour-col-time,
-  .hour-col-events {
+  .cal-hour-col-time,
+  .cal-hour-col-events {
     float: left;
   }
 
-  .hour-col-time {
+  .cal-hour-col-time {
     width: 70px;
     border-left: solid 1px #e1e1e1;
     border-top: solid 1px #e1e1e1;
@@ -57,7 +57,7 @@
     text-align: center;
   }
 
-  .hour-col-events {
+  .cal-hour-col-events {
     position: relative;
     overflow-x: scroll;
     width: calc(100% - 70px);

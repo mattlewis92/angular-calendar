@@ -1,8 +1,8 @@
 @import 'variables';
 
-.week-view {
+.cal-week-view {
 
-  .day-headers {
+  .cal-day-headers {
     display: flex;
     margin-bottom: 3px;
     border: $default-border;
@@ -10,30 +10,30 @@
     margin-right: 2px;
   }
 
-  .day-headers .header {
+  .cal-day-headers .cal-header {
     flex: 1;
     text-align: center;
     padding: 5px;
   }
 
-  .day-headers .header:not(:last-child) {
+  .cal-day-headers .cal-header:not(:last-child) {
     border-right: $default-border;
   }
 
-  .day-headers .header:hover {
+  .cal-day-headers .cal-header:hover {
     background-color: #ededed;
   }
 
-  .day-headers span {
+  .cal-day-headers span {
     font-weight: 400;
     opacity: 0.5;
   }
 
-  .event-container {
+  .cal-event-container {
     display: inline-block;
   }
 
-  .event {
+  .cal-event {
     padding: 0 10px;
     font-size: 12px;
     margin-left: 2px;
@@ -42,26 +42,26 @@
     line-height: 30px;
   }
 
-  .event.starts-within-week {
+  .cal-event.cal-starts-within-week {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
 
-  .event.ends-within-week {
+  .cal-event.cal-ends-within-week {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
 
-  .header.today {
+  .cal-header.cal-today {
     background-color: #e8fde7;
   }
 
-  .header.weekend span {
+  .cal-header.cal-weekend span {
     color: darkred;
   }
 
-  .event,
-  .header {
+  .cal-event,
+  .cal-header {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

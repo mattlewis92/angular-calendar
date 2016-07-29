@@ -2,7 +2,6 @@ const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const postCssClassPrefix = require('postcss-class-prefix');
 
 module.exports = {
   entry: './angular2-calendar.ts',
@@ -75,7 +74,6 @@ module.exports = {
         'last 20 Firefox versions'
       ]
     }),
-    postCssFlexibility,
-    postCssClassPrefix('cal-')
+    postCssFlexibility
   ]
 };

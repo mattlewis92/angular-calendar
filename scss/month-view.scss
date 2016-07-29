@@ -1,39 +1,39 @@
 @import 'variables';
 
-.month-view {
+.cal-month-view {
 
-  .header {
+  .cal-header {
     text-align: center;
     font-weight: bolder;
   }
 
-  .cell-row:hover {
+  .cal-cell-row:hover {
     background-color: #fafafa;
   }
 
-  .header .cell {
+  .cal-header .cal-cell {
     padding: 5px 0;
   }
 
-  .cell-row .cell:hover,
-  .cell.has-events.open {
+  .cal-cell-row .cal-cell:hover,
+  .cal-cell.cal-has-events.cal-open {
     background-color: #ededed;
   }
 
-  .days {
+  .cal-days {
     border: $default-border;
     border-bottom: 0;
   }
 
-  .cell-top {
+  .cal-cell-top {
     min-height: 62px;
   }
 
-  .cell-row {
+  .cal-cell-row {
     display: flex;
   }
 
-  .cell {
+  .cal-cell {
     float: left;
     flex: 1;
     display: flex;
@@ -41,19 +41,19 @@
     align-items: stretch;
   }
 
-  .day-cell {
+  .cal-day-cell {
     min-height: 100px;
   }
 
-  .day-cell:not(:last-child) {
+  .cal-day-cell:not(:last-child) {
     border-right: $default-border;
   }
 
-  .days .cell-row {
+  .cal-days .cal-cell-row {
     border-bottom: $default-border;
   }
 
-  .day-events-total {
+  .cal-day-events-total {
     margin-top: 18px;
     margin-left: 10px;
     background-color: #b94a48;
@@ -70,7 +70,7 @@
     border-radius: 10px;
   }
 
-  .day-number {
+  .cal-day-number {
     font-size: 1.2em;
     font-weight: 400;
     opacity: 0.5;
@@ -80,7 +80,7 @@
     margin-bottom: 10px;
   }
 
-  .events {
+  .cal-events {
     flex: 1;
     align-items: flex-end;
     margin: 3px;
@@ -89,7 +89,7 @@
     flex-wrap: wrap;
   }
 
-  .event {
+  .cal-event {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -97,40 +97,40 @@
     margin: 2px;
   }
 
-  .day-cell.in-month.has-events {
+  .cal-day-cell.cal-in-month.cal-has-events {
     cursor: pointer;
   }
 
-  .day-cell.out-month .day-number {
+  .cal-day-cell.cal-out-month .cal-day-number {
     opacity: 0.1;
     cursor: default;
   }
 
-  .day-cell.weekend .day-number {
+  .cal-day-cell.cal-weekend .cal-day-number {
     color: darkred;
   }
 
-  .day-cell.today {
+  .cal-day-cell.cal-today {
     background-color: #e8fde7;
   }
 
-  .day-cell.today .day-number {
+  .cal-day-cell.cal-today .cal-day-number {
     font-size: 1.9em;
   }
 
-  .slidebox {
+  .cal-slidebox {
     padding: 15px;
     color: white;
     background-color: #555;
     box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
   }
 
-  .slidebox .event {
+  .cal-slidebox .cal-event {
     position: relative;
     top: 2px;
   }
 
-  .event-title {
+  .cal-event-title {
     color: white;
   }
 
