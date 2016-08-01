@@ -9,7 +9,7 @@ export class CalendarTitle implements PipeTransform {
   constructor(private calendarDatePipe: CalendarDate) {}
 
   transform(viewDate: Date, view: string): string {
-    return this.calendarDatePipe.transform(viewDate, view, 'title');
+    return this.calendarDatePipe.transform(viewDate, `${view}ViewTitle`);
   }
 
 }

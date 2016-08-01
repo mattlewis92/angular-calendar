@@ -7,7 +7,7 @@ import {
   EventEmitter,
   ChangeDetectorRef
 } from '@angular/core';
-import {NgFor, NgIf, NgClass, DatePipe} from '@angular/common';
+import {NgFor, NgIf, NgClass} from '@angular/common';
 import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
@@ -21,7 +21,6 @@ const SEGMENT_HEIGHT: number = 30;
   directives: [NgFor, NgIf, NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
   pipes: [CalendarDate, CalendarEventTitle],
-  providers: [DatePipe],
   template: `
     <div class="cal-day-view">
       <div
@@ -54,7 +53,7 @@ const SEGMENT_HEIGHT: number = 30;
               *ngFor="let segment of hour.segments; trackBy:trackByItem"
               (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
               <div *ngIf="segment.isStart" class="cal-time">
-                {{ segment.date | calendarDate:'day':'hour' }}
+                {{ segment.date | calendarDate:'dayViewHour' }}
               </div>
               &nbsp;
             </div>

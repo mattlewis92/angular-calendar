@@ -9,7 +9,7 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import {NgFor, NgClass, DatePipe} from '@angular/common';
+import {NgFor, NgClass} from '@angular/common';
 import {
   WeekDay,
   CalendarEvent,
@@ -36,8 +36,8 @@ import {Subscription} from 'rxjs/Subscription';
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
           (click)="dayClicked.emit({date: day.date.toDate()})">
-          <b>{{ day.date | calendarDate:'week':'columnHeader' }}</b><br>
-          <span>{{ day.date | calendarDate:'week':'columnSubHeader' }}</span>
+          <b>{{ day.date | calendarDate:'weekViewColumnHeader' }}</b><br>
+          <span>{{ day.date | calendarDate:'weekViewColumnSubHeader' }}</span>
         </div>
       </div>
       <div *ngFor="let eventRow of eventRows; trackBy:trackByItem">
@@ -64,8 +64,7 @@ import {Subscription} from 'rxjs/Subscription';
     </div>
   `,
   directives: [NgFor, NgClass],
-  pipes: [CalendarDate, CalendarEventTitle],
-  providers: [DatePipe]
+  pipes: [CalendarDate, CalendarEventTitle]
 })
 export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 

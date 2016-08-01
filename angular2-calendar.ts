@@ -12,6 +12,10 @@ export * from './src/calendarDayView.component';
 export * from './src/calendarTitle.pipe';
 export * from './src/calendarDate.pipe';
 export * from './src/calendarConfig.provider';
+export * from './src/calendarDateFormatter.interface';
+export * from './src/calendarMomentDateFormatter.provider';
+export * from './src/calendarNativeDateFormatter.provider';
+export * from './src/calendarDateFormatter.provider';
 export {CalendarEvent, EventAction as CalendarEventAction} from 'calendar-utils';
 
 // for angular-cli

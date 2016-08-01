@@ -8,9 +8,14 @@ import {
 import * as moment from 'moment';
 import {expect} from 'chai';
 import {spy} from 'sinon';
-import {CalendarMonthView, CalendarConfig} from './../angular2-calendar';
+import {
+  CalendarMonthView,
+  CalendarConfig,
+  CalendarEvent,
+  CalendarMomentDateFormatter,
+  CalendarDateFormatter
+} from './../angular2-calendar';
 import {Subject} from 'rxjs/Subject';
-import {CalendarEvent} from 'calendar-utils/dist/src/calendarUtils';
 
 const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
   const event: Event = document.createEvent('Event');
@@ -24,7 +29,11 @@ describe('calendarMonthView component', () => {
   let config: CalendarConfig;
   beforeEach(() => {
     config = new CalendarConfig();
-    addProviders([{provide: CalendarConfig, useValue: config}]);
+    addProviders([{
+      provide: CalendarConfig, useValue: config
+    }, {
+      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
+    }]);
   });
 
   let builder: TestComponentBuilder;

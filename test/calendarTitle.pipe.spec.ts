@@ -7,8 +7,13 @@ import {
   addProviders
 } from '@angular/core/testing';
 import {expect} from 'chai';
-import {DatePipe} from '@angular/common';
-import {CalendarTitle, CalendarConfig, CalendarDate} from './../angular2-calendar';
+import {
+  CalendarTitle,
+  CalendarConfig,
+  CalendarDate,
+  CalendarMomentDateFormatter,
+  CalendarDateFormatter
+} from './../angular2-calendar';
 
 @Component({
   template: '{{ date | calendarTitle:view }}',
@@ -22,9 +27,11 @@ class TestCmp {
 describe('calendarTitle pipe', () => {
 
   beforeEach(() => {
-    const config: CalendarConfig = new CalendarConfig();
-    config.dateFormatter = 'moment';
-    addProviders([{provide: CalendarConfig, useValue: config}, CalendarDate, DatePipe]);
+    addProviders([{
+      provide: CalendarConfig, useValue: new CalendarConfig()
+    }, {
+      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
+    }, CalendarDate]);
   });
 
   let builder: TestComponentBuilder;
@@ -55,7 +62,7 @@ describe('calendarTitle pipe', () => {
       fixture.componentInstance.date = new Date('2016-01-01');
       fixture.componentInstance.view = 'day';
       fixture.detectChanges();
-      expect(fixture.nativeElement.innerHTML).to.equal('Friday 1 January, 2016');
+      expect(fixture.nativeElement.innerHTML).to.equal('Friday, 1 January, 2016');
     });
   }));
 

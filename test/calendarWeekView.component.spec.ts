@@ -7,7 +7,13 @@ import {
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import {expect} from 'chai';
-import {CalendarWeekView, CalendarConfig, CalendarEvent} from './../angular2-calendar';
+import {
+  CalendarWeekView,
+  CalendarConfig,
+  CalendarEvent,
+  CalendarMomentDateFormatter,
+  CalendarDateFormatter
+} from './../angular2-calendar';
 import {Subject} from 'rxjs/Rx';
 
 describe('calendarWeekView component', () => {
@@ -15,7 +21,11 @@ describe('calendarWeekView component', () => {
   let config: CalendarConfig;
   beforeEach(() => {
     config = new CalendarConfig();
-    addProviders([{provide: CalendarConfig, useValue: config}]);
+    addProviders([{
+      provide: CalendarConfig, useValue: config
+    }, {
+      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
+    }]);
   });
 
   let builder: TestComponentBuilder;

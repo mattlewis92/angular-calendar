@@ -17,8 +17,7 @@ import {
   NgFor,
   NgIf,
   NgClass,
-  SlicePipe,
-  DatePipe
+  SlicePipe
 } from '@angular/common';
 import * as moment from 'moment';
 import {
@@ -41,7 +40,7 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
     <div class="cal-month-view">
       <div class="cal-cell-row cal-header">
         <div class="cal-cell" *ngFor="let header of columnHeaders; trackBy:trackByItem">
-          {{ header.date | calendarDate:'month':'columnHeader' }}
+          {{ header.date | calendarDate:'monthViewColumnHeader' }}
         </div>
       </div>
       <div class="cal-days">
@@ -63,7 +62,7 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
               (click)="dayClicked.emit({day: day})">
               <div class="cal-cell-top">
                 <span class="cal-day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
-                <span class="cal-day-number">{{ day.date | calendarDate:'month':'dayNumber' }}</span>
+                <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber' }}</span>
               </div>
               <div class="cal-events">
                 <span
@@ -106,7 +105,6 @@ import {CalendarEventTitle} from './calendarEventTitle.pipe';
   `,
   directives: [NgFor, NgIf, NgClass],
   pipes: [SlicePipe, CalendarDate, CalendarEventTitle],
-  providers: [DatePipe],
   animations: [
     trigger('collapse', [
       transition('void => *', [

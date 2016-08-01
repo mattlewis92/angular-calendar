@@ -7,11 +7,16 @@ import {
   addProviders
 } from '@angular/core/testing';
 import {expect} from 'chai';
-import {DatePipe} from '@angular/common';
-import {CalendarConfig, CalendarDate} from './../angular2-calendar';
+import {spy} from 'sinon';
+import {
+  CalendarConfig,
+  CalendarDate,
+  CalendarMomentDateFormatter,
+  CalendarDateFormatter
+} from './../angular2-calendar';
 
 @Component({
-  template: '{{ date | calendarDate:view:format }}',
+  template: '{{ date | calendarDate:method }}',
   pipes: [CalendarDate]
 })
 class TestCmp {
@@ -25,41 +30,27 @@ describe('calendarDate pipe', () => {
   let config: CalendarConfig;
   beforeEach(() => {
     config = new CalendarConfig();
-    addProviders([{provide: CalendarConfig, useValue: config}, CalendarDate, DatePipe]);
+    addProviders([{
+      provide: CalendarConfig, useValue: config
+    }, {
+      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
+    }, CalendarDate]);
   });
 
-  let builder: TestComponentBuilder;
-  beforeEach(inject([TestComponentBuilder], (tcb) => {
+  let builder: TestComponentBuilder, dateFormatter: CalendarDateFormatter;
+  beforeEach(inject([TestComponentBuilder, CalendarDateFormatter], (tcb, _dateFormatter_) => {
     builder = tcb;
+    dateFormatter = _dateFormatter_;
   }));
 
-  it('should format the date using angular', async(() => {
+  it('should use the date formatter to format the date', async(() => {
     builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
+      spy(dateFormatter, 'monthViewColumnHeader');
       fixture.componentInstance.date = new Date('2016-01-01');
-      fixture.componentInstance.view = 'month';
-      config.dateFormatter = 'angular';
-      config.dateFormats.month.foo = {
-        angular: 'MMMM',
-        moment: 'MMMM'
-      };
-      fixture.componentInstance.format = 'foo';
+      fixture.componentInstance.method = 'monthViewColumnHeader';
       fixture.detectChanges();
-      expect(fixture.nativeElement.innerHTML).to.equal('Jan');
-    });
-  }));
-
-  it('should format the date using moment', async(() => {
-    builder.createAsync(TestCmp).then((fixture: ComponentFixture<TestCmp>) => {
-      fixture.componentInstance.date = new Date('2016-01-01');
-      fixture.componentInstance.view = 'month';
-      config.dateFormatter = 'moment';
-      config.dateFormats.month.foo = {
-        angular: 'MMMM',
-        moment: 'MMMM'
-      };
-      fixture.componentInstance.format = 'foo';
-      fixture.detectChanges();
-      expect(fixture.nativeElement.innerHTML).to.equal('January');
+      expect(fixture.nativeElement.innerHTML).to.equal('Friday');
+      expect(dateFormatter.monthViewColumnHeader).to.have.been.calledWith({date: fixture.componentInstance.date});
     });
   }));
 
