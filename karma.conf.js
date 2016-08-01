@@ -51,18 +51,12 @@ module.exports = function(config) {
         postLoaders: [{
           test: /src\/.+\.ts$/,
           exclude: /(test|node_modules)/,
-          loader: 'istanbul-instrumenter'
+          loader: 'sourcemap-istanbul-instrumenter?force-sourcemap=true'
         }]
       },
       tslint: {
         emitErrors: !WATCH,
         failOnHint: false
-      },
-      ts: {
-        compilerOptions: {
-          sourceMap: false,
-          inlineSourceMap: true
-        }
       },
       plugins: WATCH ? [] : [
         new webpack.NoErrorsPlugin(),
@@ -74,23 +68,11 @@ module.exports = function(config) {
       ]
     },
 
-    coverageReporter: {
-      reporters: [{
-        type: 'json',
-        subdir: '.',
-        file: 'coverage-final.json'
-      }]
-    },
-
     remapIstanbulReporter: {
-      src: 'coverage/coverage-final.json',
       reports: {
-        lcovonly: 'coverage/lcov.info',
         html: 'coverage/html',
         'text-summary': null
-      },
-      timeoutNotCreated: 5000,
-      timeoutNoMoreFiles: 1000
+      }
     },
 
     // test results reporter to use
