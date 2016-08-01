@@ -17,8 +17,8 @@ import {
   getWeekViewHeader,
   getWeekView
 } from 'calendar-utils';
-import {CalendarDate} from './calendarDate.pipe';
-import {CalendarEventTitle} from './calendarEventTitle.pipe';
+import {CalendarDate} from './../pipes/calendarDate.pipe';
+import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 

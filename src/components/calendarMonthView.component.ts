@@ -30,8 +30,8 @@ import {
 } from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {CalendarDate} from './calendarDate.pipe';
-import {CalendarEventTitle} from './calendarEventTitle.pipe';
+import {CalendarDate} from './../pipes/calendarDate.pipe';
+import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
 
 @Component({
   selector: 'mwl-calendar-month-view',

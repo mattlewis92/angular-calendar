@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {CalendarEvent} from 'calendar-utils';
-import {CalendarConfig} from './calendarConfig.provider';
+import {CalendarConfig} from './../providers/calendarConfig.provider';
 
 @Pipe({
   name: 'calendarEventTitle'

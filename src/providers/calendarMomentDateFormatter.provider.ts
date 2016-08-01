@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {CalendarDateFormatterInterface, DateFormatterParams} from './calendarDateFormatter.interface';
+import {CalendarDateFormatterInterface, DateFormatterParams} from './../interfaces/calendarDateFormatter.interface';
 
 export class CalendarMomentDateFormatter implements CalendarDateFormatterInterface {
 

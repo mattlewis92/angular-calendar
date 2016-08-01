@@ -1,4 +1,4 @@
-import {CalendarDateFormatterInterface, DateFormatterParams} from './calendarDateFormatter.interface';
+import {CalendarDateFormatterInterface, DateFormatterParams} from './../interfaces/calendarDateFormatter.interface';
 
 // TODO - move this into its own module that people can re-use
 const getWeekNumber: Function = (date: Date): number => {
