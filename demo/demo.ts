@@ -47,7 +47,7 @@ import {
            </div>
         </div>
         <div class="col-md-4">
-          <h3>{{ date | calendarDate:'dayViewTitle' }}</h3>
+<h3>{{ date | calendarDate:view + 'ViewTitle' }}</h3>
         </div>
         <div class="col-md-4">
           <div class="btn-group">
