@@ -1,5 +1,4 @@
-@import 'variables';
-
+@import 'mixins';
 .cal-week-view {
 
   .cal-day-headers {
@@ -43,13 +42,7 @@
   }
 
   .cal-event.cal-starts-within-week {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-  .cal-event.cal-ends-within-week {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+   @include default-border-radius();
   }
 
   .cal-header.cal-today {
