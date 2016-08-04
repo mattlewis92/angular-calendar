@@ -42,7 +42,7 @@
   }
 
   .cal-event.cal-starts-within-week {
-   @include default-border-radius();
+    @include default-border-radius();
   }
 
   .cal-header.cal-today {

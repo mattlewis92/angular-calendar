@@ -34,7 +34,7 @@
   }
 
   .cal-event.cal-starts-within-day {
-@include default-border-radius();
+    @include default-border-radius();
   }
 
   .cal-hour-col-time,
