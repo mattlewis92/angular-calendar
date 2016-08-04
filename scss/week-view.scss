@@ -20,7 +20,7 @@
   }
 
   .cal-day-headers .cal-header:hover {
-    background-color: #ededed;
+    background-color: $day-selected-bg;
   }
 
   .cal-day-headers span {
@@ -46,7 +46,7 @@
   }
 
   .cal-header.cal-today {
-    background-color: #e8fde7;
+    background-color: $day-today-bg;
   }
 
   .cal-header.cal-weekend span {

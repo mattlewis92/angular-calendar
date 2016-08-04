@@ -8,7 +8,7 @@
   }
 
   .cal-cell-row:hover {
-    background-color: #fafafa;
+    background-color: $day-hover-bg;
   }
 
   .cal-header .cal-cell {
@@ -17,7 +17,7 @@
 
   .cal-cell-row .cal-cell:hover,
   .cal-cell.cal-has-events.cal-open {
-    background-color: #ededed;
+    background-color: $day-selected-bg;
   }
 
   .cal-days {
@@ -63,7 +63,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
-    color: white;
+    color: #fff;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -111,7 +111,7 @@
   }
 
   .cal-day-cell.cal-today {
-    background-color: #e8fde7;
+    background-color: $day-today-bg;
   }
 
   .cal-day-cell.cal-today .cal-day-number {
@@ -120,7 +120,7 @@
 
   .cal-slidebox {
     padding: 15px;
-    color: white;
+    color: #fff;
     background-color: #555;
     box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
   }
@@ -131,7 +131,7 @@
   }
 
   .cal-event-title {
-    color: white;
+    color: #fff;
   }
 
   .cal-out-month {

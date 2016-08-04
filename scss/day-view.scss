@@ -2,7 +2,7 @@
 .cal-day-view {
 
   .cal-hour:nth-child(odd) {
-    background-color: #fafafa;
+    background-color: $day-hover-bg;
   }
 
   .cal-hour-segment {
@@ -20,7 +20,7 @@
   }
 
   .cal-hour-segment:hover {
-    background-color: #ededed;
+    background-color: $day-selected-bg;
   }
 
   .cal-event {
