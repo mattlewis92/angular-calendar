@@ -1,5 +1,4 @@
-@import 'variables';
-
+@import 'mixins';
 .cal-week-view {
 
   .cal-day-headers {
@@ -21,7 +20,7 @@
   }
 
   .cal-day-headers .cal-header:hover {
-    background-color: #ededed;
+    background-color: $day-selected-bg;
   }
 
   .cal-day-headers span {
@@ -43,17 +42,11 @@
   }
 
   .cal-event.cal-starts-within-week {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-  .cal-event.cal-ends-within-week {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    @include default-border-radius();
   }
 
   .cal-header.cal-today {
-    background-color: #e8fde7;
+    background-color: $day-today-bg;
   }
 
   .cal-header.cal-weekend span {

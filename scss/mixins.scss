@@ -1,0 +1,21 @@
+@import 'variables';
+
+@mixin border-radius-left($top-left: $br-top-left, $bottom-left: $br-bottom-left) {
+    border-top-left-radius: $top-left;
+    border-bottom-left-radius: $bottom-left;
+}
+
+@mixin border-radius-right($top-right: $br-top-right, $bottom-right: $br-bottom-right) {
+    border-top-right-radius: $top-right;
+    border-bottom-right-radius: $bottom-right;
+}
+
+@mixin default-border-radius( $top-right: $br-top-right, 
+    $top-left: $br-top-left,  
+    $bottom-right: $br-bottom-right,
+    $bottom-left: $br-bottom-left) {
+    border-top-right-radius: $top-right;
+    border-top-left-radius: $top-left;
+    border-bottom-right-radius: $bottom-right;
+    border-bottom-left-radius: $bottom-right;
+}

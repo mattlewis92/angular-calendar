@@ -1,9 +1,8 @@
-@import 'variables';
-
+@import 'mixins';
 .cal-day-view {
 
   .cal-hour:nth-child(odd) {
-    background-color: #fafafa;
+    background-color: $day-hover-bg;
   }
 
   .cal-hour-segment {
@@ -21,7 +20,7 @@
   }
 
   .cal-hour-segment:hover {
-    background-color: #ededed;
+    background-color: $day-selected-bg;
   }
 
   .cal-event {
@@ -35,13 +34,7 @@
   }
 
   .cal-event.cal-starts-within-day {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-
-  .cal-event.cal-ends-within-day {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    @include default-border-radius();
   }
 
   .cal-hour-col-time,
