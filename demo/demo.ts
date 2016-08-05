@@ -8,7 +8,7 @@ import {
   CalendarDayView,
   CalendarEvent,
   CalendarEventAction,
-  CalendarConfig,
+  CalendarEventTitle,
   CalendarDate,
   CalendarDateFormatter
 } from './../angular2-calendar';
@@ -18,8 +18,7 @@ import {
   directives: [NgSwitch, CalendarMonthView, CalendarWeekView, CalendarDayView],
   pipes: [CalendarDate],
   providers: [
-    CalendarConfig,
-    CalendarDate,
+    CalendarEventTitle,
     CalendarDateFormatter
   ],
   styles: [`

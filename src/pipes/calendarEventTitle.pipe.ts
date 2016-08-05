@@ -1,16 +1,16 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {CalendarEvent} from 'calendar-utils';
-import {CalendarConfig} from './../providers/calendarConfig.provider';
+import {CalendarEventTitle as CalendarEventTitleService} from './../providers/calendarEventTitle.provider';
 
 @Pipe({
   name: 'calendarEventTitle'
 })
 export class CalendarEventTitle implements PipeTransform {
 
-  constructor(private calendarConfig: CalendarConfig) {}
+  constructor(private calendarEventTitle: CalendarEventTitleService) {}
 
   transform(event: CalendarEvent, titleType: string): string {
-    return this.calendarConfig.eventTitles[titleType](event);
+    return this.calendarEventTitle[titleType](event);
   }
 
 }

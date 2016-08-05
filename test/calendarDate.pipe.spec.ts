@@ -9,7 +9,6 @@ import {
 import {expect} from 'chai';
 import {spy} from 'sinon';
 import {
-  CalendarConfig,
   CalendarDate,
   CalendarMomentDateFormatter,
   CalendarDateFormatter
@@ -27,12 +26,8 @@ class TestCmp {
 
 describe('calendarDate pipe', () => {
 
-  let config: CalendarConfig;
   beforeEach(() => {
-    config = new CalendarConfig();
     addProviders([{
-      provide: CalendarConfig, useValue: config
-    }, {
       provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
     }, CalendarDate]);
   });

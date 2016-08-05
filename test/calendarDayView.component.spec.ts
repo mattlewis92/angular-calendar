@@ -9,7 +9,7 @@ import * as moment from 'moment';
 import {expect} from 'chai';
 import {
   CalendarDayView,
-  CalendarConfig,
+  CalendarEventTitle,
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter
@@ -19,19 +19,14 @@ import {spy} from 'sinon';
 
 describe('CalendarDayView component', () => {
 
-  let config: CalendarConfig;
   beforeEach(() => {
-    config = new CalendarConfig();
-    addProviders([{
-      provide: CalendarConfig, useValue: config
-    }, {
-      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
-    }]);
+    addProviders([CalendarEventTitle, {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter}]);
   });
 
-  let builder: TestComponentBuilder;
-  beforeEach(inject([TestComponentBuilder], (tcb) => {
+  let builder: TestComponentBuilder, eventTitle: CalendarEventTitle;
+  beforeEach(inject([TestComponentBuilder, CalendarEventTitle], (tcb, _eventTitle_) => {
     builder = tcb;
+    eventTitle = _eventTitle_;
   }));
 
   it('should generate the day view', async(() => {
@@ -131,7 +126,7 @@ describe('CalendarDayView component', () => {
   it('should allow the event title to be customised by the calendarConfig provider', async(() => {
 
     builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
-      config.eventTitles.day = (event: CalendarEvent) => {
+      eventTitle.day = (event: CalendarEvent) => {
         return `foo ${event.title}`;
       };
       fixture.componentInstance.date = moment('2016-06-01').toDate();

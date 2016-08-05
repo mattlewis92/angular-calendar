@@ -9,7 +9,7 @@ import * as moment from 'moment';
 import {expect} from 'chai';
 import {
   CalendarWeekView,
-  CalendarConfig,
+  CalendarEventTitle,
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter
@@ -18,19 +18,14 @@ import {Subject} from 'rxjs/Rx';
 
 describe('calendarWeekView component', () => {
 
-  let config: CalendarConfig;
   beforeEach(() => {
-    config = new CalendarConfig();
-    addProviders([{
-      provide: CalendarConfig, useValue: config
-    }, {
-      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
-    }]);
+    addProviders([CalendarEventTitle, {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter}]);
   });
 
-  let builder: TestComponentBuilder;
-  beforeEach(inject([TestComponentBuilder], (tcb) => {
+  let builder: TestComponentBuilder, eventTitle: CalendarEventTitle;
+  beforeEach(inject([TestComponentBuilder, CalendarEventTitle], (tcb, _eventTitle_) => {
     builder = tcb;
+    eventTitle = _eventTitle_;
   }));
 
   it('should generate the week view', async(() => {
@@ -124,7 +119,7 @@ describe('calendarWeekView component', () => {
   it('should allow the event title to be customised by the calendarConfig provider', async(() => {
 
     builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
-      config.eventTitles.week = (event: CalendarEvent) => {
+      eventTitle.week = (event: CalendarEvent) => {
         return `foo ${event.title}`;
       };
       fixture.componentInstance.date = moment('2016-06-01').toDate();

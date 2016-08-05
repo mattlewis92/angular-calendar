@@ -10,7 +10,7 @@ import {expect} from 'chai';
 import {spy} from 'sinon';
 import {
   CalendarMonthView,
-  CalendarConfig,
+  CalendarEventTitle,
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter
@@ -26,19 +26,14 @@ const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Elem
 
 describe('calendarMonthView component', () => {
 
-  let config: CalendarConfig;
   beforeEach(() => {
-    config = new CalendarConfig();
-    addProviders([{
-      provide: CalendarConfig, useValue: config
-    }, {
-      provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
-    }]);
+    addProviders([CalendarEventTitle, {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter}]);
   });
 
-  let builder: TestComponentBuilder;
-  beforeEach(inject([TestComponentBuilder], (tcb) => {
+  let builder: TestComponentBuilder, eventTitle: CalendarEventTitle;
+  beforeEach(inject([TestComponentBuilder, CalendarEventTitle], (tcb, _eventTitle_) => {
     builder = tcb;
+    eventTitle = _eventTitle_;
   }));
 
   it('should generate the month view', async(() => {
@@ -212,7 +207,7 @@ describe('calendarMonthView component', () => {
 
   it('should allow the event title to be customised by the calendarConfig provider', async(() => {
     builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
-      config.eventTitles.month = (event: CalendarEvent) => {
+      eventTitle.month = (event: CalendarEvent) => {
         return `foo ${event.title}`;
       };
       fixture.componentInstance.date = moment('2016-06-27').toDate();
