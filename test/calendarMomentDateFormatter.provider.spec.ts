@@ -19,35 +19,35 @@ describe('calendarMomentDateFormatter provider', () => {
   }));
 
   it('monthViewColumnHeader', () => {
-    expect(dateFormatter.monthViewColumnHeader({date: new Date('2016-01-01')})).to.equal('Friday');
+    expect(dateFormatter.monthViewColumnHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Friday');
   });
 
   it('monthViewDayNumber', () => {
-    expect(dateFormatter.monthViewDayNumber({date: new Date('2016-01-01')})).to.equal('1');
+    expect(dateFormatter.monthViewDayNumber({date: new Date('2016-01-01'), locale: 'en'})).to.equal('1');
   });
 
   it('monthViewTitle', () => {
-    expect(dateFormatter.monthViewTitle({date: new Date('2016-01-01')})).to.equal('January 2016');
+    expect(dateFormatter.monthViewTitle({date: new Date('2016-01-01'), locale: 'en'})).to.equal('January 2016');
   });
 
   it('weekViewColumnHeader', () => {
-    expect(dateFormatter.weekViewColumnHeader({date: new Date('2016-01-01')})).to.equal('Friday');
+    expect(dateFormatter.weekViewColumnHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Friday');
   });
 
   it('weekViewColumnSubHeader', () => {
-    expect(dateFormatter.weekViewColumnSubHeader({date: new Date('2016-01-01')})).to.equal('1 Jan');
+    expect(dateFormatter.weekViewColumnSubHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('1 Jan');
   });
 
   it('weekViewTitle', () => {
-    expect(dateFormatter.weekViewTitle({date: new Date('2016-01-04')})).to.equal('Week 1 of 2016');
+    expect(dateFormatter.weekViewTitle({date: new Date('2016-01-04'), locale: 'en'})).to.equal('Week 1 of 2016');
   });
 
   it('dayViewHour', () => {
-    expect(dateFormatter.dayViewHour({date: new Date('2016-01-01')})).to.equal('12am');
+    expect(dateFormatter.dayViewHour({date: new Date('2016-01-01'), locale: 'en'})).to.equal('12am');
   });
 
   it('dayViewTitle', () => {
-    expect(dateFormatter.dayViewTitle({date: new Date('2016-01-01')})).to.equal('Friday, 1 January, 2016');
+    expect(dateFormatter.dayViewTitle({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Friday, 1 January, 2016');
   });
 
 });

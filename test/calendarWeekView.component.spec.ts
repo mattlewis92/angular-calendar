@@ -139,4 +139,16 @@ describe('calendarWeekView component', () => {
 
   }));
 
+  it('should allow the locale to be changed', async(() => {
+
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      fixture.componentInstance.locale = 'de';
+      fixture.componentInstance.date = new Date();
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.cal-header b').innerHTML.trim()).to.equal('Sonntag');
+    });
+
+  }));
+
 });

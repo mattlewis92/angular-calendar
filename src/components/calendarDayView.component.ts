@@ -13,6 +13,7 @@ import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 import {CalendarDate} from './../pipes/calendarDate.pipe';
 import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
+import {DEFAULT_LOCALE} from './../constants';
 
 const SEGMENT_HEIGHT: number = 30;
 
@@ -53,7 +54,7 @@ const SEGMENT_HEIGHT: number = 30;
               *ngFor="let segment of hour.segments; trackBy:trackByItem"
               (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
               <div *ngIf="segment.isStart" class="cal-time">
-                {{ segment.date | calendarDate:'dayViewHour' }}
+                {{ segment.date | calendarDate:'dayViewHour':locale }}
               </div>
               &nbsp;
             </div>
@@ -147,6 +148,11 @@ export class CalendarDayView implements OnChanges {
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject<any>;
+
+  /**
+   * The locale used to format dates
+   */
+  @Input() locale: string = DEFAULT_LOCALE;
 
   /**
    * Called when an event title is clicked

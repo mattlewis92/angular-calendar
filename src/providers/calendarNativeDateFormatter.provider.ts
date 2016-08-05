@@ -12,40 +12,40 @@ const getWeekNumber: Function = (date: Date): number => {
 
 export class CalendarNativeDateFormatter implements CalendarDateFormatterInterface {
 
-  public monthViewColumnHeader({date, locale = 'en'}: DateFormatterParams): string {
+  public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {weekday: 'long'}).format(date);
   }
 
-  public monthViewDayNumber({date, locale = 'en'}: DateFormatterParams): string {
+  public monthViewDayNumber({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {day: 'numeric'}).format(date);
   }
 
-  public monthViewTitle({date, locale = 'en'}: DateFormatterParams): string {
+  public monthViewTitle({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long'}).format(date);
   }
 
-  public weekViewColumnHeader({date, locale = 'en'}: DateFormatterParams): string {
+  public weekViewColumnHeader({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {weekday: 'long'}).format(date);
   }
 
-  public weekViewColumnSubHeader({date, locale = 'en'}: DateFormatterParams): string {
+  public weekViewColumnSubHeader({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {
       day: 'numeric',
       month: 'short'
     }).format(date);
   }
 
-  public weekViewTitle({date, locale = 'en'}: DateFormatterParams): string {
+  public weekViewTitle({date, locale}: DateFormatterParams): string {
     const year: string = new Intl.DateTimeFormat(locale, {year: 'numeric'}).format(date);
     const weekNumber: number = getWeekNumber(date);
     return `Week ${weekNumber} of ${year}`;
   }
 
-  public dayViewHour({date, locale = 'en'}: DateFormatterParams): string {
+  public dayViewHour({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {hour: 'numeric'}).format(date);
   }
 
-  public dayViewTitle({date, locale = 'en'}: DateFormatterParams): string {
+  public dayViewTitle({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {
       day: 'numeric',
       month: 'long',

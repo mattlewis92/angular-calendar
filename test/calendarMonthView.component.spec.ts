@@ -228,4 +228,16 @@ describe('calendarMonthView component', () => {
     });
   }));
 
+  it('should allow the locale to be changed', async(() => {
+
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.locale = 'de';
+      fixture.componentInstance.date = new Date();
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.cal-header .cal-cell').innerHTML.trim()).to.equal('Sonntag');
+    });
+
+  }));
+
 });

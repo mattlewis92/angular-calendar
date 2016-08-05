@@ -32,6 +32,7 @@ import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 import {CalendarDate} from './../pipes/calendarDate.pipe';
 import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
+import {DEFAULT_LOCALE} from './../constants';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -40,7 +41,7 @@ import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
     <div class="cal-month-view">
       <div class="cal-cell-row cal-header">
         <div class="cal-cell" *ngFor="let header of columnHeaders; trackBy:trackByItem">
-          {{ header.date | calendarDate:'monthViewColumnHeader' }}
+          {{ header.date | calendarDate:'monthViewColumnHeader':locale }}
         </div>
       </div>
       <div class="cal-days">
@@ -62,7 +63,7 @@ import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
               (click)="dayClicked.emit({day: day})">
               <div class="cal-cell-top">
                 <span class="cal-day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
-                <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber' }}</span>
+                <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
               </div>
               <div class="cal-events">
                 <span
@@ -144,6 +145,11 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject<any>;
+
+  /**
+   * The locale used to format dates
+   */
+  @Input() locale: string = DEFAULT_LOCALE;
 
   /**
    * Called when the day cell is clicked

@@ -10,6 +10,8 @@ import {
   OnDestroy
 } from '@angular/core';
 import {NgFor, NgClass} from '@angular/common';
+import {Subject} from 'rxjs/Subject';
+import {Subscription} from 'rxjs/Subscription';
 import {
   WeekDay,
   CalendarEvent,
@@ -19,8 +21,7 @@ import {
 } from 'calendar-utils';
 import {CalendarDate} from './../pipes/calendarDate.pipe';
 import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
-import {Subject} from 'rxjs/Subject';
-import {Subscription} from 'rxjs/Subscription';
+import {DEFAULT_LOCALE} from './../constants';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -36,8 +37,8 @@ import {Subscription} from 'rxjs/Subscription';
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
           (click)="dayClicked.emit({date: day.date.toDate()})">
-          <b>{{ day.date | calendarDate:'weekViewColumnHeader' }}</b><br>
-          <span>{{ day.date | calendarDate:'weekViewColumnSubHeader' }}</span>
+          <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br>
+          <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>
         </div>
       </div>
       <div *ngFor="let eventRow of eventRows; trackBy:trackByItem">
@@ -82,6 +83,11 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject<any>;
+
+  /**
+   * The locale used to format dates
+   */
+  @Input() locale: string = DEFAULT_LOCALE;
 
   /**
    * Called when a header week day is clicked
