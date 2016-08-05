@@ -62,7 +62,7 @@ import {DEFAULT_LOCALE} from './../constants';
               [style.backgroundColor]="day.backgroundColor"
               (click)="dayClicked.emit({day: day})">
               <div class="cal-cell-top">
-                <span class="cal-day-events-total" *ngIf="day.events.length > 0">{{ day.events.length }}</span>
+                <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
                 <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
               </div>
               <div class="cal-events">

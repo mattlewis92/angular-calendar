@@ -240,4 +240,18 @@ describe('calendarMonthView component', () => {
 
   }));
 
+  it('should allow the badge total to be customised', async(() => {
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.cellModifier = day => {
+        day.badgeTotal = 100;
+        return day;
+      };
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.cal-day-badge').innerHTML).to.equal('100');
+      fixture.destroy();
+    });
+  }));
+
 });

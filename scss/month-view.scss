@@ -52,7 +52,7 @@
     border-bottom: $default-border;
   }
 
-  .cal-day-events-total {
+  .cal-day-badge {
     margin-top: 18px;
     margin-left: 10px;
     background-color: #b94a48;
@@ -134,7 +134,7 @@
   }
 
   .cal-out-month {
-    .cal-day-events-total,
+    .cal-day-badge,
     .cal-event {
       opacity: 0.3;
     }
