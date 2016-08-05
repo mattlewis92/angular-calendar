@@ -1,7 +1,6 @@
 @import 'variables';
 
 .cal-month-view {
-
   .cal-header {
     text-align: center;
     font-weight: bolder;
@@ -135,12 +134,9 @@
   }
 
   .cal-out-month {
-
     .cal-day-events-total,
     .cal-event {
       opacity: 0.3;
     }
-
   }
-
 }

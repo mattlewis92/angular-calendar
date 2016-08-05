@@ -1,7 +1,6 @@
 @import 'variables';
 
 .cal-week-view {
-
   .cal-day-headers {
     display: flex;
     margin-bottom: 3px;
@@ -66,5 +65,4 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
 }
