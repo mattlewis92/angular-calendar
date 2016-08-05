@@ -7,7 +7,6 @@ import {
   CalendarWeekView,
   CalendarDayView,
   CalendarEvent,
-  CalendarTitle,
   CalendarEventAction,
   CalendarConfig,
   CalendarDate,
@@ -17,7 +16,7 @@ import {
 @Component({
   selector: 'demo-app',
   directives: [NgSwitch, CalendarMonthView, CalendarWeekView, CalendarDayView],
-  pipes: [CalendarTitle],
+  pipes: [CalendarDate],
   providers: [
     CalendarConfig,
     CalendarDate,
@@ -48,7 +47,7 @@ import {
            </div>
         </div>
         <div class="col-md-4">
-          <h3>{{ date | calendarTitle:view }}</h3>
+          <h3>{{ date | calendarDate:view + 'ViewTitle' }}</h3>
         </div>
         <div class="col-md-4">
           <div class="btn-group">
