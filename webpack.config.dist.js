@@ -40,7 +40,8 @@ module.exports = {
       commonjs: 'rxjs/Subscription',
       commonjs2: 'rxjs/Subscription',
       amd: 'rxjs/Subscription'
-    }
+    },
+    moment: 'moment'
   },
   devtool: 'source-map',
   module: {

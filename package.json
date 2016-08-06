@@ -13,7 +13,7 @@
     "pretest": "typings install",
     "test": "karma start",
     "test:watch": "karma start --watch",
-    "clean": "del ./src/*.d.ts ./demo/*.d.ts ./test/*.d.ts angular2-calendar.d.ts angular2-calendar.js* css",
+    "clean": "del ./src/*.d.ts ./src/**/*.d.ts ./demo/*.d.ts ./test/*.d.ts angular2-calendar.d.ts angular2-calendar.js* css",
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "typedoc": "typedoc --options typedoc.json angular2-calendar.ts src/*.ts",
@@ -41,6 +41,7 @@
     "@angular/core": "2.0.0-rc.4",
     "@angular/platform-browser": "2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@ng-bootstrap/ng-bootstrap": "~1.0.0-alpha.1",
     "autoprefixer": "~6.4.0",
     "chai": "~3.5.0",
     "commitizen": "~2.8.1",
@@ -114,7 +115,6 @@
     }
   },
   "dependencies": {
-    "@ng-bootstrap/ng-bootstrap": "~1.0.0-alpha.1",
     "calendar-utils": "0.0.18"
   }
 }
