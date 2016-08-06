@@ -52,7 +52,8 @@ module.exports = function(config) {
           test: /src\/.+\.ts$/,
           exclude: /(test|node_modules)/,
           loader: 'sourcemap-istanbul-instrumenter?force-sourcemap=true'
-        }]
+        }],
+        noParse: /reflect-metadata/
       },
       tslint: {
         emitErrors: !WATCH,

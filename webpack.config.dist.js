@@ -23,6 +23,12 @@ module.exports = {
       commonjs2: '@angular/common',
       amd: '@angular/common'
     },
+    '@angular/platform-browser': {
+      root: ['ng', 'platformBrowser'],
+      commonjs: '@angular/platform-browser',
+      commonjs2: '@angular/platform-browser',
+      amd: '@angular/platform-browser'
+    },
     'rxjs/Subject': {
       root: ['rx', 'Subject'],
       commonjs: 'rxjs/Subject',
@@ -52,7 +58,8 @@ module.exports = {
       test: /\.scss/,
       loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss!sass?sourceMap'),
       exclude: /node_modules/
-    }]
+    }],
+    noParse: /reflect-metadata/
   },
   resolve: {
     extensions: ['', '.ts', '.js']

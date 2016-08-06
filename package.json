@@ -93,6 +93,8 @@
   },
   "peerDependencies": {
     "@angular/core": "2.0.0-rc.4",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
     "moment": "2.x.x"
   },
   "files": [
@@ -112,6 +114,7 @@
     }
   },
   "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "~1.0.0-alpha.1",
     "calendar-utils": "0.0.18"
   }
 }
