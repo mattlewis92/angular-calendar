@@ -55,7 +55,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
             [style.backgroundColor]="event.event.color.secondary"
             [ngClass]="event.event?.cssClass"
             [mwlCalendarTooltip]="event.event | calendarEventTitle:'weekTooltip'"
-            tooltipPlacement="bottom">
+            [tooltipPlacement]="tooltipPlacement">
             <a
               class="cal-event-title"
               href="javascript:;"
@@ -92,6 +92,11 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
    * The locale used to format dates
    */
   @Input() locale: string = DEFAULT_LOCALE;
+
+  /**
+   * The placement of the event tooltip
+   */
+  @Input() tooltipPlacement: string = 'bottom';
 
   /**
    * Called when a header week day is clicked

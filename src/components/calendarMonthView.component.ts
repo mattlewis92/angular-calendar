@@ -75,7 +75,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
                   (mouseenter)="toggleDayHighlight(event, true)"
                   (mouseleave)="toggleDayHighlight(event, false)"
                   [mwlCalendarTooltip]="event | calendarEventTitle:'monthTooltip'"
-                  tooltipPlacement="top">
+                  [tooltipPlacement]="tooltipPlacement">
                 </span>
               </div>
             </div>
@@ -154,6 +154,11 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
    * The locale used to format dates
    */
   @Input() locale: string = DEFAULT_LOCALE;
+
+  /**
+   * The placement of the event tooltip
+   */
+  @Input() tooltipPlacement: string = 'top';
 
   /**
    * Called when the day cell is clicked
