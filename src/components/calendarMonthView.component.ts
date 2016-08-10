@@ -141,7 +141,8 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   @Input() slideBoxIsOpen: boolean = false;
 
   /**
-   * A function that will be called before each cell is rendered
+   * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
+   * If you add the `cssClass` property to the cell it will add that class to the cell in the template
    */
   @Input() cellModifier: Function;
 
@@ -220,12 +221,9 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
       events: this.events,
       viewDate: this.date
     });
-    this.view.days = this.view.days.map(day => {
-      if (this.cellModifier) {
-        return this.cellModifier(day);
-      }
-      return day;
-    });
+    if (this.cellModifier) {
+      this.view.days = this.view.days.map(day => this.cellModifier(day));
+    }
   }
 
   private refreshSlideBox(): void {

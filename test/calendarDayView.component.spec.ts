@@ -213,4 +213,18 @@ describe('CalendarDayView component', () => {
     });
   }));
 
+  it('should add a custom CSS class to days via the hour segment modifier', async(() => {
+    builder.createAsync(CalendarDayView).then((fixture: ComponentFixture<CalendarDayView>) => {
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.hourSegmentModifier = segment => {
+        segment.cssClass = 'foo';
+        return segment;
+      };
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.cal-hour-segment').classList.contains('foo')).to.be.true;
+      fixture.destroy();
+    });
+  }));
+
 });

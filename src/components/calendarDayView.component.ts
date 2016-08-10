@@ -52,7 +52,8 @@ const SEGMENT_HEIGHT: number = 30;
             <div
               class="cal-hour-segment"
               *ngFor="let segment of hour.segments; trackBy:trackByItem"
-              (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
+              (click)="hourSegmentClicked.emit({date: segment.date.toDate()})"
+              [ngClass]="segment.cssClass">
               <div *ngIf="segment.isStart" class="cal-time">
                 {{ segment.date | calendarDate:'dayViewHour':locale }}
               </div>
@@ -155,6 +156,12 @@ export class CalendarDayView implements OnChanges {
   @Input() locale: string = DEFAULT_LOCALE;
 
   /**
+   * A function that will be called before each hour segment is called. The first argument will contain the hour segment.
+   * If you add the `cssClass` property to the segment it will add that class to the hour segment in the template
+   */
+  @Input() hourSegmentModifier: Function;
+
+  /**
    * Called when an event title is clicked
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
@@ -229,6 +236,11 @@ export class CalendarDayView implements OnChanges {
         minute: this.dayEndMinute
       }
     });
+    if (this.hourSegmentModifier) {
+      this.hours.forEach(hour => {
+        hour.segments = hour.segments.map(segment => this.hourSegmentModifier(segment));
+      });
+    }
   }
 
   private refreshView(): void {
