@@ -281,4 +281,30 @@ describe('calendarMonthView component', () => {
 
   }));
 
+  it('should disable the tooltip', async(() => {
+
+    builder.createAsync(CalendarMonthView).then((fixture: ComponentFixture<CalendarMonthView>) => {
+      eventTitle.monthTooltip = () => '';
+      fixture.componentInstance.date = moment('2016-06-27').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo <b>bar</b>',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const event: HTMLElement = fixture.nativeElement.querySelector(
+        '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      );
+      triggerDomEvent('mouseenter', event);
+      fixture.detectChanges();
+      expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    });
+
+  }));
+
 });

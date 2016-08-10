@@ -182,4 +182,27 @@ describe('calendarWeekView component', () => {
 
   }));
 
+  it('should disable the tooltip', async(() => {
+
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      eventTitle.weekTooltip = () => '';
+      fixture.componentInstance.date = moment('2016-06-01').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo <b>bar</b>',
+        color: {
+          primary: 'blue'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+      triggerDomEvent('mouseenter', event);
+      fixture.detectChanges();
+      expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    });
+
+  }));
+
 });

@@ -165,7 +165,7 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
   }
 
   private show(): void {
-    if (!this.tooltipRef) {
+    if (!this.tooltipRef && this.contents) {
       this.tooltipRef = this.viewContainerRef.createComponent(this.tooltipFactory, 0, this.injector, []);
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.placement = this.placement;
