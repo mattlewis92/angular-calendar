@@ -64,7 +64,7 @@
     "karma-remap-istanbul": "~0.2.0",
     "karma-source-map-support": "~1.1.0",
     "karma-sourcemap-loader": "~0.3.7",
-    "karma-webpack": "~1.7.0",
+    "karma-webpack": "~1.8.0",
     "mocha": "~3.0.0",
     "moment": "~2.14.1",
     "node-sass": "3.8.0",
@@ -116,6 +116,6 @@
     }
   },
   "dependencies": {
-    "calendar-utils": "0.0.18"
+    "calendar-utils": "0.0.19"
   }
 }
