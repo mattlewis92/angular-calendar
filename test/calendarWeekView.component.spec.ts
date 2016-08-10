@@ -15,6 +15,7 @@ import {
   CalendarDateFormatter
 } from './../angular2-calendar';
 import {Subject} from 'rxjs/Rx';
+import {triggerDomEvent} from './util';
 
 describe('calendarWeekView component', () => {
 
@@ -147,6 +148,33 @@ describe('calendarWeekView component', () => {
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
       fixture.detectChanges();
       expect(fixture.nativeElement.querySelector('.cal-header b').innerHTML.trim()).to.equal('Sonntag');
+    });
+
+  }));
+
+  it('should show a tooltip on mouseover of the event', async(() => {
+
+    builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      fixture.componentInstance.date = moment('2016-06-01').toDate();
+      fixture.componentInstance.events = [{
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo <b>bar</b>',
+        color: {
+          primary: 'blue'
+        }
+      }];
+      fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+      fixture.detectChanges();
+      const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+      triggerDomEvent('mouseenter', event);
+      fixture.detectChanges();
+      const tooltip: Element = document.body.querySelector('.cal-tooltip');
+      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('foo <b>bar</b>');
+      expect(tooltip.classList.contains('cal-tooltip-bottom')).to.be.true;
+      triggerDomEvent('mouseleave', event);
+      fixture.detectChanges();
+      expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
     });
 
   }));

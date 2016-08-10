@@ -46,12 +46,12 @@ interface Coords {
       word-wrap: break-word;
       opacity: 0.9;
     }
-    
+
     .cal-tooltip.cal-tooltip-top {
       padding: 5px 0;
       margin-top: -3px;
     }
-    
+
     .cal-tooltip.cal-tooltip-top .cal-tooltip-arrow {
       bottom: 0;
       left: 50%;
@@ -59,7 +59,46 @@ interface Coords {
       border-width: 5px 5px 0;
       border-top-color: #000;
     }
-    
+
+    .cal-tooltip.cal-tooltip-right {
+      padding: 0 5px;
+      margin-left: 3px;
+    }
+
+    .cal-tooltip.cal-tooltip-right .cal-tooltip-arrow {
+      top: 50%;
+      left: 0;
+      margin-top: -5px;
+      border-width: 5px 5px 5px 0;
+      border-right-color: #000;
+    }
+
+    .cal-tooltip.cal-tooltip-bottom {
+      padding: 5px 0;
+      margin-top: 3px;
+    }
+
+    .cal-tooltip.cal-tooltip-bottom .cal-tooltip-arrow {
+      top: 0;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 0 5px 5px;
+      border-bottom-color: #000;
+    }
+
+    .cal-tooltip.cal-tooltip-left {
+      padding: 0 5px;
+      margin-left: -3px;
+    }
+
+    .cal-tooltip.cal-tooltip-left .cal-tooltip-arrow {
+      top: 50%;
+      right: 0;
+      margin-top: -5px;
+      border-width: 5px 0 5px 5px;
+      border-left-color: #000;
+    }
+
     .cal-tooltip-inner {
       max-width: 200px;
       padding: 3px 8px;
@@ -68,7 +107,7 @@ interface Coords {
       background-color: #000;
       border-radius: 0.25rem;
     }
-    
+
     .cal-tooltip-arrow {
       position: absolute;
       width: 0;
@@ -78,7 +117,7 @@ interface Coords {
     }
   `],
   template: `
-    <div class="cal-tooltip cal-tooltip-top">
+    <div class="cal-tooltip" [ngClass]="'cal-tooltip-' + placement">
       <div class="cal-tooltip-arrow"></div>
       <div class="cal-tooltip-inner" [innerHtml]="contents"></div>
     </div>
@@ -87,6 +126,8 @@ interface Coords {
 export class CalendarTooltipWindow {
 
   @Input() public contents: string;
+
+  @Input() public placement: string;
 
 }
 
@@ -97,6 +138,8 @@ export class CalendarTooltipWindow {
 export class CalendarTooltip implements AfterViewChecked, OnDestroy {
 
   @Input('mwlCalendarTooltip') contents: string;
+
+  @Input('tooltipPlacement') placement: string = 'top';
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindow>;
   private tooltipRef: ComponentRef<CalendarTooltipWindow>;
@@ -125,6 +168,7 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
     if (!this.tooltipRef) {
       this.tooltipRef = this.viewContainerRef.createComponent(this.tooltipFactory, 0, this.injector, []);
       this.tooltipRef.instance.contents = this.contents;
+      this.tooltipRef.instance.placement = this.placement;
       this.renderer.invokeElementMethod(this.document.body, 'appendChild', [this.tooltipRef.location.nativeElement]);
     }
   }
@@ -149,7 +193,7 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
   private positionPopover(): void {
     if (this.tooltipRef) {
       const targetPosition: Coords = this.positioning.positionElements(
-        this.elementRef.nativeElement, this.tooltipRef.location.nativeElement.children[0], 'top', true
+        this.elementRef.nativeElement, this.tooltipRef.location.nativeElement.children[0], this.placement, true
       );
 
       const targetStyle: CSSStyleDeclaration = this.tooltipRef.location.nativeElement.children[0].style;

@@ -74,7 +74,8 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
                   [ngClass]="event?.cssClass"
                   (mouseenter)="toggleDayHighlight(event, true)"
                   (mouseleave)="toggleDayHighlight(event, false)"
-                  [mwlCalendarTooltip]="event.title">
+                  [mwlCalendarTooltip]="event.title"
+                  tooltipPlacement="top">
                 </span>
               </div>
             </div>

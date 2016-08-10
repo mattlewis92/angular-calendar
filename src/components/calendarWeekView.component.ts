@@ -22,6 +22,7 @@ import {
 import {CalendarDate} from './../pipes/calendarDate.pipe';
 import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
 import {DEFAULT_LOCALE} from './../constants';
+import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTooltip.directive';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -52,7 +53,9 @@ import {DEFAULT_LOCALE} from './../constants';
             [class.cal-starts-within-week]="!event.startsBeforeWeek"
             [class.cal-ends-within-week]="!event.endsAfterWeek"
             [style.backgroundColor]="event.event.color.secondary"
-            [ngClass]="event.event?.cssClass">
+            [ngClass]="event.event?.cssClass"
+            [mwlCalendarTooltip]="event.event.title"
+            tooltipPlacement="bottom">
             <a
               class="cal-event-title"
               href="javascript:;"
@@ -64,8 +67,9 @@ import {DEFAULT_LOCALE} from './../constants';
       </div>
     </div>
   `,
-  directives: [NgFor, NgClass],
-  pipes: [CalendarDate, CalendarEventTitle]
+  directives: [NgFor, NgClass, CalendarTooltip],
+  pipes: [CalendarDate, CalendarEventTitle],
+  precompile: [CalendarTooltipWindow]
 })
 export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 

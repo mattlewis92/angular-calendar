@@ -16,13 +16,7 @@ import {
   CalendarDateFormatter
 } from './../angular2-calendar';
 import {Subject} from 'rxjs/Subject';
-
-const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
-  const event: Event = document.createEvent('Event');
-  Object.assign(event, eventData);
-  event.initEvent(eventType, true, true);
-  target.dispatchEvent(event);
-};
+import {triggerDomEvent} from './util';
 
 describe('calendarMonthView component', () => {
 
@@ -276,6 +270,7 @@ describe('calendarMonthView component', () => {
       fixture.detectChanges();
       const tooltip: Element = document.body.querySelector('.cal-tooltip');
       expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('foo <b>bar</b>');
+      expect(tooltip.classList.contains('cal-tooltip-top')).to.be.true;
       triggerDomEvent('mouseleave', event);
       fixture.detectChanges();
       expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
