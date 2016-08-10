@@ -155,6 +155,9 @@ describe('calendarWeekView component', () => {
   it('should show a tooltip on mouseover of the event', async(() => {
 
     builder.createAsync(CalendarWeekView).then((fixture: ComponentFixture<CalendarWeekView>) => {
+      eventTitle.weekTooltip = (event: CalendarEvent) => {
+        return `title: ${event.title}`;
+      };
       fixture.componentInstance.date = moment('2016-06-01').toDate();
       fixture.componentInstance.events = [{
         start: new Date('2016-05-30'),
@@ -170,7 +173,7 @@ describe('calendarWeekView component', () => {
       triggerDomEvent('mouseenter', event);
       fixture.detectChanges();
       const tooltip: Element = document.body.querySelector('.cal-tooltip');
-      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('foo <b>bar</b>');
+      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
       expect(tooltip.classList.contains('cal-tooltip-bottom')).to.be.true;
       triggerDomEvent('mouseleave', event);
       fixture.detectChanges();

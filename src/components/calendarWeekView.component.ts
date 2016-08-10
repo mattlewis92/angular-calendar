@@ -54,7 +54,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
             [class.cal-ends-within-week]="!event.endsAfterWeek"
             [style.backgroundColor]="event.event.color.secondary"
             [ngClass]="event.event?.cssClass"
-            [mwlCalendarTooltip]="event.event.title"
+            [mwlCalendarTooltip]="event.event | calendarEventTitle:'weekTooltip'"
             tooltipPlacement="bottom">
             <a
               class="cal-event-title"

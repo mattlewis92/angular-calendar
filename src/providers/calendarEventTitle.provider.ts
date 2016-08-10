@@ -6,7 +6,15 @@ export class CalendarEventTitle {
     return event.title;
   }
 
+  monthTooltip(event: CalendarEvent): string {
+    return event.title;
+  }
+
   week(event: CalendarEvent): string {
+    return event.title;
+  }
+
+  weekTooltip(event: CalendarEvent): string {
     return event.title;
   }
 
