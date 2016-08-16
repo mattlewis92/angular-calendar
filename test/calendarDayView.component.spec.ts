@@ -77,7 +77,8 @@ describe('CalendarDayView component', () => {
         cssClass: 'foo',
         title: 'foo',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
@@ -135,7 +136,8 @@ describe('CalendarDayView component', () => {
         end: new Date('2016-06-02'),
         title: 'bar',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
@@ -202,7 +204,8 @@ describe('CalendarDayView component', () => {
         start: new Date('2016-06-01'),
         title: 'foo',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.eventWidth = 300;

@@ -67,7 +67,8 @@ describe('calendarMonthView component', () => {
         cssClass: 'foo',
         title: 'foo',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});

@@ -61,7 +61,8 @@ describe('calendarWeekView component', () => {
         cssClass: 'foo',
         title: 'foo',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
@@ -80,7 +81,8 @@ describe('calendarWeekView component', () => {
         end: new Date('2016-06-02'),
         title: '<span>foo</span>',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
@@ -129,7 +131,8 @@ describe('calendarWeekView component', () => {
         end: new Date('2016-06-02'),
         title: 'bar',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
@@ -164,7 +167,8 @@ describe('calendarWeekView component', () => {
         end: new Date('2016-06-02'),
         title: 'foo <b>bar</b>',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});
@@ -192,7 +196,8 @@ describe('calendarWeekView component', () => {
         end: new Date('2016-06-02'),
         title: 'foo <b>bar</b>',
         color: {
-          primary: 'blue'
+          primary: 'blue',
+          secondary: ''
         }
       }];
       fixture.componentInstance.ngOnChanges({date: {}, events: {}});

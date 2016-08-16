@@ -171,10 +171,10 @@ export class CalendarDayView implements OnChanges {
    */
   @Output() hourSegmentClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
 
-  private hours: DayViewHour[] = [];
-  private view: DayView;
-  private width: number = 0;
-  private refreshSubscription: Subscription;
+  hours: DayViewHour[] = [];
+  view: DayView;
+  width: number = 0;
+  refreshSubscription: Subscription;
 
   constructor(private cdr: ChangeDetectorRef) {}
 

@@ -24,6 +24,7 @@ class TestCmp {
   public view: string;
   public format: string;
   public locale: string;
+  public method: string;
 }
 
 describe('calendarDate pipe', () => {

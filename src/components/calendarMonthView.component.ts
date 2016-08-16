@@ -121,7 +121,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
       ])
     ])
   ],
-  precompile: [CalendarTooltipWindow]
+  entryComponents: [CalendarTooltipWindow]
 })
 export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
@@ -171,11 +171,11 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
-  private columnHeaders: WeekDay[];
-  private view: MonthView;
-  private openRowIndex: number;
-  private openDay: MonthViewDay;
-  private refreshSubscription: Subscription;
+  columnHeaders: WeekDay[];
+  view: MonthView;
+  openRowIndex: number;
+  openDay: MonthViewDay;
+  refreshSubscription: Subscription;
 
   constructor(private cdr: ChangeDetectorRef) {}
 

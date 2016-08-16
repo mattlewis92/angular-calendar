@@ -37,11 +37,12 @@
   },
   "homepage": "https://github.com/mattlewis92/angular2-calendar#readme",
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/common": "2.0.0-rc.5",
+    "@angular/compiler": "2.0.0-rc.5",
+    "@angular/core": "2.0.0-rc.5",
+    "@angular/forms": "~0.3.0",
+    "@angular/platform-browser": "2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
     "@ng-bootstrap/ng-bootstrap": "~1.0.0-alpha.1",
     "autoprefixer": "~6.4.0",
     "chai": "~3.5.0",
@@ -94,9 +95,9 @@
     "zone.js": "~0.6.12"
   },
   "peerDependencies": {
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.5",
+    "@angular/common": "2.0.0-rc.5",
+    "@angular/platform-browser": "2.0.0-rc.5",
     "moment": "2.x.x"
   },
   "files": [
@@ -116,6 +117,6 @@
     }
   },
   "dependencies": {
-    "calendar-utils": "0.0.21"
+    "calendar-utils": "0.0.22"
   }
 }

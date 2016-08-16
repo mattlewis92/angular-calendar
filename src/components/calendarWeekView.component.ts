@@ -69,7 +69,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
   `,
   directives: [NgFor, NgClass, CalendarTooltip],
   pipes: [CalendarDate, CalendarEventTitle],
-  precompile: [CalendarTooltipWindow]
+  entryComponents: [CalendarTooltipWindow]
 })
 export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 
@@ -108,9 +108,9 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
-  private days: WeekDay[];
-  private eventRows: WeekViewEventRow[] = [];
-  private refreshSubscription: Subscription;
+  days: WeekDay[];
+  eventRows: WeekViewEventRow[] = [];
+  refreshSubscription: Subscription;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
