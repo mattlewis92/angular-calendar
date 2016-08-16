@@ -13,12 +13,6 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import {
-  NgFor,
-  NgIf,
-  NgClass,
-  SlicePipe
-} from '@angular/common';
 import * as moment from 'moment';
 import {
   CalendarEvent,
@@ -30,10 +24,7 @@ import {
 } from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {CalendarDate} from './../pipes/calendarDate.pipe';
-import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
 import {DEFAULT_LOCALE} from './../constants';
-import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTooltip.directive';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -80,7 +71,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
               </div>
             </div>
           </div>
-          <div class="cal-slidebox" @collapse *ngIf="openRowIndex === rowIndex">
+          <div class="cal-slidebox" [@collapse] *ngIf="openRowIndex === rowIndex">
             <div
               *ngFor="let event of openDay.events; trackBy:trackByItem"
               [ngClass]="event?.cssClass">
@@ -107,8 +98,6 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
       </div>
     </div>
   `,
-  directives: [NgFor, NgIf, NgClass, CalendarTooltip],
-  pipes: [SlicePipe, CalendarDate, CalendarEventTitle],
   animations: [
     trigger('collapse', [
       transition('void => *', [
@@ -120,8 +109,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
         animate('150ms linear', style({height: 0}))
       ])
     ])
-  ],
-  entryComponents: [CalendarTooltipWindow]
+  ]
 })
 export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 

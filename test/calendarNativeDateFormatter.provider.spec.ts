@@ -1,6 +1,6 @@
 import {
   inject,
-  addProviders
+  TestBed
 } from '@angular/core/testing';
 import {expect} from 'chai';
 import {
@@ -10,7 +10,9 @@ import {
 describe('calendarNativeDateFormatter provider', () => {
 
   beforeEach(() => {
-    addProviders([CalendarNativeDateFormatter]);
+    TestBed.configureCompiler({
+      providers: [CalendarNativeDateFormatter]
+    });
   });
 
   let dateFormatter: CalendarNativeDateFormatter;

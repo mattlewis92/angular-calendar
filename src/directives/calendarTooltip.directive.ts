@@ -132,8 +132,7 @@ export class CalendarTooltipWindow {
 }
 
 @Directive({
-  selector: '[mwlCalendarTooltip]',
-  providers: [Positioning]
+  selector: '[mwlCalendarTooltip]'
 })
 export class CalendarTooltip implements AfterViewChecked, OnDestroy {
 
@@ -143,6 +142,7 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindow>;
   private tooltipRef: ComponentRef<CalendarTooltipWindow>;
+  private positioning: Positioning = new Positioning();
 
   constructor(
     private elementRef: ElementRef,
@@ -150,7 +150,6 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
     private injector: Injector,
     componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
-    private positioning: Positioning,
     @Inject(DOCUMENT) private document //tslint:disable-line
   ) {
     this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(CalendarTooltipWindow);

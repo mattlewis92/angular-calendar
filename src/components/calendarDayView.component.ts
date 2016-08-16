@@ -7,21 +7,16 @@ import {
   EventEmitter,
   ChangeDetectorRef
 } from '@angular/core';
-import {NgFor, NgIf, NgClass} from '@angular/common';
 import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {CalendarDate} from './../pipes/calendarDate.pipe';
-import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
 import {DEFAULT_LOCALE} from './../constants';
 
 const SEGMENT_HEIGHT: number = 30;
 
 @Component({
   selector: 'mwl-calendar-day-view',
-  directives: [NgFor, NgIf, NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  pipes: [CalendarDate, CalendarEventTitle],
   template: `
     <div class="cal-day-view">
       <div

@@ -9,7 +9,6 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import {NgFor, NgClass} from '@angular/common';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 import {
@@ -19,10 +18,7 @@ import {
   getWeekViewHeader,
   getWeekView
 } from 'calendar-utils';
-import {CalendarDate} from './../pipes/calendarDate.pipe';
-import {CalendarEventTitle} from './../pipes/calendarEventTitle.pipe';
 import {DEFAULT_LOCALE} from './../constants';
-import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTooltip.directive';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -66,10 +62,7 @@ import {CalendarTooltipWindow, CalendarTooltip} from './../directives/calendarTo
         </div>
       </div>
     </div>
-  `,
-  directives: [NgFor, NgClass, CalendarTooltip],
-  pipes: [CalendarDate, CalendarEventTitle],
-  entryComponents: [CalendarTooltipWindow]
+  `
 })
 export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 

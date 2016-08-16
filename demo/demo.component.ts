@@ -1,26 +1,13 @@
 import {Component} from '@angular/core';
-import {NgSwitch} from '@angular/common';
 import * as moment from 'moment';
 import {UnitOfTime, Moment} from 'moment';
 import {
-  CalendarMonthView,
-  CalendarWeekView,
-  CalendarDayView,
   CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTitle,
-  CalendarDate,
-  CalendarDateFormatter
+  CalendarEventAction
 } from './../angular2-calendar';
 
 @Component({
   selector: 'demo-app',
-  directives: [NgSwitch, CalendarMonthView, CalendarWeekView, CalendarDayView],
-  pipes: [CalendarDate],
-  providers: [
-    CalendarEventTitle,
-    CalendarDateFormatter
-  ],
   styles: [`
     h3 {
       margin: 0;
@@ -79,7 +66,7 @@ import {
     </div>
   `
 })
-export class DemoApp {
+export class Demo {
 
   private view: UnitOfTime = 'month';
 
