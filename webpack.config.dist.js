@@ -41,7 +41,13 @@ module.exports = {
       commonjs2: 'rxjs/Subscription',
       amd: 'rxjs/Subscription'
     },
-    moment: 'moment'
+    moment: 'moment',
+    'calendar-utils': {
+      root: ['calendarUtils'],
+      commonjs: 'calendar-utils',
+      commonjs2: 'calendar-utils',
+      amd: 'calendar-utils'
+    }
   },
   devtool: 'source-map',
   module: {
