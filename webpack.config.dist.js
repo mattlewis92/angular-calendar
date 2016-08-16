@@ -65,8 +65,7 @@ module.exports = {
       test: /\.scss/,
       loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss!sass?sourceMap'),
       exclude: /node_modules/
-    }],
-    noParse: /reflect-metadata/
+    }]
   },
   resolve: {
     extensions: ['', '.ts', '.js']

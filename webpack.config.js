@@ -17,8 +17,7 @@ module.exports = {
       test: /\.ts$/, loader: 'ts', exclude: /node_modules/
     }, {
       test: /\.scss$/, loader: 'style!css!postcss!sass'
-    }],
-    noParse: /reflect-metadata/
+    }]
   },
   resolve: {
     extensions: ['', '.ts', '.js']
