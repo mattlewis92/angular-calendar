@@ -1,5 +1,3 @@
-import './scss/angular2-calendar.scss';
-
 export * from './src/providers/calendarEventTitle.provider';
 export * from './src/providers/calendarMomentDateFormatter.provider';
 export * from './src/providers/calendarNativeDateFormatter.provider';

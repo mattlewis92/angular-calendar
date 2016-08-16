@@ -1,3 +1,4 @@
+import './../scss/angular2-calendar.scss';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 import {enableProdMode} from '@angular/core';
