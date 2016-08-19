@@ -32,15 +32,15 @@ import {DEFAULT_LOCALE} from './../constants';
   template: `
     <div class="cal-month-view">
       <div class="cal-cell-row cal-header">
-        <div class="cal-cell" *ngFor="let header of columnHeaders; trackBy:trackByItem">
+        <div class="cal-cell" *ngFor="let header of columnHeaders">
           {{ header.date | calendarDate:'monthViewColumnHeader':locale }}
         </div>
       </div>
       <div class="cal-days">
-        <div *ngFor="let rowIndex of view.rowOffsets; trackBy:trackByItem">
+        <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7; trackBy:trackByItem"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
               [day]="day"
               [openDay]="openDay"
               [locale]="locale"
@@ -52,7 +52,7 @@ import {DEFAULT_LOCALE} from './../constants';
           </div>
           <div class="cal-slidebox" [@collapse] *ngIf="openRowIndex === rowIndex">
             <div
-              *ngFor="let event of openDay.events; trackBy:trackByItem"
+              *ngFor="let event of openDay.events"
               [ngClass]="event?.cssClass">
               <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
               <mwl-calendar-event-title
@@ -208,10 +208,6 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
         delete day.backgroundColor;
       }
     });
-  }
-
-  private trackByItem(index: number, obj: any): any {
-    return obj;
   }
 
 }

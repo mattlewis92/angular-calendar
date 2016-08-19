@@ -33,10 +33,10 @@ const SEGMENT_HEIGHT: number = 30;
       </div>
       <div class="cal-hour-rows">
         <div class="cal-hour-col-time">
-          <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByItem">
+          <div class="cal-hour" *ngFor="let hour of hours">
             <div
               class="cal-hour-segment"
-              *ngFor="let segment of hour.segments; trackBy:trackByItem"
+              *ngFor="let segment of hour.segments"
               (click)="hourSegmentClicked.emit({date: segment.date.toDate()})"
               [ngClass]="segment.cssClass">
               <div *ngIf="segment.isStart" class="cal-time">
@@ -49,7 +49,7 @@ const SEGMENT_HEIGHT: number = 30;
         <div class="cal-hour-col-events">
           <div
             class="cal-event"
-            *ngFor="let dayEvent of view?.events; trackBy:trackByItem"
+            *ngFor="let dayEvent of view?.events"
             [style.marginTop.px]="dayEvent.top"
             [style.marginLeft.px]="dayEvent.left"
             [style.height.px]="dayEvent.height"
@@ -67,8 +67,8 @@ const SEGMENT_HEIGHT: number = 30;
             <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
           </div>
           <div>
-            <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByItem" [style.minWidth.px]="view?.width">
-              <div class="cal-hour-segment" *ngFor="let segment of hour.segments; trackBy:trackByItem">
+            <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width">
+              <div class="cal-hour-segment" *ngFor="let segment of hour.segments">
                 &nbsp;
               </div>
             </div>
@@ -192,10 +192,6 @@ export class CalendarDayView implements OnChanges {
       this.refreshView();
     }
 
-  }
-
-  private trackByItem(index: number, obj: any): any {
-    return obj;
   }
 
   private refreshHourGrid(): void {

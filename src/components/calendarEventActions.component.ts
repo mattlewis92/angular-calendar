@@ -9,7 +9,7 @@ import {CalendarEvent} from 'calendar-utils';
       <a
         class="cal-event-action"
         href="javascript:;"
-        *ngFor="let action of event.actions; trackBy:trackByItem"
+        *ngFor="let action of event.actions"
         (click)="action.onClick({event: event})"
         [ngClass]="action.cssClass"
         [innerHtml]="action.label">
@@ -20,9 +20,5 @@ import {CalendarEvent} from 'calendar-utils';
 export class CalendarEventActions {
 
   @Input() event: CalendarEvent;
-
-  private trackByItem(index: number, obj: any): any {
-    return obj;
-  }
 
 }

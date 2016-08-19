@@ -28,7 +28,7 @@ import {DEFAULT_LOCALE} from './../constants';
       <div class="cal-day-headers">
         <div
           class="cal-header"
-          *ngFor="let day of days; trackBy:trackByItem"
+          *ngFor="let day of days"
           [class.cal-past]="day.isPast"
           [class.cal-today]="day.isToday"
           [class.cal-future]="day.isFuture"
@@ -38,10 +38,10 @@ import {DEFAULT_LOCALE} from './../constants';
           <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>
         </div>
       </div>
-      <div *ngFor="let eventRow of eventRows; trackBy:trackByItem">
+      <div *ngFor="let eventRow of eventRows">
         <div
           class="cal-event-container"
-          *ngFor="let event of eventRow.row; trackBy:trackByItem"
+          *ngFor="let event of eventRow.row"
           [style.width]="((100 / 7) * event.span) + '%'"
           [style.marginLeft]="((100 / 7) * event.offset) + '%'">
           <div
@@ -149,10 +149,6 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
-  }
-
-  private trackByItem(index: number, obj: any): any {
-    return obj;
   }
 
 }

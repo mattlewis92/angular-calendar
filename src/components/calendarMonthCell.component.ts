@@ -12,7 +12,7 @@ import {MonthViewDay} from 'calendar-utils';
     <div class="cal-events">
       <span
         class="cal-event"
-        *ngFor="let event of day.events; trackBy:trackByItem"
+        *ngFor="let event of day.events"
         [style.backgroundColor]="event.color.primary"
         [ngClass]="event?.cssClass"
         (mouseenter)="highlightDay.emit({event: event})"
@@ -51,9 +51,5 @@ export class CalendarMonthCell {
   @Output() highlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
-
-  private trackByItem(index: number, obj: any): any {
-    return obj;
-  }
 
 }
