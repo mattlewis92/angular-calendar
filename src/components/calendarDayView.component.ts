@@ -19,18 +19,11 @@ const SEGMENT_HEIGHT: number = 30;
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-day-view">
-      <div
-        class="cal-all-day-event"
-        *ngFor="let event of view.allDayEvents; trackBy:event"
-        [style.backgroundColor]="event.color.secondary"
-        [style.borderColor]="event.color.primary">
-        <mwl-calendar-event-title
-          [event]="event"
-          view="day"
-          (click)="eventClicked.emit({event: event})">
-        </mwl-calendar-event-title>
-        <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
-      </div>
+      <mwl-calendar-all-day-event
+        *ngFor="let event of view.allDayEvents"
+        [event]="event"
+        (eventClicked)="eventClicked.emit({event: event})">
+      </mwl-calendar-all-day-event>
       <div class="cal-hour-rows">
         <div class="cal-hour-col-time">
           <div class="cal-hour" *ngFor="let hour of hours">
