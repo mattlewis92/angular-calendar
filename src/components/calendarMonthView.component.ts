@@ -41,7 +41,7 @@ import {DEFAULT_LOCALE} from './../constants';
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
-              (cellClicked)="dayClicked.emit({day: day})"
+              (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)">
             </mwl-calendar-month-cell>

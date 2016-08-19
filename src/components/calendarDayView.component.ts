@@ -27,7 +27,7 @@ const SEGMENT_HEIGHT: number = 30;
         <mwl-calendar-event-title
           [event]="event"
           view="day"
-          (titleClicked)="eventClicked.emit({event: event})">
+          (click)="eventClicked.emit({event: event})">
         </mwl-calendar-event-title>
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
       </div>
@@ -62,7 +62,7 @@ const SEGMENT_HEIGHT: number = 30;
             <mwl-calendar-event-title
               [event]="dayEvent.event"
               view="day"
-              (titleClicked)="eventClicked.emit({event: dayEvent.event})">
+              (click)="eventClicked.emit({event: dayEvent.event})">
             </mwl-calendar-event-title>
             <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
           </div>

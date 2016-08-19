@@ -32,8 +32,7 @@ import {MonthViewDay} from 'calendar-utils';
     '[class.cal-out-month]': '!day.inMonth',
     '[class.cal-has-events]': 'day.events.length > 0',
     '[class.cal-open]': 'day === openDay',
-    '[style.backgroundColor]': 'day.backgroundColor',
-    '(click)': 'cellClicked.emit()'
+    '[style.backgroundColor]': 'day.backgroundColor'
   }
 })
 export class CalendarMonthCell {
@@ -45,8 +44,6 @@ export class CalendarMonthCell {
   @Input() locale: string;
 
   @Input() tooltipPlacement: string = 'top';
-
-  @Output() cellClicked: EventEmitter<any> = new EventEmitter();
 
   @Output() highlightDay: EventEmitter<any> = new EventEmitter();
 

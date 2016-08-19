@@ -50,7 +50,7 @@ import {DEFAULT_LOCALE} from './../constants';
             <mwl-calendar-event-title
               [event]="event.event"
               view="week"
-              (titleClicked)="eventClicked.emit({event: event.event})">
+              (click)="eventClicked.emit({event: event.event})">
             </mwl-calendar-event-title>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, EventEmitter} from '@angular/core';
 import {CalendarEvent} from 'calendar-utils';
 
 @Component({
@@ -8,8 +8,7 @@ import {CalendarEvent} from 'calendar-utils';
     <a
       class="cal-event-title"
       href="javascript:;"
-      [innerHTML]="event | calendarEventTitle:view"
-      (click)="titleClicked.emit()">
+      [innerHTML]="event | calendarEventTitle:view">
     </a>
   `
 })
@@ -18,7 +17,5 @@ export class CalendarEventTitle {
   @Input() event: CalendarEvent;
 
   @Input() view: string;
-
-  @Output() titleClicked: EventEmitter<any> = new EventEmitter();
 
 }
