@@ -11,6 +11,7 @@ import {CalendarWeekViewHeader} from './components/calendarWeekViewHeader.compon
 import {CalendarWeekViewEvent} from './components/calendarWeekViewEvent.component';
 import {CalendarAllDayEvent} from './components/calendarAllDayEvent.component';
 import {CalendarDayViewHourSegment} from './components/calendarDayViewHourSegment.component';
+import {CalendarDayViewEvent} from './components/calendarDayViewEvent.component';
 import {CalendarTooltipWindow, CalendarTooltip} from './directives/calendarTooltip.directive';
 import {CalendarDate} from './pipes/calendarDate.pipe';
 import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEventTitle.pipe';
@@ -28,6 +29,7 @@ import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEven
     CalendarWeekViewEvent,
     CalendarAllDayEvent,
     CalendarDayViewHourSegment,
+    CalendarDayViewEvent,
     CalendarTooltipWindow,
     CalendarTooltip,
     CalendarDate,

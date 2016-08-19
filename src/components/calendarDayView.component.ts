@@ -36,25 +36,11 @@ const SEGMENT_HEIGHT: number = 30;
           </div>
         </div>
         <div class="cal-hour-col-events">
-          <div
-            class="cal-event"
+          <mwl-calendar-day-view-event
             *ngFor="let dayEvent of view?.events"
-            [style.marginTop.px]="dayEvent.top"
-            [style.marginLeft.px]="dayEvent.left"
-            [style.height.px]="dayEvent.height"
-            [style.width.px]="dayEvent.width - 1"
-            [style.backgroundColor]="dayEvent.event.color.secondary"
-            [style.borderColor]="dayEvent.event.color.primary"
-            [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
-            [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
-            [ngClass]="dayEvent.event.cssClass">
-            <mwl-calendar-event-title
-              [event]="dayEvent.event"
-              view="day"
-              (click)="eventClicked.emit({event: dayEvent.event})">
-            </mwl-calendar-event-title>
-            <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
-          </div>
+            [dayEvent]="dayEvent"
+            (eventClicked)="eventClicked.emit({event: dayEvent.event})">
+          </mwl-calendar-day-view-event>
           <div>
             <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width">
               <div class="cal-hour-segment" *ngFor="let segment of hour.segments">
