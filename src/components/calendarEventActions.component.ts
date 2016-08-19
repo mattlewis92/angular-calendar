@@ -21,4 +21,8 @@ export class CalendarEventActions {
 
   @Input() event: CalendarEvent;
 
+  private trackByItem(index: number, obj: any): any {
+    return obj;
+  }
+
 }

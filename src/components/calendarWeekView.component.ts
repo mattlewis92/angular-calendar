@@ -52,12 +52,11 @@ import {DEFAULT_LOCALE} from './../constants';
             [ngClass]="event.event?.cssClass"
             [mwlCalendarTooltip]="event.event | calendarEventTitle:'weekTooltip'"
             [tooltipPlacement]="tooltipPlacement">
-            <a
-              class="cal-event-title"
-              href="javascript:;"
-              [innerHtml]="event.event | calendarEventTitle:'week'"
-              (click)="eventClicked.emit({event: event.event})">
-            </a>
+            <mwl-calendar-event-title
+              [event]="event.event"
+              view="week"
+              (titleClicked)="eventClicked.emit({event: event.event})">
+            </mwl-calendar-event-title>
           </div>
         </div>
       </div>

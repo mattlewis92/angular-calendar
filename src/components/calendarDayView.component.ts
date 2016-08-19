@@ -24,22 +24,12 @@ const SEGMENT_HEIGHT: number = 30;
         *ngFor="let event of view.allDayEvents; trackBy:event"
         [style.backgroundColor]="event.color.secondary"
         [style.borderColor]="event.color.primary">
-        <a
-          class="cal-event-title"
-          href="javascript:;"
-          [innerHtml]="event | calendarEventTitle:'day'"
-          (click)="eventClicked.emit({event: event})">
-        </a>
-        <span *ngIf="event.actions" class="cal-event-actions">
-          <a
-            class="cal-event-action"
-            href="javascript:;"
-            *ngFor="let action of event.actions; trackBy:trackByItem"
-            (click)="action.onClick({event: event})"
-            [ngClass]="action.cssClass"
-            [innerHtml]="action.label">
-          </a>
-        </span>
+        <mwl-calendar-event-title
+          [event]="event"
+          view="day"
+          (titleClicked)="eventClicked.emit({event: event})">
+        </mwl-calendar-event-title>
+        <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
       </div>
       <div class="cal-hour-rows">
         <div class="cal-hour-col-time">
@@ -69,12 +59,11 @@ const SEGMENT_HEIGHT: number = 30;
             [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
             [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
             [ngClass]="dayEvent.event.cssClass">
-            <a
-              class="cal-event-title"
-              href="javascript:;"
-              [innerHtml]="dayEvent.event | calendarEventTitle:'day'"
-              (click)="eventClicked.emit({event: dayEvent.event})">
-            </a>
+            <mwl-calendar-event-title
+              [event]="dayEvent.event"
+              view="day"
+              (titleClicked)="eventClicked.emit({event: dayEvent.event})">
+            </mwl-calendar-event-title>
             <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
           </div>
           <div>

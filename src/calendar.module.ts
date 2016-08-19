@@ -4,9 +4,10 @@ import {CalendarDayView} from './components/calendarDayView.component';
 import {CalendarWeekView} from './components/calendarWeekView.component';
 import {CalendarMonthView} from './components/calendarMonthView.component';
 import {CalendarEventActions} from './components/calendarEventActions.component';
+import {CalendarEventTitle as CalendarEventTitleComponent} from './components/calendarEventTitle.component';
 import {CalendarTooltipWindow, CalendarTooltip} from './directives/calendarTooltip.directive';
 import {CalendarDate} from './pipes/calendarDate.pipe';
-import {CalendarEventTitle} from './pipes/calendarEventTitle.pipe';
+import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEventTitle.pipe';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,11 @@ import {CalendarEventTitle} from './pipes/calendarEventTitle.pipe';
     CalendarWeekView,
     CalendarMonthView,
     CalendarEventActions,
+    CalendarEventTitleComponent,
     CalendarTooltipWindow,
     CalendarTooltip,
     CalendarDate,
-    CalendarEventTitle
+    CalendarEventTitlePipe
   ],
   imports: [CommonModule],
   exports: [CalendarDayView, CalendarWeekView, CalendarMonthView, CalendarDate],

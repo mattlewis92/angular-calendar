@@ -76,12 +76,11 @@ import {DEFAULT_LOCALE} from './../constants';
               *ngFor="let event of openDay.events; trackBy:trackByItem"
               [ngClass]="event?.cssClass">
               <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
-              <a
-                class="cal-event-title"
-                href="javascript:;"
-                [innerHTML]="event | calendarEventTitle:'month'"
-                (click)="eventClicked.emit({event: event})">
-              </a>
+              <mwl-calendar-event-title
+                [event]="event"
+                view="month"
+                (titleClicked)="eventClicked.emit({event: event})">
+              </mwl-calendar-event-title>
               <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
             </div>
           </div>
