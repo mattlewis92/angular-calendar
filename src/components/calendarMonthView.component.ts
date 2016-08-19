@@ -39,37 +39,16 @@ import {DEFAULT_LOCALE} from './../constants';
       <div class="cal-days">
         <div *ngFor="let rowIndex of view.rowOffsets; trackBy:trackByItem">
           <div class="cal-cell-row">
-            <div
-              class="cal-cell cal-day-cell"
+            <mwl-calendar-month-cell
               *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7; trackBy:trackByItem"
-              [class.cal-past]="day.isPast"
-              [class.cal-today]="day.isToday"
-              [class.cal-future]="day.isFuture"
-              [class.cal-weekend]="day.isWeekend"
-              [class.cal-in-month]="day.inMonth"
-              [class.cal-out-month]="!day.inMonth"
-              [class.cal-has-events]="day.events.length > 0"
-              [class.cal-open]="day === openDay"
-              [ngClass]="day?.cssClass"
-              [style.backgroundColor]="day.backgroundColor"
-              (click)="dayClicked.emit({day: day})">
-              <div class="cal-cell-top">
-                <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
-                <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
-              </div>
-              <div class="cal-events">
-                <span
-                  class="cal-event"
-                  *ngFor="let event of day.events; trackBy:trackByItem"
-                  [style.backgroundColor]="event.color.primary"
-                  [ngClass]="event?.cssClass"
-                  (mouseenter)="toggleDayHighlight(event, true)"
-                  (mouseleave)="toggleDayHighlight(event, false)"
-                  [mwlCalendarTooltip]="event | calendarEventTitle:'monthTooltip'"
-                  [tooltipPlacement]="tooltipPlacement">
-                </span>
-              </div>
-            </div>
+              [day]="day"
+              [openDay]="openDay"
+              [locale]="locale"
+              [tooltipPlacement]="tooltipPlacement"
+              (cellClicked)="dayClicked.emit({day: day})"
+              (highlightDay)="toggleDayHighlight($event.event, true)"
+              (unhighlightDay)="toggleDayHighlight($event.event, false)">
+            </mwl-calendar-month-cell>
           </div>
           <div class="cal-slidebox" [@collapse] *ngIf="openRowIndex === rowIndex">
             <div
