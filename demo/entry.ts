@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 import './../scss/angular2-calendar.scss';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
