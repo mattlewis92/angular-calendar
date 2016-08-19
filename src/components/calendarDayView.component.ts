@@ -27,16 +27,12 @@ const SEGMENT_HEIGHT: number = 30;
       <div class="cal-hour-rows">
         <div class="cal-hour-col-time">
           <div class="cal-hour" *ngFor="let hour of hours">
-            <div
-              class="cal-hour-segment"
+            <mwl-calendar-day-view-hour-segment
               *ngFor="let segment of hour.segments"
-              (click)="hourSegmentClicked.emit({date: segment.date.toDate()})"
-              [ngClass]="segment.cssClass">
-              <div *ngIf="segment.isStart" class="cal-time">
-                {{ segment.date | calendarDate:'dayViewHour':locale }}
-              </div>
-              &nbsp;
-            </div>
+              [segment]="segment"
+              [locale]="locale"
+              (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
+            </mwl-calendar-day-view-hour-segment>
           </div>
         </div>
         <div class="cal-hour-col-events">
