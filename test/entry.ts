@@ -1,3 +1,8 @@
+/// <reference types="mocha" />
+/// <reference types="chai" />
+/// <reference types="sinon" />
+/// <reference types="sinon-chai" />
+
 import 'es6-shim';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
