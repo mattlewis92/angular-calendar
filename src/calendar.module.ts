@@ -7,6 +7,7 @@ import {CalendarEventActions} from './components/calendarEventActions.component'
 import {CalendarEventTitle as CalendarEventTitleComponent} from './components/calendarEventTitle.component';
 import {CalendarMonthCell} from './components/calendarMonthCell.component';
 import {CalendarSlideBox} from './components/calendarSlideBox.component';
+import {CalendarWeekViewHeader} from './components/calendarWeekViewHeader.component';
 import {CalendarTooltipWindow, CalendarTooltip} from './directives/calendarTooltip.directive';
 import {CalendarDate} from './pipes/calendarDate.pipe';
 import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEventTitle.pipe';
@@ -20,6 +21,7 @@ import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEven
     CalendarEventTitleComponent,
     CalendarMonthCell,
     CalendarSlideBox,
+    CalendarWeekViewHeader,
     CalendarTooltipWindow,
     CalendarTooltip,
     CalendarDate,

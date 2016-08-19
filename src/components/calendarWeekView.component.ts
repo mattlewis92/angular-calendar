@@ -26,17 +26,12 @@ import {DEFAULT_LOCALE} from './../constants';
   template: `
     <div class="cal-week-view">
       <div class="cal-day-headers">
-        <div
-          class="cal-header"
+        <mwl-calendar-week-view-header
           *ngFor="let day of days"
-          [class.cal-past]="day.isPast"
-          [class.cal-today]="day.isToday"
-          [class.cal-future]="day.isFuture"
-          [class.cal-weekend]="day.isWeekend"
+          [day]="day"
+          [locale]="locale"
           (click)="dayClicked.emit({date: day.date.toDate()})">
-          <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br>
-          <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>
-        </div>
+        </mwl-calendar-week-view-header>
       </div>
       <div *ngFor="let eventRow of eventRows">
         <div
