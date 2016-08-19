@@ -82,16 +82,7 @@ import {DEFAULT_LOCALE} from './../constants';
                 [innerHTML]="event | calendarEventTitle:'month'"
                 (click)="eventClicked.emit({event: event})">
               </a>
-              <span *ngIf="event.actions" class="cal-event-actions">
-                <a
-                  class="cal-event-action"
-                  href="javascript:;"
-                  *ngFor="let action of event.actions; trackBy:trackByItem"
-                  (click)="action.onClick({event: event})"
-                  [ngClass]="action.cssClass"
-                  [innerHtml]="action.label">
-                </a>
-              </span>
+              <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
             </div>
           </div>
         </div>

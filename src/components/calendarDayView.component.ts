@@ -75,16 +75,7 @@ const SEGMENT_HEIGHT: number = 30;
               [innerHtml]="dayEvent.event | calendarEventTitle:'day'"
               (click)="eventClicked.emit({event: dayEvent.event})">
             </a>
-            <span *ngIf="dayEvent.event.actions" class="cal-event-actions">
-              <a
-                class="cal-event-action"
-                href="javascript:;"
-                *ngFor="let action of dayEvent.event.actions; trackBy:trackByItem"
-                (click)="action.onClick({event: dayEvent.event})"
-                [ngClass]="action.cssClass"
-                [innerHtml]="action.label">
-              </a>
-            </span>
+            <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
           </div>
           <div>
             <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByItem" [style.minWidth.px]="view?.width">

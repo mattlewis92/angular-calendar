@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {CalendarDayView} from './components/calendarDayView.component';
 import {CalendarWeekView} from './components/calendarWeekView.component';
 import {CalendarMonthView} from './components/calendarMonthView.component';
+import {CalendarEventActions} from './components/calendarEventActions.component';
 import {CalendarTooltipWindow, CalendarTooltip} from './directives/calendarTooltip.directive';
 import {CalendarDate} from './pipes/calendarDate.pipe';
 import {CalendarEventTitle} from './pipes/calendarEventTitle.pipe';
@@ -12,6 +13,7 @@ import {CalendarEventTitle} from './pipes/calendarEventTitle.pipe';
     CalendarDayView,
     CalendarWeekView,
     CalendarMonthView,
+    CalendarEventActions,
     CalendarTooltipWindow,
     CalendarTooltip,
     CalendarDate,
