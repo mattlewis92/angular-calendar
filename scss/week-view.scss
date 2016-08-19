@@ -1,10 +1,8 @@
-@import 'variables';
-
 .cal-week-view {
   .cal-day-headers {
     display: flex;
     margin-bottom: 3px;
-    border: $default-border;
+    border: 1px solid #e1e1e1;
     margin-left: 2px;
     margin-right: 2px;
   }
@@ -16,7 +14,7 @@
   }
 
   .cal-day-headers .cal-header:not(:last-child) {
-    border-right: $default-border;
+    border-right: 1px solid #e1e1e1;
   }
 
   .cal-day-headers .cal-header:hover {
@@ -56,7 +54,7 @@
   }
 
   .cal-header.cal-weekend span {
-    color: darkred;
+    color: #8b0000;
   }
 
   .cal-event,

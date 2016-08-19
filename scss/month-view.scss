@@ -1,5 +1,3 @@
-@import 'variables';
-
 .cal-month-view {
   .cal-header {
     text-align: center;
@@ -20,7 +18,7 @@
   }
 
   .cal-days {
-    border: $default-border;
+    border: 1px solid #e1e1e1;
     border-bottom: 0;
   }
 
@@ -45,11 +43,11 @@
   }
 
   .cal-day-cell:not(:last-child) {
-    border-right: $default-border;
+    border-right: 1px solid #e1e1e1;
   }
 
   .cal-days .cal-cell-row {
-    border-bottom: $default-border;
+    border-bottom: 1px solid #e1e1e1;
   }
 
   .cal-day-badge {
