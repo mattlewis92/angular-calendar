@@ -4,10 +4,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  trigger,
-  style,
-  transition,
-  animate,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   OnInit,
@@ -50,35 +46,14 @@ import {DEFAULT_LOCALE} from './../constants';
               (unhighlightDay)="toggleDayHighlight($event.event, false)">
             </mwl-calendar-month-cell>
           </div>
-          <div class="cal-slidebox" [@collapse] *ngIf="openRowIndex === rowIndex">
-            <div
-              *ngFor="let event of openDay.events"
-              [ngClass]="event?.cssClass">
-              <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
-              <mwl-calendar-event-title
-                [event]="event"
-                view="month"
-                (titleClicked)="eventClicked.emit({event: event})">
-              </mwl-calendar-event-title>
-              <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
-            </div>
-          </div>
+          <mwl-calendar-slide-box
+            [isOpen]="openRowIndex === rowIndex"
+            [events]="openDay?.events">
+          </mwl-calendar-slide-box>
         </div>
       </div>
     </div>
-  `,
-  animations: [
-    trigger('collapse', [
-      transition('void => *', [
-        style({height: 0}),
-        animate('150ms linear', style({height: '*'}))
-      ]),
-      transition('* => void', [
-        style({height: '*'}),
-        animate('150ms linear', style({height: 0}))
-      ])
-    ])
-  ]
+  `
 })
 export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
