@@ -36,23 +36,14 @@ import {DEFAULT_LOCALE} from './../constants';
       <div *ngFor="let eventRow of eventRows">
         <div
           class="cal-event-container"
-          *ngFor="let event of eventRow.row"
-          [style.width]="((100 / 7) * event.span) + '%'"
-          [style.marginLeft]="((100 / 7) * event.offset) + '%'">
-          <div
-            class="cal-event"
-            [class.cal-starts-within-week]="!event.startsBeforeWeek"
-            [class.cal-ends-within-week]="!event.endsAfterWeek"
-            [style.backgroundColor]="event.event.color.secondary"
-            [ngClass]="event.event?.cssClass"
-            [mwlCalendarTooltip]="event.event | calendarEventTitle:'weekTooltip'"
-            [tooltipPlacement]="tooltipPlacement">
-            <mwl-calendar-event-title
-              [event]="event.event"
-              view="week"
-              (click)="eventClicked.emit({event: event.event})">
-            </mwl-calendar-event-title>
-          </div>
+          *ngFor="let weekEvent of eventRow.row"
+          [style.width]="((100 / 7) * weekEvent.span) + '%'"
+          [style.marginLeft]="((100 / 7) * weekEvent.offset) + '%'">
+          <mwl-calendar-week-view-event
+            [weekEvent]="weekEvent"
+            [tooltipPlacement]="tooltipPlacement"
+            (eventClicked)="eventClicked.emit({event: weekEvent.event})">
+          </mwl-calendar-week-view-event>
         </div>
       </div>
     </div>

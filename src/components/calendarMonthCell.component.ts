@@ -43,7 +43,7 @@ export class CalendarMonthCell {
 
   @Input() locale: string;
 
-  @Input() tooltipPlacement: string = 'top';
+  @Input() tooltipPlacement: string;
 
   @Output() highlightDay: EventEmitter<any> = new EventEmitter();
 

@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy, EventEmitter} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {CalendarEvent} from 'calendar-utils';
 
 @Component({
