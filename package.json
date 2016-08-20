@@ -43,7 +43,7 @@
     "@angular/platform-browser-dynamic": "2.0.0-rc.5",
     "@ng-bootstrap/ng-bootstrap": "~1.0.0-alpha.1",
     "@types/chai": "~3.4.30",
-    "@types/es6-shim": "0.0.29",
+    "@types/es6-shim": "0.0.30",
     "@types/mocha": "~2.2.29",
     "@types/sinon": "~1.16.27",
     "@types/sinon-chai": "~2.7.26",
