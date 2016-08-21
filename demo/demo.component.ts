@@ -33,7 +33,7 @@ import {
            </div>
         </div>
         <div class="col-md-4">
-          <h3>{{ date | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+          <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
         </div>
         <div class="col-md-4">
           <div class="btn-group">
@@ -47,19 +47,19 @@ import {
       <div [ngSwitch]="view">
         <mwl-calendar-month-view
           *ngSwitchCase="'month'"
-          [date]="date"
+          [viewDate]="viewDate"
           [events]="events"
           [slideBoxIsOpen]="slideBoxIsOpen"
           (dayClicked)="dayClicked($event.day)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view
           *ngSwitchCase="'week'"
-          [date]="date"
+          [viewDate]="viewDate"
           [events]="events">
         </mwl-calendar-week-view>
         <mwl-calendar-day-view
           *ngSwitchCase="'day'"
-          [date]="date"
+          [viewDate]="viewDate"
           [events]="events">
         </mwl-calendar-day-view>
       </div>
@@ -70,7 +70,7 @@ export class Demo {
 
   private view: UnitOfTime = 'month';
 
-  private date: Date = new Date();
+  private viewDate: Date = new Date();
 
   private actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -213,24 +213,24 @@ export class Demo {
   }
 
   increment(): void {
-    this.date = moment(this.date).add(1, this.view).toDate();
+    this.viewDate = moment(this.viewDate).add(1, this.view).toDate();
   }
 
   decrement(): void {
-    this.date = moment(this.date).subtract(1, this.view).toDate();
+    this.viewDate = moment(this.viewDate).subtract(1, this.view).toDate();
   }
 
   today(): void {
-    this.date = new Date();
+    this.viewDate = new Date();
   }
 
   dayClicked({date, events}: {date: Moment, events: CalendarEvent[]}): void {
-    if (moment(date).startOf('month').isSame(moment(this.date).startOf('month'))) {
-      if ((this.date.getTime() === date.toDate().getTime() && this.slideBoxIsOpen === true) || events.length === 0) {
+    if (moment(date).startOf('month').isSame(moment(this.viewDate).startOf('month'))) {
+      if ((this.viewDate.getTime() === date.toDate().getTime() && this.slideBoxIsOpen === true) || events.length === 0) {
         this.slideBoxIsOpen = false;
       } else {
         this.slideBoxIsOpen = true;
-        this.date = date.toDate();
+        this.viewDate = date.toDate();
       }
     }
   }

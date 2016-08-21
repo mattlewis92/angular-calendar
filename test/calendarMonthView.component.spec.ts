@@ -33,8 +33,8 @@ describe('calendarMonthView component', () => {
 
   it('should generate the month view', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
-    fixture.componentInstance.ngOnChanges({date: {}});
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
     expect(fixture.componentInstance.view.rowOffsets).to.deep.equal([0, 7, 14, 21, 28]);
     expect(fixture.componentInstance.view.days.length).to.equal(35);
     expect(fixture.componentInstance.view.days[0].date.toDate()).to.deep.equal(moment('2016-05-29').toDate());
@@ -45,13 +45,13 @@ describe('calendarMonthView component', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     expect(fixture.componentInstance.openRowIndex).to.be.undefined;
     expect(fixture.componentInstance.openDay).to.be.undefined;
-    fixture.componentInstance.date = moment().startOf('month').startOf('week').add(8, 'days').toDate();
+    fixture.componentInstance.viewDate = moment().startOf('month').startOf('week').add(8, 'days').toDate();
     fixture.componentInstance.slideBoxIsOpen = true;
-    fixture.componentInstance.ngOnChanges({date: {}, slideBoxIsOpen: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, slideBoxIsOpen: {}});
     expect(fixture.componentInstance.openRowIndex).to.equal(7);
     expect(fixture.componentInstance.openDay).to.equal(fixture.componentInstance.view.days[8]);
     fixture.componentInstance.slideBoxIsOpen = false;
-    fixture.componentInstance.ngOnChanges({date: {}, slideBoxIsOpen: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, slideBoxIsOpen: {}});
     expect(fixture.componentInstance.openRowIndex).not.to.be.ok;
     expect(fixture.componentInstance.openDay).not.to.be.ok;
     fixture.destroy();
@@ -59,7 +59,7 @@ describe('calendarMonthView component', () => {
 
   it('should add a custom CSS class to events', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -70,7 +70,7 @@ describe('calendarMonthView component', () => {
         secondary: ''
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
       '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
@@ -81,12 +81,12 @@ describe('calendarMonthView component', () => {
 
   it('should add a custom CSS class to days via the cell modifier', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.cellModifier = day => {
       day.cssClass = 'foo';
       return day;
     };
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.be.true;
     fixture.destroy();
@@ -94,7 +94,7 @@ describe('calendarMonthView component', () => {
 
   it('should add the highlight class to events on mouse over', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -104,7 +104,7 @@ describe('calendarMonthView component', () => {
         secondary: 'rgb(238, 238, 238)'
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
       '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
@@ -120,7 +120,7 @@ describe('calendarMonthView component', () => {
 
   it('should add event actions to the slidebox', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-26'),
       end: new Date('2016-06-28'),
@@ -136,7 +136,7 @@ describe('calendarMonthView component', () => {
       }]
     }];
     fixture.componentInstance.slideBoxIsOpen = true;
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-action');
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
@@ -148,7 +148,7 @@ describe('calendarMonthView component', () => {
   it('should call the event clicked callback', () => {
 
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-26'),
       end: new Date('2016-06-28'),
@@ -159,7 +159,7 @@ describe('calendarMonthView component', () => {
       }
     }];
     fixture.componentInstance.slideBoxIsOpen = true;
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const title: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-title');
     expect(title.innerHTML).to.equal('<span>foo</span>');
@@ -174,8 +174,8 @@ describe('calendarMonthView component', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
-    fixture.componentInstance.ngOnChanges({date: {}});
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
     const event: CalendarEvent = {
       start: new Date('2016-06-01'),
       end: new Date('2016-06-02'),
@@ -196,7 +196,7 @@ describe('calendarMonthView component', () => {
     eventTitle.month = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-26'),
       end: new Date('2016-06-28'),
@@ -207,7 +207,7 @@ describe('calendarMonthView component', () => {
       }
     }];
     fixture.componentInstance.slideBoxIsOpen = true;
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const title: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-title');
     expect(title.innerHTML).to.equal('foo bar');
@@ -217,8 +217,8 @@ describe('calendarMonthView component', () => {
 
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     fixture.componentInstance.locale = 'de';
-    fixture.componentInstance.date = new Date();
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.viewDate = new Date();
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-header .cal-cell').innerHTML.trim()).to.equal('Sonntag');
 
@@ -226,12 +226,12 @@ describe('calendarMonthView component', () => {
 
   it('should allow the badge total to be customised', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.cellModifier = day => {
       day.badgeTotal = 100;
       return day;
     };
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-day-badge').innerHTML).to.equal('100');
     fixture.destroy();
@@ -243,7 +243,7 @@ describe('calendarMonthView component', () => {
     eventTitle.monthTooltip = (event: CalendarEvent) => {
       return `title: ${event.title}`;
     };
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -253,7 +253,7 @@ describe('calendarMonthView component', () => {
         secondary: 'rgb(238, 238, 238)'
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
       '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
@@ -273,7 +273,7 @@ describe('calendarMonthView component', () => {
 
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     eventTitle.monthTooltip = () => '';
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -283,7 +283,7 @@ describe('calendarMonthView component', () => {
         secondary: 'rgb(238, 238, 238)'
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
       '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'

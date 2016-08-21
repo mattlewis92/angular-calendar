@@ -32,7 +32,7 @@ describe('CalendarDayView component', () => {
 
   it('should generate the day view', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-29').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
       title: 'foo',
@@ -41,7 +41,7 @@ describe('CalendarDayView component', () => {
         secondary: ''
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     expect(fixture.componentInstance.view.events.length).to.equal(1);
     expect(fixture.componentInstance.view.events[0].event).to.equal(fixture.componentInstance.events[0]);
     expect(fixture.componentInstance.hours.length).to.equal(24);
@@ -49,7 +49,7 @@ describe('CalendarDayView component', () => {
 
   it('should call the event clicked callback', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-29').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
       title: 'foo',
@@ -58,7 +58,7 @@ describe('CalendarDayView component', () => {
         secondary: ''
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     fixture.componentInstance.eventClicked.subscribe(val => {
       expect(val).to.deep.equal({
@@ -70,7 +70,7 @@ describe('CalendarDayView component', () => {
 
   it('should add a custom CSS class to events', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-01'),
       cssClass: 'foo',
@@ -80,7 +80,7 @@ describe('CalendarDayView component', () => {
         secondary: ''
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-event').classList.contains('foo')).to.be.true;
     fixture.destroy();
@@ -89,8 +89,8 @@ describe('CalendarDayView component', () => {
   it('should call the hour segment clicked callback', () => {
 
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-01').toDate();
-    fixture.componentInstance.ngOnChanges({date: {}});
+    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
     fixture.detectChanges();
     fixture.componentInstance.hourSegmentClicked.subscribe(val => {
       expect(val).to.deep.equal({date: moment('2016-06-01').startOf('day').add(1, 'hour').add(30, 'minutes').toDate()});
@@ -103,8 +103,8 @@ describe('CalendarDayView component', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
-    fixture.componentInstance.date = moment('2016-06-01').toDate();
-    fixture.componentInstance.ngOnChanges({date: {}});
+    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
     const event: CalendarEvent = {
       start: new Date('2016-06-01'),
       end: new Date('2016-06-02'),
@@ -126,7 +126,7 @@ describe('CalendarDayView component', () => {
     eventTitle.day = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
-    fixture.componentInstance.date = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -136,7 +136,7 @@ describe('CalendarDayView component', () => {
         secondary: ''
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const title: HTMLElement = fixture.nativeElement.querySelector('.cal-event-title');
     expect(title.innerHTML).to.equal('foo bar');
@@ -145,7 +145,7 @@ describe('CalendarDayView component', () => {
 
   it('should update the hour grid and event list when the day start changes', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-29').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
       title: 'foo',
@@ -154,7 +154,7 @@ describe('CalendarDayView component', () => {
         secondary: ''
       }
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.componentInstance.hours.length).to.equal(24);
     expect(fixture.componentInstance.view.events.length).to.equal(1);
@@ -166,7 +166,7 @@ describe('CalendarDayView component', () => {
 
   it('should add event actions to each event', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-26'),
       end: new Date('2016-06-28'),
@@ -181,7 +181,7 @@ describe('CalendarDayView component', () => {
         cssClass: 'foo'
       }]
     }];
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector('.cal-event .cal-event-action');
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
@@ -192,7 +192,7 @@ describe('CalendarDayView component', () => {
 
   it('should allow the event width to be customised', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
     fixture.componentInstance.events = [{
       start: new Date('2016-06-01'),
       title: 'foo',
@@ -202,7 +202,7 @@ describe('CalendarDayView component', () => {
       }
     }];
     fixture.componentInstance.eventWidth = 300;
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}, eventWidth: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}, eventWidth: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-event').style.width).to.equal('299px');
     fixture.destroy();
@@ -210,12 +210,12 @@ describe('CalendarDayView component', () => {
 
   it('should add a custom CSS class to days via the hour segment modifier', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
-    fixture.componentInstance.date = moment('2016-06-27').toDate();
+    fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.hourSegmentModifier = segment => {
       segment.cssClass = 'foo';
       return segment;
     };
-    fixture.componentInstance.ngOnChanges({date: {}, events: {}});
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-hour-segment').classList.contains('foo')).to.be.true;
     fixture.destroy();

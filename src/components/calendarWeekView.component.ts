@@ -54,7 +54,7 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
   /**
    * The current view date
    */
-  @Input() date: Date;
+  @Input() viewDate: Date;
 
   /**
    * An array of events to display on view
@@ -103,11 +103,11 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: any): void {
 
-    if (changes.date) {
+    if (changes.viewDate) {
       this.refreshHeader();
     }
 
-    if (changes.events || changes.date) {
+    if (changes.events || changes.viewDate) {
       this.refreshBody();
     }
 
@@ -121,14 +121,14 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 
   private refreshHeader(): void {
     this.days = getWeekViewHeader({
-      viewDate: this.date
+      viewDate: this.viewDate
     });
   }
 
   private refreshBody(): void {
     this.eventRows = getWeekView({
       events: this.events,
-      viewDate: this.date
+      viewDate: this.viewDate
     });
   }
 

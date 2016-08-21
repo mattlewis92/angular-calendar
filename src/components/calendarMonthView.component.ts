@@ -60,7 +60,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   /**
    * The current view date
    */
-  @Input() date: Date;
+  @Input() viewDate: Date;
 
   /**
    * An array of events to display on view
@@ -122,15 +122,15 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: any): void {
 
-    if (changes.date) {
+    if (changes.viewDate) {
       this.refreshHeader();
     }
 
-    if (changes.date || changes.events) {
+    if (changes.viewDate || changes.events) {
       this.refreshBody();
     }
 
-    if (changes.slideBoxIsOpen || changes.date || changes.events) {
+    if (changes.slideBoxIsOpen || changes.viewDate || changes.events) {
       this.refreshSlideBox();
     }
 
@@ -144,14 +144,14 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
   private refreshHeader(): void {
     this.columnHeaders = getWeekViewHeader({
-      viewDate: this.date
+      viewDate: this.viewDate
     });
   }
 
   private refreshBody(): void {
     this.view = getMonthView({
       events: this.events,
-      viewDate: this.date
+      viewDate: this.viewDate
     });
     if (this.cellModifier) {
       this.view.days = this.view.days.map(day => this.cellModifier(day));
@@ -160,7 +160,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
   private refreshSlideBox(): void {
     if (this.slideBoxIsOpen === true) {
-      this.openDay = this.view.days.find(day => day.date.isSame(moment(this.date).startOf('day')));
+      this.openDay = this.view.days.find(day => day.date.isSame(moment(this.viewDate).startOf('day')));
       const index: number = this.view.days.indexOf(this.openDay);
       this.openRowIndex = Math.floor(index / 7) * 7;
     } else {

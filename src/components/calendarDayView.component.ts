@@ -58,7 +58,7 @@ export class CalendarDayView implements OnChanges {
   /**
    * The current view date
    */
-  @Input() date: Date;
+  @Input() viewDate: Date;
 
   /**
    * An array of events to display on view
@@ -146,7 +146,7 @@ export class CalendarDayView implements OnChanges {
   ngOnChanges(changes: any): void {
 
     if (
-      changes.date ||
+      changes.viewDate ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
       changes.dayEndHour ||
@@ -156,7 +156,7 @@ export class CalendarDayView implements OnChanges {
     }
 
     if (
-      changes.date ||
+      changes.viewDate ||
       changes.events ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
@@ -171,7 +171,7 @@ export class CalendarDayView implements OnChanges {
 
   private refreshHourGrid(): void {
     this.hours = getDayViewHourGrid({
-      viewDate: this.date,
+      viewDate: this.viewDate,
       hourSegments: this.hourSegments,
       dayStart: {
         hour: this.dayStartHour,
@@ -192,7 +192,7 @@ export class CalendarDayView implements OnChanges {
   private refreshView(): void {
     this.view = getDayView({
       events: this.events,
-      viewDate: this.date,
+      viewDate: this.viewDate,
       hourSegments: this.hourSegments,
       dayStart: {
         hour: this.dayStartHour,
