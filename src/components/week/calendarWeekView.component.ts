@@ -18,7 +18,7 @@ import {
   getWeekViewHeader,
   getWeekView
 } from 'calendar-utils';
-import {DEFAULT_LOCALE} from './../constants';
+import {DEFAULT_LOCALE} from './../../constants';
 
 @Component({
   selector: 'mwl-calendar-week-view',

@@ -20,7 +20,7 @@ import {
 } from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {DEFAULT_LOCALE} from './../constants';
+import {DEFAULT_LOCALE} from './../../constants';
 
 @Component({
   selector: 'mwl-calendar-month-view',

@@ -12,7 +12,7 @@ import {
   CalendarDateFormatter,
   CalendarModule
 } from './../angular2-calendar';
-import {CalendarDayView} from './../src/components/calendarDayView.component';
+import {CalendarDayView} from './../src/components/day/calendarDayView.component';
 import {Subject} from 'rxjs/Rx';
 import {spy} from 'sinon';
 
