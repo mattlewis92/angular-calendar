@@ -6,7 +6,7 @@ import {DayViewHourSegment} from 'calendar-utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-hour-segment" [ngClass]="segment.cssClass">
-      <div *ngIf="segment.isStart" class="cal-time">
+      <div [hidden]="!segment.isStart" class="cal-time">
         {{ segment.date | calendarDate:'dayViewHour':locale }}
       </div>
       &nbsp;
