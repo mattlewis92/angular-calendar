@@ -20,6 +20,6 @@ import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angul
 use(sinonChai);
 TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
-declare var require: any;
+declare const require: any;
 const testsContext: any = require.context('./', true, /\.spec/);
 testsContext.keys().forEach(testsContext);
