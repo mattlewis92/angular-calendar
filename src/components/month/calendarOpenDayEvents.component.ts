@@ -10,10 +10,10 @@ import {
 import {CalendarEvent} from 'calendar-utils';
 
 @Component({
-  selector: 'mwl-calendar-slide-box',
+  selector: 'mwl-calendar-open-day-events',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="cal-slidebox" [@collapse] *ngIf="isOpen">
+    <div class="cal-open-day-events" [@collapse] *ngIf="isOpen">
       <div
         *ngFor="let event of events"
         [ngClass]="event?.cssClass">
@@ -40,7 +40,7 @@ import {CalendarEvent} from 'calendar-utils';
     ])
   ]
 })
-export class CalendarSlideBox {
+export class CalendarOpenDayEvents {
 
   @Input() isOpen: boolean = false;
 

@@ -46,10 +46,10 @@ import {DEFAULT_LOCALE} from './../../constants';
               (unhighlightDay)="toggleDayHighlight($event.event, false)">
             </mwl-calendar-month-cell>
           </div>
-          <mwl-calendar-slide-box
+          <mwl-calendar-open-day-events
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events">
-          </mwl-calendar-slide-box>
+          </mwl-calendar-open-day-events>
         </div>
       </div>
     </div>
@@ -68,9 +68,9 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   @Input() events: CalendarEvent[] = [];
 
   /**
-   * Whether the slidebox is opened or not
+   * Whether the events list for the day of the `viewDate` option is visible or not
    */
-  @Input() slideBoxIsOpen: boolean = false;
+  @Input() activeDayIsOpen: boolean = false;
 
   /**
    * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
@@ -130,8 +130,8 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
       this.refreshBody();
     }
 
-    if (changes.slideBoxIsOpen || changes.viewDate || changes.events) {
-      this.refreshSlideBox();
+    if (changes.activeDayIsOpen || changes.viewDate || changes.events) {
+      this.checkActiveDayIsOpen();
     }
 
   }
@@ -158,8 +158,8 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private refreshSlideBox(): void {
-    if (this.slideBoxIsOpen === true) {
+  private checkActiveDayIsOpen(): void {
+    if (this.activeDayIsOpen === true) {
       this.openDay = this.view.days.find(day => day.date.isSame(moment(this.viewDate).startOf('day')));
       const index: number = this.view.days.indexOf(this.openDay);
       this.openRowIndex = Math.floor(index / 7) * 7;
@@ -172,7 +172,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
-    this.refreshSlideBox();
+    this.checkActiveDayIsOpen();
   }
 
   private toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {

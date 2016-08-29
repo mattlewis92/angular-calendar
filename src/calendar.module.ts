@@ -6,7 +6,7 @@ import {CalendarMonthView} from './components/month/calendarMonthView.component'
 import {CalendarEventActions} from './components/common/calendarEventActions.component';
 import {CalendarEventTitle as CalendarEventTitleComponent} from './components/common/calendarEventTitle.component';
 import {CalendarMonthCell} from './components/month/calendarMonthCell.component';
-import {CalendarSlideBox} from './components/month/calendarSlideBox.component';
+import {CalendarOpenDayEvents} from './components/month/calendarOpenDayEvents.component';
 import {CalendarWeekViewHeader} from './components/week/calendarWeekViewHeader.component';
 import {CalendarWeekViewEvent} from './components/week/calendarWeekViewEvent.component';
 import {CalendarAllDayEvent} from './components/day/calendarAllDayEvent.component';
@@ -24,7 +24,7 @@ import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEven
     CalendarEventActions,
     CalendarEventTitleComponent,
     CalendarMonthCell,
-    CalendarSlideBox,
+    CalendarOpenDayEvents,
     CalendarWeekViewHeader,
     CalendarWeekViewEvent,
     CalendarAllDayEvent,

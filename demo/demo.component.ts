@@ -49,7 +49,7 @@ import {
           *ngSwitchCase="'month'"
           [viewDate]="viewDate"
           [events]="events"
-          [slideBoxIsOpen]="slideBoxIsOpen"
+          [activeDayIsOpen]="activeDayIsOpen"
           (dayClicked)="dayClicked($event.day)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view
@@ -193,7 +193,7 @@ export class Demo {
     actions: this.actions
   }];
 
-  private slideBoxIsOpen: boolean = false;
+  private activeDayIsOpen: boolean = true;
 
   constructor() {
 
@@ -226,10 +226,13 @@ export class Demo {
 
   dayClicked({date, events}: {date: Moment, events: CalendarEvent[]}): void {
     if (moment(date).startOf('month').isSame(moment(this.viewDate).startOf('month'))) {
-      if ((this.viewDate.getTime() === date.toDate().getTime() && this.slideBoxIsOpen === true) || events.length === 0) {
-        this.slideBoxIsOpen = false;
+      if (
+        (moment(this.viewDate).startOf('day').isSame(date.clone().startOf('day')) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
       } else {
-        this.slideBoxIsOpen = true;
+        this.activeDayIsOpen = true;
         this.viewDate = date.toDate();
       }
     }

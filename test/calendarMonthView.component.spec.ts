@@ -41,17 +41,17 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should open and close the slide box', () => {
+  it('should open and close the active day events list', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     expect(fixture.componentInstance.openRowIndex).to.be.undefined;
     expect(fixture.componentInstance.openDay).to.be.undefined;
     fixture.componentInstance.viewDate = moment().startOf('month').startOf('week').add(8, 'days').toDate();
-    fixture.componentInstance.slideBoxIsOpen = true;
-    fixture.componentInstance.ngOnChanges({viewDate: {}, slideBoxIsOpen: {}});
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, activeDayIsOpen: {}});
     expect(fixture.componentInstance.openRowIndex).to.equal(7);
     expect(fixture.componentInstance.openDay).to.equal(fixture.componentInstance.view.days[8]);
-    fixture.componentInstance.slideBoxIsOpen = false;
-    fixture.componentInstance.ngOnChanges({viewDate: {}, slideBoxIsOpen: {}});
+    fixture.componentInstance.activeDayIsOpen = false;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, activeDayIsOpen: {}});
     expect(fixture.componentInstance.openRowIndex).not.to.be.ok;
     expect(fixture.componentInstance.openDay).not.to.be.ok;
     fixture.destroy();
@@ -117,7 +117,7 @@ describe('calendarMonthView component', () => {
     expect(day.style.backgroundColor).to.be.equal('');
   });
 
-  it('should add event actions to the slidebox', () => {
+  it('should add event actions to the active day events', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.events = [{
@@ -134,10 +134,10 @@ describe('calendarMonthView component', () => {
         cssClass: 'foo'
       }]
     }];
-    fixture.componentInstance.slideBoxIsOpen = true;
+    fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    const action: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-action');
+    const action: HTMLElement = fixture.nativeElement.querySelector('.cal-open-day-events .cal-event-action');
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.be.true;
     action.click();
@@ -157,10 +157,10 @@ describe('calendarMonthView component', () => {
         secondary: 'rgb(238, 238, 238)'
       }
     }];
-    fixture.componentInstance.slideBoxIsOpen = true;
+    fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    const title: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-title');
+    const title: HTMLElement = fixture.nativeElement.querySelector('.cal-open-day-events .cal-event-title');
     expect(title.innerHTML).to.equal('<span>foo</span>');
     fixture.componentInstance.eventClicked.subscribe(val => {
       expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
@@ -205,10 +205,10 @@ describe('calendarMonthView component', () => {
         secondary: 'rgb(238, 238, 238)'
       }
     }];
-    fixture.componentInstance.slideBoxIsOpen = true;
+    fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    const title: HTMLElement = fixture.nativeElement.querySelector('.cal-slidebox .cal-event-title');
+    const title: HTMLElement = fixture.nativeElement.querySelector('.cal-open-day-events .cal-event-title');
     expect(title.innerHTML).to.equal('foo bar');
   });
 
