@@ -25,29 +25,20 @@ const SEGMENT_HEIGHT: number = 30;
         (eventClicked)="eventClicked.emit({event: event})">
       </mwl-calendar-all-day-event>
       <div class="cal-hour-rows">
-        <div class="cal-hour-col-time">
-          <div class="cal-hour" *ngFor="let hour of hours">
-            <mwl-calendar-day-view-hour-segment
-              *ngFor="let segment of hour.segments"
-              [segment]="segment"
-              [locale]="locale"
-              (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
-            </mwl-calendar-day-view-hour-segment>
-          </div>
-        </div>
-        <div class="cal-hour-col-events">
+        <div class="cal-events">
           <mwl-calendar-day-view-event
             *ngFor="let dayEvent of view?.events"
             [dayEvent]="dayEvent"
             (eventClicked)="eventClicked.emit({event: dayEvent.event})">
           </mwl-calendar-day-view-event>
-          <div>
-            <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width">
-              <div class="cal-hour-segment" *ngFor="let segment of hour.segments">
-                &nbsp;
-              </div>
-            </div>
-          </div>
+        </div>
+        <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">
+          <mwl-calendar-day-view-hour-segment
+            *ngFor="let segment of hour.segments"
+            [segment]="segment"
+            [locale]="locale"
+            (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
+          </mwl-calendar-day-view-hour-segment>
         </div>
       </div>
     </div>

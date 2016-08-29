@@ -1,4 +1,11 @@
 .cal-day-view {
+  .cal-hour-rows {
+    width: 100%;
+    border: solid 1px #e1e1e1;
+    overflow-x: scroll;
+    position: relative;
+  }
+
   .cal-hour:nth-child(odd) {
     background-color: #fafafa;
   }
@@ -8,13 +15,15 @@
   }
 
   .cal-hour:not(:last-child) .cal-hour-segment,
-  .cal-hour:last-child .cal-hour-segment:not(:last-child) {
+  .cal-hour:last-child :not(:last-child) .cal-hour-segment {
     border-bottom: thin dashed #e1e1e1;
   }
 
   .cal-time {
     font-weight: bold;
     padding-top: 5px;
+    width: 70px;
+    text-align: center;
   }
 
   .cal-hour-segment:hover {
@@ -39,28 +48,6 @@
   .cal-event.cal-ends-within-day {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
-
-  .cal-hour-col-time,
-  .cal-hour-col-events {
-    float: left;
-  }
-
-  .cal-hour-col-time {
-    width: 70px;
-    border-left: solid 1px #e1e1e1;
-    border-top: solid 1px #e1e1e1;
-    border-bottom: solid 1px #e1e1e1;
-    text-align: center;
-  }
-
-  .cal-hour-col-events {
-    position: relative;
-    overflow-x: scroll;
-    width: calc(100% - 70px);
-    border-right: solid 1px #e1e1e1;
-    border-top: solid 1px #e1e1e1;
-    border-bottom: solid 1px #e1e1e1;
   }
 
   .cal-all-day-event {

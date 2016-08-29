@@ -8,7 +8,7 @@ import {DayViewEvent} from 'calendar-utils';
     <div
       class="cal-event"
       [style.marginTop.px]="dayEvent.top"
-      [style.marginLeft.px]="dayEvent.left"
+      [style.marginLeft.px]="dayEvent.left + 70"
       [style.height.px]="dayEvent.height"
       [style.width.px]="dayEvent.width - 1"
       [style.backgroundColor]="dayEvent.event.color.secondary"
