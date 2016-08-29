@@ -95,7 +95,7 @@ describe('CalendarDayView component', () => {
     fixture.componentInstance.hourSegmentClicked.subscribe(val => {
       expect(val).to.deep.equal({date: moment('2016-06-01').startOf('day').add(1, 'hour').add(30, 'minutes').toDate()});
     });
-    fixture.nativeElement.querySelectorAll('.cal-hour-col-time .cal-hour-segment')[3].click();
+    fixture.nativeElement.querySelectorAll('.cal-hour-segment')[3].click();
 
   });
 
