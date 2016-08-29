@@ -76,8 +76,7 @@ module.exports = {
       context: 'scss',
       failOnError: true
     }),
-    new ExtractTextPlugin('./css/angular2-calendar.css'),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new ExtractTextPlugin('./css/angular2-calendar.css')
   ],
   postcss: [
     autoprefixer({
