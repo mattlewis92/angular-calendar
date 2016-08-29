@@ -38,6 +38,7 @@ module.exports = {
     contentBase: 'demo'
   },
   plugins: [
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({

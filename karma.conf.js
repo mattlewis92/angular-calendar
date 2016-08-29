@@ -64,7 +64,8 @@ module.exports = function(config) {
           syntax: 'scss',
           context: 'scss',
           failOnError: true
-        })
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
       ]
     },
 
