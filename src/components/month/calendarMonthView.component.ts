@@ -76,7 +76,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
    * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
    * If you add the `cssClass` property to the cell it will add that class to the cell in the template
    */
-  @Input() cellModifier: Function;
+  @Input() dayModifier: Function;
 
   /**
    * An observable that when emitted on will re-render the current view
@@ -153,8 +153,8 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
       events: this.events,
       viewDate: this.viewDate
     });
-    if (this.cellModifier) {
-      this.view.days.forEach(day => this.cellModifier(day));
+    if (this.dayModifier) {
+      this.view.days.forEach(day => this.dayModifier(day));
     }
   }
 

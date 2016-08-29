@@ -79,10 +79,10 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should add a custom CSS class to days via the cell modifier', () => {
+  it('should add a custom CSS class to days via the day modifier', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
-    fixture.componentInstance.cellModifier = day => {
+    fixture.componentInstance.dayModifier = day => {
       day.cssClass = 'foo';
     };
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
@@ -226,7 +226,7 @@ describe('calendarMonthView component', () => {
   it('should allow the badge total to be customised', () => {
     const fixture: ComponentFixture<CalendarMonthView> = TestBed.createComponent(CalendarMonthView);
     fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
-    fixture.componentInstance.cellModifier = day => {
+    fixture.componentInstance.dayModifier = day => {
       day.badgeTotal = 100;
       return day;
     };
