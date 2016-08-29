@@ -84,7 +84,6 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.cellModifier = day => {
       day.cssClass = 'foo';
-      return day;
     };
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();

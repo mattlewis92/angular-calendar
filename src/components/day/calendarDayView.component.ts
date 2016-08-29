@@ -175,7 +175,7 @@ export class CalendarDayView implements OnChanges {
     });
     if (this.hourSegmentModifier) {
       this.hours.forEach(hour => {
-        hour.segments = hour.segments.map(segment => this.hourSegmentModifier(segment));
+        hour.segments.forEach(segment => this.hourSegmentModifier(segment));
       });
     }
   }

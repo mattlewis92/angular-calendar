@@ -154,7 +154,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
       viewDate: this.viewDate
     });
     if (this.cellModifier) {
-      this.view.days = this.view.days.map(day => this.cellModifier(day));
+      this.view.days.forEach(day => this.cellModifier(day));
     }
   }
 

@@ -213,7 +213,6 @@ describe('CalendarDayView component', () => {
     fixture.componentInstance.viewDate = moment('2016-06-27').toDate();
     fixture.componentInstance.hourSegmentModifier = segment => {
       segment.cssClass = 'foo';
-      return segment;
     };
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
