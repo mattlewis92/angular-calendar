@@ -30,7 +30,7 @@ Install through npm:
 npm install --save angular2-calendar
 ```
 
-For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.ts). Better docs to follow in the future!
+For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). Better docs to follow in the future!
 
 ### Usage without a module bundler
 ```
