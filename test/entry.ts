@@ -11,6 +11,7 @@ import 'zone.js/dist/async-test';
 import 'rxjs';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
+import 'intl/locale-data/jsonp/de';
 import {use} from 'chai';
 import * as sinonChai from 'sinon-chai';
 import {TestBed} from '@angular/core/testing';
