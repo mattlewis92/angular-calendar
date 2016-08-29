@@ -11,7 +11,3 @@ notifications:
 cache:
   directories:
     - node_modules
-
-sudo: required
-
-dist: trusty
