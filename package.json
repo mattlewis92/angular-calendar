@@ -11,7 +11,7 @@
     "build:dist": "webpack --config webpack.config.dist.js",
     "test": "karma start",
     "test:watch": "karma start --watch",
-    "clean": "del ./src/*.d.ts ./src/**/*.d.ts ./demo/*.d.ts ./test/*.d.ts angular2-calendar.d.ts angular2-calendar.js* css",
+    "clean": "del ./src/*.d.ts ./src/**/*.d.ts ./src/**/**/*.d.ts ./demo/*.d.ts ./test/*.d.ts angular2-calendar.d.ts angular2-calendar.js* css",
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "typedoc": "typedoc --options typedoc.json angular2-calendar.ts src/*.ts",
