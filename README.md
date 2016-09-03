@@ -6,8 +6,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/mattlewis92/angular2-calendar.svg)](https://github.com/mattlewis92/angular2-calendar/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular2-calendar/master/LICENSE)
 
-# Please note this is currently a WIP and not yet finished, demos, npm installation will all 404 until the first release
-
 ## Demo
 https://mattlewis92.github.io/angular2-calendar/demo/
 
