@@ -6,6 +6,21 @@ import {
   CalendarEventAction
 } from './../angular2-calendar';
 
+const colors: any = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3'
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF'
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA'
+  }
+};
+
 @Component({
   selector: 'demo-app',
   styles: [`
@@ -85,132 +100,24 @@ export class Demo {
   }];
 
   private events: CalendarEvent[] = [{
-    start: moment().startOf('month').startOf('week').toDate(),
-    title: 'A final event',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
+    start: moment().startOf('day').subtract(1, 'day').toDate(),
+    end: moment().add(1, 'day').toDate(),
+    title: 'A 3 day event',
+    color: colors.red,
     actions: this.actions
   }, {
-    start: moment().startOf('week').add(1, 'minutes').add(4, 'days').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'A final event',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
+    start: moment().startOf('day').toDate(),
+    title: 'An event with no end date',
+    color: colors.yellow,
     actions: this.actions
   }, {
-    start: moment().startOf('week').add(2, 'minutes').add(4, 'days').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'A final event',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').add(1, 'minutes').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').add(2, 'minutes').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').add(3, 'minutes').add(6, 'days').toDate(),
-    end: moment().endOf('week').toDate(),
-    title: 'I should be last',
-    color: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'Another event',
-    color: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').add(1, 'minutes').toDate(),
-    end: moment().startOf('week').add(5, 'days').toDate(),
-    title: 'Another event',
-    color: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
-    }
-  }, {
-    start: moment().startOf('week').subtract(3, 'days').toDate(),
-    end: moment().endOf('week').add(3, 'days').toDate(),
-    title: 'My event',
-    color: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    },
-    actions: this.actions,
-    allDay: true
-  }, {
-    start: moment().startOf('week').add(1, 'days').toDate(),
-    end: moment().startOf('week').add(3, 'days').toDate(),
-    title: '3 day event',
-    color: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    },
-    actions: this.actions
-  }, {
-    start: moment().startOf('week').add(1, 'days').toDate(),
-    end: moment().startOf('week').add(2, 'days').toDate(),
-    title: '2 day event',
-    color: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    },
-    actions: this.actions
+    start: moment().endOf('month').subtract(3, 'days').toDate(),
+    end: moment().endOf('month').add(3, 'days').toDate(),
+    title: 'A long event that spans 2 months',
+    color: colors.blue
   }];
 
   private activeDayIsOpen: boolean = true;
-
-  constructor() {
-
-    for (let i: number = 0; i < 7; i++) {
-      for (let j: number = 0; j < 5; j++) {
-        this.events.push({
-          start: moment().startOf('week').add(j, 'minutes').add(i, 'days').toDate(),
-          title: `Event column ${i} count ${j}`,
-          color: {
-            primary: '#1e90ff',
-            secondary: '#D1E8FF'
-          }
-        });
-      }
-    }
-
-  }
 
   increment(): void {
     this.viewDate = moment(this.viewDate).add(1, this.view).toDate();
