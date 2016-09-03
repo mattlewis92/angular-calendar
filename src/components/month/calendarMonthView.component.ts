@@ -7,7 +7,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   OnInit,
-  OnDestroy
+  OnDestroy,
+  LOCALE_ID,
+  Inject
 } from '@angular/core';
 import * as moment from 'moment';
 import {
@@ -20,7 +22,6 @@ import {
 } from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {DEFAULT_LOCALE} from './../../constants';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -86,7 +87,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   /**
    * The locale used to format dates
    */
-  @Input() locale: string = DEFAULT_LOCALE;
+  @Input() locale: string;
 
   /**
    * The placement of the event tooltip
@@ -109,7 +110,9 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   openDay: MonthViewDay;
   refreshSubscription: Subscription;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+    this.locale = locale;
+  }
 
   ngOnInit(): void {
     if (this.refresh) {

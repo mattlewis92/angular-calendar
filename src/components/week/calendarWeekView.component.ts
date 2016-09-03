@@ -7,7 +7,9 @@ import {
   ChangeDetectorRef,
   OnChanges,
   OnInit,
-  OnDestroy
+  OnDestroy,
+  LOCALE_ID,
+  Inject
 } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
@@ -18,7 +20,6 @@ import {
   getWeekViewHeader,
   getWeekView
 } from 'calendar-utils';
-import {DEFAULT_LOCALE} from './../../constants';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -69,7 +70,7 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
   /**
    * The locale used to format dates
    */
-  @Input() locale: string = DEFAULT_LOCALE;
+  @Input() locale: string;
 
   /**
    * The placement of the event tooltip
@@ -90,7 +91,9 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
   eventRows: WeekViewEventRow[] = [];
   refreshSubscription: Subscription;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+    this.locale = locale;
+  }
 
   ngOnInit(): void {
     if (this.refresh) {

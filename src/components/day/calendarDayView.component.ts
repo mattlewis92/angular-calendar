@@ -5,12 +5,13 @@ import {
   OnChanges,
   Output,
   EventEmitter,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  LOCALE_ID,
+  Inject
 } from '@angular/core';
 import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
-import {DEFAULT_LOCALE} from './../../constants';
 
 const SEGMENT_HEIGHT: number = 30;
 
@@ -94,7 +95,7 @@ export class CalendarDayView implements OnChanges {
   /**
    * The locale used to format dates
    */
-  @Input() locale: string = DEFAULT_LOCALE;
+  @Input() locale: string;
 
   /**
    * A function that will be called before each hour segment is called. The first argument will contain the hour segment.
@@ -117,7 +118,9 @@ export class CalendarDayView implements OnChanges {
   width: number = 0;
   refreshSubscription: Subscription;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+    this.locale = locale;
+  }
 
   ngOnInit(): void {
     if (this.refresh) {

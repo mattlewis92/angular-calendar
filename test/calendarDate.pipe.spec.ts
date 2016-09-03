@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, LOCALE_ID} from '@angular/core';
 import {
   inject,
   ComponentFixture,
@@ -11,7 +11,6 @@ import {
   CalendarMomentDateFormatter,
   CalendarDateFormatter
 } from './../angular2-calendar';
-import {DEFAULT_LOCALE} from './../src/constants';
 
 @Component({
   template: '{{ date | calendarDate:method:locale }}'
@@ -35,9 +34,10 @@ describe('calendarDate pipe', () => {
     });
   });
 
-  let dateFormatter: CalendarDateFormatter;
-  beforeEach(inject([CalendarDateFormatter], (_dateFormatter_) => {
+  let dateFormatter: CalendarDateFormatter, defaultLocale: string;
+  beforeEach(inject([CalendarDateFormatter, LOCALE_ID], (_dateFormatter_, locale) => {
     dateFormatter = _dateFormatter_;
+    defaultLocale = locale;
   }));
 
   it('should use the date formatter to format the date', () => {
@@ -47,7 +47,7 @@ describe('calendarDate pipe', () => {
     fixture.componentInstance.method = 'monthViewColumnHeader';
     fixture.detectChanges();
     expect(fixture.nativeElement.innerHTML).to.equal('Friday');
-    expect(dateFormatter.monthViewColumnHeader).to.have.been.calledWith({date: fixture.componentInstance.date, locale: DEFAULT_LOCALE});
+    expect(dateFormatter.monthViewColumnHeader).to.have.been.calledWith({date: fixture.componentInstance.date, locale: defaultLocale});
   });
 
   it('should allow the locale to be customised', () => {
