@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -49,7 +50,6 @@ module.exports = {
       amd: 'calendar-utils'
     }
   },
-  devtool: 'source-map',
   module: {
     preLoaders: [{
       test: /\.ts$/, loader: 'tslint?emitErrors=true&failOnHint=true', exclude: /node_modules/
@@ -63,7 +63,7 @@ module.exports = {
       }
     }, {
       test: /\.scss/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss!sass?sourceMap'),
+      loader: ExtractTextPlugin.extract('style-loader', 'css!postcss!sass'),
       exclude: /node_modules/
     }]
   },
@@ -76,7 +76,11 @@ module.exports = {
       context: 'scss',
       failOnError: true
     }),
-    new ExtractTextPlugin('./css/angular2-calendar.css')
+    new ExtractTextPlugin('./css/angular2-calendar.css'),
+    new webpack.SourceMapDevToolPlugin({
+      filename: 'angular2-calendar.js.map',
+      test: /\.js($|\?)/i
+    })
   ],
   postcss: [
     autoprefixer({

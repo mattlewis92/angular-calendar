@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
-import './../scss/angular2-calendar.scss';
 import 'core-js';
 import 'zone.js/dist/zone';
 import {enableProdMode} from '@angular/core';

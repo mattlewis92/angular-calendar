@@ -1,3 +1,4 @@
+import './../scss/angular2-calendar.scss';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CalendarDayView} from './components/day/calendarDayView.component';
