@@ -1,7 +1,8 @@
 import {
   inject,
   ComponentFixture,
-  TestBed
+  TestBed,
+  async
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import {expect} from 'chai';
@@ -47,7 +48,7 @@ describe('CalendarDayView component', () => {
     expect(fixture.componentInstance.hours.length).to.equal(24);
   });
 
-  it('should call the event clicked callback', () => {
+  it('should call the event clicked callback', async(() => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
     fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
     fixture.componentInstance.events = [{
@@ -66,7 +67,29 @@ describe('CalendarDayView component', () => {
       });
     });
     fixture.nativeElement.querySelector('.cal-event a').click();
-  });
+  }));
+
+  it('should call the event clicked callback on all day events', async(() => {
+    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
+    fixture.componentInstance.events = [{
+      start: new Date('2016-06-29'),
+      title: 'foo',
+      allDay: true,
+      color: {
+        primary: '',
+        secondary: ''
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    fixture.componentInstance.eventClicked.subscribe(val => {
+      expect(val).to.deep.equal({
+        event: fixture.componentInstance.events[0]
+      });
+    });
+    fixture.nativeElement.querySelector('mwl-calendar-event-title a').click();
+  }));
 
   it('should add a custom CSS class to events', () => {
     const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
