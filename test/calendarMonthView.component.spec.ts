@@ -165,7 +165,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.eventClicked.subscribe(val => {
       expect(val).to.deep.equal({event: fixture.componentInstance.events[0]});
     });
-    //title.click(); // disabled because phantomjs is buggy
+    title.click();
 
   });
 
