@@ -42,6 +42,9 @@ For a full e2e example see the [demo source](https://github.com/mattlewis92/angu
 All documentation is auto-generated from the source via typedoc and can be viewed here:
 https://mattlewis92.github.io/angular2-calendar/docs/
 
+## Angular 1 version
+https://github.com/mattlewis92/angular-bootstrap-calendar
+
 ## Development
 
 ### Prepare your environment
