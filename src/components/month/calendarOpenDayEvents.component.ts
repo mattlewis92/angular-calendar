@@ -5,7 +5,9 @@ import {
   trigger,
   style,
   transition,
-  animate
+  animate,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import {CalendarEvent} from 'calendar-utils';
 
@@ -45,5 +47,7 @@ export class CalendarOpenDayEvents {
   @Input() isOpen: boolean = false;
 
   @Input() events: CalendarEvent[];
+
+  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
 }

@@ -49,7 +49,8 @@ import {Subscription} from 'rxjs/Subscription';
           </div>
           <mwl-calendar-open-day-events
             [isOpen]="openRowIndex === rowIndex"
-            [events]="openDay?.events">
+            [events]="openDay?.events"
+            (eventClicked)="eventClicked.emit({event: $event.event})">
           </mwl-calendar-open-day-events>
         </div>
       </div>
