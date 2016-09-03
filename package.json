@@ -69,7 +69,6 @@
     "karma-mocha": "~1.1.1",
     "karma-phantomjs-launcher": "~1.0.0",
     "karma-remap-istanbul": "~0.2.0",
-    "karma-source-map-support": "~1.1.0",
     "karma-sourcemap-loader": "~0.3.7",
     "karma-webpack": "~1.8.0",
     "mocha": "~3.0.0",

@@ -12,7 +12,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'source-map-support'],
+    frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -30,7 +30,6 @@ module.exports = function(config) {
     },
 
     webpack: {
-      devtool: 'inline-source-map',
       resolve: {
         extensions: ['', '.ts', '.js'],
         alias: {
@@ -58,14 +57,19 @@ module.exports = function(config) {
         emitErrors: !WATCH,
         failOnHint: false
       },
-      plugins: WATCH ? [] : [
+      plugins: (WATCH ? [] : [
         new webpack.NoErrorsPlugin(),
         new StyleLintPlugin({
           syntax: 'scss',
           context: 'scss',
           failOnError: true
         })
-      ]
+      ]).concat([
+        new webpack.SourceMapDevToolPlugin({
+          filename: null,
+          test: /\.(ts|js)($|\?)/i
+        })
+      ])
     },
 
     remapIstanbulReporter: {
