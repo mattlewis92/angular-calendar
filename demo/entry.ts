@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 import 'core-js';
 import 'zone.js/dist/zone';
 import {enableProdMode} from '@angular/core';
