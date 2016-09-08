@@ -10,6 +10,10 @@
 
   .cal-header .cal-cell {
     padding: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
   }
 
   .cal-cell-row .cal-cell:hover,
