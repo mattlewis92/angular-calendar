@@ -1,6 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const WATCH = process.argv.indexOf('--watch') > -1;
 
 module.exports = function(config) {
@@ -11,7 +12,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'source-map-support'],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -29,7 +30,6 @@ module.exports = function(config) {
     },
 
     webpack: {
-      devtool: 'inline-source-map',
       resolve: {
         extensions: ['', '.ts', '.js'],
         alias: {
@@ -44,43 +44,39 @@ module.exports = function(config) {
           test: /\.ts$/, loader: 'ts', exclude: /node_modules/
         }, {
           test: /sinon.js$/, loader: 'imports?define=>false,require=>false'
+        }, {
+          test: /\.scss$/, loader: 'style!css!sass'
         }],
         postLoaders: [{
           test: /src\/.+\.ts$/,
           exclude: /(test|node_modules)/,
-          loader: 'istanbul-instrumenter'
+          loader: 'sourcemap-istanbul-instrumenter?force-sourcemap=true'
         }]
       },
       tslint: {
         emitErrors: !WATCH,
         failOnHint: false
       },
-      ts: {
-        compilerOptions: {
-          sourceMap: false,
-          inlineSourceMap: true
-        }
-      },
-      plugins: WATCH ? [] : [new webpack.NoErrorsPlugin()]
-    },
-
-    coverageReporter: {
-      reporters: [{
-        type: 'json',
-        subdir: '.',
-        file: 'coverage-final.json'
-      }]
+      plugins: (WATCH ? [] : [
+        new webpack.NoErrorsPlugin(),
+        new StyleLintPlugin({
+          syntax: 'scss',
+          context: 'scss',
+          failOnError: true
+        })
+      ]).concat([
+        new webpack.SourceMapDevToolPlugin({
+          filename: null,
+          test: /\.(ts|js)($|\?)/i
+        })
+      ])
     },
 
     remapIstanbulReporter: {
-      src: 'coverage/coverage-final.json',
       reports: {
-        lcovonly: 'coverage/lcov.info',
         html: 'coverage/html',
         'text-summary': null
-      },
-      timeoutNotCreated: 5000,
-      timeoutNoMoreFiles: 1000
+      }
     },
 
     // test results reporter to use

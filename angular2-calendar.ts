@@ -1,11 +1,7 @@
-import {CalendarMonthView} from './src/calendarMonthView.component';
-import {CalendarWeekView} from './src/calendarWeekView.component';
-
-export * from './src/calendarMonthView.component';
-export * from './src/calendarWeekView.component';
-export {CalendarEvent} from 'calendar-utils';
-
-// for angular-cli
-export default {
-  directives: [CalendarMonthView, CalendarWeekView]
-};
+export * from './src/providers/calendarEventTitle.provider';
+export * from './src/providers/calendarMomentDateFormatter.provider';
+export * from './src/providers/calendarNativeDateFormatter.provider';
+export * from './src/providers/calendarDateFormatter.provider';
+export * from './src/interfaces/calendarDateFormatter.interface';
+export * from './src/calendar.module';
+export {CalendarEvent, EventAction as CalendarEventAction} from 'calendar-utils';

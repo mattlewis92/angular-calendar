@@ -1,12 +1,16 @@
-import 'reflect-metadata';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+import 'core-js';
 import 'zone.js/dist/zone';
 import {enableProdMode} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {DemoApp} from './demo';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {DemoModule} from './demo.module';
 
 declare var ENV: string;
 if (ENV === 'production') {
   enableProdMode();
 }
 
-bootstrap(DemoApp);
+platformBrowserDynamic().bootstrapModule(DemoModule);
