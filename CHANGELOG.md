@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/mattlewis92/angular2-calendar/compare/v0.1.2...v0.1.3) (2016-09-13)
+
+
+### Bug Fixes
+
+* **peerDependencies:** support any version of angular >= RC5 ([2698bcf](https://github.com/mattlewis92/angular2-calendar/commit/2698bcf))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/mattlewis92/angular2-calendar/compare/v0.1.1...v0.1.2) (2016-09-08)
 
