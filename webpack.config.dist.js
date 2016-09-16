@@ -61,7 +61,10 @@ module.exports = {
       }
     }, {
       test: /\.scss/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css!postcss!sass'),
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css!postcss!sass'
+      }),
       exclude: /node_modules/
     }]
   },
