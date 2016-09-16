@@ -55,11 +55,9 @@ module.exports = {
       test: /\.ts$/, loader: 'tslint?emitErrors=true&failOnHint=true', exclude: /node_modules/
     }],
     loaders: [{
-      test: /\.ts$/, loader: 'ts', exclude: /node_modules/,
+      test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/,
       query: {
-        compilerOptions: {
-          declaration: true
-        }
+        declaration: true
       }
     }, {
       test: /\.scss/,
