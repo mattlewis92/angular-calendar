@@ -45,6 +45,10 @@ module.exports = {
     new StyleLintPlugin({
       syntax: 'scss',
       context: 'scss'
-    })
+    }),
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname + '/src'
+    )
   ]
 };

@@ -68,7 +68,11 @@ module.exports = function(config) {
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i
-        })
+        }),
+        new webpack.ContextReplacementPlugin(
+          /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+          __dirname + '/src'
+        )
       ])
     },
 
