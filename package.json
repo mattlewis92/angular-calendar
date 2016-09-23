@@ -4,8 +4,8 @@
   "description": "A calendar component that can display events on a month, week or day view",
   "main": "./dist/umd/angular2-calendar.js",
   "style": "./dist/css/angular2-calendar.css",
-  "module": "./dist/esm/angular2-calendar.js",
-  "typings": "./dist/esm/angular2-calendar.d.ts",
+  "module": "./dist/esm/src/index.js",
+  "typings": "./dist/esm/src/index.d.ts",
   "scripts": {
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
     "build:demo": "webpack -p",
