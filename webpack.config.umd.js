@@ -43,13 +43,22 @@ module.exports = {
       commonjs2: 'rxjs/Subscription',
       amd: 'rxjs/Subscription'
     },
-    moment: 'moment',
     'calendar-utils': {
       root: ['calendarUtils'],
       commonjs: 'calendar-utils',
       commonjs2: 'calendar-utils',
       amd: 'calendar-utils'
-    }
+    },
+    'date-fns/is_same_day': {
+      root: ['dateFns', 'isSameDay'],
+      commonjs: 'date-fns/is_same_day',
+      commonjs2: 'date-fns/is_same_day'
+    },
+    'date-fns/get_iso_week': {
+      root: ['dateFns', 'getISOWeek'],
+      commonjs: 'date-fns/get_iso_week',
+      commonjs2: 'date-fns/get_iso_week'
+    },
   },
   module: {
     rules: [{

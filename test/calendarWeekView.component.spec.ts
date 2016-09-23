@@ -10,7 +10,8 @@ import {
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  CalendarModule
+  CalendarModule,
+  MOMENT
 } from './../angular2-calendar';
 import {CalendarWeekView} from './../src/components/week/calendarWeekView.component';
 import {Subject} from 'rxjs/Rx';
@@ -21,7 +22,11 @@ describe('calendarWeekView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({imports: [CalendarModule]});
     TestBed.configureCompiler({
-      providers: [CalendarEventTitle, {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter}]
+      providers: [
+        CalendarEventTitle,
+        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
+        {provide: MOMENT, useValue: moment}
+      ]
     });
   });
 
@@ -32,20 +37,20 @@ describe('calendarWeekView component', () => {
 
   it('should generate the week view', () => {
     const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
-    fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     expect(fixture.componentInstance.days.length).to.equal(7);
-    expect(fixture.componentInstance.days[0].date.toDate()).to.deep.equal(moment('2016-06-26').toDate());
+    expect(fixture.componentInstance.days[0].date).to.deep.equal(moment('2016-06-26').toDate());
   });
 
   it('should emit on the dayClicked output', () => {
     const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
-    fixture.componentInstance.viewDate = moment('2016-06-29').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     fixture.detectChanges();
     fixture.componentInstance.dayClicked.subscribe(val => {
       expect(val).to.deep.equal({
-        date: fixture.componentInstance.days[0].date.toDate()
+        date: fixture.componentInstance.days[0].date
       });
     });
     fixture.nativeElement.querySelector('.cal-header').click();
@@ -53,7 +58,7 @@ describe('calendarWeekView component', () => {
 
   it('should add a custom CSS class to events', () => {
     const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
-    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -73,7 +78,7 @@ describe('calendarWeekView component', () => {
   it('should call the event clicked callback', () => {
 
     const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
-    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -98,7 +103,7 @@ describe('calendarWeekView component', () => {
     const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
-    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     const event: CalendarEvent = {
       start: new Date('2016-06-01'),
@@ -121,7 +126,7 @@ describe('calendarWeekView component', () => {
     eventTitle.week = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
-    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -155,7 +160,7 @@ describe('calendarWeekView component', () => {
     eventTitle.weekTooltip = (event: CalendarEvent) => {
       return `title: ${event.title}`;
     };
-    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -183,7 +188,7 @@ describe('calendarWeekView component', () => {
 
     const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
     eventTitle.weekTooltip = () => '';
-    fixture.componentInstance.viewDate = moment('2016-06-01').toDate();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
       end: new Date('2016-06-02'),
@@ -200,6 +205,16 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
 
+  });
+
+  it('should allow the start of the week to be changed', () => {
+    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.weekStartsOn = 1;
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.cal-day-headers b').innerText).to.deep.equal('Monday');
+    fixture.destroy();
   });
 
 });

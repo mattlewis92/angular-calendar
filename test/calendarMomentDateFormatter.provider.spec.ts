@@ -3,15 +3,20 @@ import {
   TestBed
 } from '@angular/core/testing';
 import {expect} from 'chai';
+import * as moment from 'moment';
 import {
-  CalendarMomentDateFormatter
+  CalendarMomentDateFormatter,
+  MOMENT
 } from './../angular2-calendar';
 
 describe('calendarMomentDateFormatter provider', () => {
 
   beforeEach(() => {
     TestBed.configureCompiler({
-      providers: [CalendarMomentDateFormatter]
+      providers: [
+        CalendarMomentDateFormatter,
+        {provide: MOMENT, useValue: moment}
+      ]
     });
   });
 
