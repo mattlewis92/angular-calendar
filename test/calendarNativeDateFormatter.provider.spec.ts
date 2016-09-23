@@ -21,7 +21,7 @@ describe('calendarNativeDateFormatter provider', () => {
   }));
 
   it('monthViewColumnHeader', () => {
-    expect(dateFormatter.monthViewColumnHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Fri');
+    expect(dateFormatter.monthViewColumnHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Friday');
   });
 
   it('monthViewDayNumber', () => {
@@ -29,11 +29,11 @@ describe('calendarNativeDateFormatter provider', () => {
   });
 
   it('monthViewTitle', () => {
-    expect(dateFormatter.monthViewTitle({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Jan 2016');
+    expect(dateFormatter.monthViewTitle({date: new Date('2016-01-01'), locale: 'en'})).to.equal('January 2016');
   });
 
   it('weekViewColumnHeader', () => {
-    expect(dateFormatter.weekViewColumnHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Fri');
+    expect(dateFormatter.weekViewColumnHeader({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Friday');
   });
 
   it('weekViewColumnSubHeader', () => {
@@ -49,7 +49,7 @@ describe('calendarNativeDateFormatter provider', () => {
   });
 
   it('dayViewTitle', () => {
-    expect(dateFormatter.dayViewTitle({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Fri, Jan 1, 2016');
+    expect(dateFormatter.dayViewTitle({date: new Date('2016-01-01'), locale: 'en'})).to.equal('Friday, January 1, 2016');
   });
 
 });
