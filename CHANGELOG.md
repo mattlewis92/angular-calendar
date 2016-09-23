@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.1...v0.2.2) (2016-09-23)
+
+
+### Bug Fixes
+
+* typings and esm paths ([b70b92a](https://github.com/mattlewis92/angular2-calendar/commit/b70b92a))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.0...v0.2.1) (2016-09-23)
 
