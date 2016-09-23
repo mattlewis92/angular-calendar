@@ -31,31 +31,29 @@ module.exports = function(config) {
 
     webpack: {
       resolve: {
-        extensions: ['', '.ts', '.js'],
+        extensions: ['.ts', '.js'],
         alias: {
           sinon: 'sinon/pkg/sinon'
         }
       },
       module: {
-        preLoaders: [{
-          test: /\.ts$/, loader: 'tslint', exclude: /node_modules/
-        }],
-        loaders: [{
-          test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/
+        rules: [{
+          enforce: 'pre',
+          test: /\.ts$/,
+          loader: 'tslint-loader',
+          exclude: /node_modules/
         }, {
-          test: /sinon.js$/, loader: 'imports?define=>false,require=>false'
+          test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/
         }, {
-          test: /\.scss$/, loader: 'style!css!sass'
-        }],
-        postLoaders: [{
+          test: /sinon.js$/, loader: 'imports-loader?define=>false,require=>false'
+        }, {
+          test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader'
+        }, {
+          enforce: 'post',
           test: /src\/.+\.ts$/,
           exclude: /(test|node_modules)/,
-          loader: 'sourcemap-istanbul-instrumenter?force-sourcemap=true'
+          loader: 'sourcemap-istanbul-instrumenter-loader?force-sourcemap=true'
         }]
-      },
-      tslint: {
-        emitErrors: !WATCH,
-        failOnHint: false
       },
       plugins: (WATCH ? [] : [
         new webpack.NoErrorsPlugin(),
@@ -72,7 +70,15 @@ module.exports = function(config) {
         new webpack.ContextReplacementPlugin(
           /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
           __dirname + '/src'
-        )
+        ),
+        new webpack.LoaderOptionsPlugin({
+          options: {
+            tslint: {
+              emitErrors: !WATCH,
+              failOnHint: false
+            }
+          }
+        })
       ])
     },
 

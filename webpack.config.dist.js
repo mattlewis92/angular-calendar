@@ -51,25 +51,26 @@ module.exports = {
     }
   },
   module: {
-    preLoaders: [{
-      test: /\.ts$/, loader: 'tslint?emitErrors=true&failOnHint=true', exclude: /node_modules/
-    }],
-    loaders: [{
-      test: /\.ts$/, loader: 'awesome-typescript', exclude: /node_modules/,
-      query: {
-        declaration: true
-      }
+    rules: [{
+      enforce: 'pre',
+      test: /\.ts$/,
+      loader: 'tslint-loader?emitErrors=true&failOnHint=true',
+      exclude: /node_modules/
+    }, {
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader?declaration=true',
+      exclude: /node_modules/
     }, {
       test: /\.scss/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
-        loader: 'css!postcss!sass'
+        loader: 'css-loader!postcss-loader!sass-loader'
       }),
       exclude: /node_modules/
     }]
   },
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new StyleLintPlugin({
@@ -81,17 +82,21 @@ module.exports = {
     new webpack.SourceMapDevToolPlugin({
       filename: 'angular2-calendar.js.map',
       test: /\.js($|\?)/i
-    })
-  ],
-  postcss: [
-    autoprefixer({
-      browsers: [
-        '> 1%',
-        'last 4 versions',
-        'last 20 Chrome versions',
-        'last 20 Firefox versions'
-      ]
     }),
-    postCssFlexibility
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({
+            browsers: [
+              '> 1%',
+              'last 4 versions',
+              'last 20 Chrome versions',
+              'last 20 Firefox versions'
+            ]
+          }),
+          postCssFlexibility
+        ]
+      }
+    })
   ]
 };
