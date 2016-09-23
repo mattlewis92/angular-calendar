@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.0...v0.2.1) (2016-09-23)
+
+
+### Bug Fixes
+
+* allow any 1.x version of date-fns to be installed ([726aaac](https://github.com/mattlewis92/angular2-calendar/commit/726aaac))
+* **esm:** dont import sass files in the esm build ([00120f9](https://github.com/mattlewis92/angular2-calendar/commit/00120f9))
+* **ng-bootstrap:** add ng-bootstrap dependency to fix es module imports ([af91adc](https://github.com/mattlewis92/angular2-calendar/commit/af91adc))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/mattlewis92/angular2-calendar/compare/v0.1.3...v0.2.0) (2016-09-23)
 
