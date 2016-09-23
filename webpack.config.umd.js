@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: __dirname + '/angular2-calendar.ts',
   output: {
+    path: __dirname + '/dist/umd',
     filename: 'angular2-calendar.js',
     libraryTarget: 'umd',
     library: 'angular2Calendar'
@@ -58,7 +59,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
-      loader: 'awesome-typescript-loader?declaration=true',
+      loader: 'awesome-typescript-loader',
       exclude: /node_modules/
     }, {
       test: /\.scss/,
@@ -78,7 +79,7 @@ module.exports = {
       context: 'scss',
       failOnError: true
     }),
-    new ExtractTextPlugin('./css/angular2-calendar.css'),
+    new ExtractTextPlugin('./../css/angular2-calendar.css'),
     new webpack.SourceMapDevToolPlugin({
       filename: 'angular2-calendar.js.map',
       test: /\.js($|\?)/i
