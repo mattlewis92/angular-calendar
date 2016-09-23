@@ -14,7 +14,7 @@
     "skipLibCheck": true
   },
   "files": [
-    "angular2-calendar.ts"
+    "src/index.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
