@@ -6,10 +6,12 @@ import {
 } from '@angular/core/testing';
 import {expect} from 'chai';
 import {spy} from 'sinon';
+import * as moment from 'moment';
 import {
   CalendarModule,
   CalendarMomentDateFormatter,
-  CalendarDateFormatter
+  CalendarDateFormatter,
+  MOMENT
 } from './../angular2-calendar';
 
 @Component({
@@ -29,7 +31,8 @@ describe('calendarDate pipe', () => {
     TestBed.configureTestingModule({imports: [CalendarModule], declarations: [TestCmp]});
     TestBed.configureCompiler({
       providers: [
-        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter}
+        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
+        {provide: MOMENT, useValue: moment}
       ]
     });
   });

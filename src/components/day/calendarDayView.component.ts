@@ -38,7 +38,7 @@ const SEGMENT_HEIGHT: number = 30;
             *ngFor="let segment of hour.segments"
             [segment]="segment"
             [locale]="locale"
-            (click)="hourSegmentClicked.emit({date: segment.date.toDate()})">
+            (click)="hourSegmentClicked.emit({date: segment.date})">
           </mwl-calendar-day-view-hour-segment>
         </div>
       </div>

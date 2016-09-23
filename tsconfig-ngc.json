@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "stripInternal": true,
+    "outDir": "./dist/esm",
+    "rootDir": "./",
+    "sourceMap": true,
+    "inlineSources": true,
+    "skipLibCheck": true
+  },
+  "files": [
+    "angular2-calendar.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "genDir": "./dist/esm",
+    "skipTemplateCodegen": true,
+    "debug": true
+  }
+}

@@ -4,31 +4,37 @@ const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
   devtool: IS_PROD ? 'source-map' : 'eval',
-  entry: './demo/entry.ts',
+  entry: __dirname + '/demo/entry.ts',
   output: {
     filename: 'demo.js',
-    path: IS_PROD ? './demo' : ''
+    path: IS_PROD ? __dirname + '/demo' : __dirname
   },
   module: {
-    preLoaders: [{
-      test: /\.ts$/, loader: 'tslint?emitErrors=false&failOnHint=false', exclude: /node_modules/
-    }],
-    loaders: [{
-      test: /\.ts$/, loader: 'ts', exclude: /node_modules/
+    rules: [{
+      enforce: 'pre',
+      test: /\.ts$/,
+      loader: 'tslint-loader?emitErrors=false&failOnHint=false',
+      exclude: /node_modules/
     }, {
-      test: /\.scss$/, loader: 'style!css!postcss!sass'
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader',
+      exclude: /node_modules/
     }, {
-      test: /\.css$/, loader: 'style!css'
+      test: /\.scss$/,
+      loader: 'style-loader!css-loader!postcss-loader!sass-loader'
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader'
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff'
+      loader: 'url-loader?limit=10000&mimetype=application/font-woff'
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'file'
+      loader: 'file-loader'
     }]
   },
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
   devServer: {
     port: 8000,
@@ -39,13 +45,16 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
     }),
     new StyleLintPlugin({
       syntax: 'scss',
       context: 'scss'
-    })
+    }),
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname + '/src'
+    )
   ]
 };

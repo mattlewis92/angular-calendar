@@ -11,7 +11,7 @@ import {
   LOCALE_ID,
   Inject
 } from '@angular/core';
-import * as moment from 'moment';
+import * as isSameDay from 'date-fns/is_same_day';
 import {
   CalendarEvent,
   WeekDay,
@@ -96,6 +96,11 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
   @Input() tooltipPlacement: string = 'top';
 
   /**
+   * The start number of the week
+   */
+  @Input() weekStartsOn: number;
+
+  /**
    * Called when the day cell is clicked
    */
   @Output() dayClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
@@ -148,14 +153,16 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
   private refreshHeader(): void {
     this.columnHeaders = getWeekViewHeader({
-      viewDate: this.viewDate
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn
     });
   }
 
   private refreshBody(): void {
     this.view = getMonthView({
       events: this.events,
-      viewDate: this.viewDate
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn
     });
     if (this.dayModifier) {
       this.view.days.forEach(day => this.dayModifier(day));
@@ -164,7 +171,7 @@ export class CalendarMonthView implements OnChanges, OnInit, OnDestroy {
 
   private checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen === true) {
-      this.openDay = this.view.days.find(day => day.date.isSame(moment(this.viewDate).startOf('day')));
+      this.openDay = this.view.days.find(day => isSameDay(day.date, this.viewDate));
       const index: number = this.view.days.indexOf(this.openDay);
       this.openRowIndex = Math.floor(index / 7) * 7;
     } else {

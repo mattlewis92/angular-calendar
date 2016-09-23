@@ -31,7 +31,7 @@ import {
           *ngFor="let day of days"
           [day]="day"
           [locale]="locale"
-          (click)="dayClicked.emit({date: day.date.toDate()})">
+          (click)="dayClicked.emit({date: day.date})">
         </mwl-calendar-week-view-header>
       </div>
       <div *ngFor="let eventRow of eventRows">
@@ -76,6 +76,11 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
    * The placement of the event tooltip
    */
   @Input() tooltipPlacement: string = 'bottom';
+
+  /**
+   * The start number of the week
+   */
+  @Input() weekStartsOn: number;
 
   /**
    * Called when a header week day is clicked
@@ -124,14 +129,16 @@ export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
 
   private refreshHeader(): void {
     this.days = getWeekViewHeader({
-      viewDate: this.viewDate
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn
     });
   }
 
   private refreshBody(): void {
     this.eventRows = getWeekView({
       events: this.events,
-      viewDate: this.viewDate
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn
     });
   }
 

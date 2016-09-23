@@ -5,9 +5,10 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './angular2-calendar.ts',
+  entry: __dirname + '/angular2-calendar.ts',
   output: {
-    filename: './angular2-calendar.js',
+    path: __dirname + '/dist/umd',
+    filename: 'angular2-calendar.js',
     libraryTarget: 'umd',
     library: 'angular2Calendar'
   },
@@ -42,33 +43,44 @@ module.exports = {
       commonjs2: 'rxjs/Subscription',
       amd: 'rxjs/Subscription'
     },
-    moment: 'moment',
     'calendar-utils': {
       root: ['calendarUtils'],
       commonjs: 'calendar-utils',
       commonjs2: 'calendar-utils',
       amd: 'calendar-utils'
-    }
+    },
+    'date-fns/is_same_day': {
+      root: ['dateFns', 'isSameDay'],
+      commonjs: 'date-fns/is_same_day',
+      commonjs2: 'date-fns/is_same_day'
+    },
+    'date-fns/get_iso_week': {
+      root: ['dateFns', 'getISOWeek'],
+      commonjs: 'date-fns/get_iso_week',
+      commonjs2: 'date-fns/get_iso_week'
+    },
   },
   module: {
-    preLoaders: [{
-      test: /\.ts$/, loader: 'tslint?emitErrors=true&failOnHint=true', exclude: /node_modules/
-    }],
-    loaders: [{
-      test: /\.ts$/, loader: 'ts', exclude: /node_modules/,
-      query: {
-        compilerOptions: {
-          declaration: true
-        }
-      }
+    rules: [{
+      enforce: 'pre',
+      test: /\.ts$/,
+      loader: 'tslint-loader?emitErrors=true&failOnHint=true',
+      exclude: /node_modules/
+    }, {
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader',
+      exclude: /node_modules/
     }, {
       test: /\.scss/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css!postcss!sass'),
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader!postcss-loader!sass-loader'
+      }),
       exclude: /node_modules/
     }]
   },
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new StyleLintPlugin({
@@ -76,21 +88,25 @@ module.exports = {
       context: 'scss',
       failOnError: true
     }),
-    new ExtractTextPlugin('./css/angular2-calendar.css'),
+    new ExtractTextPlugin('./../css/angular2-calendar.css'),
     new webpack.SourceMapDevToolPlugin({
       filename: 'angular2-calendar.js.map',
       test: /\.js($|\?)/i
-    })
-  ],
-  postcss: [
-    autoprefixer({
-      browsers: [
-        '> 1%',
-        'last 4 versions',
-        'last 20 Chrome versions',
-        'last 20 Firefox versions'
-      ]
     }),
-    postCssFlexibility
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({
+            browsers: [
+              '> 1%',
+              'last 4 versions',
+              'last 20 Chrome versions',
+              'last 20 Firefox versions'
+            ]
+          }),
+          postCssFlexibility
+        ]
+      }
+    })
   ]
 };

@@ -1,6 +1,16 @@
 import {Component} from '@angular/core';
-import * as moment from 'moment';
-import {UnitOfTime, Moment} from 'moment';
+import {
+  startOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addWeeks,
+  subWeeks,
+  addMonths,
+  subMonths
+} from 'date-fns';
 import {
   CalendarEvent,
   CalendarEventAction
@@ -83,7 +93,7 @@ const colors: any = {
 })
 export class Demo {
 
-  private view: UnitOfTime = 'month';
+  private view: string = 'month';
 
   private viewDate: Date = new Date();
 
@@ -100,19 +110,19 @@ export class Demo {
   }];
 
   private events: CalendarEvent[] = [{
-    start: moment().startOf('day').subtract(1, 'day').toDate(),
-    end: moment().add(1, 'day').toDate(),
+    start: subDays(startOfDay(new Date()), 1),
+    end: addDays(new Date(), 1),
     title: 'A 3 day event',
     color: colors.red,
     actions: this.actions
   }, {
-    start: moment().startOf('day').toDate(),
+    start: startOfDay(new Date()),
     title: 'An event with no end date',
     color: colors.yellow,
     actions: this.actions
   }, {
-    start: moment().endOf('month').subtract(3, 'days').toDate(),
-    end: moment().endOf('month').add(3, 'days').toDate(),
+    start: subDays(endOfMonth(new Date()), 3),
+    end: addDays(endOfMonth(new Date()), 3),
     title: 'A long event that spans 2 months',
     color: colors.blue
   }];
@@ -120,27 +130,44 @@ export class Demo {
   private activeDayIsOpen: boolean = true;
 
   increment(): void {
-    this.viewDate = moment(this.viewDate).add(1, this.view).toDate();
+
+    const addFn: any = {
+      day: addDays,
+      week: addWeeks,
+      month: addMonths
+    }[this.view];
+
+    this.viewDate = addFn(this.viewDate, 1);
+
   }
 
   decrement(): void {
-    this.viewDate = moment(this.viewDate).subtract(1, this.view).toDate();
+
+    const subFn: any = {
+      day: subDays,
+      week: subWeeks,
+      month: subMonths
+    }[this.view];
+
+    this.viewDate = subFn(this.viewDate, 1);
+
   }
 
   today(): void {
     this.viewDate = new Date();
   }
 
-  dayClicked({date, events}: {date: Moment, events: CalendarEvent[]}): void {
-    if (moment(date).startOf('month').isSame(moment(this.viewDate).startOf('month'))) {
+  dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
+
+    if (isSameMonth(date, this.viewDate)) {
       if (
-        (moment(this.viewDate).startOf('day').isSame(date.clone().startOf('day')) && this.activeDayIsOpen === true) ||
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
         events.length === 0
       ) {
         this.activeDayIsOpen = false;
       } else {
         this.activeDayIsOpen = true;
-        this.viewDate = date.toDate();
+        this.viewDate = date;
       }
     }
   }
