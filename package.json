@@ -4,8 +4,8 @@
   "description": "A calendar component that can display events on a month, week or day view",
   "main": "./dist/umd/angular2-calendar.js",
   "style": "./dist/css/angular2-calendar.css",
-  "module": "./dist/es2015-module/angular2-calendar.js",
-  "typings": "./dist/es2015-module/angular2-calendar.d.ts",
+  "module": "./dist/esm/angular2-calendar.js",
+  "typings": "./dist/esm/angular2-calendar.d.ts",
   "scripts": {
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
     "build:demo": "webpack -p",
@@ -21,7 +21,7 @@
     "prerelease": "npm test",
     "release": "standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
     "postrelease": "npm run build:clean && npm run gh-pages",
-    "ngc": "ngc -p tsconfig-es2015.json"
+    "ngc": "ngc -p tsconfig-ngc.json"
   },
   "repository": {
     "type": "git",
