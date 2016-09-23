@@ -26,7 +26,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
-* 1/ The `dayModifier` and `hourSegmentModifier` output objects now return pure date objects instead of moments
+* 1/ The `dayClicked`, `dayModifier` and `hourSegmentModifier` output objects now return pure date objects instead of moments
 
 2/ If using the `CalendarMomentDateFormatter` you must now also provide moment to the calendar like so
 ```
