@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.2...v0.2.3) (2016-09-24)
+
+
+### Bug Fixes
+
+* **aot:** fix typescript errors when doing aot ([c5ac3f9](https://github.com/mattlewis92/angular2-calendar/commit/c5ac3f9))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.1...v0.2.2) (2016-09-23)
 
