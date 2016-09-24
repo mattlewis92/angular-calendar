@@ -163,6 +163,16 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
     this.hide();
   }
 
+  @HostListener('mouseenter')
+  onMouseOver(): void {
+    this.show();
+  }
+
+  @HostListener('mouseleave')
+  onMouseOut(): void {
+    this.hide();
+  }
+
   private show(): void {
     if (!this.tooltipRef && this.contents) {
       this.tooltipRef = this.viewContainerRef.createComponent(this.tooltipFactory, 0, this.injector, []);
@@ -177,16 +187,6 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
       this.viewContainerRef.remove(this.viewContainerRef.indexOf(this.tooltipRef.hostView));
       this.tooltipRef = null;
     }
-  }
-
-  @HostListener('mouseenter')
-  onMouseOver(): void {
-    this.show();
-  }
-
-  @HostListener('mouseleave')
-  onMouseOut(): void {
-    this.hide();
   }
 
   private positionPopover(): void {
