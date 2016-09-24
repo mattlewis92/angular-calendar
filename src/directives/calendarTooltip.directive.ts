@@ -180,12 +180,12 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
   }
 
   @HostListener('mouseenter')
-  private onMouseOver(): void {
+  onMouseOver(): void {
     this.show();
   }
 
   @HostListener('mouseleave')
-  private onMouseOut(): void {
+  onMouseOut(): void {
     this.hide();
   }
 
