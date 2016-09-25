@@ -10,7 +10,8 @@
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
     "build:demo": "webpack -p",
     "build:umd": "webpack --config webpack.config.umd.ts",
-    "build:dist": "npm run build:umd && npm run ngc",
+    "build:ngc": "ngc -p tsconfig-ngc.json",
+    "build:dist": "npm run build:umd && npm run build:ngc",
     "build:clean": "rm -rf dist",
     "test": "karma start",
     "test:watch": "karma start --watch",
@@ -20,8 +21,7 @@
     "gh-pages": "git checkout gh-pages && git merge master && npm run build:demo && npm run typedoc && git add . && git commit -m 'chore: build demo and docs' && git push && git checkout master",
     "prerelease": "npm test",
     "release": "standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
-    "postrelease": "npm run build:clean && npm run gh-pages",
-    "ngc": "ngc -p tsconfig-ngc.json"
+    "postrelease": "npm run build:clean && npm run gh-pages"
   },
   "repository": {
     "type": "git",
