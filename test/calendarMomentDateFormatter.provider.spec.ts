@@ -7,7 +7,7 @@ import * as moment from 'moment';
 import {
   CalendarMomentDateFormatter,
   MOMENT
-} from './../angular2-calendar';
+} from './../src';
 
 describe('calendarMomentDateFormatter provider', () => {
 

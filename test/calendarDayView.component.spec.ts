@@ -13,7 +13,7 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT
-} from './../angular2-calendar';
+} from './../src';
 import {CalendarDayView} from './../src/components/day/calendarDayView.component';
 import {Subject} from 'rxjs/Rx';
 import {spy} from 'sinon';

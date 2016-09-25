@@ -12,7 +12,7 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT
-} from './../angular2-calendar';
+} from './../src';
 import {CalendarWeekView} from './../src/components/week/calendarWeekView.component';
 import {Subject} from 'rxjs/Rx';
 import {triggerDomEvent} from './util';
