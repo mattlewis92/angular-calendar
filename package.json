@@ -9,7 +9,7 @@
   "scripts": {
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
     "build:demo": "webpack -p",
-    "build:umd": "webpack --config webpack.config.umd.js",
+    "build:umd": "webpack --config webpack.config.umd.ts",
     "build:dist": "npm run build:umd && npm run ngc",
     "build:clean": "rm -rf dist",
     "test": "karma start",
