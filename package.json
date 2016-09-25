@@ -51,6 +51,7 @@
     "@types/core-js": "~0.9.32",
     "@types/date-fns": "0.0.1",
     "@types/jasmine": "~2.2.33",
+    "@types/node": "~6.0.41",
     "@types/sinon": "~1.16.27",
     "@types/sinon-chai": "~2.7.26",
     "autoprefixer": "~6.4.0",

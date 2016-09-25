@@ -55,14 +55,15 @@ module.exports = function(config) {
           loader: 'sourcemap-istanbul-instrumenter-loader?force-sourcemap=true'
         }]
       },
-      plugins: (WATCH ? [] : [
-        new webpack.NoErrorsPlugin(),
-        new StyleLintPlugin({
-          syntax: 'scss',
-          context: 'scss',
-          failOnError: true
-        })
-      ]).concat([
+      plugins: [
+        ...(WATCH ? [] : [
+          new webpack.NoErrorsPlugin(),
+          new StyleLintPlugin({
+            syntax: 'scss',
+            context: 'scss',
+            failOnError: true
+          })
+        ]),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i
@@ -79,7 +80,7 @@ module.exports = function(config) {
             }
           }
         })
-      ])
+      ]
     },
 
     remapIstanbulReporter: {
