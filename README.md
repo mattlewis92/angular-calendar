@@ -32,7 +32,7 @@ For a full e2e example see the [demo source](https://github.com/mattlewis92/angu
 
 ### Usage without a module bundler
 ```
-<script src="node_modules/angular2-calendar/angular2-calendar.js"></script>
+<script src="node_modules/angular2-calendar/dist/umd/angular2-calendar.js"></script>
 <script>
     // everything is exported angular2Calendar namespace
 </script>
