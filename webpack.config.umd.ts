@@ -5,7 +5,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: __dirname + '/angular2-calendar.ts',
+  entry: __dirname + '/src/index.umd.ts',
   output: {
     path: __dirname + '/dist/umd',
     filename: 'angular2-calendar.js',

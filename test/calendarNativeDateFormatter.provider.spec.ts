@@ -5,7 +5,7 @@ import {
 import {expect} from 'chai';
 import {
   CalendarNativeDateFormatter
-} from './../angular2-calendar';
+} from './../src';
 
 describe('calendarNativeDateFormatter provider', () => {
 

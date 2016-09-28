@@ -12,7 +12,7 @@ import {
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
   MOMENT
-} from './../angular2-calendar';
+} from './../src';
 
 @Component({
   template: '{{ date | calendarDate:method:locale }}'

@@ -11,7 +11,10 @@
     "rootDir": "./",
     "sourceMap": true,
     "inlineSources": true,
-    "skipLibCheck": true
+    "types": [
+      "date-fns"
+    ],
+    "lib": ["es6", "dom"]
   },
   "files": [
     "src/index.ts"
