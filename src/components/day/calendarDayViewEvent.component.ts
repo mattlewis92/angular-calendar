@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import {DayViewEvent} from 'calendar-utils';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { DayViewEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-day-view-event',
@@ -25,7 +25,7 @@ import {DayViewEvent} from 'calendar-utils';
     </div>
   `
 })
-export class CalendarDayViewEvent {
+export class CalendarDayViewEventComponent {
 
   @Input() dayEvent: DayViewEvent;
 

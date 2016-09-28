@@ -11,8 +11,8 @@ import {
   LOCALE_ID,
   Inject
 } from '@angular/core';
-import {Subject} from 'rxjs/Subject';
-import {Subscription} from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import {
   WeekDay,
   CalendarEvent,
@@ -50,7 +50,7 @@ import {
     </div>
   `
 })
-export class CalendarWeekView implements OnChanges, OnInit, OnDestroy {
+export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   /**
    * The current view date

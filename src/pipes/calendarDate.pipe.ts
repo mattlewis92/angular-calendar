@@ -1,5 +1,5 @@
-import {Pipe, PipeTransform, LOCALE_ID, Inject} from '@angular/core';
-import {CalendarDateFormatter} from './../providers/calendarDateFormatter.provider';
+import { Pipe, PipeTransform, LOCALE_ID, Inject } from '@angular/core';
+import { CalendarDateFormatter } from './../providers/calendarDateFormatter.provider';
 
 @Pipe({
   name: 'calendarDate'

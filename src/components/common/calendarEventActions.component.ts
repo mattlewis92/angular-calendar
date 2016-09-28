@@ -1,5 +1,5 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {CalendarEvent} from 'calendar-utils';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-event-actions',
@@ -17,7 +17,7 @@ import {CalendarEvent} from 'calendar-utils';
     </span>
   `
 })
-export class CalendarEventActions {
+export class CalendarEventActionsComponent {
 
   @Input() event: CalendarEvent;
 

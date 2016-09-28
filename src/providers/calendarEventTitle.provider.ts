@@ -1,4 +1,4 @@
-import {CalendarEvent} from 'calendar-utils';
+import { CalendarEvent } from 'calendar-utils';
 
 export class CalendarEventTitle {
 

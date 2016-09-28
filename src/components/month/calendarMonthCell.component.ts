@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import {MonthViewDay} from 'calendar-utils';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { MonthViewDay } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -35,7 +35,7 @@ import {MonthViewDay} from 'calendar-utils';
     '[style.backgroundColor]': 'day.backgroundColor'
   }
 })
-export class CalendarMonthCell {
+export class CalendarMonthCellComponent {
 
   @Input() day: MonthViewDay;
 

@@ -5,7 +5,7 @@ import {
   async
 } from '@angular/core/testing';
 import * as moment from 'moment';
-import {expect} from 'chai';
+import { expect } from 'chai';
 import {
   CalendarEventTitle,
   CalendarEvent,
@@ -14,11 +14,11 @@ import {
   CalendarModule,
   MOMENT
 } from './../src';
-import {CalendarDayView} from './../src/components/day/calendarDayView.component';
-import {Subject} from 'rxjs/Rx';
-import {spy} from 'sinon';
+import { CalendarDayViewComponent } from './../src/components/day/calendarDayView.component';
+import { Subject } from 'rxjs/Rx';
+import { spy } from 'sinon';
 
-describe('CalendarDayView component', () => {
+describe('CalendarDayViewComponent component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({imports: [CalendarModule]});
@@ -37,7 +37,7 @@ describe('CalendarDayView component', () => {
   }));
 
   it('should generate the day view', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
@@ -54,7 +54,7 @@ describe('CalendarDayView component', () => {
   });
 
   it('should call the event clicked callback', async(() => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
@@ -75,7 +75,7 @@ describe('CalendarDayView component', () => {
   }));
 
   it('should call the event clicked callback on all day events', async(() => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
@@ -97,7 +97,7 @@ describe('CalendarDayView component', () => {
   }));
 
   it('should add a custom CSS class to events', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-01'),
@@ -116,7 +116,7 @@ describe('CalendarDayView component', () => {
 
   it('should call the hour segment clicked callback', () => {
 
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     fixture.detectChanges();
@@ -128,7 +128,7 @@ describe('CalendarDayView component', () => {
   });
 
   it('should refresh the view when the refresh observable is emitted on', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-01');
@@ -150,7 +150,7 @@ describe('CalendarDayView component', () => {
 
   it('should allow the event title to be customised by the calendarConfig provider', () => {
 
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     eventTitle.day = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
@@ -172,7 +172,7 @@ describe('CalendarDayView component', () => {
   });
 
   it('should update the hour grid and event list when the day start changes', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-29'),
@@ -193,7 +193,7 @@ describe('CalendarDayView component', () => {
   });
 
   it('should add event actions to each event', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-26'),
@@ -219,7 +219,7 @@ describe('CalendarDayView component', () => {
   });
 
   it('should allow the event width to be customised', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-06-01'),
@@ -237,7 +237,7 @@ describe('CalendarDayView component', () => {
   });
 
   it('should add a custom CSS class to days via the hour segment modifier', () => {
-    const fixture: ComponentFixture<CalendarDayView> = TestBed.createComponent(CalendarDayView);
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.hourSegmentModifier = segment => {
       segment.cssClass = 'foo';

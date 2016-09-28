@@ -1,5 +1,5 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {DayViewHourSegment} from 'calendar-utils';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { DayViewHourSegment } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-day-view-hour-segment',
@@ -13,7 +13,7 @@ import {DayViewHourSegment} from 'calendar-utils';
     </div>
   `
 })
-export class CalendarDayViewHourSegment {
+export class CalendarDayViewHourSegmentComponent {
 
   @Input() segment: DayViewHourSegment;
 

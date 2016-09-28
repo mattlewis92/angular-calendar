@@ -1,5 +1,5 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {WeekDay} from 'calendar-utils';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { WeekDay } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-week-view-header',
@@ -16,7 +16,7 @@ import {WeekDay} from 'calendar-utils';
     '[class.cal-weekend]': 'day.isWeekend'
   }
 })
-export class CalendarWeekViewHeader {
+export class CalendarWeekViewHeaderComponent {
 
   @Input() day: WeekDay;
 

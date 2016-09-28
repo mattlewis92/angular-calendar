@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   startOfDay,
   subDays,
@@ -32,7 +32,7 @@ const colors: any = {
 };
 
 @Component({
-  selector: 'demo-app',
+  selector: 'mwl-demo-app',
   styles: [`
     h3 {
       margin: 0;
@@ -91,13 +91,13 @@ const colors: any = {
     </div>
   `
 })
-export class Demo {
+export class DemoComponent {
 
-  private view: string = 'month';
+  view: string = 'month';
 
-  private viewDate: Date = new Date();
+  viewDate: Date = new Date();
 
-  private actions: CalendarEventAction[] = [{
+  actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
       console.log('Edit event', event);
@@ -109,7 +109,7 @@ export class Demo {
     }
   }];
 
-  private events: CalendarEvent[] = [{
+  events: CalendarEvent[] = [{
     start: subDays(startOfDay(new Date()), 1),
     end: addDays(new Date(), 1),
     title: 'A 3 day event',
@@ -127,7 +127,7 @@ export class Demo {
     color: colors.blue
   }];
 
-  private activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = true;
 
   increment(): void {
 

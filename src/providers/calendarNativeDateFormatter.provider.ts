@@ -1,5 +1,5 @@
 import * as getISOWeek from 'date-fns/get_iso_week';
-import {CalendarDateFormatterInterface, DateFormatterParams} from './../interfaces/calendarDateFormatter.interface';
+import { CalendarDateFormatterInterface, DateFormatterParams } from './../interfaces/calendarDateFormatter.interface';
 
 export class CalendarNativeDateFormatter implements CalendarDateFormatterInterface {
 

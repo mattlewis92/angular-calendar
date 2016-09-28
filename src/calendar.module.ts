@@ -1,42 +1,42 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CalendarDayView} from './components/day/calendarDayView.component';
-import {CalendarWeekView} from './components/week/calendarWeekView.component';
-import {CalendarMonthView} from './components/month/calendarMonthView.component';
-import {CalendarEventActions} from './components/common/calendarEventActions.component';
-import {CalendarEventTitle as CalendarEventTitleComponent} from './components/common/calendarEventTitle.component';
-import {CalendarMonthCell} from './components/month/calendarMonthCell.component';
-import {CalendarOpenDayEvents} from './components/month/calendarOpenDayEvents.component';
-import {CalendarWeekViewHeader} from './components/week/calendarWeekViewHeader.component';
-import {CalendarWeekViewEvent} from './components/week/calendarWeekViewEvent.component';
-import {CalendarAllDayEvent} from './components/day/calendarAllDayEvent.component';
-import {CalendarDayViewHourSegment} from './components/day/calendarDayViewHourSegment.component';
-import {CalendarDayViewEvent} from './components/day/calendarDayViewEvent.component';
-import {CalendarTooltipWindow, CalendarTooltip} from './directives/calendarTooltip.directive';
-import {CalendarDate} from './pipes/calendarDate.pipe';
-import {CalendarEventTitle as CalendarEventTitlePipe} from './pipes/calendarEventTitle.pipe';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
+import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
+import { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';
+import { CalendarEventActionsComponent } from './components/common/calendarEventActions.component';
+import { CalendarEventTitleComponent } from './components/common/calendarEventTitle.component';
+import { CalendarMonthCellComponent } from './components/month/calendarMonthCell.component';
+import { CalendarOpenDayEventsComponent } from './components/month/calendarOpenDayEvents.component';
+import { CalendarWeekViewHeaderComponent } from './components/week/calendarWeekViewHeader.component';
+import { CalendarWeekViewEventComponent } from './components/week/calendarWeekViewEvent.component';
+import { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';
+import { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';
+import { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';
+import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
+import { CalendarDate } from './pipes/calendarDate.pipe';
+import { CalendarEventTitle as CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
 
 @NgModule({
   declarations: [
-    CalendarDayView,
-    CalendarWeekView,
-    CalendarMonthView,
-    CalendarEventActions,
+    CalendarDayViewComponent,
+    CalendarWeekViewComponent,
+    CalendarMonthViewComponent,
+    CalendarEventActionsComponent,
     CalendarEventTitleComponent,
-    CalendarMonthCell,
-    CalendarOpenDayEvents,
-    CalendarWeekViewHeader,
-    CalendarWeekViewEvent,
-    CalendarAllDayEvent,
-    CalendarDayViewHourSegment,
-    CalendarDayViewEvent,
-    CalendarTooltipWindow,
-    CalendarTooltip,
+    CalendarMonthCellComponent,
+    CalendarOpenDayEventsComponent,
+    CalendarWeekViewHeaderComponent,
+    CalendarWeekViewEventComponent,
+    CalendarAllDayEventComponent,
+    CalendarDayViewHourSegmentComponent,
+    CalendarDayViewEventComponent,
+    CalendarTooltipWindowComponent,
+    CalendarTooltipDirective,
     CalendarDate,
     CalendarEventTitlePipe
   ],
   imports: [CommonModule],
-  exports: [CalendarDayView, CalendarWeekView, CalendarMonthView, CalendarDate],
-  entryComponents: [CalendarTooltipWindow]
+  exports: [CalendarDayViewComponent, CalendarWeekViewComponent, CalendarMonthViewComponent, CalendarDate],
+  entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarModule {}

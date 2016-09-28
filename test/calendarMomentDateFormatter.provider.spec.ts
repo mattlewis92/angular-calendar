@@ -2,7 +2,7 @@ import {
   inject,
   TestBed
 } from '@angular/core/testing';
-import {expect} from 'chai';
+import { expect } from 'chai';
 import * as moment from 'moment';
 import {
   CalendarMomentDateFormatter,
