@@ -11,7 +11,6 @@ import {
   LOCALE_ID,
   Inject
 } from '@angular/core';
-import * as isSameDay from 'date-fns/is_same_day';
 import {
   CalendarEvent,
   WeekDay,
@@ -22,6 +21,9 @@ import {
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+
+declare const require: any;
+const isSameDay: any = require('date-fns/is_same_day');
 
 @Component({
   selector: 'mwl-calendar-month-view',
