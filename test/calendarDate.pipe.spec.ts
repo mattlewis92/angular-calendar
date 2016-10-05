@@ -1,11 +1,11 @@
-import {Component, LOCALE_ID} from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import {
   inject,
   ComponentFixture,
   TestBed
 } from '@angular/core/testing';
-import {expect} from 'chai';
-import {spy} from 'sinon';
+import { expect } from 'chai';
+import { spy } from 'sinon';
 import * as moment from 'moment';
 import {
   CalendarModule,
@@ -17,7 +17,7 @@ import {
 @Component({
   template: '{{ date | calendarDate:method:locale }}'
 })
-class TestCmp {
+class TestComponent {
   public date: Date;
   public view: string;
   public format: string;
@@ -28,7 +28,7 @@ class TestCmp {
 describe('calendarDate pipe', () => {
 
   beforeEach(() => {
-    TestBed.configureTestingModule({imports: [CalendarModule], declarations: [TestCmp]});
+    TestBed.configureTestingModule({imports: [CalendarModule], declarations: [TestComponent]});
     TestBed.configureCompiler({
       providers: [
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
@@ -44,7 +44,7 @@ describe('calendarDate pipe', () => {
   }));
 
   it('should use the date formatter to format the date', () => {
-    const fixture: ComponentFixture<TestCmp> = TestBed.createComponent(TestCmp);
+    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(TestComponent);
     spy(dateFormatter, 'monthViewColumnHeader');
     fixture.componentInstance.date = new Date('2016-01-01');
     fixture.componentInstance.method = 'monthViewColumnHeader';
@@ -54,7 +54,7 @@ describe('calendarDate pipe', () => {
   });
 
   it('should allow the locale to be customised', () => {
-    const fixture: ComponentFixture<TestCmp> = TestBed.createComponent(TestCmp);
+    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(TestComponent);
     fixture.componentInstance.locale = 'de';
     spy(dateFormatter, 'monthViewColumnHeader');
     fixture.componentInstance.date = new Date('2016-01-01');

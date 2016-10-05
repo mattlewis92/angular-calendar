@@ -1,13 +1,13 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 // import should be from `angular2-calendar` in your app
-import {CalendarModule, CalendarEventTitle, CalendarDateFormatter} from './../src';
-import {Demo} from './demo.component';
+import { CalendarModule, CalendarEventTitle, CalendarDateFormatter } from './../src';
+import { DemoComponent } from './demo.component';
 
 @NgModule({
-  declarations: [Demo],
+  declarations: [DemoComponent],
   imports: [BrowserModule, CalendarModule],
-  bootstrap: [Demo],
+  bootstrap: [DemoComponent],
   providers: [
     CalendarEventTitle,
     CalendarDateFormatter

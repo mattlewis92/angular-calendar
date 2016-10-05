@@ -7,11 +7,13 @@ import {
   EventEmitter,
   ChangeDetectorRef,
   LOCALE_ID,
-  Inject
+  Inject,
+  OnInit,
+  OnDestroy
 } from '@angular/core';
-import {getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour} from 'calendar-utils';
-import {Subject} from 'rxjs/Subject';
-import {Subscription} from 'rxjs/Subscription';
+import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour } from 'calendar-utils';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 const SEGMENT_HEIGHT: number = 30;
 
@@ -45,7 +47,7 @@ const SEGMENT_HEIGHT: number = 30;
     </div>
   `
 })
-export class CalendarDayView implements OnChanges {
+export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   /**
    * The current view date

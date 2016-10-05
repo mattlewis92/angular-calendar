@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 import * as moment from 'moment';
-import {expect} from 'chai';
+import { expect } from 'chai';
 import {
   CalendarEventTitle,
   CalendarEvent,
@@ -13,9 +13,9 @@ import {
   CalendarModule,
   MOMENT
 } from './../src';
-import {CalendarWeekView} from './../src/components/week/calendarWeekView.component';
-import {Subject} from 'rxjs/Rx';
-import {triggerDomEvent} from './util';
+import { CalendarWeekViewComponent } from './../src/components/week/calendarWeekView.component';
+import { Subject } from 'rxjs/Rx';
+import { triggerDomEvent } from './util';
 
 describe('calendarWeekView component', () => {
 
@@ -36,7 +36,7 @@ describe('calendarWeekView component', () => {
   }));
 
   it('should generate the week view', () => {
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     expect(fixture.componentInstance.days.length).to.equal(7);
@@ -44,7 +44,7 @@ describe('calendarWeekView component', () => {
   });
 
   it('should emit on the dayClicked output', () => {
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     fixture.detectChanges();
@@ -57,7 +57,7 @@ describe('calendarWeekView component', () => {
   });
 
   it('should add a custom CSS class to events', () => {
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
@@ -77,7 +77,7 @@ describe('calendarWeekView component', () => {
 
   it('should call the event clicked callback', () => {
 
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
       start: new Date('2016-05-30'),
@@ -100,7 +100,7 @@ describe('calendarWeekView component', () => {
   });
 
   it('should refresh the view when the refresh observable is emitted on', () => {
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-01');
@@ -122,7 +122,7 @@ describe('calendarWeekView component', () => {
 
   it('should allow the event title to be customised by the calendarConfig provider', () => {
 
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     eventTitle.week = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
@@ -145,7 +145,7 @@ describe('calendarWeekView component', () => {
 
   it('should allow the locale to be changed', () => {
 
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.locale = 'de';
     fixture.componentInstance.viewDate = new Date();
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
@@ -156,7 +156,7 @@ describe('calendarWeekView component', () => {
 
   it('should show a tooltip on mouseover of the event', () => {
 
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     eventTitle.weekTooltip = (event: CalendarEvent) => {
       return `title: ${event.title}`;
     };
@@ -186,7 +186,7 @@ describe('calendarWeekView component', () => {
 
   it('should disable the tooltip', () => {
 
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     eventTitle.weekTooltip = () => '';
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [{
@@ -208,7 +208,7 @@ describe('calendarWeekView component', () => {
   });
 
   it('should allow the start of the week to be changed', () => {
-    const fixture: ComponentFixture<CalendarWeekView> = TestBed.createComponent(CalendarWeekView);
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.weekStartsOn = 1;
     fixture.componentInstance.ngOnChanges({viewDate: {}});

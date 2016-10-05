@@ -1,5 +1,5 @@
-import {OpaqueToken, Inject} from '@angular/core';
-import {CalendarDateFormatterInterface, DateFormatterParams} from './../interfaces/calendarDateFormatter.interface';
+import { OpaqueToken, Inject } from '@angular/core';
+import { CalendarDateFormatterInterface, DateFormatterParams } from './../interfaces/calendarDateFormatter.interface';
 
 export const MOMENT: OpaqueToken = new OpaqueToken('Moment');
 

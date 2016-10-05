@@ -15,8 +15,8 @@ import {
   ComponentFactory,
   Inject
 } from '@angular/core';
-import {DOCUMENT} from '@angular/platform-browser';
-import {Positioning} from '@ng-bootstrap/ng-bootstrap/util/positioning';
+import { DOCUMENT } from '@angular/platform-browser';
+import { Positioning } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 
 interface Coords {
   top: number;
@@ -123,25 +123,25 @@ interface Coords {
     </div>
   `
 })
-export class CalendarTooltipWindow {
+export class CalendarTooltipWindowComponent {
 
-  @Input() public contents: string;
+  @Input() contents: string;
 
-  @Input() public placement: string;
+  @Input() placement: string;
 
 }
 
 @Directive({
   selector: '[mwlCalendarTooltip]'
 })
-export class CalendarTooltip implements AfterViewChecked, OnDestroy {
+export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
 
-  @Input('mwlCalendarTooltip') contents: string;
+  @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
 
-  @Input('tooltipPlacement') placement: string = 'top';
+  @Input('tooltipPlacement') placement: string = 'top'; // tslint:disable-line no-input-rename
 
-  private tooltipFactory: ComponentFactory<CalendarTooltipWindow>;
-  private tooltipRef: ComponentRef<CalendarTooltipWindow>;
+  private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
+  private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
   private positioning: Positioning = new Positioning();
 
   constructor(
@@ -152,7 +152,7 @@ export class CalendarTooltip implements AfterViewChecked, OnDestroy {
     private viewContainerRef: ViewContainerRef,
     @Inject(DOCUMENT) private document //tslint:disable-line
   ) {
-    this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(CalendarTooltipWindow);
+    this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(CalendarTooltipWindowComponent);
   }
 
   ngAfterViewChecked(): void {

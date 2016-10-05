@@ -9,7 +9,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import {CalendarEvent} from 'calendar-utils';
+import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-open-day-events',
@@ -42,7 +42,7 @@ import {CalendarEvent} from 'calendar-utils';
     ])
   ]
 })
-export class CalendarOpenDayEvents {
+export class CalendarOpenDayEventsComponent {
 
   @Input() isOpen: boolean = false;
 

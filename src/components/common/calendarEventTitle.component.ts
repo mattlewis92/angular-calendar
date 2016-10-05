@@ -1,5 +1,5 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {CalendarEvent} from 'calendar-utils';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-event-title',
@@ -12,7 +12,7 @@ import {CalendarEvent} from 'calendar-utils';
     </a>
   `
 })
-export class CalendarEventTitle {
+export class CalendarEventTitleComponent {
 
   @Input() event: CalendarEvent;
 
