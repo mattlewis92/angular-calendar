@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.7"></a>
+## [0.2.7](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.6...v0.2.7) (2016-10-05)
+
+
+### Bug Fixes
+
+* use commonjs date-fns imports for rollup ([7e758ba](https://github.com/mattlewis92/angular2-calendar/commit/7e758ba))
+
+
+
 <a name="0.2.6"></a>
 ## [0.2.6](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.5...v0.2.6) (2016-09-28)
 

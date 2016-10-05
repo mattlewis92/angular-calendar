@@ -1,6 +1,6 @@
 {
   "name": "angular2-calendar",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A calendar component that can display events on a month, week or day view",
   "main": "./dist/umd/angular2-calendar.js",
   "style": "./dist/css/angular2-calendar.css",
