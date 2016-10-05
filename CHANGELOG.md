@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.7...v0.3.0) (2016-10-05)
+
+
+### Bug Fixes
+
+* only versions of angular >= 2.0.0 are supported ([6b1700b](https://github.com/mattlewis92/angular2-calendar/commit/6b1700b)), closes [#66](https://github.com/mattlewis92/angular2-calendar/issues/66)
+* remove positioning sourcemap from umd build ([d7ea482](https://github.com/mattlewis92/angular2-calendar/commit/d7ea482)), closes [#66](https://github.com/mattlewis92/angular2-calendar/issues/66)
+
+
+### Features
+
+* add CalendarModule.forRoot so providers dont need to be specified ([ee54b8f](https://github.com/mattlewis92/angular2-calendar/commit/ee54b8f))
+
+
+### BREAKING CHANGES
+
+* no RC versions of angular are supported. This was probably introduced in 0.2.x of this module, but clarifying here as a distinct breaking change
+
+
+
 <a name="0.2.7"></a>
 ## [0.2.7](https://github.com/mattlewis92/angular2-calendar/compare/v0.2.6...v0.2.7) (2016-10-05)
 

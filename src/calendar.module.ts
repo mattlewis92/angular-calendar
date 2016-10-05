@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
 import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
@@ -15,6 +15,8 @@ import { CalendarDayViewEventComponent } from './components/day/calendarDayViewE
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
 import { CalendarDate } from './pipes/calendarDate.pipe';
 import { CalendarEventTitle as CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
+import { CalendarEventTitle as CalendarEventTitleProvider } from './providers/calendarEventTitle.provider';
+import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
 
 @NgModule({
   declarations: [
@@ -39,4 +41,16 @@ import { CalendarEventTitle as CalendarEventTitlePipe } from './pipes/calendarEv
   exports: [CalendarDayViewComponent, CalendarWeekViewComponent, CalendarMonthViewComponent, CalendarDate],
   entryComponents: [CalendarTooltipWindowComponent]
 })
-export class CalendarModule {}
+export class CalendarModule {
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CalendarModule,
+      providers: [
+        CalendarEventTitleProvider,
+        CalendarDateFormatter
+      ]
+    };
+  }
+
+}

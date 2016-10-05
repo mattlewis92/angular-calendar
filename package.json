@@ -1,6 +1,6 @@
 {
   "name": "angular2-calendar",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "A calendar component that can display events on a month, week or day view",
   "main": "./dist/umd/angular2-calendar.js",
   "style": "./dist/css/angular2-calendar.css",
@@ -88,6 +88,7 @@
     "sass-loader": "~4.0.1",
     "sinon": "~1.17.4",
     "sinon-chai": "~2.8.0",
+    "source-map-loader": "~0.1.5",
     "sourcemap-istanbul-instrumenter-loader": "~0.2.0",
     "standard-version": "~2.4.0",
     "style-loader": "~0.13.0",
@@ -99,15 +100,15 @@
     "typedoc": "~0.4.3",
     "typescript": "~2.0.0",
     "url-loader": "~0.5.7",
-    "validate-commit-msg": "2.8.0",
+    "validate-commit-msg": "~2.8.2",
     "webpack": "~2.1.0-beta.22",
     "webpack-dev-server": "~2.1.0-beta.4",
     "zone.js": "~0.6.12"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0-rc.5",
-    "@angular/common": "^2.0.0-rc.5",
-    "@angular/platform-browser": "^2.0.0-rc.5"
+    "@angular/core": "^2.0.0",
+    "@angular/common": "^2.0.0",
+    "@angular/platform-browser": "^2.0.0"
   },
   "files": [
     "dist",
