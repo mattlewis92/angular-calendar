@@ -88,6 +88,7 @@
     "sass-loader": "~4.0.1",
     "sinon": "~1.17.4",
     "sinon-chai": "~2.8.0",
+    "source-map-loader": "~0.1.5",
     "sourcemap-istanbul-instrumenter-loader": "~0.2.0",
     "standard-version": "~2.4.0",
     "style-loader": "~0.13.0",

@@ -67,6 +67,10 @@ module.exports = {
       loader: 'tslint-loader?emitErrors=true&failOnHint=true',
       exclude: /node_modules/
     }, {
+      enforce: 'pre',
+      test: /ng\-bootstrap\/util\/positioning/,
+      loader: 'source-map-loader'
+    }, {
       test: /\.ts$/,
       loader: 'awesome-typescript-loader',
       exclude: /node_modules/
