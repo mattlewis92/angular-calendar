@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
@@ -55,6 +56,7 @@ module.exports = {
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       __dirname + '/src'
-    )
+    ),
+    new FixDefaultImportPlugin()
   ]
 };

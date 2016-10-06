@@ -21,9 +21,7 @@ import {
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-
-declare const require: any;
-const isSameDay: any = require('date-fns/is_same_day');
+import isSameDay from 'date-fns/is_same_day';
 
 @Component({
   selector: 'mwl-calendar-month-view',

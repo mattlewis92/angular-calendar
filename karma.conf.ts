@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const WATCH = process.argv.indexOf('--watch') > -1;
 
 module.exports = function(config) {
@@ -79,7 +80,8 @@ module.exports = function(config) {
               failOnHint: false
             }
           }
-        })
+        }),
+        new FixDefaultImportPlugin()
       ]
     },
 

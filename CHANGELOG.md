@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/mattlewis92/angular2-calendar/compare/v0.3.1...v0.3.2) (2016-10-06)
+
+
+### Bug Fixes
+
+* **rollup:** allow the module to be bundled with rollup ([e6deeea](https://github.com/mattlewis92/angular2-calendar/commit/e6deeea))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/mattlewis92/angular2-calendar/compare/v0.3.0...v0.3.1) (2016-10-05)
 
