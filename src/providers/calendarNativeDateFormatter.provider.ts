@@ -1,7 +1,5 @@
 import { CalendarDateFormatterInterface, DateFormatterParams } from './../interfaces/calendarDateFormatter.interface';
-
-declare const require: any;
-const getISOWeek: any = require('date-fns/get_iso_week');
+import getISOWeek from 'date-fns/get_iso_week';
 
 export class CalendarNativeDateFormatter implements CalendarDateFormatterInterface {
 
