@@ -71,18 +71,8 @@ module.exports = {
       test: /ng\-bootstrap\/util\/positioning/,
       loader: 'source-map-loader'
     }, {
-      enforce: 'pre',
       test: /\.ts$/,
-      exclude: /node_modules/,
-      loader: 'string-replace-loader',
-      options: {
-        search: `import (\\w+) from \\'date\\-fns\\/`, // nasty fix for umd build to work
-        replace: 'import * as $1 from \'date-fns/',
-        flags: 'g'
-      }
-    }, {
-      test: /\.ts$/,
-      loader: 'awesome-typescript-loader',
+      loader: 'awesome-typescript-loader?module=es2015',
       exclude: /node_modules/
     }, {
       test: /\.scss/,
