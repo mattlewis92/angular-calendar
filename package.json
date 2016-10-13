@@ -125,7 +125,7 @@
   "dependencies": {
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.0",
     "@types/date-fns": "0.0.2",
-    "calendar-utils": "0.0.32",
+    "calendar-utils": "0.0.33",
     "date-fns": "^1.3.0"
   }
 }
