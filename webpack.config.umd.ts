@@ -51,13 +51,13 @@ module.exports = {
     },
     'date-fns/is_same_day': {
       root: ['dateFns', 'isSameDay'],
-      commonjs: 'date-fns/is_same_day',
-      commonjs2: 'date-fns/is_same_day'
+      commonjs: 'date-fns/is_same_day/index',
+      commonjs2: 'date-fns/is_same_day/index'
     },
     'date-fns/get_iso_week': {
       root: ['dateFns', 'getISOWeek'],
-      commonjs: 'date-fns/get_iso_week',
-      commonjs2: 'date-fns/get_iso_week'
+      commonjs: 'date-fns/get_iso_week/index',
+      commonjs2: 'date-fns/get_iso_week/index'
     },
   },
   module: {
