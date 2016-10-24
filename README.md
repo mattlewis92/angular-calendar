@@ -41,13 +41,9 @@ import { CalendarModule } from 'angular2-calendar';
 export class MyModule {}
 ```
 
-Then use the `mwl-calendar-month-view`, `mwl-calendar-week-view` and `mwl-calendar-day-view` components in your app.
+Then use the `mwl-calendar-month-view`, `mwl-calendar-week-view` and `mwl-calendar-day-view` components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). 
 
-For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). 
-
-To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular2-calendar/docs/)
-
-Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular2-calendar/issues/32)
+To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular2-calendar/docs/). Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular2-calendar/issues/32)
 
 ### Module bundlers
 
