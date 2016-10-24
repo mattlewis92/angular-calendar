@@ -21,13 +21,14 @@
     "lite-server": "^2.2.2",
     "rollup": "~0.36.3",
     "rollup-plugin-commonjs": "~5.0.5",
+    "rollup-plugin-css-only": "0.0.4",
     "rollup-plugin-node-resolve": "~2.0.0",
     "rollup-plugin-typescript": "~0.8.1",
     "typescript": "^2.0.3"
   },
   "scripts": {
     "rollup": "rollup -f iife -c rollup.config.js -o dist/bundle.js",
-    "prestart": "rollup",
+    "prestart": "npm run rollup",
     "start": "lite-server"
   }
 }
