@@ -11,7 +11,8 @@
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "examples"
   ],
   "compileOnSave": false
 }
