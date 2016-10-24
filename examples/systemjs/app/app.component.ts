@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
       [viewDate]="viewDate"
       [events]="events">
     </mwl-calendar-month-view>
-`
+  `
 })
 export class AppComponent {
   viewDate: Date = new Date();
