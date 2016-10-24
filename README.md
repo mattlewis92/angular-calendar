@@ -21,14 +21,37 @@ https://mattlewis92.github.io/angular2-calendar/demo/
 
 A calendar component that can display events on a month, week or day view. The successor of: https://github.com/mattlewis92/angular-bootstrap-calendar
 
-## Installation
+## Getting started
 
 Install through npm:
 ```
 npm install --save angular2-calendar
 ```
 
-For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). Better docs to follow in the future!
+Import the calendar module into your apps module:
+```
+import { NgModule } from '@angular/core';
+import { CalendarModule } from 'angular2-calendar';
+
+@NgModule({
+  imports: [
+    CalendarModule.forRoot()
+  ]
+})
+export class MyModule {}
+```
+
+Then use the `mwl-calendar-month-view`, `mwl-calendar-week-view` and `mwl-calendar-day-view` components in your app.
+
+For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). 
+
+To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular2-calendar/docs/)
+
+Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular2-calendar/issues/32)
+
+### Module bundlers
+
+You can find quick start examples for all common module bundlers in the [examples](https://github.com/mattlewis92/angular2-calendar/) folder.
 
 ### Usage without a module bundler
 ```
@@ -37,10 +60,6 @@ For a full e2e example see the [demo source](https://github.com/mattlewis92/angu
     // everything is exported angular2Calendar namespace
 </script>
 ```
-
-## Documentation
-All documentation is auto-generated from the source via typedoc and can be viewed here:
-https://mattlewis92.github.io/angular2-calendar/docs/
 
 ## Angular 1 version
 https://github.com/mattlewis92/angular-bootstrap-calendar
