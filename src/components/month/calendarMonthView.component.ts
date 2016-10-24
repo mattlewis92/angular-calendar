@@ -151,6 +151,16 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     }
   }
 
+  toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
+    this.view.days.forEach(day => {
+      if (isHighlighted && day.events.indexOf(event) > -1) {
+        day.backgroundColor = event.color.secondary;
+      } else {
+        delete day.backgroundColor;
+      }
+    });
+  }
+
   private refreshHeader(): void {
     this.columnHeaders = getWeekViewHeader({
       viewDate: this.viewDate,
@@ -184,16 +194,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.refreshHeader();
     this.refreshBody();
     this.checkActiveDayIsOpen();
-  }
-
-  private toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
-    this.view.days.forEach(day => {
-      if (isHighlighted && day.events.indexOf(event) > -1) {
-        day.backgroundColor = event.color.secondary;
-      } else {
-        delete day.backgroundColor;
-      }
-    });
   }
 
 }
