@@ -1,5 +1,5 @@
 {
-  "name": "angular-calendar-systemjs-example",
+  "name": "angular-calendar-rollup-example",
   "version": "1.0.0",
   "author": "Matt Lewis",
   "license": "MIT",
@@ -9,25 +9,25 @@
     "@angular/core": "~2.1.1",
     "@angular/platform-browser": "~2.1.1",
     "@angular/platform-browser-dynamic": "~2.1.1",
-    "angular-in-memory-web-api": "~0.1.13",
     "angular2-calendar": "~0.3.5",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
-    "systemjs": "0.19.39",
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
-    "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
+    "rollup": "~0.36.3",
+    "rollup-plugin-commonjs": "~5.0.5",
+    "rollup-plugin-node-resolve": "~2.0.0",
+    "rollup-plugin-typescript": "~0.8.1",
     "typescript": "^2.0.3"
   },
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "lite": "lite-server",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "rollup": "rollup -f iife -c rollup.config.js -o dist/bundle.js",
+    "prestart": "rollup",
+    "start": "lite-server"
   }
 }
