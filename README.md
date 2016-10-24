@@ -47,7 +47,7 @@ To see all available API options see the auto generated [documentation](https://
 
 ### Module bundlers
 
-You can find quick start examples for all common module bundlers in the [examples](https://github.com/mattlewis92/angular2-calendar/) folder.
+You can find quick start examples for all common module bundlers in the [examples](https://github.com/mattlewis92/angular2-calendar/examples/) folder.
 
 ### Usage without a module bundler
 ```
