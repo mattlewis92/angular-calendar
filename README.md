@@ -23,12 +23,17 @@ A calendar component that can display events on a month, week or day view. The s
 
 ## Getting started
 
-Install through npm:
+First install through npm:
 ```
 npm install --save angular2-calendar
 ```
 
-Import the calendar module into your apps module:
+Next include the CSS file somewhere into your app:
+```
+node_modules/angular2-calendar/dist/css/angular2-calendar.css
+```
+
+Finally import the calendar module into your apps module:
 ```
 import { NgModule } from '@angular/core';
 import { CalendarModule } from 'angular2-calendar';
@@ -41,7 +46,7 @@ import { CalendarModule } from 'angular2-calendar';
 export class MyModule {}
 ```
 
-Then use the `mwl-calendar-month-view`, `mwl-calendar-week-view` and `mwl-calendar-day-view` components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). 
+Then you can use the `mwl-calendar-month-view`, `mwl-calendar-week-view` and `mwl-calendar-day-view` components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts). 
 
 To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular2-calendar/docs/). Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular2-calendar/issues/32)
 
