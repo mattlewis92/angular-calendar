@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as startOfDay from 'date-fns/start_of_day/index';
+
 @Component({
   selector: 'my-app',
   template: `
@@ -12,3 +14,5 @@ export class AppComponent {
   viewDate: Date = new Date();
   events = [];
 }
+
+console.log(startOfDay);
