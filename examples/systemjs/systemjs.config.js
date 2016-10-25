@@ -42,6 +42,7 @@
         defaultExtension: 'js'
       },
       'date-fns': {
+        main: './index.js',
         defaultExtension: 'js'
       }
     }
