@@ -48,8 +48,6 @@ module.exports = function(config) {
         }, {
           test: /sinon.js$/, loader: 'imports-loader?define=>false,require=>false'
         }, {
-          test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader'
-        }, {
           enforce: 'post',
           test: /src\/.+\.ts$/,
           exclude: /(test|node_modules)/,
