@@ -85,8 +85,7 @@ const colors: any = {
         <mwl-calendar-day-view
           *ngSwitchCase="'day'"
           [viewDate]="viewDate"
-          [events]="events"
-          [dayStartHour]="6">
+          [events]="events">
         </mwl-calendar-day-view>
       </div>
     </div>
@@ -120,8 +119,7 @@ export class DemoComponent {
     start: startOfDay(new Date()),
     title: 'An event with no end date',
     color: colors.yellow,
-    actions: this.actions,
-    allDay: true
+    actions: this.actions
   }, {
     start: subDays(endOfMonth(new Date()), 3),
     end: addDays(endOfMonth(new Date()), 3),
