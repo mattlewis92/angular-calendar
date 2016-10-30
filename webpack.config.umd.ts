@@ -99,17 +99,19 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: [
-          autoprefixer({
-            browsers: [
-              '> 1%',
-              'last 4 versions',
-              'last 20 Chrome versions',
-              'last 20 Firefox versions'
-            ]
-          }),
-          postCssFlexibility
-        ]
+        postcss() {
+          return [
+            autoprefixer({
+              browsers: [
+                '> 1%',
+                'last 4 versions',
+                'last 20 Chrome versions',
+                'last 20 Firefox versions'
+              ]
+            }),
+            postCssFlexibility
+          ];
+        }
       }
     })
   ]

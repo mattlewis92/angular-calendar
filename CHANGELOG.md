@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.6"></a>
+## [0.3.6](https://github.com/mattlewis92/angular2-calendar/compare/v0.3.5...v0.3.6) (2016-10-30)
+
+
+### Bug Fixes
+
+* **dayView:** fix event column stacking ([4570fc6](https://github.com/mattlewis92/angular2-calendar/commit/4570fc6)), closes [#80](https://github.com/mattlewis92/angular2-calendar/issues/80)
+* **dayView:** show all day events that start outside of the day view start ([edb2614](https://github.com/mattlewis92/angular2-calendar/commit/edb2614)), closes [#79](https://github.com/mattlewis92/angular2-calendar/issues/79)
+
+
+
 <a name="0.3.5"></a>
 ## [0.3.5](https://github.com/mattlewis92/angular2-calendar/compare/v0.3.4...v0.3.5) (2016-10-13)
 
