@@ -84,19 +84,31 @@
 				</ul>
 				<h2 id="about">About</h2>
 				<p>A calendar component that can display events on a month, week or day view. The successor of: <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
-				<h2 id="installation">Installation</h2>
-				<p>Install through npm:</p>
+				<h2 id="getting-started">Getting started</h2>
+				<p>First install through npm:</p>
 				<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save angular2-calendar</span>
-</code></pre><p>For a full e2e example see the <a href="https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts">demo source</a>. Better docs to follow in the future!</p>
+</code></pre><p>Next include the CSS file somewhere into your app:</p>
+				<pre><code>node_modules<span class="hljs-regexp">/angular2-calendar/</span>dist<span class="hljs-regexp">/css/</span>angular2-calendar.css
+</code></pre><p>Finally import the calendar module into your apps module:</p>
+				<pre><code><span class="hljs-keyword">import</span> { NgModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { CalendarModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular2-calendar'</span>;
+
+@NgModule({
+  imports: [
+    CalendarModule.forRoot()
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModule</span> {}</span>
+</code></pre><p>Then you can use the <code>mwl-calendar-month-view</code>, <code>mwl-calendar-week-view</code> and <code>mwl-calendar-day-view</code> components in your app. For a full e2e example see the <a href="https://github.com/mattlewis92/angular2-calendar/blob/master/demo/demo.component.ts">demo source</a>. </p>
+				<p>To see all available API options see the auto generated <a href="https://mattlewis92.github.io/angular2-calendar/docs/">documentation</a>. Full e2e examples will follow <a href="https://github.com/mattlewis92/angular2-calendar/issues/32">in the future</a></p>
+				<h3 id="module-bundlers">Module bundlers</h3>
+				<p>You can find quick start examples for all common module bundlers in the <a href="https://github.com/mattlewis92/angular2-calendar/tree/master/examples">examples</a> folder.</p>
 				<h3 id="usage-without-a-module-bundler">Usage without a module bundler</h3>
 				<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/angular2-calendar/dist/umd/angular2-calendar.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
     <span class="hljs-comment">// everything is exported angular2Calendar namespace</span>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre><h2 id="documentation">Documentation</h2>
-				<p>All documentation is auto-generated from the source via typedoc and can be viewed here:
-				<a href="https://mattlewis92.github.io/angular2-calendar/docs/">https://mattlewis92.github.io/angular2-calendar/docs/</a></p>
-				<h2 id="angular-1-version">Angular 1 version</h2>
+</code></pre><h2 id="angular-1-version">Angular 1 version</h2>
 				<p><a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
 				<h2 id="development">Development</h2>
 				<h3 id="prepare-your-environment">Prepare your environment</h3>
