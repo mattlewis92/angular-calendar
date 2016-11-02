@@ -32,7 +32,10 @@ const SEGMENT_HEIGHT: number = 30;
           <mwl-calendar-day-view-event
             *ngFor="let dayEvent of view?.events"
             [dayEvent]="dayEvent"
-            (eventClicked)="eventClicked.emit({event: dayEvent.event})">
+            [hourSegments]="hourSegments"
+            [eventSnapSize]="eventSnapSize"
+            (eventClicked)="eventClicked.emit({event: dayEvent.event})"
+            (eventResized)="eventTimesChanged.emit($event)">
           </mwl-calendar-day-view-event>
         </div>
         <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">
@@ -106,6 +109,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() hourSegmentModifier: Function;
 
   /**
+   * The grid size to snap resizing and dragging of events to
+   */
+  @Input() eventSnapSize: number = 30;
+
+  /**
    * Called when an event title is clicked
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
@@ -114,6 +122,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an hour segment is clicked
    */
   @Output() hourSegmentClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
+
+  /**
+   * Called when an event is resized or dragged and dropped
+   */
+  @Output() eventTimesChanged: EventEmitter<{newStart: Date, newEnd: Date, event: CalendarEvent}>
+    = new EventEmitter<{newStart: Date, newEnd: Date, event: CalendarEvent}>();
 
   hours: DayViewHour[] = [];
   view: DayView;

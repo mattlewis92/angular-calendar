@@ -59,6 +59,16 @@ module.exports = {
       commonjs: 'date-fns/get_iso_week/index',
       commonjs2: 'date-fns/get_iso_week/index'
     },
+    'date-fns/add_minutes': {
+      root: ['dateFns', 'addMinutes'],
+      commonjs: 'date-fns/add_minutes/index',
+      commonjs2: 'date-fns/add_minutes/index'
+    },
+    'angular-resizable-element': {
+      root: 'angularResizableElement',
+      commonjs: 'angular-resizable-element',
+      commonjs2: 'angular-resizable-element'
+    }
   },
   module: {
     rules: [{
