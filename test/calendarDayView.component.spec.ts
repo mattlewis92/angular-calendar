@@ -323,4 +323,57 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
+  it('should show a tooltip on mouseover of the event', () => {
+
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    eventTitle.dayTooltip = (event: CalendarEvent) => {
+      return `title: ${event.title}`;
+    };
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [{
+      start: new Date('2016-05-30'),
+      end: new Date('2016-06-02'),
+      title: 'foo <b>bar</b>',
+      color: {
+        primary: 'blue',
+        secondary: ''
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    triggerDomEvent('mouseenter', event);
+    fixture.detectChanges();
+    const tooltip: Element = document.body.querySelector('.cal-tooltip');
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
+    expect(tooltip.classList.contains('cal-tooltip-top')).to.be.true;
+    triggerDomEvent('mouseleave', event);
+    fixture.detectChanges();
+    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+
+  });
+
+  it('should disable the tooltip', () => {
+
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    eventTitle.dayTooltip = () => '';
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [{
+      start: new Date('2016-05-30'),
+      end: new Date('2016-06-02'),
+      title: 'foo <b>bar</b>',
+      color: {
+        primary: 'blue',
+        secondary: ''
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    triggerDomEvent('mouseenter', event);
+    fixture.detectChanges();
+    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+
+  });
+
 });

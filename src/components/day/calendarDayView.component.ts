@@ -34,6 +34,7 @@ const SEGMENT_HEIGHT: number = 30;
             *ngFor="let dayEvent of view?.events"
             [dayEvent]="dayEvent"
             [hourSegments]="hourSegments"
+            [tooltipPlacement]="tooltipPlacement"
             [eventSnapSize]="eventSnapSize"
             (eventClicked)="eventClicked.emit({event: dayEvent.event})"
             (eventResized)="eventTimesChanged.emit($event)">
@@ -113,6 +114,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * The grid size to snap resizing and dragging of events to
    */
   @Input() eventSnapSize: number = 30;
+
+  /**
+   * The placement of the event tooltip
+   */
+  @Input() tooltipPlacement: string = 'top';
 
   /**
    * Called when an event title is clicked

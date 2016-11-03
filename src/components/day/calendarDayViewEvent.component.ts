@@ -18,6 +18,8 @@ import addMinutes from 'date-fns/add_minutes';
       [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
       [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
       [ngClass]="dayEvent.event.cssClass"
+      [mwlCalendarTooltip]="dayEvent.event | calendarEventTitle:'dayTooltip'"
+      [tooltipPlacement]="tooltipPlacement"
       mwlResizable
       [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
       [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
@@ -40,6 +42,8 @@ export class CalendarDayViewEventComponent {
   @Input() hourSegments: number;
 
   @Input() eventSnapSize: number;
+
+  @Input() tooltipPlacement: string;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
