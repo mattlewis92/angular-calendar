@@ -14,6 +14,7 @@ import {
 import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEventTimesChangedEvent.interface';
 
 const SEGMENT_HEIGHT: number = 30;
 
@@ -126,8 +127,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output() eventTimesChanged: EventEmitter<{newStart: Date, newEnd: Date, event: CalendarEvent}>
-    = new EventEmitter<{newStart: Date, newEnd: Date, event: CalendarEvent}>();
+  @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   hours: DayViewHour[] = [];
   view: DayView;

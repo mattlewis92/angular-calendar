@@ -85,7 +85,8 @@ const colors: any = {
           *ngSwitchCase="'week'"
           [viewDate]="viewDate"
           [events]="events"
-          [refresh]="refresh">
+          [refresh]="refresh"
+          (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-week-view>
         <mwl-calendar-day-view
           *ngSwitchCase="'day'"

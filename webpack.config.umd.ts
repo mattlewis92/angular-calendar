@@ -64,6 +64,11 @@ module.exports = {
       commonjs: 'date-fns/add_minutes/index',
       commonjs2: 'date-fns/add_minutes/index'
     },
+    'date-fns/add_days': {
+      root: ['dateFns', 'addDays'],
+      commonjs: 'date-fns/add_days/index',
+      commonjs2: 'date-fns/add_days/index'
+    },
     'angular-resizable-element': {
       root: 'angularResizableElement',
       commonjs: 'angular-resizable-element',
