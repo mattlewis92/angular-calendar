@@ -9,7 +9,7 @@
     "@angular/core": "~2.1.1",
     "@angular/platform-browser": "~2.1.1",
     "@angular/platform-browser-dynamic": "~2.1.1",
-    "angular2-calendar": "~0.3.5",
+    "angular-calendar": "~0.4.0",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",

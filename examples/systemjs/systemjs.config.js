@@ -24,8 +24,9 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      'angular2-calendar': 'npm:angular2-calendar/dist/umd/angular2-calendar.js',
+      'angular-calendar': 'npm:angular-calendar/dist/umd/angular-calendar.js',
       'calendar-utils': 'npm:calendar-utils/dist/umd/calendarUtils.js',
+      'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',
       'date-fns': 'npm:date-fns'
     },
     // packages tells the System loader how to load when no filename and/or no extension
