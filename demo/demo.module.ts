@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import should be from `angular2-calendar` in your app
+// import should be from `angular-calendar` in your app
 import { CalendarModule } from './../src';
 import { DemoComponent } from './demo.component';
 

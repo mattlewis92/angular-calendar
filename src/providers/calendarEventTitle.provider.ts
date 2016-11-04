@@ -22,4 +22,8 @@ export class CalendarEventTitle {
     return event.title;
   }
 
+  dayTooltip(event: CalendarEvent): string {
+    return event.title;
+  }
+
 }

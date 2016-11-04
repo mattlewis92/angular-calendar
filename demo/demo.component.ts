@@ -9,12 +9,15 @@ import {
   addWeeks,
   subWeeks,
   addMonths,
-  subMonths
+  subMonths,
+  addHours
 } from 'date-fns';
+import { Subject } from 'rxjs/Subject';
 import {
   CalendarEvent,
-  CalendarEventAction
-} from './../src'; // import should be from `angular2-calendar` in your app
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent
+} from './../src'; // import should be from `angular-calendar` in your app
 
 const colors: any = {
   red: {
@@ -74,18 +77,23 @@ const colors: any = {
           *ngSwitchCase="'month'"
           [viewDate]="viewDate"
           [events]="events"
+          [refresh]="refresh"
           [activeDayIsOpen]="activeDayIsOpen"
           (dayClicked)="dayClicked($event.day)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view
           *ngSwitchCase="'week'"
           [viewDate]="viewDate"
-          [events]="events">
+          [events]="events"
+          [refresh]="refresh"
+          (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-week-view>
         <mwl-calendar-day-view
           *ngSwitchCase="'day'"
           [viewDate]="viewDate"
-          [events]="events">
+          [events]="events"
+          [refresh]="refresh"
+          (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-day-view>
       </div>
     </div>
@@ -109,6 +117,8 @@ export class DemoComponent {
     }
   }];
 
+  refresh: Subject<any> = new Subject();
+
   events: CalendarEvent[] = [{
     start: subDays(startOfDay(new Date()), 1),
     end: addDays(new Date(), 1),
@@ -125,6 +135,16 @@ export class DemoComponent {
     end: addDays(endOfMonth(new Date()), 3),
     title: 'A long event that spans 2 months',
     color: colors.blue
+  }, {
+    start: addHours(startOfDay(new Date()), 2),
+    end: new Date(),
+    title: 'A resizable event',
+    color: colors.yellow,
+    actions: this.actions,
+    resizable: {
+      beforeStart: true,
+      afterEnd: true
+    }
   }];
 
   activeDayIsOpen: boolean = true;
@@ -170,6 +190,12 @@ export class DemoComponent {
         this.viewDate = date;
       }
     }
+  }
+
+  eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
+    event.start = newStart;
+    event.end = newEnd;
+    this.refresh.next();
   }
 
 }

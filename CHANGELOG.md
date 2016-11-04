@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/mattlewis92/angular-calendar/compare/v0.3.6...v0.4.0) (2016-11-04)
+
+
+### Bug Fixes
+
+* **aot:** remove hacks required for AOT to work ([72a6e41](https://github.com/mattlewis92/angular-calendar/commit/72a6e41)), closes [#81](https://github.com/mattlewis92/angular-calendar/issues/81)
+
+
+### Features
+
+* **dayView:** add tooltips to events ([2cc7929](https://github.com/mattlewis92/angular-calendar/commit/2cc7929)), closes [#75](https://github.com/mattlewis92/angular-calendar/issues/75)
+* **dayView:** allow resizing of events ([95b9033](https://github.com/mattlewis92/angular-calendar/commit/95b9033))
+* **weekView:** support resizing of events ([c034a9d](https://github.com/mattlewis92/angular-calendar/commit/c034a9d)), closes [#9](https://github.com/mattlewis92/angular-calendar/issues/9)
+* rename module from angular2-calendar to angular-calendar ([fa1ef98](https://github.com/mattlewis92/angular-calendar/commit/fa1ef98)), closes [#69](https://github.com/mattlewis92/angular-calendar/issues/69)
+
+
+### BREAKING CHANGES
+
+* The module has now been renamed from angular2-calendar to angular-calendar
+
+The path to the sass and UMD builds has now changed. To migrate change all occurences of `angular2-calendar` to `angular-calendar`
+* dayView: day view events now have tooltips by default
+* aot: angular 2.1.2 or higher is now required for AOT to work
+* dayView: A dependency on the `angular-resizable-element` library has now been added. System.js users will need to add this to their config
+
+```
+'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',
+```
+
+Part of #9
+
+
+
 <a name="0.3.6"></a>
 ## [0.3.6](https://github.com/mattlewis92/angular2-calendar/compare/v0.3.5...v0.3.6) (2016-10-30)
 

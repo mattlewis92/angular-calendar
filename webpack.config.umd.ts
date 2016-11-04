@@ -8,9 +8,9 @@ module.exports = {
   entry: __dirname + '/src/index.umd.ts',
   output: {
     path: __dirname + '/dist/umd',
-    filename: 'angular2-calendar.js',
+    filename: 'angular-calendar.js',
     libraryTarget: 'umd',
-    library: 'angular2Calendar'
+    library: 'angularCalendar'
   },
   externals: {
     '@angular/core': {
@@ -59,6 +59,21 @@ module.exports = {
       commonjs: 'date-fns/get_iso_week/index',
       commonjs2: 'date-fns/get_iso_week/index'
     },
+    'date-fns/add_minutes': {
+      root: ['dateFns', 'addMinutes'],
+      commonjs: 'date-fns/add_minutes/index',
+      commonjs2: 'date-fns/add_minutes/index'
+    },
+    'date-fns/add_days': {
+      root: ['dateFns', 'addDays'],
+      commonjs: 'date-fns/add_days/index',
+      commonjs2: 'date-fns/add_days/index'
+    },
+    'angular-resizable-element': {
+      root: 'angularResizableElement',
+      commonjs: 'angular-resizable-element',
+      commonjs2: 'angular-resizable-element'
+    }
   },
   module: {
     rules: [{
@@ -92,9 +107,9 @@ module.exports = {
       context: 'scss',
       failOnError: true
     }),
-    new ExtractTextPlugin('./../css/angular2-calendar.css'),
+    new ExtractTextPlugin('./../css/angular-calendar.css'),
     new webpack.SourceMapDevToolPlugin({
-      filename: 'angular2-calendar.js.map',
+      filename: 'angular-calendar.js.map',
       test: /\.js($|\?)/i
     }),
     new webpack.LoaderOptionsPlugin({
