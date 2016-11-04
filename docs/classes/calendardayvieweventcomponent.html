@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CalendarDayViewEventComponent | angular2-calendar</title>
+	<title>CalendarDayViewEventComponent | angular-calendar</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">angular2-calendar</a>
+					<a href="../index.html" class="title">angular-calendar</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -82,8 +82,21 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#currentresize" class="tsd-kind-icon">current<wbr>Resize</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#dayevent" class="tsd-kind-icon">day<wbr>Event</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#eventclicked" class="tsd-kind-icon">event<wbr>Clicked</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#eventresized" class="tsd-kind-icon">event<wbr>Resized</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#eventsnapsize" class="tsd-kind-icon">event<wbr>Snap<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#hoursegments" class="tsd-kind-icon">hour<wbr>Segments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#tooltipplacement" class="tsd-kind-icon">tooltip<wbr>Placement</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-external">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#resizeended" class="tsd-kind-icon">resize<wbr>Ended</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#resizestarted" class="tsd-kind-icon">resize<wbr>Started</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="calendardayvieweventcomponent.html#resizing" class="tsd-kind-icon">resizing</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,12 +105,36 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="currentresize" class="tsd-anchor"></a>
+					<h3>current<wbr>Resize</h3>
+					<div class="tsd-signature tsd-kind-icon">current<wbr>Resize<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L52">components/day/calendarDayViewEvent.component.ts:52</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>edge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>original<wbr>Height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>original<wbr>Top<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="dayevent" class="tsd-anchor"></a>
 					<h3>day<wbr>Event</h3>
 					<div class="tsd-signature tsd-kind-icon">day<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DayViewEvent</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mattlewis92/angular2-calendar/blob/0561606/src/components/day/calendarDayViewEvent.component.ts#L30">components/day/calendarDayViewEvent.component.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L40">components/day/calendarDayViewEvent.component.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -107,9 +144,127 @@
 					<div class="tsd-signature tsd-kind-icon">event<wbr>Clicked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new EventEmitter()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mattlewis92/angular2-calendar/blob/0561606/src/components/day/calendarDayViewEvent.component.ts#L32">components/day/calendarDayViewEvent.component.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L48">components/day/calendarDayViewEvent.component.ts:48</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="eventresized" class="tsd-anchor"></a>
+					<h3>event<wbr>Resized</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Resized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new EventEmitter()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L50">components/day/calendarDayViewEvent.component.ts:50</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="eventsnapsize" class="tsd-anchor"></a>
+					<h3>event<wbr>Snap<wbr>Size</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Snap<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L44">components/day/calendarDayViewEvent.component.ts:44</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="hoursegments" class="tsd-anchor"></a>
+					<h3>hour<wbr>Segments</h3>
+					<div class="tsd-signature tsd-kind-icon">hour<wbr>Segments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L42">components/day/calendarDayViewEvent.component.ts:42</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="tooltipplacement" class="tsd-anchor"></a>
+					<h3>tooltip<wbr>Placement</h3>
+					<div class="tsd-signature tsd-kind-icon">tooltip<wbr>Placement<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L46">components/day/calendarDayViewEvent.component.ts:46</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-external">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="resizeended" class="tsd-anchor"></a>
+					<h3>resize<wbr>Ended</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">resize<wbr>Ended<span class="tsd-signature-symbol">(</span>dayEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DayViewEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L74">components/day/calendarDayViewEvent.component.ts:74</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>dayEvent: <span class="tsd-signature-type">DayViewEvent</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="resizestarted" class="tsd-anchor"></a>
+					<h3>resize<wbr>Started</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">resize<wbr>Started<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DayViewEvent</span>, resizeEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ResizeEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L58">components/day/calendarDayViewEvent.component.ts:58</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">DayViewEvent</span></h5>
+								</li>
+								<li>
+									<h5>resizeEvent: <span class="tsd-signature-type">ResizeEvent</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="resizing" class="tsd-anchor"></a>
+					<h3>resizing</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">resizing<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DayViewEvent</span>, resizeEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ResizeEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/day/calendarDayViewEvent.component.ts#L66">components/day/calendarDayViewEvent.component.ts:66</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">DayViewEvent</span></h5>
+								</li>
+								<li>
+									<h5>resizeEvent: <span class="tsd-signature-type">ResizeEvent</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -141,10 +296,34 @@
 						<a href="calendardayvieweventcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Event<wbr>Component</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#currentresize" class="tsd-kind-icon">current<wbr>Resize</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="calendardayvieweventcomponent.html#dayevent" class="tsd-kind-icon">day<wbr>Event</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="calendardayvieweventcomponent.html#eventclicked" class="tsd-kind-icon">event<wbr>Clicked</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#eventresized" class="tsd-kind-icon">event<wbr>Resized</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#eventsnapsize" class="tsd-kind-icon">event<wbr>Snap<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#hoursegments" class="tsd-kind-icon">hour<wbr>Segments</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#tooltipplacement" class="tsd-kind-icon">tooltip<wbr>Placement</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#resizeended" class="tsd-kind-icon">resize<wbr>Ended</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#resizestarted" class="tsd-kind-icon">resize<wbr>Started</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="calendardayvieweventcomponent.html#resizing" class="tsd-kind-icon">resizing</a>
 							</li>
 						</ul>
 					</li>
@@ -197,6 +376,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/calendardateformatterinterface.html" class="tsd-kind-icon">Calendar<wbr>Date<wbr>Formatter<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/calendareventtimeschangedevent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Times<wbr>Changed<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external tsd-is-not-exported">
 						<a href="../interfaces/coords.html" class="tsd-kind-icon">Coords</a>

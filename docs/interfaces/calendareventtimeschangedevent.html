@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CalendarEventActionsComponent | angular-calendar</title>
+	<title>CalendarEventTimesChangedEvent | angular-calendar</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="calendareventactionscomponent.html">CalendarEventActionsComponent</a>
+					<a href="calendareventtimeschangedevent.html">CalendarEventTimesChangedEvent</a>
 				</li>
 			</ul>
-			<h1>Class CalendarEventActionsComponent</h1>
+			<h1>Interface CalendarEventTimesChangedEvent</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CalendarEventActionsComponent</span>
+						<span class="target">CalendarEventTimesChangedEvent</span>
 					</li>
 				</ul>
 			</section>
@@ -82,7 +82,9 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="calendareventactionscomponent.html#event" class="tsd-kind-icon">event</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="calendareventtimeschangedevent.html#event" class="tsd-kind-icon">event</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="calendareventtimeschangedevent.html#newend" class="tsd-kind-icon">new<wbr>End</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="calendareventtimeschangedevent.html#newstart" class="tsd-kind-icon">new<wbr>Start</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,13 +92,33 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="event" class="tsd-anchor"></a>
 					<h3>event</h3>
 					<div class="tsd-signature tsd-kind-icon">event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CalendarEvent</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/components/common/calendarEventActions.component.ts#L22">components/common/calendarEventActions.component.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/interfaces/calendarEventTimesChangedEvent.interface.ts#L4">interfaces/calendarEventTimesChangedEvent.interface.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="newend" class="tsd-anchor"></a>
+					<h3>new<wbr>End</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>End<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/interfaces/calendarEventTimesChangedEvent.interface.ts#L6">interfaces/calendarEventTimesChangedEvent.interface.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="newstart" class="tsd-anchor"></a>
+					<h3>new<wbr>Start</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/afdfd16/src/interfaces/calendarEventTimesChangedEvent.interface.ts#L5">interfaces/calendarEventTimesChangedEvent.interface.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -113,85 +135,91 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendaralldayeventcomponent.html" class="tsd-kind-icon">Calendar<wbr>All<wbr>Day<wbr>Event<wbr>Component</a>
+						<a href="../classes/calendaralldayeventcomponent.html" class="tsd-kind-icon">Calendar<wbr>All<wbr>Day<wbr>Event<wbr>Component</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendardate.html" class="tsd-kind-icon">Calendar<wbr>Date</a>
+						<a href="../classes/calendardate.html" class="tsd-kind-icon">Calendar<wbr>Date</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendardateformatter.html" class="tsd-kind-icon">Calendar<wbr>Date<wbr>Formatter</a>
+						<a href="../classes/calendardateformatter.html" class="tsd-kind-icon">Calendar<wbr>Date<wbr>Formatter</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendardayviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Component</a>
+						<a href="../classes/calendardayviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Component</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendardayvieweventcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Event<wbr>Component</a>
+						<a href="../classes/calendardayvieweventcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Event<wbr>Component</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendardayviewhoursegmentcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Hour<wbr>Segment<wbr>Component</a>
+						<a href="../classes/calendardayviewhoursegmentcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Hour<wbr>Segment<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendareventactionscomponent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Actions<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendareventtitle.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendareventtitlecomponent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/calendarmodule.html" class="tsd-kind-icon">Calendar<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarmomentdateformatter.html" class="tsd-kind-icon">Calendar<wbr>Moment<wbr>Date<wbr>Formatter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarmonthcellcomponent.html" class="tsd-kind-icon">Calendar<wbr>Month<wbr>Cell<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarmonthviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Month<wbr>View<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarnativedateformatter.html" class="tsd-kind-icon">Calendar<wbr>Native<wbr>Date<wbr>Formatter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendaropendayeventscomponent.html" class="tsd-kind-icon">Calendar<wbr>Open<wbr>Day<wbr>Events<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendartooltipdirective.html" class="tsd-kind-icon">Calendar<wbr>Tooltip<wbr>Directive</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendartooltipwindowcomponent.html" class="tsd-kind-icon">Calendar<wbr>Tooltip<wbr>Window<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarweekviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarweekvieweventcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Event<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/calendarweekviewheadercomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Header<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="calendardateformatterinterface.html" class="tsd-kind-icon">Calendar<wbr>Date<wbr>Formatter<wbr>Interface</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-is-external">
-						<a href="calendareventactionscomponent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Actions<wbr>Component</a>
+					<li class="current tsd-kind-interface tsd-is-external">
+						<a href="calendareventtimeschangedevent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Times<wbr>Changed<wbr>Event</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
-								<a href="calendareventactionscomponent.html#event" class="tsd-kind-icon">event</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="calendareventtimeschangedevent.html#event" class="tsd-kind-icon">event</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="calendareventtimeschangedevent.html#newend" class="tsd-kind-icon">new<wbr>End</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="calendareventtimeschangedevent.html#newstart" class="tsd-kind-icon">new<wbr>Start</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendareventtitle.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendareventtitlecomponent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="calendarmodule.html" class="tsd-kind-icon">Calendar<wbr>Module</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarmomentdateformatter.html" class="tsd-kind-icon">Calendar<wbr>Moment<wbr>Date<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarmonthcellcomponent.html" class="tsd-kind-icon">Calendar<wbr>Month<wbr>Cell<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarmonthviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Month<wbr>View<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarnativedateformatter.html" class="tsd-kind-icon">Calendar<wbr>Native<wbr>Date<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendaropendayeventscomponent.html" class="tsd-kind-icon">Calendar<wbr>Open<wbr>Day<wbr>Events<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendartooltipdirective.html" class="tsd-kind-icon">Calendar<wbr>Tooltip<wbr>Directive</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendartooltipwindowcomponent.html" class="tsd-kind-icon">Calendar<wbr>Tooltip<wbr>Window<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarweekviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarweekvieweventcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Event<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="calendarweekviewheadercomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Header<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/calendardateformatterinterface.html" class="tsd-kind-icon">Calendar<wbr>Date<wbr>Formatter<wbr>Interface</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/calendareventtimeschangedevent.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Times<wbr>Changed<wbr>Event</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-is-external tsd-is-not-exported">
-						<a href="../interfaces/coords.html" class="tsd-kind-icon">Coords</a>
+						<a href="coords.html" class="tsd-kind-icon">Coords</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/dateformatterparams.html" class="tsd-kind-icon">Date<wbr>Formatter<wbr>Params</a>
+						<a href="dateformatterparams.html" class="tsd-kind-icon">Date<wbr>Formatter<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-external">
 						<a href="../globals.html#moment" class="tsd-kind-icon">MOMENT</a>
