@@ -19,7 +19,7 @@ https://mattlewis92.github.io/angular-calendar/demo/
 
 ## About
 
-A calendar component that can display events on a month, week or day view. The successor of: https://github.com/mattlewis92/angular-bootstrap-calendar
+A calendar component for angular 2.0+ that can display events on a month, week or day view. The successor of: https://github.com/mattlewis92/angular-bootstrap-calendar
 
 ## Getting started
 
