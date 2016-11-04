@@ -8,9 +8,9 @@ module.exports = {
   entry: __dirname + '/src/index.umd.ts',
   output: {
     path: __dirname + '/dist/umd',
-    filename: 'angular2-calendar.js',
+    filename: 'angular-calendar.js',
     libraryTarget: 'umd',
-    library: 'angular2Calendar'
+    library: 'angularCalendar'
   },
   externals: {
     '@angular/core': {
@@ -107,9 +107,9 @@ module.exports = {
       context: 'scss',
       failOnError: true
     }),
-    new ExtractTextPlugin('./../css/angular2-calendar.css'),
+    new ExtractTextPlugin('./../css/angular-calendar.css'),
     new webpack.SourceMapDevToolPlugin({
-      filename: 'angular2-calendar.js.map',
+      filename: 'angular-calendar.js.map',
       test: /\.js($|\?)/i
     }),
     new webpack.LoaderOptionsPlugin({

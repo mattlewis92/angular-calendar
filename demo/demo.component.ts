@@ -17,7 +17,7 @@ import {
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent
-} from './../src'; // import should be from `angular2-calendar` in your app
+} from './../src'; // import should be from `angular-calendar` in your app
 
 const colors: any = {
   red: {
