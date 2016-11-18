@@ -18,7 +18,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "../node_modules/angular2-calendar/dist/css/angular2-calendar.css",
+        "../node_modules/angular-calendar/dist/css/angular-calendar.css",
         "styles.css"
       ],
       "scripts": [],

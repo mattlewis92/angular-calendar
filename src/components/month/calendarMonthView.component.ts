@@ -110,16 +110,41 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
+  /**
+   * @private
+   */
   columnHeaders: WeekDay[];
+
+  /**
+   * @private
+   */
   view: MonthView;
+
+  /**
+   * @private
+   */
   openRowIndex: number;
+
+  /**
+   * @private
+   */
   openDay: MonthViewDay;
+
+  /**
+   * @private
+   */
   refreshSubscription: Subscription;
 
+  /**
+   * @private
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
+  /**
+   * @private
+   */
   ngOnInit(): void {
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
@@ -129,6 +154,9 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     }
   }
 
+  /**
+   * @private
+   */
   ngOnChanges(changes: any): void {
 
     if (changes.viewDate) {
@@ -145,12 +173,18 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
 
   }
 
+  /**
+   * @private
+   */
   ngOnDestroy(): void {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
   }
 
+  /**
+   * @private
+   */
   toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
     this.view.days.forEach(day => {
       if (isHighlighted && day.events.indexOf(event) > -1) {

@@ -107,22 +107,40 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
+  /**
+   * @private
+   */
   days: WeekDay[];
 
+  /**
+   * @private
+   */
   eventRows: WeekViewEventRow[] = [];
 
+  /**
+   * @private
+   */
   refreshSubscription: Subscription;
 
+  /**
+   * @private
+   */
   currentResize: {
     originalOffset: number,
     originalSpan: number,
     edge: string
   };
 
+  /**
+   * @private
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
+  /**
+   * @private
+   */
   ngOnInit(): void {
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
@@ -132,6 +150,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
+  /**
+   * @private
+   */
   ngOnChanges(changes: any): void {
 
     if (changes.viewDate) {
@@ -144,12 +165,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   }
 
+  /**
+   * @private
+   */
   ngOnDestroy(): void {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
   }
 
+  /**
+   * @private
+   */
   resizeStarted(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
     this.currentResize = {
       originalOffset: weekEvent.offset,
@@ -158,6 +185,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     };
   }
 
+  /**
+   * @private
+   */
   resizing(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent, dayWidth: number): void {
     if (resizeEvent.edges.left) {
       const diff: number = Math.round(+resizeEvent.edges.left / dayWidth);
@@ -170,6 +200,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   }
 
+  /**
+   * @private
+   */
   resizeEnded(weekEvent: WeekViewEvent): void {
 
     let daysDiff: number;
