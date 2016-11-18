@@ -5,6 +5,9 @@ export const MOMENT: OpaqueToken = new OpaqueToken('Moment');
 
 export class CalendarMomentDateFormatter implements CalendarDateFormatterInterface {
 
+  /**
+   * @private
+   */
   constructor(@Inject(MOMENT) private moment: any) {}
 
   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {

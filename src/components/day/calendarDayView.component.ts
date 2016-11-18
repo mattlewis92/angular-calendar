@@ -135,15 +135,36 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
+  /**
+   * @private
+   */
   hours: DayViewHour[] = [];
+
+  /**
+   * @private
+   */
   view: DayView;
+
+  /**
+   * @private
+   */
   width: number = 0;
+
+  /**
+   * @private
+   */
   refreshSubscription: Subscription;
 
+  /**
+   * @private
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
+  /**
+   * @private
+   */
   ngOnInit(): void {
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
@@ -153,12 +174,18 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
+  /**
+   * @private
+   */
   ngOnDestroy(): void {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
   }
 
+  /**
+   * @private
+   */
   ngOnChanges(changes: any): void {
 
     if (
