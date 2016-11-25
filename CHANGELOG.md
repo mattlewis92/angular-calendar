@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/mattlewis92/angular-calendar/compare/v0.4.0...v0.4.1) (2016-11-25)
+
+
+### Bug Fixes
+
+* **date-fns:** fix duplicate module declaration typescript errors ([24be6f3](https://github.com/mattlewis92/angular-calendar/commit/24be6f3))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/mattlewis92/angular-calendar/compare/v0.3.6...v0.4.0) (2016-11-04)
 
