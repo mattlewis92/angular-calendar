@@ -640,9 +640,9 @@ bytes@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.4.0.tgz#7d97196f9d5baf7f6935e25985549edd2a6c2339"
 
-calendar-utils@0.0.36:
-  version "0.0.36"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.36.tgz#8ffc327146dcc3b5a2a8711f74349065976b7f5a"
+calendar-utils@0.0.38:
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.38.tgz#13569692ecdf9c20fe9db67122323cd8f9f86779"
 
 callsite@1.0.0:
   version "1.0.0"
@@ -4394,13 +4394,9 @@ qjobs@^1.1.4:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/qjobs/-/qjobs-1.1.5.tgz#659de9f2cf8dcc27a1481276f205377272382e73"
 
-qs@6.2.0:
+qs@6.2.0, qs@~6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
-
-qs@~6.2.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.1.tgz#ce03c5ff0935bc1d9d69a9f14cbd18e568d67625"
 
 qs@~6.3.0:
   version "6.3.0"
