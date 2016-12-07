@@ -125,6 +125,6 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.0",
     "angular-resizable-element": "~0.5.0",
     "calendar-utils": "0.0.38",
-    "date-fns": "^1.11.1"
+    "date-fns": "^1.15.1"
   }
 }
