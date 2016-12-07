@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.4"></a>
+## [0.4.4](https://github.com/mattlewis92/angular-calendar/compare/v0.4.3...v0.4.4) (2016-12-07)
+
+
+### Bug Fixes
+
+* **date-fns:** upgrade date-fns to fix module not found TS errors ([733ed3e](https://github.com/mattlewis92/angular-calendar/commit/733ed3e))
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/mattlewis92/angular-calendar/compare/v0.4.1...v0.4.3) (2016-12-05)
 
@@ -15,10 +25,7 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/mattlewis92/angular-calendar/compare/v0.4.1...v0.4.2) (2016-12-05)
 
-
-### Bug Fixes
-
-* allow events array to be undefined ([3a475b9](https://github.com/mattlewis92/angular-calendar/commit/3a475b9)), closes [#96](https://github.com/mattlewis92/angular-calendar/issues/96)
+* botched release
 
 
 

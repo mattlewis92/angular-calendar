@@ -87,7 +87,7 @@ module.exports = {
       loader: 'source-map-loader'
     }, {
       test: /\.ts$/,
-      loader: 'awesome-typescript-loader?module=es2015&ignoreDiagnostics=[2307]',
+      loader: 'awesome-typescript-loader?module=es2015',
       exclude: /node_modules/
     }, {
       test: /\.scss/,

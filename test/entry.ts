@@ -2,7 +2,6 @@
 /// <reference types="chai" />
 /// <reference types="sinon" />
 /// <reference types="sinon-chai" />
-/// <reference path="../node_modules/date-fns/typings.d.ts" />
 
 import 'core-js';
 import 'zone.js/dist/zone';
