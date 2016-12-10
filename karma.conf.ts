@@ -3,6 +3,7 @@
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const WATCH = process.argv.indexOf('--watch') > -1;
 
 module.exports = function(config) {
@@ -44,7 +45,7 @@ module.exports = function(config) {
           loader: 'tslint-loader',
           exclude: /node_modules/
         }, {
-          test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/
+          test: /\.ts$/, loader: 'awesome-typescript-loader?forkChecker=true', exclude: /node_modules/
         }, {
           test: /sinon.js$/, loader: 'imports-loader?define=>false,require=>false'
         }, {
@@ -63,6 +64,7 @@ module.exports = function(config) {
             failOnError: true
           })
         ]),
+        new ForkCheckerPlugin(),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i
