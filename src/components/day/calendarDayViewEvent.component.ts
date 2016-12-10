@@ -25,7 +25,11 @@ import addMinutes from 'date-fns/add_minutes';
       [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
       (resizeStart)="resizeStarted(dayEvent, $event)"
       (resizing)="resizing(dayEvent, $event)"
-      (resizeEnd)="resizeEnded(dayEvent)">
+      (resizeEnd)="resizeEnded(dayEvent)"
+      mwlDraggable
+      [dragAxis]="{x: false, y: dayEvent.event.draggable}"
+      [snapGrid]="{y: eventSnapSize}"
+      (dragEnd)="eventDragged(dayEvent, $event.y)">
       <mwl-calendar-event-title
         [event]="dayEvent.event"
         view="day"
@@ -95,6 +99,18 @@ export class CalendarDayViewEventComponent {
 
     this.eventResized.emit({newStart, newEnd, event: dayEvent.event});
 
+  }
+
+  eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
+    const segments: number = draggedInPixels / this.eventSnapSize;
+    const segmentAmountInMinutes: number = 60 / this.hourSegments;
+    const minutesMoved: number = segments * segmentAmountInMinutes;
+    const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
+    let newEnd: Date;
+    if (dayEvent.event.end) {
+      newEnd = addMinutes(dayEvent.event.end, minutesMoved);
+    }
+    this.eventResized.emit({newStart, newEnd, event: dayEvent.event});
   }
 
 }
