@@ -186,6 +186,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-draggable-droppable@~0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.1.1.tgz#98efac5b98581727210cf6c66464a9c0b04b91af"
+
 angular-resizable-element@~0.5.0:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.3.tgz#14170ede1c1f4d170d41ed8d626692e4609f445e"
@@ -640,9 +644,9 @@ bytes@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.4.0.tgz#7d97196f9d5baf7f6935e25985549edd2a6c2339"
 
-calendar-utils@0.0.38:
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.38.tgz#13569692ecdf9c20fe9db67122323cd8f9f86779"
+calendar-utils@0.0.39:
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.39.tgz#8b12c85873a61d730212da1bc327166a46c50951"
 
 callsite@1.0.0:
   version "1.0.0"

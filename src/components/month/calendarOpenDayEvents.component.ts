@@ -19,7 +19,10 @@ import { CalendarEvent } from 'calendar-utils';
       <div
         *ngFor="let event of events"
         [ngClass]="event?.cssClass">
-        <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
+        <span
+          class="cal-event"
+          [style.backgroundColor]="event.color.primary">
+        </span>
         <mwl-calendar-event-title
           [event]="event"
           view="month"
