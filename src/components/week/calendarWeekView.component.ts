@@ -52,7 +52,7 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
           [dragAxis]="{x: weekEvent.event.draggable, y: false}"
-          [snapGrid]="{x: container.offsetWidth / 7}"
+          [dragSnapGrid]="{x: container.offsetWidth / 7}"
           (dragEnd)="eventDragged(weekEvent, $event.x, container.offsetWidth / 7)">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
