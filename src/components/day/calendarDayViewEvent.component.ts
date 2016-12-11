@@ -17,6 +17,7 @@ import addMinutes from 'date-fns/add_minutes';
       [style.borderColor]="dayEvent.event.color.primary"
       [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
       [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
+      [class.cal-draggable]="dayEvent.event.draggable"
       [ngClass]="dayEvent.event.cssClass"
       [mwlCalendarTooltip]="dayEvent.event | calendarEventTitle:'dayTooltip'"
       [tooltipPlacement]="tooltipPlacement"

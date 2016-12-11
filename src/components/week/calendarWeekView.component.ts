@@ -41,6 +41,7 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
       <div *ngFor="let eventRow of eventRows" #container>
         <div
           class="cal-event-container"
+          [class.cal-draggable]="weekEvent.event.draggable"
           *ngFor="let weekEvent of eventRow.row"
           [style.width]="((100 / 7) * weekEvent.span) + '%'"
           [style.marginLeft]="((100 / 7) * weekEvent.offset) + '%'"

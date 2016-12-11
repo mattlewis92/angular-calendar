@@ -190,9 +190,9 @@ angular-draggable-droppable@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.2.3.tgz#da93024b4cf1604e1b97379e1d1dc09a06fd004e"
 
-angular-resizable-element@~0.5.0:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.3.tgz#14170ede1c1f4d170d41ed8d626692e4609f445e"
+angular-resizable-element@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.4.tgz#76467857841d906f517d2bf1b56539c90e16240a"
 
 ansi-align@^1.1.0:
   version "1.1.0"
