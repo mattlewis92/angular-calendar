@@ -51,7 +51,7 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
           (resizing)="resizing(weekEvent, $event, container.offsetWidth / 7)"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
-          [dragAxis]="{x: weekEvent.event.draggable, y: false}"
+          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: false}"
           [dragSnapGrid]="{x: container.offsetWidth / 7}"
           (dragEnd)="eventDragged(weekEvent, $event.x, container.offsetWidth / 7)">
           <mwl-calendar-week-view-event
@@ -228,6 +228,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+    this.currentResize = null;
 
   }
 

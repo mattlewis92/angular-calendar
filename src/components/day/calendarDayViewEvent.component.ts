@@ -27,7 +27,7 @@ import addMinutes from 'date-fns/add_minutes';
       (resizing)="resizing(dayEvent, $event)"
       (resizeEnd)="resizeEnded(dayEvent)"
       mwlDraggable
-      [dragAxis]="{x: false, y: dayEvent.event.draggable}"
+      [dragAxis]="{x: false, y: dayEvent.event.draggable && !currentResize}"
       [dragSnapGrid]="{y: eventSnapSize}"
       (dragEnd)="eventDragged(dayEvent, $event.y)">
       <mwl-calendar-event-title
@@ -98,6 +98,7 @@ export class CalendarDayViewEventComponent {
     }
 
     this.eventResized.emit({newStart, newEnd, event: dayEvent.event});
+    this.currentResize = null;
 
   }
 
