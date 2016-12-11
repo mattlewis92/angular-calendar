@@ -332,10 +332,10 @@ describe('calendarMonthView component', () => {
     document.body.appendChild(fixture.nativeElement);
     const cells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-day-cell');
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
-    const dragToCellPosition: ClientRect = cells[10].getBoundingClientRect();
-    const eventStartPosition: ClientRect = event.getBoundingClientRect();
     event.style.width = '10px';
     event.style.height = '10px';
+    const dragToCellPosition: ClientRect = cells[10].getBoundingClientRect();
+    const eventStartPosition: ClientRect = event.getBoundingClientRect();
     triggerDomEvent('mousedown', event, {clientX: eventStartPosition.left, clientY: eventStartPosition.top});
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
