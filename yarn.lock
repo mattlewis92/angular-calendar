@@ -186,9 +186,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-draggable-droppable@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.2.2.tgz#5c3e0e78e7e6c7ffac91f7a77884b31509b0ce41"
+angular-draggable-droppable@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.2.3.tgz#da93024b4cf1604e1b97379e1d1dc09a06fd004e"
 
 angular-resizable-element@~0.5.0:
   version "0.5.3"
