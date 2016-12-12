@@ -1,5 +1,3 @@
-'use strict';
-
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
