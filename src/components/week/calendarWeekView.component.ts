@@ -29,7 +29,7 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
   selector: 'mwl-calendar-week-view',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="cal-week-view">
+    <div class="cal-week-view" #weekViewContainer>
       <div class="cal-day-headers">
         <mwl-calendar-week-view-header
           *ngFor="let day of days"
@@ -38,7 +38,7 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
           (click)="dayClicked.emit({date: day.date})">
         </mwl-calendar-week-view-header>
       </div>
-      <div *ngFor="let eventRow of eventRows" #container>
+      <div *ngFor="let eventRow of eventRows" #eventRowContainer>
         <div
           class="cal-event-container"
           [class.cal-draggable]="weekEvent.event.draggable"
@@ -47,14 +47,15 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
           [style.marginLeft]="((100 / 7) * weekEvent.offset) + '%'"
           mwlResizable
           [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
-          [resizeSnapGrid]="{left: container.offsetWidth / 7, right: container.offsetWidth / 7}"
+          [resizeSnapGrid]="{left: getEventWidth(eventRowContainer), right: getEventWidth(eventRowContainer)}"
           (resizeStart)="resizeStarted(weekEvent, $event)"
-          (resizing)="resizing(weekEvent, $event, container.offsetWidth / 7)"
+          (resizing)="resizing(weekEvent, $event, getEventWidth(eventRowContainer))"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
           [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: false}"
-          [dragSnapGrid]="{x: container.offsetWidth / 7}"
-          (dragEnd)="eventDragged(weekEvent, $event.x, container.offsetWidth / 7)">
+          [dragSnapGrid]="{x: getEventWidth(eventRowContainer)}"
+          [dragContainer]="weekViewContainer"
+          (dragEnd)="eventDragged(weekEvent, $event.x, getEventWidth(eventRowContainer))">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
             [tooltipPlacement]="tooltipPlacement"
@@ -247,6 +248,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
     this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
 
+  }
+
+  /**
+   * @private
+   */
+  getEventWidth(eventRowContainer: HTMLElement): number {
+    return Math.floor(eventRowContainer.offsetWidth / 7);
   }
 
   private refreshHeader(): void {

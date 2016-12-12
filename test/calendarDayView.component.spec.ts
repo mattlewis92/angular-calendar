@@ -382,8 +382,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.events = [{
       title: 'foo',
       color: {primary: '', secondary: ''},
-      start: moment('2016-06-27').add(4, 'hours').toDate(),
-      end: moment('2016-06-27').add(6, 'hours').toDate(),
+      start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
       draggable: true
     }];
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
@@ -397,17 +397,17 @@ describe('CalendarDayViewComponent component', () => {
     });
     triggerDomEvent('mousedown', event, {clientY: eventPosition.top + 5, clientX: eventPosition.left + 10});
     fixture.detectChanges();
-    triggerDomEvent('mousemove', document.body, {clientY: eventPosition.top - 5, clientX: eventPosition.left + 10});
+    triggerDomEvent('mousemove', document.body, {clientY: eventPosition.top + 35, clientX: eventPosition.left + 10});
     fixture.detectChanges();
-    expect(event.getBoundingClientRect().top).to.equal(eventPosition.top - 30);
-    expect(event.getBoundingClientRect().bottom).to.equal(eventPosition.bottom - 30);
-    triggerDomEvent('mouseup', document.body, {clientY: eventPosition.top - 30, clientX: eventPosition.left + 10});
+    expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 30);
+    expect(event.getBoundingClientRect().bottom).to.equal(eventPosition.bottom + 30);
+    triggerDomEvent('mouseup', document.body, {clientY: eventPosition.top + 30, clientX: eventPosition.left + 10});
     fixture.detectChanges();
     fixture.destroy();
     expect(dragEvent).to.deep.equal({
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27').add(4, 'hours').subtract(30, 'minutes').toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').subtract(30, 'minutes').toDate()
+      newStart: moment('2016-06-27').add(4, 'hours').add(30, 'minutes').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').add(30, 'minutes').toDate()
     });
   });
 

@@ -22,7 +22,7 @@ const SEGMENT_HEIGHT: number = 30;
   selector: 'mwl-calendar-day-view',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="cal-day-view">
+    <div class="cal-day-view" #dayViewContainer>
       <mwl-calendar-all-day-event
         *ngFor="let event of view.allDayEvents"
         [event]="event"
@@ -36,6 +36,7 @@ const SEGMENT_HEIGHT: number = 30;
             [hourSegments]="hourSegments"
             [tooltipPlacement]="tooltipPlacement"
             [eventSnapSize]="eventSnapSize"
+            [dayViewContainer]="dayViewContainer"
             (eventClicked)="eventClicked.emit({event: dayEvent.event})"
             (eventResized)="eventTimesChanged.emit($event)">
           </mwl-calendar-day-view-event>
