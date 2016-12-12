@@ -1,9 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeekDay } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-week-view-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br>
     <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>

@@ -4,7 +4,6 @@ import {
   HostListener,
   AfterViewChecked,
   OnDestroy,
-  ChangeDetectionStrategy,
   Input,
   ComponentRef,
   Renderer,
@@ -24,7 +23,6 @@ interface Coords {
 }
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     .cal-tooltip {
       position: absolute;

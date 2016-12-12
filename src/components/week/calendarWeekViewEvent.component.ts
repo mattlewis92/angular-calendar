@@ -1,9 +1,8 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { WeekViewEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-week-view-event',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
       class="cal-event"
