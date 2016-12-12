@@ -4,7 +4,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   OnInit,
   OnDestroy,
@@ -25,7 +24,6 @@ import isSameDay from 'date-fns/is_same_day';
 
 @Component({
   selector: 'mwl-calendar-month-view',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-month-view">
       <div class="cal-cell-row cal-header">

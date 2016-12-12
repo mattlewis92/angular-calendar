@@ -3,7 +3,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   OnChanges,
   OnInit,
@@ -27,7 +26,6 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
 
 @Component({
   selector: 'mwl-calendar-week-view',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-week-view">
       <div class="cal-day-headers">
