@@ -58,5 +58,8 @@ module.exports = {
       __dirname + '/src'
     ),
     new FixDefaultImportPlugin()
-  ]
+  ],
+  performance: {
+    hints: false
+  }
 };

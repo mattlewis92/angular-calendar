@@ -1,9 +1,8 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MonthViewDay } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-cell-top">
       <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>

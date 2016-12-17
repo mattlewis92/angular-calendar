@@ -1,9 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-event-title',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <a
       class="cal-event-title"

@@ -1,9 +1,8 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-all-day-event',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
       class="cal-all-day-event"

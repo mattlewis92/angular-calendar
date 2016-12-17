@@ -1,11 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DayViewEvent } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addMinutes from 'date-fns/add_minutes';
 
 @Component({
   selector: 'mwl-calendar-day-view-event',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
       class="cal-event"

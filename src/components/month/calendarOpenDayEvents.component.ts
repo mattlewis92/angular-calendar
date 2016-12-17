@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  ChangeDetectionStrategy,
   trigger,
   style,
   transition,
@@ -13,7 +12,6 @@ import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-open-day-events',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-open-day-events" [@collapse] *ngIf="isOpen">
       <div
