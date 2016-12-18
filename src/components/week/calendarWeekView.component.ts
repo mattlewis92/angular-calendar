@@ -23,6 +23,7 @@ import {
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
 import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
+import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
 @Component({
@@ -47,16 +48,17 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
           [style.marginLeft]="((100 / 7) * weekEvent.offset) + '%'"
           mwlResizable
           [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
-          [resizeSnapGrid]="{left: getEventWidth(eventRowContainer), right: getEventWidth(eventRowContainer)}"
-          (resizeStart)="resizeStarted(weekEvent, $event)"
-          (resizing)="resizing(weekEvent, $event, getEventWidth(eventRowContainer))"
+          [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
+          [validateResize]="validateResize"
+          (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"
+          (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
           [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: false}"
-          [dragSnapGrid]="{x: getEventWidth(eventRowContainer)}"
+          [dragSnapGrid]="{x: getDayColumnWidth(eventRowContainer)}"
           [validateDrag]="validateDrag"
           (dragStart)="dragStart(weekViewContainer, event)"
-          (dragEnd)="eventDragged(weekEvent, $event.x, getEventWidth(eventRowContainer))">
+          (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
             [tooltipPlacement]="tooltipPlacement"
@@ -146,6 +148,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @private
    */
+  validateResize: Function;
+
+  /**
+   * @private
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
@@ -189,12 +196,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @private
    */
-  resizeStarted(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
+  resizeStarted(weekViewContainer: HTMLElement, weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
     this.currentResize = {
       originalOffset: weekEvent.offset,
       originalSpan: weekEvent.span,
       edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right'
     };
+    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(weekViewContainer, this.getDayColumnWidth(weekViewContainer));
+    this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
+    this.cdr.markForCheck();
   }
 
   /**
@@ -258,7 +268,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @private
    */
-  getEventWidth(eventRowContainer: HTMLElement): number {
+  getDayColumnWidth(eventRowContainer: HTMLElement): number {
     return Math.floor(eventRowContainer.offsetWidth / 7);
   }
 

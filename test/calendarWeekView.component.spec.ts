@@ -329,4 +329,66 @@ describe('calendarWeekView component', () => {
     });
   });
 
+  it('should not allow events to be resized smaller than 1 day', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').add(6, 'hours').toDate(),
+      resizable: {
+        beforeStart: true
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    const dayWidth: number = event.parentElement.offsetWidth / 7;
+    const rect: ClientRect = event.getBoundingClientRect();
+    triggerDomEvent('mousedown', document.body, {clientX: rect.left, clientY: rect.top});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientX: rect.left + dayWidth, clientY: rect.top});
+    fixture.detectChanges();
+    expect(Math.round(event.getBoundingClientRect().left)).to.equal(Math.round(rect.left));
+    expect(Math.round(event.getBoundingClientRect().width)).to.equal(Math.round(rect.width));
+    triggerDomEvent('mouseup', document.body, {clientX: rect.left - dayWidth, clientY: rect.top});
+    fixture.detectChanges();
+    fixture.destroy();
+  });
+
+  it('should not allow events to be resized outside of the current view', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').add(6, 'hours').toDate(),
+      resizable: {
+        beforeStart: true
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    const dayWidth: number = event.parentElement.offsetWidth / 7;
+    const rect: ClientRect = event.getBoundingClientRect();
+    triggerDomEvent('mousedown', document.body, {clientX: rect.left, clientY: rect.top});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientX: rect.left - dayWidth, clientY: rect.top});
+    fixture.detectChanges();
+    expect(Math.round(event.getBoundingClientRect().left)).to.equal(Math.round(rect.left - dayWidth));
+    expect(Math.round(event.getBoundingClientRect().width)).to.equal(Math.round(rect.width + dayWidth));
+    triggerDomEvent('mousemove', document.body, {clientX: rect.left - (dayWidth * 2), clientY: rect.top});
+    fixture.detectChanges();
+    expect(Math.round(event.getBoundingClientRect().left)).to.equal(Math.round(rect.left - dayWidth));
+    expect(Math.round(event.getBoundingClientRect().width)).to.equal(Math.round(rect.width + dayWidth));
+    triggerDomEvent('mouseup', document.body, {clientX: rect.left - (dayWidth * 2), clientY: rect.top});
+    fixture.detectChanges();
+    fixture.destroy();
+  });
+
 });
