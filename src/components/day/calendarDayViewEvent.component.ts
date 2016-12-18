@@ -3,6 +3,7 @@ import { DayViewEvent } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addMinutes from 'date-fns/add_minutes';
 import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
+import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 
 @Component({
   selector: 'mwl-calendar-day-view-event',
@@ -25,6 +26,7 @@ import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider'
       mwlResizable
       [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
       [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
+      [validateResize]="validateResize"
       (resizeStart)="resizeStarted(dayEvent, $event)"
       (resizing)="resizing(dayEvent, $event)"
       (resizeEnd)="resizeEnded(dayEvent)"
@@ -67,6 +69,8 @@ export class CalendarDayViewEventComponent {
 
   validateDrag: Function;
 
+  validateResize: Function;
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent): void {
@@ -75,6 +79,9 @@ export class CalendarDayViewEventComponent {
       originalHeight: event.height,
       edge: typeof resizeEvent.edges.top !== 'undefined' ? 'top' : 'bottom'
     };
+    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(this.dayViewContainer);
+    this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
+    this.cdr.markForCheck();
   }
 
   resizing(event: DayViewEvent, resizeEvent: ResizeEvent): void {

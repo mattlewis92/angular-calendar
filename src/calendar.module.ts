@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResizableModule } from 'angular-resizable-element';
 import { DragAndDropModule } from 'angular-draggable-droppable';
@@ -54,14 +54,20 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
 })
 export class CalendarModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot({eventTitleFormatter, dateFormatter}:
+    {eventTitleFormatter?: Provider, dateFormatter?: Provider} = {}): ModuleWithProviders {
+
+    eventTitleFormatter = eventTitleFormatter || CalendarEventTitleProvider;
+    dateFormatter = dateFormatter || CalendarDateFormatter;
+
     return {
       ngModule: CalendarModule,
       providers: [
-        CalendarEventTitleProvider,
-        CalendarDateFormatter
+        eventTitleFormatter,
+        dateFormatter
       ]
     };
+
   }
 
 }
