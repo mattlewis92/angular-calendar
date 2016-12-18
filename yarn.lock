@@ -184,7 +184,11 @@ amdefine@1.0.0, amdefine@>=0.0.4:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
-angular-resizable-element@~0.5.0:
+angular-draggable-droppable@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.4.0.tgz#84486ef94796b0427990f66316f89357854b4d80"
+
+angular-resizable-element@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.4.tgz#76467857841d906f517d2bf1b56539c90e16240a"
 
@@ -644,9 +648,9 @@ cachedir@^1.1.0:
   dependencies:
     os-homedir "^1.0.1"
 
-calendar-utils@0.0.38:
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.38.tgz#13569692ecdf9c20fe9db67122323cd8f9f86779"
+calendar-utils@0.0.39:
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.39.tgz#8b12c85873a61d730212da1bc327166a46c50951"
 
 callsite@1.0.0:
   version "1.0.0"
@@ -672,8 +676,8 @@ camelcase@^3.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
 caniuse-db@^1.0.30000187, caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000597:
-  version "1.0.30000597"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000597.tgz#b52e6cbe9dc83669affb98501629feaee1af6588"
+  version "1.0.30000600"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000600.tgz#2d0892f77eebb399c3c17b3ecb72da7b8740f31f"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -1434,8 +1438,8 @@ dashdash@^1.12.0:
     assert-plus "^1.0.0"
 
 date-fns@^1.15.1:
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.21.0.tgz#7183c75dd0762e101f5db7fdbe3598b5a47c09e4"
+  version "1.21.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.21.1.tgz#5f5de347a88d575c8a09958a884f91502b48d157"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -4286,8 +4290,8 @@ postcss-selector-parser@^2.0.0, postcss-selector-parser@^2.1.1:
     uniq "^1.0.1"
 
 postcss-svgo@^2.1.1:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-2.1.5.tgz#46fc0363f01bab6a36a9abb01c229fcc45363094"
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-2.1.6.tgz#b6df18aa613b666e133f08adb5219c2684ac108d"
   dependencies:
     is-svg "^2.0.0"
     postcss "^5.0.14"
@@ -5264,16 +5268,16 @@ stylelint-config-standard@^15.0.0:
   resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-15.0.0.tgz#3180b2f9aa3896a754ce6a69bf1b1fe7ab2e0ca0"
 
 stylelint-webpack-plugin@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-0.4.0.tgz#237a10be662d9d5105a88c63e724dd847f43e520"
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-0.4.1.tgz#1081d70c045c0a60ead632894d8301c411388667"
   dependencies:
     arrify "^1.0.1"
     chalk "^1.1.3"
     object-assign "^4.1.0"
-    stylelint "^7.0.1"
-    webpack "^1.13.1"
+    stylelint "^7.3.1"
+    webpack "^1.13.2"
 
-stylelint@^7.0.1, stylelint@^7.6.0:
+stylelint@^7.3.1, stylelint@^7.6.0:
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.6.0.tgz#ddeb06ccc95f72c119fcde5e85439fb7e9cde4df"
   dependencies:
@@ -5868,7 +5872,7 @@ webpack@2.2.0-rc.1:
     webpack-sources "^0.1.0"
     yargs "^6.0.0"
 
-webpack@^1.13.1:
+webpack@^1.13.2:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-1.14.0.tgz#54f1ffb92051a328a5b2057d6ae33c289462c823"
   dependencies:

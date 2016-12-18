@@ -16,8 +16,14 @@ import { CalendarEvent } from 'calendar-utils';
     <div class="cal-open-day-events" [@collapse] *ngIf="isOpen">
       <div
         *ngFor="let event of events"
-        [ngClass]="event?.cssClass">
-        <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
+        [ngClass]="event?.cssClass"
+        mwlDraggable
+        [dropData]="{event: event}"
+        [dragAxis]="{x: event.draggable, y: event.draggable}">
+        <span
+          class="cal-event"
+          [style.backgroundColor]="event.color.primary">
+        </span>
         <mwl-calendar-event-title
           [event]="event"
           view="month"
