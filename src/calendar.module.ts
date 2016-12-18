@@ -54,17 +54,13 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
 })
 export class CalendarModule {
 
-  static forRoot({eventTitleFormatter, dateFormatter}:
-    {eventTitleFormatter?: Provider, dateFormatter?: Provider} = {}): ModuleWithProviders {
-
-    eventTitleFormatter = eventTitleFormatter || CalendarEventTitleProvider;
-    dateFormatter = dateFormatter || CalendarDateFormatter;
+  static forRoot(): ModuleWithProviders {
 
     return {
       ngModule: CalendarModule,
       providers: [
-        eventTitleFormatter,
-        dateFormatter
+        CalendarEventTitleProvider,
+        CalendarDateFormatter
       ]
     };
 

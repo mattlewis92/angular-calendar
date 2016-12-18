@@ -18,36 +18,4 @@ describe('calendar module', () => {
     expect(dateFormatter instanceof CalendarDateFormatter).to.be.true;
   });
 
-  it('should allow a custom date formatter to be used', () => {
-    class MyDateFormatter extends CalendarDateFormatter {}
-    TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot({
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: MyDateFormatter
-          }
-        })
-      ]
-    });
-    const dateFormatter: MyDateFormatter = TestBed.get(CalendarDateFormatter);
-    expect(dateFormatter instanceof MyDateFormatter).to.be.true;
-  });
-
-  it('should allow a custom title formatter to be used', () => {
-    class MyEventTitle extends CalendarEventTitle {}
-    TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot({
-          dateFormatter: {
-            provide: CalendarEventTitle,
-            useClass: MyEventTitle
-          }
-        })
-      ]
-    });
-    const eventTitle: MyEventTitle = TestBed.get(CalendarEventTitle);
-    expect(eventTitle instanceof MyEventTitle).to.be.true;
-  });
-
 });
