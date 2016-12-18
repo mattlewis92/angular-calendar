@@ -1,22 +1,21 @@
-import {
-  inject,
-  TestBed
-} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import {
   CalendarModule,
-  CalendarDateFormatter
+  CalendarDateFormatter,
+  CalendarEventTitleFormatter
 } from './../src';
 
 describe('calendar module', () => {
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({imports: [CalendarModule.forRoot()]});
-  });
-
-  it('should not require providers to be specified when using CalendarModule.forRoot()',
-    inject([CalendarDateFormatter], (dateFormatter) => {
+  it('should not require providers to be specified when using CalendarModule.forRoot()', () => {
+    TestBed.configureTestingModule({
+      imports: [
+        CalendarModule.forRoot()
+      ]
+    });
+    const dateFormatter: CalendarDateFormatter = TestBed.get(CalendarDateFormatter);
     expect(dateFormatter instanceof CalendarDateFormatter).to.be.true;
-  }));
+  });
 
 });

@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/mattlewis92/angular-calendar/compare/v0.4.4...v0.5.0) (2016-12-18)
+
+
+### Bug Fixes
+
+* **dayView:** dont allow events to be resized outside of the calendar ([ab1033e](https://github.com/mattlewis92/angular-calendar/commit/ab1033e)), closes [#99](https://github.com/mattlewis92/angular-calendar/issues/99)
+* **dayView:** dont allow events to be resized outside of the calendar ([78eb123](https://github.com/mattlewis92/angular-calendar/commit/78eb123)), closes [#99](https://github.com/mattlewis92/angular-calendar/issues/99)
+* **dayView:** use correct event height when resizing from the top ([1c5e74f](https://github.com/mattlewis92/angular-calendar/commit/1c5e74f))
+* **weekView:** dont allow events to be resized outside of the calendar component ([007fbc5](https://github.com/mattlewis92/angular-calendar/commit/007fbc5)), closes [#99](https://github.com/mattlewis92/angular-calendar/issues/99)
+
+
+### Features
+
+* add drag and drop support ([#100](https://github.com/mattlewis92/angular-calendar/issues/100)) ([bbc02f3](https://github.com/mattlewis92/angular-calendar/commit/bbc02f3)), closes [#10](https://github.com/mattlewis92/angular-calendar/issues/10) [#102](https://github.com/mattlewis92/angular-calendar/issues/102)
+* remove change detection strategy from all components ([#101](https://github.com/mattlewis92/angular-calendar/issues/101)) ([36458ab](https://github.com/mattlewis92/angular-calendar/commit/36458ab)), closes [#94](https://github.com/mattlewis92/angular-calendar/issues/94)
+* **CalendarModule:** allow title and date formatters to be overridden with forRoot ([e273657](https://github.com/mattlewis92/angular-calendar/commit/e273657)), closes [#90](https://github.com/mattlewis92/angular-calendar/issues/90)
+* rename CalendarEventTitle service to CalendarEventTitleFormatter ([45c0142](https://github.com/mattlewis92/angular-calendar/commit/45c0142))
+
+
+### Reverts
+
+* undo the easier event and date formatter config as it was not aot compatible ([069d224](https://github.com/mattlewis92/angular-calendar/commit/069d224))
+
+
+### BREAKING CHANGES
+
+* the CalendarEventTitle service has been renamed to CalendarEventTitleFormatter
+* A dependency on the `angular-draggable-droppable` library has been added. System.js users will need to add this to their config:
+
+```
+'angular-draggable-droppable': 'npm:angular-draggable-droppable/dist/umd/angular-draggable-droppable.js'
+```
+* For enhanced performance it is recommended that you add `changeDetection: ChangeDetectionStrategy.OnPush` on all components that use this library. This will restrict change detection to only run when the components inputs change
+
+
+
 <a name="0.4.4"></a>
 ## [0.4.4](https://github.com/mattlewis92/angular-calendar/compare/v0.4.3...v0.4.4) (2016-12-07)
 

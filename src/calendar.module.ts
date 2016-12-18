@@ -1,6 +1,7 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResizableModule } from 'angular-resizable-element';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
 import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
 import { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';
@@ -16,7 +17,7 @@ import { CalendarDayViewEventComponent } from './components/day/calendarDayViewE
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
 import { CalendarDate } from './pipes/calendarDate.pipe';
 import { CalendarEventTitle as CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
-import { CalendarEventTitle as CalendarEventTitleProvider } from './providers/calendarEventTitle.provider';
+import { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
 
 @NgModule({
@@ -38,20 +39,31 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDate,
     CalendarEventTitlePipe
   ],
-  imports: [CommonModule, ResizableModule],
-  exports: [CalendarDayViewComponent, CalendarWeekViewComponent, CalendarMonthViewComponent, CalendarDate],
+  imports: [
+    CommonModule,
+    ResizableModule,
+    DragAndDropModule
+  ],
+  exports: [
+    CalendarDayViewComponent,
+    CalendarWeekViewComponent,
+    CalendarMonthViewComponent,
+    CalendarDate
+  ],
   entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarModule {
 
   static forRoot(): ModuleWithProviders {
+
     return {
       ngModule: CalendarModule,
       providers: [
-        CalendarEventTitleProvider,
+        CalendarEventTitleFormatter,
         CalendarDateFormatter
       ]
     };
+
   }
 
 }

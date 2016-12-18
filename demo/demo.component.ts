@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   startOfDay,
   subDays,
@@ -36,6 +36,7 @@ const colors: any = {
 
 @Component({
   selector: 'mwl-demo-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     h3 {
       margin: 0;
@@ -79,7 +80,8 @@ const colors: any = {
           [events]="events"
           [refresh]="refresh"
           [activeDayIsOpen]="activeDayIsOpen"
-          (dayClicked)="dayClicked($event.day)">
+          (dayClicked)="dayClicked($event.day)"
+          (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view
           *ngSwitchCase="'week'"
@@ -138,13 +140,14 @@ export class DemoComponent {
   }, {
     start: addHours(startOfDay(new Date()), 2),
     end: new Date(),
-    title: 'A resizable event',
+    title: 'A draggable and resizable event',
     color: colors.yellow,
     actions: this.actions,
     resizable: {
       beforeStart: true,
       afterEnd: true
-    }
+    },
+    draggable: true
   }];
 
   activeDayIsOpen: boolean = true;

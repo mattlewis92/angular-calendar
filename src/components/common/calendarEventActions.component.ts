@@ -1,9 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-event-actions',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <span *ngIf="event.actions" class="cal-event-actions">
       <a

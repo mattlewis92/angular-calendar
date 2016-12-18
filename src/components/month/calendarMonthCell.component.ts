@@ -1,16 +1,15 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MonthViewDay } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-cell-top">
       <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     </div>
     <div class="cal-events">
-      <span
+      <div
         class="cal-event"
         *ngFor="let event of day.events"
         [style.backgroundColor]="event.color.primary"
@@ -18,8 +17,11 @@ import { MonthViewDay } from 'calendar-utils';
         (mouseenter)="highlightDay.emit({event: event})"
         (mouseleave)="unhighlightDay.emit({event: event})"
         [mwlCalendarTooltip]="event | calendarEventTitle:'monthTooltip'"
-        [tooltipPlacement]="tooltipPlacement">
-      </span>
+        [tooltipPlacement]="tooltipPlacement"
+        mwlDraggable
+        [dropData]="{event: event}"
+        [dragAxis]="{x: event.draggable, y: event.draggable}">
+      </div>
     </div>
   `,
   host: {
