@@ -80,7 +80,10 @@ module.exports = function(config) {
           }
         }),
         new FixDefaultImportPlugin()
-      ]
+      ],
+      performance: {
+        hints: false
+      }
     },
 
     remapIstanbulReporter: {

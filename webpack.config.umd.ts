@@ -69,10 +69,55 @@ module.exports = {
       commonjs: 'date-fns/add_days/index',
       commonjs2: 'date-fns/add_days/index'
     },
+    'date-fns/set_date': {
+      root: ['dateFns', 'setDate'],
+      commonjs: 'date-fns/set_date/index',
+      commonjs2: 'date-fns/set_date/index'
+    },
+    'date-fns/set_month': {
+      root: ['dateFns', 'setMonth'],
+      commonjs: 'date-fns/set_month/index',
+      commonjs2: 'date-fns/set_month/index'
+    },
+    'date-fns/set_year': {
+      root: ['dateFns', 'setYear'],
+      commonjs: 'date-fns/set_year/index',
+      commonjs2: 'date-fns/set_year/index'
+    },
+    'date-fns/get_date': {
+      root: ['dateFns', 'getDate'],
+      commonjs: 'date-fns/get_date/index',
+      commonjs2: 'date-fns/get_date/index'
+    },
+    'date-fns/get_month': {
+      root: ['dateFns', 'getMonth'],
+      commonjs: 'date-fns/get_month/index',
+      commonjs2: 'date-fns/get_month/index'
+    },
+    'date-fns/get_year': {
+      root: ['dateFns', 'getYear'],
+      commonjs: 'date-fns/get_year/index',
+      commonjs2: 'date-fns/get_year/index'
+    },
+    'date-fns/difference_in_seconds': {
+      root: ['dateFns', 'differenceInSeconds'],
+      commonjs: 'date-fns/difference_in_seconds/index',
+      commonjs2: 'date-fns/difference_in_seconds/index'
+    },
+    'date-fns/add_seconds': {
+      root: ['dateFns', 'addSeconds'],
+      commonjs: 'date-fns/add_seconds/index',
+      commonjs2: 'date-fns/add_seconds/index'
+    },
     'angular-resizable-element': {
       root: 'angularResizableElement',
       commonjs: 'angular-resizable-element',
       commonjs2: 'angular-resizable-element'
+    },
+    'angular-draggable-droppable': {
+      root: 'angularDraggableDroppable',
+      commonjs: 'angular-draggable-droppable',
+      commonjs2: 'angular-draggable-droppable'
     }
   },
   module: {

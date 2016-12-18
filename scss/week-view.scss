@@ -39,6 +39,10 @@
     line-height: 30px;
   }
 
+  .cal-draggable {
+    cursor: move;
+  }
+
   .cal-event.cal-starts-within-week {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;

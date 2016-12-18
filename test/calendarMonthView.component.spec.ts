@@ -17,6 +17,7 @@ import {
 import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
+import { CalendarEventTimesChangedEvent } from '../src/interfaces/calendarEventTimesChangedEvent.interface';
 
 describe('calendarMonthView component', () => {
 
@@ -306,6 +307,55 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-header .cal-cell').innerText).to.deep.equal('Monday');
     fixture.destroy();
+  });
+
+  it('should allow events to be dragged and dropped', () => {
+
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-12-05');
+    fixture.componentInstance.events = [{
+      start: new Date(2016, 11, 5, 10, 39, 14),
+      end: new Date(2016, 11, 5, 15, 11, 5),
+      title: 'draggable event',
+      color: {
+        primary: 'blue',
+        secondary: 'rgb(238, 238, 238)'
+      },
+      draggable: true
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      dragEvent = event;
+    });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const cells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-day-cell');
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    event.style.width = '10px';
+    event.style.height = '10px';
+    const dragToCellPosition: ClientRect = cells[10].getBoundingClientRect();
+    const eventStartPosition: ClientRect = event.getBoundingClientRect();
+    triggerDomEvent('mousedown', event, {clientX: eventStartPosition.left, clientY: eventStartPosition.top});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
+    fixture.detectChanges();
+    expect(cells[10].classList.contains('cal-drag-over')).to.be.true;
+    const eventAfterDragPosition: ClientRect = event.getBoundingClientRect();
+    const movedLeft: number = dragToCellPosition.left - eventStartPosition.left;
+    expect(Math.round(eventAfterDragPosition.left)).to.equal(eventStartPosition.left + movedLeft);
+    const movedTop: number = dragToCellPosition.top - eventStartPosition.top;
+    expect(Math.round(eventAfterDragPosition.top)).to.equal(eventStartPosition.top + movedTop);
+    triggerDomEvent('mouseup', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
+    fixture.detectChanges();
+    expect(cells[10].classList.contains('cal-drag-over')).to.be.false;
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: new Date(2016, 11, 7, 10, 39, 14),
+      newEnd: new Date(2016, 11, 7, 15, 11, 5)
+    });
+
   });
 
 });

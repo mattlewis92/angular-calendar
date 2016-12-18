@@ -119,6 +119,10 @@
     font-size: 1.9em;
   }
 
+  .cal-day-cell.cal-drag-over {
+    background-color: darken(#ededed, 5%) !important;
+  }
+
   .cal-open-day-events {
     padding: 15px;
     color: white;

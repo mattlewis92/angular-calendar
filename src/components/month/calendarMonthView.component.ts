@@ -21,6 +21,15 @@ import {
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import isSameDay from 'date-fns/is_same_day';
+import setDate from 'date-fns/set_date';
+import setMonth from 'date-fns/set_month';
+import setYear from 'date-fns/set_year';
+import getDate from 'date-fns/get_date';
+import getMonth from 'date-fns/get_month';
+import getYear from 'date-fns/get_year';
+import differenceInSeconds from 'date-fns/difference_in_seconds';
+import addSeconds from 'date-fns/add_seconds';
+import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
 @Component({
   selector: 'mwl-calendar-month-view',
@@ -36,13 +45,18 @@ import isSameDay from 'date-fns/is_same_day';
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
               *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
+              [class.cal-drag-over]="day.dragOver"
               [day]="day"
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
               (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
-              (unhighlightDay)="toggleDayHighlight($event.event, false)">
+              (unhighlightDay)="toggleDayHighlight($event.event, false)"
+              mwlDroppable
+              (dragEnter)="day.dragOver = true"
+              (dragLeave)="day.dragOver = false"
+              (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)">
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
@@ -107,6 +121,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * Called when the event title is clicked
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+
+  /**
+   * Called when an event is dragged and dropped
+   */
+  @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * @private
@@ -191,6 +210,22 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
         delete day.backgroundColor;
       }
     });
+  }
+
+  /**
+   * @private
+   */
+  eventDropped(day: MonthViewDay, event: CalendarEvent): void {
+    const year: number = getYear(day.date);
+    const month: number = getMonth(day.date);
+    const date: number = getDate(day.date);
+    const newStart: Date = setYear(setMonth(setDate(event.start, date), month), year);
+    let newEnd: Date;
+    if (event.end) {
+      const secondsDiff: number = differenceInSeconds(newStart, event.start);
+      newEnd = addSeconds(event.end, secondsDiff);
+    }
+    this.eventTimesChanged.emit({event, newStart, newEnd});
   }
 
   private refreshHeader(): void {

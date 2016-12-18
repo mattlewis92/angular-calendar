@@ -22,12 +22,13 @@ import {
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
-import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEventTimesChangedEvent.interface';
+import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
+import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
-    <div class="cal-week-view">
+    <div class="cal-week-view" #weekViewContainer>
       <div class="cal-day-headers">
         <mwl-calendar-week-view-header
           *ngFor="let day of days"
@@ -36,18 +37,26 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
           (click)="dayClicked.emit({date: day.date})">
         </mwl-calendar-week-view-header>
       </div>
-      <div *ngFor="let eventRow of eventRows" #container>
+      <div *ngFor="let eventRow of eventRows" #eventRowContainer>
         <div
           class="cal-event-container"
+          #event
+          [class.cal-draggable]="weekEvent.event.draggable"
           *ngFor="let weekEvent of eventRow.row"
           [style.width]="((100 / 7) * weekEvent.span) + '%'"
           [style.marginLeft]="((100 / 7) * weekEvent.offset) + '%'"
           mwlResizable
           [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
-          [resizeSnapGrid]="{left: container.offsetWidth / 7, right: container.offsetWidth / 7}"
+          [resizeSnapGrid]="{left: getEventWidth(eventRowContainer), right: getEventWidth(eventRowContainer)}"
           (resizeStart)="resizeStarted(weekEvent, $event)"
-          (resizing)="resizing(weekEvent, $event, container.offsetWidth / 7)"
-          (resizeEnd)="resizeEnded(weekEvent)">
+          (resizing)="resizing(weekEvent, $event, getEventWidth(eventRowContainer))"
+          (resizeEnd)="resizeEnded(weekEvent)"
+          mwlDraggable
+          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: false}"
+          [dragSnapGrid]="{x: getEventWidth(eventRowContainer)}"
+          [validateDrag]="validateDrag"
+          (dragStart)="dragStart(weekViewContainer, event)"
+          (dragEnd)="eventDragged(weekEvent, $event.x, getEventWidth(eventRowContainer))">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
             [tooltipPlacement]="tooltipPlacement"
@@ -132,6 +141,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @private
    */
+  validateDrag: Function;
+
+  /**
+   * @private
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
@@ -195,7 +209,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const diff: number = Math.round(+resizeEvent.edges.right / dayWidth);
       weekEvent.span = this.currentResize.originalSpan + diff;
     }
-
   }
 
   /**
@@ -222,7 +235,40 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+    this.currentResize = null;
 
+  }
+
+  /**
+   * @private
+   */
+  eventDragged(weekEvent: WeekViewEvent, draggedByPx: number, dayWidth: number): void {
+
+    const daysDragged: number = draggedByPx / dayWidth;
+    const newStart: Date = addDays(weekEvent.event.start, daysDragged);
+    let newEnd: Date;
+    if (weekEvent.event.end) {
+      newEnd = addDays(weekEvent.event.end, daysDragged);
+    }
+
+    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+
+  }
+
+  /**
+   * @private
+   */
+  getEventWidth(eventRowContainer: HTMLElement): number {
+    return Math.floor(eventRowContainer.offsetWidth / 7);
+  }
+
+  /**
+   * @private
+   */
+  dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
+    const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
+    this.validateDrag = ({x, y}) => dragHelper.validateDrag({x, y});
+    this.cdr.markForCheck();
   }
 
   private refreshHeader(): void {
