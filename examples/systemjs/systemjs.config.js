@@ -27,6 +27,7 @@
       'angular-calendar': 'npm:angular-calendar/dist/umd/angular-calendar.js',
       'calendar-utils': 'npm:calendar-utils/dist/umd/calendarUtils.js',
       'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',
+      'angular-draggable-droppable': 'npm:angular-draggable-droppable/dist/umd/angular-draggable-droppable.js',
       'date-fns': 'npm:date-fns'
     },
     // packages tells the System loader how to load when no filename and/or no extension
