@@ -1,6 +1,5 @@
 import {
   Component,
-  ChangeDetectionStrategy,
   Input,
   OnChanges,
   Output,
@@ -20,7 +19,6 @@ const SEGMENT_HEIGHT: number = 30;
 
 @Component({
   selector: 'mwl-calendar-day-view',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-day-view">
       <mwl-calendar-all-day-event
