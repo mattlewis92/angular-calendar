@@ -276,6 +276,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousemove', document.body, {clientY: rect.top - 30, clientX: rect.left + 10});
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(rect.top - 30);
+    expect(event.getBoundingClientRect().height).to.equal(rect.height + 30);
     triggerDomEvent('mouseup', document.body, {clientY: rect.top - 30, clientX: rect.left + 10});
     fixture.detectChanges();
     fixture.destroy();

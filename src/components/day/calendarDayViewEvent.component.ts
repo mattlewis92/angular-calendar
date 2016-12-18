@@ -80,6 +80,7 @@ export class CalendarDayViewEventComponent {
   resizing(event: DayViewEvent, resizeEvent: ResizeEvent): void {
     if (resizeEvent.edges.top) {
       event.top = this.currentResize.originalTop + +resizeEvent.edges.top;
+      event.height = this.currentResize.originalHeight - +resizeEvent.edges.top;
     } else if (resizeEvent.edges.bottom) {
       event.height = this.currentResize.originalHeight + +resizeEvent.edges.bottom;
     }
