@@ -17,7 +17,7 @@ import { CalendarDayViewEventComponent } from './components/day/calendarDayViewE
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
 import { CalendarDate } from './pipes/calendarDate.pipe';
 import { CalendarEventTitle as CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
-import { CalendarEventTitle as CalendarEventTitleProvider } from './providers/calendarEventTitle.provider';
+import { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
 
 @NgModule({
@@ -59,7 +59,7 @@ export class CalendarModule {
     return {
       ngModule: CalendarModule,
       providers: [
-        CalendarEventTitleProvider,
+        CalendarEventTitleFormatter,
         CalendarDateFormatter
       ]
     };

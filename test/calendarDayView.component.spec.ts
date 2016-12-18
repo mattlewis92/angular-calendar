@@ -7,7 +7,7 @@ import {
 import * as moment from 'moment';
 import { expect } from 'chai';
 import {
-  CalendarEventTitle,
+  CalendarEventTitleFormatter,
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
@@ -26,15 +26,15 @@ describe('CalendarDayViewComponent component', () => {
     TestBed.configureTestingModule({imports: [CalendarModule]});
     TestBed.configureCompiler({
       providers: [
-        CalendarEventTitle,
+        CalendarEventTitleFormatter,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]
     });
   });
 
-  let eventTitle: CalendarEventTitle;
-  beforeEach(inject([CalendarEventTitle], (_eventTitle_) => {
+  let eventTitle: CalendarEventTitleFormatter;
+  beforeEach(inject([CalendarEventTitleFormatter], (_eventTitle_) => {
     eventTitle = _eventTitle_;
   }));
 

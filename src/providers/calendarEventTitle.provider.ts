@@ -1,6 +1,6 @@
 import { CalendarEvent } from 'calendar-utils';
 
-export class CalendarEventTitle {
+export class CalendarEventTitleFormatter {
 
   month(event: CalendarEvent): string {
     return event.title;

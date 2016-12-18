@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import {
   CalendarModule,
   CalendarDateFormatter,
-  CalendarEventTitle
+  CalendarEventTitleFormatter
 } from './../src';
 
 describe('calendar module', () => {
