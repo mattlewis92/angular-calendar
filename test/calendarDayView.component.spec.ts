@@ -411,4 +411,35 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
+  it('should not allow events to be dragged outside of the calendar', () => {
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+      draggable: true
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+    const calendarPosition: ClientRect = fixture.nativeElement.getBoundingClientRect();
+    triggerDomEvent('mousedown', event, {clientY: eventPosition.top + 5, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientY: calendarPosition.top, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(calendarPosition.top);
+    expect(event.getBoundingClientRect().bottom).to.equal(calendarPosition.top + eventPosition.height);
+    triggerDomEvent('mousemove', document.body, {clientY: calendarPosition.top - 60, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(calendarPosition.top);
+    expect(event.getBoundingClientRect().bottom).to.equal(calendarPosition.top + eventPosition.height);
+    triggerDomEvent('mouseup', document.body, {clientY: calendarPosition.top - 60, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    fixture.destroy();
+  });
+
 });

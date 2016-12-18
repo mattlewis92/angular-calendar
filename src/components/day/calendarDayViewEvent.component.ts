@@ -1,13 +1,15 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { DayViewEvent } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addMinutes from 'date-fns/add_minutes';
+import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
 
 @Component({
   selector: 'mwl-calendar-day-view-event',
   template: `
     <div
       class="cal-event"
+      #event
       [style.marginTop.px]="dayEvent.top"
       [style.marginLeft.px]="dayEvent.left + 70"
       [style.height.px]="dayEvent.height"
@@ -29,7 +31,8 @@ import addMinutes from 'date-fns/add_minutes';
       mwlDraggable
       [dragAxis]="{x: false, y: dayEvent.event.draggable && !currentResize}"
       [dragSnapGrid]="{y: eventSnapSize}"
-      [dragContainer]="dayViewContainer"
+      [validateDrag]="validateDrag"
+      (dragStart)="dragStart(event)"
       (dragEnd)="eventDragged(dayEvent, $event.y)">
       <mwl-calendar-event-title
         [event]="dayEvent.event"
@@ -61,6 +64,10 @@ export class CalendarDayViewEventComponent {
     originalHeight: number,
     edge: string
   };
+
+  validateDrag: Function;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent): void {
     this.currentResize = {
@@ -103,6 +110,12 @@ export class CalendarDayViewEventComponent {
     this.eventResized.emit({newStart, newEnd, event: dayEvent.event});
     this.currentResize = null;
 
+  }
+
+  dragStart(event: HTMLElement): void {
+    const dragHelper: CalendarDragHelper = new CalendarDragHelper(this.dayViewContainer, event);
+    this.validateDrag = ({x, y}) => dragHelper.validateDrag({x, y});
+    this.cdr.markForCheck();
   }
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {

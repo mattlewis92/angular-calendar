@@ -23,7 +23,8 @@ import {
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
-import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEventTimesChangedEvent.interface';
+import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
+import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
 @Component({
   selector: 'mwl-calendar-week-view',
@@ -41,6 +42,7 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
       <div *ngFor="let eventRow of eventRows" #eventRowContainer>
         <div
           class="cal-event-container"
+          #event
           [class.cal-draggable]="weekEvent.event.draggable"
           *ngFor="let weekEvent of eventRow.row"
           [style.width]="((100 / 7) * weekEvent.span) + '%'"
@@ -54,7 +56,8 @@ import { CalendarEventTimesChangedEvent } from './../../interfaces/calendarEvent
           mwlDraggable
           [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: false}"
           [dragSnapGrid]="{x: getEventWidth(eventRowContainer)}"
-          [dragContainer]="weekViewContainer"
+          [validateDrag]="validateDrag"
+          (dragStart)="dragStart(weekViewContainer, event)"
           (dragEnd)="eventDragged(weekEvent, $event.x, getEventWidth(eventRowContainer))">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
@@ -140,6 +143,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @private
    */
+  validateDrag: Function;
+
+  /**
+   * @private
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
@@ -203,7 +211,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const diff: number = Math.round(+resizeEvent.edges.right / dayWidth);
       weekEvent.span = this.currentResize.originalSpan + diff;
     }
-
   }
 
   /**
@@ -255,6 +262,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   getEventWidth(eventRowContainer: HTMLElement): number {
     return Math.floor(eventRowContainer.offsetWidth / 7);
+  }
+
+  /**
+   * @private
+   */
+  dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
+    const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
+    this.validateDrag = ({x, y}) => dragHelper.validateDrag({x, y});
+    this.cdr.markForCheck();
   }
 
   private refreshHeader(): void {
