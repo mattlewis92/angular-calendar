@@ -4,7 +4,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   OnInit,
   OnDestroy,
@@ -34,7 +33,6 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
 
 @Component({
   selector: 'mwl-calendar-month-view',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cal-month-view">
       <div class="cal-cell-row cal-header">

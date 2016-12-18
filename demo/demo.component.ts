@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   startOfDay,
   subDays,
@@ -36,6 +36,7 @@ const colors: any = {
 
 @Component({
   selector: 'mwl-demo-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     h3 {
       margin: 0;
