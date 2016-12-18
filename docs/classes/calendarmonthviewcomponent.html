@@ -917,7 +917,10 @@ img { max-width: 100%; }
 			<a href="calendardayviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Component</a>
 		</li>
 		<li class=" tsd-kind-class">
-			<a href="calendareventtitle.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title</a>
+			<a href="calendardraghelper.html" class="tsd-kind-icon">Calendar<wbr>Drag<wbr>Helper</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="calendareventtitleformatter.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title<wbr>Formatter</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="calendarmodule.html" class="tsd-kind-icon">Calendar<wbr>Module</a>
@@ -945,6 +948,9 @@ img { max-width: 100%; }
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="calendarmonthviewcomponent.html#eventclicked" class="tsd-kind-icon">event<wbr>Clicked</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="calendarmonthviewcomponent.html#eventtimeschanged" class="tsd-kind-icon">event<wbr>Times<wbr>Changed</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="calendarmonthviewcomponent.html#events" class="tsd-kind-icon">events</a>
@@ -977,6 +983,9 @@ img { max-width: 100%; }
 					<a href="calendarmonthviewcomponent.html#weekstartson" class="tsd-kind-icon">week<wbr>Starts<wbr>On</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a href="calendarmonthviewcomponent.html#eventdropped" class="tsd-kind-icon">event<wbr>Dropped</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a href="calendarmonthviewcomponent.html#ngonchanges" class="tsd-kind-icon">ng<wbr>OnChanges</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -992,6 +1001,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="calendarnativedateformatter.html" class="tsd-kind-icon">Calendar<wbr>Native<wbr>Date<wbr>Formatter</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="calendarresizehelper.html" class="tsd-kind-icon">Calendar<wbr>Resize<wbr>Helper</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="calendarweekviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Component</a>
@@ -1010,6 +1022,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="../globals.html#segment_height" class="tsd-kind-icon">SEGMENT_<wbr>HEIGHT</a>
+		</li>
+		<li class=" tsd-kind-function">
+			<a href="../globals.html#isinside" class="tsd-kind-icon">is<wbr>Inside</a>
 		</li>
 	</ul>
 </nav>
@@ -1051,6 +1066,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="calendarmonthviewcomponent.html#dayclicked" class="tsd-kind-icon">day<wbr>Clicked</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="calendarmonthviewcomponent.html#daymodifier" class="tsd-kind-icon">day<wbr>Modifier</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="calendarmonthviewcomponent.html#eventclicked" class="tsd-kind-icon">event<wbr>Clicked</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="calendarmonthviewcomponent.html#eventtimeschanged" class="tsd-kind-icon">event<wbr>Times<wbr>Changed</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="calendarmonthviewcomponent.html#events" class="tsd-kind-icon">events</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="calendarmonthviewcomponent.html#locale" class="tsd-kind-icon">locale</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="calendarmonthviewcomponent.html#openday" class="tsd-kind-icon">open<wbr>Day</a></li>
@@ -1066,6 +1082,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="calendarmonthviewcomponent.html#eventdropped" class="tsd-kind-icon">event<wbr>Dropped</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="calendarmonthviewcomponent.html#ngonchanges" class="tsd-kind-icon">ng<wbr>OnChanges</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="calendarmonthviewcomponent.html#ngondestroy" class="tsd-kind-icon">ng<wbr>OnDestroy</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="calendarmonthviewcomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a></li>
@@ -1087,7 +1104,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L136">components/month/calendarMonthView.component.ts:136</a></li>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L153">components/month/calendarMonthView.component.ts:153</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1114,7 +1131,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">active<wbr>Day<wbr>IsOpen<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L75">components/month/calendarMonthView.component.ts:75</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L87">components/month/calendarMonthView.component.ts:87</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1129,7 +1146,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">column<wbr>Headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">WeekDay</span><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L116">components/month/calendarMonthView.component.ts:116</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L133">components/month/calendarMonthView.component.ts:133</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1141,7 +1158,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">day<wbr>Clicked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new EventEmitter&lt;{day: MonthViewDay}&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L106">components/month/calendarMonthView.component.ts:106</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L118">components/month/calendarMonthView.component.ts:118</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1156,7 +1173,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">day<wbr>Modifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L81">components/month/calendarMonthView.component.ts:81</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L93">components/month/calendarMonthView.component.ts:93</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1172,7 +1189,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">event<wbr>Clicked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new EventEmitter&lt;{event: CalendarEvent}&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L111">components/month/calendarMonthView.component.ts:111</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L123">components/month/calendarMonthView.component.ts:123</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1182,12 +1199,27 @@ img { max-width: 100%; }
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="eventtimeschanged" class="tsd-anchor"></a>
+				<h3>event<wbr>Times<wbr>Changed</h3>
+				<div class="tsd-signature tsd-kind-icon">event<wbr>Times<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/calendareventtimeschangedevent.html" class="tsd-signature-type">CalendarEventTimesChangedEvent</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;()</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L128">components/month/calendarMonthView.component.ts:128</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Called when an event is dragged and dropped</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="events" class="tsd-anchor"></a>
 				<h3>events</h3>
 				<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CalendarEvent</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L70">components/month/calendarMonthView.component.ts:70</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L82">components/month/calendarMonthView.component.ts:82</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1202,7 +1234,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">locale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L91">components/month/calendarMonthView.component.ts:91</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L103">components/month/calendarMonthView.component.ts:103</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1217,7 +1249,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">open<wbr>Day<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MonthViewDay</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L131">components/month/calendarMonthView.component.ts:131</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L148">components/month/calendarMonthView.component.ts:148</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1229,7 +1261,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">open<wbr>Row<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L126">components/month/calendarMonthView.component.ts:126</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L143">components/month/calendarMonthView.component.ts:143</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1241,7 +1273,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">refresh<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Subject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L86">components/month/calendarMonthView.component.ts:86</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L98">components/month/calendarMonthView.component.ts:98</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1256,7 +1288,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">refresh<wbr>Subscription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Subscription</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L136">components/month/calendarMonthView.component.ts:136</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L153">components/month/calendarMonthView.component.ts:153</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1268,7 +1300,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tooltip<wbr>Placement<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;top&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L96">components/month/calendarMonthView.component.ts:96</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L108">components/month/calendarMonthView.component.ts:108</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1283,7 +1315,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">view<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MonthView</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L121">components/month/calendarMonthView.component.ts:121</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L138">components/month/calendarMonthView.component.ts:138</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1295,7 +1327,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">view<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L65">components/month/calendarMonthView.component.ts:65</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L77">components/month/calendarMonthView.component.ts:77</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1310,7 +1342,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">week<wbr>Starts<wbr>On<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L101">components/month/calendarMonthView.component.ts:101</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L113">components/month/calendarMonthView.component.ts:113</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1323,6 +1355,34 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+				<a name="eventdropped" class="tsd-anchor"></a>
+				<h3>event<wbr>Dropped</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<li class="tsd-signature tsd-kind-icon">event<wbr>Dropped<span class="tsd-signature-symbol">(</span>day<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MonthViewDay</span>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CalendarEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L218">components/month/calendarMonthView.component.ts:218</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>day: <span class="tsd-signature-type">MonthViewDay</span></h5>
+							</li>
+							<li>
+								<h5>event: <span class="tsd-signature-type">CalendarEvent</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 				<a name="ngonchanges" class="tsd-anchor"></a>
 				<h3>ng<wbr>OnChanges</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -1332,7 +1392,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L160">components/month/calendarMonthView.component.ts:160</a></li>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L177">components/month/calendarMonthView.component.ts:177</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1357,7 +1417,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L179">components/month/calendarMonthView.component.ts:179</a></li>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L196">components/month/calendarMonthView.component.ts:196</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1376,7 +1436,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L148">components/month/calendarMonthView.component.ts:148</a></li>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L165">components/month/calendarMonthView.component.ts:165</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1395,7 +1455,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/month/calendarMonthView.component.ts#L188">components/month/calendarMonthView.component.ts:188</a></li>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/month/calendarMonthView.component.ts#L205">components/month/calendarMonthView.component.ts:205</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

@@ -917,7 +917,10 @@ img { max-width: 100%; }
 			<a href="classes/calendardayviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Component</a>
 		</li>
 		<li class=" tsd-kind-class">
-			<a href="classes/calendareventtitle.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title</a>
+			<a href="classes/calendardraghelper.html" class="tsd-kind-icon">Calendar<wbr>Drag<wbr>Helper</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="classes/calendareventtitleformatter.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title<wbr>Formatter</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="classes/calendarmodule.html" class="tsd-kind-icon">Calendar<wbr>Module</a>
@@ -930,6 +933,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="classes/calendarnativedateformatter.html" class="tsd-kind-icon">Calendar<wbr>Native<wbr>Date<wbr>Formatter</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="classes/calendarresizehelper.html" class="tsd-kind-icon">Calendar<wbr>Resize<wbr>Helper</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="classes/calendarweekviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Component</a>
@@ -948,6 +954,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="globals.html#segment_height" class="tsd-kind-icon">SEGMENT_<wbr>HEIGHT</a>
+		</li>
+		<li class=" tsd-kind-function">
+			<a href="globals.html#isinside" class="tsd-kind-icon">is<wbr>Inside</a>
 		</li>
 	</ul>
 </nav>
@@ -1028,11 +1037,13 @@ img { max-width: 100%; }
 							<li class="tsd-kind-class"><a href="classes/calendardate.html" class="tsd-kind-icon">Calendar<wbr>Date</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendardateformatter.html" class="tsd-kind-icon">Calendar<wbr>Date<wbr>Formatter</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendardayviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Day<wbr>View<wbr>Component</a></li>
-							<li class="tsd-kind-class"><a href="classes/calendareventtitle.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title</a></li>
+							<li class="tsd-kind-class"><a href="classes/calendardraghelper.html" class="tsd-kind-icon">Calendar<wbr>Drag<wbr>Helper</a></li>
+							<li class="tsd-kind-class"><a href="classes/calendareventtitleformatter.html" class="tsd-kind-icon">Calendar<wbr>Event<wbr>Title<wbr>Formatter</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendarmodule.html" class="tsd-kind-icon">Calendar<wbr>Module</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendarmomentdateformatter.html" class="tsd-kind-icon">Calendar<wbr>Moment<wbr>Date<wbr>Formatter</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendarmonthviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Month<wbr>View<wbr>Component</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendarnativedateformatter.html" class="tsd-kind-icon">Calendar<wbr>Native<wbr>Date<wbr>Formatter</a></li>
+							<li class="tsd-kind-class"><a href="classes/calendarresizehelper.html" class="tsd-kind-icon">Calendar<wbr>Resize<wbr>Helper</a></li>
 							<li class="tsd-kind-class"><a href="classes/calendarweekviewcomponent.html" class="tsd-kind-icon">Calendar<wbr>Week<wbr>View<wbr>Component</a></li>
 						</ul>
 					</section>
@@ -1051,6 +1062,12 @@ img { max-width: 100%; }
 							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#segment_height" class="tsd-kind-icon">SEGMENT_<wbr>HEIGHT</a></li>
 						</ul>
 					</section>
+					<section class="tsd-index-section ">
+						<h3>Functions</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-function"><a href="globals.html#isinside" class="tsd-kind-icon">is<wbr>Inside</a></li>
+						</ul>
+					</section>
 				</div>
 			</section>
 		</section>
@@ -1062,7 +1079,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">MOMENT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">OpaqueToken</span><span class="tsd-signature-symbol"> =&nbsp;new OpaqueToken(&#x27;Moment&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/providers/calendarMomentDateFormatter.provider.ts#L4">providers/calendarMomentDateFormatter.provider.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/providers/calendarMomentDateFormatter.provider.ts#L4">providers/calendarMomentDateFormatter.provider.ts:4</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1072,9 +1089,38 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">SEGMENT_<wbr>HEIGHT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6316c3f/src/components/day/calendarDayView.component.ts#L19">components/day/calendarDayView.component.ts:19</a></li>
+						<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/components/day/calendarDayView.component.ts#L18">components/day/calendarDayView.component.ts:18</a></li>
 					</ul>
 				</aside>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Functions</h2>
+			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="isinside" class="tsd-anchor"></a>
+				<h3>is<wbr>Inside</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">is<wbr>Inside<span class="tsd-signature-symbol">(</span>outer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ClientRect</span>, inner<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ClientRect</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mattlewis92/angular-calendar/blob/6c9168b/src/providers/calendarUtils.provider.ts#L1">providers/calendarUtils.provider.ts:1</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>outer: <span class="tsd-signature-type">ClientRect</span></h5>
+							</li>
+							<li>
+								<h5>inner: <span class="tsd-signature-type">ClientRect</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
