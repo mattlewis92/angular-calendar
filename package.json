@@ -74,7 +74,7 @@
     "karma-coverage": "^1.1.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.0",
-    "karma-remap-istanbul": "^0.2.0",
+    "karma-remap-istanbul": "^0.3.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "moment": "^2.17.0",
