@@ -71,7 +71,6 @@
     "intl": "^1.2.4",
     "jasmine-core": "^2.5.0",
     "karma": "^1.3.0",
-    "karma-coverage": "^1.1.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-remap-istanbul": "^0.3.0",
