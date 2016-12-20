@@ -22,7 +22,7 @@
     "prerelease": "npm test",
     "release": "git add package.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
     "postrelease": "npm run build:clean && npm run gh-pages",
-    "precommit": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg"
   },
   "repository": {
     "type": "git",
