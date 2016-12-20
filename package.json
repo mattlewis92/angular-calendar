@@ -21,7 +21,8 @@
     "gh-pages": "git checkout gh-pages && git merge master --no-edit && npm run build:demo && npm run typedoc && git add . && git commit -m 'chore: build demo and docs' && git push && git checkout master",
     "prerelease": "npm test",
     "release": "git add package.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
-    "postrelease": "npm run build:clean && npm run gh-pages"
+    "postrelease": "npm run build:clean && npm run gh-pages",
+    "precommit": "validate-commit-msg"
   },
   "repository": {
     "type": "git",
@@ -66,7 +67,7 @@
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "font-awesome": "^4.7.0",
-    "ghooks": "^1.3.0",
+    "husky": "^0.12.0",
     "imports-loader": "^0.7.0",
     "intl": "^1.2.4",
     "jasmine-core": "^2.5.0",
@@ -113,9 +114,6 @@
     "scss"
   ],
   "config": {
-    "ghooks": {
-      "commit-msg": "validate-commit-msg"
-    },
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
