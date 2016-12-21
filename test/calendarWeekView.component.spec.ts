@@ -15,6 +15,7 @@ import {
   CalendarEventTimesChangedEvent
 } from './../src';
 import { CalendarWeekViewComponent } from './../src/components/week/calendarWeekView.component';
+import { DraggableHelper } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs/Rx';
 import { triggerDomEvent } from './util';
 
@@ -25,6 +26,7 @@ describe('calendarWeekView component', () => {
     TestBed.configureCompiler({
       providers: [
         CalendarEventTitleFormatter,
+        DraggableHelper,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]

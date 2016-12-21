@@ -6,6 +6,7 @@ import {
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import { expect } from 'chai';
+import { DraggableHelper } from 'angular-draggable-droppable';
 import {
   CalendarEventTitleFormatter,
   CalendarEvent,
@@ -26,6 +27,7 @@ describe('CalendarDayViewComponent component', () => {
     TestBed.configureTestingModule({imports: [CalendarModule]});
     TestBed.configureCompiler({
       providers: [
+        DraggableHelper,
         CalendarEventTitleFormatter,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}

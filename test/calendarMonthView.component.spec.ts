@@ -6,6 +6,7 @@ import {
 import * as moment from 'moment';
 import { expect } from 'chai';
 import { spy } from 'sinon';
+import { DraggableHelper } from 'angular-draggable-droppable';
 import {
   CalendarEventTitleFormatter,
   CalendarEvent,
@@ -25,6 +26,7 @@ describe('calendarMonthView component', () => {
     TestBed.configureTestingModule({imports: [CalendarModule]});
     TestBed.configureCompiler({
       providers: [
+        DraggableHelper,
         CalendarEventTitleFormatter,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
