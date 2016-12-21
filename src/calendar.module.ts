@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResizableModule } from 'angular-resizable-element';
 import { DragAndDropModule } from 'angular-draggable-droppable';
