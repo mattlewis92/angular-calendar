@@ -15,6 +15,33 @@ All notable changes to this project will be documented in this file. See [standa
 
 * draggable: if not using CalendarModule.forRoot() and manually adding providers you must now also include the DraggableHelper from the angular-draggable-droppable module
 
+Before:
+```
+import {CalendarModule, CalendarEventTitleFormatter, CalendarDateFormatter} from 'angular-calendar';
+
+imports: [
+  CalendarModule
+],
+providers: [
+  CalendarEventTitleFormatter,
+  CalendarDateFormatter
+]
+```
+
+After:
+```
+import {CalendarModule, CalendarEventTitleFormatter, CalendarDateFormatter} from 'angular-calendar';
+import {DraggableHelper} from 'angular-draggable-droppable';
+
+imports: [
+  CalendarModule
+],
+providers: [
+  CalendarEventTitleFormatter,
+  CalendarDateFormatter,
+  DraggableHelper
+]
+```
 
 
 <a name="0.5.0"></a>
