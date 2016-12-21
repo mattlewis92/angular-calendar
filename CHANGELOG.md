@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/mattlewis92/angular-calendar/compare/v0.5.0...v0.6.0) (2016-12-21)
+
+
+### Features
+
+* **draggable:** allow external draggable events ([8ba068c](https://github.com/mattlewis92/angular-calendar/commit/8ba068c)), closes [#106](https://github.com/mattlewis92/angular-calendar/issues/106)
+
+
+### BREAKING CHANGES
+
+* draggable: if not using CalendarModule.forRoot() and manually adding providers you must now also include the DraggableHelper from the angular-draggable-droppable module
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/mattlewis92/angular-calendar/compare/v0.4.4...v0.5.0) (2016-12-18)
 
