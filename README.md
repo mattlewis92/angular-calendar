@@ -46,7 +46,7 @@ import { CalendarModule } from 'angular-calendar';
 export class MyModule {}
 ```
 
-Then you can use the [`mwl-calendar-month-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarmonthviewcomponent.html), [`mwl-calendar-week-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarweekviewcomponent.html) and [`mwl-calendar-day-view`]((https://mattlewis92.github.io/angular-calendar/docs/classes/calendardayviewcomponent.html)) components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular-calendar/blob/master/demo/demo.component.ts). 
+Then you can use the [`mwl-calendar-month-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarmonthviewcomponent.html), [`mwl-calendar-week-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarweekviewcomponent.html) and [`mwl-calendar-day-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendardayviewcomponent.html) components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular-calendar/blob/master/demo/demo.component.ts). 
 
 To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular-calendar/issues/32)
 
