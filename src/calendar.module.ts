@@ -15,8 +15,8 @@ import { CalendarAllDayEventComponent } from './components/day/calendarAllDayEve
 import { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';
 import { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
-import { CalendarDate } from './pipes/calendarDate.pipe';
-import { CalendarEventTitle as CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
+import { CalendarDatePipe } from './pipes/calendarDate.pipe';
+import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
 import { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
 
@@ -36,7 +36,7 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDayViewEventComponent,
     CalendarTooltipWindowComponent,
     CalendarTooltipDirective,
-    CalendarDate,
+    CalendarDatePipe,
     CalendarEventTitlePipe
   ],
   imports: [
@@ -48,7 +48,7 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDayViewComponent,
     CalendarWeekViewComponent,
     CalendarMonthViewComponent,
-    CalendarDate
+    CalendarDatePipe
   ],
   entryComponents: [CalendarTooltipWindowComponent]
 })
