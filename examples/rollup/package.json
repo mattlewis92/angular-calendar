@@ -10,22 +10,22 @@
     "@angular/forms": "^2.1.1",
     "@angular/platform-browser": "^2.1.1",
     "@angular/platform-browser-dynamic": "^2.1.1",
-    "angular-calendar": "~0.5.0",
+    "angular-calendar": "^0.6.0",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-rc.4",
+    "rxjs": "^5.0.2",
     "zone.js": "^0.7.1"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
     "lite-server": "^2.2.2",
-    "rollup": "~0.36.3",
-    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup": "^0.38.0",
+    "rollup-plugin-commonjs": "^6.0.1",
     "rollup-plugin-css-only": "0.0.4",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-typescript": "^0.8.1",
-    "typescript": "~2.0.3"
+    "typescript": "^2.1.4"
   },
   "scripts": {
     "rollup": "rollup -f iife -c rollup.config.js -o dist/bundle.js",
