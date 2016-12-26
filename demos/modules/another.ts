@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from '../../src'; // import should be from `angular-calendar` in your app
+import { CalendarModule } from 'angular-calendar';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

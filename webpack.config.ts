@@ -1,6 +1,8 @@
+const path = require('path');
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
@@ -35,7 +37,10 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    alias: {
+      'angular-calendar$': path.resolve(__dirname, 'src/index.ts')
+    }
   },
   devServer: {
     port: 8000,
@@ -45,6 +50,7 @@ module.exports = {
     contentBase: 'demos'
   },
   plugins: [
+    new TsConfigPathsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
