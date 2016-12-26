@@ -46,6 +46,7 @@
     "@angular/forms": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
+    "@angular/router": "^3.4.1",
     "@types/chai": "^3.4.30",
     "@types/core-js": "^0.9.32",
     "@types/jasmine": "^2.5.35",
