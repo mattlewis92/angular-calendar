@@ -111,19 +111,28 @@ function getSources(folder: string): Source[] {
             <button
               class="btn btn-info pull-right"
               (click)="editInPlunker()">
-              <i class="glyphicon glyphicon-edit"></i> Edit in Plunker
+              <i class="fa fa-edit"></i> Edit in Plunker
             </button>
             <ul class="nav nav-tabs">
               <li
                 class="nav-item"
                 [class.active]="activeTabIndex === 0">
-                <a href="javascript:;" (click)="activeTabIndex = 0">Demo</a>
+                <a href="javascript:;" (click)="activeTabIndex = 0">
+                  <i class="fa fa-fw fa-laptop"></i> Live demo
+                </a>
               </li>
               <li
                 class="nav-item"
                 *ngFor="let source of activeDemo?.sources; let sourceTabIndex = index"
                 [class.active]="activeTabIndex === sourceTabIndex + 1">
-                <a href="javascript:;" (click)="activeTabIndex = sourceTabIndex + 1">{{ source.filename }}</a>
+                <a href="javascript:;" (click)="activeTabIndex = sourceTabIndex + 1">
+                  <span [ngSwitch]="source.language">
+                    <i class="fa fa-fw fa-html5" *ngSwitchCase="'html'"></i>
+                    <i class="fa fa-fw fa-css3" *ngSwitchCase="'css'"></i>
+                    <i class="fa fa-fw fa-code" *ngSwitchDefault></i>
+                  </span>
+                  {{ source.filename }}
+                </a>
               </li>
             </ul>
             <div class="tab-content">
