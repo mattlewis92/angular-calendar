@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 interface Demo {
   label: string;
   path: string;
+  source: string;
 }
 
 @Component({
@@ -18,7 +19,7 @@ interface Demo {
       padding-bottom: 50px;
     }
     .tab-content {
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .sidebar-nav li {
       margin-bottom: 5px;
@@ -69,7 +70,7 @@ interface Demo {
                 <router-outlet></router-outlet>
               </div>
               <div class="tab-pane" [class.active]="activeTab === 'source'">
-                Hello world
+                <mwl-highlight-code [source]="activeDemo?.source" language="typescript"></mwl-highlight-code>
               </div>
             </div>
           </div>
@@ -85,14 +86,17 @@ export class DemosComponent {
   activeDemo: Demo;
 
   constructor(router: Router) {
+
     this.demos = router.config
       .filter(route => route.path !== '**')
-      .map(route => ({path: route.path, label: route.data['label']}));
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
+      .map(route => ({path: route.path, label: route.data['label'], source: route.data['source']}));
+
+    router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
         this.activeDemo = this.demos.find(demo => `/${demo.path}` === event.urlAfterRedirects);
-      }
-    });
+      });
+
   }
 
   viewDemo(): void {
