@@ -28,14 +28,38 @@ function getSources(folder: string): Source[] {
       const [, filename, extension]: RegExpMatchArray = path.match(/^\.\/.+\/(.+)\.(.+)$/);
       const languages: any = {
         ts: 'typescript',
-        css: 'css',
-        html: 'html'
+        html: 'html',
+        css: 'css'
       };
       return {
         filename: `${filename}.${extension}`,
         contents,
         language: languages[extension]
       };
+    })
+    .sort((sourceA: Source, sourceB: Source) => {
+
+      const precedences: string[] = [
+        '.module.ts',
+        '.component.ts',
+        '.html',
+        '.css'
+      ];
+
+      let scoreA: number = precedences.length;
+      let scoreB: number = precedences.length;
+
+      precedences.forEach((suffix, index) => {
+        if (sourceA.filename.endsWith(suffix)) {
+          scoreA = index;
+        }
+        if (sourceB.filename.endsWith(suffix)) {
+          scoreB = index;
+        }
+      });
+
+      return scoreA - scoreB;
+
     });
 }
 
