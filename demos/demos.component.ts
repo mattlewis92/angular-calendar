@@ -95,6 +95,7 @@ export class DemosComponent {
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
         this.activeDemo = this.demos.find(demo => `/${demo.path}` === event.urlAfterRedirects);
+        this.viewDemo();
       });
 
   }

@@ -20,14 +20,14 @@ import { AnotherModule, AnotherComponent } from './modules/another';
       component: KitchenSinkComponent,
       data: {
         label: 'Kitchen sink',
-        source: require('!!raw-loader!./modules/kitchen-sink')
+        source: require('!!raw-loader!./modules/kitchen-sink/kitchen-sink.component')
       }
     }, {
       path: 'another',
       component: AnotherComponent,
       data: {
         label: 'Another demo',
-        source: require('!!raw-loader!./modules/another')
+        source: require('!!raw-loader!./modules/another/another.component')
       }
     }, {
       path: '**',

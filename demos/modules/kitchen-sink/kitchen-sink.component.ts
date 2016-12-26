@@ -15,7 +15,6 @@ import {
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 import {
-  CalendarModule,
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent
@@ -198,17 +197,3 @@ export class KitchenSinkComponent {
   }
 
 }
-
-@NgModule({
-  imports: [
-    CommonModule,
-    CalendarModule.forRoot()
-  ],
-  declarations: [
-    KitchenSinkComponent
-  ],
-  exports: [
-    KitchenSinkComponent
-  ]
-})
-export class KitchenSinkModule {}
