@@ -196,6 +196,12 @@ angular-resizable-element@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.4.tgz#76467857841d906f517d2bf1b56539c90e16240a"
 
+angular2-template-loader@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/angular2-template-loader/-/angular2-template-loader-0.6.0.tgz#8a7fae4cf5a2494968da512aa43152a82a0c99b6"
+  dependencies:
+    loader-utils "^0.2.15"
+
 ansi-align@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-1.1.0.tgz#2f0c1658829739add5ebb15e6b0c6e3423f016ba"

@@ -25,7 +25,7 @@ function getSources(folder: string): Source[] {
     .filter(([path]) => path.startsWith(`./${folder}`))
     .filter(([path]) => !path.endsWith('/index.ts'))
     .map(([path, contents]) => {
-      const [, filename, extension] = path.match(/^\.\/.+\/(.+)\.(.+)$/);
+      const [, filename, extension]: RegExpMatchArray = path.match(/^\.\/.+\/(.+)\.(.+)$/);
       const languages: any = {
         ts: 'typescript',
         css: 'css',

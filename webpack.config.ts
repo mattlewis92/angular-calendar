@@ -20,7 +20,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
-      loader: 'awesome-typescript-loader',
+      loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
@@ -34,6 +34,9 @@ module.exports = {
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file-loader'
+    }, {
+      test: /\.html$/,
+      loader: 'raw-loader'
     }]
   },
   resolve: {
