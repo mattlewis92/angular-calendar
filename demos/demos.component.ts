@@ -1,10 +1,42 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
+declare const require: any;
+const testsContext: any = require.context('!!raw-loader!./modules', true, /\.(ts|css|html)$/);
+const demoFiles: any = {};
+testsContext.keys().forEach(key => {
+  demoFiles[key] = testsContext(key);
+});
+
+interface Source {
+  filename: string;
+  contents: string;
+  language: string;
+}
+
 interface Demo {
   label: string;
   path: string;
-  source: string;
+  sources: Source[];
+}
+
+function getSources(folder: string): Source[] {
+  return Object.entries(demoFiles)
+    .filter(([path]) => path.startsWith(`./${folder}`))
+    .filter(([path]) => !path.endsWith('/index.ts'))
+    .map(([path, contents]) => {
+      const [, filename, extension] = path.match(/^\.\/.+\/(.+)\.(.+)$/);
+      const languages: any = {
+        ts: 'typescript',
+        css: 'css',
+        html: 'html'
+      };
+      return {
+        filename: `${filename}.${extension}`,
+        contents,
+        language: languages[extension]
+      };
+    });
 }
 
 @Component({
@@ -58,19 +90,33 @@ interface Demo {
               <i class="glyphicon glyphicon-edit"></i> Edit in Plunker
             </button>
             <ul class="nav nav-tabs">
-              <li class="nav-item" [class.active]="activeTab === 'demo'">
-                <a href="javascript:;" (click)="viewDemo()">Demo</a>
+              <li
+                class="nav-item"
+                [class.active]="activeTabIndex === 0">
+                <a href="javascript:;" (click)="activeTabIndex = 0">Demo</a>
               </li>
-              <li class="nav-item" [class.active]="activeTab === 'source'">
-                <a href="javascript:;" (click)="viewSource()">Source</a>
+              <li
+                class="nav-item"
+                *ngFor="let source of activeDemo?.sources; let sourceTabIndex = index"
+                [class.active]="activeTabIndex === sourceTabIndex + 1">
+                <a href="javascript:;" (click)="activeTabIndex = sourceTabIndex + 1">{{ source.filename }}</a>
               </li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane" [class.active]="activeTab === 'demo'">
+              <div
+                class="tab-pane"
+                [class.active]="activeTabIndex === 0">
                 <router-outlet></router-outlet>
               </div>
-              <div class="tab-pane" [class.active]="activeTab === 'source'">
-                <mwl-highlight-code [source]="activeDemo?.source" language="typescript"></mwl-highlight-code>
+              <div
+                class="tab-pane"
+                *ngFor="let source of activeDemo?.sources; let sourceTabIndex = index"
+                [class.active]="activeTabIndex === sourceTabIndex + 1">
+                <mwl-highlight-code
+                  *ngIf="activeTabIndex === sourceTabIndex + 1"
+                  [source]="source.contents"
+                  [language]="source.language">
+                </mwl-highlight-code>
               </div>
             </div>
           </div>
@@ -81,7 +127,7 @@ interface Demo {
 })
 export class DemosComponent {
 
-  activeTab: 'demo' | 'source' = 'demo';
+  activeTabIndex: number = 0;
   demos: Demo[] = [];
   activeDemo: Demo;
 
@@ -89,23 +135,15 @@ export class DemosComponent {
 
     this.demos = router.config
       .filter(route => route.path !== '**')
-      .map(route => ({path: route.path, label: route.data['label'], source: route.data['source']}));
+      .map(route => ({path: route.path, label: route.data['label'], sources: getSources(route.path)}));
 
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
         this.activeDemo = this.demos.find(demo => `/${demo.path}` === event.urlAfterRedirects);
-        this.viewDemo();
+        this.activeTabIndex = 0;
       });
 
-  }
-
-  viewDemo(): void {
-    this.activeTab = 'demo';
-  }
-
-  viewSource(): void {
-    this.activeTab = 'source';
   }
 
 }

@@ -19,15 +19,13 @@ import { AnotherModule, AnotherComponent } from './modules/another';
       path: 'kitchen-sink',
       component: KitchenSinkComponent,
       data: {
-        label: 'Kitchen sink',
-        source: require('!!raw-loader!./modules/kitchen-sink/kitchen-sink.component')
+        label: 'Kitchen sink'
       }
     }, {
       path: 'another',
       component: AnotherComponent,
       data: {
-        label: 'Another demo',
-        source: require('!!raw-loader!./modules/another/another.component')
+        label: 'Another demo'
       }
     }, {
       path: '**',
