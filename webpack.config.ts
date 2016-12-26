@@ -5,10 +5,10 @@ const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
   devtool: IS_PROD ? 'source-map' : 'eval',
-  entry: __dirname + '/demo/entry.ts',
+  entry: __dirname + '/demos/entry.ts',
   output: {
-    filename: 'demo.js',
-    path: IS_PROD ? __dirname + '/demo' : __dirname
+    filename: 'demos.js',
+    path: IS_PROD ? __dirname + '/demos' : __dirname
   },
   module: {
     rules: [{
@@ -42,7 +42,7 @@ module.exports = {
     inline: true,
     hot: true,
     historyApiFallback: true,
-    contentBase: 'demo'
+    contentBase: 'demos'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

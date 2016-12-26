@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // import should be from `angular-calendar` in your app
 import { CalendarModule } from './../src';
-import { DemoComponent } from './demo.component';
+import { DemosComponent } from './demos.component';
 
 @NgModule({
-  declarations: [DemoComponent],
+  declarations: [DemosComponent],
   imports: [
     BrowserModule,
     CalendarModule.forRoot()
   ],
-  bootstrap: [DemoComponent]
+  bootstrap: [DemosComponent]
 })
-export class DemoModule {}
+export class DemosModule {}

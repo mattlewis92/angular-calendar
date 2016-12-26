@@ -101,7 +101,7 @@ const colors: any = {
     </div>
   `
 })
-export class DemoComponent {
+export class DemosComponent {
 
   view: string = 'month';
 
