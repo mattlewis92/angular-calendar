@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   startOfDay,
   subDays,
@@ -37,8 +36,8 @@ const colors: any = {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./kitchen-sink.css'],
-  templateUrl: './kitchen-sink.html'
+  styleUrls: ['./styles.css'],
+  templateUrl: './template.html'
 })
 export class KitchenSinkComponent {
 

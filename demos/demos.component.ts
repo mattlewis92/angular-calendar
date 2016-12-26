@@ -40,8 +40,8 @@ function getSources(folder: string): Source[] {
     .sort((sourceA: Source, sourceB: Source) => {
 
       const precedences: string[] = [
-        '.module.ts',
-        '.component.ts',
+        'module.ts',
+        'component.ts',
         '.html',
         '.css'
       ];
