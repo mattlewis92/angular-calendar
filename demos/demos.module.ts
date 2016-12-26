@@ -1,6 +1,3 @@
-import 'highlight.js/styles/github.css';
-import 'highlight.js';
-import 'highlight.js/lib/languages/typescript';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';

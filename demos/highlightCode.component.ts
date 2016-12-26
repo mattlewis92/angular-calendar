@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import 'highlight.js/styles/github.css';
 import * as hljs from 'highlight.js';
+import 'highlight.js/lib/languages/typescript';
 
 @Component({
   selector: 'mwl-highlight-code',
