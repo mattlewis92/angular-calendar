@@ -26,7 +26,7 @@ module.exports = {
       test: /\.scss$/,
       loader: 'style-loader!css-loader!sass-loader'
     }, {
-      test: /\.css$/,
+      test: /(node_modules).+\.css$/,
       loader: 'style-loader!css-loader'
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -35,7 +35,7 @@ module.exports = {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file-loader'
     }, {
-      test: /\.html$/,
+      test: /(demos\/modules\/).+\.(css|html)$/,
       loader: 'raw-loader'
     }]
   },

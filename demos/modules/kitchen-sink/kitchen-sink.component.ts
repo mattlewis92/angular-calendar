@@ -37,11 +37,7 @@ const colors: any = {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [`
-    h3 {
-      margin: 0;
-    }
-  `],
+  styleUrls: ['./kitchen-sink.css'],
   templateUrl: './kitchen-sink.template.html'
 })
 export class KitchenSinkComponent {
