@@ -145,11 +145,12 @@ function getSources(folder: string): Source[] {
                 class="tab-pane"
                 *ngFor="let source of activeDemo?.sources; let sourceTabIndex = index"
                 [class.active]="activeTabIndex === sourceTabIndex + 1">
-                <mwl-highlight-code
+                <pre><code
                   *ngIf="activeTabIndex === sourceTabIndex + 1"
+                  mwlHighlightJs
                   [source]="source.contents"
                   [language]="source.language">
-                </mwl-highlight-code>
+                </code></pre>
               </div>
             </div>
           </div>
