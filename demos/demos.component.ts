@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Plunker } from 'create-plunker';
 
 declare const require: any;
-const testsContext: any = require.context('!!raw-loader!./modules', true, /\.(ts|css|html)$/);
+const testsContext: any = require.context('!!raw-loader!./components', true, /\.(ts|css|html)$/);
 const demoFiles: any = {};
 testsContext.keys().forEach(key => {
   demoFiles[key] = testsContext(key);
@@ -110,7 +111,7 @@ function getSources(folder: string): Source[] {
           <div>
             <button
               class="btn btn-info pull-right"
-              (click)="editInPlunker()">
+              (click)="editInPlunker(activeDemo)">
               <i class="fa fa-edit"></i> Edit in Plunker
             </button>
             <ul class="nav nav-tabs">
@@ -177,6 +178,26 @@ export class DemosComponent {
         this.activeDemo = this.demos.find(demo => `/${demo.path}` === event.urlAfterRedirects);
         this.activeTabIndex = 0;
       });
+
+  }
+
+  editInPlunker(demo: Demo): void {
+
+    Plunker
+      .create()
+      .addIndexHeadLine(`<title>${demo.label}</title>`)
+      .addNpmPackage('bootstrap', {version: '3', filename: 'dist/css/bootstrap.min.css'})
+      .addNpmPackage('angular-calendar', {version: '0.6', filename: 'dist/css/angular-calendar.css'})
+      .addNpmPackage('zone.js', {version: '0.7'})
+      .addNpmPackage('zone.js', {version: '0.7', filename: 'dist/long-stack-trace-zone.js'})
+      .addNpmPackage('reflect-metadata', {version: '0.1'})
+      .addNpmPackage('systemjs', {version: '0.19', filename: 'dist/system.js'})
+      .addFile({name: 'config.js', contents: require('raw-loader!./util/plunker-system-config')})
+      .addInlineScript(`System.import('app').catch(console.error.bind(console));`)
+      .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
+      .addFiles(demo.sources.map(source => ({name: source.filename, contents: source.contents})))
+      .addFile({name: 'bootstrap.ts', contents: require('raw-loader!./util/plunker-bootstrap.txt')})
+      .save();
 
   }
 

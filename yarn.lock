@@ -1257,6 +1257,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
     create-hash "^1.1.0"
     inherits "^2.0.1"
 
+create-plunker@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/create-plunker/-/create-plunker-1.2.0.tgz#bf772698ceed407f763a29410ecd0cb5d91e9cff"
+
 cross-spawn@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"

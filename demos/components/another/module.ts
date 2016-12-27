@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
-import { KitchenSinkComponent } from './component';
+import { DemoComponent } from './component';
 
 @NgModule({
   imports: [
@@ -9,10 +9,10 @@ import { KitchenSinkComponent } from './component';
     CalendarModule.forRoot()
   ],
   declarations: [
-    KitchenSinkComponent
+    DemoComponent
   ],
   exports: [
-    KitchenSinkComponent
+    DemoComponent
   ]
 })
-export class KitchenSinkModule {}
+export class DemoModule {}

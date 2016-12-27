@@ -35,11 +35,12 @@ const colors: any = {
 };
 
 @Component({
+  selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./styles.css'],
   templateUrl: './template.html'
 })
-export class KitchenSinkComponent {
+export class DemoComponent {
 
   view: string = 'month';
 

@@ -3,24 +3,24 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { DemosComponent } from './demos.component';
 import { HighlightJsDirective } from './highlightJs.directive';
-import { KitchenSinkModule, KitchenSinkComponent } from './modules/kitchen-sink';
-import { AnotherModule, AnotherComponent } from './modules/another';
+import * as kitchenSink from './components/kitchen-sink';
+import * as another from './components/another';
 
 @NgModule({
   declarations: [DemosComponent, HighlightJsDirective],
   imports: [
     BrowserModule,
-    KitchenSinkModule,
-    AnotherModule,
+    kitchenSink.DemoModule,
+    another.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
-      component: KitchenSinkComponent,
+      component: kitchenSink.DemoComponent,
       data: {
         label: 'Kitchen sink'
       }
     }, {
       path: 'another',
-      component: AnotherComponent,
+      component: another.DemoComponent,
       data: {
         label: 'Another demo'
       }
