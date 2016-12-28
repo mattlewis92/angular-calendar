@@ -1,0 +1,17 @@
+h3 {
+  margin: 0;
+  padding-bottom: 19px;
+}
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+.tab-content {
+  margin-top: 10px;
+}
+.sidebar-nav li {
+  margin-bottom: 5px;
+}
+.sidebar-nav a:not(.active) {
+  color: #777;
+}
