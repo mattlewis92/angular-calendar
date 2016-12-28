@@ -1,7 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+import 'highlight.js/styles/github.css';
+import '../scss/angular-calendar.scss';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import 'highlight.js/styles/github.css';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
 import { DemoAppComponent } from './demo-app.component';
