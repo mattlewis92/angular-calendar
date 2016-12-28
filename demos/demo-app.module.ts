@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { DemoAppComponent } from './demo-app.component';
 import { HighlightJsDirective } from './highlightJs.directive';
-import * as kitchenSink from './components/kitchen-sink';
-import * as another from './components/another';
+import * as kitchenSink from './demo-modules/kitchen-sink';
+import * as another from './demo-modules/another';
 
 @NgModule({
   declarations: [DemoAppComponent, HighlightJsDirective],

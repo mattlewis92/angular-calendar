@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Plunker } from 'create-plunker';
 
 declare const require: any;
-const testsContext: any = require.context('!!raw-loader!./components', true, /\.(ts|css|html)$/);
+const testsContext: any = require.context('!!raw-loader!./demo-modules', true, /\.(ts|css|html)$/);
 const demoFiles: any = {};
 testsContext.keys().forEach(key => {
   demoFiles[key] = testsContext(key);
