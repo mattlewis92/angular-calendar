@@ -49,7 +49,7 @@
     "@angular/router": "^3.4.1",
     "@types/chai": "^3.4.30",
     "@types/core-js": "^0.9.32",
-    "@types/highlight.js": "^9.1.8",
+    "@types/highlight.js": "^9.1.9",
     "@types/jasmine": "^2.5.35",
     "@types/node": "^6.0.41",
     "@types/sinon": "^1.16.27",
