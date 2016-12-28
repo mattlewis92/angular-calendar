@@ -195,7 +195,7 @@ export class DemosComponent {
       .addFile({name: 'config.js', contents: require('raw-loader!./plunker-assets/plunker-system-config.txt')})
       .addInlineScript(`System.import('app').catch(console.error.bind(console));`)
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
-      .addFiles(demo.sources.map(source => ({name: source.filename, contents: source.contents})))
+      .addFiles(demo.sources.map(source => ({name: source.filename, contents: source.contents})), true)
       .addFile({name: 'bootstrap.ts', contents: require('raw-loader!./plunker-assets/plunker-bootstrap.txt')})
       .save();
 
