@@ -5859,7 +5859,7 @@ webpack@^1.13.2:
     watchpack "^0.2.1"
     webpack-core "~0.6.9"
 
-webpack@~2.2.0-rc.3:
+webpack@~2.2.0-rc.2:
   version "2.2.0-rc.3"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.2.0-rc.3.tgz#ac072c06c88aae75abdfd33510e7c5fd965f843f"
   dependencies:
