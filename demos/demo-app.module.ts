@@ -12,7 +12,7 @@ import * as another from './demo-modules/another';
   declarations: [DemoAppComponent],
   imports: [
     BrowserModule,
-    HighlightJsModule.forRoot({highlight: (language, source) => hljs.highlight(language, source) }),
+    HighlightJsModule.forRoot({highlight: (language, source) => hljs.highlight(language, source)}),
     kitchenSink.DemoModule,
     another.DemoModule,
     RouterModule.forRoot([{
