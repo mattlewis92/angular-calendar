@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { DemosComponent } from './demos.component';
+import { DemoAppComponent } from './demo-app.component';
 import { HighlightJsDirective } from './highlightJs.directive';
 import * as kitchenSink from './components/kitchen-sink';
 import * as another from './components/another';
 
 @NgModule({
-  declarations: [DemosComponent, HighlightJsDirective],
+  declarations: [DemoAppComponent, HighlightJsDirective],
   imports: [
     BrowserModule,
     kitchenSink.DemoModule,
@@ -31,6 +31,6 @@ import * as another from './components/another';
       useHash: true
     })
   ],
-  bootstrap: [DemosComponent]
+  bootstrap: [DemoAppComponent]
 })
-export class DemosModule {}
+export class DemoAppModule {}

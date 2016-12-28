@@ -66,10 +66,10 @@ function getSources(folder: string): Source[] {
 
 @Component({
   selector: 'mwl-demo-app',
-  styleUrls: ['./demos.css'],
-  templateUrl: './demos.html'
+  styleUrls: ['./demo-app.css'],
+  templateUrl: './demo-app.html'
 })
-export class DemosComponent {
+export class DemoAppComponent {
 
   activeTabIndex: number = 0;
   demos: Demo[] = [];
