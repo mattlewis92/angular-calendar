@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import 'highlight.js/styles/github.css';
+import * as hljs from 'highlight.js';
+import { HighlightJsModule } from 'angular-highlight-js';
 import { DemoAppComponent } from './demo-app.component';
-import { HighlightJsDirective } from './highlightJs.directive';
 import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as another from './demo-modules/another';
 
 @NgModule({
-  declarations: [DemoAppComponent, HighlightJsDirective],
+  declarations: [DemoAppComponent],
   imports: [
     BrowserModule,
+    HighlightJsModule.forRoot({highlight: (language, source) => hljs.highlight(language, source) }),
     kitchenSink.DemoModule,
     another.DemoModule,
     RouterModule.forRoot([{
