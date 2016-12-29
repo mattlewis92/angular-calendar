@@ -104,7 +104,13 @@ export class DemoAppComponent {
       .addFile({name: 'config.js', contents: require('raw-loader!./plunker-assets/plunker-system-config.txt')})
       .addInlineScript(`System.import('app').catch(console.error.bind(console));`)
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
-      .addFiles(demo.sources.map(source => ({name: source.filename, contents: source.contents})), true)
+      .addFiles(demo.sources.map(source => {
+        return {
+          name: `demo/${source.filename}`,
+          // hacky fix to get relative style and template urls to work with system.js
+          contents: source.contents.replace('@Component({', '@Component({\n  moduleId: __moduleName,')
+        };
+      }), true)
       .addFile({name: 'bootstrap.ts', contents: require('raw-loader!./plunker-assets/plunker-bootstrap.txt')})
       .save();
 

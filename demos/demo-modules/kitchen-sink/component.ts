@@ -37,8 +37,8 @@ const colors: any = {
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./styles.css'],
-  templateUrl: './template.html'
+  styleUrls: ['styles.css'],
+  templateUrl: 'template.html'
 })
 export class DemoComponent {
 

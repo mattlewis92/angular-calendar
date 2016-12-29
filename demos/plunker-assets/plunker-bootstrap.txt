@@ -1,8 +1,8 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DemoModule } from './module';
-import { DemoComponent } from './component';
+import { DemoModule } from './demo/module';
+import { DemoComponent } from './demo/component';
 
 @NgModule({
   imports: [
