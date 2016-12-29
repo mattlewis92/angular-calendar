@@ -64,6 +64,21 @@ function getSources(folder: string): Source[] {
     });
 }
 
+const dependencyVersions: any = {
+  angular: require('@angular/core/package.json').version,
+  angularRouter: require('@angular/router/package.json').version,
+  angularCalendar: require('../package.json').version,
+  calendarUtils: require('calendar-utils/package.json').version,
+  angularResizableElement: require('angular-resizable-element/package.json').version,
+  angularDraggableDroppable: require('angular-draggable-droppable/package.json').version,
+  dateFns: require('date-fns/package.json').version,
+  rxjs: require('rxjs/package.json').version,
+  typescript: require('typescript/package.json').version,
+  bootstrap: require('bootstrap/package.json').version,
+  zoneJs: require('zone.js/package.json').version,
+  reflectMetadata: require('reflect-metadata/package.json').version
+};
+
 @Component({
   selector: 'mwl-demo-app',
   styleUrls: ['./demo-app.css'],
@@ -95,13 +110,13 @@ export class DemoAppComponent {
     Plunker
       .create()
       .addIndexHeadLine(`<title>${demo.label}</title>`)
-      .addNpmPackage('bootstrap', {version: '3', filename: 'dist/css/bootstrap.min.css'})
-      .addNpmPackage('angular-calendar', {version: '0.6', filename: 'dist/css/angular-calendar.css'})
-      .addNpmPackage('zone.js', {version: '0.7'})
-      .addNpmPackage('zone.js', {version: '0.7', filename: 'dist/long-stack-trace-zone.js'})
-      .addNpmPackage('reflect-metadata', {version: '0.1'})
+      .addNpmPackage('bootstrap', {version: dependencyVersions.bootstrap, filename: 'dist/css/bootstrap.min.css'})
+      .addNpmPackage('angular-calendar', {version: dependencyVersions.angularCalendar, filename: 'dist/css/angular-calendar.css'})
+      .addNpmPackage('zone.js', {version: dependencyVersions.zoneJs})
+      .addNpmPackage('zone.js', {version: dependencyVersions.zoneJs, filename: 'dist/long-stack-trace-zone.js'})
+      .addNpmPackage('reflect-metadata', {version: dependencyVersions.reflectMetadata})
       .addNpmPackage('systemjs', {version: '0.19', filename: 'dist/system.js'})
-      .addFile({name: 'config.js', contents: require('./plunker-assets/plunker-system-config.ejs')()})
+      .addFile({name: 'config.js', contents: require('./plunker-assets/plunker-system-config.ejs')({dependencyVersions})})
       .addInlineScript(`System.import('app').catch(console.error.bind(console));`)
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
       .addFiles(demo.sources.map(source => {
