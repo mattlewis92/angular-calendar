@@ -101,7 +101,7 @@ export class DemoAppComponent {
       .addNpmPackage('zone.js', {version: '0.7', filename: 'dist/long-stack-trace-zone.js'})
       .addNpmPackage('reflect-metadata', {version: '0.1'})
       .addNpmPackage('systemjs', {version: '0.19', filename: 'dist/system.js'})
-      .addFile({name: 'config.js', contents: require('raw-loader!./plunker-assets/plunker-system-config.txt')})
+      .addFile({name: 'config.js', contents: require('./plunker-assets/plunker-system-config.ejs')()})
       .addInlineScript(`System.import('app').catch(console.error.bind(console));`)
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
       .addFiles(demo.sources.map(source => {
@@ -111,7 +111,7 @@ export class DemoAppComponent {
           contents: source.contents.replace('@Component({', '@Component({\n  moduleId: __moduleName,')
         };
       }), true)
-      .addFile({name: 'bootstrap.ts', contents: require('raw-loader!./plunker-assets/plunker-bootstrap.txt')})
+      .addFile({name: 'bootstrap.ts', contents: require('./plunker-assets/plunker-bootstrap.ejs')()})
       .save();
 
   }

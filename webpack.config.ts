@@ -37,6 +37,9 @@ module.exports = {
     }, {
       test: /demos\/.+\.(css|html)$/,
       loader: 'raw-loader'
+    }, {
+      test: /\.ejs$/,
+      loader: 'ejs-compiled-loader'
     }]
   },
   resolve: {
