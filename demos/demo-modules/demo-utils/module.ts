@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
-import { DemoUtilsModule } from '../demo-utils/module';
-import { DemoComponent } from './component';
+import { CalendarHeaderComponent } from './calendar-header.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    DemoUtilsModule,
-    CalendarModule.forRoot()
+    CalendarModule
   ],
   declarations: [
-    DemoComponent
+    CalendarHeaderComponent
   ],
   exports: [
-    DemoComponent
+    CalendarHeaderComponent
   ]
 })
-export class DemoModule {}
+export class DemoUtilsModule {}

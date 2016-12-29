@@ -119,6 +119,7 @@ export class DemoAppComponent {
       .addFile({name: 'config.js', contents: require('./plunker-assets/plunker-system-config.ejs')({dependencyVersions})})
       .addInlineScript(`System.import('app').catch(console.error.bind(console));`)
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
+      .addFiles(getSources('demo-utils').map(source => ({name: `demo-utils/${source.filename}`, contents: source.contents})))
       .addFiles(demo.sources.map(source => {
         return {
           name: `demo/${source.filename}`,
