@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
 import {
   startOfDay,
+  endOfDay,
   subDays,
   addDays,
   endOfMonth,
@@ -155,6 +156,21 @@ export class DemoComponent {
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = {event, action};
     this.modal.open(this.modalContent);
+  }
+
+  addEvent(): void {
+    this.events.push({
+      title: 'New event',
+      start: startOfDay(new Date()),
+      end: endOfDay(new Date()),
+      color: colors.red,
+      draggable: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    });
+    this.refresh.next();
   }
 
 }
