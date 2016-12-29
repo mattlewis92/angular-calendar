@@ -1,3 +1,8 @@
 h3 {
   margin: 0;
 }
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}

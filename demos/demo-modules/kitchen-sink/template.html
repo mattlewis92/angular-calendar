@@ -1,3 +1,27 @@
+<template ngbModalContainer></template>
+
+<template #modalContent let-close="close">
+  <div class="modal-header">
+    <button type="button" class="close" (click)="close()">
+      <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Event action occurred</h4>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">OK</button>
+  </div>
+</template>
+
 <div class="row text-xs-center">
   <div class="col-md-4">
     <div class="btn-group">
@@ -32,6 +56,7 @@
     [refresh]="refresh"
     [activeDayIsOpen]="activeDayIsOpen"
     (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
@@ -39,6 +64,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
@@ -46,6 +72,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-day-view>
 </div>

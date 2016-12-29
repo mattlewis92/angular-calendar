@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
 import {
   startOfDay,
   subDays,
@@ -13,6 +13,7 @@ import {
   addHours
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -42,19 +43,27 @@ const colors: any = {
 })
 export class DemoComponent {
 
+  @ViewChild('modalContent') modalContent: TemplateRef<any>;
+
   view: string = 'month';
 
   viewDate: Date = new Date();
 
+  modalData: {
+    action: string,
+    event: CalendarEvent
+  };
+
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
-      console.log('Edit event', event);
+      this.handleEvent('Edited', event);
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
       this.events = this.events.filter(iEvent => iEvent !== event);
+      this.handleEvent('Deleted', event);
     }
   }];
 
@@ -90,6 +99,8 @@ export class DemoComponent {
   }];
 
   activeDayIsOpen: boolean = true;
+
+  constructor(private modal: NgbModal) {}
 
   increment(): void {
 
@@ -137,7 +148,13 @@ export class DemoComponent {
   eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
+    this.handleEvent('Dropped or resized', event);
     this.refresh.next();
+  }
+
+  handleEvent(action: string, event: CalendarEvent): void {
+    this.modalData = {event, action};
+    this.modal.open(this.modalContent);
   }
 
 }
