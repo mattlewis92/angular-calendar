@@ -109,7 +109,7 @@
           type="text"
           class="form-control"
           [(ngModel)]="event.title"
-          (change)="refresh.next()">
+          (keyup)="refresh.next()">
       </td>
       <td>
         <input
