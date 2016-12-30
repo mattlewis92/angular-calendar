@@ -16,7 +16,7 @@ import { MonthViewDay } from 'calendar-utils';
         [ngClass]="event?.cssClass"
         (mouseenter)="highlightDay.emit({event: event})"
         (mouseleave)="unhighlightDay.emit({event: event})"
-        [mwlCalendarTooltip]="event | calendarEventTitle:'monthTooltip'"
+        [mwlCalendarTooltip]="event.title | calendarEventTitle:'monthTooltip':event"
         [tooltipPlacement]="tooltipPlacement"
         mwlDraggable
         [dropData]="{event: event}"

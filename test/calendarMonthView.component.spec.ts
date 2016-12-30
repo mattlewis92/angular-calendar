@@ -360,4 +360,27 @@ describe('calendarMonthView component', () => {
 
   });
 
+  it('should update the event title', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [{
+      start: new Date('2016-05-30'),
+      end: new Date('2016-06-02'),
+      title: 'foo',
+      color: {
+        primary: 'blue',
+        secondary: ''
+      }
+    }];
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-title');
+    expect(event.innerHTML).to.equal('foo');
+    fixture.componentInstance.events[0].title = 'bar';
+    fixture.detectChanges();
+    expect(event.innerHTML).to.equal('bar');
+    fixture.destroy();
+  });
+
 });
