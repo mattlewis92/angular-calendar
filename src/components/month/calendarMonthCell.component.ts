@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MonthViewDay } from 'calendar-utils';
+import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -20,7 +20,8 @@ import { MonthViewDay } from 'calendar-utils';
         [tooltipPlacement]="tooltipPlacement"
         mwlDraggable
         [dropData]="{event: event}"
-        [dragAxis]="{x: event.draggable, y: event.draggable}">
+        [dragAxis]="{x: event.draggable, y: event.draggable}"
+        (click)="$event.stopPropagation(); eventClicked.emit({event: event})">
       </div>
     </div>
   `,
@@ -50,5 +51,7 @@ export class CalendarMonthCellComponent {
   @Output() highlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
+
+  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
 }
