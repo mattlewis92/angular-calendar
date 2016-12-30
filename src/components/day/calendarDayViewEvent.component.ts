@@ -21,7 +21,7 @@ import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provi
       [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
       [class.cal-draggable]="dayEvent.event.draggable"
       [ngClass]="dayEvent.event.cssClass"
-      [mwlCalendarTooltip]="dayEvent.event | calendarEventTitle:'dayTooltip'"
+      [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:'dayTooltip':dayEvent.event"
       [tooltipPlacement]="tooltipPlacement"
       mwlResizable
       [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"

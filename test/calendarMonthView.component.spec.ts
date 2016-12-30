@@ -360,4 +360,58 @@ describe('calendarMonthView component', () => {
 
   });
 
+  it('should update the event title', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [{
+      start: new Date('2016-05-30'),
+      end: new Date('2016-06-02'),
+      title: 'foo',
+      color: {
+        primary: 'blue',
+        secondary: ''
+      }
+    }];
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-title');
+    expect(event.innerHTML).to.equal('foo');
+    fixture.componentInstance.events[0].title = 'bar';
+    fixture.detectChanges();
+    expect(event.innerHTML).to.equal('bar');
+    fixture.destroy();
+  });
+
+  it('should handle the click event on month cell events', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      start: new Date('2016-05-30'),
+      end: new Date('2016-06-02'),
+      title: 'foo',
+      color: {
+        primary: 'blue',
+        secondary: ''
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    let eventClickedEvent: any;
+    fixture.componentInstance.eventClicked.subscribe((event) => {
+      eventClickedEvent = event;
+    });
+    let dayClickedFired: boolean = false;
+    fixture.componentInstance.dayClicked.subscribe(() => {
+      dayClickedFired = true;
+    });
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+    );
+    event.click();
+    fixture.destroy();
+    expect(eventClickedEvent).to.deep.equal({event: fixture.componentInstance.events[0]});
+    expect(dayClickedFired).to.be.false;
+  });
+
 });

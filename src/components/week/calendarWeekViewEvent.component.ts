@@ -10,7 +10,7 @@ import { WeekViewEvent } from 'calendar-utils';
       [class.cal-ends-within-week]="!weekEvent.endsAfterWeek"
       [style.backgroundColor]="weekEvent.event.color.secondary"
       [ngClass]="weekEvent.event?.cssClass"
-      [mwlCalendarTooltip]="weekEvent.event | calendarEventTitle:'weekTooltip'"
+      [mwlCalendarTooltip]="weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event"
       [tooltipPlacement]="tooltipPlacement">
       <mwl-calendar-event-title
         [event]="weekEvent.event"

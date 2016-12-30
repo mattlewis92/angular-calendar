@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/mattlewis92/angular-calendar/compare/v0.5.0...v0.6.1) (2016-12-30)
+
+
+### Bug Fixes
+
+* update the event title in the UI when it changes ([3b611bf](https://github.com/mattlewis92/angular-calendar/commit/3b611bf)), closes [#116](https://github.com/mattlewis92/angular-calendar/issues/116)
+* **monthView:** cell events should be clickable ([d61719e](https://github.com/mattlewis92/angular-calendar/commit/d61719e)), closes [#111](https://github.com/mattlewis92/angular-calendar/issues/111)
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/mattlewis92/angular-calendar/compare/v0.5.0...v0.6.0) (2016-12-21)
 
