@@ -4,7 +4,7 @@ import { CalendarDateFormatter } from './../providers/calendarDateFormatter.prov
 @Pipe({
   name: 'calendarDate'
 })
-export class CalendarDate implements PipeTransform {
+export class CalendarDatePipe implements PipeTransform {
 
   /**
    * @private

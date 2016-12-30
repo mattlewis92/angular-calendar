@@ -5,11 +5,11 @@ import { CalendarEventTitleFormatter } from '../providers/calendarEventTitle.pro
 @Pipe({
   name: 'calendarEventTitle'
 })
-export class CalendarEventTitle implements PipeTransform {
+export class CalendarEventTitlePipe implements PipeTransform {
 
   constructor(private calendarEventTitle: CalendarEventTitleFormatter) {}
 
-  transform(event: CalendarEvent, titleType: string): string {
+  transform(title: string, titleType: string, event: CalendarEvent): string {
     return this.calendarEventTitle[titleType](event);
   }
 

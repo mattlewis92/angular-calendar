@@ -15,6 +15,9 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
+/**
+ * @private
+ */
 const SEGMENT_HEIGHT: number = 30;
 
 @Component({

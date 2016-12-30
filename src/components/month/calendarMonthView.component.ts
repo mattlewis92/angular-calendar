@@ -56,7 +56,8 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
               mwlDroppable
               (dragEnter)="day.dragOver = true"
               (dragLeave)="day.dragOver = false"
-              (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)">
+              (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"
+              (eventClicked)="eventClicked.emit({event: $event.event})">
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
