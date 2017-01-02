@@ -18,6 +18,7 @@ import * as resizableEvents from './demo-modules/resizable-events';
 import * as monthViewBadgeTotal from './demo-modules/month-view-badge-total';
 import * as recurringEvents from './demo-modules/recurring-events';
 import * as customEventClass from './demo-modules/custom-event-class';
+import * as clickableEvents from './demo-modules/clickable-events';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -32,6 +33,7 @@ import * as customEventClass from './demo-modules/custom-event-class';
     monthViewBadgeTotal.DemoModule,
     recurringEvents.DemoModule,
     customEventClass.DemoModule,
+    clickableEvents.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -79,6 +81,12 @@ import * as customEventClass from './demo-modules/custom-event-class';
       component: customEventClass.DemoComponent,
       data: {
         label: 'Custom event class'
+      }
+    }, {
+      path: 'clickable-events',
+      component: clickableEvents.DemoComponent,
+      data: {
+        label: 'Clickable events'
       }
     }, {
       path: '**',
