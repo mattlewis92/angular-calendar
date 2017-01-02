@@ -16,6 +16,7 @@ import * as editableDeletableEvents from './demo-modules/editable-deletable-even
 import * as draggableEvents from './demo-modules/draggable-events';
 import * as resizableEvents from './demo-modules/resizable-events';
 import * as monthViewBadgeTotal from './demo-modules/month-view-badge-total';
+import * as recurringEvents from './demo-modules/recurring-events';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -28,6 +29,7 @@ import * as monthViewBadgeTotal from './demo-modules/month-view-badge-total';
     draggableEvents.DemoModule,
     resizableEvents.DemoModule,
     monthViewBadgeTotal.DemoModule,
+    recurringEvents.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -63,6 +65,12 @@ import * as monthViewBadgeTotal from './demo-modules/month-view-badge-total';
       component: monthViewBadgeTotal.DemoComponent,
       data: {
         label: 'Month view badge total'
+      }
+    }, {
+      path: 'recurring-events',
+      component: recurringEvents.DemoComponent,
+      data: {
+        label: 'Recurring events'
       }
     }, {
       path: '**',

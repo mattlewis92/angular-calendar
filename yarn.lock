@@ -90,6 +90,10 @@
   version "6.0.55"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.55.tgz#e5cb679a43561f42afd1bd6d58d3992ec8f31720"
 
+"@types/rrule@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@types/rrule/-/rrule-2.1.3.tgz#e4430cd3587141f3bd321390d3408190e9faa115"
+
 "@types/shelljs@^0.3.32":
   version "0.3.33"
   resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.3.33.tgz#df613bddb88225ed09ce5c835f620dcaaf155e6b"
@@ -4741,6 +4745,10 @@ ripemd160@0.2.0:
 ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
+
+rrule@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/rrule/-/rrule-2.1.0.tgz#6c5b3699e2e549f1dfc2609fe7ecf61c8ebad291"
 
 run-async@^2.2.0:
   version "2.3.0"
