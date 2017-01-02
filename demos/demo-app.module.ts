@@ -11,7 +11,7 @@ import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
-import * as another from './demo-modules/another';
+import * as optionalEventEndDates from './demo-modules/optional-event-end-dates';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -19,7 +19,7 @@ import * as another from './demo-modules/another';
     BrowserModule,
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
-    another.DemoModule,
+    optionalEventEndDates.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -27,10 +27,10 @@ import * as another from './demo-modules/another';
         label: 'Kitchen sink'
       }
     }, {
-      path: 'another',
-      component: another.DemoComponent,
+      path: 'optional-event-end-dates',
+      component: optionalEventEndDates.DemoComponent,
       data: {
-        label: 'Another demo'
+        label: 'Optional event end dates'
       }
     }, {
       path: '**',
