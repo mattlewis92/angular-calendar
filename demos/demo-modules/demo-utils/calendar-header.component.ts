@@ -26,7 +26,7 @@ import {
         </div>
       </div>
       <div class="col-md-4">
-        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
       </div>
       <div class="col-md-4">
         <div class="btn-group">
@@ -44,6 +44,8 @@ export class CalendarHeaderComponent {
   @Input() view: string;
 
   @Input() viewDate: Date;
+
+  @Input() locale: string = 'en';
 
   @Output() viewChange: EventEmitter<string> = new EventEmitter();
 
