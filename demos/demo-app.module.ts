@@ -20,6 +20,7 @@ import * as recurringEvents from './demo-modules/recurring-events';
 import * as customEventClass from './demo-modules/custom-event-class';
 import * as clickableEvents from './demo-modules/clickable-events';
 import * as dayClick from './demo-modules/day-click';
+import * as dayViewStartEnd from './demo-modules/day-view-start-end';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -36,6 +37,7 @@ import * as dayClick from './demo-modules/day-click';
     customEventClass.DemoModule,
     clickableEvents.DemoModule,
     dayClick.DemoModule,
+    dayViewStartEnd.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -95,6 +97,12 @@ import * as dayClick from './demo-modules/day-click';
       component: dayClick.DemoComponent,
       data: {
         label: 'Clickable days'
+      }
+    }, {
+      path: 'day-view-start-end',
+      component: dayViewStartEnd.DemoComponent,
+      data: {
+        label: 'Day view start / end time'
       }
     }, {
       path: '**',
