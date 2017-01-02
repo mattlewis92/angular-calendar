@@ -12,6 +12,7 @@ import { HighlightJsModule } from 'angular-highlight-js';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as optionalEventEndDates from './demo-modules/optional-event-end-dates';
+import * as editableDeletableEvents from './demo-modules/editable-deletable-events';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -20,6 +21,7 @@ import * as optionalEventEndDates from './demo-modules/optional-event-end-dates'
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
     optionalEventEndDates.DemoModule,
+    editableDeletableEvents.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -31,6 +33,12 @@ import * as optionalEventEndDates from './demo-modules/optional-event-end-dates'
       component: optionalEventEndDates.DemoComponent,
       data: {
         label: 'Optional event end dates'
+      }
+    }, {
+      path: 'editable-deletable-events',
+      component: editableDeletableEvents.DemoComponent,
+      data: {
+        label: 'Editable / deletable events'
       }
     }, {
       path: '**',
