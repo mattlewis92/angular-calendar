@@ -14,6 +14,7 @@ import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as optionalEventEndDates from './demo-modules/optional-event-end-dates';
 import * as editableDeletableEvents from './demo-modules/editable-deletable-events';
 import * as draggableEvents from './demo-modules/draggable-events';
+import * as resizableEvents from './demo-modules/resizable-events';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -24,6 +25,7 @@ import * as draggableEvents from './demo-modules/draggable-events';
     optionalEventEndDates.DemoModule,
     editableDeletableEvents.DemoModule,
     draggableEvents.DemoModule,
+    resizableEvents.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -47,6 +49,12 @@ import * as draggableEvents from './demo-modules/draggable-events';
       component: draggableEvents.DemoComponent,
       data: {
         label: 'Draggable events'
+      }
+    }, {
+      path: 'resizable-events',
+      component: resizableEvents.DemoComponent,
+      data: {
+        label: 'Resizable events'
       }
     }, {
       path: '**',
