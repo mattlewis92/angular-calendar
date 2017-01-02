@@ -19,6 +19,7 @@ import * as monthViewBadgeTotal from './demo-modules/month-view-badge-total';
 import * as recurringEvents from './demo-modules/recurring-events';
 import * as customEventClass from './demo-modules/custom-event-class';
 import * as clickableEvents from './demo-modules/clickable-events';
+import * as dayClick from './demo-modules/day-click';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -34,6 +35,7 @@ import * as clickableEvents from './demo-modules/clickable-events';
     recurringEvents.DemoModule,
     customEventClass.DemoModule,
     clickableEvents.DemoModule,
+    dayClick.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -87,6 +89,12 @@ import * as clickableEvents from './demo-modules/clickable-events';
       component: clickableEvents.DemoComponent,
       data: {
         label: 'Clickable events'
+      }
+    }, {
+      path: 'clickable-days',
+      component: dayClick.DemoComponent,
+      data: {
+        label: 'Clickable days'
       }
     }, {
       path: '**',
