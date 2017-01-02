@@ -76,7 +76,8 @@ const dependencyVersions: any = {
   typescript: require('typescript/package.json').version,
   bootstrap: require('bootstrap/package.json').version,
   zoneJs: require('zone.js/package.json').version,
-  reflectMetadata: require('reflect-metadata/package.json').version
+  reflectMetadata: require('reflect-metadata/package.json').version,
+  ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version
 };
 
 @Component({
