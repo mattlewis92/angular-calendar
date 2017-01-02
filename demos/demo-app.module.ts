@@ -22,6 +22,7 @@ import * as clickableEvents from './demo-modules/clickable-events';
 import * as dayClick from './demo-modules/day-click';
 import * as dayViewStartEnd from './demo-modules/day-view-start-end';
 import * as dayViewHourSplit from './demo-modules/day-view-hour-split';
+import * as navigatingBetweenViews from './demo-modules/navigating-between-views';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -40,6 +41,7 @@ import * as dayViewHourSplit from './demo-modules/day-view-hour-split';
     dayClick.DemoModule,
     dayViewStartEnd.DemoModule,
     dayViewHourSplit.DemoModule,
+    navigatingBetweenViews.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -111,6 +113,12 @@ import * as dayViewHourSplit from './demo-modules/day-view-hour-split';
       component: dayViewHourSplit.DemoComponent,
       data: {
         label: 'Day view hour split'
+      }
+    }, {
+      path: 'navigating-between-views',
+      component: navigatingBetweenViews.DemoComponent,
+      data: {
+        label: 'Navigating between views'
       }
     }, {
       path: '**',
