@@ -28,6 +28,7 @@ import * as i18n from './demo-modules/i18n';
 import * as draggableExternalEvents from './demo-modules/draggable-external-events';
 import * as allDayEvents from './demo-modules/all-day-events';
 import * as customiseDateFormats from './demo-modules/customise-date-formats';
+import * as showDatesOnTitles from './demo-modules/show-dates-on-titles';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -52,6 +53,7 @@ import * as customiseDateFormats from './demo-modules/customise-date-formats';
     draggableExternalEvents.DemoModule,
     allDayEvents.DemoModule,
     customiseDateFormats.DemoModule,
+    showDatesOnTitles.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -159,6 +161,12 @@ import * as customiseDateFormats from './demo-modules/customise-date-formats';
       component: customiseDateFormats.DemoComponent,
       data: {
         label: 'Customise date formats'
+      }
+    }, {
+      path: 'show-dates-on-titles',
+      component: showDatesOnTitles.DemoComponent,
+      data: {
+        label: 'Show dates on title'
       }
     }, {
       path: '**',
