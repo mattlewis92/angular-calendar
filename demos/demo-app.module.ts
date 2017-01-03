@@ -26,6 +26,7 @@ import * as navigatingBetweenViews from './demo-modules/navigating-between-views
 import * as dayModifier from './demo-modules/day-modifier';
 import * as i18n from './demo-modules/i18n';
 import * as draggableExternalEvents from './demo-modules/draggable-external-events';
+import * as allDayEvents from './demo-modules/all-day-events';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -48,6 +49,7 @@ import * as draggableExternalEvents from './demo-modules/draggable-external-even
     dayModifier.DemoModule,
     i18n.DemoModule,
     draggableExternalEvents.DemoModule,
+    allDayEvents.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -143,6 +145,12 @@ import * as draggableExternalEvents from './demo-modules/draggable-external-even
       component: draggableExternalEvents.DemoComponent,
       data: {
         label: 'Draggable external events'
+      }
+    }, {
+      path: 'all-day-events',
+      component: allDayEvents.DemoComponent,
+      data: {
+        label: 'All day events'
       }
     }, {
       path: '**',
