@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>{{ activeDemo?.label }}</h3>
+            </div>
+            <div class="col-md-6">
+              <button
+                class="btn btn-info pull-right"
+                (click)="editInPlunker(activeDemo)">
+                <i class="fa fa-edit"></i> Edit in Plunker
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-block">
+
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a
+                href="javascript:;"
+                class="nav-link"
+                [class.active]="activeTabIndex === 0"
+                (click)="activeTabIndex = 0">
+                <i class="fa fa-fw fa-laptop"></i> Live demo
+              </a>
+            </li>
+            <li
+              class="nav-item"
+              *ngFor="let source of activeDemo?.sources; let sourceTabIndex = index">
+              <a
+                href="javascript:;"
+                class="nav-link"
+                [class.active]="activeTabIndex === sourceTabIndex + 1"
+                (click)="activeTabIndex = sourceTabIndex + 1">
+                <span [ngSwitch]="source.language">
+                  <i class="fa fa-fw fa-html5" *ngSwitchCase="'html'"></i>
+                  <i class="fa fa-fw fa-css3" *ngSwitchCase="'css'"></i>
+                  <i class="fa fa-fw fa-code" *ngSwitchDefault></i>
+                </span>
+                {{ source.filename }}
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div
+              class="tab-pane"
+              [class.active]="activeTabIndex === 0">
+              <router-outlet></router-outlet>
+            </div>
+            <div
+              class="tab-pane"
+              *ngFor="let source of activeDemo?.sources; let sourceTabIndex = index"
+              [class.active]="activeTabIndex === sourceTabIndex + 1">
+              <pre><code
+                *ngIf="activeTabIndex === sourceTabIndex + 1"
+                mwlHighlightJs
+                [source]="source.contents"
+                [language]="source.language">
+              </code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="sidebar-nav">
+        <h4>Demos</h4>
+        <ul class="list-unstyled">
+          <li *ngFor="let demo of demos">
+            <a
+              [routerLink]="[demo.path]"
+              [class.active]="activeDemo?.path === demo.path">
+              {{ demo.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
