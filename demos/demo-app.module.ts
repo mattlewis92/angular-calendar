@@ -11,6 +11,7 @@ import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
+import * as asyncEvents from './demo-modules/async-events';
 import * as optionalEventEndDates from './demo-modules/optional-event-end-dates';
 import * as editableDeletableEvents from './demo-modules/editable-deletable-events';
 import * as draggableEvents from './demo-modules/draggable-events';
@@ -39,6 +40,7 @@ import * as selectableMonthDay from './demo-modules/selectable-month-day';
     BrowserModule,
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
+    asyncEvents.DemoModule,
     optionalEventEndDates.DemoModule,
     editableDeletableEvents.DemoModule,
     draggableEvents.DemoModule,
@@ -65,6 +67,12 @@ import * as selectableMonthDay from './demo-modules/selectable-month-day';
       component: kitchenSink.DemoComponent,
       data: {
         label: 'Kitchen sink'
+      }
+    }, {
+      path: 'async-events',
+      component: asyncEvents.DemoComponent,
+      data: {
+        label: 'Async events'
       }
     }, {
       path: 'optional-event-end-dates',
