@@ -31,6 +31,7 @@ import * as customiseDateFormats from './demo-modules/customise-date-formats';
 import * as showDatesOnTitles from './demo-modules/show-dates-on-titles';
 import * as disableTooltips from './demo-modules/disable-tooltips';
 import * as additionalEventProperties from './demo-modules/additional-event-properties';
+import * as selectableMonthDay from './demo-modules/selectable-month-day';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -58,6 +59,7 @@ import * as additionalEventProperties from './demo-modules/additional-event-prop
     showDatesOnTitles.DemoModule,
     disableTooltips.DemoModule,
     additionalEventProperties.DemoModule,
+    selectableMonthDay.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -183,6 +185,12 @@ import * as additionalEventProperties from './demo-modules/additional-event-prop
       component: additionalEventProperties.DemoComponent,
       data: {
         label: 'Additional event properties'
+      }
+    }, {
+      path: 'selectable-month-day',
+      component: selectableMonthDay.DemoComponent,
+      data: {
+        label: 'Selectable month day'
       }
     }, {
       path: '**',
