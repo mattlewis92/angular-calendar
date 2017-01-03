@@ -29,6 +29,7 @@ import * as draggableExternalEvents from './demo-modules/draggable-external-even
 import * as allDayEvents from './demo-modules/all-day-events';
 import * as customiseDateFormats from './demo-modules/customise-date-formats';
 import * as showDatesOnTitles from './demo-modules/show-dates-on-titles';
+import * as disableTooltips from './demo-modules/disable-tooltips';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -54,6 +55,7 @@ import * as showDatesOnTitles from './demo-modules/show-dates-on-titles';
     allDayEvents.DemoModule,
     customiseDateFormats.DemoModule,
     showDatesOnTitles.DemoModule,
+    disableTooltips.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -167,6 +169,12 @@ import * as showDatesOnTitles from './demo-modules/show-dates-on-titles';
       component: showDatesOnTitles.DemoComponent,
       data: {
         label: 'Show dates on title'
+      }
+    }, {
+      path: 'disable-tooltips',
+      component: disableTooltips.DemoComponent,
+      data: {
+        label: 'Disable tooltips'
       }
     }, {
       path: '**',
