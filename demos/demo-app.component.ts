@@ -42,6 +42,7 @@ function getSources(folder: string): Source[] {
 
       const precedences: string[] = [
         'module.ts',
+        'provider.ts',
         'component.ts',
         '.html',
         '.css'
