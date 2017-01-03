@@ -1,0 +1,44 @@
+h3 {
+  margin: 0;
+}
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+
+.tab-content {
+  margin-top: 15px;
+}
+
+.sidebar-nav h4 {
+  margin-bottom: 20px;
+}
+
+.sidebar-nav ul {
+  margin-bottom: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 10px;
+  font-size: 90%;
+}
+
+.sidebar-nav a:not(.active) {
+  color: #777;
+}
+
+.sidebar-nav a:hover {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+.sidebar-nav a.active {
+  color: #373a3c;
+  font-weight: 700;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}

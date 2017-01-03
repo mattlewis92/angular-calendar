@@ -1,0 +1,30 @@
+h3 {
+  margin: 0;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+.event-editor-table {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #eceeef;
+}
+
+.event-editor-table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
+}
+
+.event-editor-table th,
+.event-editor-table td {
+  padding: .75rem;
+  vertical-align: top;
+}
+
+.event-editor-table td {
+  border: 1px solid #eceeef;
+}

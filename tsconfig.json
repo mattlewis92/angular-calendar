@@ -8,11 +8,15 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "angular-calendar": ["./src/index"]
+    }
   },
   "exclude": [
     "node_modules",
-    "examples"
+    "build-tool-examples"
   ],
   "compileOnSave": false
 }

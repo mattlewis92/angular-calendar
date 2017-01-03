@@ -7,13 +7,14 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-calendar/master/LICENSE)
 
 ## Demo
-https://mattlewis92.github.io/angular-calendar/demo/
+https://mattlewis92.github.io/angular-calendar/demos/
 
 ## Table of contents
 
 - [About](#about)
-- [Installation](#installation)
+- [Getting started](#getting-started)
 - [Documentation](#documentation)
+- [Angular 1 version](#angular-1-version)
 - [Development](#development)
 - [License](#licence)
 
@@ -46,13 +47,11 @@ import { CalendarModule } from 'angular-calendar';
 export class MyModule {}
 ```
 
-Then you can use the [`mwl-calendar-month-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarmonthviewcomponent.html), [`mwl-calendar-week-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarweekviewcomponent.html) and [`mwl-calendar-day-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendardayviewcomponent.html) components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular-calendar/blob/master/demo/demo.component.ts). 
-
-To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular-calendar/issues/32)
+Then you can use the [`mwl-calendar-month-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarmonthviewcomponent.html), [`mwl-calendar-week-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendarweekviewcomponent.html) and [`mwl-calendar-day-view`](https://mattlewis92.github.io/angular-calendar/docs/classes/calendardayviewcomponent.html) components in your app. For a full e2e example see the [demo source](https://github.com/mattlewis92/angular-calendar/blob/master/demos). 
 
 ### Module bundlers
 
-You can find quick start examples for all common module bundlers in the [examples](https://github.com/mattlewis92/angular-calendar/tree/master/examples) folder.
+You can find quick start examples for all common module bundlers in the [examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
 
 ### Usage without a module bundler
 ```
@@ -61,6 +60,9 @@ You can find quick start examples for all common module bundlers in the [example
     // everything is exported angularCalendar namespace
 </script>
 ```
+
+## Documentation
+To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/) or you may find it helpful to view the examples on the demo page.
 
 ## Angular 1 version
 https://github.com/mattlewis92/angular-bootstrap-calendar

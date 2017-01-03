@@ -5,4 +5,4 @@ export * from './providers/calendarDateFormatter.provider';
 export * from './interfaces/calendarDateFormatter.interface';
 export * from './interfaces/calendarEventTimesChangedEvent.interface';
 export * from './calendar.module';
-export {CalendarEvent, EventAction as CalendarEventAction} from 'calendar-utils';
+export {CalendarEvent, EventAction as CalendarEventAction, MonthViewDay as CalendarMonthViewDay} from 'calendar-utils';

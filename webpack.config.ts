@@ -1,14 +1,16 @@
+const path = require('path');
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 module.exports = {
   devtool: IS_PROD ? 'source-map' : 'eval',
-  entry: __dirname + '/demo/entry.ts',
+  entry: __dirname + '/demos/entry.ts',
   output: {
-    filename: 'demo.js',
-    path: IS_PROD ? __dirname + '/demo' : __dirname
+    filename: 'demos.js',
+    path: IS_PROD ? __dirname + '/demos' : __dirname
   },
   module: {
     rules: [{
@@ -18,13 +20,13 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
-      loader: 'awesome-typescript-loader',
+      loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
       loader: 'style-loader!css-loader!sass-loader'
     }, {
-      test: /\.css$/,
+      test: /(node_modules).+\.css$/,
       loader: 'style-loader!css-loader'
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -32,19 +34,29 @@ module.exports = {
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file-loader'
+    }, {
+      test: /demos\/.+\.(css|html)$/,
+      loader: 'raw-loader'
+    }, {
+      test: /\.ejs$/,
+      loader: 'ejs-compiled-loader'
     }]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    alias: {
+      'angular-calendar$': path.resolve(__dirname, 'src/index.ts')
+    }
   },
   devServer: {
     port: 8000,
     inline: true,
     hot: true,
     historyApiFallback: true,
-    contentBase: 'demo'
+    contentBase: 'demos'
   },
   plugins: [
+    new TsConfigPathsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
