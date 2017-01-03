@@ -62,7 +62,7 @@ You can find quick start examples for all common module bundlers in the [example
 ```
 
 ## Documentation
-To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). Full e2e examples will follow [in the future](https://github.com/mattlewis92/angular-calendar/issues/32)
+To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/) or you may find it helpful to view the examples on the demo page.
 
 ## Angular 1 version
 https://github.com/mattlewis92/angular-bootstrap-calendar
