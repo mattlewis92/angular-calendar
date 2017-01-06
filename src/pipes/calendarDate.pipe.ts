@@ -7,12 +7,12 @@ import { CalendarDateFormatter } from './../providers/calendarDateFormatter.prov
 export class CalendarDatePipe implements PipeTransform {
 
   /**
-   * @private
+   * @hidden
    */
   constructor(private dateFormatter: CalendarDateFormatter, @Inject(LOCALE_ID) private locale: string) {}
 
   /**
-   * @private
+   * @hidden
    */
   transform(date: Date, method: string, locale: string = this.locale): string {
     return this.dateFormatter[method]({date, locale});

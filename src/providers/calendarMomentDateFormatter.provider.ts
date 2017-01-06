@@ -6,7 +6,7 @@ export const MOMENT: OpaqueToken = new OpaqueToken('Moment');
 export class CalendarMomentDateFormatter implements CalendarDateFormatterInterface {
 
   /**
-   * @private
+   * @hidden
    */
   constructor(@Inject(MOMENT) private moment: any) {}
 
