@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/mattlewis92/angular-calendar/compare/v0.6.1...v0.6.2) (2017-01-06)
+
+
+### Bug Fixes
+
+* allow events to be dragged and clicked ([bc909a3](https://github.com/mattlewis92/angular-calendar/commit/bc909a3)), closes [#123](https://github.com/mattlewis92/angular-calendar/issues/123)
+
+
+### Features
+
+* export the CalendarMonthViewDay interface ([4142231](https://github.com/mattlewis92/angular-calendar/commit/4142231))
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/mattlewis92/angular-calendar/compare/v0.5.0...v0.6.1) (2016-12-30)
 
