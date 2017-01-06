@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
 /**
- * @private
+ * @hidden
  */
 const SEGMENT_HEIGHT: number = 30;
 
@@ -138,34 +138,34 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
-   * @private
+   * @hidden
    */
   hours: DayViewHour[] = [];
 
   /**
-   * @private
+   * @hidden
    */
   view: DayView;
 
   /**
-   * @private
+   * @hidden
    */
   width: number = 0;
 
   /**
-   * @private
+   * @hidden
    */
   refreshSubscription: Subscription;
 
   /**
-   * @private
+   * @hidden
    */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnInit(): void {
     if (this.refresh) {
@@ -177,7 +177,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnDestroy(): void {
     if (this.refreshSubscription) {
@@ -186,7 +186,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnChanges(changes: any): void {
 

@@ -117,22 +117,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
-   * @private
+   * @hidden
    */
   days: WeekDay[];
 
   /**
-   * @private
+   * @hidden
    */
   eventRows: WeekViewEventRow[] = [];
 
   /**
-   * @private
+   * @hidden
    */
   refreshSubscription: Subscription;
 
   /**
-   * @private
+   * @hidden
    */
   currentResize: {
     originalOffset: number,
@@ -141,24 +141,24 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   };
 
   /**
-   * @private
+   * @hidden
    */
   validateDrag: Function;
 
   /**
-   * @private
+   * @hidden
    */
   validateResize: Function;
 
   /**
-   * @private
+   * @hidden
    */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnInit(): void {
     if (this.refresh) {
@@ -170,7 +170,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnChanges(changes: any): void {
 
@@ -185,7 +185,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnDestroy(): void {
     if (this.refreshSubscription) {
@@ -194,7 +194,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   resizeStarted(weekViewContainer: HTMLElement, weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
     this.currentResize = {
@@ -208,7 +208,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   resizing(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent, dayWidth: number): void {
     if (resizeEvent.edges.left) {
@@ -222,7 +222,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   resizeEnded(weekEvent: WeekViewEvent): void {
 
@@ -250,7 +250,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   eventDragged(weekEvent: WeekViewEvent, draggedByPx: number, dayWidth: number): void {
 
@@ -266,14 +266,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * @private
+   * @hidden
    */
   getDayColumnWidth(eventRowContainer: HTMLElement): number {
     return Math.floor(eventRowContainer.offsetWidth / 7);
   }
 
   /**
-   * @private
+   * @hidden
    */
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);

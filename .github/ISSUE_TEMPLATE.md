@@ -6,7 +6,7 @@ Problems with build tooling? Please check the examples folder first: https://git
 
 Styling not appearing? Make sure you're including node_modules/angular-calendar/dist/css/angular-calendar.css
 
-Need an example of how to do something? Check the demo page, it probably has you covered: https://mattlewis92.github.io/angular-calendar/demo/
+Need an example of how to do something? Check the demo page, it probably has you covered: https://mattlewis92.github.io/angular-calendar/demos/
 
 Need a full list of all API options? Check the docs for each component:
 https://mattlewis92.github.io/angular-calendar/docs/classes/calendarmonthviewcomponent.html

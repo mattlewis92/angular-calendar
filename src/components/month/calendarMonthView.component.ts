@@ -129,39 +129,39 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
-   * @private
+   * @hidden
    */
   columnHeaders: WeekDay[];
 
   /**
-   * @private
+   * @hidden
    */
   view: MonthView;
 
   /**
-   * @private
+   * @hidden
    */
   openRowIndex: number;
 
   /**
-   * @private
+   * @hidden
    */
   openDay: MonthViewDay;
 
   /**
-   * @private
+   * @hidden
    */
   refreshSubscription: Subscription;
 
   /**
-   * @private
+   * @hidden
    */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnInit(): void {
     if (this.refresh) {
@@ -173,7 +173,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnChanges(changes: any): void {
 
@@ -192,7 +192,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   }
 
   /**
-   * @private
+   * @hidden
    */
   ngOnDestroy(): void {
     if (this.refreshSubscription) {
@@ -201,7 +201,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   }
 
   /**
-   * @private
+   * @hidden
    */
   toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
     this.view.days.forEach(day => {
@@ -214,7 +214,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   }
 
   /**
-   * @private
+   * @hidden
    */
   eventDropped(day: MonthViewDay, event: CalendarEvent): void {
     const year: number = getYear(day.date);
