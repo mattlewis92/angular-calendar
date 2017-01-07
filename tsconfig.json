@@ -15,8 +15,7 @@
     }
   },
   "files": [
-    "src",
-    "demos"
+    "demos/entry.ts"
   ],
   "compileOnSave": false
 }
