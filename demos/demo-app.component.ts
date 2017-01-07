@@ -41,11 +41,11 @@ function getSources(folder: string): Source[] {
     .sort((sourceA: Source, sourceB: Source) => {
 
       const precedences: string[] = [
-        'module.ts',
-        'provider.ts',
         'component.ts',
+        'provider.ts',
         '.html',
-        '.css'
+        '.css',
+        'module.ts'
       ];
 
       let scoreA: number = precedences.length;
