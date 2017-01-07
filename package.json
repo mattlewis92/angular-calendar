@@ -48,6 +48,7 @@
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.4.1",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.16",
     "@types/chai": "^3.4.30",
     "@types/core-js": "^0.9.32",
     "@types/highlight.js": "^9.1.9",
@@ -130,10 +131,10 @@
     }
   },
   "dependencies": {
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.0",
     "angular-draggable-droppable": "^0.5.1",
     "angular-resizable-element": "^0.5.4",
     "calendar-utils": "0.0.39",
-    "date-fns": "^1.15.1"
+    "date-fns": "^1.15.1",
+    "positioning": "^1.0.4"
   }
 }

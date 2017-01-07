@@ -48,7 +48,7 @@
   dependencies:
     tsickle "^0.2"
 
-"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.0":
+"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.16":
   version "1.0.0-alpha.16"
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.16.tgz#0dd6b0d7d709e33dd399b5e49dfc72eec1bbe404"
 
@@ -4062,6 +4062,10 @@ portfinder@^1.0.9:
     async "^1.5.2"
     debug "^2.2.0"
     mkdirp "0.5.x"
+
+positioning@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/positioning/-/positioning-1.0.4.tgz#a17a6e594fa6705e71263dfbc5b1ef4fe0db2298"
 
 postcss-calc@^5.2.0:
   version "5.3.1"
