@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalendarModule, CalendarEventTitleFormatter, CalendarDateFormatter } from 'angular-calendar';
-import { DraggableHelper } from 'angular-draggable-droppable';
+import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
-import { CustomDateFormatter } from './custom-date-formatter.provider';
 
 @NgModule({
   imports: [
     CommonModule,
-    CalendarModule, // note how we don't use forRoot here
+    CalendarModule.forRoot(),
     DemoUtilsModule
   ],
   declarations: [
@@ -17,11 +15,6 @@ import { CustomDateFormatter } from './custom-date-formatter.provider';
   ],
   exports: [
     DemoComponent
-  ],
-  providers: [
-    {provide: CalendarDateFormatter, useClass: CustomDateFormatter},
-    CalendarEventTitleFormatter,
-    DraggableHelper
   ]
 })
 export class DemoModule {}
