@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const WATCH = process.argv.indexOf('--watch') > -1;
 
 module.exports = function(config) {
@@ -62,7 +62,7 @@ module.exports = function(config) {
             failOnError: true
           })
         ]),
-        new ForkCheckerPlugin(),
+        new CheckerPlugin(),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i

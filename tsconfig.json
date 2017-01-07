@@ -14,9 +14,9 @@
       "angular-calendar": ["./src/index"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "build-tool-examples"
+  "files": [
+    "src",
+    "demos"
   ],
   "compileOnSave": false
 }
