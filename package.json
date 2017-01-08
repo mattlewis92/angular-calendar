@@ -22,7 +22,8 @@
     "prerelease": "npm test",
     "release": "git add package.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
     "postrelease": "npm run build:clean && npm run gh-pages",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "codecov": "cat coverage/lcov.info | codecov"
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,7 @@
     "awesome-typescript-loader": "^2.2.4",
     "bootstrap": "4.0.0-alpha.5",
     "chai": "^3.5.0",
+    "codecov": "^1.0.1",
     "codelyzer": "2.0.0-beta.4",
     "commitizen": "^2.8.1",
     "concurrently": "^3.1.0",

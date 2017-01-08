@@ -9,3 +9,6 @@ notifications:
   email: false
 
 cache: yarn
+
+after_success:
+- npm run codecov
