@@ -14,8 +14,5 @@
       "angular-calendar": ["./src/index"]
     }
   },
-  "files": [
-    "demos/entry.ts"
-  ],
   "compileOnSave": false
 }
