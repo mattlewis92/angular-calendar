@@ -14,5 +14,9 @@
       "angular-calendar": ["./src/index"]
     }
   },
-  "compileOnSave": false
+  "include": [
+    "src/**/*",
+    "test/**/*",
+    "demos/**/*"
+  ]
 }
