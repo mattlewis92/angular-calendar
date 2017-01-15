@@ -1,10 +1,10 @@
-import * as webpack from 'webpack';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-export default {
+module.exports = {
   entry: __dirname + '/src/index.umd.ts',
   output: {
     path: __dirname + '/dist/umd',

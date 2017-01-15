@@ -1,11 +1,11 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
-export default {
+module.exports = {
   devtool: IS_PROD ? 'source-map' : 'eval',
   entry: __dirname + '/demos/entry.ts',
   output: {
