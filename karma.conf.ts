@@ -55,7 +55,7 @@ module.exports = function(config) {
       },
       plugins: [
         ...(WATCH ? [] : [
-          new webpack.NoErrorsPlugin(),
+          new webpack.NoEmitOnErrorsPlugin(),
           new StyleLintPlugin({
             syntax: 'scss',
             context: 'scss',
