@@ -1,10 +1,10 @@
-const webpack = require('webpack');
+import * as webpack from 'webpack';
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const WATCH = process.argv.indexOf('--watch') > -1;
 
-module.exports = function(config) {
+module.exports = config => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
