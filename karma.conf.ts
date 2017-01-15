@@ -43,9 +43,12 @@ module.exports = config => {
           loader: 'tslint-loader',
           exclude: /node_modules/
         }, {
-          test: /\.ts$/, loader: 'awesome-typescript-loader?forkChecker=true', exclude: /node_modules/
+          test: /\.ts$/,
+          loader: 'awesome-typescript-loader?forkChecker=true',
+          exclude: /node_modules/
         }, {
-          test: /sinon.js$/, loader: 'imports-loader?define=>false,require=>false'
+          test: /sinon.js$/,
+          loader: 'imports-loader?define=>false,require=>false'
         }, {
           enforce: 'post',
           test: /src\/.+\.ts$/,
