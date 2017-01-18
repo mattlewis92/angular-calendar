@@ -116,8 +116,8 @@
     "typescript": "~2.0.10",
     "url-loader": "^0.5.7",
     "validate-commit-msg": "^2.8.2",
-    "webpack": "2.2.0-rc.4",
-    "webpack-dev-server": "~2.2.0-rc.0",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0",
     "webpack-fix-default-import-plugin": "^1.0.1",
     "zone.js": "^0.7.2"
   },
