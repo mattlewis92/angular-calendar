@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  OnChanges
+} from '@angular/core';
 import {
   getSeconds,
   getMinutes,
@@ -13,7 +20,10 @@ import {
   setMonth,
   setYear
 } from 'date-fns';
-import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDateStruct,
+  NgbTimeStruct
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'mwl-date-time-picker',
@@ -37,7 +47,12 @@ import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
       </div>
     </form>
     <ngb-timepicker [(ngModel)]="timeStruct" (ngModelChange)="updateTime()" [meridian]="true"></ngb-timepicker>
-  `
+  `,
+  styles: [`
+    .form-group {
+      width: 100%;
+    }
+  `]
 })
 export class DateTimePickerComponent implements OnChanges {
 

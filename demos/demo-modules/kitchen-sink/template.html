@@ -2,10 +2,10 @@
 
 <template #modalContent let-close="close">
   <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
     <button type="button" class="close" (click)="close()">
-      <span>&times;</span>
+      <span aria-hidden="true">&times;</span>
     </button>
-    <h4 class="modal-title">Event action occurred</h4>
   </div>
   <div class="modal-body">
     <div>
@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<div class="row text-xs-center">
+<div class="row text-center">
   <div class="col-md-4">
     <div class="btn-group">
       <div class="btn btn-primary" (click)="decrement()">
