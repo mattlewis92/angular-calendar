@@ -1,0 +1,45 @@
+<div class="row text-xs-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <button class="btn btn-primary" (click)="decrement()" [disabled]="prevBtnDisabled">
+        Previous
+      </button>
+      <button class="btn btn-secondary" (click)="today()">
+        Today
+      </button>
+      <button class="btn btn-primary" (click)="increment()" [disabled]="nextBtnDisabled">
+        Next
+      </button>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div class="btn btn-primary" (click)="changeView('month')" [class.active]="view === 'month'">Month</div>
+      <div class="btn btn-primary" (click)="changeView('week')" [class.active]="view === 'week'">Week</div>
+      <div class="btn btn-primary" (click)="changeView('day')" [class.active]="view === 'day'">Day</div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [dayModifier]="dayModifier">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events">
+  </mwl-calendar-day-view>
+</div>
