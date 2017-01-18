@@ -1,10 +1,9 @@
-const webpack = require('webpack');
+import * as webpack from 'webpack';
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const WATCH = process.argv.indexOf('--watch') > -1;
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
-module.exports = function(config) {
+module.exports = config => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -17,10 +16,6 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test/entry.ts'
-    ],
-
-    // list of files to exclude
-    exclude: [
     ],
 
     // preprocess matching files before serving them to the browser
@@ -43,9 +38,12 @@ module.exports = function(config) {
           loader: 'tslint-loader',
           exclude: /node_modules/
         }, {
-          test: /\.ts$/, loader: 'awesome-typescript-loader?forkChecker=true', exclude: /node_modules/
+          test: /\.ts$/,
+          loader: 'awesome-typescript-loader?forkChecker=true',
+          exclude: /node_modules/
         }, {
-          test: /sinon.js$/, loader: 'imports-loader?define=>false,require=>false'
+          test: /sinon.js$/,
+          loader: 'imports-loader?define=>false,require=>false'
         }, {
           enforce: 'post',
           test: /src\/.+\.ts$/,
@@ -54,15 +52,15 @@ module.exports = function(config) {
         }]
       },
       plugins: [
-        ...(WATCH ? [] : [
-          new webpack.NoErrorsPlugin(),
+        ...(config.singleRun ? [
+          new webpack.NoEmitOnErrorsPlugin(),
           new StyleLintPlugin({
             syntax: 'scss',
             context: 'scss',
             failOnError: true
           })
-        ]),
-        new CheckerPlugin(),
+        ] : []),
+        new ForkCheckerPlugin(),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i
@@ -74,7 +72,7 @@ module.exports = function(config) {
         new webpack.LoaderOptionsPlugin({
           options: {
             tslint: {
-              emitErrors: !WATCH,
+              emitErrors: config.singleRun,
               failOnHint: false
             }
           }
@@ -89,7 +87,8 @@ module.exports = function(config) {
     remapIstanbulReporter: {
       reports: {
         html: 'coverage/html',
-        'text-summary': null
+        'text-summary': null,
+        lcovonly: 'coverage/lcov.info'
       }
     },
 
@@ -98,25 +97,12 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'karma-remap-istanbul'],
 
-    // web server port
-    port: 9876,
-
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: WATCH,
-
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: !WATCH
+    browsers: ['PhantomJS']
   });
 };

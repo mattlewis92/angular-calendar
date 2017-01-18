@@ -15,12 +15,7 @@ import {
   Inject
 } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
-import { Positioning } from '@ng-bootstrap/ng-bootstrap/util/positioning';
-
-interface Coords {
-  top: number;
-  left: number;
-}
+import { Positioning } from 'positioning';
 
 @Component({
   styles: [`
@@ -189,7 +184,7 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
 
   private positionPopover(): void {
     if (this.tooltipRef) {
-      const targetPosition: Coords = this.positioning.positionElements(
+      const targetPosition: ClientRect = this.positioning.positionElements(
         this.elementRef.nativeElement, this.tooltipRef.location.nativeElement.children[0], this.placement, true
       );
 
