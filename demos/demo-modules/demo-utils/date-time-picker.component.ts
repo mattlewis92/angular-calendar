@@ -55,7 +55,7 @@ export class DateTimePickerComponent implements OnChanges {
     if (changes['date']) {
       this.dateStruct = {
         day: getDate(this.date),
-        month: getMonth(this.date),
+        month: getMonth(this.date) + 1,
         year: getYear(this.date)
       };
       this.timeStruct = {
