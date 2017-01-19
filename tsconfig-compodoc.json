@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "files": [
+    "src/calendar.module.ts",
+    "src/components/day/calendarDayView.component.ts",
+    "src/components/week/calendarWeekView.component.ts",
+    "src/components/month/calendarMonthView.component.ts",
+    "src/pipes/calendarDate.pipe.ts",
+    "src/interfaces/calendarDateFormatter.interface.ts",
+    "src/interfaces/calendarEventTimesChangedEvent.interface.ts",
+    "src/providers/calendarDateFormatter.provider.ts",
+    "src/providers/calendarEventTitle.provider.ts",
+    "src/providers/calendarMomentDateFormatter.provider.ts",
+    "src/providers/calendarNativeDateFormatter.provider.ts"
+  ]
+}
