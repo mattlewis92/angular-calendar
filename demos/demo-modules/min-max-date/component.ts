@@ -1,21 +1,52 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
-import { subMonths, addMonths, addDays, addWeeks, subDays, subWeeks } from 'date-fns';
+import {
+  subMonths,
+  addMonths,
+  addDays,
+  addWeeks,
+  subDays,
+  subWeeks,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  startOfDay,
+  endOfDay
+} from 'date-fns';
 
-function getAddFn(view: string): any {
+type CalendarPeriod = 'day' | 'week' | 'month';
+
+function addPeriod(period: CalendarPeriod, date: Date, amount: number): Date {
   return {
     day: addDays,
     week: addWeeks,
     month: addMonths
-  }[view];
+  }[period](date, amount);
 }
 
-function getSubFn(view: string): any {
+function subPeriod(period: CalendarPeriod, date: Date, amount: number): Date {
   return {
     day: subDays,
     week: subWeeks,
     month: subMonths
-  }[view];
+  }[period](date, amount);
+}
+
+function startOfPeriod(period: CalendarPeriod, date: Date): Date {
+  return {
+    day: startOfDay,
+    week: startOfWeek,
+    month: startOfMonth
+  }[period](date);
+}
+
+function endOfPeriod(period: CalendarPeriod, date: Date): Date {
+  return {
+    day: endOfDay,
+    week: endOfWeek,
+    month: endOfMonth
+  }[period](date);
 }
 
 @Component({
@@ -28,7 +59,7 @@ function getSubFn(view: string): any {
 })
 export class DemoComponent {
 
-  view: string = 'month';
+  view: CalendarPeriod = 'month';
 
   viewDate: Date = new Date();
 
@@ -54,11 +85,11 @@ export class DemoComponent {
   }
 
   increment(): void {
-    this.changeDate(getAddFn(this.view)(this.viewDate, 1));
+    this.changeDate(addPeriod(this.view, this.viewDate, 1));
   }
 
   decrement(): void {
-    this.changeDate(getSubFn(this.view)(this.viewDate, 1));
+    this.changeDate(subPeriod(this.view, this.viewDate, 1));
   }
 
   today(): void {
@@ -74,14 +105,14 @@ export class DemoComponent {
     this.dateOrViewChanged();
   }
 
-  changeView(view: string): void {
+  changeView(view: CalendarPeriod): void {
     this.view = view;
     this.dateOrViewChanged();
   }
 
   dateOrViewChanged(): void {
-    this.prevBtnDisabled = !this.dateIsValid(getSubFn(this.view)(this.viewDate, 1));
-    this.nextBtnDisabled = !this.dateIsValid(getAddFn(this.view)(this.viewDate, 1));
+    this.prevBtnDisabled = !this.dateIsValid(endOfPeriod(this.view, subPeriod(this.view, this.viewDate, 1)));
+    this.nextBtnDisabled = !this.dateIsValid(startOfPeriod(this.view, addPeriod(this.view, this.viewDate, 1)));
     if (this.viewDate < this.minDate) {
       this.changeDate(this.minDate);
     } else if (this.viewDate > this.maxDate) {
