@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+const { TsConfigPathsPlugin, ForkCheckerPlugin } = require('awesome-typescript-loader');
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 export default {
@@ -20,7 +20,7 @@ export default {
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
-      loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+      loaders: ['awesome-typescript-loader?forkChecker=true', 'angular2-template-loader'],
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
@@ -56,6 +56,7 @@ export default {
     contentBase: 'demos'
   },
   plugins: [
+    new ForkCheckerPlugin(),
     new TsConfigPathsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({

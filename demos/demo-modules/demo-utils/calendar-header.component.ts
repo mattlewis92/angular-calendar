@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'mwl-calendar-header',
   template: `
-    <div class="row text-xs-center">
+    <div class="row text-center">
       <div class="col-md-4">
         <div class="btn-group">
           <div class="btn btn-primary" (click)="decrement()">
