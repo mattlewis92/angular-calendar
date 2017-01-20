@@ -31,6 +31,16 @@ import differenceInSeconds from 'date-fns/difference_in_seconds';
 import addSeconds from 'date-fns/add_seconds';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
+/**
+ * Shows all events on a given month. Example usage:
+ *
+ * ```
+ * &lt;mwl-calendar-month-view
+ *  [viewDate]="viewDate"
+ *  [events]="events"&gt;
+ * &lt;/mwl-calendar-month-view&gt;
+ * ```
+ */
 @Component({
   selector: 'mwl-calendar-month-view',
   template: `

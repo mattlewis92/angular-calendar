@@ -20,6 +20,16 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
  */
 const SEGMENT_HEIGHT: number = 30;
 
+/**
+ * Shows all events on a given day. Example usage:
+ *
+ * ```
+ * &lt;mwl-calendar-day-view
+ *  [viewDate]="viewDate"
+ *  [events]="events"&gt;
+ * &lt;/mwl-calendar-day-view&gt;
+ * ```
+ */
 @Component({
   selector: 'mwl-calendar-day-view',
   template: `
