@@ -20,6 +20,21 @@ import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
 import { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
 
+/**
+ * The main module of this library. Example usage:
+ *
+ * ```
+ * import { CalenderModule } from 'angular-calendar';
+ *
+ * &commat;NgModule({
+ *   imports: [
+ *     CalenderModule.forRoot()
+ *   ]
+ * })
+ * class MyModule {}
+ * ```
+ *
+ */
 @NgModule({
   declarations: [
     CalendarDayViewComponent,

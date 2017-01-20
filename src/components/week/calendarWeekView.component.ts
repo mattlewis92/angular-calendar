@@ -26,6 +26,16 @@ import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider'
 import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 
+/**
+ * Shows all events on a given week. Example usage:
+ *
+ * ```
+ * &lt;mwl-calendar-week-view
+ *  [viewDate]="viewDate"
+ *  [events]="events"&gt;
+ * &lt;/mwl-calendar-week-view&gt;
+ * ```
+ */
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
