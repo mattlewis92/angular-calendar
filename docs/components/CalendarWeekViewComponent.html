@@ -1,0 +1,925 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-calendar documentation</title>
+        <meta name="description" content="">
+        <base href="/docs/">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	    <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">angular-calendar documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="./">angular-calendar documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="./" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="./overview.html" 
+                                         href="./overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="./modules/CalendarModule.html" >CalendarModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="./components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/CalendarWeekViewComponent.html"  class="active" >CalendarWeekViewComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="./classes/CalendarDateFormatter.html" >CalendarDateFormatter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/CalendarEventTitleFormatter.html" >CalendarEventTitleFormatter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/CalendarMomentDateFormatter.html" >CalendarMomentDateFormatter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/CalendarNativeDateFormatter.html" >CalendarNativeDateFormatter</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/DateFormatterParams.html" >DateFormatterParams</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="./images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="./">angular-calendar documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="./" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="./overview.html" 
+                                                href="./overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="./modules/CalendarModule.html" >CalendarModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="./components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/CalendarWeekViewComponent.html"  class="active" >CalendarWeekViewComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./classes/CalendarDateFormatter.html" >CalendarDateFormatter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/CalendarEventTitleFormatter.html" >CalendarEventTitleFormatter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/CalendarMomentDateFormatter.html" >CalendarMomentDateFormatter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/CalendarNativeDateFormatter.html" >CalendarNativeDateFormatter</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/DateFormatterParams.html" >DateFormatterParams</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="./images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content component">
+                   <div class="content-data">
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CalendarWeekViewComponent</li>
+</ol>
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        </li>
+        <li>
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="infos"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/components/week/calendarWeekView.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Shows all events on a given week. Example usage:</p>
+<pre><code class="hljs undefined">&lt;mwl-calendar-week-view<br>  [viewDate]="viewDate"<br>  [events]="events"&gt;<br>&lt;/mwl-calendar-week-view&gt;</code></pre>
+    </p>
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>mwl-calendar-week-view</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-week-view&quot;&nbsp;#weekViewContainer&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-day-headers&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;day&nbsp;of&nbsp;days&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[day]&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;dayClicked.emit({date:&nbsp;day.date})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-header&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;eventRow&nbsp;of&nbsp;eventRows&quot;&nbsp;#eventRowContainer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;weekEvent&nbsp;of&nbsp;eventRow.row&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;((100&nbsp;/&nbsp;7)&nbsp;*&nbsp;weekEvent.span)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft]&#x3D;&quot;((100&nbsp;/&nbsp;7)&nbsp;*&nbsp;weekEvent.offset)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{left:&nbsp;weekEvent.event?.resizable?.beforeStart,&nbsp;right:&nbsp;weekEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{left:&nbsp;getDayColumnWidth(eventRowContainer),&nbsp;right:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer,&nbsp;weekEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(weekEvent,&nbsp;$event,&nbsp;getDayColumnWidth(eventRowContainer))&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;weekEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize,&nbsp;y:&nbsp;false}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{x:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(weekViewContainer,&nbsp;event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(weekEvent,&nbsp;$event.x,&nbsp;getDayColumnWidth(eventRowContainer))&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[weekEvent]&#x3D;&quot;weekEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;weekEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>events</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>An array of events to display on view</p>
+</div>
+                          <p>
+                            <em>Type:</em>    <code>CalendarEvent[]</code>
+
+                          </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>locale</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The locale used to format dates</p>
+</div>
+                          <p>
+                            <em>Type:</em>    <code>string</code>
+
+                          </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>refresh</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>An observable that when emitted on will re-render the current view</p>
+</div>
+                          <p>
+                            <em>Type:</em>    <code>Subject&lt;any&gt;</code>
+
+                          </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>tooltipPlacement</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The placement of the event tooltip</p>
+</div>
+                          <p>
+                            <em>Type:</em>    <code>string</code>
+
+                          </p>
+                            <p>
+                              <em>Default value: </em><code>bottom</code>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>viewDate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The current view date</p>
+</div>
+                          <p>
+                            <em>Type:</em>    <code>Date</code>
+
+                          </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>weekStartsOn</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The start number of the week</p>
+</div>
+                          <p>
+                            <em>Type:</em>    <code>number</code>
+
+                          </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>dayClicked</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Called when a header week day is clicked</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>{ date: Date; }</code>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>eventClicked</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Called when the event title is clicked</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>{ event: CalendarEvent; }</code>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>eventTimesChanged</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Called when an event is resized or dragged and dropped</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>CalendarEventTimesChangedEvent</code>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+</div>
+        <div class="tab-pane fade tab-source-code" id="source">
+            <pre><code class="hljs javascript">import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+  OnChanges,
+  OnInit,
+  OnDestroy,
+  LOCALE_ID,
+  Inject
+} from &#x27;@angular/core&#x27;;
+import { Subject } from &#x27;rxjs/Subject&#x27;;
+import { Subscription } from &#x27;rxjs/Subscription&#x27;;
+import {
+  WeekDay,
+  CalendarEvent,
+  WeekViewEvent,
+  WeekViewEventRow,
+  getWeekViewHeader,
+  getWeekView
+} from &#x27;calendar-utils&#x27;;
+import { ResizeEvent } from &#x27;angular-resizable-element&#x27;;
+import addDays from &#x27;date-fns/add_days&#x27;;
+import { CalendarDragHelper } from &#x27;../../providers/calendarDragHelper.provider&#x27;;
+import { CalendarResizeHelper } from &#x27;../../providers/calendarResizeHelper.provider&#x27;;
+import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEventTimesChangedEvent.interface&#x27;;
+
+/**
+ * Shows all events on a given week. Example usage:
+ *
+ * &#x60;&#x60;&#x60;
+ * &amp;lt;mwl-calendar-week-view
+ *  [viewDate]&#x3D;&quot;viewDate&quot;
+ *  [events]&#x3D;&quot;events&quot;&amp;gt;
+ * &amp;lt;/mwl-calendar-week-view&amp;gt;
+ * &#x60;&#x60;&#x60;
+ */
+@Component({
+  selector: &#x27;mwl-calendar-week-view&#x27;,
+  template: &#x60;
+    &lt;div class&#x3D;&quot;cal-week-view&quot; #weekViewContainer&gt;
+      &lt;div class&#x3D;&quot;cal-day-headers&quot;&gt;
+        &lt;mwl-calendar-week-view-header
+          *ngFor&#x3D;&quot;let day of days&quot;
+          [day]&#x3D;&quot;day&quot;
+          [locale]&#x3D;&quot;locale&quot;
+          (click)&#x3D;&quot;dayClicked.emit({date: day.date})&quot;&gt;
+        &lt;/mwl-calendar-week-view-header&gt;
+      &lt;/div&gt;
+      &lt;div *ngFor&#x3D;&quot;let eventRow of eventRows&quot; #eventRowContainer&gt;
+        &lt;div
+          class&#x3D;&quot;cal-event-container&quot;
+          #event
+          [class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;
+          *ngFor&#x3D;&quot;let weekEvent of eventRow.row&quot;
+          [style.width]&#x3D;&quot;((100 / 7) * weekEvent.span) + &#x27;%&#x27;&quot;
+          [style.marginLeft]&#x3D;&quot;((100 / 7) * weekEvent.offset) + &#x27;%&#x27;&quot;
+          mwlResizable
+          [resizeEdges]&#x3D;&quot;{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}&quot;
+          [resizeSnapGrid]&#x3D;&quot;{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}&quot;
+          [validateResize]&#x3D;&quot;validateResize&quot;
+          (resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer, weekEvent, $event)&quot;
+          (resizing)&#x3D;&quot;resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))&quot;
+          (resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;
+          mwlDraggable
+          [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; !currentResize, y: false}&quot;
+          [dragSnapGrid]&#x3D;&quot;{x: getDayColumnWidth(eventRowContainer)}&quot;
+          [validateDrag]&#x3D;&quot;validateDrag&quot;
+          (dragStart)&#x3D;&quot;dragStart(weekViewContainer, event)&quot;
+          (dragEnd)&#x3D;&quot;eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))&quot;&gt;
+          &lt;mwl-calendar-week-view-event
+            [weekEvent]&#x3D;&quot;weekEvent&quot;
+            [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+            (eventClicked)&#x3D;&quot;eventClicked.emit({event: weekEvent.event})&quot;&gt;
+          &lt;/mwl-calendar-week-view-event&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &#x60;
+})
+export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
+
+  /**
+   * The current view date
+   */
+  @Input() viewDate: Date;
+
+  /**
+   * An array of events to display on view
+   */
+  @Input() events: CalendarEvent[] &#x3D; [];
+
+  /**
+   * An observable that when emitted on will re-render the current view
+   */
+  @Input() refresh: Subject&lt;any&gt;;
+
+  /**
+   * The locale used to format dates
+   */
+  @Input() locale: string;
+
+  /**
+   * The placement of the event tooltip
+   */
+  @Input() tooltipPlacement: string &#x3D; &#x27;bottom&#x27;;
+
+  /**
+   * The start number of the week
+   */
+  @Input() weekStartsOn: number;
+
+  /**
+   * Called when a header week day is clicked
+   */
+  @Output() dayClicked: EventEmitter&lt;{date: Date}&gt; &#x3D; new EventEmitter&lt;{date: Date}&gt;();
+
+  /**
+   * Called when the event title is clicked
+   */
+  @Output() eventClicked: EventEmitter&lt;{event: CalendarEvent}&gt; &#x3D; new EventEmitter&lt;{event: CalendarEvent}&gt;();
+
+  /**
+   * Called when an event is resized or dragged and dropped
+   */
+  @Output() eventTimesChanged: EventEmitter&lt;CalendarEventTimesChangedEvent&gt; &#x3D; new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
+
+  /**
+   * @hidden
+   */
+  days: WeekDay[];
+
+  /**
+   * @hidden
+   */
+  eventRows: WeekViewEventRow[] &#x3D; [];
+
+  /**
+   * @hidden
+   */
+  refreshSubscription: Subscription;
+
+  /**
+   * @hidden
+   */
+  currentResize: {
+    originalOffset: number,
+    originalSpan: number,
+    edge: string
+  };
+
+  /**
+   * @hidden
+   */
+  validateDrag: Function;
+
+  /**
+   * @hidden
+   */
+  validateResize: Function;
+
+  /**
+   * @hidden
+   */
+  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+    this.locale &#x3D; locale;
+  }
+
+  /**
+   * @hidden
+   */
+  ngOnInit(): void {
+    if (this.refresh) {
+      this.refreshSubscription &#x3D; this.refresh.subscribe(() &#x3D;&gt; {
+        this.refreshAll();
+        this.cdr.markForCheck();
+      });
+    }
+  }
+
+  /**
+   * @hidden
+   */
+  ngOnChanges(changes: any): void {
+
+    if (changes.viewDate) {
+      this.refreshHeader();
+    }
+
+    if (changes.events || changes.viewDate) {
+      this.refreshBody();
+    }
+
+  }
+
+  /**
+   * @hidden
+   */
+  ngOnDestroy(): void {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
+  }
+
+  /**
+   * @hidden
+   */
+  resizeStarted(weekViewContainer: HTMLElement, weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
+    this.currentResize &#x3D; {
+      originalOffset: weekEvent.offset,
+      originalSpan: weekEvent.span,
+      edge: typeof resizeEvent.edges.left !&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;left&#x27; : &#x27;right&#x27;
+    };
+    const resizeHelper: CalendarResizeHelper &#x3D; new CalendarResizeHelper(weekViewContainer, this.getDayColumnWidth(weekViewContainer));
+    this.validateResize &#x3D; ({rectangle}) &#x3D;&gt; resizeHelper.validateResize({rectangle});
+    this.cdr.markForCheck();
+  }
+
+  /**
+   * @hidden
+   */
+  resizing(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent, dayWidth: number): void {
+    if (resizeEvent.edges.left) {
+      const diff: number &#x3D; Math.round(+resizeEvent.edges.left / dayWidth);
+      weekEvent.offset &#x3D; this.currentResize.originalOffset + diff;
+      weekEvent.span &#x3D; this.currentResize.originalSpan - diff;
+    } else if (resizeEvent.edges.right) {
+      const diff: number &#x3D; Math.round(+resizeEvent.edges.right / dayWidth);
+      weekEvent.span &#x3D; this.currentResize.originalSpan + diff;
+    }
+  }
+
+  /**
+   * @hidden
+   */
+  resizeEnded(weekEvent: WeekViewEvent): void {
+
+    let daysDiff: number;
+    if (this.currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;) {
+      daysDiff &#x3D; weekEvent.offset - this.currentResize.originalOffset;
+    } else {
+      daysDiff &#x3D; weekEvent.span - this.currentResize.originalSpan;
+    }
+
+    weekEvent.offset &#x3D; this.currentResize.originalOffset;
+    weekEvent.span &#x3D; this.currentResize.originalSpan;
+
+    let newStart: Date &#x3D; weekEvent.event.start;
+    let newEnd: Date &#x3D; weekEvent.event.end;
+    if (this.currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;) {
+      newStart &#x3D; addDays(newStart, daysDiff);
+    } else if (newEnd) {
+      newEnd &#x3D; addDays(newEnd, daysDiff);
+    }
+
+    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+    this.currentResize &#x3D; null;
+
+  }
+
+  /**
+   * @hidden
+   */
+  eventDragged(weekEvent: WeekViewEvent, draggedByPx: number, dayWidth: number): void {
+
+    const daysDragged: number &#x3D; draggedByPx / dayWidth;
+    const newStart: Date &#x3D; addDays(weekEvent.event.start, daysDragged);
+    let newEnd: Date;
+    if (weekEvent.event.end) {
+      newEnd &#x3D; addDays(weekEvent.event.end, daysDragged);
+    }
+
+    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+
+  }
+
+  /**
+   * @hidden
+   */
+  getDayColumnWidth(eventRowContainer: HTMLElement): number {
+    return Math.floor(eventRowContainer.offsetWidth / 7);
+  }
+
+  /**
+   * @hidden
+   */
+  dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
+    const dragHelper: CalendarDragHelper &#x3D; new CalendarDragHelper(weekViewContainer, event);
+    this.validateDrag &#x3D; ({x, y}) &#x3D;&gt; dragHelper.validateDrag({x, y});
+    this.cdr.markForCheck();
+  }
+
+  private refreshHeader(): void {
+    this.days &#x3D; getWeekViewHeader({
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn
+    });
+  }
+
+  private refreshBody(): void {
+    this.eventRows &#x3D; getWeekView({
+      events: this.events,
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn
+    });
+  }
+
+  private refreshAll(): void {
+    this.refreshHeader();
+    this.refreshBody();
+  }
+
+}
+</code></pre>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
+
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/highlight.pack.js"></script>
+       <script src="./js/libs/highlightjs-line-numbers.min.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
+
+    </body>
+</html>
