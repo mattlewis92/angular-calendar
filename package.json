@@ -17,7 +17,7 @@
     "test:watch": "karma start --auto-watch",
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "compodoc": "compodoc -p tsconfig-compodoc.json -d docs -b /docs/ --disableGraph --disableCoverage",
+    "compodoc": "compodoc -p tsconfig-compodoc.json -d docs -b /angular-calendar/docs/ --disableGraph --disableCoverage",
     "gh-pages": "git checkout gh-pages && git merge master --no-edit && npm run build:demos && npm run compodoc && git add . && git commit -m 'chore: build demos and docs' && git push && git checkout master",
     "prerelease": "npm test",
     "release": "git add package.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
