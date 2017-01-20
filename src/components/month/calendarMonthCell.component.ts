@@ -4,7 +4,14 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-month-cell',
   template: `
-    <div class="cal-cell-top">
+  <div (mouseleave)="inn=false" (mouseenter)="inn=true">
+    <div class="cal-cell-top" >
+      <span *ngIf="inn && addEventTextBtn">
+        <button type="button" class="btn btn-default btn-xs" (click)="$event.stopPropagation(); addEventClicked.emit({day: day})">
+          <i class="fa fa-plus"></i> {{addEventTextBtn}}
+        </button>
+      </span>
+
       <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     </div>
@@ -24,6 +31,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
         (click)="$event.stopPropagation(); eventClicked.emit({event: event})">
       </div>
     </div>
+    </div>
   `,
   host: {
     '[class]': '"cal-cell cal-day-cell " + day?.cssClass',
@@ -40,6 +48,8 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 })
 export class CalendarMonthCellComponent {
 
+
+
   @Input() day: MonthViewDay;
 
   @Input() openDay: MonthViewDay;
@@ -53,5 +63,12 @@ export class CalendarMonthCellComponent {
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+
+  @Input() inn: boolean=false;
+
+  @Output() addEventClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day:MonthViewDay}>();
+
+  @Input() addEventTextBtn: string="";
+
 
 }
