@@ -1,15 +1,22 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "node_modules/codelyzer",
+    "node_modules/tslint-eslint-rules/dist/rules"
   ],
   "rules": {
     "class-name": true,
     "curly": false,
     "eofline": false,
     "indent": "spaces",
-    "max-line-length": [
+    "ter-max-len": [
       true,
-      140
+      {
+        "code": 140,
+        "tabWidth": 2,
+        "ignoreImports": true,
+        "ignoreUrls": true,
+        "ignoreComments": true
+      }
     ],
     "member-ordering": [
       true,
