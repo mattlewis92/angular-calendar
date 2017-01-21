@@ -12,6 +12,7 @@ import { HighlightJsModule } from 'angular-highlight-js';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as asyncEvents from './demo-modules/async-events';
+import * as addEventButton from './demo-modules/add-event-button';
 import * as optionalEventEndDates from './demo-modules/optional-event-end-dates';
 import * as editableDeletableEvents from './demo-modules/editable-deletable-events';
 import * as draggableEvents from './demo-modules/draggable-events';
@@ -41,6 +42,7 @@ import * as minMaxDate from './demo-modules/min-max-date';
     BrowserModule,
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
+    addEventButton.DemoModule,
     asyncEvents.DemoModule,
     optionalEventEndDates.DemoModule,
     editableDeletableEvents.DemoModule,
@@ -69,6 +71,12 @@ import * as minMaxDate from './demo-modules/min-max-date';
       component: kitchenSink.DemoComponent,
       data: {
         label: 'Kitchen sink'
+      }
+    },{
+      path: 'add-event-button',
+      component: addEventButton.DemoComponent,
+      data: {
+        label: 'Add event Button in (mouseenter) month day '
       }
     }, {
       path: 'async-events',
