@@ -47,8 +47,8 @@ var CalendarMonthViewComponent = (function () {
          * Whether the events list for the day of the `viewDate` option is visible or not
          */
         this.activeDayIsOpen = false;
-        /*
-          Label for button Add Event
+        /**
+        *  Label for button Add Event: Note, is string empty not show button.
         */
         this.addEventTextBtn = "";
         /**
@@ -63,8 +63,8 @@ var CalendarMonthViewComponent = (function () {
          * Called when the event title is clicked
          */
         this.eventClicked = new core_1.EventEmitter();
-        /*
-          Called when the button add event is clicked
+        /**
+        *  Called when the button add event is clicked
         */
         this.addEventClicked = new core_1.EventEmitter();
         /**
