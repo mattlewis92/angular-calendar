@@ -15,11 +15,13 @@ import {
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {MonthViewDay} from 'calendar-utils';
 import {
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
+
 
 const colors: any = {
   red: {
@@ -171,7 +173,7 @@ export class DemoComponent {
       }
     });
     this.refresh.next();
-    console.log(day);
+    //console.log(day);
 
   }
 

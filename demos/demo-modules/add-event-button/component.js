@@ -134,7 +134,7 @@ var DemoComponent = (function () {
             }
         });
         this.refresh.next();
-        console.log(day);
+        //console.log(day);
     };
     DemoComponent.prototype.addEvent = function () {
         this.events.push({
