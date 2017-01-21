@@ -48,8 +48,8 @@ var CalendarMonthViewComponent = (function () {
          */
         this.activeDayIsOpen = false;
         /**
-        * Label for button Add Event: Note, is string empty not show button.
-        */
+         * Label for button Add Event: Note, is string empty not show button.
+         */
         this.addEventTextBtn = "";
         /**
          * The placement of the event tooltip
@@ -64,8 +64,8 @@ var CalendarMonthViewComponent = (function () {
          */
         this.eventClicked = new core_1.EventEmitter();
         /**
-        * Called when the button add event is clicked: Note, only show button if addEventTextBtn!=""
-        */
+         * Called when the button add event is clicked: Note, only show button if addEventTextBtn!=""
+         */
         this.addEventClicked = new core_1.EventEmitter();
         /**
          * Called when an event is dragged and dropped

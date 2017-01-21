@@ -100,8 +100,8 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Input() activeDayIsOpen: boolean = false;
 
   /**
-  * Label for button Add Event: Note, is string empty not show button.
-  */
+   * Label for button Add Event: Note, is string empty not show button.
+   */
   @Input() addEventTextBtn: string="";
 
   /**
@@ -139,9 +139,10 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * Called when the event title is clicked
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+
   /**
-  * Called when the button add event is clicked: Note, only show button if addEventTextBtn!=""
-  */
+   * Called when the button add event is clicked: Note, only show button if addEventTextBtn!=""
+   */
   @Output() addEventClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day:MonthViewDay}>();
   /**
    * Called when an event is dragged and dropped
