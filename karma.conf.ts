@@ -47,7 +47,7 @@ module.exports = config => {
         }, {
           enforce: 'post',
           test: /src\/.+\.ts$/,
-          exclude: /(test|node_modules)/,
+          exclude: /(node_modules|\.spec\.ts$|\.interface\.ts$)/,
           loader: 'istanbul-instrumenter-loader'
         }]
       },
