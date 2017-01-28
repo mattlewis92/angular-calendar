@@ -7,10 +7,6 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  addWeeks,
-  subWeeks,
-  addMonths,
-  subMonths,
   addHours
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
@@ -102,34 +98,6 @@ export class DemoComponent {
   activeDayIsOpen: boolean = true;
 
   constructor(private modal: NgbModal) {}
-
-  increment(): void {
-
-    const addFn: any = {
-      day: addDays,
-      week: addWeeks,
-      month: addMonths
-    }[this.view];
-
-    this.viewDate = addFn(this.viewDate, 1);
-
-  }
-
-  decrement(): void {
-
-    const subFn: any = {
-      day: subDays,
-      week: subWeeks,
-      month: subMonths
-    }[this.view];
-
-    this.viewDate = subFn(this.viewDate, 1);
-
-  }
-
-  today(): void {
-    this.viewDate = new Date();
-  }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
 
