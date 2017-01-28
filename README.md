@@ -52,7 +52,7 @@ Then you can use the [`mwl-calendar-month-view`](https://mattlewis92.github.io/a
 
 ### Module bundlers
 
-You can find quick start examples for all common module bundlers in the [examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
+You can find quick start examples for all common module bundlers in the [build-tool-examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
 
 ### Usage without a module bundler
 ```
