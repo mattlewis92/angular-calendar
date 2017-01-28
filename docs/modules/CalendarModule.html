@@ -91,6 +91,28 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -248,6 +270,28 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -379,6 +423,15 @@
                                 <a  href="./components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
                             </li>
                             <li class="list-group-item">
+                                <a >CalendarPreviousViewDirective</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a >CalendarNextViewDirective</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a >CalendarTodayDirective</a>
+                            </li>
+                            <li class="list-group-item">
                                 <a >CalendarDatePipe</a>
                             </li>
                     </ul>
@@ -397,6 +450,15 @@
                             </li>
                             <li class="list-group-item">
                                     <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
                             </li>
                     </ul>
                 </div>
@@ -421,6 +483,9 @@ import { CalendarAllDayEventComponent } from &#x27;./components/day/calendarAllD
 import { CalendarDayViewHourSegmentComponent } from &#x27;./components/day/calendarDayViewHourSegment.component&#x27;;
 import { CalendarDayViewEventComponent } from &#x27;./components/day/calendarDayViewEvent.component&#x27;;
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from &#x27;./directives/calendarTooltip.directive&#x27;;
+import { CalendarPreviousViewDirective } from &#x27;./directives/calendarPreviousView.directive&#x27;;
+import { CalendarNextViewDirective } from &#x27;./directives/calendarNextView.directive&#x27;;
+import { CalendarTodayDirective } from &#x27;./directives/calendarToday.directive&#x27;;
 import { CalendarDatePipe } from &#x27;./pipes/calendarDate.pipe&#x27;;
 import { CalendarEventTitlePipe } from &#x27;./pipes/calendarEventTitle.pipe&#x27;;
 import { CalendarEventTitleFormatter } from &#x27;./providers/calendarEventTitle.provider&#x27;;
@@ -457,6 +522,9 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarDayViewEventComponent,
     CalendarTooltipWindowComponent,
     CalendarTooltipDirective,
+    CalendarPreviousViewDirective,
+    CalendarNextViewDirective,
+    CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe
   ],
@@ -469,9 +537,14 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarDayViewComponent,
     CalendarWeekViewComponent,
     CalendarMonthViewComponent,
-    CalendarDatePipe
+    CalendarDatePipe,
+    CalendarPreviousViewDirective,
+    CalendarNextViewDirective,
+    CalendarTodayDirective
   ],
-  entryComponents: [CalendarTooltipWindowComponent]
+  entryComponents: [
+    CalendarTooltipWindowComponent
+  ]
 })
 export class CalendarModule {
 

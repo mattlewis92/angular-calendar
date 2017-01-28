@@ -91,6 +91,28 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -248,6 +270,28 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -409,10 +453,10 @@
                         <td class="col-md-10">
                             <div><p>Whether the events list for the day of the <code>viewDate</code> option is visible or not</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>boolean</code>
+                              <p>
+                                <em>Type:</em>    <code>boolean</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>false</code>
                             </p>
@@ -429,10 +473,10 @@
                         <td class="col-md-10">
                             <div><p>A function that will be called before each cell is rendered. The first argument will contain the calendar cell.<br>If you add the <code>cssClass</code> property to the cell it will add that class to the cell in the template</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>Function</code>
+                              <p>
+                                <em>Type:</em>    <code>Function</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -446,10 +490,10 @@
                         <td class="col-md-10">
                             <div><p>An array of events to display on view</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>CalendarEvent[]</code>
+                              <p>
+                                <em>Type:</em>    <code>CalendarEvent[]</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -463,10 +507,10 @@
                         <td class="col-md-10">
                             <div><p>The locale used to format dates</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>string</code>
+                              <p>
+                                <em>Type:</em>    <code>string</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -480,10 +524,10 @@
                         <td class="col-md-10">
                             <div><p>An observable that when emitted on will re-render the current view</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>Subject&lt;any&gt;</code>
+                              <p>
+                                <em>Type:</em>    <code>Subject&lt;any&gt;</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -497,10 +541,10 @@
                         <td class="col-md-10">
                             <div><p>The placement of the event tooltip</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>string</code>
+                              <p>
+                                <em>Type:</em>    <code>string</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>top</code>
                             </p>
@@ -517,10 +561,10 @@
                         <td class="col-md-10">
                             <div><p>The current view date</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>Date</code>
+                              <p>
+                                <em>Type:</em>    <code>Date</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -534,10 +578,10 @@
                         <td class="col-md-10">
                             <div><p>The start number of the week</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -555,7 +599,7 @@
                         <td class="col-md-10">
                             <div><p>Called when the day cell is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>{ day: MonthViewDay; }</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ day: MonthViewDay; }&gt;</code>
 
                         </td>
                     </tr>
@@ -570,7 +614,7 @@
                         <td class="col-md-10">
                             <div><p>Called when the event title is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>{ event: CalendarEvent; }</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ event: CalendarEvent; }&gt;</code>
 
                         </td>
                     </tr>
@@ -585,13 +629,14 @@
                         <td class="col-md-10">
                             <div><p>Called when an event is dragged and dropped</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>CalendarEventTimesChangedEvent</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;CalendarEventTimesChangedEvent&gt;</code>
 
                         </td>
                     </tr>
                 </tbody>
             </table>
     </section>
+
 
 
 </div>

@@ -91,6 +91,28 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -248,6 +270,28 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -409,10 +453,10 @@
                         <td class="col-md-10">
                             <div><p>The day end hours in 24 hour time. Must be 0-23</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>23</code>
                             </p>
@@ -429,10 +473,10 @@
                         <td class="col-md-10">
                             <div><p>The day end minutes. Must be 0-59</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>59</code>
                             </p>
@@ -449,10 +493,10 @@
                         <td class="col-md-10">
                             <div><p>The day start hours in 24 hour time. Must be 0-23</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>0</code>
                             </p>
@@ -469,10 +513,10 @@
                         <td class="col-md-10">
                             <div><p>The day start minutes. Must be 0-59</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>0</code>
                             </p>
@@ -489,10 +533,10 @@
                         <td class="col-md-10">
                             <div><p>An array of events to display on view</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>CalendarEvent[]</code>
+                              <p>
+                                <em>Type:</em>    <code>CalendarEvent[]</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -506,10 +550,10 @@
                         <td class="col-md-10">
                             <div><p>The grid size to snap resizing and dragging of events to</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>30</code>
                             </p>
@@ -526,10 +570,10 @@
                         <td class="col-md-10">
                             <div><p>The width in pixels of each event on the view</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>150</code>
                             </p>
@@ -546,10 +590,10 @@
                         <td class="col-md-10">
                             <div><p>A function that will be called before each hour segment is called. The first argument will contain the hour segment.<br>If you add the <code>cssClass</code> property to the segment it will add that class to the hour segment in the template</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>Function</code>
+                              <p>
+                                <em>Type:</em>    <code>Function</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -563,10 +607,10 @@
                         <td class="col-md-10">
                             <div><p>The number of segments in an hour. Must be &lt;= 6</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>number</code>
+                              <p>
+                                <em>Type:</em>    <code>number</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>2</code>
                             </p>
@@ -583,10 +627,10 @@
                         <td class="col-md-10">
                             <div><p>The locale used to format dates</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>string</code>
+                              <p>
+                                <em>Type:</em>    <code>string</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -600,10 +644,10 @@
                         <td class="col-md-10">
                             <div><p>An observable that when emitted on will re-render the current view</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>Subject&lt;any&gt;</code>
+                              <p>
+                                <em>Type:</em>    <code>Subject&lt;any&gt;</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -617,10 +661,10 @@
                         <td class="col-md-10">
                             <div><p>The placement of the event tooltip</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>string</code>
+                              <p>
+                                <em>Type:</em>    <code>string</code>
 
-                          </p>
+                              </p>
                             <p>
                               <em>Default value: </em><code>top</code>
                             </p>
@@ -637,10 +681,10 @@
                         <td class="col-md-10">
                             <div><p>The current view date</p>
 </div>
-                          <p>
-                            <em>Type:</em>    <code>Date</code>
+                              <p>
+                                <em>Type:</em>    <code>Date</code>
 
-                          </p>
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -658,7 +702,7 @@
                         <td class="col-md-10">
                             <div><p>Called when an event title is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>{ event: CalendarEvent; }</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ event: CalendarEvent; }&gt;</code>
 
                         </td>
                     </tr>
@@ -673,7 +717,7 @@
                         <td class="col-md-10">
                             <div><p>Called when an event is resized or dragged and dropped</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>CalendarEventTimesChangedEvent</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;CalendarEventTimesChangedEvent&gt;</code>
 
                         </td>
                     </tr>
@@ -688,13 +732,14 @@
                         <td class="col-md-10">
                             <div><p>Called when an hour segment is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>{ date: Date; }</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ date: Date; }&gt;</code>
 
                         </td>
                     </tr>
                 </tbody>
             </table>
     </section>
+
 
 
 </div>
