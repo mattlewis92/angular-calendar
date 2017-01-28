@@ -17,6 +17,9 @@
     "src/providers/calendarDateFormatter.provider.ts",
     "src/providers/calendarEventTitle.provider.ts",
     "src/providers/calendarMomentDateFormatter.provider.ts",
-    "src/providers/calendarNativeDateFormatter.provider.ts"
+    "src/providers/calendarNativeDateFormatter.provider.ts",
+    "src/directives/calendarNextView.directive.ts",
+    "src/directives/calendarPreviousView.directive.ts",
+    "src/directives/calendarToday.directive.ts"
   ]
 }

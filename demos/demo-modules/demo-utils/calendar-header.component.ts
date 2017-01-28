@@ -1,12 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {
-  subDays,
-  addDays,
-  addWeeks,
-  subWeeks,
-  addMonths,
-  subMonths
-} from 'date-fns';
 
 @Component({
   selector: 'mwl-calendar-header',
@@ -14,13 +6,24 @@ import {
     <div class="row text-center">
       <div class="col-md-4">
         <div class="btn-group">
-          <div class="btn btn-primary" (click)="decrement()">
+          <div
+            class="btn btn-primary"
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate">
             Previous
           </div>
-          <div class="btn btn-secondary" (click)="today()">
+          <div
+            class="btn btn-secondary"
+            mwlCalendarToday
+            [(viewDate)]="viewDate">
             Today
           </div>
-          <div class="btn btn-primary" (click)="increment()">
+          <div
+            class="btn btn-primary"
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate">
             Next
           </div>
         </div>
@@ -30,9 +33,24 @@ import {
       </div>
       <div class="col-md-4">
         <div class="btn-group">
-          <div class="btn btn-primary" (click)="viewChange.emit('month')" [class.active]="view === 'month'">Month</div>
-          <div class="btn btn-primary" (click)="viewChange.emit('week')" [class.active]="view === 'week'">Week</div>
-          <div class="btn btn-primary" (click)="viewChange.emit('day')" [class.active]="view === 'day'">Day</div>
+          <div
+            class="btn btn-primary"
+            (click)="viewChange.emit('month')"
+            [class.active]="view === 'month'">
+            Month
+          </div>
+          <div
+            class="btn btn-primary"
+            (click)="viewChange.emit('week')"
+            [class.active]="view === 'week'">
+            Week
+          </div>
+          <div
+            class="btn btn-primary"
+            (click)="viewChange.emit('day')"
+            [class.active]="view === 'day'">
+            Day
+          </div>
         </div>
       </div>
     </div>
@@ -50,33 +68,5 @@ export class CalendarHeaderComponent {
   @Output() viewChange: EventEmitter<string> = new EventEmitter();
 
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
-
-  increment(): void {
-
-    const addFn: any = {
-      day: addDays,
-      week: addWeeks,
-      month: addMonths
-    }[this.view];
-
-    this.viewDateChange.emit(addFn(this.viewDate, 1));
-
-  }
-
-  decrement(): void {
-
-    const subFn: any = {
-      day: subDays,
-      week: subWeeks,
-      month: subMonths
-    }[this.view];
-
-    this.viewDateChange.emit(subFn(this.viewDate, 1));
-
-  }
-
-  today(): void {
-    this.viewDateChange.emit(new Date());
-  }
 
 }

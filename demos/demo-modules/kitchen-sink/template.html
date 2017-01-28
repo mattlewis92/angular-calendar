@@ -25,13 +25,24 @@
 <div class="row text-center">
   <div class="col-md-4">
     <div class="btn-group">
-      <div class="btn btn-primary" (click)="decrement()">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate">
         Previous
       </div>
-      <div class="btn btn-secondary" (click)="today()">
+      <div
+        class="btn btn-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate">
         Today
       </div>
-      <div class="btn btn-primary" (click)="increment()">
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate">
         Next
       </div>
     </div>
@@ -41,9 +52,24 @@
   </div>
   <div class="col-md-4">
     <div class="btn-group">
-      <div class="btn btn-primary" (click)="view = 'month'" [class.active]="view === 'month'">Month</div>
-      <div class="btn btn-primary" (click)="view = 'week'" [class.active]="view === 'week'">Week</div>
-      <div class="btn btn-primary" (click)="view = 'day'" [class.active]="view === 'day'">Day</div>
+      <div
+        class="btn btn-primary"
+        (click)="view = 'month'"
+        [class.active]="view === 'month'">
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="view = 'week'"
+        [class.active]="view === 'week'">
+        Week
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="view = 'day'"
+        [class.active]="view === 'day'">
+        Day
+      </div>
     </div>
   </div>
 </div>
