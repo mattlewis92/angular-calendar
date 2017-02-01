@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* add all declarations to exports ([f20a991](https://github.com/mattlewis92/angular-calendar/commit/f20a991))
+* add all declarations to exports (*Please note that these sub components will be subject to breaking changes in the next release once [#16](https://github.com/mattlewis92/angular-calendar/issues/16) lands, however will eventually become part of the public API. Use at your own risk!*) ([f20a991](https://github.com/mattlewis92/angular-calendar/commit/f20a991))
 
 
 
