@@ -449,9 +449,6 @@
                                     <a href="./components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
                             </li>
                             <li class="list-group-item">
-                                    <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
-                            </li>
-                            <li class="list-group-item">
                                     <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
                             </li>
                             <li class="list-group-item">
@@ -459,6 +456,9 @@
                             </li>
                             <li class="list-group-item">
                                     <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
                             </li>
                     </ul>
                 </div>
@@ -537,10 +537,22 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarDayViewComponent,
     CalendarWeekViewComponent,
     CalendarMonthViewComponent,
-    CalendarDatePipe,
+    CalendarEventActionsComponent,
+    CalendarEventTitleComponent,
+    CalendarMonthCellComponent,
+    CalendarOpenDayEventsComponent,
+    CalendarWeekViewHeaderComponent,
+    CalendarWeekViewEventComponent,
+    CalendarAllDayEventComponent,
+    CalendarDayViewHourSegmentComponent,
+    CalendarDayViewEventComponent,
+    CalendarTooltipWindowComponent,
+    CalendarTooltipDirective,
     CalendarPreviousViewDirective,
     CalendarNextViewDirective,
-    CalendarTodayDirective
+    CalendarTodayDirective,
+    CalendarDatePipe,
+    CalendarEventTitlePipe
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
@@ -561,7 +573,8 @@ export class CalendarModule {
 
   }
 
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

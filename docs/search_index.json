@@ -1697,7 +1697,7 @@
                         },
                         "/modules/CalendarModule.html": {
                           "ref": "/modules/CalendarModule.html",
-                          "tf": 0.022099447513812154
+                          "tf": 0.02072538860103627
                         },
                         "/components/CalendarWeekViewComponent.html": {
                           "ref": "/components/CalendarWeekViewComponent.html",
@@ -1726,7 +1726,7 @@
                               "docs": {
                                 "/modules/CalendarModule.html": {
                                   "ref": "/modules/CalendarModule.html",
-                                  "tf": 0.0055248618784530384
+                                  "tf": 0.0051813471502590676
                                 },
                                 "/components/CalendarDayViewComponent.html": {
                                   "ref": "/components/CalendarDayViewComponent.html",
@@ -1804,7 +1804,7 @@
                                     "docs": {
                                       "/modules/CalendarModule.html": {
                                         "ref": "/modules/CalendarModule.html",
-                                        "tf": 0.0055248618784530384
+                                        "tf": 0.0051813471502590676
                                       }
                                     }
                                   }
@@ -2515,7 +2515,7 @@
                           },
                           "/modules/CalendarModule.html": {
                             "ref": "/modules/CalendarModule.html",
-                            "tf": 0.0055248618784530384
+                            "tf": 0.0051813471502590676
                           },
                           "/components/CalendarDayViewComponent.html": {
                             "ref": "/components/CalendarDayViewComponent.html",
@@ -2576,7 +2576,7 @@
                                               },
                                               "/modules/CalendarModule.html": {
                                                 "ref": "/modules/CalendarModule.html",
-                                                "tf": 0.0055248618784530384
+                                                "tf": 0.0051813471502590676
                                               }
                                             }
                                           }
@@ -2752,7 +2752,7 @@
                                     },
                                     "/modules/CalendarModule.html": {
                                       "ref": "/modules/CalendarModule.html",
-                                      "tf": 5.016574585635359
+                                      "tf": 5.015544041450777
                                     }
                                   },
                                   "e": {
@@ -2818,7 +2818,7 @@
                                                       "docs": {
                                                         "/modules/CalendarModule.html": {
                                                           "ref": "/modules/CalendarModule.html",
-                                                          "tf": 0.011049723756906077
+                                                          "tf": 0.015544041450777202
                                                         }
                                                       }
                                                     }
@@ -2853,7 +2853,7 @@
                                                       "docs": {
                                                         "/modules/CalendarModule.html": {
                                                           "ref": "/modules/CalendarModule.html",
-                                                          "tf": 0.027624309392265192
+                                                          "tf": 0.025906735751295335
                                                         },
                                                         "/components/CalendarMonthViewComponent.html": {
                                                           "ref": "/components/CalendarMonthViewComponent.html",
@@ -2964,7 +2964,7 @@
                                                     "docs": {
                                                       "/modules/CalendarModule.html": {
                                                         "ref": "/modules/CalendarModule.html",
-                                                        "tf": 0.027624309392265192
+                                                        "tf": 0.025906735751295335
                                                       },
                                                       "/directives/CalendarNextViewDirective.html": {
                                                         "ref": "/directives/CalendarNextViewDirective.html",
@@ -3110,7 +3110,7 @@
                                                           "docs": {
                                                             "/modules/CalendarModule.html": {
                                                               "ref": "/modules/CalendarModule.html",
-                                                              "tf": 0.011049723756906077
+                                                              "tf": 0.015544041450777202
                                                             }
                                                           }
                                                         }
@@ -3159,7 +3159,7 @@
                                               "docs": {
                                                 "/modules/CalendarModule.html": {
                                                   "ref": "/modules/CalendarModule.html",
-                                                  "tf": 0.011049723756906077
+                                                  "tf": 0.010362694300518135
                                                 },
                                                 "/pipes/CalendarDatePipe.html": {
                                                   "ref": "/pipes/CalendarDatePipe.html",
@@ -3236,7 +3236,7 @@
                                       "docs": {
                                         "/modules/CalendarModule.html": {
                                           "ref": "/modules/CalendarModule.html",
-                                          "tf": 0.027624309392265192
+                                          "tf": 0.025906735751295335
                                         },
                                         "/pipes/CalendarDatePipe.html": {
                                           "ref": "/pipes/CalendarDatePipe.html",
@@ -3387,7 +3387,7 @@
                                                   "docs": {
                                                     "/modules/CalendarModule.html": {
                                                       "ref": "/modules/CalendarModule.html",
-                                                      "tf": 0.027624309392265192
+                                                      "tf": 0.025906735751295335
                                                     },
                                                     "/components/CalendarDayViewComponent.html": {
                                                       "ref": "/components/CalendarDayViewComponent.html",
@@ -3424,7 +3424,7 @@
                                                             "docs": {
                                                               "/modules/CalendarModule.html": {
                                                                 "ref": "/modules/CalendarModule.html",
-                                                                "tf": 0.011049723756906077
+                                                                "tf": 0.015544041450777202
                                                               }
                                                             }
                                                           }
@@ -3474,7 +3474,7 @@
                                                                         "docs": {
                                                                           "/modules/CalendarModule.html": {
                                                                             "ref": "/modules/CalendarModule.html",
-                                                                            "tf": 0.011049723756906077
+                                                                            "tf": 0.015544041450777202
                                                                           }
                                                                         }
                                                                       }
@@ -3645,7 +3645,7 @@
                                                             "docs": {
                                                               "/modules/CalendarModule.html": {
                                                                 "ref": "/modules/CalendarModule.html",
-                                                                "tf": 0.011049723756906077
+                                                                "tf": 0.015544041450777202
                                                               }
                                                             }
                                                           }
@@ -3685,7 +3685,7 @@
                                                         "docs": {
                                                           "/modules/CalendarModule.html": {
                                                             "ref": "/modules/CalendarModule.html",
-                                                            "tf": 0.011049723756906077
+                                                            "tf": 0.015544041450777202
                                                           }
                                                         }
                                                       }
@@ -3710,7 +3710,7 @@
                                                           "docs": {
                                                             "/modules/CalendarModule.html": {
                                                               "ref": "/modules/CalendarModule.html",
-                                                              "tf": 0.011049723756906077
+                                                              "tf": 0.010362694300518135
                                                             },
                                                             "/classes/CalendarEventTitleFormatter.html": {
                                                               "ref": "/classes/CalendarEventTitleFormatter.html",
@@ -3732,7 +3732,7 @@
                                                   "docs": {
                                                     "/modules/CalendarModule.html": {
                                                       "ref": "/modules/CalendarModule.html",
-                                                      "tf": 0.011049723756906077
+                                                      "tf": 0.015544041450777202
                                                     }
                                                   }
                                                 }
@@ -3841,7 +3841,7 @@
                                                               "docs": {
                                                                 "/modules/CalendarModule.html": {
                                                                   "ref": "/modules/CalendarModule.html",
-                                                                  "tf": 0.011049723756906077
+                                                                  "tf": 0.015544041450777202
                                                                 }
                                                               }
                                                             }
@@ -3901,7 +3901,7 @@
                                                             "docs": {
                                                               "/modules/CalendarModule.html": {
                                                                 "ref": "/modules/CalendarModule.html",
-                                                                "tf": 0.027624309392265192
+                                                                "tf": 0.025906735751295335
                                                               },
                                                               "/directives/CalendarPreviousViewDirective.html": {
                                                                 "ref": "/directives/CalendarPreviousViewDirective.html",
@@ -3967,7 +3967,7 @@
                                               "docs": {
                                                 "/modules/CalendarModule.html": {
                                                   "ref": "/modules/CalendarModule.html",
-                                                  "tf": 0.027624309392265192
+                                                  "tf": 0.025906735751295335
                                                 },
                                                 "/directives/CalendarTodayDirective.html": {
                                                   "ref": "/directives/CalendarTodayDirective.html",
@@ -4007,7 +4007,7 @@
                                                   "docs": {
                                                     "/modules/CalendarModule.html": {
                                                       "ref": "/modules/CalendarModule.html",
-                                                      "tf": 0.011049723756906077
+                                                      "tf": 0.015544041450777202
                                                     }
                                                   }
                                                 }
@@ -4042,7 +4042,7 @@
                                                               "docs": {
                                                                 "/modules/CalendarModule.html": {
                                                                   "ref": "/modules/CalendarModule.html",
-                                                                  "tf": 0.016574585635359115
+                                                                  "tf": 0.02072538860103627
                                                                 }
                                                               }
                                                             }
@@ -4094,7 +4094,7 @@
                                                     "docs": {
                                                       "/modules/CalendarModule.html": {
                                                         "ref": "/modules/CalendarModule.html",
-                                                        "tf": 0.027624309392265192
+                                                        "tf": 0.025906735751295335
                                                       },
                                                       "/components/CalendarWeekViewComponent.html": {
                                                         "ref": "/components/CalendarWeekViewComponent.html",
@@ -4131,7 +4131,7 @@
                                                               "docs": {
                                                                 "/modules/CalendarModule.html": {
                                                                   "ref": "/modules/CalendarModule.html",
-                                                                  "tf": 0.011049723756906077
+                                                                  "tf": 0.015544041450777202
                                                                 }
                                                               }
                                                             }
@@ -4171,7 +4171,7 @@
                                                                 "docs": {
                                                                   "/modules/CalendarModule.html": {
                                                                     "ref": "/modules/CalendarModule.html",
-                                                                    "tf": 0.011049723756906077
+                                                                    "tf": 0.015544041450777202
                                                                   }
                                                                 }
                                                               }
@@ -4306,7 +4306,7 @@
                                   "docs": {
                                     "/modules/CalendarModule.html": {
                                       "ref": "/modules/CalendarModule.html",
-                                      "tf": 0.011049723756906077
+                                      "tf": 0.010362694300518135
                                     }
                                   },
                                   "e": {
@@ -4329,7 +4329,7 @@
                                                     "docs": {
                                                       "/modules/CalendarModule.html": {
                                                         "ref": "/modules/CalendarModule.html",
-                                                        "tf": 0.011049723756906077
+                                                        "tf": 0.010362694300518135
                                                       }
                                                     }
                                                   }
@@ -4399,7 +4399,7 @@
                     },
                     "/modules/CalendarModule.html": {
                       "ref": "/modules/CalendarModule.html",
-                      "tf": 0.016574585635359115
+                      "tf": 0.015544041450777202
                     },
                     "/components/CalendarDayViewComponent.html": {
                       "ref": "/components/CalendarDayViewComponent.html",
@@ -4710,7 +4710,7 @@
                               "docs": {
                                 "/modules/CalendarModule.html": {
                                   "ref": "/modules/CalendarModule.html",
-                                  "tf": 0.011049723756906077
+                                  "tf": 0.010362694300518135
                                 }
                               }
                             }
@@ -4742,7 +4742,7 @@
                                     "docs": {
                                       "/modules/CalendarModule.html": {
                                         "ref": "/modules/CalendarModule.html",
-                                        "tf": 0.0055248618784530384
+                                        "tf": 0.0051813471502590676
                                       }
                                     }
                                   }
@@ -4875,7 +4875,7 @@
                                                                                                   "docs": {
                                                                                                     "/modules/CalendarModule.html": {
                                                                                                       "ref": "/modules/CalendarModule.html",
-                                                                                                      "tf": 0.0055248618784530384
+                                                                                                      "tf": 0.0051813471502590676
                                                                                                     }
                                                                                                   }
                                                                                                 }
@@ -4918,7 +4918,7 @@
                                                                                               "docs": {
                                                                                                 "/modules/CalendarModule.html": {
                                                                                                   "ref": "/modules/CalendarModule.html",
-                                                                                                  "tf": 0.0055248618784530384
+                                                                                                  "tf": 0.0051813471502590676
                                                                                                 }
                                                                                               }
                                                                                             }
@@ -5015,7 +5015,7 @@
                                                                                           "docs": {
                                                                                             "/modules/CalendarModule.html": {
                                                                                               "ref": "/modules/CalendarModule.html",
-                                                                                              "tf": 0.0055248618784530384
+                                                                                              "tf": 0.0051813471502590676
                                                                                             }
                                                                                           }
                                                                                         }
@@ -5066,7 +5066,7 @@
                                                                                   "docs": {
                                                                                     "/modules/CalendarModule.html": {
                                                                                       "ref": "/modules/CalendarModule.html",
-                                                                                      "tf": 0.0055248618784530384
+                                                                                      "tf": 0.0051813471502590676
                                                                                     }
                                                                                   }
                                                                                 }
@@ -5102,7 +5102,7 @@
                                                                                             "docs": {
                                                                                               "/modules/CalendarModule.html": {
                                                                                                 "ref": "/modules/CalendarModule.html",
-                                                                                                "tf": 0.0055248618784530384
+                                                                                                "tf": 0.0051813471502590676
                                                                                               }
                                                                                             }
                                                                                           }
@@ -5155,7 +5155,7 @@
                                                                                                         "docs": {
                                                                                                           "/modules/CalendarModule.html": {
                                                                                                             "ref": "/modules/CalendarModule.html",
-                                                                                                            "tf": 0.0055248618784530384
+                                                                                                            "tf": 0.0051813471502590676
                                                                                                           }
                                                                                                         }
                                                                                                       }
@@ -5257,7 +5257,7 @@
                                                                                           "docs": {
                                                                                             "/modules/CalendarModule.html": {
                                                                                               "ref": "/modules/CalendarModule.html",
-                                                                                              "tf": 0.0055248618784530384
+                                                                                              "tf": 0.0051813471502590676
                                                                                             }
                                                                                           }
                                                                                         }
@@ -5295,7 +5295,7 @@
                                                                                           "docs": {
                                                                                             "/modules/CalendarModule.html": {
                                                                                               "ref": "/modules/CalendarModule.html",
-                                                                                              "tf": 0.0055248618784530384
+                                                                                              "tf": 0.0051813471502590676
                                                                                             }
                                                                                           }
                                                                                         }
@@ -5356,7 +5356,7 @@
                                                                                                   "docs": {
                                                                                                     "/modules/CalendarModule.html": {
                                                                                                       "ref": "/modules/CalendarModule.html",
-                                                                                                      "tf": 0.0055248618784530384
+                                                                                                      "tf": 0.0051813471502590676
                                                                                                     }
                                                                                                   }
                                                                                                 }
@@ -5451,7 +5451,7 @@
                                                                                       "docs": {
                                                                                         "/modules/CalendarModule.html": {
                                                                                           "ref": "/modules/CalendarModule.html",
-                                                                                          "tf": 0.0055248618784530384
+                                                                                          "tf": 0.0051813471502590676
                                                                                         }
                                                                                       }
                                                                                     }
@@ -5487,7 +5487,7 @@
                                                                                                 "docs": {
                                                                                                   "/modules/CalendarModule.html": {
                                                                                                     "ref": "/modules/CalendarModule.html",
-                                                                                                    "tf": 0.0055248618784530384
+                                                                                                    "tf": 0.0051813471502590676
                                                                                                   }
                                                                                                 }
                                                                                               }
@@ -5530,7 +5530,7 @@
                                                                                                   "docs": {
                                                                                                     "/modules/CalendarModule.html": {
                                                                                                       "ref": "/modules/CalendarModule.html",
-                                                                                                      "tf": 0.0055248618784530384
+                                                                                                      "tf": 0.0051813471502590676
                                                                                                     }
                                                                                                   }
                                                                                                 }
@@ -7491,7 +7491,7 @@
                     "docs": {
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.011049723756906077
+                        "tf": 0.010362694300518135
                       }
                     }
                   }
@@ -7512,7 +7512,7 @@
                         "docs": {
                           "/modules/CalendarModule.html": {
                             "ref": "/modules/CalendarModule.html",
-                            "tf": 0.0055248618784530384
+                            "tf": 0.0051813471502590676
                           },
                           "/components/CalendarDayViewComponent.html": {
                             "ref": "/components/CalendarDayViewComponent.html",
@@ -7736,7 +7736,7 @@
                                                                             "docs": {
                                                                               "/modules/CalendarModule.html": {
                                                                                 "ref": "/modules/CalendarModule.html",
-                                                                                "tf": 0.0055248618784530384
+                                                                                "tf": 0.0051813471502590676
                                                                               }
                                                                             }
                                                                           }
@@ -7794,7 +7794,7 @@
                                                                                     "docs": {
                                                                                       "/modules/CalendarModule.html": {
                                                                                         "ref": "/modules/CalendarModule.html",
-                                                                                        "tf": 0.0055248618784530384
+                                                                                        "tf": 0.0051813471502590676
                                                                                       }
                                                                                     }
                                                                                   }
@@ -7842,7 +7842,7 @@
                                                                       "docs": {
                                                                         "/modules/CalendarModule.html": {
                                                                           "ref": "/modules/CalendarModule.html",
-                                                                          "tf": 0.0055248618784530384
+                                                                          "tf": 0.0051813471502590676
                                                                         }
                                                                       }
                                                                     }
@@ -7881,7 +7881,7 @@
                                                                           "docs": {
                                                                             "/modules/CalendarModule.html": {
                                                                               "ref": "/modules/CalendarModule.html",
-                                                                              "tf": 0.0055248618784530384
+                                                                              "tf": 0.0051813471502590676
                                                                             }
                                                                           }
                                                                         }
@@ -8157,7 +8157,7 @@
                                         "docs": {
                                           "/modules/CalendarModule.html": {
                                             "ref": "/modules/CalendarModule.html",
-                                            "tf": 0.011049723756906077
+                                            "tf": 0.010362694300518135
                                           }
                                         }
                                       }
@@ -8211,7 +8211,7 @@
                         "docs": {
                           "/modules/CalendarModule.html": {
                             "ref": "/modules/CalendarModule.html",
-                            "tf": 0.0055248618784530384
+                            "tf": 0.0051813471502590676
                           }
                         },
                         "e": {
@@ -8226,7 +8226,7 @@
                                   "docs": {
                                     "/modules/CalendarModule.html": {
                                       "ref": "/modules/CalendarModule.html",
-                                      "tf": 0.011049723756906077
+                                      "tf": 0.010362694300518135
                                     }
                                   }
                                 }
@@ -8837,7 +8837,7 @@
                         "docs": {
                           "/modules/CalendarModule.html": {
                             "ref": "/modules/CalendarModule.html",
-                            "tf": 0.0055248618784530384
+                            "tf": 0.0051813471502590676
                           }
                         }
                       }
@@ -8944,7 +8944,7 @@
                               "docs": {
                                 "/modules/CalendarModule.html": {
                                   "ref": "/modules/CalendarModule.html",
-                                  "tf": 0.0055248618784530384
+                                  "tf": 0.0051813471502590676
                                 }
                               }
                             }
@@ -9843,7 +9843,7 @@
                       },
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.011049723756906077
+                        "tf": 0.010362694300518135
                       },
                       "/components/CalendarDayViewComponent.html": {
                         "ref": "/components/CalendarDayViewComponent.html",
@@ -9900,7 +9900,7 @@
                       },
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.016574585635359115
+                        "tf": 0.015544041450777202
                       },
                       "/components/CalendarDayViewComponent.html": {
                         "ref": "/components/CalendarDayViewComponent.html",
@@ -9999,7 +9999,7 @@
                       "docs": {
                         "/modules/CalendarModule.html": {
                           "ref": "/modules/CalendarModule.html",
-                          "tf": 0.0055248618784530384
+                          "tf": 0.0051813471502590676
                         },
                         "/components/CalendarWeekViewComponent.html": {
                           "ref": "/components/CalendarWeekViewComponent.html",
@@ -10078,7 +10078,7 @@
                   },
                   "/modules/CalendarModule.html": {
                     "ref": "/modules/CalendarModule.html",
-                    "tf": 0.0055248618784530384
+                    "tf": 0.0051813471502590676
                   },
                   "/components/CalendarDayViewComponent.html": {
                     "ref": "/components/CalendarDayViewComponent.html",
@@ -10204,7 +10204,7 @@
                       "docs": {
                         "/modules/CalendarModule.html": {
                           "ref": "/modules/CalendarModule.html",
-                          "tf": 0.0055248618784530384
+                          "tf": 0.0051813471502590676
                         }
                       }
                     }
@@ -12047,7 +12047,7 @@
                       },
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.16022099447513813
+                        "tf": 0.15025906735751296
                       },
                       "/components/CalendarDayViewComponent.html": {
                         "ref": "/components/CalendarDayViewComponent.html",
@@ -12555,7 +12555,7 @@
                 "docs": {
                   "/modules/CalendarModule.html": {
                     "ref": "/modules/CalendarModule.html",
-                    "tf": 0.0055248618784530384
+                    "tf": 0.0051813471502590676
                   },
                   "/components/CalendarDayViewComponent.html": {
                     "ref": "/components/CalendarDayViewComponent.html",
@@ -12937,7 +12937,7 @@
                       "docs": {
                         "/modules/CalendarModule.html": {
                           "ref": "/modules/CalendarModule.html",
-                          "tf": 0.011049723756906077
+                          "tf": 0.010362694300518135
                         }
                       }
                     }
@@ -13336,7 +13336,7 @@
                     },
                     "/modules/CalendarModule.html": {
                       "ref": "/modules/CalendarModule.html",
-                      "tf": 0.011049723756906077
+                      "tf": 0.010362694300518135
                     },
                     "/components/CalendarDayViewComponent.html": {
                       "ref": "/components/CalendarDayViewComponent.html",
@@ -13652,7 +13652,7 @@
                 "docs": {
                   "/modules/CalendarModule.html": {
                     "ref": "/modules/CalendarModule.html",
-                    "tf": 0.011049723756906077
+                    "tf": 0.010362694300518135
                   }
                 }
               }
@@ -13705,7 +13705,7 @@
                     },
                     "/modules/CalendarModule.html": {
                       "ref": "/modules/CalendarModule.html",
-                      "tf": 5.016574585635359
+                      "tf": 5.015544041450777
                     }
                   },
                   "e": {
@@ -13732,7 +13732,7 @@
                                         "docs": {
                                           "/modules/CalendarModule.html": {
                                             "ref": "/modules/CalendarModule.html",
-                                            "tf": 0.011049723756906077
+                                            "tf": 0.010362694300518135
                                           }
                                         }
                                       }
@@ -14425,7 +14425,7 @@
                         },
                         "/modules/CalendarModule.html": {
                           "ref": "/modules/CalendarModule.html",
-                          "tf": 0.011049723756906077
+                          "tf": 0.010362694300518135
                         }
                       }
                     }
@@ -14612,7 +14612,7 @@
                         },
                         "/modules/CalendarModule.html": {
                           "ref": "/modules/CalendarModule.html",
-                          "tf": 0.016574585635359115
+                          "tf": 0.015544041450777202
                         }
                       }
                     }
@@ -15801,7 +15801,7 @@
                     "docs": {
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.0055248618784530384
+                        "tf": 0.0051813471502590676
                       },
                       "/classes/CalendarDateFormatter.html": {
                         "ref": "/classes/CalendarDateFormatter.html",
@@ -15882,7 +15882,7 @@
                                                                                     "docs": {
                                                                                       "/modules/CalendarModule.html": {
                                                                                         "ref": "/modules/CalendarModule.html",
-                                                                                        "tf": 0.0055248618784530384
+                                                                                        "tf": 0.0051813471502590676
                                                                                       },
                                                                                       "/pipes/CalendarDatePipe.html": {
                                                                                         "ref": "/pipes/CalendarDatePipe.html",
@@ -15998,7 +15998,7 @@
                                                                               "docs": {
                                                                                 "/modules/CalendarModule.html": {
                                                                                   "ref": "/modules/CalendarModule.html",
-                                                                                  "tf": 0.0055248618784530384
+                                                                                  "tf": 0.0051813471502590676
                                                                                 }
                                                                               }
                                                                             }
@@ -16238,7 +16238,7 @@
                                                     "docs": {
                                                       "/modules/CalendarModule.html": {
                                                         "ref": "/modules/CalendarModule.html",
-                                                        "tf": 0.0055248618784530384
+                                                        "tf": 0.0051813471502590676
                                                       }
                                                     }
                                                   }
@@ -16279,7 +16279,7 @@
                                                                 "docs": {
                                                                   "/modules/CalendarModule.html": {
                                                                     "ref": "/modules/CalendarModule.html",
-                                                                    "tf": 0.0055248618784530384
+                                                                    "tf": 0.0051813471502590676
                                                                   }
                                                                 }
                                                               }
@@ -16536,7 +16536,7 @@
                       },
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.011049723756906077
+                        "tf": 0.010362694300518135
                       },
                       "/components/CalendarDayViewComponent.html": {
                         "ref": "/components/CalendarDayViewComponent.html",
@@ -16604,7 +16604,7 @@
                   "docs": {
                     "/modules/CalendarModule.html": {
                       "ref": "/modules/CalendarModule.html",
-                      "tf": 0.0055248618784530384
+                      "tf": 0.0051813471502590676
                     },
                     "/components/CalendarDayViewComponent.html": {
                       "ref": "/components/CalendarDayViewComponent.html",
@@ -16639,7 +16639,7 @@
                                     "docs": {
                                       "/modules/CalendarModule.html": {
                                         "ref": "/modules/CalendarModule.html",
-                                        "tf": 0.011049723756906077
+                                        "tf": 0.010362694300518135
                                       }
                                     }
                                   }
@@ -17335,7 +17335,7 @@
                     "docs": {
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.0055248618784530384
+                        "tf": 0.0051813471502590676
                       },
                       "/components/CalendarWeekViewComponent.html": {
                         "ref": "/components/CalendarWeekViewComponent.html",
@@ -18204,7 +18204,7 @@
                   "docs": {
                     "/modules/CalendarModule.html": {
                       "ref": "/modules/CalendarModule.html",
-                      "tf": 0.0055248618784530384
+                      "tf": 0.0051813471502590676
                     },
                     "/components/CalendarDayViewComponent.html": {
                       "ref": "/components/CalendarDayViewComponent.html",
@@ -18328,7 +18328,7 @@
                     "docs": {
                       "/modules/CalendarModule.html": {
                         "ref": "/modules/CalendarModule.html",
-                        "tf": 0.0055248618784530384
+                        "tf": 0.0051813471502590676
                       }
                     }
                   }
@@ -18732,7 +18732,7 @@
                                                   "docs": {
                                                     "/modules/CalendarModule.html": {
                                                       "ref": "/modules/CalendarModule.html",
-                                                      "tf": 0.0055248618784530384
+                                                      "tf": 0.0051813471502590676
                                                     }
                                                   }
                                                 }
@@ -22704,7 +22704,7 @@
                   },
                   "/modules/CalendarModule.html": {
                     "ref": "/modules/CalendarModule.html",
-                    "tf": 0.011049723756906077
+                    "tf": 0.010362694300518135
                   },
                   "/components/CalendarDayViewComponent.html": {
                     "ref": "/components/CalendarDayViewComponent.html",
@@ -25320,7 +25320,7 @@
     "/modules/CalendarModule.html": {
       "url": "/modules/CalendarModule.html",
       "title": "module - CalendarModule",
-      "body": "\n                   \n\n\n  Modules\n  CalendarModule\n\n\n\n\n    \n        Infos\n    \n    \n        Source\n    \n\n\n\n    \n        \n            File\n        \n        \n            src/calendar.module.ts\n        \n\n            \n                Description\n            \n            \n                The main module of this library. Example usage:\nimport { CalenderModule } from 'angular-calendar';@NgModule({   imports: [     CalenderModule.forRoot()   ]})class MyModule {}\n            \n\n        \n            \n                \n                    Declarations\n                    \n                            \n                                CalendarDayViewComponent\n                            \n                            \n                                CalendarWeekViewComponent\n                            \n                            \n                                CalendarMonthViewComponent\n                            \n                            \n                                CalendarPreviousViewDirective\n                            \n                            \n                                CalendarNextViewDirective\n                            \n                            \n                                CalendarTodayDirective\n                            \n                            \n                                CalendarDatePipe\n                            \n                    \n                \n                \n                    Exports\n                    \n                            \n                                    CalendarDayViewComponent\n                            \n                            \n                                    CalendarWeekViewComponent\n                            \n                            \n                                    CalendarMonthViewComponent\n                            \n                            \n                                    CalendarDatePipe\n                            \n                            \n                                    CalendarPreviousViewDirective\n                            \n                            \n                                    CalendarNextViewDirective\n                            \n                            \n                                    CalendarTodayDirective\n                            \n                    \n                \n            \n        \n    \n    \n        import { NgModule, ModuleWithProviders } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ResizableModule } from 'angular-resizable-element';\nimport { DragAndDropModule, DraggableHelper } from 'angular-draggable-droppable';\nimport { CalendarDayViewComponent } from './components/day/calendarDayView.component';\nimport { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';\nimport { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';\nimport { CalendarEventActionsComponent } from './components/common/calendarEventActions.component';\nimport { CalendarEventTitleComponent } from './components/common/calendarEventTitle.component';\nimport { CalendarMonthCellComponent } from './components/month/calendarMonthCell.component';\nimport { CalendarOpenDayEventsComponent } from './components/month/calendarOpenDayEvents.component';\nimport { CalendarWeekViewHeaderComponent } from './components/week/calendarWeekViewHeader.component';\nimport { CalendarWeekViewEventComponent } from './components/week/calendarWeekViewEvent.component';\nimport { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';\nimport { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';\nimport { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';\nimport { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';\nimport { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';\nimport { CalendarNextViewDirective } from './directives/calendarNextView.directive';\nimport { CalendarTodayDirective } from './directives/calendarToday.directive';\nimport { CalendarDatePipe } from './pipes/calendarDate.pipe';\nimport { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';\nimport { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';\nimport { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';\n\n/**\n * The main module of this library. Example usage:\n *\n * ```\n * import { CalenderModule } from 'angular-calendar';\n *\n * &commat;NgModule({\n *   imports: [\n *     CalenderModule.forRoot()\n *   ]\n * })\n * class MyModule {}\n * ```\n *\n */\n@NgModule({\n  declarations: [\n    CalendarDayViewComponent,\n    CalendarWeekViewComponent,\n    CalendarMonthViewComponent,\n    CalendarEventActionsComponent,\n    CalendarEventTitleComponent,\n    CalendarMonthCellComponent,\n    CalendarOpenDayEventsComponent,\n    CalendarWeekViewHeaderComponent,\n    CalendarWeekViewEventComponent,\n    CalendarAllDayEventComponent,\n    CalendarDayViewHourSegmentComponent,\n    CalendarDayViewEventComponent,\n    CalendarTooltipWindowComponent,\n    CalendarTooltipDirective,\n    CalendarPreviousViewDirective,\n    CalendarNextViewDirective,\n    CalendarTodayDirective,\n    CalendarDatePipe,\n    CalendarEventTitlePipe\n  ],\n  imports: [\n    CommonModule,\n    ResizableModule,\n    DragAndDropModule\n  ],\n  exports: [\n    CalendarDayViewComponent,\n    CalendarWeekViewComponent,\n    CalendarMonthViewComponent,\n    CalendarDatePipe,\n    CalendarPreviousViewDirective,\n    CalendarNextViewDirective,\n    CalendarTodayDirective\n  ],\n  entryComponents: [\n    CalendarTooltipWindowComponent\n  ]\n})\nexport class CalendarModule {\n\n  static forRoot(): ModuleWithProviders {\n\n    return {\n      ngModule: CalendarModule,\n      providers: [\n        CalendarEventTitleFormatter,\n        CalendarDateFormatter,\n        DraggableHelper\n      ]\n    };\n\n  }\n\n}\n    \n\n\n\n\n\n\n\n\n\n\n                   \n    \n         results matching \"\"\n        \n    \n    \n        No results matching \"\"\n    \n\n"
+      "body": "\n                   \n\n\n  Modules\n  CalendarModule\n\n\n\n\n    \n        Infos\n    \n    \n        Source\n    \n\n\n\n    \n        \n            File\n        \n        \n            src/calendar.module.ts\n        \n\n            \n                Description\n            \n            \n                The main module of this library. Example usage:\nimport { CalenderModule } from 'angular-calendar';@NgModule({   imports: [     CalenderModule.forRoot()   ]})class MyModule {}\n            \n\n        \n            \n                \n                    Declarations\n                    \n                            \n                                CalendarDayViewComponent\n                            \n                            \n                                CalendarWeekViewComponent\n                            \n                            \n                                CalendarMonthViewComponent\n                            \n                            \n                                CalendarPreviousViewDirective\n                            \n                            \n                                CalendarNextViewDirective\n                            \n                            \n                                CalendarTodayDirective\n                            \n                            \n                                CalendarDatePipe\n                            \n                    \n                \n                \n                    Exports\n                    \n                            \n                                    CalendarDayViewComponent\n                            \n                            \n                                    CalendarWeekViewComponent\n                            \n                            \n                                    CalendarMonthViewComponent\n                            \n                            \n                                    CalendarPreviousViewDirective\n                            \n                            \n                                    CalendarNextViewDirective\n                            \n                            \n                                    CalendarTodayDirective\n                            \n                            \n                                    CalendarDatePipe\n                            \n                    \n                \n            \n        \n    \n    \n        import { NgModule, ModuleWithProviders } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ResizableModule } from 'angular-resizable-element';\nimport { DragAndDropModule, DraggableHelper } from 'angular-draggable-droppable';\nimport { CalendarDayViewComponent } from './components/day/calendarDayView.component';\nimport { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';\nimport { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';\nimport { CalendarEventActionsComponent } from './components/common/calendarEventActions.component';\nimport { CalendarEventTitleComponent } from './components/common/calendarEventTitle.component';\nimport { CalendarMonthCellComponent } from './components/month/calendarMonthCell.component';\nimport { CalendarOpenDayEventsComponent } from './components/month/calendarOpenDayEvents.component';\nimport { CalendarWeekViewHeaderComponent } from './components/week/calendarWeekViewHeader.component';\nimport { CalendarWeekViewEventComponent } from './components/week/calendarWeekViewEvent.component';\nimport { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';\nimport { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';\nimport { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';\nimport { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';\nimport { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';\nimport { CalendarNextViewDirective } from './directives/calendarNextView.directive';\nimport { CalendarTodayDirective } from './directives/calendarToday.directive';\nimport { CalendarDatePipe } from './pipes/calendarDate.pipe';\nimport { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';\nimport { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';\nimport { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';\n\n/**\n * The main module of this library. Example usage:\n *\n * ```\n * import { CalenderModule } from 'angular-calendar';\n *\n * &commat;NgModule({\n *   imports: [\n *     CalenderModule.forRoot()\n *   ]\n * })\n * class MyModule {}\n * ```\n *\n */\n@NgModule({\n  declarations: [\n    CalendarDayViewComponent,\n    CalendarWeekViewComponent,\n    CalendarMonthViewComponent,\n    CalendarEventActionsComponent,\n    CalendarEventTitleComponent,\n    CalendarMonthCellComponent,\n    CalendarOpenDayEventsComponent,\n    CalendarWeekViewHeaderComponent,\n    CalendarWeekViewEventComponent,\n    CalendarAllDayEventComponent,\n    CalendarDayViewHourSegmentComponent,\n    CalendarDayViewEventComponent,\n    CalendarTooltipWindowComponent,\n    CalendarTooltipDirective,\n    CalendarPreviousViewDirective,\n    CalendarNextViewDirective,\n    CalendarTodayDirective,\n    CalendarDatePipe,\n    CalendarEventTitlePipe\n  ],\n  imports: [\n    CommonModule,\n    ResizableModule,\n    DragAndDropModule\n  ],\n  exports: [\n    CalendarDayViewComponent,\n    CalendarWeekViewComponent,\n    CalendarMonthViewComponent,\n    CalendarEventActionsComponent,\n    CalendarEventTitleComponent,\n    CalendarMonthCellComponent,\n    CalendarOpenDayEventsComponent,\n    CalendarWeekViewHeaderComponent,\n    CalendarWeekViewEventComponent,\n    CalendarAllDayEventComponent,\n    CalendarDayViewHourSegmentComponent,\n    CalendarDayViewEventComponent,\n    CalendarTooltipWindowComponent,\n    CalendarTooltipDirective,\n    CalendarPreviousViewDirective,\n    CalendarNextViewDirective,\n    CalendarTodayDirective,\n    CalendarDatePipe,\n    CalendarEventTitlePipe\n  ],\n  entryComponents: [\n    CalendarTooltipWindowComponent\n  ]\n})\nexport class CalendarModule {\n\n  static forRoot(): ModuleWithProviders {\n\n    return {\n      ngModule: CalendarModule,\n      providers: [\n        CalendarEventTitleFormatter,\n        CalendarDateFormatter,\n        DraggableHelper\n      ]\n    };\n\n  }\n\n}\n\n    \n\n\n\n\n\n\n\n\n\n\n                   \n    \n         results matching \"\"\n        \n    \n    \n        No results matching \"\"\n    \n\n"
     },
     "/components/CalendarDayViewComponent.html": {
       "url": "/components/CalendarDayViewComponent.html",
