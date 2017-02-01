@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/mattlewis92/angular-calendar/compare/v0.7.0...v0.7.1) (2017-02-01)
+
+
+### Features
+
+* add all declarations to exports ([f20a991](https://github.com/mattlewis92/angular-calendar/commit/f20a991))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/mattlewis92/angular-calendar/compare/v0.6.2...v0.7.0) (2017-01-28)
 
