@@ -69,10 +69,22 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDayViewComponent,
     CalendarWeekViewComponent,
     CalendarMonthViewComponent,
-    CalendarDatePipe,
+    CalendarEventActionsComponent,
+    CalendarEventTitleComponent,
+    CalendarMonthCellComponent,
+    CalendarOpenDayEventsComponent,
+    CalendarWeekViewHeaderComponent,
+    CalendarWeekViewEventComponent,
+    CalendarAllDayEventComponent,
+    CalendarDayViewHourSegmentComponent,
+    CalendarDayViewEventComponent,
+    CalendarTooltipWindowComponent,
+    CalendarTooltipDirective,
     CalendarPreviousViewDirective,
     CalendarNextViewDirective,
-    CalendarTodayDirective
+    CalendarTodayDirective,
+    CalendarDatePipe,
+    CalendarEventTitlePipe
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
