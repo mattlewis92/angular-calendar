@@ -124,15 +124,22 @@ export default {
     rules: [{
       enforce: 'pre',
       test: /\.ts$/,
-      loader: 'tslint-loader?emitErrors=true&failOnHint=true',
-      exclude: /node_modules/
+      loader: 'tslint-loader',
+      exclude: /node_modules/,
+      options: {
+        emitErrors: true,
+        failOnHint: true
+      }
     }, {
       test: /\.ts$/,
-      loader: 'awesome-typescript-loader?module=es2015',
-      exclude: /node_modules/
+      loader: 'awesome-typescript-loader',
+      exclude: /node_modules/,
+      options: {
+        module: 'es2015'
+      }
     }, {
       test: /\.scss/,
-      loader: ExtractTextPlugin.extract({
+      use: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: 'css-loader!postcss-loader!sass-loader'
       }),
