@@ -122,7 +122,7 @@ export class CalendarDayViewEventComponent {
 
   dragStart(event: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(this.dayViewContainer, event);
-    this.validateDrag = ({x, y}) => dragHelper.validateDrag({x, y});
+    this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
     this.cdr.markForCheck();
   }
 
