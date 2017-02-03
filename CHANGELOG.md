@@ -2,13 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.2"></a>
+## [0.7.2](https://github.com/mattlewis92/angular-calendar/compare/v0.7.1...v0.7.2) (2017-02-03)
+
+
+### Bug Fixes
+
+* disable drag events when resizing ([43c128c](https://github.com/mattlewis92/angular-calendar/commit/43c128c))
+
+
+
 <a name="0.7.1"></a>
 ## [0.7.1](https://github.com/mattlewis92/angular-calendar/compare/v0.7.0...v0.7.1) (2017-02-01)
 
 
 ### Features
 
-* add all declarations to exports ([f20a991](https://github.com/mattlewis92/angular-calendar/commit/f20a991))
+* add all declarations to exports (*Please note that these sub components will be subject to breaking changes in the next release once [#16](https://github.com/mattlewis92/angular-calendar/issues/16) lands, however will eventually become part of the public API. Use at your own risk!*) ([f20a991](https://github.com/mattlewis92/angular-calendar/commit/f20a991))
 
 
 

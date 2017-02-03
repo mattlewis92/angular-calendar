@@ -287,7 +287,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
-    this.validateDrag = ({x, y}) => dragHelper.validateDrag({x, y});
+    this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
     this.cdr.markForCheck();
   }
 
