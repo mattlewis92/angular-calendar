@@ -1,9 +1,9 @@
 import * as webpack from 'webpack';
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const {ForkCheckerPlugin} = require('awesome-typescript-loader');
 
-module.exports = config => {
+export default config => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
