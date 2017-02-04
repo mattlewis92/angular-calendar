@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { CalendarEvent } from 'angular-calendar';
 import { isSameMonth, isSameDay, startOfMonth, endOfMonth, startOfWeek, endOfWeek, startOfDay, endOfDay, format } from 'date-fns';
 import { Observable } from 'rxjs/Observable';
