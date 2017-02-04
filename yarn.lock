@@ -193,9 +193,9 @@ angular-highlight-js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/angular-highlight-js/-/angular-highlight-js-1.0.1.tgz#568e756a94921556ff7708cd5d61d81995bfc5d1"
 
-angular-resizable-element@^0.5.4:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.5.7.tgz#1040517b24b69d7e2140346f659a5330f4f985d0"
+angular-resizable-element@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.6.0.tgz#2a3fef2012fb55b7423d8e249d8002851b9c8ade"
 
 angular2-dependencies-graph@1.0.0-alpha.12:
   version "1.0.0-alpha.12"
