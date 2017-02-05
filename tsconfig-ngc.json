@@ -12,7 +12,8 @@
     "sourceMap": true,
     "inlineSources": true,
     "lib": ["es6", "dom"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": []
   },
   "files": [
     "src/index.ts"
