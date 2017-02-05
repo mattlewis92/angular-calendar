@@ -11,9 +11,6 @@
     "rootDir": "./",
     "sourceMap": true,
     "inlineSources": true,
-    "types": [
-      "date-fns"
-    ],
     "lib": ["es6", "dom"],
     "allowSyntheticDefaultImports": true
   },
