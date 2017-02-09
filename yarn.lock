@@ -48,6 +48,22 @@
   dependencies:
     tsickle "^0.2"
 
+"@compodoc/ngd-core@2.0.0-alpha.1", "@compodoc/ngd-core@^2.0.0-alpha.1":
+  version "2.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@compodoc/ngd-core/-/ngd-core-2.0.0-alpha.1.tgz#2f4f9df10ccf24c208e2babaae0b438cb72fdb77"
+  dependencies:
+    gulp-util "^3.0.7"
+
+"@compodoc/ngd-transformer@^2.0.0-alpha.3":
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@compodoc/ngd-transformer/-/ngd-transformer-2.0.0-alpha.3.tgz#87f6e3f4169ae1b2f8ef6e5ad960062bbdfca98f"
+  dependencies:
+    "@compodoc/ngd-core" "2.0.0-alpha.1"
+    dot "^1.1.1"
+    fs-extra "^2.0.0"
+    q "^1.4.1"
+    viz.js "^1.6.0"
+
 "@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.19":
   version "1.0.0-alpha.20"
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.20.tgz#db353971e4818210e753019b5ddbabad1e603a61"
@@ -196,20 +212,6 @@ angular-highlight-js@^1.0.0:
 angular-resizable-element@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.6.0.tgz#2a3fef2012fb55b7423d8e249d8002851b9c8ade"
-
-angular2-dependencies-graph@1.0.0-alpha.12:
-  version "1.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/angular2-dependencies-graph/-/angular2-dependencies-graph-1.0.0-alpha.12.tgz#89867412949eff146f2ddea7c35123920e34c0d2"
-  dependencies:
-    colors "1.1.2"
-    commander "2.9.0"
-    dot "1.0.3"
-    fs-extra "0.26.2"
-    gulp-util "3.0.7"
-    opener "1.4.1"
-    q "1.4.1"
-    typescript "2.0.0"
-    viz.js "1.3.0"
 
 angular2-template-loader@^0.6.0:
   version "0.6.0"
@@ -1017,7 +1019,7 @@ colormin@^1.0.5:
     css-color-names "0.0.4"
     has "^1.0.1"
 
-colors@1.1.2, colors@^1.1.0, colors@^1.1.2, colors@latest, colors@~1.1.2:
+colors@^1.1.0, colors@^1.1.2, colors@latest, colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
 
@@ -1041,7 +1043,7 @@ commander@2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
 
-commander@2.9.0, commander@^2.9.0:
+commander@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
@@ -1078,11 +1080,12 @@ compare-func@^1.3.1:
     array-ify "^1.0.0"
     dot-prop "^3.0.0"
 
-compodoc@^0.0.38:
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/compodoc/-/compodoc-0.0.38.tgz#49ced31d353b9a45bf3d983054a2f2ac81f44af3"
+compodoc@^0.0.40:
+  version "0.0.40"
+  resolved "https://registry.yarnpkg.com/compodoc/-/compodoc-0.0.40.tgz#d20defd3fc96503d128064787d311a3c9c62cfa9"
   dependencies:
-    angular2-dependencies-graph "1.0.0-alpha.12"
+    "@compodoc/ngd-core" "^2.0.0-alpha.1"
+    "@compodoc/ngd-transformer" "^2.0.0-alpha.3"
     cheerio "^0.22.0"
     colors "^1.1.2"
     commander "^2.9.0"
@@ -1092,13 +1095,12 @@ compodoc@^0.0.38:
     handlebars "^4.0.6"
     highlight.js "^9.8.0"
     html-entities "^1.2.0"
-    is-global-exec "^0.1.3"
     live-server "^1.2.0"
     lodash "^4.17.3"
     lunr "^0.7.2"
     marked "^0.3.6"
     shelljs "^0.7.6"
-    typescript "^2.1.5"
+    typescript "2.1.5"
 
 component-bind@1.0.0:
   version "1.0.0"
@@ -1803,9 +1805,9 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
-dot@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/dot/-/dot-1.0.3.tgz#f8750bfb6b03c7664eb0e6cb1eb4c66419af9427"
+dot@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dot/-/dot-1.1.1.tgz#1aa26a12b38b1dcccb496714a44303b72efd9ac0"
 
 duplexer2@0.0.2:
   version "0.0.2"
@@ -2295,16 +2297,6 @@ fs-exists-sync@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/fs-exists-sync/-/fs-exists-sync-0.1.0.tgz#982d6893af918e72d08dec9e8673ff2b5a8d6add"
 
-fs-extra@0.26.2:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-0.26.2.tgz#71b7697e539db037acf41e6e7923e94d605bf498"
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^2.1.0"
-    klaw "^1.0.0"
-    path-is-absolute "^1.0.0"
-    rimraf "^2.2.8"
-
 fs-extra@^1.0.0, fs-extra@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-1.0.0.tgz#cd3ce5f7e7cb6145883fcae3191e9877f8587950"
@@ -2489,10 +2481,6 @@ glob@~5.0.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-global-bin-path@*:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/global-bin-path/-/global-bin-path-0.1.1.tgz#3ecec7c23b4bb9405291c14140e74abe755d9b55"
-
 global-modules@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/global-modules/-/global-modules-0.2.3.tgz#ea5a3bed42c6d6ce995a4f8a1269b5dae223828d"
@@ -2569,30 +2557,7 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-gulp-util@3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.7.tgz#78925c4b8f8b49005ac01a011c557e6218941cbb"
-  dependencies:
-    array-differ "^1.0.0"
-    array-uniq "^1.0.2"
-    beeper "^1.0.0"
-    chalk "^1.0.0"
-    dateformat "^1.0.11"
-    fancy-log "^1.1.0"
-    gulplog "^1.0.0"
-    has-gulplog "^0.1.0"
-    lodash._reescape "^3.0.0"
-    lodash._reevaluate "^3.0.0"
-    lodash._reinterpolate "^3.0.0"
-    lodash.template "^3.0.0"
-    minimist "^1.1.0"
-    multipipe "^0.1.2"
-    object-assign "^3.0.0"
-    replace-ext "0.0.1"
-    through2 "^2.0.0"
-    vinyl "^0.5.0"
-
-gulp-util@^3.0.8:
+gulp-util@^3.0.7, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -3005,13 +2970,6 @@ is-glob@^3.1.0:
   dependencies:
     is-extglob "^2.1.0"
 
-is-global-exec@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/is-global-exec/-/is-global-exec-0.1.3.tgz#93822b28a4b4c8a4c4f9da24fb35bc06b97d9f2b"
-  dependencies:
-    global-bin-path "*"
-    is-path-inside "^1.0.0"
-
 is-my-json-valid@^2.12.4:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/is-my-json-valid/-/is-my-json-valid-2.15.0.tgz#936edda3ca3c211fd98f3b2d3e08da43f7b2915b"
@@ -3038,12 +2996,6 @@ is-number@^2.0.2, is-number@^2.1.0:
 is-obj@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
-
-is-path-inside@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-path-inside/-/is-path-inside-1.0.0.tgz#fc06e5a1683fbda13de667aff717bbc10a48f37f"
-  dependencies:
-    path-is-inside "^1.0.1"
 
 is-plain-obj@^1.0.0:
   version "1.1.0"
@@ -4119,10 +4071,6 @@ onetime@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
 
-opener@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.1.tgz#897590acd1aed3311b703b58bccb4d43f56f2895"
-
 opn@4.0.2, opn@latest:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
@@ -4263,10 +4211,6 @@ path-exists@2.1.0, path-exists@^2.0.0:
 path-is-absolute@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
-
-path-is-inside@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
 path-parse@^1.0.5:
   version "1.0.5"
@@ -4724,7 +4668,7 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-q@1.4.1, q@^1.1.2, q@^1.4.1:
+q@^1.1.2, q@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
@@ -5079,7 +5023,7 @@ right-pad@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/right-pad/-/right-pad-1.0.1.tgz#8ca08c2cbb5b55e74dafa96bf7fd1a27d568c8d0"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.3.3, rimraf@^2.4.3, rimraf@^2.4.4, rimraf@~2.5.1, rimraf@~2.5.4:
+rimraf@2, rimraf@^2.3.3, rimraf@^2.4.3, rimraf@^2.4.4, rimraf@~2.5.1, rimraf@~2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:
@@ -5930,13 +5874,9 @@ typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.0.0.tgz#14795f9c39e06022597a2a09eb733adabef9b08c"
-
-typescript@^2.1.5:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.0.tgz#626f2fc70087d2480f21ebb12c1888288c8614e3"
+typescript@2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.5.tgz#6fe9479e00e01855247cea216e7561bafcdbcd4a"
 
 typescript@~2.0.10:
   version "2.0.10"
@@ -6115,9 +6055,9 @@ vinyl@^0.5.0:
     clone-stats "^0.0.1"
     replace-ext "0.0.1"
 
-viz.js@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/viz.js/-/viz.js-1.3.0.tgz#a7d928a40bdb451a093298038fc999bd59a87288"
+viz.js@^1.6.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/viz.js/-/viz.js-1.7.0.tgz#fb9f31a3ea40512e652a78ceb007104635267c34"
 
 vm-browserify@0.0.4:
   version "0.0.4"
