@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
+import { CheckerPlugin } from 'awesome-typescript-loader';
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const {ForkCheckerPlugin} = require('awesome-typescript-loader');
 
 export default config => {
   config.set({
@@ -39,7 +39,7 @@ export default config => {
           exclude: /node_modules/
         }, {
           test: /\.ts$/,
-          loader: 'awesome-typescript-loader?forkChecker=true',
+          loader: 'awesome-typescript-loader',
           exclude: /node_modules/
         }, {
           test: /sinon.js$/,
@@ -60,7 +60,7 @@ export default config => {
             failOnError: true
           })
         ] : []),
-        new ForkCheckerPlugin(),
+        new CheckerPlugin(),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i
