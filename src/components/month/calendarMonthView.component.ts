@@ -57,6 +57,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
               *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
               [class.cal-drag-over]="day.dragOver"
               [day]="day"
+              [addEventTextBtn]="addEventTextBtn"
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
@@ -67,6 +68,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
               (dragEnter)="day.dragOver = true"
               (dragLeave)="day.dragOver = false"
               (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"
+              (addEventClicked)="addEventClicked.emit({day: day})"
               (eventClicked)="eventClicked.emit({event: $event.event})">
             </mwl-calendar-month-cell>
           </div>
@@ -96,6 +98,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * Whether the events list for the day of the `viewDate` option is visible or not
    */
   @Input() activeDayIsOpen: boolean = false;
+
+  /**
+   * Label for button Add Event: Note, is string empty not show button.
+   */
+  @Input() addEventTextBtn: string="";
 
   /**
    * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
@@ -133,6 +140,10 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    */
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
 
+  /**
+   * Called when the button add event is clicked: Note, only show button if addEventTextBtn!=""
+   */
+  @Output() addEventClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day:MonthViewDay}>();
   /**
    * Called when an event is dragged and dropped
    */

@@ -8,7 +8,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-calendar/master/LICENSE)
 
 ## Demo
-https://mattlewis92.github.io/angular-calendar/demos/
+https://juanfc.github.io/angular-calendar/demos/
 
 ## Table of contents
 
