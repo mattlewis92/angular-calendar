@@ -5,21 +5,7 @@ const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const angularExternals = require('webpack-angular-externals');
 const dateFnsExternals = require('webpack-date-fns-externals');
-
-function rxjsExternals(context, request, callback) {
-
-  if (request.startsWith('rxjs/')) {
-    return callback(null, {
-      root: ['rx', request.replace(/^rxjs\//, '')],
-      commonjs: request,
-      commonjs2: request,
-      amd: request
-    });
-  }
-
-  callback();
-
-}
+const rxjsExternals = require('webpack-rxjs-externals');
 
 export default {
   entry: __dirname + '/src/index.umd.ts',
@@ -31,7 +17,7 @@ export default {
   },
   externals: [
     angularExternals(),
-    rxjsExternals,
+    rxjsExternals(),
     dateFnsExternals(), {
     'calendar-utils': {
       root: ['calendarUtils'],

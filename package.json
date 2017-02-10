@@ -121,6 +121,7 @@
     "webpack-date-fns-externals": "^1.0.0",
     "webpack-dev-server": "^2.2.0",
     "webpack-fix-default-import-plugin": "^1.0.1",
+    "webpack-rxjs-externals": "^1.0.0",
     "zone.js": "^0.7.2"
   },
   "peerDependencies": {
