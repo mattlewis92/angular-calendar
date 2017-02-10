@@ -113,8 +113,5 @@ export default {
         }
       }
     })
-  ],
-  performance: {
-    hints: false
-  }
+  ]
 };
