@@ -1,4 +1,4 @@
-export * from './providers/calendarEventTitle.provider';
+export * from './providers/calendarEventTitleFormatter.provider';
 export * from './providers/calendarMomentDateFormatter.provider';
 export * from './providers/calendarNativeDateFormatter.provider';
 export * from './providers/calendarDateFormatter.provider';
