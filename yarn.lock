@@ -6090,14 +6090,14 @@ wbuf@^1.1.0, wbuf@^1.4.0:
     minimalistic-assert "^1.0.0"
 
 webpack-angular-externals@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webpack-angular-externals/-/webpack-angular-externals-1.0.1.tgz#68fdae4bebef625dfddf6d6d992d0ca8d797a410"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/webpack-angular-externals/-/webpack-angular-externals-1.0.2.tgz#cdcfe9496a3c5f46551441e9fcd3223c4be802d2"
   dependencies:
     lodash.camelcase "^4.3.0"
 
 webpack-date-fns-externals@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webpack-date-fns-externals/-/webpack-date-fns-externals-1.0.1.tgz#340430e2819a866c9e1730a8f90d80a67b3e34db"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/webpack-date-fns-externals/-/webpack-date-fns-externals-1.0.2.tgz#7a794c567018b1d928e9ecd800d855b4054bed6d"
   dependencies:
     lodash.camelcase "^4.3.0"
 
