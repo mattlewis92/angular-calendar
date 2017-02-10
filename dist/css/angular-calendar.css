@@ -1,0 +1,261 @@
+.cal-month-view .cal-header {
+  text-align: center;
+  font-weight: bolder; }
+
+.cal-month-view .cal-cell-row:hover {
+  background-color: #fafafa; }
+
+.cal-month-view .cal-header .cal-cell {
+  padding: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap; }
+
+.cal-month-view .cal-cell-row .cal-cell:hover,
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: #ededed; }
+
+.cal-month-view .cal-days {
+  border: 1px solid #e1e1e1;
+  border-bottom: 0; }
+
+.cal-month-view .cal-cell-top {
+  min-height: 62px; }
+
+.cal-month-view .cal-cell-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex; }
+
+.cal-month-view .cal-cell {
+  float: left;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
+.cal-month-view .cal-day-cell {
+  min-height: 100px; }
+
+.cal-month-view .cal-day-cell:not(:last-child) {
+  border-right: 1px solid #e1e1e1; }
+
+.cal-month-view .cal-days .cal-cell-row {
+  border-bottom: 1px solid #e1e1e1; }
+
+.cal-month-view .cal-day-badge {
+  margin-top: 18px;
+  margin-left: 10px;
+  background-color: #b94a48;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px; }
+
+.cal-month-view .cal-day-number {
+  font-size: 1.2em;
+  font-weight: 400;
+  opacity: 0.5;
+  margin-top: 15px;
+  margin-right: 15px;
+  float: right;
+  margin-bottom: 10px; }
+
+.cal-month-view .cal-events {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin: 3px;
+  line-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+
+.cal-month-view .cal-event {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px; }
+
+.cal-month-view .cal-day-cell.cal-in-month.cal-has-events {
+  cursor: pointer; }
+
+.cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+  opacity: 0.1;
+  cursor: default; }
+
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+  color: darkred; }
+
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: #e8fde7; }
+
+.cal-month-view .cal-day-cell.cal-today .cal-day-number {
+  font-size: 1.9em; }
+
+.cal-month-view .cal-day-cell.cal-drag-over {
+  background-color: #e0e0e0 !important; }
+
+.cal-month-view .cal-open-day-events {
+  padding: 15px;
+  color: white;
+  background-color: #555;
+  box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5); }
+
+.cal-month-view .cal-open-day-events .cal-event {
+  position: relative;
+  top: 2px; }
+
+.cal-month-view .cal-event-title {
+  color: white; }
+
+.cal-month-view .cal-out-month .cal-day-badge,
+.cal-month-view .cal-out-month .cal-event {
+  opacity: 0.3; }
+
+.cal-week-view .cal-day-headers {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  margin-bottom: 3px;
+  border: 1px solid #e1e1e1;
+  margin-left: 2px;
+  margin-right: 2px; }
+
+.cal-week-view .cal-day-headers .cal-header {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  padding: 5px; }
+
+.cal-week-view .cal-day-headers .cal-header:not(:last-child) {
+  border-right: 1px solid #e1e1e1; }
+
+.cal-week-view .cal-day-headers .cal-header:hover {
+  background-color: #ededed; }
+
+.cal-week-view .cal-day-headers span {
+  font-weight: 400;
+  opacity: 0.5; }
+
+.cal-week-view .cal-event-container {
+  display: inline-block; }
+
+.cal-week-view .cal-event {
+  padding: 0 10px;
+  font-size: 12px;
+  margin-left: 2px;
+  margin-right: 2px;
+  height: 30px;
+  line-height: 30px; }
+
+.cal-week-view .cal-draggable {
+  cursor: move; }
+
+.cal-week-view .cal-event.cal-starts-within-week {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; }
+
+.cal-week-view .cal-event.cal-ends-within-week {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px; }
+
+.cal-week-view .cal-header.cal-today {
+  background-color: #e8fde7; }
+
+.cal-week-view .cal-header.cal-weekend span {
+  color: #8b0000; }
+
+.cal-week-view .cal-event,
+.cal-week-view .cal-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.cal-day-view .cal-hour-rows {
+  width: 100%;
+  border: solid 1px #e1e1e1;
+  overflow-x: scroll;
+  position: relative; }
+
+.cal-day-view .cal-hour:nth-child(odd) {
+  background-color: #fafafa; }
+
+.cal-day-view .cal-hour-segment {
+  height: 30px; }
+
+.cal-day-view .cal-hour:not(:last-child) .cal-hour-segment,
+.cal-day-view .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+  border-bottom: thin dashed #e1e1e1; }
+
+.cal-day-view .cal-time {
+  font-weight: bold;
+  padding-top: 5px;
+  width: 70px;
+  text-align: center; }
+
+.cal-day-view .cal-hour-segment:hover {
+  background-color: #ededed; }
+
+.cal-day-view .cal-event {
+  position: absolute;
+  border: solid 1px;
+  padding: 5px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.cal-day-view .cal-draggable {
+  cursor: move; }
+
+.cal-day-view .cal-event.cal-starts-within-day {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+
+.cal-day-view .cal-event.cal-ends-within-day {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; }
+
+.cal-day-view .cal-all-day-event {
+  padding: 8px;
+  border: solid 1px; }

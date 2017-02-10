@@ -3,22 +3,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const angularExternals = require('webpack-angular-externals');
 const camelCase = require('lodash.camelcase');
-
-function angularExternals(context, request, callback) {
-
-  if (request.startsWith('@angular/')) {
-    return callback(null, {
-      root: ['ng', camelCase(request.replace(/^\@angular\//, ''))],
-      commonjs: request,
-      commonjs2: request,
-      amd: request
-    });
-  }
-
-  callback();
-
-}
 
 function rxjsExternals(context, request, callback) {
 
@@ -59,7 +45,7 @@ export default {
     library: 'angularCalendar'
   },
   externals: [
-    angularExternals,
+    angularExternals(),
     rxjsExternals,
     dateFnsExternals, {
     'calendar-utils': {
