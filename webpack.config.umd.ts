@@ -1,5 +1,5 @@
 import * as webpack from 'webpack';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -101,8 +101,12 @@ export default {
     }, {
       test: /\.scss/,
       use: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader!postcss-loader!sass-loader'
+        fallback: 'style-loader',
+        use: [
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
       }),
       exclude: /node_modules/
     }]

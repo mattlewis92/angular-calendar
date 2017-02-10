@@ -76,12 +76,6 @@
   version "0.9.35"
   resolved "https://registry.yarnpkg.com/@types/core-js/-/core-js-0.9.35.tgz#444064e63711cdcc62ea844d27642f6efc2285f2"
 
-"@types/extract-text-webpack-plugin@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.0.0.tgz#7dfb884827e503660a4fc7cc7ac1bef0e212cc2a"
-  dependencies:
-    "@types/webpack" "*"
-
 "@types/highlight.js@^9.1.9":
   version "9.1.9"
   resolved "https://registry.yarnpkg.com/@types/highlight.js/-/highlight.js-9.1.9.tgz#ed6336955eaf233b75eb7923b9b1f373d045ef01"
@@ -123,7 +117,7 @@
   dependencies:
     "@types/source-map" "*"
 
-"@types/webpack@*", "@types/webpack@^2.2.0":
+"@types/webpack@^2.2.0":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-2.2.5.tgz#fdd98f969ba5da0d548c2a3c05a1975c9107cc05"
   dependencies:
