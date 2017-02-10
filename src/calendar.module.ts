@@ -20,7 +20,7 @@ import { CalendarNextViewDirective } from './directives/calendarNextView.directi
 import { CalendarTodayDirective } from './directives/calendarToday.directive';
 import { CalendarDatePipe } from './pipes/calendarDate.pipe';
 import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
-import { CalendarEventTitleFormatter } from './providers/calendarEventTitle.provider';
+import { CalendarEventTitleFormatter } from './providers/calendarEventTitleFormatter.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
 
 /**

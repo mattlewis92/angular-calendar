@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import 'rxjs/add/operator/filter';
 import { Plunker } from 'create-plunker';
 
 declare const require: any;

@@ -15,7 +15,7 @@
     "src/interfaces/calendarDateFormatter.interface.ts",
     "src/interfaces/calendarEventTimesChangedEvent.interface.ts",
     "src/providers/calendarDateFormatter.provider.ts",
-    "src/providers/calendarEventTitle.provider.ts",
+    "src/providers/calendarEventTitleFormatter.provider.ts",
     "src/providers/calendarMomentDateFormatter.provider.ts",
     "src/providers/calendarNativeDateFormatter.provider.ts",
     "src/directives/calendarNextView.directive.ts",
