@@ -30,6 +30,7 @@
     "url": "git+https://github.com/mattlewis92/angular-calendar.git"
   },
   "keywords": [
+    "angular",
     "angular2",
     "calendar"
   ],
