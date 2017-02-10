@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const angularExternals = require('webpack-angular-externals');
-const camelCase = require('lodash.camelcase');
+const dateFnsExternals = require('webpack-date-fns-externals');
 
 function rxjsExternals(context, request, callback) {
 
@@ -14,21 +14,6 @@ function rxjsExternals(context, request, callback) {
       commonjs: request,
       commonjs2: request,
       amd: request
-    });
-  }
-
-  callback();
-
-}
-
-function dateFnsExternals(context, request, callback) {
-
-  if (request.startsWith('date-fns/')) {
-    return callback(null, {
-      root: ['dateFns', camelCase(request.replace(/^date\-fns\//, ''))],
-      commonjs: `${request}/index`,
-      commonjs2: `${request}/index`,
-      amd: `${request}/index`
     });
   }
 
@@ -47,7 +32,7 @@ export default {
   externals: [
     angularExternals(),
     rxjsExternals,
-    dateFnsExternals, {
+    dateFnsExternals(), {
     'calendar-utils': {
       root: ['calendarUtils'],
       commonjs: 'calendar-utils',

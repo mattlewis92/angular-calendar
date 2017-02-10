@@ -6095,6 +6095,12 @@ webpack-angular-externals@^1.0.0:
   dependencies:
     lodash.camelcase "^4.3.0"
 
+webpack-date-fns-externals@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-date-fns-externals/-/webpack-date-fns-externals-1.0.0.tgz#b7dc2eae79b1803ac888b7b12a1a8d1d1c86f872"
+  dependencies:
+    lodash.camelcase "^4.3.0"
+
 webpack-dev-middleware@^1.0.11, webpack-dev-middleware@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.0.tgz#7d5be2651e692fddfafd8aaed177c16ff51f0eb8"
