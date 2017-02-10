@@ -1080,9 +1080,9 @@ compare-func@^1.3.1:
     array-ify "^1.0.0"
     dot-prop "^3.0.0"
 
-compodoc@^0.0.40:
-  version "0.0.40"
-  resolved "https://registry.yarnpkg.com/compodoc/-/compodoc-0.0.40.tgz#d20defd3fc96503d128064787d311a3c9c62cfa9"
+compodoc@^0.0.41:
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/compodoc/-/compodoc-0.0.41.tgz#a76bc2ca1fd82a7cbe0a82d7250ca3e90bbc2379"
   dependencies:
     "@compodoc/ngd-core" "^2.0.0-alpha.1"
     "@compodoc/ngd-transformer" "^2.0.0-alpha.3"
@@ -1100,7 +1100,7 @@ compodoc@^0.0.40:
     lunr "^0.7.2"
     marked "^0.3.6"
     shelljs "^0.7.6"
-    typescript "2.1.5"
+    typescript "2.2.0"
 
 component-bind@1.0.0:
   version "1.0.0"
@@ -5874,9 +5874,9 @@ typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.5.tgz#6fe9479e00e01855247cea216e7561bafcdbcd4a"
+typescript@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.0.tgz#626f2fc70087d2480f21ebb12c1888288c8614e3"
 
 typescript@~2.0.10:
   version "2.0.10"
