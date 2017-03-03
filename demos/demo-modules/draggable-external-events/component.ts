@@ -9,6 +9,8 @@ import { colors } from '../demo-utils/colors';
 })
 export class DemoComponent {
 
+  view: string = 'month';
+
   viewDate: Date = new Date();
 
   externalEvents: CalendarEvent[] = [{

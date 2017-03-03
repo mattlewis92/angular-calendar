@@ -10,7 +10,7 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour } from 'calendar-utils';
+import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour, DayViewHourSegment } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
@@ -57,7 +57,12 @@ const SEGMENT_HEIGHT: number = 30;
             *ngFor="let segment of hour.segments"
             [segment]="segment"
             [locale]="locale"
-            (click)="hourSegmentClicked.emit({date: segment.date})">
+            (click)="hourSegmentClicked.emit({date: segment.date})"
+            [class.cal-drag-over]="segment.dragOver"
+            mwlDroppable
+            (dragEnter)="segment.dragOver = true"
+            (dragLeave)="segment.dragOver = false"
+            (drop)="segment.dragOver = false; eventDropped($event, segment)">
           </mwl-calendar-day-view-hour-segment>
         </div>
       </div>
@@ -222,6 +227,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       this.refreshView();
     }
 
+  }
+
+  eventDropped(dropEvent: {dropData?: {event?: CalendarEvent}}, segment: DayViewHourSegment): void {
+    if (dropEvent.dropData && dropEvent.dropData.event) {
+      this.eventTimesChanged.emit({event: dropEvent.dropData.event, newStart: segment.date});
+    }
   }
 
   private refreshHourGrid(): void {
