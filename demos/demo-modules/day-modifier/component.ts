@@ -20,8 +20,6 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
-  excludeDays: number[] = [0, 6];
-
   addCssClass(day: CalendarMonthViewDay): void {
     if (day.date.getDate() % 2 === 1 && day.inMonth) {
       day.cssClass = 'odd-cell';

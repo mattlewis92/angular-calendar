@@ -59,8 +59,8 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
           #event
           [class.cal-draggable]="weekEvent.event.draggable"
           *ngFor="let weekEvent of eventRow.row"
-          [style.width]="((100 / 7) * weekEvent.span) + '%'"
-          [style.marginLeft]="((100 / 7) * weekEvent.offset) + '%'"
+          [style.width]="((100 / count()) * weekEvent.span) + '%'"
+          [style.marginLeft]="((100 / count()) * weekEvent.offset) + '%'"
           mwlResizable
           [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
           [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
@@ -201,7 +201,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (changes.events || changes.viewDate) {
       this.refreshBody();
     }
-
   }
 
   /**
@@ -296,7 +295,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   getDayColumnWidth(eventRowContainer: HTMLElement): number {
-    return Math.floor(eventRowContainer.offsetWidth / (7 - this.excludeDays.length));
+    return Math.floor(eventRowContainer.offsetWidth / this.count());
+  }
+
+  /**
+   * @hidden
+   */
+  count(): number {
+    return 7 - this.excludeDays.length;
   }
 
   /**
