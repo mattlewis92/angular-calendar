@@ -42,7 +42,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
     <div class="cal-week-view" #weekViewContainer>
       <div class="cal-day-headers">
         <mwl-calendar-week-view-header
-          *ngFor="let day of getDays()"
+          *ngFor="let day of days"
           [day]="day"
           [locale]="locale"
           (click)="dayClicked.emit({date: day.date})"
@@ -201,6 +201,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (changes.events || changes.viewDate) {
       this.refreshBody();
     }
+
+    if (changes.days || changes.excludeDays) {
+      this.enabledDaysOnly();
+    }
   }
 
   /**
@@ -215,8 +219,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  getDays(): WeekDay[] {
-    return this.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
+  enabledDaysOnly(): void {
+    this.days = this.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
   }
 
   /**

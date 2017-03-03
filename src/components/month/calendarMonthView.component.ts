@@ -60,7 +60,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
         <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of getDays() | slice : rowIndex : rowIndex + (count())"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (count())"
               [class.cal-drag-over]="day.dragOver"
               [day]="day"
               [openDay]="openDay"
@@ -210,6 +210,9 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
       this.checkActiveDayIsOpen();
     }
 
+    if (changes.excludeDays || changes.view) {
+      this.enabledDaysOnly();
+    }
   }
 
   /**
@@ -224,8 +227,8 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   /**
    * @hidden
    */
-  getDays(): WeekDay[] {
-    return this.view.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
+  enabledDaysOnly(): void {
+    this.view.days = this.view.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
   }
 
   /**
@@ -257,7 +260,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.eventTimesChanged.emit({event, newStart, newEnd});
   }
 
-  protected count(): number {
+  public count(): number {
     return 7 - this.excludeDays.length;
   }
 
