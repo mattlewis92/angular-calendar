@@ -12,6 +12,7 @@
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
+    [excludeDays]="excludeDays"
     [viewDate]="viewDate"
     [events]="events">
   </mwl-calendar-week-view>

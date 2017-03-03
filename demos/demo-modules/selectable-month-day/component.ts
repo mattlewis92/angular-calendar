@@ -22,6 +22,8 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
+  excludeDays: number[] = [0];
+
   dayClicked(day: CalendarMonthViewDay): void {
     if (this.selectedDay) {
       delete this.selectedDay.cssClass;
@@ -31,4 +33,3 @@ export class DemoComponent {
   }
 
 }
-
