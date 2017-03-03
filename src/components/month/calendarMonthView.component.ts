@@ -60,7 +60,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
         <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
+              *ngFor="let day of getDays() | slice : rowIndex : rowIndex + (count())"
               [class.cal-drag-over]="day.dragOver"
               [day]="day"
               [openDay]="openDay"
@@ -97,6 +97,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * An array of events to display on view
    */
   @Input() events: CalendarEvent[] = [];
+
+  /**
+   * An array of excluded days
+   */
+  @Input() excludeDays: number[] = [];
 
   /**
    * Whether the events list for the day of the `viewDate` option is visible or not
@@ -219,6 +224,13 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   /**
    * @hidden
    */
+  getDays(): WeekDay[] {
+    return this.view.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
+  }
+
+  /**
+   * @hidden
+   */
   toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
     this.view.days.forEach(day => {
       if (isHighlighted && day.events.indexOf(event) > -1) {
@@ -245,11 +257,15 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.eventTimesChanged.emit({event, newStart, newEnd});
   }
 
+  protected count(): number {
+    return 7 - this.excludeDays.length;
+  }
+
   private refreshHeader(): void {
     this.columnHeaders = getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn
-    });
+    }).filter(h => !this.excludeDays.some(ex => ex === h.date.getDay()));
   }
 
   private refreshBody(): void {
@@ -267,7 +283,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     if (this.activeDayIsOpen === true) {
       this.openDay = this.view.days.find(day => isSameDay(day.date, this.viewDate));
       const index: number = this.view.days.indexOf(this.openDay);
-      this.openRowIndex = Math.floor(index / 7) * 7;
+      this.openRowIndex = Math.floor(index / this.count()) * this.count();
     } else {
       this.openRowIndex = null;
       this.openDay = null;

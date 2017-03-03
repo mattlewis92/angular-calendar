@@ -42,7 +42,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
     <div class="cal-week-view" #weekViewContainer>
       <div class="cal-day-headers">
         <mwl-calendar-week-view-header
-          *ngFor="let day of days"
+          *ngFor="let day of getDays()"
           [day]="day"
           [locale]="locale"
           (click)="dayClicked.emit({date: day.date})"
@@ -95,6 +95,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * An array of events to display on view
    */
   @Input() events: CalendarEvent[] = [];
+
+  /**
+   * An array of dates to exclude
+   */
+  @Input() excludeDays: number[] = [];
 
   /**
    * An observable that when emitted on will re-render the current view
@@ -211,6 +216,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  getDays(): WeekDay[] {
+    return this.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
+  }
+
+  /**
+   * @hidden
+   */
   resizeStarted(weekViewContainer: HTMLElement, weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
     this.currentResize = {
       originalOffset: weekEvent.offset,
@@ -284,7 +296,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   getDayColumnWidth(eventRowContainer: HTMLElement): number {
-    return Math.floor(eventRowContainer.offsetWidth / 7);
+    return Math.floor(eventRowContainer.offsetWidth / (7 - this.excludeDays.length));
   }
 
   /**
