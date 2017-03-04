@@ -441,7 +441,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-day-view&quot;&nbsp;#dayViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-all-day-event<br>&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;event&nbsp;of&nbsp;view.allDayEvents&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;event})&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-all-day-event&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour-rows&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-events&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;dayEvent&nbsp;of&nbsp;view?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayEvent]&#x3D;&quot;dayEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hourSegments]&#x3D;&quot;hourSegments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[eventSnapSize]&#x3D;&quot;eventSnapSize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayViewContainer]&#x3D;&quot;dayViewContainer&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;dayEvent.event})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventResized)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;hour&nbsp;of&nbsp;hours&quot;&nbsp;[style.minWidth.px]&#x3D;&quot;view?.width&nbsp;+&nbsp;70&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-hour-segment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;segment&nbsp;of&nbsp;hour.segments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[segment]&#x3D;&quot;segment&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;hourSegmentClicked.emit({date:&nbsp;segment.date})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-hour-segment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-day-view&quot;&nbsp;#dayViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-all-day-event<br>&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;event&nbsp;of&nbsp;view.allDayEvents&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;event})&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-all-day-event&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour-rows&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-events&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;dayEvent&nbsp;of&nbsp;view?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayEvent]&#x3D;&quot;dayEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hourSegments]&#x3D;&quot;hourSegments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[eventSnapSize]&#x3D;&quot;eventSnapSize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayViewContainer]&#x3D;&quot;dayViewContainer&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;dayEvent.event})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventResized)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;hour&nbsp;of&nbsp;hours&quot;&nbsp;[style.minWidth.px]&#x3D;&quot;view?.width&nbsp;+&nbsp;70&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-hour-segment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;segment&nbsp;of&nbsp;hour.segments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[segment]&#x3D;&quot;segment&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;hourSegmentClicked.emit({date:&nbsp;segment.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped($event,&nbsp;segment)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-hour-segment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -749,6 +749,33 @@
     </section>
 
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> eventDropped</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>eventDropped(dropEvent: { dropData?: { event?: CalendarEvent; }; }, segment: DayViewHourSegment)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
@@ -764,7 +791,7 @@
   OnInit,
   OnDestroy
 } from &#x27;@angular/core&#x27;;
-import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour } from &#x27;calendar-utils&#x27;;
+import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour, DayViewHourSegment } from &#x27;calendar-utils&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEventTimesChangedEvent.interface&#x27;;
@@ -811,7 +838,12 @@ const SEGMENT_HEIGHT: number &#x3D; 30;
             *ngFor&#x3D;&quot;let segment of hour.segments&quot;
             [segment]&#x3D;&quot;segment&quot;
             [locale]&#x3D;&quot;locale&quot;
-            (click)&#x3D;&quot;hourSegmentClicked.emit({date: segment.date})&quot;&gt;
+            (click)&#x3D;&quot;hourSegmentClicked.emit({date: segment.date})&quot;
+            [class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;
+            mwlDroppable
+            (dragEnter)&#x3D;&quot;segment.dragOver &#x3D; true&quot;
+            (dragLeave)&#x3D;&quot;segment.dragOver &#x3D; false&quot;
+            (drop)&#x3D;&quot;segment.dragOver &#x3D; false; eventDropped($event, segment)&quot;&gt;
           &lt;/mwl-calendar-day-view-hour-segment&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -976,6 +1008,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       this.refreshView();
     }
 
+  }
+
+  eventDropped(dropEvent: {dropData?: {event?: CalendarEvent}}, segment: DayViewHourSegment): void {
+    if (dropEvent.dropData &amp;&amp; dropEvent.dropData.event) {
+      this.eventTimesChanged.emit({event: dropEvent.dropData.event, newStart: segment.date});
+    }
   }
 
   private refreshHourGrid(): void {
