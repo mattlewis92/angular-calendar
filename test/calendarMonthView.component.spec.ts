@@ -414,4 +414,19 @@ describe('calendarMonthView component', () => {
     expect(dayClickedFired).to.be.false;
   });
 
+  it('should add helper classes to the header cells', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
+    fixture.detectChanges();
+    const headerCells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-header .cal-cell');
+    expect(headerCells[0].classList.contains('cal-past')).to.be.true;
+    expect(headerCells[0].classList.contains('cal-today')).to.be.false;
+    expect(headerCells[0].classList.contains('cal-future')).to.be.false;
+    expect(headerCells[0].classList.contains('cal-weekend')).to.be.true;
+    expect(headerCells[1].classList.contains('cal-weekend')).to.be.false;
+    expect(headerCells[6].classList.contains('cal-weekend')).to.be.true;
+    fixture.destroy();
+  });
+
 });

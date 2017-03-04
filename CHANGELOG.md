@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.3"></a>
+## [0.7.3](https://github.com/mattlewis92/angular-calendar/compare/v0.7.2...v0.7.3) (2017-03-04)
+
+
+### Bug Fixes
+
+* loosen angular peer dependency to support angular 4 ([e00c115](https://github.com/mattlewis92/angular-calendar/commit/e00c115))
+* **dayView:** allow dropping of external events ([86e5d06](https://github.com/mattlewis92/angular-calendar/commit/86e5d06)), closes [#150](https://github.com/mattlewis92/angular-calendar/issues/150)
+* **monthView:** add helper classes to the month view header ([0008a83](https://github.com/mattlewis92/angular-calendar/commit/0008a83)), closes [#152](https://github.com/mattlewis92/angular-calendar/issues/152)
+* **weekView:** allow external events to be dropped on the column headers ([83266f7](https://github.com/mattlewis92/angular-calendar/commit/83266f7)), closes [#150](https://github.com/mattlewis92/angular-calendar/issues/150)
+
+
+### Performance Improvements
+
+* improve performance of draggable and resizable events ([71fe9cd](https://github.com/mattlewis92/angular-calendar/commit/71fe9cd)), closes [#149](https://github.com/mattlewis92/angular-calendar/issues/149)
+
+
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/mattlewis92/angular-calendar/compare/v0.7.1...v0.7.2) (2017-02-03)
 

@@ -21,12 +21,32 @@
   </div>
 
   <div class="col-md-9">
-    <mwl-calendar-month-view
-      [viewDate]="viewDate"
-      [events]="events"
-      [activeDayIsOpen]="activeDayIsOpen"
-      (eventTimesChanged)="eventDropped($event)">
-    </mwl-calendar-month-view>
+    <mwl-calendar-header
+      [(view)]="view"
+      [(viewDate)]="viewDate">
+    </mwl-calendar-header>
+
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view
+        *ngSwitchCase="'month'"
+        [viewDate]="viewDate"
+        [events]="events"
+        [activeDayIsOpen]="activeDayIsOpen"
+        (eventTimesChanged)="eventDropped($event)">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view
+        *ngSwitchCase="'week'"
+        [viewDate]="viewDate"
+        [events]="events"
+        (eventTimesChanged)="eventDropped($event)">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view
+        *ngSwitchCase="'day'"
+        [viewDate]="viewDate"
+        [events]="events"
+        (eventTimesChanged)="eventDropped($event)">
+      </mwl-calendar-day-view>
+    </div>
   </div>
 
 </div>

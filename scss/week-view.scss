@@ -17,7 +17,8 @@
     border-right: 1px solid #e1e1e1;
   }
 
-  .cal-day-headers .cal-header:hover {
+  .cal-day-headers .cal-header:hover,
+  .cal-day-headers .cal-drag-over {
     background-color: #ededed;
   }
 

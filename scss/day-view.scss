@@ -26,7 +26,8 @@
     text-align: center;
   }
 
-  .cal-hour-segment:hover {
+  .cal-hour-segment:hover,
+  .cal-drag-over .cal-hour-segment {
     background-color: #ededed;
   }
 

@@ -1,54 +1,11 @@
 import * as webpack from 'webpack';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const camelCase = require('lodash.camelcase');
-
-function angularExternals(context, request, callback) {
-
-  if (request.startsWith('@angular/')) {
-    return callback(null, {
-      root: ['ng', camelCase(request.replace(/^\@angular\//, ''))],
-      commonjs: request,
-      commonjs2: request,
-      amd: request
-    });
-  }
-
-  callback();
-
-}
-
-function rxjsExternals(context, request, callback) {
-
-  if (request.startsWith('rxjs/')) {
-    return callback(null, {
-      root: ['rx', request.replace(/^rxjs\//, '')],
-      commonjs: request,
-      commonjs2: request,
-      amd: request
-    });
-  }
-
-  callback();
-
-}
-
-function dateFnsExternals(context, request, callback) {
-
-  if (request.startsWith('date-fns/')) {
-    return callback(null, {
-      root: ['dateFns', camelCase(request.replace(/^date\-fns\//, ''))],
-      commonjs: `${request}/index`,
-      commonjs2: `${request}/index`,
-      amd: `${request}/index`
-    });
-  }
-
-  callback();
-
-}
+const angularExternals = require('webpack-angular-externals');
+const dateFnsExternals = require('webpack-date-fns-externals');
+const rxjsExternals = require('webpack-rxjs-externals');
 
 export default {
   entry: __dirname + '/src/index.umd.ts',
@@ -59,9 +16,9 @@ export default {
     library: 'angularCalendar'
   },
   externals: [
-    angularExternals,
-    rxjsExternals,
-    dateFnsExternals, {
+    angularExternals(),
+    rxjsExternals(),
+    dateFnsExternals(), {
     'calendar-utils': {
       root: ['calendarUtils'],
       commonjs: 'calendar-utils',
@@ -101,8 +58,12 @@ export default {
     }, {
       test: /\.scss/,
       use: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader!postcss-loader!sass-loader'
+        fallback: 'style-loader',
+        use: [
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
       }),
       exclude: /node_modules/
     }]
@@ -138,8 +99,5 @@ export default {
         }
       }
     })
-  ],
-  performance: {
-    hints: false
-  }
+  ]
 };
