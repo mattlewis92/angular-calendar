@@ -45,7 +45,12 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
           *ngFor="let day of days"
           [day]="day"
           [locale]="locale"
-          (click)="dayClicked.emit({date: day.date})">
+          (click)="dayClicked.emit({date: day.date})"
+          [class.cal-drag-over]="day.dragOver"
+          mwlDroppable
+          (dragEnter)="day.dragOver = true"
+          (dragLeave)="day.dragOver = false"
+          (drop)="day.dragOver = false; eventTimesChanged.emit({event: $event.dropData.event, newStart: day.date})">
         </mwl-calendar-week-view-header>
       </div>
       <div *ngFor="let eventRow of eventRows" #eventRowContainer>

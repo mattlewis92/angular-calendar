@@ -13,16 +13,25 @@ import {
   CalendarModule,
   MOMENT,
   CalendarEventTimesChangedEvent
-} from './../src';
-import { CalendarWeekViewComponent } from './../src/components/week/calendarWeekView.component';
-import { DraggableHelper } from 'angular-draggable-droppable';
-import { Subject } from 'rxjs/Rx';
-import { triggerDomEvent } from './util';
+} from '../src';
+import { CalendarWeekViewComponent } from '../src/components/week/calendarWeekView.component';
+import { DraggableHelper, DragAndDropModule } from 'angular-draggable-droppable';
+import { Subject } from 'rxjs/Subject';
+import * as sinon from 'sinon';
+import { triggerDomEvent, ExternalEventComponent } from './util';
 
 describe('calendarWeekView component', () => {
 
   beforeEach(() => {
-    TestBed.configureTestingModule({imports: [CalendarModule]});
+    TestBed.configureTestingModule({
+      imports: [
+        CalendarModule,
+        DragAndDropModule
+      ],
+      declarations: [
+        ExternalEventComponent
+      ]
+    });
     TestBed.configureCompiler({
       providers: [
         CalendarEventTitleFormatter,
@@ -391,6 +400,42 @@ describe('calendarWeekView component', () => {
     triggerDomEvent('mouseup', document.body, {clientX: rect.left - (dayWidth * 2), clientY: rect.top});
     fixture.detectChanges();
     fixture.destroy();
+  });
+
+  it('should allow external events to be dropped on the week view headers', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+
+    const externalEventFixture: ComponentFixture<ExternalEventComponent> = TestBed.createComponent(ExternalEventComponent);
+    externalEventFixture.detectChanges();
+    document.body.appendChild(externalEventFixture.nativeElement);
+
+    const event: HTMLElement = externalEventFixture.nativeElement.querySelector('.external-event');
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+
+    const headers: any[] = Array.from(fixture.nativeElement.querySelectorAll('mwl-calendar-week-view-header'));
+    const header: HTMLElement = headers[2];
+    const headerPosition: ClientRect = header.getBoundingClientRect();
+
+    const eventDropped: sinon.SinonSpy = sinon.spy();
+    fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
+    triggerDomEvent('mousedown', event, {clientY: eventPosition.top, clientX: eventPosition.left});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientY: headerPosition.top, clientX: headerPosition.left});
+    fixture.detectChanges();
+    expect(header.classList.contains('cal-drag-over')).to.be.true;
+    triggerDomEvent('mouseup', document.body, {clientY: headerPosition.top, clientX: headerPosition.left});
+    fixture.detectChanges();
+    fixture.destroy();
+    externalEventFixture.destroy();
+    expect(eventDropped).to.have.been.calledWith({
+      event: externalEventFixture.componentInstance.event,
+      newStart: moment('2016-06-27').startOf('week').add(2, 'days').toDate()
+    });
   });
 
 });

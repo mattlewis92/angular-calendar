@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import {
   inject,
   ComponentFixture,
@@ -21,33 +20,9 @@ import {
 import { CalendarDayViewComponent } from './../src/components/day/calendarDayView.component';
 import { Subject } from 'rxjs/Rx';
 import { spy } from 'sinon';
-import { triggerDomEvent } from './util';
+import { triggerDomEvent, ExternalEventComponent } from './util';
 
 describe('CalendarDayViewComponent component', () => {
-
-  @Component({
-    template: '<div class="external-event" mwlDraggable [dropData]="{event: event}">{{ event.title }}</div>',
-    styles: [`
-      .external-event {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 10px;
-        height: 10px;
-      }
-    `]
-  })
-  class ExternalEventComponent {
-    event: CalendarEvent = {
-      title: 'foo',
-      start: new Date(),
-      draggable: true,
-      color: {
-        primary: 'blue',
-        secondary: 'lightblue'
-      }
-    };
-  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -540,7 +515,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousemove', document.body, {clientY: segmentPosition.top, clientX: segmentPosition.left});
     fixture.detectChanges();
     expect(segment.classList.contains('cal-drag-over')).to.be.true;
-    triggerDomEvent('mouseup', document.body, {clientY: segmentPosition.top, clientX: eventPosition.left});
+    triggerDomEvent('mouseup', document.body, {clientY: segmentPosition.top, clientX: segmentPosition.left});
     fixture.detectChanges();
     fixture.destroy();
     externalEventFixture.destroy();
