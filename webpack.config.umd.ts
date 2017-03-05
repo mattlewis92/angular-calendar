@@ -1,4 +1,4 @@
-import * as webpack from 'webpack';
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');
@@ -6,6 +6,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const angularExternals = require('webpack-angular-externals');
 const dateFnsExternals = require('webpack-date-fns-externals');
 const rxjsExternals = require('webpack-rxjs-externals');
+const pkg = require('./package.json');
 
 export default {
   entry: __dirname + '/src/index.umd.ts',
@@ -98,6 +99,19 @@ export default {
           ];
         }
       }
+    }),
+    new webpack.BannerPlugin({
+      banner: `
+/**
+ * ${pkg.name} - ${pkg.description}
+ * @version v${pkg.version}
+ * @author ${pkg.author}
+ * @link ${pkg.homepage}
+ * @license ${pkg.license}
+ */
+      `.trim(),
+      raw: true,
+      entryOnly: true
     })
   ]
 };
