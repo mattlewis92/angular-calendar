@@ -26,7 +26,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'mwl-date-time-picker',
+  selector: 'mwl-demo-utils-date-time-picker',
   template: `
     <form class="form-inline">
       <div class="form-group">
