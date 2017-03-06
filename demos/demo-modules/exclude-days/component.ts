@@ -8,24 +8,30 @@ import { CalendarEvent } from 'angular-calendar';
   templateUrl: 'template.html',
 })
 export class DemoComponent {
-  from: Date = new Date();
-  to: Date = new Date(this.from.getFullYear(), this.from.getMonth(), this.from.getDate(), this.from.getHours(), this.from.getMinutes());
 
   view: string = 'month';
 
-  viewDate: Date = new Date();
+  viewDate: Date = new Date('2016-01-05');
 
   events: CalendarEvent[] = [{
-    start: this.from,
-    end: this.to,
-    title: 'Example',
+    start: new Date('2016-01-08'),
+    end: new Date('2016-01-10'),
+    title: 'One day excluded event',
     color: {
       primary: '#444',
       secondary: '#888'
     }
+  }, {
+      start: new Date('2016-01-01'),
+      end: new Date('2016-01-09'),
+      title: 'Multiple weeks events',
+      color: {
+          primary: '#8f5b2a',
+          secondary: '#ddd'
+      }
   }];
 
-  // exclue weekends
+  // exclude weekend
   excludeDays: number[] = [0, 6];
 
 }
