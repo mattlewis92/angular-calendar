@@ -45,7 +45,30 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     expect(fixture.componentInstance.view.rowOffsets).to.deep.equal([0, 7, 14, 21, 28]);
     expect(fixture.componentInstance.view.days.length).to.equal(35);
+    expect(fixture.componentInstance.view.totalDaysVisibleInWeek).to.equal(7);
     expect(fixture.componentInstance.view.days[0].date).to.deep.equal(moment('2016-05-29').toDate());
+    fixture.destroy();
+  });
+
+  it('should generate the month view without from week excluded days', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-01-10');
+    fixture.componentInstance.excludeDays = [0, 6];
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
+    expect(fixture.componentInstance.view.days.length).to.equal(30);
+    expect(fixture.componentInstance.view.totalDaysVisibleInWeek).to.equal(5);
+    expect(fixture.componentInstance.view.rowOffsets).to.deep.equal([0, 5, 10, 15, 20, 25]);
+    expect(fixture.componentInstance.view.days[0].date).to.deep.equal(moment('2015-12-28').toDate());
+    fixture.destroy();
+  });
+
+  it('should update the month view when excluded days changed', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-01-10');
+    fixture.componentInstance.excludeDays = [0, 1, 2];
+    fixture.componentInstance.ngOnChanges({excludeDays: {}});
+    expect(fixture.componentInstance.view.days.length).to.equal(24);
+    expect(fixture.componentInstance.view.totalDaysVisibleInWeek).to.equal(4);
     fixture.destroy();
   });
 
