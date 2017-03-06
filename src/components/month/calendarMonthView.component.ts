@@ -60,7 +60,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
         <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (count())"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.daysInWeek)"
               [class.cal-drag-over]="day.dragOver"
               [day]="day"
               [openDay]="openDay"
@@ -249,10 +249,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.eventTimesChanged.emit({event, newStart, newEnd});
   }
 
-  public count(): number {
-    return 7 - this.excludeDays.length;
-  }
-
   private refreshHeader(): void {
     this.columnHeaders = getWeekViewHeader({
       viewDate: this.viewDate,
@@ -277,7 +273,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     if (this.activeDayIsOpen === true) {
       this.openDay = this.view.days.find(day => isSameDay(day.date, this.viewDate));
       const index: number = this.view.days.indexOf(this.openDay);
-      this.openRowIndex = Math.floor(index / this.count()) * this.count();
+      this.openRowIndex = Math.floor(index / this.view.daysInWeek) * this.view.daysInWeek;
     } else {
       this.openRowIndex = null;
       this.openDay = null;
