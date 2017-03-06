@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'mwl-calendar-header',
+  selector: 'mwl-demo-utils-calendar-header',
   template: `
     <div class="row text-center">
       <div class="col-md-4">
