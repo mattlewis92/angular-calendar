@@ -209,10 +209,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     if (changes.activeDayIsOpen || changes.viewDate || changes.events) {
       this.checkActiveDayIsOpen();
     }
-
-    if (changes.excludeDays || changes.view) {
-      this.enabledDaysOnly();
-    }
   }
 
   /**
@@ -222,13 +218,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
-  }
-
-  /**
-   * @hidden
-   */
-  enabledDaysOnly(): void {
-    this.view.days = this.view.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
   }
 
   /**
@@ -267,15 +256,17 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   private refreshHeader(): void {
     this.columnHeaders = getWeekViewHeader({
       viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn
-    }).filter(h => !this.excludeDays.some(ex => ex === h.date.getDay()));
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays
+    });
   }
 
   private refreshBody(): void {
     this.view = getMonthView({
       events: this.events,
       viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays
     });
     if (this.dayModifier) {
       this.view.days.forEach(day => this.dayModifier(day));

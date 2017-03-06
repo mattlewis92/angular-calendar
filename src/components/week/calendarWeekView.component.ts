@@ -202,9 +202,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       this.refreshBody();
     }
 
-    if (changes.days || changes.excludeDays) {
-      this.enabledDaysOnly();
-    }
   }
 
   /**
@@ -214,13 +211,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
-  }
-
-  /**
-   * @hidden
-   */
-  enabledDaysOnly(): void {
-    this.days = this.days.filter(d => !this.excludeDays.some(ex => ex === d.date.getDay()));
   }
 
   /**
@@ -321,7 +311,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   private refreshHeader(): void {
     this.days = getWeekViewHeader({
       viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays
     });
   }
 
@@ -329,7 +320,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.eventRows = getWeekView({
       events: this.events,
       viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays
     });
   }
 
