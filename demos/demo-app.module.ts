@@ -160,7 +160,7 @@ import * as excludeDays from './demo-modules/exclude-days';
       path: 'exclude-day',
       component: excludeDays.DemoComponent,
       data: {
-        label: 'Exclude Weekdays'
+        label: 'Exclude Weekends'
       }
     }, {
       path: 'i18n',
