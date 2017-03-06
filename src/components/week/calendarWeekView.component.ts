@@ -194,11 +194,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   ngOnChanges(changes: any): void {
 
-    if (changes.viewDate) {
+    if (changes.viewDate || changes.excludeDays) {
       this.refreshHeader();
     }
 
-    if (changes.events || changes.viewDate) {
+    if (changes.events || changes.viewDate || changes.excludeDays) {
       this.refreshBody();
     }
 
