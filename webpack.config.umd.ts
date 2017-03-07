@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+import * as webpack from 'webpack';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postCssFlexibility = require('postcss-flexibility');

@@ -78,7 +78,7 @@
     "css-loader": "^0.26.0",
     "cz-conventional-changelog": "^2.0.0",
     "ejs-compiled-loader": "^1.1.0",
-    "extract-text-webpack-plugin": "^2.0.0-rc.2",
+    "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.10.0",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.9.0",
