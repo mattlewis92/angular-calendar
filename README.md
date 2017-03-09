@@ -62,6 +62,9 @@ You can find quick start examples for all common module bundlers in the [build-t
 </script>
 ```
 
+### Usage with angular universal
+See [this comment](https://github.com/mattlewis92/angular-calendar/issues/158#issuecomment-285330700) for how to use with universal
+
 ## Documentation
 To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/) or you may find it helpful to view the examples on the demo page.
 
