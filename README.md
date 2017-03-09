@@ -15,8 +15,8 @@ https://mattlewis92.github.io/angular-calendar/demos/
 - [About](#about)
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
-- [Angular 1 version](#angular-1-version)
 - [FAQ](#faq)
+- [Angular 1 version](#angular-1-version)
 - [Development](#development)
 - [License](#licence)
 
