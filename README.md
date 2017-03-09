@@ -16,6 +16,7 @@ https://mattlewis92.github.io/angular-calendar/demos/
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
 - [Angular 1 version](#angular-1-version)
+- [FAQ](#faq)
 - [Development](#development)
 - [License](#licence)
 
@@ -67,6 +68,14 @@ See [this comment](https://github.com/mattlewis92/angular-calendar/issues/158#is
 
 ## Documentation
 To see all available API options see the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/) or you may find it helpful to view the examples on the demo page.
+
+## FAQ
+* Q: Is this library AoT compatible. A: Yes
+* Q: How do I use this with my favourite module bundler? A: See the [examples list](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples)
+* Q: No styles are appearing? A: No component styles are included with each component to make it easier to override them (otherwise you'd have to use `!important` on every rule that you customised). Thus you need to import the CSS file separately from `node_modules/angular-calendar/dist/css/angular-calendar.css`
+* Q: How come there are so many dependencies? A: When building the calendar some parts were found to be re-usable so they were split out into their own modules. Only the bare minimum that is required is included with the calendar, there is no extra code than if there were no dependencies. `date-fns` especially only imports directly the functions it needs and not the entire library.
+* Q: The month, week or day view doesn't meet my project requirements, but the other views do. A: Build your own component to replace that view, and use it in place of the one this library provides. It's impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.
+* Q: How come there's no year view like the ng1 version? A: As there are so many events to show on each month, it doesn't provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone building a new lib like `angular-calendar-year-view` though ;)
 
 ## Angular 1 version
 https://github.com/mattlewis92/angular-bootstrap-calendar
