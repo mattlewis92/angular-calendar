@@ -78,10 +78,7 @@ export default config => {
           }
         }),
         new FixDefaultImportPlugin()
-      ],
-      performance: {
-        hints: false
-      }
+      ]
     },
 
     coverageIstanbulReporter: {

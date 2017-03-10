@@ -58,7 +58,7 @@ export default {
   plugins: [
     new CheckerPlugin(),
     new TsConfigPathsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    ...(IS_PROD ? [] : [new webpack.HotModuleReplacementPlugin()]),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
     }),
@@ -71,8 +71,5 @@ export default {
       __dirname + '/src'
     ),
     new FixDefaultImportPlugin()
-  ],
-  performance: {
-    hints: false
-  }
+  ]
 };
