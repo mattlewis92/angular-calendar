@@ -75,7 +75,7 @@
     "conventional-changelog-cli": "^1.2.0",
     "core-js": "^2.4.1",
     "create-plunker": "^1.2.0",
-    "css-loader": "^0.26.0",
+    "css-loader": "^0.27.1",
     "cz-conventional-changelog": "^2.0.0",
     "ejs-compiled-loader": "^1.1.0",
     "extract-text-webpack-plugin": "^2.0.0",
@@ -141,7 +141,7 @@
   "dependencies": {
     "angular-draggable-droppable": "^0.5.4",
     "angular-resizable-element": "^0.7.2",
-    "calendar-utils": "0.0.39",
+    "calendar-utils": "^0.0.40",
     "date-fns": "^1.15.1",
     "positioning": "^1.0.4"
   }
