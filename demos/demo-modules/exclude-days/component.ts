@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
+import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -17,18 +18,12 @@ export class DemoComponent {
     start: new Date('2016-01-08'),
     end: new Date('2016-01-10'),
     title: 'One day excluded event',
-    color: {
-      primary: '#444',
-      secondary: '#888'
-    }
+    color: colors.red
   }, {
-      start: new Date('2016-01-01'),
-      end: new Date('2016-01-09'),
-      title: 'Multiple weeks events',
-      color: {
-          primary: '#8f5b2a',
-          secondary: '#ddd'
-      }
+    start: new Date('2016-01-01'),
+    end: new Date('2016-01-09'),
+    title: 'Multiple weeks event',
+    color: colors.blue
   }];
 
   // exclude weekend
