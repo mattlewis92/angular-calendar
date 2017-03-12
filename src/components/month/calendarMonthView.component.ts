@@ -99,7 +99,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Input() events: CalendarEvent[] = [];
 
   /**
-   * An array of excluded days
+   * An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view
    */
   @Input() excludeDays: number[] = [];
 
