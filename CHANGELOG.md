@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/mattlewis92/angular-calendar/compare/v0.7.3...v0.8.0) (2017-03-12)
+
+
+### Features
+
+* **excludeDays:** add an option to hide days on the month and week views ([e296357](https://github.com/mattlewis92/angular-calendar/commit/e296357))
+
+
+
 <a name="0.7.3"></a>
 ## [0.7.3](https://github.com/mattlewis92/angular-calendar/compare/v0.7.2...v0.7.3) (2017-03-04)
 

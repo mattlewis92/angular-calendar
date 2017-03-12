@@ -55,6 +55,32 @@ describe('calendarWeekView component', () => {
     expect(fixture.componentInstance.days[0].date).to.deep.equal(moment('2016-06-26').toDate());
   });
 
+  it('should generate the week view without excluded days', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.excludeDays = [0, 6];
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
+    expect(fixture.componentInstance.days.length).to.equal(5);
+    fixture.destroy();
+  });
+
+  it('should update the week view when excluded days changed', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.excludeDays = [0, 6];
+    fixture.componentInstance.ngOnChanges({excludeDays: {}});
+    expect(fixture.componentInstance.days.length).to.equal(5);
+    expect(fixture.nativeElement.querySelector('.cal-weekend')).to.be.null;
+
+    fixture.componentInstance.excludeDays = [1];
+    fixture.componentInstance.ngOnChanges({excludeDays: []});
+    fixture.detectChanges();
+    expect(fixture.componentInstance.days.length).to.equal(6);
+    expect(fixture.nativeElement.querySelector('.cal-weekend')).not.to.be.null;
+
+    fixture.destroy();
+  });
+
   it('should emit on the dayClicked output', () => {
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
