@@ -34,6 +34,7 @@ import * as disableTooltips from './demo-modules/disable-tooltips';
 import * as additionalEventProperties from './demo-modules/additional-event-properties';
 import * as selectableMonthDay from './demo-modules/selectable-month-day';
 import * as minMaxDate from './demo-modules/min-max-date';
+import * as excludeDays from './demo-modules/exclude-days';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -64,6 +65,7 @@ import * as minMaxDate from './demo-modules/min-max-date';
     additionalEventProperties.DemoModule,
     selectableMonthDay.DemoModule,
     minMaxDate.DemoModule,
+    excludeDays.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -153,6 +155,12 @@ import * as minMaxDate from './demo-modules/min-max-date';
       component: dayModifier.DemoComponent,
       data: {
         label: 'Day modifier'
+      }
+    }, {
+      path: 'exclude-days',
+      component: excludeDays.DemoComponent,
+      data: {
+        label: 'Exclude Weekends'
       }
     }, {
       path: 'i18n',
