@@ -744,9 +744,9 @@ cachedir@^1.1.0:
   dependencies:
     os-homedir "^1.0.1"
 
-calendar-utils@^0.0.40:
-  version "0.0.40"
-  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.40.tgz#be0b92cb26692556771b5fc82f769c3f0c3abf27"
+calendar-utils@0.0.41:
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/calendar-utils/-/calendar-utils-0.0.41.tgz#20abc3662dc7bc9b00f7a94addd3a214efac8abf"
 
 callsite@1.0.0:
   version "1.0.0"
