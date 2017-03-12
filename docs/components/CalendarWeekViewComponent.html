@@ -441,7 +441,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-week-view&quot;&nbsp;#weekViewContainer&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-day-headers&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;day&nbsp;of&nbsp;days&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[day]&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;dayClicked.emit({date:&nbsp;day.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventTimesChanged.emit({event:&nbsp;$event.dropData.event,&nbsp;newStart:&nbsp;day.date})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-header&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;eventRow&nbsp;of&nbsp;eventRows&quot;&nbsp;#eventRowContainer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;weekEvent&nbsp;of&nbsp;eventRow.row&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;((100&nbsp;/&nbsp;7)&nbsp;*&nbsp;weekEvent.span)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft]&#x3D;&quot;((100&nbsp;/&nbsp;7)&nbsp;*&nbsp;weekEvent.offset)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{left:&nbsp;weekEvent.event?.resizable?.beforeStart,&nbsp;right:&nbsp;weekEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{left:&nbsp;getDayColumnWidth(eventRowContainer),&nbsp;right:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer,&nbsp;weekEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(weekEvent,&nbsp;$event,&nbsp;getDayColumnWidth(eventRowContainer))&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;weekEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize,&nbsp;y:&nbsp;false}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{x:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(weekViewContainer,&nbsp;event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(weekEvent,&nbsp;$event.x,&nbsp;getDayColumnWidth(eventRowContainer))&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[weekEvent]&#x3D;&quot;weekEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;weekEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-week-view&quot;&nbsp;#weekViewContainer&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-day-headers&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;day&nbsp;of&nbsp;days&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[day]&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;dayClicked.emit({date:&nbsp;day.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventTimesChanged.emit({event:&nbsp;$event.dropData.event,&nbsp;newStart:&nbsp;day.date})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-header&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;eventRow&nbsp;of&nbsp;eventRows&quot;&nbsp;#eventRowContainer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;weekEvent&nbsp;of&nbsp;eventRow.row&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.span)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.offset)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{left:&nbsp;weekEvent.event?.resizable?.beforeStart,&nbsp;right:&nbsp;weekEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{left:&nbsp;getDayColumnWidth(eventRowContainer),&nbsp;right:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer,&nbsp;weekEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(weekEvent,&nbsp;$event,&nbsp;getDayColumnWidth(eventRowContainer))&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;weekEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize,&nbsp;y:&nbsp;false}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{x:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(weekViewContainer,&nbsp;event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(weekEvent,&nbsp;$event.x,&nbsp;getDayColumnWidth(eventRowContainer))&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[weekEvent]&#x3D;&quot;weekEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;weekEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -463,6 +463,23 @@
 </div>
                               <p>
                                 <em>Type:</em>    <code>CalendarEvent[]</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>excludeDays</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>number[]</code>
 
                               </p>
                         </td>
@@ -673,8 +690,8 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEv
           #event
           [class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;
           *ngFor&#x3D;&quot;let weekEvent of eventRow.row&quot;
-          [style.width]&#x3D;&quot;((100 / 7) * weekEvent.span) + &#x27;%&#x27;&quot;
-          [style.marginLeft]&#x3D;&quot;((100 / 7) * weekEvent.offset) + &#x27;%&#x27;&quot;
+          [style.width]&#x3D;&quot;((100 / days.length) * weekEvent.span) + &#x27;%&#x27;&quot;
+          [style.marginLeft]&#x3D;&quot;((100 / days.length) * weekEvent.offset) + &#x27;%&#x27;&quot;
           mwlResizable
           [resizeEdges]&#x3D;&quot;{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}&quot;
           [resizeSnapGrid]&#x3D;&quot;{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}&quot;
@@ -709,6 +726,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * An array of events to display on view
    */
   @Input() events: CalendarEvent[] &#x3D; [];
+
+  /**
+   * An array of day indexes (0 &#x3D; sunday, 1 &#x3D; monday etc) that will be hidden on the view
+   */
+  @Input() excludeDays: number[] &#x3D; [];
 
   /**
    * An observable that when emitted on will re-render the current view
@@ -803,11 +825,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   ngOnChanges(changes: any): void {
 
-    if (changes.viewDate) {
+    if (changes.viewDate || changes.excludeDays) {
       this.refreshHeader();
     }
 
-    if (changes.events || changes.viewDate) {
+    if (changes.events || changes.viewDate || changes.excludeDays) {
       this.refreshBody();
     }
 
@@ -898,7 +920,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   getDayColumnWidth(eventRowContainer: HTMLElement): number {
-    return Math.floor(eventRowContainer.offsetWidth / 7);
+    return Math.floor(eventRowContainer.offsetWidth / this.days.length);
   }
 
   /**
@@ -913,7 +935,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   private refreshHeader(): void {
     this.days &#x3D; getWeekViewHeader({
       viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays
     });
   }
 
@@ -921,7 +944,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.eventRows &#x3D; getWeekView({
       events: this.events,
       viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays
     });
   }
 
