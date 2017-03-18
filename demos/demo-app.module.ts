@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
+import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as asyncEvents from './demo-modules/async-events';
@@ -42,6 +43,7 @@ import * as excludeDays from './demo-modules/exclude-days';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgbTabsetModule.forRoot(),
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
     asyncEvents.DemoModule,
