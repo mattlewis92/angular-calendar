@@ -90,7 +90,6 @@ const dependencyVersions: any = {
 })
 export class DemoAppComponent {
 
-  activeTabIndex: number = 0;
   demos: Demo[] = [];
   activeDemo: Demo;
 
@@ -104,7 +103,6 @@ export class DemoAppComponent {
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
         this.activeDemo = this.demos.find(demo => `/${demo.path}` === event.urlAfterRedirects);
-        this.activeTabIndex = 0;
       });
 
   }
