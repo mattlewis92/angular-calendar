@@ -140,7 +140,7 @@
   },
   "dependencies": {
     "angular-draggable-droppable": "^0.5.4",
-    "angular-resizable-element": "^0.7.2",
+    "angular-resizable-element": "^0.8.0",
     "calendar-utils": "0.0.41",
     "date-fns": "^1.15.1",
     "positioning": "^1.0.4"

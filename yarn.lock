@@ -203,9 +203,9 @@ angular-highlight-js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/angular-highlight-js/-/angular-highlight-js-1.0.1.tgz#568e756a94921556ff7708cd5d61d81995bfc5d1"
 
-angular-resizable-element@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.7.2.tgz#384a8dea7eef3dc30854cd33bef7d62d6ac2a378"
+angular-resizable-element@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.8.0.tgz#d25bf2ef26162bf969b658088953c98b20e499ab"
 
 angular2-template-loader@^0.6.0:
   version "0.6.2"
