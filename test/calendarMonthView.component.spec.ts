@@ -3,6 +3,7 @@ import {
   ComponentFixture,
   TestBed
 } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
 import { expect } from 'chai';
 import { spy } from 'sinon';
@@ -23,8 +24,8 @@ import { CalendarEventTimesChangedEvent } from '../src/interfaces/calendarEventT
 describe('calendarMonthView component', () => {
 
   beforeEach(() => {
-    TestBed.configureTestingModule({imports: [CalendarModule]});
-    TestBed.configureCompiler({
+    TestBed.configureTestingModule({
+      imports: [BrowserAnimationsModule, CalendarModule],
       providers: [
         DraggableHelper,
         CalendarEventTitleFormatter,

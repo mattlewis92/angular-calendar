@@ -10,7 +10,7 @@ import {
 describe('calendarNativeDateFormatter provider', () => {
 
   beforeEach(() => {
-    TestBed.configureCompiler({
+    TestBed.configureTestingModule({
       providers: [CalendarNativeDateFormatter]
     });
   });

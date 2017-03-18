@@ -60,7 +60,7 @@ export default config => {
           test: /\.(ts|js)($|\?)/i
         }),
         new webpack.ContextReplacementPlugin(
-          /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+          /angular(\\|\/)core(\\|\/)@angular/,
           __dirname + '/src'
         ),
         new webpack.LoaderOptionsPlugin({
