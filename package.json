@@ -52,7 +52,6 @@
     "@angular/router": "^3.4.1",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.19",
     "@types/chai": "^3.4.30",
-    "@types/core-js": "^0.9.32",
     "@types/highlight.js": "^9.1.9",
     "@types/jasmine": "2.5.35",
     "@types/node": "^7.0.0",
