@@ -75,6 +75,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
           <mwl-calendar-open-day-events
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
+            [customTemplate]="openDayEventsTemplate"
             (eventClicked)="eventClicked.emit({event: $event.event})">
           </mwl-calendar-open-day-events>
         </div>
@@ -139,6 +140,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * A custom template to use to replace the day cell
    */
   @Input() cellTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use to replace the day cell
+   */
+  @Input() openDayEventsTemplate: TemplateRef<any>;
 
   /**
    * Called when the day cell is clicked
