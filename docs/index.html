@@ -394,31 +394,35 @@
 <li><a href="#faq">FAQ</a></li>
 <li><a href="#angular-1-version">Angular 1 version</a></li>
 <li><a href="#development">Development</a></li>
-<li><a href="#licence">License</a></li>
+<li><a href="#license">License</a></li>
 </ul>
 <h2 id="about">About</h2>
-<p>A calendar component for angular 2.0+ that can display events on a month, week or day view. The successor of: <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
+<p>A calendar component for Angular 2.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>First install through npm:</p>
-<pre><code class="hljs undefined">npm install --save angular-calendar</code></pre><p>Next include the CSS file somewhere into your app:</p>
+<pre><code class="hljs bash">npm install --save angular-calendar</code></pre><p>Next include the CSS file somewhere into your app:</p>
 <pre><code class="hljs undefined">node_modules/angular-calendar/dist/css/angular-calendar.css</code></pre><p>Finally import the calendar module into your apps module:</p>
-<pre><code class="hljs undefined">import { NgModule } from '@angular/core';<br>import { CalendarModule } from 'angular-calendar';<br><br>@NgModule({<br>  imports: [<br>    CalendarModule.forRoot()<br>  ]<br>})<br>export class MyModule {}</code></pre><p>Then you can use the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a> components in your app. For a full e2e example see the <a href="https://mattlewis92.github.io/angular-calendar/demos/#/kitchen-sink">kitchen sink demo</a>. </p>
+<pre><code class="hljs typescript"><span class="hljs-keyword">import</span> { NgModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;<br><span class="hljs-keyword">import</span> { CalendarModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-calendar'</span>;<br><br><span class="hljs-meta">@NgModule</span>({<br>  imports: [<br>    CalendarModule.forRoot()<br>  ]<br>})<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyModule {}</code></pre><p>Then you can use the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a> components in your app. For a full e2e example see the <a href="https://mattlewis92.github.io/angular-calendar/demos/#/kitchen-sink">kitchen sink demo</a>. </p>
 <h3 id="module-bundlers">Module bundlers</h3>
 <p>You can find quick start examples for all common module bundlers in the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">build-tool-examples</a> folder.</p>
 <h3 id="usage-without-a-module-bundler">Usage without a module bundler</h3>
-<pre><code class="hljs undefined"><script src="node_modules/angular-calendar/dist/umd/angular-calendar.js"></script><br><script><br>    // everything is exported angularCalendar namespace<br></script></code></pre><h3 id="usage-with-angular-universal">Usage with angular universal</h3>
-<p>See <a href="https://github.com/mattlewis92/angular-calendar/issues/158#issuecomment-285330700">this comment</a> for how to use with universal</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/angular-calendar/dist/umd/angular-calendar.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript"><br>    <span class="hljs-comment">// everything is exported angularCalendar namespace</span><br></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre><h3 id="usage-with-angular-universal">Usage with Angular Universal</h3>
+<p>See <a href="https://github.com/mattlewis92/angular-calendar/issues/158#issuecomment-285330700">this comment</a> for how to use with Universal.</p>
 <h2 id="documentation">Documentation</h2>
-<p>To see all available API options see the auto generated <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> or you may find it helpful to view the examples on the demo page.</p>
+<p>To see all available API options, take a look at the auto generated <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a>. You may find it helpful to view the examples on the demo page.</p>
 <h2 id="faq">FAQ</h2>
-<ul>
-<li>Q: Is this library AoT compatible. A: Yes</li>
-<li>Q: How do I use this with my favourite module bundler? A: See the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">examples list</a></li>
-<li>Q: No styles are appearing? A: No component styles are included with each component to make it easier to override them (otherwise you&#39;d have to use <code>!important</code> on every rule that you customised). Thus you need to import the CSS file separately from <code>node_modules/angular-calendar/dist/css/angular-calendar.css</code></li>
-<li>Q: How come there are so many dependencies? A: When building the calendar some parts were found to be re-usable so they were split out into their own modules. Only the bare minimum that is required is included with the calendar, there is no extra code than if there were no dependencies. <code>date-fns</code> especially only imports directly the functions it needs and not the entire library.</li>
-<li>Q: The month, week or day view doesn&#39;t meet my project requirements, but the other views do. A: Build your own component to replace that view, and use it in place of the one this library provides. It&#39;s impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.</li>
-<li>Q: How come there&#39;s no year view like the ng1 version? A: As there are so many events to show on each month, it doesn&#39;t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone building a new lib like <code>angular-calendar-year-view</code> though ;)</li>
-</ul>
+<h3 id="is-this-library-aot-compatible-">Is this library AoT compatible?</h3>
+<p>Yes.</p>
+<h3 id="how-do-i-use-this-with-my-favourite-module-bundler-">How do I use this with my favourite module bundler?</h3>
+<p>See the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">examples list</a>.</p>
+<h3 id="no-styles-are-appearing-">No styles are appearing?</h3>
+<p>No component styles are included with each component to make it easier to override them (otherwise you’d have to use <code>!important</code> on every rule that you customised). Thus you need to import the CSS file separately from <code>node_modules/angular-calendar/dist/css/angular-calendar.css</code>.</p>
+<h3 id="how-come-there-are-so-many-dependencies-">How come there are so many dependencies?</h3>
+<p>When building the calendar some parts were found to be reusable so they were split out into their own modules. Only the bare minimum that is required is included with the calendar, there is no extra code than if there were no dependencies. <code>date-fns</code> especially only imports directly the functions it needs and not the entire library.</p>
+<h3 id="the-month-week-or-day-view-doesn-t-meet-my-project-requirements-but-the-other-views-do-">The month, week or day view doesn’t meet my project requirements, but the other views do.</h3>
+<p>Build your own component to replace that view, and use it in place of the one this library provides. It’s impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.</p>
+<h3 id="how-come-there-s-no-year-view-like-the-ng1-version-">How come there’s no year view like the ng1 version?</h3>
+<p>As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like <code>angular-calendar-year-view</code> though ;)</p>
 <h2 id="angular-1-version">Angular 1 version</h2>
 <p><a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
 <h2 id="development">Development</h2>
@@ -433,9 +437,9 @@
 <p>Run <code>npm test</code> to run tests once or <code>npm run test:watch</code> to continually run tests.</p>
 <h3 id="release">Release</h3>
 <ul>
-<li>Bump the version in package.json (once the module hits 1.0 this will become automatic)<pre><code class="hljs bash">npm run release</code></pre></li>
+<li>Bump the version in package.json (once the module hits 1.0 this will become automatic)</li>
 </ul>
-<h2 id="license">License</h2>
+<pre><code class="hljs bash">npm run release</code></pre><h2 id="license">License</h2>
 <p>MIT</p>
 
 
