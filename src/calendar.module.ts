@@ -13,7 +13,6 @@ import { CalendarWeekViewHeaderComponent } from './components/week/calendarWeekV
 import { CalendarWeekViewEventComponent } from './components/week/calendarWeekViewEvent.component';
 import { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';
 import { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';
-import { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
 import { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';
 import { CalendarNextViewDirective } from './directives/calendarNextView.directive';
@@ -51,7 +50,6 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarWeekViewEventComponent,
     CalendarAllDayEventComponent,
     CalendarDayViewHourSegmentComponent,
-    CalendarDayViewEventComponent,
     CalendarTooltipWindowComponent,
     CalendarTooltipDirective,
     CalendarPreviousViewDirective,
@@ -77,7 +75,6 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarWeekViewEventComponent,
     CalendarAllDayEventComponent,
     CalendarDayViewHourSegmentComponent,
-    CalendarDayViewEventComponent,
     CalendarTooltipWindowComponent,
     CalendarTooltipDirective,
     CalendarPreviousViewDirective,
