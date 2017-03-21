@@ -10,8 +10,7 @@ export default {
   devtool: IS_PROD ? 'source-map' : 'eval',
   entry: path.join(__dirname, 'demos', 'entry.ts'),
   output: {
-    filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js',
-    path: IS_PROD ? path.join(__dirname, 'demos') : __dirname
+    filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
   },
   module: {
     rules: [{
@@ -53,8 +52,7 @@ export default {
     port: 8000,
     inline: true,
     hot: true,
-    historyApiFallback: true,
-    contentBase: 'demos'
+    historyApiFallback: true
   },
   plugins: [
     new CheckerPlugin(),
