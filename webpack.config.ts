@@ -3,14 +3,14 @@ import * as webpack from 'webpack';
 import { TsConfigPathsPlugin, CheckerPlugin } from 'awesome-typescript-loader';
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 export default {
   devtool: IS_PROD ? 'source-map' : 'eval',
-  entry: __dirname + '/demos/entry.ts',
+  entry: path.join(__dirname, 'demos', 'entry.ts'),
   output: {
-    filename: 'demos.js',
-    path: IS_PROD ? __dirname + '/demos' : __dirname
+    filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
   },
   module: {
     rules: [{
@@ -52,8 +52,7 @@ export default {
     port: 8000,
     inline: true,
     hot: true,
-    historyApiFallback: true,
-    contentBase: 'demos'
+    historyApiFallback: true
   },
   plugins: [
     new CheckerPlugin(),
@@ -70,6 +69,9 @@ export default {
       /angular(\\|\/)core(\\|\/)@angular/,
       __dirname + '/src'
     ),
-    new FixDefaultImportPlugin()
+    new FixDefaultImportPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'demos', 'index.ejs')
+    })
   ]
 };
