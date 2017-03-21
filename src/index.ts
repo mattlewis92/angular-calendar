@@ -6,6 +6,6 @@ export * from './interfaces/calendarDateFormatter.interface';
 export * from './interfaces/calendarEventTimesChangedEvent.interface';
 export * from './calendar.module';
 export * from './components/day/calendarDayView.component';
-export * from './components/month/calendarMonthViewHeader.component';
-export * from './components/week/calendarWeekViewHeader.component';
+export * from './components/month/calendarMonthView.component';
+export * from './components/week/calendarWeekView.component';
 export {CalendarEvent, EventAction as CalendarEventAction, MonthViewDay as CalendarMonthViewDay} from 'calendar-utils';
