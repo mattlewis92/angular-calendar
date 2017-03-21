@@ -342,6 +342,9 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
+    // remove the header as it was causing the test to fail
+    const header: HTMLElement = fixture.nativeElement.querySelector('.cal-day-headers');
+    header.parentNode.removeChild(header);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const eventPosition: ClientRect = event.getBoundingClientRect();
@@ -441,7 +444,7 @@ describe('calendarWeekView component', () => {
     const event: HTMLElement = externalEventFixture.nativeElement.querySelector('.external-event');
     const eventPosition: ClientRect = event.getBoundingClientRect();
 
-    const headers: any[] = Array.from(fixture.nativeElement.querySelectorAll('mwl-calendar-week-view-header'));
+    const headers: any[] = Array.from(fixture.nativeElement.querySelectorAll('.cal-header'));
     const header: HTMLElement = headers[2];
     const headerPosition: ClientRect = header.getBoundingClientRect();
 

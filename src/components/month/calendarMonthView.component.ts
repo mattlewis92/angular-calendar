@@ -8,7 +8,8 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject
+  Inject,
+  TemplateRef
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -47,7 +48,8 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
     <div class="cal-month-view">
       <mwl-calendar-month-view-header
         [days]="columnHeaders"
-        [locale]="locale">
+        [locale]="locale"
+        [customTemplate]="headerTemplate">
       </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div *ngFor="let rowIndex of view.rowOffsets">
@@ -59,6 +61,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
+              [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
@@ -72,6 +75,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
           <mwl-calendar-open-day-events
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
+            [customTemplate]="openDayEventsTemplate"
             (eventClicked)="eventClicked.emit({event: $event.event})">
           </mwl-calendar-open-day-events>
         </div>
@@ -126,6 +130,21 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * The start number of the week
    */
   @Input() weekStartsOn: number;
+
+  /**
+   * A custom template to use to replace the header
+   */
+  @Input() headerTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use to replace the day cell
+   */
+  @Input() cellTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use to replace the day cell
+   */
+  @Input() openDayEventsTemplate: TemplateRef<any>;
 
   /**
    * Called when the day cell is clicked
