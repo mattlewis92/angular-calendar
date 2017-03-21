@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/mattlewis92/angular-calendar/compare/v0.8.0...v0.9.0) (2017-03-21)
+
+
+### Features
+
+* **monthView:** allow open day events template to be customised ([ef5a37f](https://github.com/mattlewis92/angular-calendar/commit/ef5a37f))
+* **monthView:** allow the cell templates to be customised ([4603e6b](https://github.com/mattlewis92/angular-calendar/commit/4603e6b))
+* **monthView:** allow the header template to be customised ([53db16b](https://github.com/mattlewis92/angular-calendar/commit/53db16b))
+* **weekView:** allow the header template to be customised ([595a667](https://github.com/mattlewis92/angular-calendar/commit/595a667))
+* expose day, week and month view components so they can be extended with inheritance ([426c287](https://github.com/mattlewis92/angular-calendar/commit/426c287))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/mattlewis92/angular-calendar/compare/v0.7.3...v0.8.0) (2017-03-12)
 

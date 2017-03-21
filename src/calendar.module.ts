@@ -5,6 +5,7 @@ import { DragAndDropModule, DraggableHelper } from 'angular-draggable-droppable'
 import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
 import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
 import { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';
+import { CalendarMonthViewHeaderComponent } from './components/month/calendarMonthViewHeader.component';
 import { CalendarEventActionsComponent } from './components/common/calendarEventActions.component';
 import { CalendarEventTitleComponent } from './components/common/calendarEventTitle.component';
 import { CalendarMonthCellComponent } from './components/month/calendarMonthCell.component';
@@ -13,7 +14,6 @@ import { CalendarWeekViewHeaderComponent } from './components/week/calendarWeekV
 import { CalendarWeekViewEventComponent } from './components/week/calendarWeekViewEvent.component';
 import { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';
 import { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';
-import { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
 import { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';
 import { CalendarNextViewDirective } from './directives/calendarNextView.directive';
@@ -51,14 +51,14 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarWeekViewEventComponent,
     CalendarAllDayEventComponent,
     CalendarDayViewHourSegmentComponent,
-    CalendarDayViewEventComponent,
     CalendarTooltipWindowComponent,
     CalendarTooltipDirective,
     CalendarPreviousViewDirective,
     CalendarNextViewDirective,
     CalendarTodayDirective,
     CalendarDatePipe,
-    CalendarEventTitlePipe
+    CalendarEventTitlePipe,
+    CalendarMonthViewHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -77,14 +77,14 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarWeekViewEventComponent,
     CalendarAllDayEventComponent,
     CalendarDayViewHourSegmentComponent,
-    CalendarDayViewEventComponent,
     CalendarTooltipWindowComponent,
     CalendarTooltipDirective,
     CalendarPreviousViewDirective,
     CalendarNextViewDirective,
     CalendarTodayDirective,
     CalendarDatePipe,
-    CalendarEventTitlePipe
+    CalendarEventTitlePipe,
+    CalendarMonthViewHeaderComponent
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
