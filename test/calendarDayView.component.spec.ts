@@ -32,9 +32,7 @@ describe('CalendarDayViewComponent component', () => {
       ],
       declarations: [
         ExternalEventComponent
-      ]
-    });
-    TestBed.configureCompiler({
+      ],
       providers: [
         DraggableHelper,
         CalendarEventTitleFormatter,

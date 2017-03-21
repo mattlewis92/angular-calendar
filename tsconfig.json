@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "paths": {
       "angular-calendar": ["./src/index"]
-    }
+    },
+    "lib": ["es2017", "dom"]
   },
   "include": [
     "src/**/*",

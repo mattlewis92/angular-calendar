@@ -23,8 +23,8 @@ import { CalendarEventTimesChangedEvent } from '../src/interfaces/calendarEventT
 describe('calendarMonthView component', () => {
 
   beforeEach(() => {
-    TestBed.configureTestingModule({imports: [CalendarModule]});
-    TestBed.configureCompiler({
+    TestBed.configureTestingModule({
+      imports: [CalendarModule],
       providers: [
         DraggableHelper,
         CalendarEventTitleFormatter,

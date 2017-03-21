@@ -30,9 +30,7 @@ describe('calendarWeekView component', () => {
       ],
       declarations: [
         ExternalEventComponent
-      ]
-    });
-    TestBed.configureCompiler({
+      ],
       providers: [
         CalendarEventTitleFormatter,
         DraggableHelper,

@@ -11,7 +11,7 @@
     "rootDir": "./",
     "sourceMap": true,
     "inlineSources": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es2015", "dom"],
     "allowSyntheticDefaultImports": true,
     "types": []
   },

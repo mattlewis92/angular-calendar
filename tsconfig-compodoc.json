@@ -4,7 +4,8 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2015", "dom"]
   },
   "files": [
     "src/calendar.module.ts",
