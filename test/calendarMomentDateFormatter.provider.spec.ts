@@ -12,7 +12,7 @@ import {
 describe('calendarMomentDateFormatter provider', () => {
 
   beforeEach(() => {
-    TestBed.configureCompiler({
+    TestBed.configureTestingModule({
       providers: [
         CalendarMomentDateFormatter,
         {provide: MOMENT, useValue: moment}

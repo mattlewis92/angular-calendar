@@ -28,8 +28,9 @@ class TestComponent {
 describe('calendarDate pipe', () => {
 
   beforeEach(() => {
-    TestBed.configureTestingModule({imports: [CalendarModule], declarations: [TestComponent]});
-    TestBed.configureCompiler({
+    TestBed.configureTestingModule({
+      imports: [CalendarModule],
+      declarations: [TestComponent],
       providers: [
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
