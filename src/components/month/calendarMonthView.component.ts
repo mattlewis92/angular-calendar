@@ -45,17 +45,10 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
   selector: 'mwl-calendar-month-view',
   template: `
     <div class="cal-month-view">
-      <div class="cal-cell-row cal-header">
-        <div
-          class="cal-cell"
-          *ngFor="let header of columnHeaders"
-          [class.cal-past]="header.isPast"
-          [class.cal-today]="header.isToday"
-          [class.cal-future]="header.isFuture"
-          [class.cal-weekend]="header.isWeekend">
-          {{ header.date | calendarDate:'monthViewColumnHeader':locale }}
-        </div>
-      </div>
+      <mwl-calendar-month-view-header
+        [weekDays]="columnHeaders"
+        [locale]="locale">
+      </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
