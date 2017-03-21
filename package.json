@@ -107,6 +107,7 @@
     "stylelint": "^7.6.0",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-webpack-plugin": "^0.7.0",
+    "ts-node": "^3.0.0",
     "tslint": "^4.0.2",
     "tslint-eslint-rules": "^3.2.3",
     "tslint-loader": "^3.3.0",
