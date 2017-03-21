@@ -61,6 +61,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
+              [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
@@ -133,6 +134,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * A custom template to use to replace the header
    */
   @Input() headerTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use to replace the day cell
+   */
+  @Input() cellTemplate: TemplateRef<any>;
 
   /**
    * Called when the day cell is clicked
