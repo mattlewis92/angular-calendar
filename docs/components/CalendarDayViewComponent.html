@@ -441,7 +441,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-day-view&quot;&nbsp;#dayViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-all-day-event<br>&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;event&nbsp;of&nbsp;view.allDayEvents&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;event})&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-all-day-event&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour-rows&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-events&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;dayEvent&nbsp;of&nbsp;view?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayEvent]&#x3D;&quot;dayEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hourSegments]&#x3D;&quot;hourSegments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[eventSnapSize]&#x3D;&quot;eventSnapSize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayViewContainer]&#x3D;&quot;dayViewContainer&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;dayEvent.event})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventResized)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;hour&nbsp;of&nbsp;hours&quot;&nbsp;[style.minWidth.px]&#x3D;&quot;view?.width&nbsp;+&nbsp;70&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-hour-segment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;segment&nbsp;of&nbsp;hour.segments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[segment]&#x3D;&quot;segment&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;hourSegmentClicked.emit({date:&nbsp;segment.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped($event,&nbsp;segment)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-hour-segment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-day-view&quot;&nbsp;#dayViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-all-day-event<br>&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;event&nbsp;of&nbsp;view.allDayEvents&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;event})&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-all-day-event&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour-rows&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-events&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;dayEvent&nbsp;of&nbsp;view?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{top:&nbsp;dayEvent.event?.resizable?.beforeStart,&nbsp;bottom:&nbsp;dayEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{top:&nbsp;eventSnapSize,&nbsp;bottom:&nbsp;eventSnapSize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(dayEvent,&nbsp;$event,&nbsp;dayViewContainer)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(dayEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(dayEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;false,&nbsp;y:&nbsp;dayEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{y:&nbsp;eventSnapSize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(event,&nbsp;dayViewContainer)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(dayEvent,&nbsp;$event.y)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft.px]&#x3D;&quot;dayEvent.left&nbsp;+&nbsp;70&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.height.px]&#x3D;&quot;dayEvent.height&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width.px]&#x3D;&quot;dayEvent.width&nbsp;-&nbsp;1&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.backgroundColor]&#x3D;&quot;dayEvent.event.color.secondary&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.borderColor]&#x3D;&quot;dayEvent.event.color.primary&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-starts-within-day]&#x3D;&quot;!dayEvent.startsBeforeDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-ends-within-day]&#x3D;&quot;!dayEvent.endsAfterDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ngClass]&#x3D;&quot;dayEvent.event.cssClass&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[mwlCalendarTooltip]&#x3D;&quot;dayEvent.event.title&nbsp;|&nbsp;calendarEventTitle:&#x27;dayTooltip&#x27;:dayEvent.event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-event-title<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;dayEvent.event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;eventClicked.emit({event:&nbsp;dayEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-event-title&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-event-actions&nbsp;[event]&#x3D;&quot;dayEvent.event&quot;&gt;&lt;/mwl-calendar-event-actions&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;hour&nbsp;of&nbsp;hours&quot;&nbsp;[style.minWidth.px]&#x3D;&quot;view?.width&nbsp;+&nbsp;70&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-hour-segment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;segment&nbsp;of&nbsp;hour.segments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[segment]&#x3D;&quot;segment&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;hourSegmentClicked.emit({date:&nbsp;segment.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped($event,&nbsp;segment)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-hour-segment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -775,6 +775,126 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> resizeStarted</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent, dayViewContainer: HTMLElement)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> resizing</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizing(event: DayViewEvent, resizeEvent: ResizeEvent)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> resizeEnded</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizeEnded(dayEvent: DayViewEvent)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> dragStart</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>dragStart(event: HTMLElement, dayViewContainer: HTMLElement)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> eventDragged</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>eventDragged(dayEvent: DayViewEvent, draggedInPixels: number)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
 </div>
@@ -791,9 +911,13 @@
   OnInit,
   OnDestroy
 } from &#x27;@angular/core&#x27;;
-import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour, DayViewHourSegment } from &#x27;calendar-utils&#x27;;
+import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour, DayViewHourSegment, DayViewEvent } from &#x27;calendar-utils&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
+import { ResizeEvent } from &#x27;angular-resizable-element&#x27;;
+import addMinutes from &#x27;date-fns/add_minutes&#x27;;
+import { CalendarDragHelper } from &#x27;../../providers/calendarDragHelper.provider&#x27;;
+import { CalendarResizeHelper } from &#x27;../../providers/calendarResizeHelper.provider&#x27;;
 import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEventTimesChangedEvent.interface&#x27;;
 
 /**
@@ -822,16 +946,42 @@ const SEGMENT_HEIGHT: number &#x3D; 30;
       &lt;/mwl-calendar-all-day-event&gt;
       &lt;div class&#x3D;&quot;cal-hour-rows&quot;&gt;
         &lt;div class&#x3D;&quot;cal-events&quot;&gt;
-          &lt;mwl-calendar-day-view-event
+          &lt;div
+            #event
             *ngFor&#x3D;&quot;let dayEvent of view?.events&quot;
-            [dayEvent]&#x3D;&quot;dayEvent&quot;
-            [hourSegments]&#x3D;&quot;hourSegments&quot;
-            [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
-            [eventSnapSize]&#x3D;&quot;eventSnapSize&quot;
-            [dayViewContainer]&#x3D;&quot;dayViewContainer&quot;
-            (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;
-            (eventResized)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;
-          &lt;/mwl-calendar-day-view-event&gt;
+            mwlResizable
+            [resizeEdges]&#x3D;&quot;{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}&quot;
+            [resizeSnapGrid]&#x3D;&quot;{top: eventSnapSize, bottom: eventSnapSize}&quot;
+            [validateResize]&#x3D;&quot;validateResize&quot;
+            (resizeStart)&#x3D;&quot;resizeStarted(dayEvent, $event, dayViewContainer)&quot;
+            (resizing)&#x3D;&quot;resizing(dayEvent, $event)&quot;
+            (resizeEnd)&#x3D;&quot;resizeEnded(dayEvent)&quot;
+            mwlDraggable
+            [dragAxis]&#x3D;&quot;{x: false, y: dayEvent.event.draggable &amp;&amp; !currentResize}&quot;
+            [dragSnapGrid]&#x3D;&quot;{y: eventSnapSize}&quot;
+            [validateDrag]&#x3D;&quot;validateDrag&quot;
+            (dragStart)&#x3D;&quot;dragStart(event, dayViewContainer)&quot;
+            (dragEnd)&#x3D;&quot;eventDragged(dayEvent, $event.y)&quot;
+            class&#x3D;&quot;cal-event&quot;
+            [style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;
+            [style.marginLeft.px]&#x3D;&quot;dayEvent.left + 70&quot;
+            [style.height.px]&#x3D;&quot;dayEvent.height&quot;
+            [style.width.px]&#x3D;&quot;dayEvent.width - 1&quot;
+            [style.backgroundColor]&#x3D;&quot;dayEvent.event.color.secondary&quot;
+            [style.borderColor]&#x3D;&quot;dayEvent.event.color.primary&quot;
+            [class.cal-starts-within-day]&#x3D;&quot;!dayEvent.startsBeforeDay&quot;
+            [class.cal-ends-within-day]&#x3D;&quot;!dayEvent.endsAfterDay&quot;
+            [class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;
+            [ngClass]&#x3D;&quot;dayEvent.event.cssClass&quot;
+            [mwlCalendarTooltip]&#x3D;&quot;dayEvent.event.title | calendarEventTitle:&#x27;dayTooltip&#x27;:dayEvent.event&quot;
+            [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;&gt;
+            &lt;mwl-calendar-event-title
+              [event]&#x3D;&quot;dayEvent.event&quot;
+              view&#x3D;&quot;day&quot;
+              (click)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
+            &lt;/mwl-calendar-event-title&gt;
+            &lt;mwl-calendar-event-actions [event]&#x3D;&quot;dayEvent.event&quot;&gt;&lt;/mwl-calendar-event-actions&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;cal-hour&quot; *ngFor&#x3D;&quot;let hour of hours&quot; [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;&gt;
           &lt;mwl-calendar-day-view-hour-segment
@@ -956,6 +1106,25 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  currentResize: {
+    originalTop: number,
+    originalHeight: number,
+    edge: string
+  };
+
+  /**
+   * @hidden
+   */
+  validateDrag: Function;
+
+  /**
+   * @hidden
+   */
+  validateResize: Function;
+
+  /**
+   * @hidden
+   */
   constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
     this.locale &#x3D; locale;
   }
@@ -1014,6 +1183,71 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     if (dropEvent.dropData &amp;&amp; dropEvent.dropData.event) {
       this.eventTimesChanged.emit({event: dropEvent.dropData.event, newStart: segment.date});
     }
+  }
+
+  resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent, dayViewContainer: HTMLElement): void {
+    this.currentResize &#x3D; {
+      originalTop: event.top,
+      originalHeight: event.height,
+      edge: typeof resizeEvent.edges.top !&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;top&#x27; : &#x27;bottom&#x27;
+    };
+    const resizeHelper: CalendarResizeHelper &#x3D; new CalendarResizeHelper(dayViewContainer);
+    this.validateResize &#x3D; ({rectangle}) &#x3D;&gt; resizeHelper.validateResize({rectangle});
+    this.cdr.markForCheck();
+  }
+
+  resizing(event: DayViewEvent, resizeEvent: ResizeEvent): void {
+    if (resizeEvent.edges.top) {
+      event.top &#x3D; this.currentResize.originalTop + +resizeEvent.edges.top;
+      event.height &#x3D; this.currentResize.originalHeight - +resizeEvent.edges.top;
+    } else if (resizeEvent.edges.bottom) {
+      event.height &#x3D; this.currentResize.originalHeight + +resizeEvent.edges.bottom;
+    }
+  }
+
+  resizeEnded(dayEvent: DayViewEvent): void {
+
+    let segments: number;
+    if (this.currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;top&#x27;) {
+      segments &#x3D; (dayEvent.top - this.currentResize.originalTop) / this.eventSnapSize;
+    } else {
+      segments &#x3D; (dayEvent.height - this.currentResize.originalHeight) / this.eventSnapSize;
+    }
+
+    dayEvent.top &#x3D; this.currentResize.originalTop;
+    dayEvent.height &#x3D; this.currentResize.originalHeight;
+
+    const segmentAmountInMinutes: number &#x3D; 60 / this.hourSegments;
+    const minutesMoved: number &#x3D; segments * segmentAmountInMinutes;
+    let newStart: Date &#x3D; dayEvent.event.start;
+    let newEnd: Date &#x3D; dayEvent.event.end;
+    if (this.currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;top&#x27;) {
+      newStart &#x3D; addMinutes(newStart, minutesMoved);
+    } else if (newEnd) {
+      newEnd &#x3D; addMinutes(newEnd, minutesMoved);
+    }
+
+    this.eventTimesChanged.emit({newStart, newEnd, event: dayEvent.event});
+    this.currentResize &#x3D; null;
+
+  }
+
+  dragStart(event: HTMLElement, dayViewContainer: HTMLElement): void {
+    const dragHelper: CalendarDragHelper &#x3D; new CalendarDragHelper(dayViewContainer, event);
+    this.validateDrag &#x3D; ({x, y}) &#x3D;&gt; !this.currentResize &amp;&amp; dragHelper.validateDrag({x, y});
+    this.cdr.markForCheck();
+  }
+
+  eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
+    const segments: number &#x3D; draggedInPixels / this.eventSnapSize;
+    const segmentAmountInMinutes: number &#x3D; 60 / this.hourSegments;
+    const minutesMoved: number &#x3D; segments * segmentAmountInMinutes;
+    const newStart: Date &#x3D; addMinutes(dayEvent.event.start, minutesMoved);
+    let newEnd: Date;
+    if (dayEvent.event.end) {
+      newEnd &#x3D; addMinutes(dayEvent.event.end, minutesMoved);
+    }
+    this.eventTimesChanged.emit({newStart, newEnd, event: dayEvent.event});
   }
 
   private refreshHourGrid(): void {

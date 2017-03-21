@@ -441,7 +441,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-month-view&quot;&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-cell-row&nbsp;cal-header&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-cell&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;header&nbsp;of&nbsp;columnHeaders&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-past]&#x3D;&quot;header.isPast&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-today]&#x3D;&quot;header.isToday&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-future]&#x3D;&quot;header.isFuture&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-weekend]&#x3D;&quot;header.isWeekend&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;header.date&nbsp;|&nbsp;calendarDate:&#x27;monthViewColumnHeader&#x27;:locale&nbsp;}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-days&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;rowIndex&nbsp;of&nbsp;view.rowOffsets&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-cell-row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-month-cell<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;day&nbsp;of&nbsp;view.days&nbsp;|&nbsp;slice&nbsp;:&nbsp;rowIndex&nbsp;:&nbsp;rowIndex&nbsp;+&nbsp;(view.totalDaysVisibleInWeek)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[day]&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[openDay]&#x3D;&quot;openDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;dayClicked.emit({day:&nbsp;day})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(highlightDay)&#x3D;&quot;toggleDayHighlight($event.event,&nbsp;true)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event,&nbsp;false)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped(day,&nbsp;$event.dropData.event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;$event.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-month-cell&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-open-day-events<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[isOpen]&#x3D;&quot;openRowIndex&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;rowIndex&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[events]&#x3D;&quot;openDay?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;$event.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-open-day-events&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-month-view&quot;&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-month-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;[days]&#x3D;&quot;columnHeaders&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-month-view-header&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-days&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;rowIndex&nbsp;of&nbsp;view.rowOffsets&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-cell-row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-month-cell<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;day&nbsp;of&nbsp;view.days&nbsp;|&nbsp;slice&nbsp;:&nbsp;rowIndex&nbsp;:&nbsp;rowIndex&nbsp;+&nbsp;(view.totalDaysVisibleInWeek)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[day]&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[openDay]&#x3D;&quot;openDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;cellTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;dayClicked.emit({day:&nbsp;day})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(highlightDay)&#x3D;&quot;toggleDayHighlight($event.event,&nbsp;true)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event,&nbsp;false)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped(day,&nbsp;$event.dropData.event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;$event.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-month-cell&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-open-day-events<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[isOpen]&#x3D;&quot;openRowIndex&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;rowIndex&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[events]&#x3D;&quot;openDay?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;$event.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-open-day-events&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -468,6 +468,23 @@
                             <p>
                               <em>Default value: </em><code>false</code>
                             </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>cellTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use to replace the day cell</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
+
+                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -527,6 +544,23 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>headerTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use to replace the header</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>locale</code>
                         </td>
                         <td class="col-md-10">
@@ -534,6 +568,23 @@
 </div>
                               <p>
                                 <em>Type:</em>    <code>string</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>openDayEventsTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use to replace the day cell</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
 
                               </p>
                         </td>
@@ -676,7 +727,8 @@
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject
+  Inject,
+  TemplateRef
 } from &#x27;@angular/core&#x27;;
 import {
   CalendarEvent,
@@ -713,17 +765,11 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEv
   selector: &#x27;mwl-calendar-month-view&#x27;,
   template: &#x60;
     &lt;div class&#x3D;&quot;cal-month-view&quot;&gt;
-      &lt;div class&#x3D;&quot;cal-cell-row cal-header&quot;&gt;
-        &lt;div
-          class&#x3D;&quot;cal-cell&quot;
-          *ngFor&#x3D;&quot;let header of columnHeaders&quot;
-          [class.cal-past]&#x3D;&quot;header.isPast&quot;
-          [class.cal-today]&#x3D;&quot;header.isToday&quot;
-          [class.cal-future]&#x3D;&quot;header.isFuture&quot;
-          [class.cal-weekend]&#x3D;&quot;header.isWeekend&quot;&gt;
-          {{ header.date | calendarDate:&#x27;monthViewColumnHeader&#x27;:locale }}
-        &lt;/div&gt;
-      &lt;/div&gt;
+      &lt;mwl-calendar-month-view-header
+        [days]&#x3D;&quot;columnHeaders&quot;
+        [locale]&#x3D;&quot;locale&quot;
+        [customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;
+      &lt;/mwl-calendar-month-view-header&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
         &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets&quot;&gt;
           &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
@@ -734,6 +780,7 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEv
               [openDay]&#x3D;&quot;openDay&quot;
               [locale]&#x3D;&quot;locale&quot;
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+              [customTemplate]&#x3D;&quot;cellTemplate&quot;
               (click)&#x3D;&quot;dayClicked.emit({day: day})&quot;
               (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
               (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
@@ -747,6 +794,7 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEv
           &lt;mwl-calendar-open-day-events
             [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
             [events]&#x3D;&quot;openDay?.events&quot;
+            [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
             (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;&gt;
           &lt;/mwl-calendar-open-day-events&gt;
         &lt;/div&gt;
@@ -801,6 +849,21 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * The start number of the week
    */
   @Input() weekStartsOn: number;
+
+  /**
+   * A custom template to use to replace the header
+   */
+  @Input() headerTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * A custom template to use to replace the day cell
+   */
+  @Input() cellTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * A custom template to use to replace the day cell
+   */
+  @Input() openDayEventsTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Called when the day cell is clicked
