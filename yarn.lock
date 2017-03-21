@@ -34,6 +34,10 @@
   version "4.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.0.0-rc.5.tgz#59c17065a57eb07d8494447e1a52a5ec3bafb347"
 
+"@angular/language-service@^4.0.0-rc.5":
+  version "4.0.0-rc.5"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.0.0-rc.5.tgz#30ac228d2e6d6597a77fb07116213c0936b4518c"
+
 "@angular/platform-browser-dynamic@^4.0.0-rc.5":
   version "4.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.0.0-rc.5.tgz#75218aef8993559900b6cccd41404ec54c58b24d"
