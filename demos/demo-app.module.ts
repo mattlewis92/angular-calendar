@@ -37,6 +37,8 @@ import * as selectableMonthDay from './demo-modules/selectable-month-day';
 import * as minMaxDate from './demo-modules/min-max-date';
 import * as excludeDays from './demo-modules/exclude-days';
 import * as refreshingTheView from './demo-modules/refreshing-the-view';
+import * as customTemplates from './demo-modules/custom-templates';
+import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -70,6 +72,8 @@ import * as refreshingTheView from './demo-modules/refreshing-the-view';
     minMaxDate.DemoModule,
     excludeDays.DemoModule,
     refreshingTheView.DemoModule,
+    customTemplates.DemoModule,
+    groupMonthViewEvents.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -225,6 +229,18 @@ import * as refreshingTheView from './demo-modules/refreshing-the-view';
       component: refreshingTheView.DemoComponent,
       data: {
         label: 'Refreshing the view'
+      }
+    }, {
+      path: 'custom-templates',
+      component: customTemplates.DemoComponent,
+      data: {
+        label: 'Custom templates'
+      }
+    }, {
+      path: 'group-month-view-events',
+      component: groupMonthViewEvents.DemoComponent,
+      data: {
+        label: 'Group month view events'
       }
     }, {
       path: '**',
