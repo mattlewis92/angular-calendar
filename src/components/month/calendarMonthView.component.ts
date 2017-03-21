@@ -8,7 +8,8 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject
+  Inject,
+  TemplateRef
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -47,7 +48,8 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
     <div class="cal-month-view">
       <mwl-calendar-month-view-header
         [days]="columnHeaders"
-        [locale]="locale">
+        [locale]="locale"
+        [customTemplate]="headerTemplate">
       </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div *ngFor="let rowIndex of view.rowOffsets">
@@ -126,6 +128,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * The start number of the week
    */
   @Input() weekStartsOn: number;
+
+  /**
+   * A custom template to use to replace the header
+   */
+  @Input() headerTemplate: TemplateRef<any>;
 
   /**
    * Called when the day cell is clicked
