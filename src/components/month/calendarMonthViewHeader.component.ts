@@ -7,7 +7,7 @@ import { WeekDay } from 'calendar-utils';
     <div class="cal-cell-row cal-header">
       <div
         class="cal-cell"
-        *ngFor="let day of weekDays"
+        *ngFor="let day of days"
         [class.cal-past]="day.isPast"
         [class.cal-today]="day.isToday"
         [class.cal-future]="day.isFuture"
@@ -19,7 +19,7 @@ import { WeekDay } from 'calendar-utils';
 })
 export class CalendarMonthViewHeader {
 
-  @Input() weekDays: WeekDay[];
+  @Input() days: WeekDay[];
 
   @Input() locale: string;
 

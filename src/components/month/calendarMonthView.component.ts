@@ -46,7 +46,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
   template: `
     <div class="cal-month-view">
       <mwl-calendar-month-view-header
-        [weekDays]="columnHeaders"
+        [days]="columnHeaders"
         [locale]="locale">
       </mwl-calendar-month-view-header>
       <div class="cal-days">
