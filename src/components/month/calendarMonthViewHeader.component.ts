@@ -17,7 +17,7 @@ import { WeekDay } from 'calendar-utils';
     </div>
   `
 })
-export class CalendarMonthViewHeader {
+export class CalendarMonthViewHeaderComponent {
 
   @Input() days: WeekDay[];
 

@@ -5,7 +5,7 @@ import { DragAndDropModule, DraggableHelper } from 'angular-draggable-droppable'
 import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
 import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
 import { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';
-import { CalendarMonthViewHeader } from './components/month/calendarMonthViewHeader.component';
+import { CalendarMonthViewHeaderComponent } from './components/month/calendarMonthViewHeader.component';
 import { CalendarEventActionsComponent } from './components/common/calendarEventActions.component';
 import { CalendarEventTitleComponent } from './components/common/calendarEventTitle.component';
 import { CalendarMonthCellComponent } from './components/month/calendarMonthCell.component';
@@ -58,7 +58,7 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    CalendarMonthViewHeader
+    CalendarMonthViewHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -84,7 +84,7 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    CalendarMonthViewHeader
+    CalendarMonthViewHeaderComponent
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
