@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/mattlewis92/angular-calendar/compare/v0.9.0...v0.9.1) (2017-03-23)
+
+
+### Bug Fixes
+
+* **draggable:** upgrade draggable dependency to allow touch events ([96145d1](https://github.com/mattlewis92/angular-calendar/commit/96145d1)), closes [#165](https://github.com/mattlewis92/angular-calendar/issues/165)
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/mattlewis92/angular-calendar/compare/v0.8.0...v0.9.0) (2017-03-21)
 
