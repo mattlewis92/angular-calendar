@@ -199,17 +199,17 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-draggable-droppable@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-0.6.0.tgz#1622144972413d8b02600e764e3461e113d18a45"
+angular-draggable-droppable@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-1.0.0.tgz#16e9c881611c5a0c6c018b441fa774691ed9356c"
 
 angular-highlight-js@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/angular-highlight-js/-/angular-highlight-js-1.0.2.tgz#df4dce0bb1a1d1e6776a561b075700abcfa457ea"
 
-angular-resizable-element@^0.8.0:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-0.8.1.tgz#fc5ad5635b6d5a7376f7fcb9513b9fd771017157"
+angular-resizable-element@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-1.0.0.tgz#5698a703d5db876ef1a7b43ace7463e81ec54685"
 
 angular2-template-loader@^0.6.0:
   version "0.6.2"

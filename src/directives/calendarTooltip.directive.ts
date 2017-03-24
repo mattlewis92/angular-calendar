@@ -6,13 +6,13 @@ import {
   OnDestroy,
   Input,
   ComponentRef,
-  Renderer,
   Injector,
   ComponentFactoryResolver,
   ViewContainerRef,
   ElementRef,
   ComponentFactory,
-  Inject
+  Inject,
+  Renderer2
 } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Positioning } from 'positioning';
@@ -139,8 +139,8 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-    private renderer: Renderer,
     private injector: Injector,
+    private renderer: Renderer2,
     componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
     @Inject(DOCUMENT) private document //tslint:disable-line
@@ -149,7 +149,7 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked(): void {
-    this.positionPopover();
+    this.positionTooltip();
   }
 
   ngOnDestroy(): void {
@@ -182,15 +182,16 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
     }
   }
 
-  private positionPopover(): void {
+  private positionTooltip(): void {
     if (this.tooltipRef) {
       const targetPosition: ClientRect = this.positioning.positionElements(
         this.elementRef.nativeElement, this.tooltipRef.location.nativeElement.children[0], this.placement, true
       );
 
-      const targetStyle: CSSStyleDeclaration = this.tooltipRef.location.nativeElement.children[0].style;
-      targetStyle.top = `${targetPosition.top}px`;
-      targetStyle.left = `${targetPosition.left}px`;
+      const elm: HTMLElement = this.tooltipRef.location.nativeElement.children[0];
+
+      this.renderer.setStyle(elm, 'top', `${targetPosition.top}px`);
+      this.renderer.setStyle(elm, 'left', `${targetPosition.left}px`);
     }
   }
 

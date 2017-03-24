@@ -1,7 +1,7 @@
-import { OpaqueToken, Inject } from '@angular/core';
-import { CalendarDateFormatterInterface, DateFormatterParams } from './../interfaces/calendarDateFormatter.interface';
+import { InjectionToken, Inject } from '@angular/core';
+import { CalendarDateFormatterInterface, DateFormatterParams } from '../interfaces/calendarDateFormatter.interface';
 
-export const MOMENT: OpaqueToken = new OpaqueToken('Moment');
+export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 
 /**
  * This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:

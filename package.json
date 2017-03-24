@@ -1,7 +1,7 @@
 {
   "name": "angular-calendar",
   "version": "0.9.1",
-  "description": "A calendar component that can display events on a month, week or day view",
+  "description": "A calendar component for angular 4.0+ that can display events on a month, week or day view",
   "main": "./dist/umd/angular-calendar.js",
   "style": "./dist/css/angular-calendar.css",
   "module": "./dist/esm/src/index.js",
@@ -32,6 +32,7 @@
   "keywords": [
     "angular",
     "angular2",
+    "angular4",
     "calendar"
   ],
   "author": "Matt Lewis",
@@ -126,9 +127,9 @@
     "zone.js": "^0.8.4"
   },
   "peerDependencies": {
-    "@angular/common": ">=2.0.0 <5.0.0",
-    "@angular/core": ">=2.0.0 <5.0.0",
-    "@angular/platform-browser": ">=2.0.0 <5.0.0"
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0"
   },
   "files": [
     "dist",
@@ -140,8 +141,8 @@
     }
   },
   "dependencies": {
-    "angular-draggable-droppable": "^0.6.0",
-    "angular-resizable-element": "^0.8.0",
+    "angular-draggable-droppable": "^1.0.0",
+    "angular-resizable-element": "^1.0.0",
     "calendar-utils": "0.0.42",
     "date-fns": "^1.15.1",
     "positioning": "^1.0.4"

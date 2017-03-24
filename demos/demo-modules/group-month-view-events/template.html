@@ -3,7 +3,7 @@
   [(viewDate)]="viewDate">
 </mwl-demo-utils-calendar-header>
 
-<template #customCellTemplate let-day="day" let-locale="locale">
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
   <div class="cal-cell-top">
     <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
     <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
@@ -15,7 +15,7 @@
       {{ group[1].length }}
     </span>
   </div>
-</template>
+</ng-template>
 
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
