@@ -84,7 +84,7 @@
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.9.0",
     "html-webpack-plugin": "^2.28.0",
-    "husky": "^0.13.0",
+    "husky": "^0.13.3",
     "intl": "^1.2.4",
     "istanbul-instrumenter-loader": "^2.0.0",
     "jasmine-core": "^2.5.0",
