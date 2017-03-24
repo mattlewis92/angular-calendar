@@ -2,8 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import {
   CalendarModule,
-  CalendarDateFormatter,
-  CalendarEventTitleFormatter
+  CalendarDateFormatter
 } from './../src';
 
 describe('calendar module', () => {

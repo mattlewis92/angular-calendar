@@ -44,10 +44,12 @@ Finally import the calendar module into your apps module:
 
 ```typescript
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule, // angular 4.0+ only
     CalendarModule.forRoot()
   ]
 })
