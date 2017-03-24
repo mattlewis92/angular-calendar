@@ -659,10 +659,10 @@
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { OpaqueToken, Inject } from &#x27;@angular/core&#x27;;
-import { CalendarDateFormatterInterface, DateFormatterParams } from &#x27;./../interfaces/calendarDateFormatter.interface&#x27;;
+        <pre><code class="hljs javascript">import { InjectionToken, Inject } from &#x27;@angular/core&#x27;;
+import { CalendarDateFormatterInterface, DateFormatterParams } from &#x27;../interfaces/calendarDateFormatter.interface&#x27;;
 
-export const MOMENT: OpaqueToken &#x3D; new OpaqueToken(&#x27;Moment&#x27;);
+export const MOMENT: InjectionToken&lt;string&gt; &#x3D; new InjectionToken(&#x27;Moment&#x27;);
 
 /**
  * This will use &lt;a href&#x3D;&quot;http://momentjs.com/&quot; target&#x3D;&quot;_blank&quot;&gt;moment&lt;/a&gt; to do all date formatting. To use this class:
