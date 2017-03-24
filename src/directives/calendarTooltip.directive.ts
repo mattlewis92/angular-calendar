@@ -171,7 +171,7 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
       this.tooltipRef = this.viewContainerRef.createComponent(this.tooltipFactory, 0, this.injector, []);
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.placement = this.placement;
-      this.renderer.invokeElementMethod(this.document.body, 'appendChild', [this.tooltipRef.location.nativeElement]);
+      this.document.body.appendChild(this.tooltipRef.location.nativeElement);
     }
   }
 
