@@ -127,6 +127,7 @@
     "zone.js": "^0.8.4"
   },
   "peerDependencies": {
+    "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/platform-browser": "^4.0.0"
