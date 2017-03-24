@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/mattlewis92/angular-calendar/compare/v0.9.1...v0.10.0) (2017-03-24)
+
+
+### Features
+
+* **ng4:** upgrade to angular 4 to remove the `<template>` tag deprecation warning ([68a8f39](https://github.com/mattlewis92/angular-calendar/commit/68a8f39)), closes [#163](https://github.com/mattlewis92/angular-calendar/issues/163)
+
+
+### BREAKING CHANGES
+
+* **ng4:** angular 4.0 or higher is now required to use this library. The
+[upgrade](http://angularjs.blogspot.co.uk/2017/03/angular-400-now-available.html) should be seamless
+for most users.
+
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/mattlewis92/angular-calendar/compare/v0.9.0...v0.9.1) (2017-03-23)
 

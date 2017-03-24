@@ -7,6 +7,7 @@ import 'intl/locale-data/jsonp/en';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
 import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
@@ -44,6 +45,7 @@ import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
   declarations: [DemoAppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     NgbTabsetModule.forRoot(),
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,

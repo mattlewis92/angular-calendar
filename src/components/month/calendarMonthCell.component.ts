@@ -4,7 +4,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-month-cell',
   template: `
-    <template #defaultTemplate>
+    <ng-template #defaultTemplate>
       <div class="cal-cell-top">
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
         <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
@@ -25,10 +25,10 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
           (click)="$event.stopPropagation(); eventClicked.emit({event: event})">
         </div>
       </div>
-    </template>
-    <template
+    </ng-template>
+    <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngOutletContext]="{
+      [ngTemplateOutletContext]="{
         day: day,
         openDay: openDay,
         locale: locale,
@@ -37,7 +37,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
         unhighlightDay: unhighlightDay,
         eventClicked: eventClicked
       }">
-    </template>
+    </ng-template>
   `,
   host: {
     '[class]': '"cal-cell cal-day-cell " + day?.cssClass',

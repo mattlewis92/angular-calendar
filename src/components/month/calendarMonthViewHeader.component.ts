@@ -4,7 +4,7 @@ import { WeekDay } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-month-view-header',
   template: `
-    <template #defaultTemplate>
+    <ng-template #defaultTemplate>
       <div class="cal-cell-row cal-header">
         <div
           class="cal-cell"
@@ -16,11 +16,11 @@ import { WeekDay } from 'calendar-utils';
           {{ day.date | calendarDate:'monthViewColumnHeader':locale }}
         </div>
       </div>
-    </template>
-    <template
+    </ng-template>
+    <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngOutletContext]="{days: days, locale: locale}">
-    </template>
+      [ngTemplateOutletContext]="{days: days, locale: locale}">
+    </ng-template>
   `
 })
 export class CalendarMonthViewHeaderComponent {

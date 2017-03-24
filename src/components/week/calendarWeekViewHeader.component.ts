@@ -4,7 +4,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-week-view-header',
   template: `
-    <template #defaultTemplate>
+    <ng-template #defaultTemplate>
       <div class="cal-day-headers">
         <div
           class="cal-header"
@@ -23,11 +23,11 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
           <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>
         </div>
       </div>
-    </template>
-    <template
+    </ng-template>
+    <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngOutletContext]="{days: days, locale: locale, dayClicked: dayClicked, eventDropped: eventDropped}">
-    </template>
+      [ngTemplateOutletContext]="{days: days, locale: locale, dayClicked: dayClicked, eventDropped: eventDropped}">
+    </ng-template>
   `
 })
 export class CalendarWeekViewHeaderComponent {
