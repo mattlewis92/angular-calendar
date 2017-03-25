@@ -27,7 +27,7 @@ export class DemoComponent implements OnInit {
 
   viewDate: Date = new Date();
 
-  events: Observable<FilmEvent[]>;
+  events$: Observable<FilmEvent[]>;
 
   activeDayIsOpen: boolean = false;
 
@@ -55,7 +55,7 @@ export class DemoComponent implements OnInit {
     search.set('primary_release_date.gte', format(getStart(this.viewDate), 'YYYY-MM-DD'));
     search.set('primary_release_date.lte', format(getEnd(this.viewDate), 'YYYY-MM-DD'));
     search.set('api_key', '0ec33936a68018857d727958dca1424f');
-    this.events = this.http
+    this.events$ = this.http
       .get('https://api.themoviedb.org/3/discover/movie', {search})
       .map(res => res.json())
       .map(({results}: {results: Film[]}) => {
