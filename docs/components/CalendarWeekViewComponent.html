@@ -441,7 +441,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-week-view&quot;&nbsp;#weekViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-week-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;[days]&#x3D;&quot;days&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;headerTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(dayClicked)&#x3D;&quot;dayClicked.emit($event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventDropped)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-week-view-header&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;eventRow&nbsp;of&nbsp;eventRows&quot;&nbsp;#eventRowContainer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;weekEvent&nbsp;of&nbsp;eventRow.row&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.span)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.offset)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{left:&nbsp;weekEvent.event?.resizable?.beforeStart,&nbsp;right:&nbsp;weekEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{left:&nbsp;getDayColumnWidth(eventRowContainer),&nbsp;right:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer,&nbsp;weekEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(weekEvent,&nbsp;$event,&nbsp;getDayColumnWidth(eventRowContainer))&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;weekEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize,&nbsp;y:&nbsp;false}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{x:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(weekViewContainer,&nbsp;event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(weekEvent,&nbsp;$event.x,&nbsp;getDayColumnWidth(eventRowContainer))&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[weekEvent]&#x3D;&quot;weekEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;weekEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-week-view&quot;&nbsp;#weekViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-week-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;[days]&#x3D;&quot;days&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;headerTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(dayClicked)&#x3D;&quot;dayClicked.emit($event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventDropped)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-week-view-header&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;eventRow&nbsp;of&nbsp;eventRows&quot;&nbsp;#eventRowContainer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;weekEvent&nbsp;of&nbsp;eventRow.row&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.span)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.offset)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{left:&nbsp;weekEvent.event?.resizable?.beforeStart,&nbsp;right:&nbsp;weekEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{left:&nbsp;getDayColumnWidth(eventRowContainer),&nbsp;right:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer,&nbsp;weekEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(weekEvent,&nbsp;$event,&nbsp;getDayColumnWidth(eventRowContainer))&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;weekEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize,&nbsp;y:&nbsp;false}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{x:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(weekViewContainer,&nbsp;event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(weekEvent,&nbsp;$event.x,&nbsp;getDayColumnWidth(eventRowContainer))&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[weekEvent]&#x3D;&quot;weekEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;eventTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;weekEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -463,6 +463,23 @@
 </div>
                               <p>
                                 <em>Type:</em>    <code>CalendarEvent[]</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>eventTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use for week view events</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
 
                               </p>
                         </td>
@@ -720,6 +737,7 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEv
           &lt;mwl-calendar-week-view-event
             [weekEvent]&#x3D;&quot;weekEvent&quot;
             [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+            [customTemplate]&#x3D;&quot;eventTemplate&quot;
             (eventClicked)&#x3D;&quot;eventClicked.emit({event: weekEvent.event})&quot;&gt;
           &lt;/mwl-calendar-week-view-event&gt;
         &lt;/div&gt;
@@ -768,6 +786,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use to replace the header
    */
   @Input() headerTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * A custom template to use for week view events
+   */
+  @Input() eventTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Called when a header week day is clicked
