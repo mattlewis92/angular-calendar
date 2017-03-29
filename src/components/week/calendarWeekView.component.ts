@@ -72,6 +72,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
             [tooltipPlacement]="tooltipPlacement"
+            [customTemplate]="eventTemplate"
             (eventClicked)="eventClicked.emit({event: weekEvent.event})">
           </mwl-calendar-week-view-event>
         </div>
@@ -120,6 +121,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use to replace the header
    */
   @Input() headerTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for week view events
+   */
+  @Input() eventTemplate: TemplateRef<any>;
 
   /**
    * Called when a header week day is clicked
