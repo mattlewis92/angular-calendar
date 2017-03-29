@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/mattlewis92/angular-calendar/compare/v0.10.1...v0.11.0) (2017-03-29)
+
+
+### Features
+
+* **weekView:** allow the event template to be customised ([0be434d](https://github.com/mattlewis92/angular-calendar/commit/0be434d)), closes [#171](https://github.com/mattlewis92/angular-calendar/issues/171)
+
+
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/mattlewis92/angular-calendar/compare/v0.10.0...v0.10.1) (2017-03-25)
 
