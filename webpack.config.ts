@@ -1,9 +1,10 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 import { TsConfigPathsPlugin, CheckerPlugin } from 'awesome-typescript-loader';
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import * as StyleLintPlugin from 'stylelint-webpack-plugin';
+import * as FixDefaultImportPlugin from 'webpack-fix-default-import-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+
 const IS_PROD = process.argv.indexOf('-p') > -1;
 
 export default {

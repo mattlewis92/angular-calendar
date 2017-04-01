@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+import * as StyleLintPlugin from 'stylelint-webpack-plugin';
+import * as FixDefaultImportPlugin from 'webpack-fix-default-import-plugin';
 
 export default config => {
   config.set({
