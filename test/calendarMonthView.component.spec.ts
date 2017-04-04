@@ -369,7 +369,7 @@ describe('calendarMonthView component', () => {
     expect(cells[10].classList.contains('cal-drag-over')).to.be.true;
     const eventAfterDragPosition: ClientRect = event.getBoundingClientRect();
     const movedLeft: number = dragToCellPosition.left - eventStartPosition.left;
-    expect(Math.round(eventAfterDragPosition.left)).to.equal(eventStartPosition.left + movedLeft);
+    expect(eventAfterDragPosition.left).to.equal(eventStartPosition.left + movedLeft);
     const movedTop: number = dragToCellPosition.top - eventStartPosition.top;
     expect(Math.round(eventAfterDragPosition.top)).to.equal(eventStartPosition.top + movedTop);
     triggerDomEvent('mouseup', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});

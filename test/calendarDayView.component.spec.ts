@@ -324,7 +324,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousemove', document.body, {clientY: rect.bottom + 30, clientX: rect.left + 10});
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
-    expect(event.getBoundingClientRect().height).to.equal(150);
+    expect(event.getBoundingClientRect().height).to.equal(162);
     triggerDomEvent('mouseup', document.body, {clientY: rect.top + 30, clientX: rect.left + 10});
     fixture.detectChanges();
     fixture.destroy();
@@ -433,13 +433,14 @@ describe('CalendarDayViewComponent component', () => {
       end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
       draggable: true
     }];
+    fixture.componentInstance.eventSnapSize = 1;
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     const eventPosition: ClientRect = event.getBoundingClientRect();
     const calendarPosition: ClientRect = fixture.nativeElement.getBoundingClientRect();
-    triggerDomEvent('mousedown', event, {clientY: eventPosition.top + 5, clientX: eventPosition.left + 10});
+    triggerDomEvent('mousedown', event, {clientY: eventPosition.top, clientX: eventPosition.left + 10});
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {clientY: calendarPosition.top, clientX: eventPosition.left + 10});
     fixture.detectChanges();

@@ -3,6 +3,7 @@
 /// <reference types="sinon" />
 /// <reference types="sinon-chai" />
 
+import './../scss/angular-calendar.scss';
 import 'core-js';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/long-stack-trace-zone';

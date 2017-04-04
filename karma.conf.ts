@@ -39,6 +39,10 @@ export default config => {
           loader: 'awesome-typescript-loader',
           exclude: /node_modules/
         }, {
+          test: /\.scss$/,
+          loader: 'style-loader!css-loader!sass-loader',
+          exclude: /node_modules/
+        }, {
           enforce: 'post',
           test: /src\/.+\.ts$/,
           exclude: /(node_modules|\.spec\.ts$|\.interface\.ts$)/,
