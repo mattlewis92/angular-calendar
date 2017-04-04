@@ -27,7 +27,7 @@ const SEGMENT_HEIGHT: number = 30;
 /**
  * Shows all events on a given day. Example usage:
  *
- * ```
+ * ```typescript
  * &lt;mwl-calendar-day-view
  *  [viewDate]="viewDate"
  *  [events]="events"&gt;

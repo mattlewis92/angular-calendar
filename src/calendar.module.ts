@@ -26,7 +26,7 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
 /**
  * The main module of this library. Example usage:
  *
- * ```
+ * ```typescript
  * import { CalenderModule } from 'angular-calendar';
  *
  * &commat;NgModule({

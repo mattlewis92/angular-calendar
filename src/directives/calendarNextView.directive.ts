@@ -6,7 +6,7 @@ import addMonths from 'date-fns/add_months';
 /**
  * Change the view date to the next view. For example:
  *
- * ```
+ * ```typescript
  * &lt;button
  *  mwlCalendarNextView
  *  [(viewDate)]="viewDate"
