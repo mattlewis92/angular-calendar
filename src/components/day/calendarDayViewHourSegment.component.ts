@@ -8,7 +8,6 @@ import { DayViewHourSegment } from 'calendar-utils';
       <div [hidden]="!segment.isStart" class="cal-time">
         {{ segment.date | calendarDate:'dayViewHour':locale }}
       </div>
-      &nbsp;
     </div>
   `
 })
