@@ -50,6 +50,7 @@ const SEGMENT_HEIGHT: number = 30;
       <mwl-calendar-all-day-event
         *ngFor="let event of view.allDayEvents"
         [event]="event"
+        [customTemplate]="allDayEventTemplate"
         (eventClicked)="eventClicked.emit({event: event})">
       </mwl-calendar-all-day-event>
       <div class="cal-hour-rows">
@@ -181,6 +182,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use to replace the hour segment
    */
   @Input() hourSegmentTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for all day events
+   */
+  @Input() allDayEventTemplate: TemplateRef<any>;
 
   /**
    * Called when an event title is clicked
