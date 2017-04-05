@@ -19,7 +19,7 @@
   let-unhighlightDay="unhighlightDay"
   let-eventClicked="eventClicked">
 
-  <div style="height: 100%; display: flex; flex-direction: column" [contextMenu]="basicMenu" [contextMenuSubject]="day.date">
+  <div class="cal-cell" [contextMenu]="basicMenu" [contextMenuSubject]="day.date">
     <div class="cal-cell-top">
       <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
