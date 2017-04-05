@@ -57,8 +57,8 @@
     tsickle "^0.21.0"
 
 "@compodoc/compodoc@^1.0.0-beta.2":
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@compodoc/compodoc/-/compodoc-1.0.0-beta.2.tgz#12435a3743d050529caba2af7b119345f3401b5a"
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@compodoc/compodoc/-/compodoc-1.0.0-beta.3.tgz#e50266090567322099343d258d4680b1e190d67e"
   dependencies:
     "@compodoc/ngd-core" "^2.0.0-alpha.1"
     "@compodoc/ngd-transformer" "^2.0.0-alpha.3"
@@ -6221,8 +6221,8 @@ tslint@^4.0.2:
     update-notifier "^2.0.0"
 
 tsutils@^1.1.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.4.0.tgz#84f8a83df9967d35bf1ff3aa48c7339593d64e19"
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.5.0.tgz#36b571537827988b497244486a77792c8fc3563c"
 
 tty-browserify@0.0.0:
   version "0.0.0"
