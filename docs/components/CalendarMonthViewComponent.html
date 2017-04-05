@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -389,18 +391,22 @@
   <li>CalendarMonthViewComponent</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
 
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -412,7 +418,20 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given month. Example usage:</p>
-<pre><code class="hljs undefined">&lt;mwl-calendar-month-view<br>  [viewDate]="viewDate"<br>  [events]="events"&gt;<br>&lt;/mwl-calendar-month-view&gt;</code></pre>
+<pre class="line-numbers"><code class="language-typescript">&lt;mwl-calendar-month-view
+  [viewDate]="viewDate"
+  [events]="events"&gt;
+&lt;/mwl-calendar-month-view&gt;</code></pre>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-class.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-class.html" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -470,6 +489,11 @@
                             </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/components/month/calendarMonthView.component.ts:106</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -487,6 +511,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/components/month/calendarMonthView.component.ts:142</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -504,6 +533,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/components/month/calendarMonthView.component.ts:112</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -521,6 +555,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/components/month/calendarMonthView.component.ts:96</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -538,6 +577,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/components/month/calendarMonthView.component.ts:101</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -555,6 +599,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/components/month/calendarMonthView.component.ts:137</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -572,6 +621,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/components/month/calendarMonthView.component.ts:122</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -589,6 +643,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/components/month/calendarMonthView.component.ts:147</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -606,6 +665,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/components/month/calendarMonthView.component.ts:117</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -626,6 +690,11 @@
                             </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/components/month/calendarMonthView.component.ts:127</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -643,6 +712,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/components/month/calendarMonthView.component.ts:91</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -660,6 +734,11 @@
                               </p>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/components/month/calendarMonthView.component.ts:132</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
     </section>
@@ -679,6 +758,11 @@
 
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/components/month/calendarMonthView.component.ts:152</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -694,6 +778,11 @@
 
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/components/month/calendarMonthView.component.ts:157</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -709,6 +798,11 @@
 
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/components/month/calendarMonthView.component.ts:162</a></div>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
     </section>
@@ -716,8 +810,10 @@
 
 
 </div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import {
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import {
   Component,
   OnChanges,
   Input,
@@ -754,7 +850,7 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEv
 /**
  * Shows all events on a given month. Example usage:
  *
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * &amp;lt;mwl-calendar-month-view
  *  [viewDate]&#x3D;&quot;viewDate&quot;
  *  [events]&#x3D;&quot;events&quot;&amp;gt;
@@ -1019,9 +1115,38 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
 
 }
 </code></pre>
-        </div>
     </div>
 
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    [customTemplate]="headerTemplate">  </mwl-calendar-month-view-header>  <div class="cal-days">    <div *ngFor="let rowIndex of view.rowOffsets">      <div class="cal-cell-row">        <mwl-calendar-month-cell          *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"          [class.cal-drag-over]="day.dragOver"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [customTemplate]="cellTemplate"          (click)="dayClicked.emit({day: day})"          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          (dragEnter)="day.dragOver = true"          (dragLeave)="day.dragOver = false"          (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"          (eventClicked)="eventClicked.emit({event: $event.event})">        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [customTemplate]="openDayEventsTemplate"        (eventClicked)="eventClicked.emit({event: $event.event})">      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
+    var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
+    var ACTUAL_COMPONENT = {'name': 'CalendarMonthViewComponent'};
+</script>
+<script src="../js/tree.js"></script>
 
 
 
@@ -1058,15 +1183,9 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -412,7 +414,14 @@
             </p>
             <p class="comment">
                 <p>The main module of this library. Example usage:</p>
-<pre><code class="hljs undefined">import { CalenderModule } from 'angular-calendar';<br><br>&commat;NgModule({<br>   imports: [<br>     CalenderModule.forRoot()<br>   ]<br>})<br>class MyModule {}</code></pre>
+<pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from 'angular-calendar';
+
+&commat;NgModule({
+   imports: [
+     CalenderModule.forRoot()
+   ]
+})
+class MyModule {}</code></pre>
             </p>
 
         <div class="container-fluid module">
@@ -473,7 +482,7 @@
         </div>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { NgModule, ModuleWithProviders } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ResizableModule } from &#x27;angular-resizable-element&#x27;;
 import { DragAndDropModule, DraggableHelper } from &#x27;angular-draggable-droppable&#x27;;
@@ -501,7 +510,7 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
 /**
  * The main module of this library. Example usage:
  *
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * import { CalenderModule } from &#x27;angular-calendar&#x27;;
  *
  * &amp;commat;NgModule({
@@ -621,15 +630,9 @@ export class CalendarModule {
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

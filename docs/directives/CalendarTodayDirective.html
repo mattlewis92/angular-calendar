@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -413,7 +415,11 @@
             </p>
             <p class="comment">
                 <p>Change the view date to the current day. For example:</p>
-<pre><code class="hljs undefined">&lt;button<br>  mwlCalendarToday<br>  [(viewDate)]="viewDate"&gt;<br>  Today<br>&lt;/button&gt;</code></pre>
+<pre class="line-numbers"><code class="language-typescript">&lt;button
+  mwlCalendarToday
+  [(viewDate)]="viewDate"&gt;
+  Today
+&lt;/button&gt;</code></pre>
             </p>
 
 
@@ -448,6 +454,11 @@
                                       </p>
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/directives/calendarToday.directive.ts:23</a></div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>
@@ -467,6 +478,11 @@
 
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/directives/calendarToday.directive.ts:28</a></div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>
@@ -476,13 +492,13 @@
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Directive, HostListener, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Directive, HostListener, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
 import startOfToday from &#x27;date-fns/start_of_today&#x27;;
 
 /**
  * Change the view date to the current day. For example:
  *
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * &amp;lt;button
  *  mwlCalendarToday
  *  [(viewDate)]&#x3D;&quot;viewDate&quot;&amp;gt;
@@ -551,15 +567,9 @@ export class CalendarTodayDirective {
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

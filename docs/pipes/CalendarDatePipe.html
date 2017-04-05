@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -415,18 +417,19 @@
             </p>
             <p class="comment">
                 <p>This pipe is primarily for rendering the current view title. Example usage:</p>
-<pre><code class="hljs undefined">// where `viewDate` is a `Date` and view is `'month' | 'week' | 'day'`<br>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</code></pre>
+<pre class="line-numbers"><code class="language-typescript">// where `viewDate` is a `Date` and view is `'month' | 'week' | 'day'`
+{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</code></pre>
             </p>
 
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Pipe, PipeTransform, LOCALE_ID, Inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Pipe, PipeTransform, LOCALE_ID, Inject } from &#x27;@angular/core&#x27;;
 import { CalendarDateFormatter } from &#x27;./../providers/calendarDateFormatter.provider&#x27;;
 
 /**
  * This pipe is primarily for rendering the current view title. Example usage:
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * // where &#x60;viewDate&#x60; is a &#x60;Date&#x60; and view is &#x60;&#x27;month&#x27; | &#x27;week&#x27; | &#x27;day&#x27;&#x60;
  * {{ viewDate | calendarDate:(view + &#x27;ViewTitle&#x27;):&#x27;en&#x27; }}
  * &#x60;&#x60;&#x60;
@@ -478,15 +481,9 @@ export class CalendarDatePipe implements PipeTransform {
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

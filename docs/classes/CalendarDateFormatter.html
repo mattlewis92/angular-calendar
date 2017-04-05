@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -417,22 +419,44 @@
             <p class="comment">
                 <p>This class is responsible for all formatting of dates. There are 2 implementations available, the <code>CalendarNativeDateFormatter</code> (default) which will use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to format dates, or there is the <code>CalendarMomentDateFormatter</code> which uses <a href="http://momentjs.com/" target="_blank">moment</a>.</p>
 <p>If you wish, you may override any of the defaults via angulars DI. For example:</p>
-<pre><code class="hljs undefined">import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';<br><br>class CustomDateFormatter extends CalendarDateFormatter {<br><br>   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {<br>     return new Intl.DateTimeFormat(locale, {weekday: 'short'}).format(date); // use short week days<br>   }<br><br>}<br><br>// in your component that uses the calendar<br>providers: [{<br>   provide: CalendarDateFormatter,<br>   useClass: CustomDateFormatter<br>}]</code></pre>
+<pre class="line-numbers"><code class="language-typescript">import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';
+
+class CustomDateFormatter extends CalendarDateFormatter {
+
+   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
+     return new Intl.DateTimeFormat(locale, {weekday: 'short'}).format(date); // use short week days
+   }
+
+}
+
+// in your component that uses the calendar
+providers: [{
+   provide: CalendarDateFormatter,
+   useClass: CustomDateFormatter
+}]</code></pre>
             </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code><a href="../classes/CalendarNativeDateFormatter.html" target="_self" >CalendarNativeDateFormatter</a></code>
+            </p>
+
 
 
 
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { CalendarNativeDateFormatter } from &#x27;./calendarNativeDateFormatter.provider&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { CalendarNativeDateFormatter } from &#x27;./calendarNativeDateFormatter.provider&#x27;;
 
 /**
  * This class is responsible for all formatting of dates. There are 2 implementations available, the &#x60;CalendarNativeDateFormatter&#x60; (default) which will use the &lt;a href&#x3D;&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl&quot; target&#x3D;&quot;_blank&quot;&gt;Intl&lt;/a&gt; API to format dates, or there is the &#x60;CalendarMomentDateFormatter&#x60; which uses &lt;a href&#x3D;&quot;http://momentjs.com/&quot; target&#x3D;&quot;_blank&quot;&gt;moment&lt;/a&gt;.
  *
  * If you wish, you may override any of the defaults via angulars DI. For example:
  *
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * import { CalendarDateFormatter, DateFormatterParams } from &#x27;angular-calendar&#x27;;
  *
  * class CustomDateFormatter extends CalendarDateFormatter {
@@ -485,15 +509,9 @@ export class CalendarDateFormatter extends CalendarNativeDateFormatter {}</code>
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

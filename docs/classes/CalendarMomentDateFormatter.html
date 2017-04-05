@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -416,12 +418,31 @@
             </p>
             <p class="comment">
                 <p>This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:</p>
-<pre><code class="hljs undefined">import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from 'angular-calendar';<br>import * as moment from 'moment';<br><br>// in your component<br>provide: [{<br>   provide: MOMENT, useValue: moment<br>}, {<br>   provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter<br>}]</code></pre>
+<pre class="line-numbers"><code class="language-typescript">import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from 'angular-calendar';
+import * as moment from 'moment';
+
+// in your component
+provide: [{
+   provide: MOMENT, useValue: moment
+}, {
+   provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
+}]</code></pre>
+            </p>
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../classes/CalendarDateFormatter.html" target="_self" >CalendarDateFormatterInterface</a></code>
             </p>
 
 
             <section>
-                <h3 id="methods">Methods</h3>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
@@ -429,7 +450,6 @@
                                     <b><span class="modifier">Public</span> monthViewColumnHeader</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -439,10 +459,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:32</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The month view header week day labels</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -458,7 +485,6 @@
                                     <b><span class="modifier">Public</span> monthViewDayNumber</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -468,10 +494,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:39</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The month view cell day number</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -487,7 +520,6 @@
                                     <b><span class="modifier">Public</span> monthViewTitle</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -497,10 +529,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:46</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The month view title</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -516,7 +555,6 @@
                                     <b><span class="modifier">Public</span> weekViewColumnHeader</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -526,10 +564,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:53</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The week view header week day labels</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -545,7 +590,6 @@
                                     <b><span class="modifier">Public</span> weekViewColumnSubHeader</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -555,10 +599,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:60</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The week view sub header day and month labels</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -574,7 +625,6 @@
                                     <b><span class="modifier">Public</span> weekViewTitle</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -584,10 +634,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:67</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The week view title</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -603,7 +660,6 @@
                                     <b><span class="modifier">Public</span> dayViewHour</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -613,10 +669,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:74</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The time formatting down the left hand side of the day view</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -632,7 +695,6 @@
                                     <b><span class="modifier">Public</span> dayViewTitle</b>
                                 </td>
                             </tr>
-            
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play circle">
@@ -642,10 +704,17 @@
                                 </td>
                             </tr>
             
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:81</a></div>
+                                    </td>
+                                </tr>
+            
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>The day view title</p>
             </div>
+            
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>string</code>
             
@@ -659,7 +728,7 @@
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { InjectionToken, Inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { InjectionToken, Inject } from &#x27;@angular/core&#x27;;
 import { CalendarDateFormatterInterface, DateFormatterParams } from &#x27;../interfaces/calendarDateFormatter.interface&#x27;;
 
 export const MOMENT: InjectionToken&lt;string&gt; &#x3D; new InjectionToken(&#x27;Moment&#x27;);
@@ -667,7 +736,7 @@ export const MOMENT: InjectionToken&lt;string&gt; &#x3D; new InjectionToken(&#x2
 /**
  * This will use &lt;a href&#x3D;&quot;http://momentjs.com/&quot; target&#x3D;&quot;_blank&quot;&gt;moment&lt;/a&gt; to do all date formatting. To use this class:
  *
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from &#x27;angular-calendar&#x27;;
  * import * as moment from &#x27;moment&#x27;;
  *
@@ -778,15 +847,9 @@ export class CalendarMomentDateFormatter implements CalendarDateFormatterInterfa
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

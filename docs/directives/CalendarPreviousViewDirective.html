@@ -50,8 +50,9 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
+                        <a data-type="chapter-link" href="../modules.html" >
                             <span class="fa fa-archive"></span>
                             <span>Modules</span>
                             <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -140,7 +141,6 @@
                     </li>
             
             
-            
                     <li class="chapter">
                         <div class="simple">
                             <span class="fa fa-info"></span>
@@ -181,6 +181,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                     </li>
@@ -188,7 +189,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -233,8 +234,9 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
+                               <a data-type="chapter-link" href="../modules.html" >
                                    <span class="fa fa-archive"></span>
                                    <span>Modules</span>
                                    <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
@@ -323,7 +325,6 @@
                            </li>
                    
                    
-                   
                            <li class="chapter">
                                <div class="simple">
                                    <span class="fa fa-info"></span>
@@ -364,6 +365,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
                            </li>
@@ -371,7 +373,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -413,7 +415,12 @@
             </p>
             <p class="comment">
                 <p>Change the view date to the previous view. For example:</p>
-<pre><code class="hljs undefined">&lt;button<br>  mwlCalendarPreviousView<br>  [(viewDate)]="viewDate"<br>  [view]="view"&gt;<br>  Previous<br>&lt;/button&gt;</code></pre>
+<pre class="line-numbers"><code class="language-typescript">&lt;button
+  mwlCalendarPreviousView
+  [(viewDate)]="viewDate"
+  [view]="view"&gt;
+  Previous
+&lt;/button&gt;</code></pre>
             </p>
 
 
@@ -448,6 +455,11 @@
                                       </p>
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/directives/calendarPreviousView.directive.ts:26</a></div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -465,6 +477,11 @@
                                       </p>
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/directives/calendarPreviousView.directive.ts:31</a></div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>
@@ -484,6 +501,11 @@
 
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/directives/calendarPreviousView.directive.ts:36</a></div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>
@@ -493,7 +515,7 @@
 
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Directive, HostListener, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Directive, HostListener, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
 import subDays from &#x27;date-fns/sub_days&#x27;;
 import subWeeks from &#x27;date-fns/sub_weeks&#x27;;
 import subMonths from &#x27;date-fns/sub_months&#x27;;
@@ -501,7 +523,7 @@ import subMonths from &#x27;date-fns/sub_months&#x27;;
 /**
  * Change the view date to the previous view. For example:
  *
- * &#x60;&#x60;&#x60;
+ * &#x60;&#x60;&#x60;typescript
  * &amp;lt;button
  *  mwlCalendarPreviousView
  *  [(viewDate)]&#x3D;&quot;viewDate&quot;
@@ -584,15 +606,9 @@ export class CalendarPreviousViewDirective {
        <script src="../js/search/search-lunr.js"></script>
 
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>
