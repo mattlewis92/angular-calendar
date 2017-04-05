@@ -80,7 +80,8 @@ const dependencyVersions: any = {
   zoneJs: require('zone.js/package.json').version,
   reflectMetadata: require('reflect-metadata/package.json').version,
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
-  rrule: require('rrule/package.json').version
+  rrule: require('rrule/package.json').version,
+  ngxContextmenu: require('ngx-contextmenu').version
 };
 
 @Component({
