@@ -18,7 +18,7 @@ export class DemoComponent {
 
   refresh: Subject<any> = new Subject();
 
-  addEvent(date: Date) {
+  addEvent(date: Date): void {
     this.events.push({
       start: date,
       title: 'New event',
