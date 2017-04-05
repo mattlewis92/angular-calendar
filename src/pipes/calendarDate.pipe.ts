@@ -3,7 +3,7 @@ import { CalendarDateFormatter } from './../providers/calendarDateFormatter.prov
 
 /**
  * This pipe is primarily for rendering the current view title. Example usage:
- * ```
+ * ```typescript
  * // where `viewDate` is a `Date` and view is `'month' | 'week' | 'day'`
  * {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
  * ```

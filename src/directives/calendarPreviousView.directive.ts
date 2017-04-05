@@ -6,7 +6,7 @@ import subMonths from 'date-fns/sub_months';
 /**
  * Change the view date to the previous view. For example:
  *
- * ```
+ * ```typescript
  * &lt;button
  *  mwlCalendarPreviousView
  *  [(viewDate)]="viewDate"

@@ -40,6 +40,7 @@ import * as excludeDays from './demo-modules/exclude-days';
 import * as refreshingTheView from './demo-modules/refreshing-the-view';
 import * as customTemplates from './demo-modules/custom-templates';
 import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
+import * as contextMenu from './demo-modules/context-menu';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -76,6 +77,7 @@ import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
     refreshingTheView.DemoModule,
     customTemplates.DemoModule,
     groupMonthViewEvents.DemoModule,
+    contextMenu.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -243,6 +245,12 @@ import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
       component: groupMonthViewEvents.DemoComponent,
       data: {
         label: 'Group month view events'
+      }
+    }, {
+      path: 'context-menu',
+      component: contextMenu.DemoComponent,
+      data: {
+        label: 'Context menu'
       }
     }, {
       path: '**',

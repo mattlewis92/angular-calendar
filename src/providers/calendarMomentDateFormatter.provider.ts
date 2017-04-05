@@ -6,7 +6,7 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 /**
  * This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:
  *
- * ```
+ * ```typescript
  * import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from 'angular-calendar';
  * import * as moment from 'moment';
  *

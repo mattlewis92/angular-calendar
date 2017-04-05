@@ -8,9 +8,18 @@ import {
   LOCALE_ID,
   Inject,
   OnInit,
-  OnDestroy
+  OnDestroy,
+  TemplateRef
 } from '@angular/core';
-import { getDayView, getDayViewHourGrid, CalendarEvent, DayView, DayViewHour, DayViewHourSegment, DayViewEvent } from 'calendar-utils';
+import {
+  getDayView,
+  getDayViewHourGrid,
+  CalendarEvent,
+  DayView,
+  DayViewHour,
+  DayViewHourSegment,
+  DayViewEvent
+} from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { ResizeEvent } from 'angular-resizable-element';
@@ -27,7 +36,7 @@ const SEGMENT_HEIGHT: number = 30;
 /**
  * Shows all events on a given day. Example usage:
  *
- * ```
+ * ```typescript
  * &lt;mwl-calendar-day-view
  *  [viewDate]="viewDate"
  *  [events]="events"&gt;
@@ -41,6 +50,7 @@ const SEGMENT_HEIGHT: number = 30;
       <mwl-calendar-all-day-event
         *ngFor="let event of view.allDayEvents"
         [event]="event"
+        [customTemplate]="allDayEventTemplate"
         (eventClicked)="eventClicked.emit({event: event})">
       </mwl-calendar-all-day-event>
       <div class="cal-hour-rows">
@@ -87,6 +97,7 @@ const SEGMENT_HEIGHT: number = 30;
             *ngFor="let segment of hour.segments"
             [segment]="segment"
             [locale]="locale"
+            [customTemplate]="hourSegmentTemplate"
             (click)="hourSegmentClicked.emit({date: segment.date})"
             [class.cal-drag-over]="segment.dragOver"
             mwlDroppable
@@ -166,6 +177,16 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * The placement of the event tooltip
    */
   @Input() tooltipPlacement: string = 'top';
+
+  /**
+   * A custom template to use to replace the hour segment
+   */
+  @Input() hourSegmentTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for all day events
+   */
+  @Input() allDayEventTemplate: TemplateRef<any>;
 
   /**
    * Called when an event title is clicked

@@ -5,7 +5,7 @@ import { CalendarNativeDateFormatter } from './calendarNativeDateFormatter.provi
  *
  * If you wish, you may override any of the defaults via angulars DI. For example:
  *
- * ```
+ * ```typescript
  * import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';
  *
  * class CustomDateFormatter extends CalendarDateFormatter {

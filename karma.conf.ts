@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
+import * as StyleLintPlugin from 'stylelint-webpack-plugin';
+import * as FixDefaultImportPlugin from 'webpack-fix-default-import-plugin';
 
 export default config => {
   config.set({
@@ -37,6 +37,10 @@ export default config => {
         }, {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
+          exclude: /node_modules/
+        }, {
+          test: /\.scss$/,
+          loader: 'style-loader!css-loader!sass-loader',
           exclude: /node_modules/
         }, {
           enforce: 'post',
@@ -91,6 +95,16 @@ export default config => {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS']
+    browsers: ['PhantomJS'],
+
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+      exitOnResourceError: true
+    },
+
+    browserConsoleLogOptions: {
+      terminal: true,
+      level: 'log'
+    }
   });
 };

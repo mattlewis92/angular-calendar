@@ -35,7 +35,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
 /**
  * Shows all events on a given month. Example usage:
  *
- * ```
+ * ```typescript
  * &lt;mwl-calendar-month-view
  *  [viewDate]="viewDate"
  *  [events]="events"&gt;

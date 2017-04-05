@@ -30,7 +30,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
 /**
  * Shows all events on a given week. Example usage:
  *
- * ```
+ * ```typescript
  * &lt;mwl-calendar-week-view
  *  [viewDate]="viewDate"
  *  [events]="events"&gt;

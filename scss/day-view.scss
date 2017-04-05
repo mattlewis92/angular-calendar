@@ -14,6 +14,10 @@
     height: 30px;
   }
 
+  .cal-hour-segment::after {
+    content: '\00a0';
+  }
+
   .cal-hour:not(:last-child) .cal-hour-segment,
   .cal-hour:last-child :not(:last-child) .cal-hour-segment {
     border-bottom: thin dashed #e1e1e1;
