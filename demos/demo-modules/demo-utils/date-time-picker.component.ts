@@ -82,7 +82,7 @@ export class DateTimePickerComponent implements OnChanges {
   }
 
   updateDate(): void {
-    const newDate: Date = setYear(setMonth(setDate(this.date, this.dateStruct.day), this.dateStruct.month), this.dateStruct.year);
+    const newDate: Date = setYear(setMonth(setDate(this.date, this.dateStruct.day), this.dateStruct.month - 1), this.dateStruct.year);
     this.dateChange.next(newDate);
   }
 
