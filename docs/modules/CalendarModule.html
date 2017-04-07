@@ -498,6 +498,7 @@ import { CalendarWeekViewHeaderComponent } from &#x27;./components/week/calendar
 import { CalendarWeekViewEventComponent } from &#x27;./components/week/calendarWeekViewEvent.component&#x27;;
 import { CalendarAllDayEventComponent } from &#x27;./components/day/calendarAllDayEvent.component&#x27;;
 import { CalendarDayViewHourSegmentComponent } from &#x27;./components/day/calendarDayViewHourSegment.component&#x27;;
+import { CalendarDayViewEventComponent } from &#x27;./components/day/calendarDayViewEvent.component&#x27;;
 import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from &#x27;./directives/calendarTooltip.directive&#x27;;
 import { CalendarPreviousViewDirective } from &#x27;./directives/calendarPreviousView.directive&#x27;;
 import { CalendarNextViewDirective } from &#x27;./directives/calendarNextView.directive&#x27;;
@@ -542,7 +543,8 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    CalendarMonthViewHeaderComponent
+    CalendarMonthViewHeaderComponent,
+    CalendarDayViewEventComponent
   ],
   imports: [
     CommonModule,
@@ -568,7 +570,8 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    CalendarMonthViewHeaderComponent
+    CalendarMonthViewHeaderComponent,
+    CalendarDayViewEventComponent
   ],
   entryComponents: [
     CalendarTooltipWindowComponent

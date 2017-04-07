@@ -460,7 +460,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-day-view&quot;&nbsp;#dayViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-all-day-event<br>&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;event&nbsp;of&nbsp;view.allDayEvents&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;allDayEventTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;event})&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-all-day-event&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour-rows&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-events&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;dayEvent&nbsp;of&nbsp;view?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{top:&nbsp;dayEvent.event?.resizable?.beforeStart,&nbsp;bottom:&nbsp;dayEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{top:&nbsp;eventSnapSize,&nbsp;bottom:&nbsp;eventSnapSize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(dayEvent,&nbsp;$event,&nbsp;dayViewContainer)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(dayEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(dayEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;false,&nbsp;y:&nbsp;dayEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{y:&nbsp;eventSnapSize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(event,&nbsp;dayViewContainer)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(dayEvent,&nbsp;$event.y)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft.px]&#x3D;&quot;dayEvent.left&nbsp;+&nbsp;70&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.height.px]&#x3D;&quot;dayEvent.height&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width.px]&#x3D;&quot;dayEvent.width&nbsp;-&nbsp;1&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.backgroundColor]&#x3D;&quot;dayEvent.event.color.secondary&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.borderColor]&#x3D;&quot;dayEvent.event.color.primary&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-starts-within-day]&#x3D;&quot;!dayEvent.startsBeforeDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-ends-within-day]&#x3D;&quot;!dayEvent.endsAfterDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ngClass]&#x3D;&quot;dayEvent.event.cssClass&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[mwlCalendarTooltip]&#x3D;&quot;dayEvent.event.title&nbsp;|&nbsp;calendarEventTitle:&#x27;dayTooltip&#x27;:dayEvent.event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-event-title<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;dayEvent.event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;eventClicked.emit({event:&nbsp;dayEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-event-title&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-event-actions&nbsp;[event]&#x3D;&quot;dayEvent.event&quot;&gt;&lt;/mwl-calendar-event-actions&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;hour&nbsp;of&nbsp;hours&quot;&nbsp;[style.minWidth.px]&#x3D;&quot;view?.width&nbsp;+&nbsp;70&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-hour-segment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;segment&nbsp;of&nbsp;hour.segments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[segment]&#x3D;&quot;segment&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;hourSegmentTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;hourSegmentClicked.emit({date:&nbsp;segment.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped($event,&nbsp;segment)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-hour-segment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-day-view&quot;&nbsp;#dayViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-all-day-event<br>&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;event&nbsp;of&nbsp;view.allDayEvents&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[event]&#x3D;&quot;event&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;allDayEventTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;event})&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-all-day-event&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour-rows&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-events&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;dayEvent&nbsp;of&nbsp;view?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{top:&nbsp;dayEvent.event?.resizable?.beforeStart,&nbsp;bottom:&nbsp;dayEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{top:&nbsp;eventSnapSize,&nbsp;bottom:&nbsp;eventSnapSize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(dayEvent,&nbsp;$event,&nbsp;dayViewContainer)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(dayEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(dayEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;false,&nbsp;y:&nbsp;dayEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{y:&nbsp;eventSnapSize}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(event,&nbsp;dayViewContainer)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(dayEvent,&nbsp;$event.y)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.height.px]&#x3D;&quot;dayEvent.height&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dayEvent]&#x3D;&quot;dayEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;eventTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;dayEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-hour&quot;&nbsp;*ngFor&#x3D;&quot;let&nbsp;hour&nbsp;of&nbsp;hours&quot;&nbsp;[style.minWidth.px]&#x3D;&quot;view?.width&nbsp;+&nbsp;70&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-day-view-hour-segment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;segment&nbsp;of&nbsp;hour.segments&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[segment]&#x3D;&quot;segment&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;hourSegmentTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;hourSegmentClicked.emit({date:&nbsp;segment.date})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;segment.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped($event,&nbsp;segment)&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-day-view-hour-segment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
             </tr>
 
 
@@ -488,7 +488,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">src/components/day/calendarDayView.component.ts:189</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/components/day/calendarDayView.component.ts:180</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -513,7 +513,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/components/day/calendarDayView.component.ts:143</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/components/day/calendarDayView.component.ts:134</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -538,7 +538,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/components/day/calendarDayView.component.ts:148</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/components/day/calendarDayView.component.ts:139</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -563,7 +563,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/components/day/calendarDayView.component.ts:133</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/components/day/calendarDayView.component.ts:124</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -588,7 +588,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/components/day/calendarDayView.component.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/components/day/calendarDayView.component.ts:129</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -610,7 +610,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/components/day/calendarDayView.component.ts:123</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/components/day/calendarDayView.component.ts:114</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -635,7 +635,29 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/components/day/calendarDayView.component.ts:174</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/components/day/calendarDayView.component.ts:165</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>eventTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use for day view events</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/components/day/calendarDayView.component.ts:185</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -660,7 +682,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/components/day/calendarDayView.component.ts:153</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/components/day/calendarDayView.component.ts:144</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -682,7 +704,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/components/day/calendarDayView.component.ts:169</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/components/day/calendarDayView.component.ts:160</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -707,7 +729,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/components/day/calendarDayView.component.ts:128</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/components/day/calendarDayView.component.ts:119</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -729,7 +751,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/components/day/calendarDayView.component.ts:184</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/components/day/calendarDayView.component.ts:175</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -751,7 +773,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/components/day/calendarDayView.component.ts:163</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/components/day/calendarDayView.component.ts:154</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -773,7 +795,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/components/day/calendarDayView.component.ts:158</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/components/day/calendarDayView.component.ts:149</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -798,7 +820,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/components/day/calendarDayView.component.ts:179</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/components/day/calendarDayView.component.ts:170</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -820,7 +842,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/components/day/calendarDayView.component.ts:118</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/components/day/calendarDayView.component.ts:109</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -844,7 +866,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">src/components/day/calendarDayView.component.ts:194</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/components/day/calendarDayView.component.ts:190</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -864,7 +886,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/components/day/calendarDayView.component.ts:204</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">src/components/day/calendarDayView.component.ts:200</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -884,7 +906,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/components/day/calendarDayView.component.ts:199</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/components/day/calendarDayView.component.ts:195</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -912,7 +934,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">src/components/day/calendarDayView.component.ts:302</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">src/components/day/calendarDayView.component.ts:298</a></div>
                             </td>
                         </tr>
     
@@ -942,7 +964,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="308" class="link-to-prism">src/components/day/calendarDayView.component.ts:308</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="304" class="link-to-prism">src/components/day/calendarDayView.component.ts:304</a></div>
                             </td>
                         </tr>
     
@@ -972,7 +994,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="319" class="link-to-prism">src/components/day/calendarDayView.component.ts:319</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="315" class="link-to-prism">src/components/day/calendarDayView.component.ts:315</a></div>
                             </td>
                         </tr>
     
@@ -1002,7 +1024,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">src/components/day/calendarDayView.component.ts:328</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="324" class="link-to-prism">src/components/day/calendarDayView.component.ts:324</a></div>
                             </td>
                         </tr>
     
@@ -1032,7 +1054,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="355" class="link-to-prism">src/components/day/calendarDayView.component.ts:355</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="351" class="link-to-prism">src/components/day/calendarDayView.component.ts:351</a></div>
                             </td>
                         </tr>
     
@@ -1062,7 +1084,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="361" class="link-to-prism">src/components/day/calendarDayView.component.ts:361</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="357" class="link-to-prism">src/components/day/calendarDayView.component.ts:357</a></div>
                             </td>
                         </tr>
     
@@ -1143,6 +1165,8 @@ const SEGMENT_HEIGHT: number &#x3D; 30;
           &lt;div
             #event
             *ngFor&#x3D;&quot;let dayEvent of view?.events&quot;
+            class&#x3D;&quot;cal-event-container&quot;
+            [class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;
             mwlResizable
             [resizeEdges]&#x3D;&quot;{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}&quot;
             [resizeSnapGrid]&#x3D;&quot;{top: eventSnapSize, bottom: eventSnapSize}&quot;
@@ -1156,25 +1180,14 @@ const SEGMENT_HEIGHT: number &#x3D; 30;
             [validateDrag]&#x3D;&quot;validateDrag&quot;
             (dragStart)&#x3D;&quot;dragStart(event, dayViewContainer)&quot;
             (dragEnd)&#x3D;&quot;eventDragged(dayEvent, $event.y)&quot;
-            class&#x3D;&quot;cal-event&quot;
             [style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;
-            [style.marginLeft.px]&#x3D;&quot;dayEvent.left + 70&quot;
-            [style.height.px]&#x3D;&quot;dayEvent.height&quot;
-            [style.width.px]&#x3D;&quot;dayEvent.width - 1&quot;
-            [style.backgroundColor]&#x3D;&quot;dayEvent.event.color.secondary&quot;
-            [style.borderColor]&#x3D;&quot;dayEvent.event.color.primary&quot;
-            [class.cal-starts-within-day]&#x3D;&quot;!dayEvent.startsBeforeDay&quot;
-            [class.cal-ends-within-day]&#x3D;&quot;!dayEvent.endsAfterDay&quot;
-            [class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;
-            [ngClass]&#x3D;&quot;dayEvent.event.cssClass&quot;
-            [mwlCalendarTooltip]&#x3D;&quot;dayEvent.event.title | calendarEventTitle:&#x27;dayTooltip&#x27;:dayEvent.event&quot;
-            [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;&gt;
-            &lt;mwl-calendar-event-title
-              [event]&#x3D;&quot;dayEvent.event&quot;
-              view&#x3D;&quot;day&quot;
-              (click)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
-            &lt;/mwl-calendar-event-title&gt;
-            &lt;mwl-calendar-event-actions [event]&#x3D;&quot;dayEvent.event&quot;&gt;&lt;/mwl-calendar-event-actions&gt;
+            [style.height.px]&#x3D;&quot;dayEvent.height&quot;&gt;
+            &lt;mwl-calendar-day-view-event
+              [dayEvent]&#x3D;&quot;dayEvent&quot;
+              [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+              [customTemplate]&#x3D;&quot;eventTemplate&quot;
+              (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
+            &lt;/mwl-calendar-day-view-event&gt;
           &lt;/div&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;cal-hour&quot; *ngFor&#x3D;&quot;let hour of hours&quot; [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;&gt;
@@ -1272,6 +1285,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for all day events
    */
   @Input() allDayEventTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * A custom template to use for day view events
+   */
+  @Input() eventTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Called when an event title is clicked
@@ -1526,7 +1544,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-day-view" #dayViewContainer>  <mwl-calendar-all-day-event    *ngFor="let event of view.allDayEvents"    [event]="event"    [customTemplate]="allDayEventTemplate"    (eventClicked)="eventClicked.emit({event: event})">  </mwl-calendar-all-day-event>  <div class="cal-hour-rows">    <div class="cal-events">      <div        #event        *ngFor="let dayEvent of view?.events"        mwlResizable        [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"        [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"        [validateResize]="validateResize"        (resizeStart)="resizeStarted(dayEvent, $event, dayViewContainer)"        (resizing)="resizing(dayEvent, $event)"        (resizeEnd)="resizeEnded(dayEvent)"        mwlDraggable        [dragAxis]="{x: false, y: dayEvent.event.draggable && !currentResize}"        [dragSnapGrid]="{y: eventSnapSize}"        [validateDrag]="validateDrag"        (dragStart)="dragStart(event, dayViewContainer)"        (dragEnd)="eventDragged(dayEvent, $event.y)"        class="cal-event"        [style.marginTop.px]="dayEvent.top"        [style.marginLeft.px]="dayEvent.left + 70"        [style.height.px]="dayEvent.height"        [style.width.px]="dayEvent.width - 1"        [style.backgroundColor]="dayEvent.event.color.secondary"        [style.borderColor]="dayEvent.event.color.primary"        [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"        [class.cal-ends-within-day]="!dayEvent.endsAfterDay"        [class.cal-draggable]="dayEvent.event.draggable"        [ngClass]="dayEvent.event.cssClass"        [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:\'dayTooltip\':dayEvent.event"        [tooltipPlacement]="tooltipPlacement">        <mwl-calendar-event-title          [event]="dayEvent.event"          view="day"          (click)="eventClicked.emit({event: dayEvent.event})">        </mwl-calendar-event-title>        <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>      </div>    </div>    <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">      <mwl-calendar-day-view-hour-segment        *ngFor="let segment of hour.segments"        [segment]="segment"        [locale]="locale"        [customTemplate]="hourSegmentTemplate"        (click)="hourSegmentClicked.emit({date: segment.date})"        [class.cal-drag-over]="segment.dragOver"        mwlDroppable        (dragEnter)="segment.dragOver = true"        (dragLeave)="segment.dragOver = false"        (drop)="segment.dragOver = false; eventDropped($event, segment)">      </mwl-calendar-day-view-hour-segment>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-day-view" #dayViewContainer>  <mwl-calendar-all-day-event    *ngFor="let event of view.allDayEvents"    [event]="event"    [customTemplate]="allDayEventTemplate"    (eventClicked)="eventClicked.emit({event: event})">  </mwl-calendar-all-day-event>  <div class="cal-hour-rows">    <div class="cal-events">      <div        #event        *ngFor="let dayEvent of view?.events"        class="cal-event-container"        [class.cal-draggable]="dayEvent.event.draggable"        mwlResizable        [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"        [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"        [validateResize]="validateResize"        (resizeStart)="resizeStarted(dayEvent, $event, dayViewContainer)"        (resizing)="resizing(dayEvent, $event)"        (resizeEnd)="resizeEnded(dayEvent)"        mwlDraggable        [dragAxis]="{x: false, y: dayEvent.event.draggable && !currentResize}"        [dragSnapGrid]="{y: eventSnapSize}"        [validateDrag]="validateDrag"        (dragStart)="dragStart(event, dayViewContainer)"        (dragEnd)="eventDragged(dayEvent, $event.y)"        [style.marginTop.px]="dayEvent.top"        [style.height.px]="dayEvent.height">        <mwl-calendar-day-view-event          [dayEvent]="dayEvent"          [tooltipPlacement]="tooltipPlacement"          [customTemplate]="eventTemplate"          (eventClicked)="eventClicked.emit({event: dayEvent.event})">        </mwl-calendar-day-view-event>      </div>    </div>    <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">      <mwl-calendar-day-view-hour-segment        *ngFor="let segment of hour.segments"        [segment]="segment"        [locale]="locale"        [customTemplate]="hourSegmentTemplate"        (click)="hourSegmentClicked.emit({date: segment.date})"        [class.cal-drag-over]="segment.dragOver"        mwlDroppable        (dragEnter)="segment.dragOver = true"        (dragLeave)="segment.dragOver = false"        (drop)="segment.dragOver = false; eventDropped($event, segment)">      </mwl-calendar-day-view-hour-segment>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarDayViewComponent'};
