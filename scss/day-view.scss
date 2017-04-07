@@ -30,6 +30,12 @@
     text-align: center;
   }
 
+  .cal-hour-segment.cal-after-hour-start {
+    .cal-time {
+      display: none;
+    }
+  }
+
   .cal-hour-segment:hover,
   .cal-drag-over .cal-hour-segment {
     background-color: #ededed;
