@@ -41,14 +41,18 @@
     background-color: #ededed;
   }
 
-  .cal-event {
+  .cal-event-container {
     position: absolute;
+  }
+
+  .cal-event {
     border: solid 1px;
     padding: 5px;
     font-size: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    height: 100%;
   }
 
   .cal-draggable {
