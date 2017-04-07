@@ -274,8 +274,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
-    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
-    event.style.position = 'absolute';
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(event => {
@@ -312,8 +311,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
-    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
-    event.style.position = 'absolute';
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(event => {
@@ -324,7 +322,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousemove', document.body, {clientY: rect.bottom + 30, clientX: rect.left + 10});
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
-    expect(event.getBoundingClientRect().height).to.equal(162);
+    expect(event.getBoundingClientRect().height).to.equal(150);
     triggerDomEvent('mouseup', document.body, {clientY: rect.top + 30, clientX: rect.left + 10});
     fixture.detectChanges();
     fixture.destroy();
@@ -470,8 +468,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
-    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
-    event.style.position = 'absolute';
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     triggerDomEvent('mousedown', document.body, {clientY: rect.top, clientX: rect.left + 10});
     fixture.detectChanges();

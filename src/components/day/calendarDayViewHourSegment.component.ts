@@ -5,8 +5,12 @@ import { DayViewHourSegment } from 'calendar-utils';
   selector: 'mwl-calendar-day-view-hour-segment',
   template: `
     <ng-template #defaultTemplate>
-      <div class="cal-hour-segment" [ngClass]="segment.cssClass">
-        <div [hidden]="!segment.isStart" class="cal-time">
+      <div
+        class="cal-hour-segment"
+        [class.cal-hour-start]="segment.isStart"
+        [class.cal-after-hour-start]="!segment.isStart"
+        [ngClass]="segment.cssClass">
+        <div class="cal-time">
           {{ segment.date | calendarDate:'dayViewHour':locale }}
         </div>
       </div>

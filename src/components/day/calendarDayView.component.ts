@@ -58,6 +58,8 @@ const SEGMENT_HEIGHT: number = 30;
           <div
             #event
             *ngFor="let dayEvent of view?.events"
+            class="cal-event-container"
+            [class.cal-draggable]="dayEvent.event.draggable"
             mwlResizable
             [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
             [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
@@ -71,25 +73,14 @@ const SEGMENT_HEIGHT: number = 30;
             [validateDrag]="validateDrag"
             (dragStart)="dragStart(event, dayViewContainer)"
             (dragEnd)="eventDragged(dayEvent, $event.y)"
-            class="cal-event"
             [style.marginTop.px]="dayEvent.top"
-            [style.marginLeft.px]="dayEvent.left + 70"
-            [style.height.px]="dayEvent.height"
-            [style.width.px]="dayEvent.width - 1"
-            [style.backgroundColor]="dayEvent.event.color.secondary"
-            [style.borderColor]="dayEvent.event.color.primary"
-            [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
-            [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
-            [class.cal-draggable]="dayEvent.event.draggable"
-            [ngClass]="dayEvent.event.cssClass"
-            [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:'dayTooltip':dayEvent.event"
-            [tooltipPlacement]="tooltipPlacement">
-            <mwl-calendar-event-title
-              [event]="dayEvent.event"
-              view="day"
-              (click)="eventClicked.emit({event: dayEvent.event})">
-            </mwl-calendar-event-title>
-            <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
+            [style.height.px]="dayEvent.height">
+            <mwl-calendar-day-view-event
+              [dayEvent]="dayEvent"
+              [tooltipPlacement]="tooltipPlacement"
+              [customTemplate]="eventTemplate"
+              (eventClicked)="eventClicked.emit({event: dayEvent.event})">
+            </mwl-calendar-day-view-event>
           </div>
         </div>
         <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">
@@ -187,6 +178,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for all day events
    */
   @Input() allDayEventTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for day view events
+   */
+  @Input() eventTemplate: TemplateRef<any>;
 
   /**
    * Called when an event title is clicked
