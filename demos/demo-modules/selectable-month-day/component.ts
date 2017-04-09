@@ -22,6 +22,17 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
+  selectDay: (day: CalendarMonthViewDay) => void;
+
+  constructor() {
+    // an arrow function is used so that `this` is the component instance
+    this.selectDay = (day: CalendarMonthViewDay): void => {
+      if (this.selectedDay && day.date.getTime() === this.selectedDay.date.getTime()) {
+        day.cssClass = 'cal-day-selected';
+      }
+    };
+  }
+
   dayClicked(day: CalendarMonthViewDay): void {
     if (this.selectedDay) {
       delete this.selectedDay.cssClass;
