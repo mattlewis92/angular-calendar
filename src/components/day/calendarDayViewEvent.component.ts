@@ -7,8 +7,6 @@ import { DayViewEvent } from 'calendar-utils';
     <ng-template #defaultTemplate>
       <div
         class="cal-event"
-        [style.marginLeft.px]="dayEvent.left + 70"
-        [style.width.px]="dayEvent.width - 1"
         [style.backgroundColor]="dayEvent.event.color.secondary"
         [style.borderColor]="dayEvent.event.color.primary"
         [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"

@@ -243,7 +243,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.eventWidth = 300;
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}, eventWidth: {}});
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cal-event').style.width).to.equal('299px');
+    expect(fixture.nativeElement.querySelector('.cal-event-container').style.width).to.equal('299px');
     fixture.destroy();
   });
 
@@ -275,7 +275,6 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
-    event.querySelector('.cal-event')['style'].position = 'inherit'; // hacky fix
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(event => {
@@ -313,7 +312,6 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
-    event.querySelector('.cal-event')['style'].position = 'inherit'; // hacky fix
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(event => {
@@ -471,7 +469,6 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
-    event.querySelector('.cal-event')['style'].position = 'inherit'; // hacky fix
     const rect: ClientRect = event.getBoundingClientRect();
     triggerDomEvent('mousedown', document.body, {clientY: rect.top, clientX: rect.left + 10});
     fixture.detectChanges();

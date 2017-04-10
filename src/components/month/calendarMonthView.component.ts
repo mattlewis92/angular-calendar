@@ -200,7 +200,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
         this.refreshAll();
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
     }
   }
