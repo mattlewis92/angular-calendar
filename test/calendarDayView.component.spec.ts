@@ -275,6 +275,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    event.querySelector('.cal-event')['style'].position = 'inherit'; // hacky fix
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(event => {
@@ -312,6 +313,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    event.querySelector('.cal-event')['style'].position = 'inherit'; // hacky fix
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(event => {
@@ -469,6 +471,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    event.querySelector('.cal-event')['style'].position = 'inherit'; // hacky fix
     const rect: ClientRect = event.getBoundingClientRect();
     triggerDomEvent('mousedown', document.body, {clientY: rect.top, clientX: rect.left + 10});
     fixture.detectChanges();
