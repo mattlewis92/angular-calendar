@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.4"></a>
+## [0.13.4](https://github.com/mattlewis92/angular-calendar/compare/v0.13.3...v0.13.4) (2017-04-10)
+
+
+### Bug Fixes
+
+* **dayView:** fix resizing of events ([18b573f](https://github.com/mattlewis92/angular-calendar/commit/18b573f))
+
+
+
 <a name="0.13.3"></a>
 ## [0.13.3](https://github.com/mattlewis92/angular-calendar/compare/v0.13.2...v0.13.3) (2017-04-10)
 
