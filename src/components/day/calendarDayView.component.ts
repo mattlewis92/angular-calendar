@@ -252,7 +252,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
         this.refreshAll();
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
     }
   }
@@ -309,7 +309,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     };
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(dayViewContainer);
     this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 
   resizing(event: DayViewEvent, resizeEvent: ResizeEvent): void {
@@ -351,7 +351,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   dragStart(event: HTMLElement, dayViewContainer: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(dayViewContainer, event);
     this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
