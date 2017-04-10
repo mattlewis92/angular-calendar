@@ -81,7 +81,7 @@ const dependencyVersions: any = {
   reflectMetadata: require('reflect-metadata/package.json').version,
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
-  ngxContextmenu: require('ngx-contextmenu').version
+  ngxContextmenu: require('ngx-contextmenu/package.json').version
 };
 
 @Component({
