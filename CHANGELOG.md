@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.5"></a>
+## [0.13.5](https://github.com/mattlewis92/angular-calendar/compare/v0.13.4...v0.13.5) (2017-04-14)
+
+
+### Bug Fixes
+
+* **draggable:** ensure text isnt selected on firefox ([ac26e14](https://github.com/mattlewis92/angular-calendar/commit/ac26e14)), closes [#183](https://github.com/mattlewis92/angular-calendar/issues/183)
+
+
+
 <a name="0.13.4"></a>
 ## [0.13.4](https://github.com/mattlewis92/angular-calendar/compare/v0.13.3...v0.13.4) (2017-04-10)
 
