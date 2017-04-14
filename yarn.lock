@@ -2,57 +2,57 @@
 # yarn lockfile v1
 
 
-"@angular/animations@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.0.1.tgz#154420c8ee5c22fbaf1434b6d156150cf5218da6"
+"@angular/animations@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.0.2.tgz#79f6a77d8b6e19b2d1fd9fa175f78143cd689727"
 
-"@angular/common@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.0.1.tgz#df488eada842b2d841ded750712292b18387b5b0"
+"@angular/common@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.0.2.tgz#092b272f193d3ac9549b53792657e48e96f39f5d"
 
-"@angular/compiler-cli@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-4.0.1.tgz#90c60d491c12e1da901a0aeb3990470aa96e9bfa"
+"@angular/compiler-cli@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-4.0.2.tgz#007c05728c836be15f99530e45effa1cd7c96284"
   dependencies:
-    "@angular/tsc-wrapped" "4.0.1"
+    "@angular/tsc-wrapped" "4.0.2"
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.0.1.tgz#15721edb148167a2d83b6f9324817e658eac8280"
+"@angular/compiler@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.0.2.tgz#729e0ead261232698678bbdd09d3d360dcd6f889"
 
-"@angular/core@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.0.1.tgz#0b110a001012076ea696460ccd922707bcdf51ba"
+"@angular/core@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.0.2.tgz#195153f8623b59f07c30b3b8954e14842c3959c3"
 
-"@angular/forms@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.0.1.tgz#b9ebdbbb8ace0f9a3bf9e53c299eafdfab1d5041"
+"@angular/forms@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.0.2.tgz#9094f46983298681bbaf0dcc17dcf8f7be6f35a3"
 
-"@angular/http@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.0.1.tgz#bf87e7da9dc1f1567f246f9a09723e1cc3543d32"
+"@angular/http@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.0.2.tgz#8c61b9ff52748c5dcb52b57046829d34d66662ec"
 
-"@angular/language-service@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.0.1.tgz#b136f0068fa3094c19361f3f892f84d1bb8b16a2"
+"@angular/language-service@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.0.2.tgz#68324cbfacda41d44d267e553d6f866f52d307c8"
 
-"@angular/platform-browser-dynamic@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.0.1.tgz#fd5debb2d3f6474350965e71c2674e2170d7cfcb"
+"@angular/platform-browser-dynamic@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.0.2.tgz#5a26f9a3e9f7eaf3cc7c02836cfae2e88cf1862f"
 
-"@angular/platform-browser@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.0.1.tgz#4b9efbeb2fbb900de188743b988802d3aa2b33ff"
+"@angular/platform-browser@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.0.2.tgz#bce01526917a5b49606fc7e81600af85b15846ea"
 
-"@angular/router@^4.0.0":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.0.1.tgz#2d73a4b6c40e18d5cd0bfd1f20222af64a11c11e"
+"@angular/router@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.0.2.tgz#e574ee2ce31035c6e574acf28ed9a28bfe1179ef"
 
-"@angular/tsc-wrapped@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/tsc-wrapped/-/tsc-wrapped-4.0.1.tgz#5323cc99263b097bceeb8e423270b5f58ffb2186"
+"@angular/tsc-wrapped@4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/tsc-wrapped/-/tsc-wrapped-4.0.2.tgz#38f584082897946b011d293ce662e0178d07ac41"
   dependencies:
     tsickle "^0.21.0"
 
@@ -94,13 +94,17 @@
     q "^1.4.1"
     viz.js "^1.6.0"
 
-"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.22":
-  version "1.0.0-alpha.22"
-  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.22.tgz#aaad058cc39293ea6184e4b9b849f298c0b11a86"
+"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.23":
+  version "1.0.0-alpha.23"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.23.tgz#14eb380c99dc21a49be8b9cc892ee4161d7801af"
 
-"@types/chai@*", "@types/chai@^3.4.30":
+"@types/chai@*":
   version "3.4.35"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.35.tgz#e8d65f83492d2944f816fc620741821c28a8c900"
+
+"@types/chai@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.5.0.tgz#45e2dc2af9a5727be846af6e61d08ffc45d5b2ca"
 
 "@types/highlight.js@^9.1.9":
   version "9.1.9"
@@ -182,9 +186,13 @@ acorn-dynamic-import@^2.0.0:
   dependencies:
     acorn "^4.0.3"
 
-acorn@^4.0.3, acorn@^4.0.4:
+acorn@^4.0.3:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.11.tgz#edcda3bd937e7556410d42ed5860f67399c794c0"
+
+acorn@^5.0.0:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 after@0.8.2:
   version "0.8.2"
@@ -217,9 +225,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-draggable-droppable@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-1.0.0.tgz#16e9c881611c5a0c6c018b441fa774691ed9356c"
+angular-draggable-droppable@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/angular-draggable-droppable/-/angular-draggable-droppable-1.0.1.tgz#7ad70c310994b0f980f40d382dce59946fe30dcf"
 
 angular-highlight-js@^1.0.0:
   version "1.0.2"
@@ -1654,9 +1662,13 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns@^1.15.1, date-fns@^1.23.0:
+date-fns@^1.23.0:
   version "1.28.2"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.28.2.tgz#19e4192d68875c0bf7c9537e3f296a8ec64853ef"
+
+date-fns@^1.28.3:
+  version "1.28.3"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.28.3.tgz#145d87adc3f5a82c6bda668de97eee1132c97ea1"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -3304,7 +3316,7 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-istanbul-api@^1.1.1:
+istanbul-api@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/istanbul-api/-/istanbul-api-1.1.7.tgz#f6f37f09f8002b130f891c646b70ee4a8e7345ae"
   dependencies:
@@ -3445,7 +3457,7 @@ json3@3.3.2, json3@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
 
-json5@^0.5.0:
+json5@^0.5.0, json5@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
@@ -3489,11 +3501,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-karma-coverage-istanbul-reporter@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-1.0.0.tgz#8b216b9148a37dcbfad549cf2b825e594de47e98"
+karma-coverage-istanbul-reporter@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-1.1.0.tgz#1357a534a77fe60befcfd83598383ced26c8f1b8"
   dependencies:
-    istanbul-api "^1.1.1"
+    istanbul-api "^1.1.7"
 
 karma-jasmine@^1.1.0:
   version "1.1.0"
@@ -4114,9 +4126,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ngx-contextmenu@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-contextmenu/-/ngx-contextmenu-1.0.1.tgz#f8754e7e4057086afb115dbe3a31a3963dc457c7"
+ngx-contextmenu@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-contextmenu/-/ngx-contextmenu-1.0.3.tgz#3a334532696263dd3b84186a0edd47528391f9c7"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -6202,9 +6214,9 @@ tslint-eslint-rules@^3.2.3:
   dependencies:
     doctrine "^0.7.2"
 
-tslint-loader@^3.3.0:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.5.1.tgz#1cd0ead309a15ec41815766a93b90e3a07708916"
+tslint-loader@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.5.2.tgz#ef2f512c05a96fb1a22d94c32d22fb7975ef9917"
   dependencies:
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
@@ -6561,11 +6573,11 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.2.0:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.3.3.tgz#eecc083c18fb7bf958ea4f40b57a6640c5a0cc78"
+webpack@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.4.0.tgz#04cc247470996d07659b39563040a4bc00fe301e"
   dependencies:
-    acorn "^4.0.4"
+    acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
     ajv "^4.7.0"
     ajv-keywords "^1.1.1"
@@ -6573,6 +6585,7 @@ webpack@^2.2.0:
     enhanced-resolve "^3.0.0"
     interpret "^1.0.0"
     json-loader "^0.5.4"
+    json5 "^0.5.1"
     loader-runner "^2.3.0"
     loader-utils "^0.2.16"
     memory-fs "~0.4.1"
