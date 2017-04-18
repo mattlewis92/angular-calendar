@@ -22,7 +22,7 @@ import * as monthViewBadgeTotal from './demo-modules/month-view-badge-total';
 import * as recurringEvents from './demo-modules/recurring-events';
 import * as customEventClass from './demo-modules/custom-event-class';
 import * as clickableEvents from './demo-modules/clickable-events';
-import * as dayClick from './demo-modules/day-click';
+import * as clickableDays from './demo-modules/clickable-days';
 import * as dayViewStartEnd from './demo-modules/day-view-start-end';
 import * as dayViewHourSplit from './demo-modules/day-view-hour-split';
 import * as navigatingBetweenViews from './demo-modules/navigating-between-views';
@@ -59,7 +59,7 @@ import * as contextMenu from './demo-modules/context-menu';
     recurringEvents.DemoModule,
     customEventClass.DemoModule,
     clickableEvents.DemoModule,
-    dayClick.DemoModule,
+    clickableDays.DemoModule,
     dayViewStartEnd.DemoModule,
     dayViewHourSplit.DemoModule,
     navigatingBetweenViews.DemoModule,
@@ -140,7 +140,7 @@ import * as contextMenu from './demo-modules/context-menu';
       }
     }, {
       path: 'clickable-days',
-      component: dayClick.DemoComponent,
+      component: clickableDays.DemoComponent,
       data: {
         label: 'Clickable days'
       }
