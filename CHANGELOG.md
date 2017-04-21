@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/mattlewis92/angular-calendar/compare/v0.13.6...v0.14.0) (2017-04-21)
+
+
+### Features
+
+* **weekView:** add support for minute level precision on week view events ([25d6933](https://github.com/mattlewis92/angular-calendar/commit/25d6933))
+
+
+
 <a name="0.13.6"></a>
 ## [0.13.6](https://github.com/mattlewis92/angular-calendar/compare/v0.13.5...v0.13.6) (2017-04-21)
 
