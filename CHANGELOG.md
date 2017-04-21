@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.6"></a>
+## [0.13.6](https://github.com/mattlewis92/angular-calendar/compare/v0.13.5...v0.13.6) (2017-04-21)
+
+
+### Bug Fixes
+
+* **dayView:** respect eventSnapSize when dragging events ([028005f](https://github.com/mattlewis92/angular-calendar/commit/028005f))
+* **dayView:** respect eventSnapSize when resizing events ([c0be926](https://github.com/mattlewis92/angular-calendar/commit/c0be926)), closes [#188](https://github.com/mattlewis92/angular-calendar/issues/188)
+
+
+
 <a name="0.13.5"></a>
 ## [0.13.5](https://github.com/mattlewis92/angular-calendar/compare/v0.13.4...v0.13.5) (2017-04-14)
 
