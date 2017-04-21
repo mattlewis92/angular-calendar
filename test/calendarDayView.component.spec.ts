@@ -333,6 +333,44 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
+  it('should resize the event and respect the event snap size', () => {
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').add(6, 'hours').toDate(),
+      resizable: {
+        beforeStart: true
+      }
+    }];
+    fixture.componentInstance.eventSnapSize = 1;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    const rect: ClientRect = event.getBoundingClientRect();
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      resizeEvent = event;
+    });
+    triggerDomEvent('mousedown', document.body, {clientY: rect.top, clientX: rect.left + 10});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientY: rect.top - 10, clientX: rect.left + 10});
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(rect.top - 10);
+    expect(event.getBoundingClientRect().height).to.equal(rect.height + 10);
+    triggerDomEvent('mouseup', document.body, {clientY: rect.top - 10, clientX: rect.left + 10});
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-06-27').add(4, 'hours').subtract(10, 'minutes').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').toDate()
+    });
+  });
+
   it('should show a tooltip on mouseover of the event', () => {
 
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
@@ -518,6 +556,42 @@ describe('CalendarDayViewComponent component', () => {
     expect(eventDropped).to.have.been.calledWith({
       event: externalEventFixture.componentInstance.event,
       newStart: moment('2016-06-27').startOf('day').add(1, 'hours').toDate()
+    });
+  });
+
+  it('should respect the event snap size when dragging and dropping', () => {
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+      draggable: true
+    }];
+    fixture.componentInstance.eventSnapSize = 1;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      dragEvent = event;
+    });
+    triggerDomEvent('mousedown', event, {clientY: eventPosition.top + 5, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientY: eventPosition.top + 15, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 10);
+    expect(event.getBoundingClientRect().bottom).to.equal(eventPosition.bottom + 10);
+    triggerDomEvent('mouseup', document.body, {clientY: eventPosition.top + 10, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-06-27').add(4, 'hours').add(10, 'minutes').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').add(10, 'minutes').toDate()
     });
   });
 
