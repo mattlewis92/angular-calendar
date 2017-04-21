@@ -34,6 +34,11 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
 const SEGMENT_HEIGHT: number = 30;
 
 /**
+ * @hidden
+ */
+const MINUTES_IN_HOUR: number = 60;
+
+/**
  * Shows all events on a given day. Example usage:
  *
  * ```typescript
@@ -325,18 +330,18 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   resizeEnded(dayEvent: DayViewEvent): void {
 
-    let segments: number;
+    let pixelsMoved: number;
     if (this.currentResize.edge === 'top') {
-      segments = (dayEvent.top - this.currentResize.originalTop) / this.eventSnapSize;
+      pixelsMoved = (dayEvent.top - this.currentResize.originalTop);
     } else {
-      segments = (dayEvent.height - this.currentResize.originalHeight) / this.eventSnapSize;
+      pixelsMoved = (dayEvent.height - this.currentResize.originalHeight);
     }
 
     dayEvent.top = this.currentResize.originalTop;
     dayEvent.height = this.currentResize.originalHeight;
 
-    const segmentAmountInMinutes: number = 60 / this.hourSegments;
-    const minutesMoved: number = segments * segmentAmountInMinutes;
+    const pixelAmountInMinutes: number = MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+    const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
     if (this.currentResize.edge === 'top') {
@@ -358,7 +363,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
     const segments: number = draggedInPixels / this.eventSnapSize;
-    const segmentAmountInMinutes: number = 60 / this.hourSegments;
+    const segmentAmountInMinutes: number = MINUTES_IN_HOUR / this.hourSegments;
     const minutesMoved: number = segments * segmentAmountInMinutes;
     const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
     let newEnd: Date;

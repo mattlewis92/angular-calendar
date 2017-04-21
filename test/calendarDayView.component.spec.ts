@@ -333,6 +333,44 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
+  it('should resize the event and respect the event snap size', () => {
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').add(6, 'hours').toDate(),
+      resizable: {
+        beforeStart: true
+      }
+    }];
+    fixture.componentInstance.eventSnapSize = 1;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event-container');
+    const rect: ClientRect = event.getBoundingClientRect();
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      resizeEvent = event;
+    });
+    triggerDomEvent('mousedown', document.body, {clientY: rect.top, clientX: rect.left + 10});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientY: rect.top - 10, clientX: rect.left + 10});
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(rect.top - 10);
+    expect(event.getBoundingClientRect().height).to.equal(rect.height + 10);
+    triggerDomEvent('mouseup', document.body, {clientY: rect.top - 10, clientX: rect.left + 10});
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-06-27').add(4, 'hours').subtract(10, 'minutes').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').toDate()
+    });
+  });
+
   it('should show a tooltip on mouseover of the event', () => {
 
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
