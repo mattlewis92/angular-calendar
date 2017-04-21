@@ -585,6 +585,31 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>precision</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The precision to display events.<br><code>days</code> will round event start and end dates to the nearest day and <code>minutes</code> will not do this rounding</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>&quot;days&quot; | &quot;minutes&quot;</code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>days</code>
+                            </p>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/components/week/calendarWeekView.component.ts:134</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>refresh</code>
                         </td>
                         <td class="col-md-10">
@@ -691,7 +716,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/components/week/calendarWeekView.component.ts:133</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/components/week/calendarWeekView.component.ts:139</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -711,7 +736,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/components/week/calendarWeekView.component.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/components/week/calendarWeekView.component.ts:144</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -731,7 +756,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/components/week/calendarWeekView.component.ts:143</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/components/week/calendarWeekView.component.ts:149</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -872,6 +897,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for week view events
    */
   @Input() eventTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * The precision to display events.
+   * &#x60;days&#x60; will round event start and end dates to the nearest day and &#x60;minutes&#x60; will not do this rounding
+   */
+  @Input() precision: &#x27;days&#x27; | &#x27;minutes&#x27; &#x3D; &#x27;days&#x27;;
 
   /**
    * Called when a header week day is clicked
@@ -1066,7 +1097,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      precision: this.precision
     });
   }
 
