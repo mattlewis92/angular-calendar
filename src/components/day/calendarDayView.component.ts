@@ -362,9 +362,8 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
-    const segments: number = draggedInPixels / this.eventSnapSize;
-    const segmentAmountInMinutes: number = MINUTES_IN_HOUR / this.hourSegments;
-    const minutesMoved: number = segments * segmentAmountInMinutes;
+    const pixelAmountInMinutes: number = MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+    const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
     const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
     let newEnd: Date;
     if (dayEvent.event.end) {

@@ -559,4 +559,40 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
+  it('should respect the event snap size when dragging and dropping', () => {
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'foo',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+      draggable: true
+    }];
+    fixture.componentInstance.eventSnapSize = 1;
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      dragEvent = event;
+    });
+    triggerDomEvent('mousedown', event, {clientY: eventPosition.top + 5, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientY: eventPosition.top + 15, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 10);
+    expect(event.getBoundingClientRect().bottom).to.equal(eventPosition.bottom + 10);
+    triggerDomEvent('mouseup', document.body, {clientY: eventPosition.top + 10, clientX: eventPosition.left + 10});
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-06-27').add(4, 'hours').add(10, 'minutes').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').add(10, 'minutes').toDate()
+    });
+  });
+
 });
