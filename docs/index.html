@@ -428,6 +428,8 @@ export class MyModule {}</code></pre><p>Then you can use the <a href="https://ma
 <h2 id="faq">FAQ</h2>
 <h3 id="is-this-library-aot-compatible-">Is this library AoT compatible?</h3>
 <p>Yes.</p>
+<h3 id="does-this-library-work-with-angular-2-x-">Does this library work with angular 2.x?</h3>
+<p>The last version of this library that supports 2.x is <code>0.9.1</code>. However the upgrade from angular 2.x to 4.x is just a matter of <a href="https://github.com/mattlewis92/angular2-tv-tracker/commit/9439e3cec40293b2a86bc2222f610ee6ad4b5229">changing the dependencies in your package.json</a> and <a href="https://github.com/mattlewis92/angular2-tv-tracker/commit/9fe0e3158290c2612d20e4c0f54d2204fb70791e">adding the <code>angular/animations</code> module</a></p>
 <h3 id="how-do-i-use-this-with-my-favourite-module-bundler-">How do I use this with my favourite module bundler?</h3>
 <p>See the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">examples list</a>.</p>
 <h3 id="no-styles-are-appearing-">No styles are appearing?</h3>
@@ -438,6 +440,8 @@ export class MyModule {}</code></pre><p>Then you can use the <a href="https://ma
 <p>Build your own component to replace that view, and use it in place of the one this library provides. It’s impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.</p>
 <h3 id="how-come-there-s-no-year-view-like-the-ng1-version-">How come there’s no year view like the ng1 version?</h3>
 <p>As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like <code>angular-calendar-year-view</code> though ;)</p>
+<h3 id="does-this-calendar-work-with-mobile-">Does this calendar work with mobile?</h3>
+<p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and <a href="https://github.com/ftlabs/fastclick">including fastclick</a> but your mileage may vary.</p>
 <h2 id="angular-1-version">Angular 1 version</h2>
 <p><a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
 <h2 id="development">Development</h2>
