@@ -85,6 +85,10 @@ To see all available API options, take a look at the auto generated [documentati
 
 Yes.
 
+### Does this library work with angular 2.x?
+
+The last version of this library that supports 2.x is `0.9.1`. However the upgrade from angular 2.x to 4.x is just a matter of [changing the dependencies in your package.json](https://github.com/mattlewis92/angular2-tv-tracker/commit/9439e3cec40293b2a86bc2222f610ee6ad4b5229) and [adding the `angular/animations` module](https://github.com/mattlewis92/angular2-tv-tracker/commit/9fe0e3158290c2612d20e4c0f54d2204fb70791e)
+
 ### How do I use this with my favourite module bundler?
 
 See the [examples list](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples).
@@ -104,6 +108,10 @@ Build your own component to replace that view, and use it in place of the one th
 ### How come there’s no year view like the ng1 version?
 
 As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like `angular-calendar-year-view` though ;)
+
+### Does this calendar work with mobile?
+
+This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and [including fastclick](https://github.com/ftlabs/fastclick) but your mileage may vary.
 
 ## Angular 1 version
 
