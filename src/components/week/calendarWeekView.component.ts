@@ -128,6 +128,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() eventTemplate: TemplateRef<any>;
 
   /**
+   * The precision to display events.
+   * `days` will round event start and end dates to the nearest day and `minutes` will not do this rounding
+   */
+  @Input() precision: 'days' | 'minutes' = 'days';
+
+  /**
    * Called when a header week day is clicked
    */
   @Output() dayClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
@@ -320,7 +326,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      precision: this.precision
     });
   }
 

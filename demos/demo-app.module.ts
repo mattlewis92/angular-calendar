@@ -41,6 +41,7 @@ import * as refreshingTheView from './demo-modules/refreshing-the-view';
 import * as customTemplates from './demo-modules/custom-templates';
 import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
 import * as contextMenu from './demo-modules/context-menu';
+import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precision';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -78,6 +79,7 @@ import * as contextMenu from './demo-modules/context-menu';
     customTemplates.DemoModule,
     groupMonthViewEvents.DemoModule,
     contextMenu.DemoModule,
+    weekViewMinutePrecision.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -251,6 +253,12 @@ import * as contextMenu from './demo-modules/context-menu';
       component: contextMenu.DemoComponent,
       data: {
         label: 'Context menu'
+      }
+    }, {
+      path: 'week-view-minute-precision',
+      component: weekViewMinutePrecision.DemoComponent,
+      data: {
+        label: 'Week view minute precision'
       }
     }, {
       path: '**',
