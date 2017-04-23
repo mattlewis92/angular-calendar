@@ -56,9 +56,9 @@
   dependencies:
     tsickle "^0.21.0"
 
-"@compodoc/compodoc@^1.0.0-beta.2":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@compodoc/compodoc/-/compodoc-1.0.0-beta.3.tgz#e50266090567322099343d258d4680b1e190d67e"
+"@compodoc/compodoc@^1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@compodoc/compodoc/-/compodoc-1.0.0-beta.5.tgz#feb10a55e487efff39ae25e840ca8638e5bb25c1"
   dependencies:
     "@compodoc/ngd-core" "^2.0.0-alpha.1"
     "@compodoc/ngd-transformer" "^2.0.0-alpha.3"
@@ -98,9 +98,9 @@
   version "1.0.0-alpha.24"
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.24.tgz#c452a75444861ecb424aeb215348c2287a60bc53"
 
-"@types/chai@*", "@types/chai@^3.4.30":
-  version "3.4.35"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.35.tgz#e8d65f83492d2944f816fc620741821c28a8c900"
+"@types/chai@*", "@types/chai@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.5.1.tgz#9bd77fe12503ae00648b0945b38eab666adffe2e"
 
 "@types/highlight.js@^9.1.9":
   version "9.1.9"
@@ -110,9 +110,9 @@
   version "2.5.47"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.47.tgz#bbba9bcf0e95e7890c6f4a47394e8bacaa960eb6"
 
-"@types/node@*", "@types/node@^7.0.0":
-  version "7.0.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.12.tgz#ae5f67a19c15f752148004db07cbbb372e69efc9"
+"@types/node@*", "@types/node@^7.0.13":
+  version "7.0.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.13.tgz#1b0a53fe9ef9c3a5d061b126cc9b915bca43a3f5"
 
 "@types/rrule@^2.1.3":
   version "2.1.6"
@@ -143,9 +143,9 @@
   dependencies:
     "@types/source-map" "*"
 
-"@types/webpack@^2.2.0":
-  version "2.2.14"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-2.2.14.tgz#3970c56eac47013efc4e4b7f383fd59f60f50675"
+"@types/webpack@^2.2.15":
+  version "2.2.15"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-2.2.15.tgz#4ad7e9b7a51cae736a1dc783f203610c884789ff"
   dependencies:
     "@types/node" "*"
     "@types/tapable" "*"
@@ -182,9 +182,13 @@ acorn-dynamic-import@^2.0.0:
   dependencies:
     acorn "^4.0.3"
 
-acorn@^4.0.3, acorn@^4.0.4:
+acorn@^4.0.3:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.11.tgz#edcda3bd937e7556410d42ed5860f67399c794c0"
+
+acorn@^5.0.0:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 after@0.8.2:
   version "0.8.2"
@@ -2718,9 +2722,9 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-highlight.js@^9.9.0:
-  version "9.10.0"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.10.0.tgz#f9f0b14c0be00f0e4fb1e577b749fed9e6f52f55"
+highlight.js@^9.11.0:
+  version "9.11.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.11.0.tgz#47f98c7399918700db2caf230ded12cec41a84ae"
 
 hmac-drbg@^1.0.0:
   version "1.0.0"
@@ -3193,7 +3197,7 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-istanbul-api@^1.1.1:
+istanbul-api@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/istanbul-api/-/istanbul-api-1.1.7.tgz#f6f37f09f8002b130f891c646b70ee4a8e7345ae"
   dependencies:
@@ -3334,7 +3338,7 @@ json3@3.3.2, json3@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
 
-json5@^0.5.0:
+json5@^0.5.0, json5@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
@@ -3378,11 +3382,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-karma-coverage-istanbul-reporter@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-1.0.0.tgz#8b216b9148a37dcbfad549cf2b825e594de47e98"
+karma-coverage-istanbul-reporter@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-1.2.0.tgz#f5ba3c5613c1b78721dff61a7765f5709e0e33cd"
   dependencies:
-    istanbul-api "^1.1.1"
+    istanbul-api "^1.1.7"
 
 karma-jasmine@^1.1.0:
   version "1.1.0"
@@ -3989,9 +3993,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ngx-contextmenu@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-contextmenu/-/ngx-contextmenu-1.0.1.tgz#f8754e7e4057086afb115dbe3a31a3963dc457c7"
+ngx-contextmenu@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-contextmenu/-/ngx-contextmenu-1.0.3.tgz#3a334532696263dd3b84186a0edd47528391f9c7"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -4511,11 +4515,11 @@ postcss-filter-plugins@^2.0.0:
     postcss "^5.0.4"
     uniqid "^4.0.0"
 
-postcss-flexibility@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/postcss-flexibility/-/postcss-flexibility-1.1.0.tgz#8f7144d612ca2fb89d854b661c12a55b29dcd2f0"
+postcss-flexibility@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/postcss-flexibility/-/postcss-flexibility-1.1.1.tgz#6b90d4dfbb664d2cabc6ef340097c68652df6d7c"
   dependencies:
-    postcss "^5.0.10"
+    postcss "^5.1.0"
 
 postcss-less@^0.14.0:
   version "0.14.0"
@@ -4755,7 +4759,7 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.18, postcss@^5.0.2, postcss@^5.0.20, postcss@^5.0.21, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.13, postcss@^5.2.15, postcss@^5.2.16, postcss@^5.2.4:
+postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.18, postcss@^5.0.2, postcss@^5.0.20, postcss@^5.0.21, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.1.0, postcss@^5.2.13, postcss@^5.2.15, postcss@^5.2.16, postcss@^5.2.4:
   version "5.2.16"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-5.2.16.tgz#732b3100000f9ff8379a48a53839ed097376ad57"
   dependencies:
@@ -6305,7 +6309,7 @@ webpack-date-fns-externals@^1.0.0:
   dependencies:
     lodash.camelcase "^4.3.0"
 
-webpack-dev-middleware@^1.0.11, webpack-dev-middleware@^1.9.0:
+webpack-dev-middleware@^1.0.11:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.1.tgz#c6b4cf428139cf1aefbe06a0c00fdb4f8da2f893"
   dependencies:
@@ -6314,9 +6318,18 @@ webpack-dev-middleware@^1.0.11, webpack-dev-middleware@^1.9.0:
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
 
-webpack-dev-server@^2.2.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.4.2.tgz#cf595d6b40878452b6d2ad7229056b686f8a16be"
+webpack-dev-middleware@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.2.tgz#2e252ce1dfb020dbda1ccb37df26f30ab014dbd1"
+  dependencies:
+    memory-fs "~0.4.1"
+    mime "^1.3.4"
+    path-is-absolute "^1.0.0"
+    range-parser "^1.0.3"
+
+webpack-dev-server@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.4.3.tgz#ead74bfdc78049684734724ca54000a17509c5f5"
   dependencies:
     ansi-html "0.0.7"
     chokidar "^1.6.0"
@@ -6333,7 +6346,7 @@ webpack-dev-server@^2.2.0:
     spdy "^3.4.1"
     strip-ansi "^3.0.0"
     supports-color "^3.1.1"
-    webpack-dev-middleware "^1.9.0"
+    webpack-dev-middleware "^1.10.2"
     yargs "^6.0.0"
 
 webpack-fix-default-import-plugin@^1.0.1:
@@ -6358,11 +6371,11 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.2.0:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.3.3.tgz#eecc083c18fb7bf958ea4f40b57a6640c5a0cc78"
+webpack@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.4.1.tgz#15a91dbe34966d8a4b99c7d656efd92a2e5a6f6a"
   dependencies:
-    acorn "^4.0.4"
+    acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
     ajv "^4.7.0"
     ajv-keywords "^1.1.1"
@@ -6370,6 +6383,7 @@ webpack@^2.2.0:
     enhanced-resolve "^3.0.0"
     interpret "^1.0.0"
     json-loader "^0.5.4"
+    json5 "^0.5.1"
     loader-runner "^2.3.0"
     loader-utils "^0.2.16"
     memory-fs "~0.4.1"
@@ -6562,6 +6576,6 @@ yn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-1.2.0.tgz#d237a4c533f279b2b89d3acac2db4b8c795e4a63"
 
-zone.js@^0.8.4:
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.5.tgz#7906e017482cbff4c3f079c5c34305ce941f5ba2"
+zone.js@^0.8.8:
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.8.tgz#354f02bb7241af834bb83b310308a89ad012d3af"
