@@ -7,7 +7,7 @@ import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
   templateUrl: 'template.html',
   // don't do this in your app, its only so the styles get applied globally
   styles: [`
-    .cal-day-selected, 
+    .cal-day-selected,
     .cal-day-selected:hover {
       background-color: deeppink !important;
     }

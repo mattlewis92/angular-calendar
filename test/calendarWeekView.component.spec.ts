@@ -68,13 +68,13 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.excludeDays = [0, 6];
     fixture.componentInstance.ngOnChanges({excludeDays: {}});
     expect(fixture.componentInstance.days.length).to.equal(5);
-    expect(fixture.nativeElement.querySelector('.cal-weekend')).to.be.null;
+    expect(fixture.nativeElement.querySelector('.cal-weekend')).to.equal(null);
 
     fixture.componentInstance.excludeDays = [1];
     fixture.componentInstance.ngOnChanges({excludeDays: []});
     fixture.detectChanges();
     expect(fixture.componentInstance.days.length).to.equal(6);
-    expect(fixture.nativeElement.querySelector('.cal-weekend')).not.to.be.null;
+    expect(fixture.nativeElement.querySelector('.cal-weekend')).not.to.equal(null);
 
     fixture.destroy();
   });
@@ -107,7 +107,7 @@ describe('calendarWeekView component', () => {
     }];
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cal-event-container .cal-event').classList.contains('foo')).to.be.true;
+    expect(fixture.nativeElement.querySelector('.cal-event-container .cal-event').classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
@@ -213,10 +213,10 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     const tooltip: Element = document.body.querySelector('.cal-tooltip');
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-    expect(tooltip.classList.contains('cal-tooltip-bottom')).to.be.true;
+    expect(tooltip.classList.contains('cal-tooltip-bottom')).to.equal(true);
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();
-    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
   });
 
@@ -239,7 +239,7 @@ describe('calendarWeekView component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
   });
 
@@ -454,7 +454,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {clientY: headerPosition.top, clientX: headerPosition.left});
     fixture.detectChanges();
-    expect(header.classList.contains('cal-drag-over')).to.be.true;
+    expect(header.classList.contains('cal-drag-over')).to.equal(true);
     triggerDomEvent('mouseup', document.body, {clientY: headerPosition.top, clientX: headerPosition.left});
     fixture.detectChanges();
     fixture.destroy();

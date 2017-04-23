@@ -75,8 +75,8 @@ describe('calendarMonthView component', () => {
 
   it('should open and close the active day events list', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
-    expect(fixture.componentInstance.openRowIndex).to.be.undefined;
-    expect(fixture.componentInstance.openDay).to.be.undefined;
+    expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
+    expect(fixture.componentInstance.openDay).to.equal(undefined);
     fixture.componentInstance.viewDate = moment().startOf('month').startOf('week').add(8, 'days').toDate();
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({viewDate: {}, activeDayIsOpen: {}});
@@ -84,8 +84,8 @@ describe('calendarMonthView component', () => {
     expect(fixture.componentInstance.openDay).to.equal(fixture.componentInstance.view.days[8]);
     fixture.componentInstance.activeDayIsOpen = false;
     fixture.componentInstance.ngOnChanges({viewDate: {}, activeDayIsOpen: {}});
-    expect(fixture.componentInstance.openRowIndex).not.to.be.ok;
-    expect(fixture.componentInstance.openDay).not.to.be.ok;
+    expect(!!fixture.componentInstance.openRowIndex).to.equal(false);
+    expect(!!fixture.componentInstance.openDay).to.equal(false);
     fixture.destroy();
   });
 
@@ -107,7 +107,7 @@ describe('calendarMonthView component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector(
       '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
     );
-    expect(event.classList.contains('foo')).to.be.true;
+    expect(event.classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
@@ -119,7 +119,7 @@ describe('calendarMonthView component', () => {
     };
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.be.true;
+    expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
@@ -171,7 +171,7 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector('.cal-open-day-events .cal-event-action');
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
-    expect(action.classList.contains('foo')).to.be.true;
+    expect(action.classList.contains('foo')).to.equal(true);
     action.click();
     expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith({event: fixture.componentInstance.events[0]});
   });
@@ -293,10 +293,10 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     const tooltip: Element = document.body.querySelector('.cal-tooltip');
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-    expect(tooltip.classList.contains('cal-tooltip-top')).to.be.true;
+    expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();
-    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
   });
 
@@ -321,7 +321,7 @@ describe('calendarMonthView component', () => {
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
   });
 
@@ -366,7 +366,7 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
     fixture.detectChanges();
-    expect(cells[10].classList.contains('cal-drag-over')).to.be.true;
+    expect(cells[10].classList.contains('cal-drag-over')).to.equal(true);
     const eventAfterDragPosition: ClientRect = event.getBoundingClientRect();
     const movedLeft: number = dragToCellPosition.left - eventStartPosition.left;
     expect(eventAfterDragPosition.left).to.equal(eventStartPosition.left + movedLeft);
@@ -374,7 +374,7 @@ describe('calendarMonthView component', () => {
     expect(Math.round(eventAfterDragPosition.top)).to.equal(eventStartPosition.top + movedTop);
     triggerDomEvent('mouseup', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
     fixture.detectChanges();
-    expect(cells[10].classList.contains('cal-drag-over')).to.be.false;
+    expect(cells[10].classList.contains('cal-drag-over')).to.equal(false);
     fixture.destroy();
     expect(dragEvent).to.deep.equal({
       event: fixture.componentInstance.events[0],
@@ -435,7 +435,7 @@ describe('calendarMonthView component', () => {
     event.click();
     fixture.destroy();
     expect(eventClickedEvent).to.deep.equal({event: fixture.componentInstance.events[0]});
-    expect(dayClickedFired).to.be.false;
+    expect(dayClickedFired).to.equal(false);
   });
 
   it('should add helper classes to the header cells', () => {
@@ -444,12 +444,12 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     fixture.detectChanges();
     const headerCells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-header .cal-cell');
-    expect(headerCells[0].classList.contains('cal-past')).to.be.true;
-    expect(headerCells[0].classList.contains('cal-today')).to.be.false;
-    expect(headerCells[0].classList.contains('cal-future')).to.be.false;
-    expect(headerCells[0].classList.contains('cal-weekend')).to.be.true;
-    expect(headerCells[1].classList.contains('cal-weekend')).to.be.false;
-    expect(headerCells[6].classList.contains('cal-weekend')).to.be.true;
+    expect(headerCells[0].classList.contains('cal-past')).to.equal(true);
+    expect(headerCells[0].classList.contains('cal-today')).to.equal(false);
+    expect(headerCells[0].classList.contains('cal-future')).to.equal(false);
+    expect(headerCells[0].classList.contains('cal-weekend')).to.equal(true);
+    expect(headerCells[1].classList.contains('cal-weekend')).to.equal(false);
+    expect(headerCells[6].classList.contains('cal-weekend')).to.equal(true);
     fixture.destroy();
   });
 
