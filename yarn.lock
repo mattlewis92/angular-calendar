@@ -94,9 +94,9 @@
     q "^1.4.1"
     viz.js "^1.6.0"
 
-"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.22":
-  version "1.0.0-alpha.22"
-  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.22.tgz#aaad058cc39293ea6184e4b9b849f298c0b11a86"
+"@ng-bootstrap/ng-bootstrap@^1.0.0-alpha.24":
+  version "1.0.0-alpha.24"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.24.tgz#c452a75444861ecb424aeb215348c2287a60bc53"
 
 "@types/chai@*", "@types/chai@^3.4.30":
   version "3.4.35"

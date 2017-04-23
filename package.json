@@ -53,7 +53,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@compodoc/compodoc": "^1.0.0-beta.2",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.22",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.24",
     "@types/chai": "^3.4.30",
     "@types/highlight.js": "^9.1.9",
     "@types/jasmine": "^2.5.46",
