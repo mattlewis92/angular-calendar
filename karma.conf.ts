@@ -71,7 +71,7 @@ export default config => {
           options: {
             tslint: {
               emitErrors: config.singleRun,
-              failOnHint: false
+              failOnHint: config.singleRun
             }
           }
         }),
