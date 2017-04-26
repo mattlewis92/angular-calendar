@@ -122,7 +122,7 @@
     "webpack-dev-server": "^2.4.3",
     "webpack-fix-default-import-plugin": "^1.0.1",
     "webpack-rxjs-externals": "^1.0.0",
-    "zone.js": "^0.8.8"
+    "zone.js": "^0.8.9"
   },
   "peerDependencies": {
     "@angular/animations": "^4.0.0",
