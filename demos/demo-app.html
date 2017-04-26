@@ -22,30 +22,30 @@
           <ngb-tabset [destroyOnHide]="false">
 
             <ngb-tab>
-              <template ngbTabTitle>
+              <ng-template ngbTabTitle>
                 <i class="fa fa-fw fa-laptop"></i> Live demo
-              </template>
-              <template ngbTabContent>
+              </ng-template>
+              <ng-template ngbTabContent>
                 <div class="spacer-top"><router-outlet></router-outlet></div>
-              </template>
+              </ng-template>
             </ngb-tab>
 
             <ngb-tab *ngFor="let source of activeDemo?.sources">
-              <template ngbTabTitle>
+              <ng-template ngbTabTitle>
                 <span [ngSwitch]="source.language">
                   <i class="fa fa-fw fa-html5" *ngSwitchCase="'html'"></i>
                   <i class="fa fa-fw fa-css3" *ngSwitchCase="'css'"></i>
                   <i class="fa fa-fw fa-code" *ngSwitchDefault></i>
                 </span>
                 {{ source.filename }}
-              </template>
-              <template ngbTabContent>
+              </ng-template>
+              <ng-template ngbTabContent>
                 <pre><code
                   mwlHighlightJs
                   [source]="source.contents"
                   [language]="source.language">
                 </code></pre>
-              </template>
+              </ng-template>
             </ngb-tab>
 
           </ngb-tabset>
