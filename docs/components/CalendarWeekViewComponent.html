@@ -26,17 +26,17 @@
                 <ul class="list">
             
                     <li class="title">
-                        <a href="../">angular-calendar documentation</a>
+                        <a href="../index.html">angular-calendar documentation</a>
                     </li>
             
                     <li class="divider"></li>
             
             
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                         <ul class="links">
                                 <li class="link">
-                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                    <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
                                     <a 
@@ -86,7 +86,7 @@
                                     <a href="../components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarWeekViewComponent.html"  class="active" >CalendarWeekViewComponent</a>
+                                    <a href="../components/CalendarWeekViewComponent.html"  data-type="entity-link" class="active" >CalendarWeekViewComponent</a>
                                 </li>
                         </ul>
                     </li>
@@ -207,7 +207,7 @@
                        <ul class="list">
                    
                            <li class="title">
-                               <a href="../">angular-calendar documentation</a>
+                               <a href="../index.html">angular-calendar documentation</a>
                            </li>
                    
                            <li class="divider"></li>
@@ -217,10 +217,10 @@
                                </div>
                    
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                                <ul class="links">
                                        <li class="link">
-                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                           <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
                                            <a 
@@ -270,7 +270,7 @@
                                            <a href="../components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarWeekViewComponent.html"  class="active" >CalendarWeekViewComponent</a>
+                                           <a href="../components/CalendarWeekViewComponent.html"  data-type="entity-link" class="active" >CalendarWeekViewComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -393,15 +393,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active">
-        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab" data-link="infos">Infos</a>
     </li>
 
     <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 
     <li>
-        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab">DOM Tree</a>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
 
@@ -429,9 +429,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-class.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-class.html" target="_blank" >OnDestroy</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -460,7 +460,45 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-week-view&quot;&nbsp;#weekViewContainer&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-week-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;[days]&#x3D;&quot;days&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;headerTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(dayClicked)&#x3D;&quot;dayClicked.emit($event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;(eventDropped)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-week-view-header&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;eventRow&nbsp;of&nbsp;eventRows&quot;&nbsp;#eventRowContainer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&quot;cal-event-container&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;weekEvent&nbsp;of&nbsp;eventRow.row&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.width]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.span)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.marginLeft]&#x3D;&quot;((100&nbsp;/&nbsp;days.length)&nbsp;*&nbsp;weekEvent.offset)&nbsp;+&nbsp;&#x27;%&#x27;&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlResizable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeEdges]&#x3D;&quot;{left:&nbsp;weekEvent.event?.resizable?.beforeStart,&nbsp;right:&nbsp;weekEvent.event?.resizable?.afterEnd}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[resizeSnapGrid]&#x3D;&quot;{left:&nbsp;getDayColumnWidth(eventRowContainer),&nbsp;right:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateResize]&#x3D;&quot;validateResize&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer,&nbsp;weekEvent,&nbsp;$event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizing)&#x3D;&quot;resizing(weekEvent,&nbsp;$event,&nbsp;getDayColumnWidth(eventRowContainer))&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDraggable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragAxis]&#x3D;&quot;{x:&nbsp;weekEvent.event.draggable&nbsp;&amp;&amp;&nbsp;!currentResize,&nbsp;y:&nbsp;false}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dragSnapGrid]&#x3D;&quot;{x:&nbsp;getDayColumnWidth(eventRowContainer)}&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[validateDrag]&#x3D;&quot;validateDrag&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragStart)&#x3D;&quot;dragStart(weekViewContainer,&nbsp;event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnd)&#x3D;&quot;eventDragged(weekEvent,&nbsp;$event.x,&nbsp;getDayColumnWidth(eventRowContainer))&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-week-view-event<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[weekEvent]&#x3D;&quot;weekEvent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;eventTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;weekEvent.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-week-view-event&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;cal-week-view&quot; #weekViewContainer&gt;
+  &lt;mwl-calendar-week-view-header
+    [days]&#x3D;&quot;days&quot;
+    [locale]&#x3D;&quot;locale&quot;
+    [customTemplate]&#x3D;&quot;headerTemplate&quot;
+    (dayClicked)&#x3D;&quot;dayClicked.emit($event)&quot;
+    (eventDropped)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;
+  &lt;/mwl-calendar-week-view-header&gt;
+  &lt;div *ngFor&#x3D;&quot;let eventRow of eventRows&quot; #eventRowContainer&gt;
+    &lt;div
+      class&#x3D;&quot;cal-event-container&quot;
+      #event
+      [class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;
+      *ngFor&#x3D;&quot;let weekEvent of eventRow.row&quot;
+      [style.width]&#x3D;&quot;((100 / days.length) * weekEvent.span) + &#x27;%&#x27;&quot;
+      [style.marginLeft]&#x3D;&quot;((100 / days.length) * weekEvent.offset) + &#x27;%&#x27;&quot;
+      mwlResizable
+      [resizeEdges]&#x3D;&quot;{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}&quot;
+      [resizeSnapGrid]&#x3D;&quot;{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}&quot;
+      [validateResize]&#x3D;&quot;validateResize&quot;
+      (resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer, weekEvent, $event)&quot;
+      (resizing)&#x3D;&quot;resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))&quot;
+      (resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;
+      mwlDraggable
+      [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; !currentResize, y: false}&quot;
+      [dragSnapGrid]&#x3D;&quot;{x: getDayColumnWidth(eventRowContainer)}&quot;
+      [validateDrag]&#x3D;&quot;validateDrag&quot;
+      (dragStart)&#x3D;&quot;dragStart(weekViewContainer, event)&quot;
+      (dragEnd)&#x3D;&quot;eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))&quot;&gt;
+      &lt;mwl-calendar-week-view-event
+        [weekEvent]&#x3D;&quot;weekEvent&quot;
+        [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+        [customTemplate]&#x3D;&quot;eventTemplate&quot;
+        (eventClicked)&#x3D;&quot;eventClicked.emit({event: weekEvent.event})&quot;&gt;
+      &lt;/mwl-calendar-week-view-event&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
             </tr>
 
 
@@ -750,7 +788,7 @@
                         <td class="col-md-10">
                             <div><p>Called when an event is resized or dragged and dropped</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;CalendarEventTimesChangedEvent&gt;</code>
+                            <em><code>$event</code> type:</em>    <code><a href="../interfaces/CalendarEventTimesChangedEvent.html" target="_self" >EventEmitter&lt;CalendarEventTimesChangedEvent&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1178,6 +1216,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
        <script src="../js/search/lunr.min.js"></script>
        <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/tabs.js"></script>
        <script src="../js/menu.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>

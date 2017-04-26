@@ -26,17 +26,17 @@
                 <ul class="list">
             
                     <li class="title">
-                        <a href="../">angular-calendar documentation</a>
+                        <a href="../index.html">angular-calendar documentation</a>
                     </li>
             
                     <li class="divider"></li>
             
             
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                         <ul class="links">
                                 <li class="link">
-                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                    <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
                                     <a 
@@ -83,7 +83,7 @@
                                     <a href="../components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarMonthViewComponent.html"  class="active" >CalendarMonthViewComponent</a>
+                                    <a href="../components/CalendarMonthViewComponent.html"  data-type="entity-link" class="active" >CalendarMonthViewComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/CalendarWeekViewComponent.html" >CalendarWeekViewComponent</a>
@@ -207,7 +207,7 @@
                        <ul class="list">
                    
                            <li class="title">
-                               <a href="../">angular-calendar documentation</a>
+                               <a href="../index.html">angular-calendar documentation</a>
                            </li>
                    
                            <li class="divider"></li>
@@ -217,10 +217,10 @@
                                </div>
                    
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                                <ul class="links">
                                        <li class="link">
-                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                           <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
                                            <a 
@@ -267,7 +267,7 @@
                                            <a href="../components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarMonthViewComponent.html"  class="active" >CalendarMonthViewComponent</a>
+                                           <a href="../components/CalendarMonthViewComponent.html"  data-type="entity-link" class="active" >CalendarMonthViewComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/CalendarWeekViewComponent.html" >CalendarWeekViewComponent</a>
@@ -393,15 +393,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active">
-        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab" data-link="infos">Infos</a>
     </li>
 
     <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 
     <li>
-        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab">DOM Tree</a>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
 
@@ -429,9 +429,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-class.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-class.html" target="_blank" >OnDestroy</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -460,7 +460,43 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;cal-month-view&quot;&gt;<br>&nbsp;&nbsp;&lt;mwl-calendar-month-view-header<br>&nbsp;&nbsp;&nbsp;&nbsp;[days]&#x3D;&quot;columnHeaders&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;<br>&nbsp;&nbsp;&lt;/mwl-calendar-month-view-header&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-days&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&quot;let&nbsp;rowIndex&nbsp;of&nbsp;view.rowOffsets&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;cal-cell-row&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-month-cell<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor&#x3D;&quot;let&nbsp;day&nbsp;of&nbsp;view.days&nbsp;|&nbsp;slice&nbsp;:&nbsp;rowIndex&nbsp;:&nbsp;rowIndex&nbsp;+&nbsp;(view.totalDaysVisibleInWeek)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[day]&#x3D;&quot;day&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[openDay]&#x3D;&quot;openDay&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[locale]&#x3D;&quot;locale&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;cellTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&quot;dayClicked.emit({day:&nbsp;day})&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(highlightDay)&#x3D;&quot;toggleDayHighlight($event.event,&nbsp;true)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event,&nbsp;false)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mwlDroppable<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragEnter)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;true&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dragLeave)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(drop)&#x3D;&quot;day.dragOver&nbsp;&#x3D;&nbsp;false;&nbsp;eventDropped(day,&nbsp;$event.dropData.event)&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;$event.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-month-cell&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mwl-calendar-open-day-events<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[isOpen]&#x3D;&quot;openRowIndex&nbsp;&#x3D;&#x3D;&#x3D;&nbsp;rowIndex&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[events]&#x3D;&quot;openDay?.events&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eventClicked)&#x3D;&quot;eventClicked.emit({event:&nbsp;$event.event})&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mwl-calendar-open-day-events&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;<br></code></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;cal-month-view&quot;&gt;
+  &lt;mwl-calendar-month-view-header
+    [days]&#x3D;&quot;columnHeaders&quot;
+    [locale]&#x3D;&quot;locale&quot;
+    [customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;
+  &lt;/mwl-calendar-month-view-header&gt;
+  &lt;div class&#x3D;&quot;cal-days&quot;&gt;
+    &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets&quot;&gt;
+      &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
+        &lt;mwl-calendar-month-cell
+          *ngFor&#x3D;&quot;let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)&quot;
+          [class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;
+          [day]&#x3D;&quot;day&quot;
+          [openDay]&#x3D;&quot;openDay&quot;
+          [locale]&#x3D;&quot;locale&quot;
+          [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+          [customTemplate]&#x3D;&quot;cellTemplate&quot;
+          (click)&#x3D;&quot;dayClicked.emit({day: day})&quot;
+          (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
+          (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
+          mwlDroppable
+          (dragEnter)&#x3D;&quot;day.dragOver &#x3D; true&quot;
+          (dragLeave)&#x3D;&quot;day.dragOver &#x3D; false&quot;
+          (drop)&#x3D;&quot;day.dragOver &#x3D; false; eventDropped(day, $event.dropData.event)&quot;
+          (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;&gt;
+        &lt;/mwl-calendar-month-cell&gt;
+      &lt;/div&gt;
+      &lt;mwl-calendar-open-day-events
+        [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
+        [events]&#x3D;&quot;openDay?.events&quot;
+        [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
+        (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;&gt;
+      &lt;/mwl-calendar-open-day-events&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
             </tr>
 
 
@@ -794,7 +830,7 @@
                         <td class="col-md-10">
                             <div><p>Called when an event is dragged and dropped</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;CalendarEventTimesChangedEvent&gt;</code>
+                            <em><code>$event</code> type:</em>    <code><a href="../interfaces/CalendarEventTimesChangedEvent.html" target="_self" >EventEmitter&lt;CalendarEventTimesChangedEvent&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1184,6 +1220,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
        <script src="../js/search/lunr.min.js"></script>
        <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/tabs.js"></script>
        <script src="../js/menu.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
