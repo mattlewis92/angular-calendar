@@ -121,7 +121,7 @@ describe('CalendarDayViewComponent component', () => {
     }];
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cal-event').classList.contains('foo')).to.be.true;
+    expect(fixture.nativeElement.querySelector('.cal-event').classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
@@ -224,7 +224,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector('.cal-event .cal-event-action');
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
-    expect(action.classList.contains('foo')).to.be.true;
+    expect(action.classList.contains('foo')).to.equal(true);
     action.click();
     expect(fixture.componentInstance.events[0].actions[0].onClick).to.have.been.calledWith({event: fixture.componentInstance.events[0]});
   });
@@ -255,7 +255,7 @@ describe('CalendarDayViewComponent component', () => {
     };
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.cal-hour-segment').classList.contains('foo')).to.be.true;
+    expect(fixture.nativeElement.querySelector('.cal-hour-segment').classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
@@ -394,10 +394,10 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     const tooltip: Element = document.body.querySelector('.cal-tooltip');
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-    expect(tooltip.classList.contains('cal-tooltip-top')).to.be.true;
+    expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();
-    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
   });
 
@@ -420,7 +420,7 @@ describe('CalendarDayViewComponent component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
   });
 
@@ -548,7 +548,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {clientY: segmentPosition.top, clientX: segmentPosition.left});
     fixture.detectChanges();
-    expect(segment.classList.contains('cal-drag-over')).to.be.true;
+    expect(segment.classList.contains('cal-drag-over')).to.equal(true);
     triggerDomEvent('mouseup', document.body, {clientY: segmentPosition.top, clientX: segmentPosition.left});
     fixture.detectChanges();
     fixture.destroy();

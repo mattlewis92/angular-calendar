@@ -14,7 +14,7 @@ describe('calendar module', () => {
       ]
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(CalendarDateFormatter);
-    expect(dateFormatter instanceof CalendarDateFormatter).to.be.true;
+    expect(dateFormatter instanceof CalendarDateFormatter).to.equal(true);
   });
 
 });
