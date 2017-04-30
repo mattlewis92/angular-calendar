@@ -75,7 +75,7 @@ const dependencyVersions: any = {
   angularDraggableDroppable: require('angular-draggable-droppable/package.json').version,
   dateFns: require('date-fns/package.json').version,
   rxjs: require('rxjs/package.json').version,
-  typescript: require('typescript/package.json').version,
+  typescript: '2.2.2',
   bootstrap: require('bootstrap/package.json').version,
   zoneJs: require('zone.js/package.json').version,
   reflectMetadata: require('reflect-metadata/package.json').version,
