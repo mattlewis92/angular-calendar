@@ -12,7 +12,8 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarUtils
 } from '../src';
 import { CalendarWeekViewComponent } from '../src/components/week/calendarWeekView.component';
 import { DraggableHelper, DragAndDropModule } from 'angular-draggable-droppable';
@@ -32,6 +33,7 @@ describe('calendarWeekView component', () => {
         ExternalEventComponent
       ],
       providers: [
+        CalendarUtils,
         CalendarEventTitleFormatter,
         DraggableHelper,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},

@@ -12,8 +12,6 @@ import {
   TemplateRef
 } from '@angular/core';
 import {
-  getDayView,
-  getDayViewHourGrid,
   CalendarEvent,
   DayView,
   DayViewHour,
@@ -27,6 +25,7 @@ import addMinutes from 'date-fns/add_minutes';
 import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
 import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
+import { CalendarUtils } from '../../providers/calendarUtils.provider';
 
 /**
  * @hidden
@@ -248,7 +247,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+  constructor(private cdr: ChangeDetectorRef, private utils: CalendarUtils, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
@@ -373,7 +372,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHourGrid(): void {
-    this.hours = getDayViewHourGrid({
+    this.hours = this.utils.getDayViewHourGrid({
       viewDate: this.viewDate,
       hourSegments: this.hourSegments,
       dayStart: {
@@ -393,7 +392,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshView(): void {
-    this.view = getDayView({
+    this.view = this.utils.getDayView({
       events: this.events,
       viewDate: this.viewDate,
       hourSegments: this.hourSegments,

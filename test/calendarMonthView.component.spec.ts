@@ -14,7 +14,8 @@ import {
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
   CalendarModule,
-  MOMENT
+  MOMENT,
+  CalendarUtils
 } from './../src';
 import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
@@ -27,6 +28,7 @@ describe('calendarMonthView component', () => {
     TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule, CalendarModule],
       providers: [
+        CalendarUtils,
         DraggableHelper,
         CalendarEventTitleFormatter,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},

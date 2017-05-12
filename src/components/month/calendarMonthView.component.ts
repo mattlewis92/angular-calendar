@@ -15,8 +15,6 @@ import {
   CalendarEvent,
   WeekDay,
   MonthView,
-  getWeekViewHeader,
-  getMonthView,
   MonthViewDay
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
@@ -31,6 +29,7 @@ import getYear from 'date-fns/get_year';
 import differenceInSeconds from 'date-fns/difference_in_seconds';
 import addSeconds from 'date-fns/add_seconds';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
+import { CalendarUtils } from '../../providers/calendarUtils.provider';
 
 /**
  * Shows all events on a given month. Example usage:
@@ -189,7 +188,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   /**
    * @hidden
    */
-  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+  constructor(private cdr: ChangeDetectorRef, private utils: CalendarUtils, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
@@ -262,7 +261,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   }
 
   private refreshHeader(): void {
-    this.columnHeaders = getWeekViewHeader({
+    this.columnHeaders = this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays
@@ -270,7 +269,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   }
 
   private refreshBody(): void {
-    this.view = getMonthView({
+    this.view = this.utils.getMonthView({
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,

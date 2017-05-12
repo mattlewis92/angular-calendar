@@ -15,7 +15,8 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarUtils
 } from './../src';
 import { CalendarDayViewComponent } from './../src/components/day/calendarDayView.component';
 import { Subject } from 'rxjs/Rx';
@@ -34,6 +35,7 @@ describe('CalendarDayViewComponent component', () => {
         ExternalEventComponent
       ],
       providers: [
+        CalendarUtils,
         DraggableHelper,
         CalendarEventTitleFormatter,
         {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},

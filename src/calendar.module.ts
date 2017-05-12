@@ -24,6 +24,7 @@ import { CalendarDatePipe } from './pipes/calendarDate.pipe';
 import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
 import { CalendarEventTitleFormatter } from './providers/calendarEventTitleFormatter.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
+import { CalendarUtils } from './providers/calendarUtils.provider';
 
 /**
  * The main module of this library. Example usage:
@@ -105,7 +106,8 @@ export class CalendarModule {
       providers: [
         CalendarEventTitleFormatter,
         CalendarDateFormatter,
-        DraggableHelper
+        DraggableHelper,
+        CalendarUtils
       ]
     };
 
