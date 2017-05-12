@@ -149,7 +149,10 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked(): void {
-    this.positionTooltip();
+    // setTimeout is a fix for https://github.com/mattlewis92/angular-calendar/issues/196
+    setTimeout(() => {
+      this.positionTooltip();
+    });
   }
 
   ngOnDestroy(): void {
