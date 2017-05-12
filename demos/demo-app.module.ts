@@ -10,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
-import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as asyncEvents from './demo-modules/async-events';
@@ -49,6 +49,7 @@ import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precis
     BrowserModule,
     BrowserAnimationsModule,
     NgbTabsetModule.forRoot(),
+    NgbCollapseModule.forRoot(),
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
     asyncEvents.DemoModule,
