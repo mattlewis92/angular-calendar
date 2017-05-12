@@ -65,7 +65,22 @@ export default {
         fallback: 'style-loader',
         use: [
           'css-loader',
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                autoprefixer({
+                  browsers: [
+                    '> 1%',
+                    'last 4 versions',
+                    'last 20 Chrome versions',
+                    'last 20 Firefox versions'
+                  ]
+                }),
+                postCssFlexibility
+              ]
+            }
+          },
           'sass-loader'
         ]
       }),
@@ -85,23 +100,6 @@ export default {
     new webpack.SourceMapDevToolPlugin({
       filename: 'angular-calendar.js.map',
       test: /\.js($|\?)/i
-    }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss() {
-          return [
-            autoprefixer({
-              browsers: [
-                '> 1%',
-                'last 4 versions',
-                'last 20 Chrome versions',
-                'last 20 Firefox versions'
-              ]
-            }),
-            postCssFlexibility
-          ];
-        }
-      }
     }),
     new webpack.BannerPlugin({
       banner: `
