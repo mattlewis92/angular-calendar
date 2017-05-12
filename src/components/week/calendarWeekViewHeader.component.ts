@@ -14,7 +14,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
           [class.cal-drag-over]="day.dragOver"
-          (click)="dayClicked.emit({date: day.date})"
+          (mwlClick)="dayClicked.emit({date: day.date})"
           mwlDroppable
           (dragEnter)="day.dragOver = true"
           (dragLeave)="day.dragOver = false"

@@ -30,7 +30,7 @@ import { CalendarEvent } from 'calendar-utils';
         <mwl-calendar-event-title
           [event]="event"
           view="month"
-          (click)="eventClicked.emit({event: event})">
+          (mwlClick)="eventClicked.emit({event: event})">
         </mwl-calendar-event-title>
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
       </div>

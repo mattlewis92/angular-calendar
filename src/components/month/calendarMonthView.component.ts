@@ -62,7 +62,7 @@ import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTi
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
               [customTemplate]="cellTemplate"
-              (click)="dayClicked.emit({day: day})"
+              (mwlClick)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable

@@ -96,7 +96,7 @@ const MINUTES_IN_HOUR: number = 60;
             [segment]="segment"
             [locale]="locale"
             [customTemplate]="hourSegmentTemplate"
-            (click)="hourSegmentClicked.emit({date: segment.date})"
+            (mwlClick)="hourSegmentClicked.emit({date: segment.date})"
             [class.cal-drag-over]="segment.dragOver"
             mwlDroppable
             (dragEnter)="segment.dragOver = true"

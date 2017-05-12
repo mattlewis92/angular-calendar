@@ -17,7 +17,7 @@ import { DayViewEvent } from 'calendar-utils';
         <mwl-calendar-event-title
           [event]="dayEvent.event"
           view="day"
-          (click)="eventClicked.emit()">
+          (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
         <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
       </div>

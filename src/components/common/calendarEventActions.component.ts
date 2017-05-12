@@ -9,7 +9,7 @@ import { CalendarEvent } from 'calendar-utils';
         class="cal-event-action"
         href="javascript:;"
         *ngFor="let action of event.actions"
-        (click)="action.onClick({event: event})"
+        (mwlClick)="action.onClick({event: event})"
         [ngClass]="action.cssClass"
         [innerHtml]="action.label">
       </a>

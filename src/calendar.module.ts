@@ -19,6 +19,7 @@ import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './dire
 import { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';
 import { CalendarNextViewDirective } from './directives/calendarNextView.directive';
 import { CalendarTodayDirective } from './directives/calendarToday.directive';
+import { ClickDirective } from './directives/click.directive';
 import { CalendarDatePipe } from './pipes/calendarDate.pipe';
 import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
 import { CalendarEventTitleFormatter } from './providers/calendarEventTitleFormatter.provider';
@@ -60,7 +61,8 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDatePipe,
     CalendarEventTitlePipe,
     CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent
+    CalendarDayViewEventComponent,
+    ClickDirective
   ],
   imports: [
     CommonModule,
@@ -87,7 +89,8 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDatePipe,
     CalendarEventTitlePipe,
     CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent
+    CalendarDayViewEventComponent,
+    ClickDirective
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
