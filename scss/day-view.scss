@@ -53,6 +53,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     height: 100%;
+    box-sizing: border-box;
   }
 
   .cal-draggable {
