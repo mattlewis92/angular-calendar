@@ -15,7 +15,7 @@ import {
   CalendarEventTimesChangedEvent
 } from '../src';
 import { CalendarWeekViewComponent } from '../src/components/week/calendarWeekView.component';
-import { DraggableHelper, DragAndDropModule } from 'angular-draggable-droppable';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs/Subject';
 import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
@@ -25,16 +25,18 @@ describe('calendarWeekView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        CalendarModule,
+        CalendarModule.forRoot({
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter
+          }
+        }),
         DragAndDropModule
       ],
       declarations: [
         ExternalEventComponent
       ],
       providers: [
-        CalendarEventTitleFormatter,
-        DraggableHelper,
-        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]
     });
@@ -211,12 +213,16 @@ describe('calendarWeekView component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    const tooltip: Element = document.body.querySelector('.cal-tooltip');
-    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-    expect(tooltip.classList.contains('cal-tooltip-bottom')).to.equal(true);
-    triggerDomEvent('mouseleave', event);
-    fixture.detectChanges();
-    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    setTimeout(() => {
+      const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
+      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
+      expect(tooltip.classList.contains('cal-tooltip-bottom')).to.equal(true);
+      expect(!!tooltip.style.top).to.equal(true);
+      expect(!!tooltip.style.left).to.equal(true);
+      triggerDomEvent('mouseleave', event);
+      fixture.detectChanges();
+      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    });
 
   });
 
@@ -239,7 +245,9 @@ describe('calendarWeekView component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    setTimeout(() => {
+      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    });
 
   });
 

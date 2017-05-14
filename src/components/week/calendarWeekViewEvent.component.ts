@@ -16,7 +16,7 @@ import { WeekViewEvent } from 'calendar-utils';
         <mwl-calendar-event-title
           [event]="weekEvent.event"
           view="week"
-          (click)="eventClicked.emit()">
+          (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
       </div>
     </ng-template>

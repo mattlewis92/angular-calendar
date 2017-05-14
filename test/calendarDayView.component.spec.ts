@@ -7,7 +7,7 @@ import {
 import * as moment from 'moment';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { DraggableHelper, DragAndDropModule } from 'angular-draggable-droppable';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import {
   CalendarEventTitleFormatter,
   CalendarEvent,
@@ -27,16 +27,18 @@ describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        CalendarModule,
+        CalendarModule.forRoot({
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter
+          }
+        }),
         DragAndDropModule
       ],
       declarations: [
         ExternalEventComponent
       ],
       providers: [
-        DraggableHelper,
-        CalendarEventTitleFormatter,
-        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]
     });
@@ -392,12 +394,16 @@ describe('CalendarDayViewComponent component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    const tooltip: Element = document.body.querySelector('.cal-tooltip');
-    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-    expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
-    triggerDomEvent('mouseleave', event);
-    fixture.detectChanges();
-    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    setTimeout(() => {
+      const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
+      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
+      expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
+      expect(!!tooltip.style.top).to.equal(true);
+      expect(!!tooltip.style.left).to.equal(true);
+      triggerDomEvent('mouseleave', event);
+      fixture.detectChanges();
+      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    });
 
   });
 
@@ -420,7 +426,9 @@ describe('CalendarDayViewComponent component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    setTimeout(() => {
+      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    });
 
   });
 

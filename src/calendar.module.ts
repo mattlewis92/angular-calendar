@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResizableModule } from 'angular-resizable-element';
 import { DragAndDropModule, DraggableHelper } from 'angular-draggable-droppable';
@@ -19,10 +19,18 @@ import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './dire
 import { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';
 import { CalendarNextViewDirective } from './directives/calendarNextView.directive';
 import { CalendarTodayDirective } from './directives/calendarToday.directive';
+import { ClickDirective } from './directives/click.directive';
 import { CalendarDatePipe } from './pipes/calendarDate.pipe';
 import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
 import { CalendarEventTitleFormatter } from './providers/calendarEventTitleFormatter.provider';
 import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
+import { CalendarUtils } from './providers/calendarUtils.provider';
+
+export interface CalendarModuleConfig {
+  eventTitleFormatter?: Provider;
+  dateFormatter?: Provider;
+  utils?: Provider;
+}
 
 /**
  * The main module of this library. Example usage:
@@ -60,7 +68,8 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDatePipe,
     CalendarEventTitlePipe,
     CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent
+    CalendarDayViewEventComponent,
+    ClickDirective
   ],
   imports: [
     CommonModule,
@@ -87,7 +96,8 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
     CalendarDatePipe,
     CalendarEventTitlePipe,
     CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent
+    CalendarDayViewEventComponent,
+    ClickDirective
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
@@ -95,14 +105,15 @@ import { CalendarDateFormatter } from './providers/calendarDateFormatter.provide
 })
 export class CalendarModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(config: CalendarModuleConfig = {}): ModuleWithProviders {
 
     return {
       ngModule: CalendarModule,
       providers: [
-        CalendarEventTitleFormatter,
-        CalendarDateFormatter,
-        DraggableHelper
+        DraggableHelper,
+        config.eventTitleFormatter || CalendarEventTitleFormatter,
+        config.dateFormatter || CalendarDateFormatter,
+        config.utils || CalendarUtils
       ]
     };
 

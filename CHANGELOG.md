@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/mattlewis92/angular-calendar/compare/v0.14.0...v0.15.0) (2017-05-14)
+
+
+### Bug Fixes
+
+* **dayView:** correct events dimensions for apps without bootstrap ([977c344](https://github.com/mattlewis92/angular-calendar/commit/977c344)), closes [#201](https://github.com/mattlewis92/angular-calendar/issues/201)
+* **tooltip:** avoid ExpressionChangedAfterItHasBeenCheckedError when sometimes showing the tooltip ([f9776c6](https://github.com/mattlewis92/angular-calendar/commit/f9776c6)), closes [#196](https://github.com/mattlewis92/angular-calendar/issues/196)
+* **tooltip:** position the tooltip correctly when using AoT ([4531ebc](https://github.com/mattlewis92/angular-calendar/commit/4531ebc))
+
+
+### Features
+
+* **touch:** use tap event instead of click if hammerjs is loaded ([665520e](https://github.com/mattlewis92/angular-calendar/commit/665520e)), closes [#203](https://github.com/mattlewis92/angular-calendar/issues/203)
+* allow calendar-utils functions to be overridden ([35ae95a](https://github.com/mattlewis92/angular-calendar/commit/35ae95a)), closes [#199](https://github.com/mattlewis92/angular-calendar/issues/199)
+* allow overriding of providers via the calendar modules forRoot method ([847212e](https://github.com/mattlewis92/angular-calendar/commit/847212e)), closes [#205](https://github.com/mattlewis92/angular-calendar/issues/205)
+
+
+### BREAKING CHANGES
+
+* if not using `CalendarModule.forRoot()` you must explicitly add the `CalendarUtils`
+provider to your module declaration
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://github.com/mattlewis92/angular-calendar/compare/v0.13.6...v0.14.0) (2017-04-21)
 

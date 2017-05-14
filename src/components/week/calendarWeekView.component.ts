@@ -17,15 +17,14 @@ import {
   WeekDay,
   CalendarEvent,
   WeekViewEvent,
-  WeekViewEventRow,
-  getWeekViewHeader,
-  getWeekView
+  WeekViewEventRow
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
 import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
 import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
+import { CalendarUtils } from '../../providers/calendarUtils.provider';
 
 /**
  * Shows all events on a given week. Example usage:
@@ -185,7 +184,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  constructor(private cdr: ChangeDetectorRef, @Inject(LOCALE_ID) locale: string) {
+  constructor(private cdr: ChangeDetectorRef, private utils: CalendarUtils, @Inject(LOCALE_ID) locale: string) {
     this.locale = locale;
   }
 
@@ -314,7 +313,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHeader(): void {
-    this.days = getWeekViewHeader({
+    this.days = this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays
@@ -322,7 +321,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshBody(): void {
-    this.eventRows = getWeekView({
+    this.eventRows = this.utils.getWeekView({
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,

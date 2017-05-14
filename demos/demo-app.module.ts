@@ -10,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule } from 'angular-highlight-js';
-import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoAppComponent } from './demo-app.component';
 import * as kitchenSink from './demo-modules/kitchen-sink';
 import * as asyncEvents from './demo-modules/async-events';
@@ -42,6 +42,7 @@ import * as customTemplates from './demo-modules/custom-templates';
 import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
 import * as contextMenu from './demo-modules/context-menu';
 import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precision';
+import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -49,6 +50,7 @@ import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precis
     BrowserModule,
     BrowserAnimationsModule,
     NgbTabsetModule.forRoot(),
+    NgbCollapseModule.forRoot(),
     HighlightJsModule.forRoot(hljs),
     kitchenSink.DemoModule,
     asyncEvents.DemoModule,
@@ -80,6 +82,7 @@ import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precis
     groupMonthViewEvents.DemoModule,
     contextMenu.DemoModule,
     weekViewMinutePrecision.DemoModule,
+    extraMonthViewWeeks.DemoModule,
     RouterModule.forRoot([{
       path: 'kitchen-sink',
       component: kitchenSink.DemoComponent,
@@ -259,6 +262,12 @@ import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precis
       component: weekViewMinutePrecision.DemoComponent,
       data: {
         label: 'Week view minute precision'
+      }
+    }, {
+      path: 'extra-month-view-weeks',
+      component: extraMonthViewWeeks.DemoComponent,
+      data: {
+        label: 'Extra month view weeks'
       }
     }, {
       path: '**',

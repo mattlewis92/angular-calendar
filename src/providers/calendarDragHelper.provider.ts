@@ -1,4 +1,4 @@
-import { isInside } from './calendarUtils.provider';
+import { isInside } from './util';
 
 export class CalendarDragHelper {
 

@@ -2,7 +2,6 @@ import {
   Directive,
   Component,
   HostListener,
-  AfterViewChecked,
   OnDestroy,
   Input,
   ComponentRef,
@@ -127,7 +126,7 @@ export class CalendarTooltipWindowComponent {
 @Directive({
   selector: '[mwlCalendarTooltip]'
 })
-export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
+export class CalendarTooltipDirective implements OnDestroy {
 
   @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
 
@@ -146,10 +145,6 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
     @Inject(DOCUMENT) private document //tslint:disable-line
   ) {
     this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(CalendarTooltipWindowComponent);
-  }
-
-  ngAfterViewChecked(): void {
-    this.positionTooltip();
   }
 
   ngOnDestroy(): void {
@@ -172,6 +167,9 @@ export class CalendarTooltipDirective implements AfterViewChecked, OnDestroy {
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.placement = this.placement;
       this.document.body.appendChild(this.tooltipRef.location.nativeElement);
+      requestAnimationFrame(() => {
+        this.positionTooltip();
+      });
     }
   }
 

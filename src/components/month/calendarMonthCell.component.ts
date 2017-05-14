@@ -22,7 +22,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
           mwlDraggable
           [dropData]="{event: event}"
           [dragAxis]="{x: event.draggable, y: event.draggable}"
-          (click)="$event.stopPropagation(); eventClicked.emit({event: event})">
+          (mwlClick)="$event.stopPropagation(); eventClicked.emit({event: event})">
         </div>
       </div>
     </ng-template>
