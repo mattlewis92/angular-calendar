@@ -167,7 +167,7 @@ export class CalendarTooltipDirective implements OnDestroy {
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.placement = this.placement;
       this.document.body.appendChild(this.tooltipRef.location.nativeElement);
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         this.positionTooltip();
       });
     }
