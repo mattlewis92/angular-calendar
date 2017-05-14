@@ -7,15 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
 import { expect } from 'chai';
 import { spy } from 'sinon';
-import { DraggableHelper } from 'angular-draggable-droppable';
 import {
   CalendarEventTitleFormatter,
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
   CalendarModule,
-  MOMENT,
-  CalendarUtils
+  MOMENT
 } from './../src';
 import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
@@ -26,12 +24,16 @@ describe('calendarMonthView component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, CalendarModule],
+      imports: [
+        BrowserAnimationsModule,
+        CalendarModule.forRoot({
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter
+          }
+        })
+      ],
       providers: [
-        CalendarUtils,
-        DraggableHelper,
-        CalendarEventTitleFormatter,
-        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]
     });

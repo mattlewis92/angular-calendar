@@ -12,11 +12,10 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent,
-  CalendarUtils
+  CalendarEventTimesChangedEvent
 } from '../src';
 import { CalendarWeekViewComponent } from '../src/components/week/calendarWeekView.component';
-import { DraggableHelper, DragAndDropModule } from 'angular-draggable-droppable';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs/Subject';
 import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
@@ -26,17 +25,18 @@ describe('calendarWeekView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        CalendarModule,
+        CalendarModule.forRoot({
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter
+          }
+        }),
         DragAndDropModule
       ],
       declarations: [
         ExternalEventComponent
       ],
       providers: [
-        CalendarUtils,
-        CalendarEventTitleFormatter,
-        DraggableHelper,
-        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]
     });

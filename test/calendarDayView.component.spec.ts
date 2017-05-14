@@ -7,7 +7,7 @@ import {
 import * as moment from 'moment';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { DraggableHelper, DragAndDropModule } from 'angular-draggable-droppable';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import {
   CalendarEventTitleFormatter,
   CalendarEvent,
@@ -15,8 +15,7 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent,
-  CalendarUtils
+  CalendarEventTimesChangedEvent
 } from './../src';
 import { CalendarDayViewComponent } from './../src/components/day/calendarDayView.component';
 import { Subject } from 'rxjs/Rx';
@@ -28,17 +27,18 @@ describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        CalendarModule,
+        CalendarModule.forRoot({
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter
+          }
+        }),
         DragAndDropModule
       ],
       declarations: [
         ExternalEventComponent
       ],
       providers: [
-        CalendarUtils,
-        DraggableHelper,
-        CalendarEventTitleFormatter,
-        {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
         {provide: MOMENT, useValue: moment}
       ]
     });
