@@ -141,28 +141,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -325,28 +303,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -417,22 +373,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This class is responsible for displaying all event titles within the calendar. You may override any of its methods via angulars DI to suit your requirements. For example:</p>
-<pre class="line-numbers"><code class="language-typescript">import { CalendarEventTitleFormatter, CalendarEvent } from 'angular-calendar';
-
-class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
-
-   month(event: CalendarEvent): string {
-     return `Custom prefix: ${event.title}`;
-   }
-
-}
-
-// in your component
-providers: [{
-  provide: CalendarEventTitleFormatter,
-  useClass: CustomEventTitleFormatter
-}]</code></pre>
+                <p>This class is responsible for displaying all event titles within the calendar. You may override any of its methods via angulars DI to suit your requirements. For example:</p><br/><pre class="line-numbers"><code class="language-typescript">import { CalendarEventTitleFormatter, CalendarEvent } from &#39;angular-calendar&#39;;<br/><br/>class CustomEventTitleFormatter extends CalendarEventTitleFormatter {<br/><br/>   month(event: CalendarEvent): string {<br/>     return `Custom prefix: ${event.title}`;<br/>   }<br/><br/>}<br/><br/>// in your component<br/>providers: [{<br/>  provide: CalendarEventTitleFormatter,<br/>  useClass: CustomEventTitleFormatter<br/>}]</code></pre>
             </p>
 
 
@@ -456,6 +397,7 @@ providers: [{
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/providers/calendarEventTitleFormatter.provider.ts:29</a></div>
@@ -464,11 +406,10 @@ providers: [{
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The month view event title.</p>
-            </div>
+                                        <div class="io-description"><p>The month view event title.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -488,6 +429,7 @@ providers: [{
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/providers/calendarEventTitleFormatter.provider.ts:36</a></div>
@@ -496,11 +438,10 @@ providers: [{
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The month view event tooltip. Return a falsey value from this to disable the tooltip.</p>
-            </div>
+                                        <div class="io-description"><p>The month view event tooltip. Return a falsey value from this to disable the tooltip.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -520,6 +461,7 @@ providers: [{
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/providers/calendarEventTitleFormatter.provider.ts:43</a></div>
@@ -528,11 +470,10 @@ providers: [{
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The week view event title.</p>
-            </div>
+                                        <div class="io-description"><p>The week view event title.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -552,6 +493,7 @@ providers: [{
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/providers/calendarEventTitleFormatter.provider.ts:50</a></div>
@@ -560,11 +502,10 @@ providers: [{
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The week view event tooltip. Return a falsey value from this to disable the tooltip.</p>
-            </div>
+                                        <div class="io-description"><p>The week view event tooltip. Return a falsey value from this to disable the tooltip.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -584,6 +525,7 @@ providers: [{
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/providers/calendarEventTitleFormatter.provider.ts:57</a></div>
@@ -592,11 +534,10 @@ providers: [{
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The day view event title.</p>
-            </div>
+                                        <div class="io-description"><p>The day view event title.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -616,6 +557,7 @@ providers: [{
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/providers/calendarEventTitleFormatter.provider.ts:64</a></div>
@@ -624,11 +566,10 @@ providers: [{
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The day view event tooltip. Return a falsey value from this to disable the tooltip.</p>
-            </div>
+                                        <div class="io-description"><p>The day view event tooltip. Return a falsey value from this to disable the tooltip.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>

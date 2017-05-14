@@ -141,28 +141,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -325,28 +303,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -413,15 +369,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The main module of this library. Example usage:</p>
-<pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from 'angular-calendar';
-
-&commat;NgModule({
-   imports: [
-     CalenderModule.forRoot()
-   ]
-})
-class MyModule {}</code></pre>
+                <p>The main module of this library. Example usage:</p><br/><pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from &#39;angular-calendar&#39;;<br/><br/>&amp;commat;NgModule({<br/>   imports: [<br/>     CalenderModule.forRoot()<br/>   ]<br/>})<br/>class MyModule {}</code></pre>
             </p>
 
         <div class="container-fluid module">
@@ -482,7 +430,7 @@ class MyModule {}</code></pre>
         </div>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders, Provider } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ResizableModule } from &#x27;angular-resizable-element&#x27;;
 import { DragAndDropModule, DraggableHelper } from &#x27;angular-draggable-droppable&#x27;;
@@ -503,10 +451,18 @@ import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from &#x27;.
 import { CalendarPreviousViewDirective } from &#x27;./directives/calendarPreviousView.directive&#x27;;
 import { CalendarNextViewDirective } from &#x27;./directives/calendarNextView.directive&#x27;;
 import { CalendarTodayDirective } from &#x27;./directives/calendarToday.directive&#x27;;
+import { ClickDirective } from &#x27;./directives/click.directive&#x27;;
 import { CalendarDatePipe } from &#x27;./pipes/calendarDate.pipe&#x27;;
 import { CalendarEventTitlePipe } from &#x27;./pipes/calendarEventTitle.pipe&#x27;;
 import { CalendarEventTitleFormatter } from &#x27;./providers/calendarEventTitleFormatter.provider&#x27;;
 import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.provider&#x27;;
+import { CalendarUtils } from &#x27;./providers/calendarUtils.provider&#x27;;
+
+export interface CalendarModuleConfig {
+  eventTitleFormatter?: Provider;
+  dateFormatter?: Provider;
+  utils?: Provider;
+}
 
 /**
  * The main module of this library. Example usage:
@@ -544,7 +500,8 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarDatePipe,
     CalendarEventTitlePipe,
     CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent
+    CalendarDayViewEventComponent,
+    ClickDirective
   ],
   imports: [
     CommonModule,
@@ -571,7 +528,8 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
     CalendarDatePipe,
     CalendarEventTitlePipe,
     CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent
+    CalendarDayViewEventComponent,
+    ClickDirective
   ],
   entryComponents: [
     CalendarTooltipWindowComponent
@@ -579,14 +537,15 @@ import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.pr
 })
 export class CalendarModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(config: CalendarModuleConfig &#x3D; {}): ModuleWithProviders {
 
     return {
       ngModule: CalendarModule,
       providers: [
-        CalendarEventTitleFormatter,
-        CalendarDateFormatter,
-        DraggableHelper
+        DraggableHelper,
+        config.eventTitleFormatter || CalendarEventTitleFormatter,
+        config.dateFormatter || CalendarDateFormatter,
+        config.utils || CalendarUtils
       ]
     };
 

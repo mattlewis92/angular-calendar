@@ -141,28 +141,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -325,28 +303,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -417,9 +373,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This will use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to do all date formatting. It is the default date formatter used by the calendar.</p>
-<p>You will need to include a <a href="https://github.com/andyearnshaw/Intl.js/">polyfill</a> for older browsers.</p>
-
+                <p>This will use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to do all date formatting. It is the default date formatter used by the calendar.</p><br/><p>You will need to include a <a href="https://github.com/andyearnshaw/Intl.js/">polyfill</a> for older browsers.</p><br/>
             </p>
 
 
@@ -427,7 +381,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code><a href="../interfaces/CalendarDateFormatterInterface.html" target="_self" >CalendarDateFormatterInterface</a></code>
+                        <code><a href="../classes/CalendarDateFormatter.html" target="_self" >CalendarDateFormatterInterface</a></code>
             </p>
 
 
@@ -440,17 +394,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> monthViewColumnHeader</b>
+                                    <b><span class="modifier">Static</span> monthViewColumnHeader</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>monthViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>monthViewColumnHeader(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -460,11 +415,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The month view header week day labels</p>
-            </div>
+                                        <div class="io-description"><p>The month view header week day labels</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -475,17 +429,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> monthViewDayNumber</b>
+                                    <b><span class="modifier">Static</span> monthViewDayNumber</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>monthViewDayNumber(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>monthViewDayNumber(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -495,11 +450,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The month view cell day number</p>
-            </div>
+                                        <div class="io-description"><p>The month view cell day number</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -510,17 +464,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> monthViewTitle</b>
+                                    <b><span class="modifier">Static</span> monthViewTitle</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>monthViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>monthViewTitle(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -530,11 +485,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The month view title</p>
-            </div>
+                                        <div class="io-description"><p>The month view title</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -545,17 +499,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> weekViewColumnHeader</b>
+                                    <b><span class="modifier">Static</span> weekViewColumnHeader</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>weekViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>weekViewColumnHeader(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -565,11 +520,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The week view header week day labels</p>
-            </div>
+                                        <div class="io-description"><p>The week view header week day labels</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -580,17 +534,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> weekViewColumnSubHeader</b>
+                                    <b><span class="modifier">Static</span> weekViewColumnSubHeader</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>weekViewColumnSubHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>weekViewColumnSubHeader(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -600,11 +555,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The week view sub header day and month labels</p>
-            </div>
+                                        <div class="io-description"><p>The week view sub header day and month labels</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -615,17 +569,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> weekViewTitle</b>
+                                    <b><span class="modifier">Static</span> weekViewTitle</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>weekViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>weekViewTitle(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -635,11 +590,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The week view title</p>
-            </div>
+                                        <div class="io-description"><p>The week view title</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -650,17 +604,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> dayViewHour</b>
+                                    <b><span class="modifier">Static</span> dayViewHour</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>dayViewHour(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>dayViewHour(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -670,11 +625,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The time formatting down the left hand side of the day view</p>
-            </div>
+                                        <div class="io-description"><p>The time formatting down the left hand side of the day view</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
@@ -685,17 +639,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> dayViewTitle</b>
+                                    <b><span class="modifier">Static</span> dayViewTitle</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
-                                    <code>dayViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                    <code>dayViewTitle(undefined: DateFormatterParams)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -705,11 +660,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The day view title</p>
-            </div>
+                                        <div class="io-description"><p>The day view title</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
+                                            <b>Returns : </b>    <code>string</code>
             
                                         </div>
                                 </td>
