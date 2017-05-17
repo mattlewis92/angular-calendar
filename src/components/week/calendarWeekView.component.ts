@@ -195,7 +195,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
         this.refreshAll();
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       });
     }
   }
@@ -235,7 +235,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     };
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(weekViewContainer, this.getDayColumnWidth(weekViewContainer));
     this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 
   /**
@@ -309,7 +309,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
     this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 
   private refreshHeader(): void {
