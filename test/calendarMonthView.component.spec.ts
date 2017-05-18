@@ -13,7 +13,8 @@ import {
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
   CalendarModule,
-  MOMENT
+  MOMENT,
+  CalendarMonthViewDay
 } from './../src';
 import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
@@ -124,6 +125,28 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.equal(true);
+    fixture.destroy();
+  });
+
+  it('should not remove other classes when removing the cssClass', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    let firstDay: CalendarMonthViewDay;
+    fixture.componentInstance.dayModifier = (day) => {
+      if (!firstDay) {
+        firstDay = day;
+        day.cssClass = 'foo';
+      }
+    };
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    const cell: HTMLElement = fixture.nativeElement.querySelector('.cal-days .cal-cell');
+    expect(cell.classList.contains('foo')).to.equal(true);
+    expect(cell.classList.contains('cal-out-month')).to.equal(true);
+    delete firstDay.cssClass;
+    fixture.detectChanges();
+    expect(cell.classList.contains('foo')).to.equal(false);
+    expect(cell.classList.contains('cal-out-month')).to.equal(true);
     fixture.destroy();
   });
 
