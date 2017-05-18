@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.2"></a>
+## [0.15.2](https://github.com/mattlewis92/angular-calendar/compare/v0.15.1...v0.15.2) (2017-05-18)
+
+
+### Bug Fixes
+
+* **monthView:** preserve classes when removing a days cssClass ([a7c902d](https://github.com/mattlewis92/angular-calendar/commit/a7c902d)), closes [#210](https://github.com/mattlewis92/angular-calendar/issues/210)
+
+
+
 <a name="0.15.1"></a>
 ## [0.15.1](https://github.com/mattlewis92/angular-calendar/compare/v0.15.0...v0.15.1) (2017-05-17)
 
