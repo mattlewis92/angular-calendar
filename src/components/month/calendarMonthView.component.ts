@@ -56,6 +56,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
             <mwl-calendar-month-cell
               *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"
               [class.cal-drag-over]="day.dragOver"
+              [ngClass]="day?.cssClass"
               [day]="day"
               [openDay]="openDay"
               [locale]="locale"

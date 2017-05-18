@@ -40,7 +40,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
     </ng-template>
   `,
   host: {
-    '[class]': '"cal-cell cal-day-cell " + day?.cssClass',
+    'class': 'cal-cell cal-day-cell',
     '[class.cal-past]': 'day.isPast',
     '[class.cal-today]': 'day.isToday',
     '[class.cal-future]': 'day.isFuture',
