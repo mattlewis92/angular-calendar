@@ -63,10 +63,8 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
           (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
-          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: false}"
-          [dragSnapGrid]="{x: getDayColumnWidth(eventRowContainer)}"
-          [validateDrag]="validateDrag"
-          (dragStart)="dragStart(weekViewContainer, event)"
+          [dropData]="{event: weekEvent.event}"
+          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: true}"
           (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
@@ -170,11 +168,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     originalSpan: number,
     edge: string
   };
-
-  /**
-   * @hidden
-   */
-  validateDrag: Function;
 
   /**
    * @hidden
@@ -301,15 +294,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   getDayColumnWidth(eventRowContainer: HTMLElement): number {
     return Math.floor(eventRowContainer.offsetWidth / this.days.length);
-  }
-
-  /**
-   * @hidden
-   */
-  dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
-    const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
-    this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
-    this.cdr.markForCheck();
   }
 
   private refreshHeader(): void {
