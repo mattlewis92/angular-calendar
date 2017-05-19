@@ -279,7 +279,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   eventDragged(weekEvent: WeekViewEvent, draggedByPx: number, dayWidth: number): void {
 
     const daysDragged: number = draggedByPx / dayWidth;
-    const newStart: Date = addDays(weekEvent.event.start, daysDragged);
+    let newStart: Date = addDays(weekEvent.event.start, daysDragged);
+
+    // Restrict start to first and last day on current week
+    if (newStart.getTime() < this.days[0].date.getTime()) {
+      newStart = this.days[0].date;
+    }
+    if (newStart.getTime() > this.days[this.days.length - 1].date.getTime()) {
+      newStart = this.days[this.days.length - 1].date;
+    }
+
     let newEnd: Date;
     if (weekEvent.event.end) {
       newEnd = addDays(weekEvent.event.end, daysDragged);
