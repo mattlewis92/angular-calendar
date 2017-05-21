@@ -1041,7 +1041,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     const year: number &#x3D; getYear(day.date);
     const month: number &#x3D; getMonth(day.date);
     const date: number &#x3D; getDate(day.date);
-    const newStart: Date &#x3D; setYear(setMonth(setDate(event.start, date), month), year);
+    const newStart: Date &#x3D; setDate(setMonth(setYear(event.start, year), month), date);
     let newEnd: Date;
     if (event.end) {
       const secondsDiff: number &#x3D; differenceInSeconds(newStart, event.start);
