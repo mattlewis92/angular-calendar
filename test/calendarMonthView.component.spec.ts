@@ -417,6 +417,47 @@ describe('calendarMonthView component', () => {
 
   });
 
+  it('should apply the year, month and date changes in the correct order when dragging and dropping events', () => {
+
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2017-02-05');
+    fixture.componentInstance.events = [{
+      start: new Date('2017-02-01'),
+      title: 'draggable event',
+      color: {
+        primary: 'blue',
+        secondary: 'rgb(238, 238, 238)'
+      },
+      draggable: true
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}});
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      dragEvent = event;
+    });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const cells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-day-cell');
+    const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
+    event.style.width = '10px';
+    event.style.height = '10px';
+    const dragToCellPosition: ClientRect = cells[2].getBoundingClientRect();
+    const eventStartPosition: ClientRect = event.getBoundingClientRect();
+    triggerDomEvent('mousedown', event, {clientX: eventStartPosition.left, clientY: eventStartPosition.top});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', document.body, {clientX: dragToCellPosition.left, clientY: dragToCellPosition.top});
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: new Date('2017-01-31'),
+      newEnd: undefined
+    });
+
+  });
+
   it('should update the event title', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-01');
