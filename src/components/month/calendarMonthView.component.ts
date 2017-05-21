@@ -62,7 +62,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
               [customTemplate]="cellTemplate"
-              (mwlClick)="dayClicked.emit({day: day})"
+              (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable

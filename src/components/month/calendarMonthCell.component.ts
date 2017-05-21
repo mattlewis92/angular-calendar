@@ -22,7 +22,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
           mwlDraggable
           [dropData]="{event: event}"
           [dragAxis]="{x: event.draggable, y: event.draggable}"
-          (mwlClick)="$event.stopPropagation(); eventClicked.emit({event: event})">
+          (mwlClick)="onEventClick($event, event)">
         </div>
       </div>
     </ng-template>
@@ -69,5 +69,15 @@ export class CalendarMonthCellComponent {
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+
+  /**
+   * @hidden
+   */
+  onEventClick(mouseEvent: MouseEvent, calendarEvent: CalendarEvent): void {
+    if (mouseEvent.stopPropagation) {
+      mouseEvent.stopPropagation();
+    }
+    this.eventClicked.emit({event: calendarEvent});
+  }
 
 }
