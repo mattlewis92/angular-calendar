@@ -9,7 +9,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
         <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
       </div>
-      <div class="cal-events">
+      <div class="cal-events" *ngIf="day.events.length > 0">
         <div
           class="cal-event"
           *ngFor="let event of day.events"
