@@ -47,7 +47,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
         (dayClicked)="dayClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div *ngFor="let eventRow of eventRows" #eventRowContainer>
+      <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
         <div
           class="cal-event-container"
           #event
