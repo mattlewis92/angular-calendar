@@ -42,7 +42,8 @@
         [viewDate]="viewDate"
         [events]="events"
         (eventTimesChanged)="eventDropped($event)"
-        [refresh]="refresh">
+        [refresh]="refresh"
+        [allowDragOutside]="true">
       </mwl-calendar-week-view>
       <mwl-calendar-day-view
         *ngSwitchCase="'day'"
