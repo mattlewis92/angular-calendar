@@ -21,6 +21,8 @@ import {
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
+import differenceInDays from 'date-fns/difference_in_days';
+import startOfDay from 'date-fns/start_of_day';
 import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
 import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
@@ -291,18 +293,21 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   eventDragged(weekEvent: WeekViewEvent, draggedByPx: number, dayWidth: number): void {
 
-    const daysDragged: number = draggedByPx / dayWidth;
+    let daysDragged: number = Math.round(draggedByPx / dayWidth);
     let newStart: Date = addDays(weekEvent.event.start, daysDragged);
 
     if (this.allowDragOutside) {
       // Restrict start to first and last day on current week
-      if (newStart.getTime() < this.days[0].date.getTime()) {
-        newStart = this.days[0].date;
+      if (newStart < this.days[0].date) {
+        daysDragged += differenceInDays(startOfDay(this.days[0].date), startOfDay(newStart));
       }
-      if (newStart.getTime() > this.days[this.days.length - 1].date.getTime()) {
-        newStart = this.days[this.days.length - 1].date;
+      const lastDate: Date = this.days[this.days.length - 1].date;
+      if (newStart > lastDate) {
+        daysDragged -= differenceInDays(startOfDay(newStart), startOfDay(lastDate));
       }
     }
+
+    newStart = addDays(weekEvent.event.start, daysDragged);
 
     let newEnd: Date;
     if (weekEvent.event.end) {
