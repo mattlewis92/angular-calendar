@@ -62,7 +62,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
               [customTemplate]="cellTemplate"
-              (mwlClick)="dayClicked.emit({day: day})"
+              (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -252,7 +252,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     const year: number = getYear(day.date);
     const month: number = getMonth(day.date);
     const date: number = getDate(day.date);
-    const newStart: Date = setYear(setMonth(setDate(event.start, date), month), year);
+    const newStart: Date = setDate(setMonth(setYear(event.start, year), month), date);
     let newEnd: Date;
     if (event.end) {
       const secondsDiff: number = differenceInSeconds(newStart, event.start);

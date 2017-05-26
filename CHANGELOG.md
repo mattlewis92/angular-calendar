@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.4"></a>
+## [0.15.4](https://github.com/mattlewis92/angular-calendar/compare/v0.15.3...v0.15.4) (2017-05-21)
+
+
+### Bug Fixes
+
+* **monthView:** ensure events are dropped onto the correct dates ([af48ed2](https://github.com/mattlewis92/angular-calendar/commit/af48ed2))
+
+
+
+<a name="0.15.3"></a>
+## [0.15.3](https://github.com/mattlewis92/angular-calendar/compare/v0.15.2...v0.15.3) (2017-05-21)
+
+
+### Bug Fixes
+
+* **monthView:** fix clicking an event dot when using hammerjs ([0a9e9fe](https://github.com/mattlewis92/angular-calendar/commit/0a9e9fe)), closes [#211](https://github.com/mattlewis92/angular-calendar/issues/211)
+
+
+
 <a name="0.15.2"></a>
 ## [0.15.2](https://github.com/mattlewis92/angular-calendar/compare/v0.15.1...v0.15.2) (2017-05-18)
 
