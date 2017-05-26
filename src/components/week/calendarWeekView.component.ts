@@ -63,9 +63,12 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
           (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
-          [dropData]="{event: weekEvent.event}"
-          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: true}"
-          (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))">
+          [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"
+          [validateDrag]="validateDrag"
+          (dragStart)="dragStart(weekViewContainer, event)"
+          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: allowDragOutside}"
+          (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"
+          [dropData]="{event: weekEvent.event}">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
             [tooltipPlacement]="tooltipPlacement"
@@ -131,6 +134,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() precision: 'days' | 'minutes' = 'days';
 
   /**
+   * The start number of the week
+   */
+  @Input() allowDragOutside: boolean = false;
+
+  /**
    * Called when a header week day is clicked
    */
   @Output() dayClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
@@ -168,6 +176,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     originalSpan: number,
     edge: string
   };
+
+  /**
+   * @hidden
+   */
+  validateDrag: Function;
 
   /**
    * @hidden
@@ -281,12 +294,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     const daysDragged: number = draggedByPx / dayWidth;
     let newStart: Date = addDays(weekEvent.event.start, daysDragged);
 
-    // Restrict start to first and last day on current week
-    if (newStart.getTime() < this.days[0].date.getTime()) {
-      newStart = this.days[0].date;
-    }
-    if (newStart.getTime() > this.days[this.days.length - 1].date.getTime()) {
-      newStart = this.days[this.days.length - 1].date;
+    if (this.allowDragOutside) {
+      // Restrict start to first and last day on current week
+      if (newStart.getTime() < this.days[0].date.getTime()) {
+        newStart = this.days[0].date;
+      }
+      if (newStart.getTime() > this.days[this.days.length - 1].date.getTime()) {
+        newStart = this.days[this.days.length - 1].date;
+      }
     }
 
     let newEnd: Date;
@@ -303,6 +318,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   getDayColumnWidth(eventRowContainer: HTMLElement): number {
     return Math.floor(eventRowContainer.offsetWidth / this.days.length);
+  }
+
+  /**
+   * @hidden
+   */
+  dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
+    if (!this.allowDragOutside) {
+      const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
+      this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
+      this.cdr.markForCheck();
+    }
   }
 
   private refreshHeader(): void {
