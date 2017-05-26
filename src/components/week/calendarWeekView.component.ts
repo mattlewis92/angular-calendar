@@ -134,7 +134,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() precision: 'days' | 'minutes' = 'days';
 
   /**
-   * The start number of the week
+   * Allow events to be dragged outside of the calendar
    */
   @Input() allowDragOutside: boolean = false;
 
