@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent, CalendarEventTimesChangedEvent } from 'angular-calendar';
+import { Subject } from 'rxjs/Subject';
 import { colors } from '../demo-utils/colors';
 
 @Component({
@@ -28,6 +29,7 @@ export class DemoComponent {
   events: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = false;
+  refresh: Subject<any> = new Subject();
 
   eventDropped({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
     const externalIndex: number = this.externalEvents.indexOf(event);
@@ -43,5 +45,16 @@ export class DemoComponent {
     this.activeDayIsOpen = true;
   }
 
+  droppedBack(event: CalendarEvent): void {
+
+    const internalIndex: number = this.events.indexOf(event);
+
+    if (internalIndex > -1) {
+      this.events.splice(internalIndex, 1);
+      this.externalEvents.push(event);
+
+      this.refresh.next();
+    }
+  }
 }
 
