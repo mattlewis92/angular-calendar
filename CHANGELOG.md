@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/mattlewis92/angular-calendar/compare/v0.15.4...v0.16.0) (2017-05-27)
+
+
+### Features
+
+* **weekView:** Allow drag outside calendar view ([#214](https://github.com/mattlewis92/angular-calendar/issues/214)) ([dcff88a](https://github.com/mattlewis92/angular-calendar/commit/dcff88a))
+
+
+
 <a name="0.15.4"></a>
 ## [0.15.4](https://github.com/mattlewis92/angular-calendar/compare/v0.15.3...v0.15.4) (2017-05-21)
 

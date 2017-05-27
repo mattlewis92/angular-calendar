@@ -64,6 +64,7 @@
       "variable-declaration",
       "member-variable-declaration"
     ],
+    "prefer-const": true,
     "directive-selector": [true, "attribute", "mwl", "camelCase"],
     "component-selector": [true, "element", "mwl", "kebab-case"],
     "use-input-property-decorator": true,
