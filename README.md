@@ -111,7 +111,7 @@ As there are so many events to show on each month, it doesn’t provide a lot of
 
 ### Does this calendar work with mobile?
 
-This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and [including fastclick](https://github.com/ftlabs/fastclick) but your mileage may vary.
+This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and [including hammerjs](http://hammerjs.github.io/) but your mileage may vary.
 
 ## Angular 1 version
 
