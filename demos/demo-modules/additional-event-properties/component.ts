@@ -2,10 +2,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
-interface MyEvent extends CalendarEvent {
-  id: number;
-}
-
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,16 +13,20 @@ export class DemoComponent {
 
   viewDate: Date = new Date();
 
-  events: MyEvent[] = [{
-    id: 1,
+  events: CalendarEvent[] = [{
     title: 'Event 1',
     color: colors.yellow,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      id: 1
+    }
   }, {
-    id: 2,
     title: 'Event 2',
     color: colors.blue,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      id: 2
+    }
   }];
 
 }

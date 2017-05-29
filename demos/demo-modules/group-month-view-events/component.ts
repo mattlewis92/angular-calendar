@@ -2,10 +2,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
-interface MyEvent extends CalendarEvent {
-  type: string;
-}
-
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,38 +22,48 @@ export class DemoComponent {
 
   viewDate: Date = new Date();
 
-  events: MyEvent[] = [{
+  events: CalendarEvent[] = [{
     title: 'Event 1',
-    type: 'warning',
     color: colors.yellow,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      type: 'warning'
+    }
   }, {
     title: 'Event 2',
-    type: 'warning',
     color: colors.yellow,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      type: 'warning'
+    }
   }, {
     title: 'Event 3',
-    type: 'info',
     color: colors.blue,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      type: 'info'
+    }
   }, {
     title: 'Event 4',
-    type: 'danger',
     color: colors.red,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      type: 'danger'
+    }
   }, {
     title: 'Event 5',
-    type: 'danger',
     color: colors.red,
-    start: new Date()
+    start: new Date(),
+    meta: {
+      type: 'danger'
+    }
   }];
 
   groupEvents(cell: CalendarMonthViewDay): void {
     const groups: any = {};
-    cell.events.forEach((event: MyEvent) => {
-      groups[event.type] = groups[event.type] || [];
-      groups[event.type].push(event);
+    cell.events.forEach((event: CalendarEvent) => {
+      groups[event.meta.type] = groups[event.meta.type] || [];
+      groups[event.meta.type].push(event);
     });
     cell['eventGroups'] = Object.entries(groups);
   }
