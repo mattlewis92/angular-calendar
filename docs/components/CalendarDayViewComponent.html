@@ -604,7 +604,7 @@
                         <td class="col-md-10">
                             <div><p>An array of events to display on view</p><br/></div>
                               <p>
-                                <em>Type:</em>    <code>CalendarEvent[]</code>
+                                <em>Type:</em>    <code>CalendarEvent&lt;any&gt;[]</code>
 
                               </p>
                         </td>
@@ -850,7 +850,7 @@
                         </td>
                         <td class="col-md-10">
                             <div><p>Called when an event title is clicked</p><br/></div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ event: CalendarEvent; }&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ event: CalendarEvent&lt;any&gt;; }&gt;</code>
 
                         </td>
                     </tr>
@@ -916,7 +916,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>eventDropped(dropEvent: { dropData?: { event?: CalendarEvent; }; }, segment: DayViewHourSegment)</code>
+    <code>eventDropped(dropEvent: { dropData?: { event?: CalendarEvent<any>; }; }, segment: DayViewHourSegment)</code>
                         </td>
                     </tr>
     

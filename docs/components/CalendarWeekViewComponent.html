@@ -495,7 +495,7 @@
                         <td class="col-md-10">
                             <div><p>An array of events to display on view</p><br/></div>
                               <p>
-                                <em>Type:</em>    <code>CalendarEvent[]</code>
+                                <em>Type:</em>    <code>CalendarEvent&lt;any&gt;[]</code>
 
                               </p>
                         </td>
@@ -733,7 +733,7 @@
                         </td>
                         <td class="col-md-10">
                             <div><p>Called when the event title is clicked</p><br/></div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ event: CalendarEvent; }&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;{ event: CalendarEvent&lt;any&gt;; }&gt;</code>
 
                         </td>
                     </tr>
@@ -1123,7 +1123,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
-      precision: this.precision
+      precision: this.precision,
+      absolutePositionedEvents: true
     });
   }
 

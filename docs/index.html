@@ -372,7 +372,7 @@ import { CalendarModule } from &#39;angular-calendar&#39;;
 
 &#40;NgModule({
   imports: [
-    BrowserAnimationsModule, // angular 4.0+ only
+    BrowserAnimationsModule,
     CalendarModule.forRoot()
   ]
 })
@@ -403,7 +403,7 @@ export class MyModule {}</code></pre><p>Then you can use the <a href="https://ma
 <h3 id="how-come-there-s-no-year-view-like-the-ng1-version-">How come there’s no year view like the ng1 version?</h3>
 <p>As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like <code>angular-calendar-year-view</code> though ;)</p>
 <h3 id="does-this-calendar-work-with-mobile-">Does this calendar work with mobile?</h3>
-<p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and <a href="https://github.com/ftlabs/fastclick">including fastclick</a> but your mileage may vary.</p>
+<p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and <a href="http://hammerjs.github.io/">including hammerjs</a> but your mileage may vary.</p>
 <h2 id="angular-1-version">Angular 1 version</h2>
 <p><a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
 <h2 id="development">Development</h2>
