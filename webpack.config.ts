@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import { TsConfigPathsPlugin, CheckerPlugin } from 'awesome-typescript-loader';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
-import * as FixDefaultImportPlugin from 'webpack-fix-default-import-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const IS_PROD = process.argv.indexOf('-p') > -1;
@@ -21,7 +20,14 @@ export default {
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
-      loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+      loaders: [{
+        loader: 'awesome-typescript-loader',
+        options: {
+          module: 'es2015'
+        }
+      }, {
+        loader: 'angular2-template-loader'
+      }],
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
@@ -70,7 +76,6 @@ export default {
       /angular(\\|\/)core(\\|\/)@angular/,
       __dirname + '/src'
     ),
-    new FixDefaultImportPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'demos', 'index.ejs')
     })

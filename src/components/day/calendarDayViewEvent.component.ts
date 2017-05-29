@@ -14,12 +14,12 @@ import { DayViewEvent } from 'calendar-utils';
         [ngClass]="dayEvent.event.cssClass"
         [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:'dayTooltip':dayEvent.event"
         [tooltipPlacement]="tooltipPlacement">
+        <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="dayEvent.event"
           view="day"
           (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
-        <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
       </div>
     </ng-template>
     <ng-template

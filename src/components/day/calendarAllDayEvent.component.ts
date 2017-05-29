@@ -9,12 +9,12 @@ import { CalendarEvent } from 'calendar-utils';
         class="cal-all-day-event"
         [style.backgroundColor]="event.color.secondary"
         [style.borderColor]="event.color.primary">
+        <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="event"
           view="day"
           (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
-        <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
       </div>
     </ng-template>
     <ng-template

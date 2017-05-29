@@ -350,7 +350,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
-      precision: this.precision
+      precision: this.precision,
+      absolutePositionedEvents: true
     });
   }
 

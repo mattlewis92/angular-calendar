@@ -1,7 +1,6 @@
 import * as webpack from 'webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
-import * as FixDefaultImportPlugin from 'webpack-fix-default-import-plugin';
 
 export default config => {
   config.set({
@@ -37,7 +36,10 @@ export default config => {
         }, {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
-          exclude: /node_modules/
+          exclude: /node_modules/,
+          options: {
+            module: 'es2015'
+          }
         }, {
           test: /\.scss$/,
           loader: 'style-loader!css-loader!sass-loader',
@@ -46,7 +48,10 @@ export default config => {
           enforce: 'post',
           test: /src\/.+\.ts$/,
           exclude: /(node_modules|\.spec\.ts$|\.interface\.ts$)/,
-          loader: 'istanbul-instrumenter-loader'
+          loader: 'istanbul-instrumenter-loader',
+          options: {
+            esModules: true
+          }
         }]
       },
       plugins: [
@@ -74,8 +79,7 @@ export default config => {
               failOnHint: config.singleRun
             }
           }
-        }),
-        new FixDefaultImportPlugin()
+        })
       ]
     },
 
