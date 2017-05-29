@@ -11,7 +11,7 @@ export class DemoComponent {
 
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [{
+  events: CalendarEvent<{incrementsBadgeTotal: boolean}>[] = [{
     title: 'Increments badge total on the day cell',
     color: colors.yellow,
     start: new Date(),

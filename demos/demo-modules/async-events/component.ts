@@ -23,7 +23,7 @@ export class DemoComponent implements OnInit {
 
   viewDate: Date = new Date();
 
-  events$: Observable<CalendarEvent[]>;
+  events$: Observable<CalendarEvent<{film: Film}>[]>;
 
   activeDayIsOpen: boolean = false;
 
@@ -68,7 +68,7 @@ export class DemoComponent implements OnInit {
       });
   }
 
-  dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
+  dayClicked({date, events}: {date: Date, events: CalendarEvent<{film: Film}>[]}): void {
 
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -83,7 +83,7 @@ export class DemoComponent implements OnInit {
     }
   }
 
-  eventClicked(event: CalendarEvent): void {
+  eventClicked(event: CalendarEvent<{film: Film}>): void {
     window.open(`https://www.themoviedb.org/movie/${event.meta.film.id}`, '_blank');
   }
 

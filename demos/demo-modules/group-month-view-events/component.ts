@@ -61,7 +61,7 @@ export class DemoComponent {
 
   groupEvents(cell: CalendarMonthViewDay): void {
     const groups: any = {};
-    cell.events.forEach((event: CalendarEvent) => {
+    cell.events.forEach((event: CalendarEvent<{type: string}>) => {
       groups[event.meta.type] = groups[event.meta.type] || [];
       groups[event.meta.type].push(event);
     });
