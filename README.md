@@ -49,7 +49,7 @@ import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule, // angular 4.0+ only
+    BrowserAnimationsModule,
     CalendarModule.forRoot()
   ]
 })
