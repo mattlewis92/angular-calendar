@@ -13,6 +13,7 @@ import { WeekViewEvent } from 'calendar-utils';
         [ngClass]="weekEvent.event?.cssClass"
         [mwlCalendarTooltip]="weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event"
         [tooltipPlacement]="tooltipPlacement">
+        <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="weekEvent.event"
           view="week"
