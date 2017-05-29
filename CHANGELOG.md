@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.0"></a>
+# [0.17.0](https://github.com/mattlewis92/angular-calendar/compare/v0.16.0...v0.17.0) (2017-05-29)
+
+
+### Bug Fixes
+
+* **dayView:** ensure all day event actions are always visible ([132d990](https://github.com/mattlewis92/angular-calendar/commit/132d990))
+* **dayView:** ensure event actions are always visible ([445b74f](https://github.com/mattlewis92/angular-calendar/commit/445b74f))
+* **weekView:** stop events pushing others along when resizing ([e6e02c5](https://github.com/mattlewis92/angular-calendar/commit/e6e02c5)), closes [#191](https://github.com/mattlewis92/angular-calendar/issues/191)
+
+
+### Features
+
+* **meta:** add `CalendarEvent` `meta` property for storing arbritary data ([43b0124](https://github.com/mattlewis92/angular-calendar/commit/43b0124)), closes [#218](https://github.com/mattlewis92/angular-calendar/issues/218)
+* **meta:** make the event meta property generic so it can be strongly typed ([d74c8e8](https://github.com/mattlewis92/angular-calendar/commit/d74c8e8))
+* **weekView:** show event actions ([7e7af92](https://github.com/mattlewis92/angular-calendar/commit/7e7af92)), closes [#219](https://github.com/mattlewis92/angular-calendar/issues/219)
+
+
+
 <a name="0.16.0"></a>
 # [0.16.0](https://github.com/mattlewis92/angular-calendar/compare/v0.15.4...v0.16.0) (2017-05-27)
 
