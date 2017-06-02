@@ -49,36 +49,36 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
         (dayClicked)="dayClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div class="cal-events" [style.height]="maxHeight+'px'" [style.overflowY]="maxHeight ? 'auto' : ''">
-      <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
-        <div
-          class="cal-event-container"
-          #event
-          [class.cal-draggable]="weekEvent.event.draggable"
-          *ngFor="let weekEvent of eventRow.row"
-          [style.width]="((100 / days.length) * weekEvent.span) + '%'"
-          [style.marginLeft]="((100 / days.length) * weekEvent.offset) + '%'"
-          mwlResizable
-          [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
-          [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
-          [validateResize]="validateResize"
-          (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"
-          (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
-          (resizeEnd)="resizeEnded(weekEvent)"
-          mwlDraggable
-          [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"
-          [validateDrag]="validateDrag"
-          (dragStart)="dragStart(weekViewContainer, event)"
-          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: allowDragOutside}"
-          (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"
-          [dropData]="{event: weekEvent.event}">
-          <mwl-calendar-week-view-event
-            [weekEvent]="weekEvent"
-            [tooltipPlacement]="tooltipPlacement"
-            [customTemplate]="eventTemplate"
-            (eventClicked)="eventClicked.emit({event: weekEvent.event})">
-          </mwl-calendar-week-view-event>
-          </div>
+      <div class="cal-events">
+        <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
+          <div
+            class="cal-event-container"
+            #event
+            [class.cal-draggable]="weekEvent.event.draggable"
+            *ngFor="let weekEvent of eventRow.row"
+            [style.width]="((100 / days.length) * weekEvent.span) + '%'"
+            [style.marginLeft]="((100 / days.length) * weekEvent.offset) + '%'"
+            mwlResizable
+            [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
+            [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
+            [validateResize]="validateResize"
+            (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"
+            (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
+            (resizeEnd)="resizeEnded(weekEvent)"
+            mwlDraggable
+            [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"
+            [validateDrag]="validateDrag"
+            (dragStart)="dragStart(weekViewContainer, event)"
+            [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: allowDragOutside}"
+            (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"
+            [dropData]="{event: weekEvent.event}">
+            <mwl-calendar-week-view-event
+              [weekEvent]="weekEvent"
+              [tooltipPlacement]="tooltipPlacement"
+              [customTemplate]="eventTemplate"
+              (eventClicked)="eventClicked.emit({event: weekEvent.event})">
+            </mwl-calendar-week-view-event>
+            </div>
         </div>
       </div>
     </div>
@@ -141,11 +141,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * Allow events to be dragged outside of the calendar
    */
   @Input() allowDragOutside: boolean = false;
-
-  /**
-   * Maximum height for the events rows
-   */
-  @Input() maxHeight: number;
 
   /**
    * Called when a header week day is clicked
@@ -339,9 +334,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
     // With a scrollbar during the drag, the event is only visible inside the calendar.
     // The "fixed" position bring the event on top, even when dragged outside the calendar.
-    if (this.allowDragOutside && this.maxHeight) {
-      event.style.left = ((event.getBoundingClientRect().left / document.body.clientWidth ) * 100) + '%';
-      event.style.width = event.getBoundingClientRect().width + 'px';
+    if (this.allowDragOutside) {
+      const eventRect: ClientRect = event.getBoundingClientRect();
+      event.style.left = eventRect.left + 'px';
+      event.style.width = eventRect.width + 'px';
       event.style.position = 'fixed';
       event.style.marginLeft = '';
     }
