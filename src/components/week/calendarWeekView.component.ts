@@ -28,7 +28,7 @@ import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provi
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 import { CalendarUtils } from '../../providers/calendarUtils.provider';
 
-interface CurrentResize {
+export interface CurrentResize {
   originalOffset: number;
   originalSpan: number;
   edge: string;
