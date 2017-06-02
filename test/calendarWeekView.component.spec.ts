@@ -337,6 +337,63 @@ describe('calendarWeekView component', () => {
     });
   });
 
+  it('should allow 2 events next to each other to be resized at the same time', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [{
+      title: 'event 1',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-27').add(4, 'hours').toDate(),
+      end: moment('2016-06-27').add(6, 'hours').toDate(),
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    }, {
+      title: 'event 2',
+      color: {primary: '', secondary: ''},
+      start: moment('2016-06-28').add(4, 'hours').toDate(),
+      end: moment('2016-06-29').add(6, 'hours').toDate(),
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    }];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event1: HTMLElement = fixture.nativeElement.querySelectorAll('.cal-event-container')[0];
+    const event2: HTMLElement = fixture.nativeElement.querySelectorAll('.cal-event-container')[1];
+    const dayWidth: number = event1.parentElement.offsetWidth / 7;
+    const event1Rect: ClientRect = event1.getBoundingClientRect();
+    const event2Rect: ClientRect = event2.getBoundingClientRect();
+    const resizeEvents: CalendarEventTimesChangedEvent[] = [];
+    fixture.componentInstance.eventTimesChanged.subscribe(event => {
+      resizeEvents.push(event);
+    });
+    triggerDomEvent('mousedown', document.body, {clientX: event1Rect.right, clientY: event1Rect.top});
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {clientX: event1Rect.right + dayWidth, clientY: event1Rect.top});
+    fixture.detectChanges();
+    expect(Math.round(event1.getBoundingClientRect().left)).to.equal(Math.round(event1Rect.left));
+    expect(Math.round(event1.getBoundingClientRect().width)).to.equal(Math.round(event1Rect.width + dayWidth));
+    expect(Math.round(event2.getBoundingClientRect().left)).to.equal(Math.round(event2Rect.left + dayWidth));
+    expect(Math.round(event2.getBoundingClientRect().width)).to.equal(Math.round(event2Rect.width - dayWidth));
+    triggerDomEvent('mouseup', document.body, {clientX: event1Rect.right + dayWidth, clientY: event1Rect.top});
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvents[0]).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').add(1, 'day').toDate()
+    });
+    expect(resizeEvents[1]).to.deep.equal({
+      event: fixture.componentInstance.events[1],
+      newStart: moment('2016-06-28').add(1, 'day').add(4, 'hours').toDate(),
+      newEnd: moment('2016-06-29').add(6, 'hours').toDate(),
+    });
+  });
+
   it('should allow the event to be dragged and dropped', () => {
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-12-08');

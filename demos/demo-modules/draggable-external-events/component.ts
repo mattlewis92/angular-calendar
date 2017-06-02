@@ -59,5 +59,17 @@ export class DemoComponent {
       this.refresh.next();
     }
   }
+
+  droppedBack(event: CalendarEvent): void {
+
+    const internalIndex: number = this.events.indexOf(event);
+
+    if (internalIndex > -1) {
+      this.events.splice(internalIndex, 1);
+      this.externalEvents.push(event);
+
+      this.refresh.next();
+    }
+  }
 }
 

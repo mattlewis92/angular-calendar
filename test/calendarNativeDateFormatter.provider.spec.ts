@@ -3,6 +3,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 import { expect } from 'chai';
+import startOfDay from 'date-fns/start_of_day';
 import {
   CalendarNativeDateFormatter
 } from './../src';
@@ -45,7 +46,7 @@ describe('calendarNativeDateFormatter provider', () => {
   });
 
   it('dayViewHour', () => {
-    expect(dateFormatter.dayViewHour({date: new Date('2016-01-01'), locale: 'en'})).to.equal('12 AM');
+    expect(dateFormatter.dayViewHour({date: startOfDay(new Date('2016-01-01')), locale: 'en'})).to.equal('12 AM');
   });
 
   it('dayViewTitle', () => {
