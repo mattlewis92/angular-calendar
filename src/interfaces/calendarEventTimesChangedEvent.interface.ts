@@ -7,4 +7,5 @@ export interface CalendarEventTimesChangedEvent {
   event: CalendarEvent;
   newStart: Date;
   newEnd?: Date;
+  droppedOutsideCalendar?: boolean;
 }
