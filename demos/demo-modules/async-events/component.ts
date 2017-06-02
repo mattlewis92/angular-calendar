@@ -12,10 +12,6 @@ interface Film {
   release_date: string;
 }
 
-interface FilmEvent extends CalendarEvent {
-  film: Film;
-}
-
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +23,7 @@ export class DemoComponent implements OnInit {
 
   viewDate: Date = new Date();
 
-  events$: Observable<FilmEvent[]>;
+  events$: Observable<CalendarEvent<{film: Film}>[]>;
 
   activeDayIsOpen: boolean = false;
 
@@ -64,13 +60,15 @@ export class DemoComponent implements OnInit {
             title: film.title,
             start: new Date(film.release_date),
             color: colors.yellow,
-            film
+            meta: {
+              film
+            }
           };
         });
       });
   }
 
-  dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
+  dayClicked({date, events}: {date: Date, events: CalendarEvent<{film: Film}>[]}): void {
 
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -85,8 +83,8 @@ export class DemoComponent implements OnInit {
     }
   }
 
-  eventClicked(event: FilmEvent): void {
-    window.open(`https://www.themoviedb.org/movie/${event.film.id}`, '_blank');
+  eventClicked(event: CalendarEvent<{film: Film}>): void {
+    window.open(`https://www.themoviedb.org/movie/${event.meta.film.id}`, '_blank');
   }
 
 }
