@@ -49,7 +49,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
         (dayClicked)="dayClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div class="cal-events" [style.height]="maxHeight+'px'" [style.overflowY]="'auto'">
+      <div class="cal-events" [style.height]="maxHeight+'px'" [style.overflowY]="maxHeight ? 'auto' : ''">
       <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
         <div
           class="cal-event-container"
@@ -336,6 +336,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
+
+    // With a scrollbar during the drag, the event is only visible inside the calendar.
+    // The "fixed" position bring the event on top, even when dragged outside the calendar.
+    if (this.allowDragOutside && this.maxHeight) {
+      event.style.left = ((event.getBoundingClientRect().left / document.body.clientWidth ) * 100) + '%';
+      event.style.width = event.getBoundingClientRect().width + 'px';
+      event.style.position = 'fixed';
+      event.style.marginLeft = '';
+    }
+
     if (!this.allowDragOutside) {
       const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
       this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
