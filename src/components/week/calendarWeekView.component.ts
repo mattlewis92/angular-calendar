@@ -49,34 +49,36 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
         (dayClicked)="dayClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
-        <div
-          class="cal-event-container"
-          #event
-          [class.cal-draggable]="weekEvent.event.draggable"
-          *ngFor="let weekEvent of eventRow.row"
-          [style.width]="((100 / days.length) * weekEvent.span) + '%'"
-          [style.marginLeft]="((100 / days.length) * weekEvent.offset) + '%'"
-          mwlResizable
-          [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
-          [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
-          [validateResize]="validateResize"
-          (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"
-          (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
-          (resizeEnd)="resizeEnded(weekEvent)"
-          mwlDraggable
-          [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"
-          [validateDrag]="validateDrag"
-          (dragStart)="dragStart(weekViewContainer, event)"
-          [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: allowDragOutside}"
-          (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"
-          [dropData]="{event: weekEvent.event}">
-          <mwl-calendar-week-view-event
-            [weekEvent]="weekEvent"
-            [tooltipPlacement]="tooltipPlacement"
-            [customTemplate]="eventTemplate"
-            (eventClicked)="eventClicked.emit({event: weekEvent.event})">
-          </mwl-calendar-week-view-event>
+      <div class="cal-events" [style.height]="maxHeight+'px'" [style.overflowY]="'auto'">
+        <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
+          <div
+            class="cal-event-container"
+            #event
+            [class.cal-draggable]="weekEvent.event.draggable"
+            *ngFor="let weekEvent of eventRow.row"
+            [style.width]="((100 / days.length) * weekEvent.span) + '%'"
+            [style.marginLeft]="((100 / days.length) * weekEvent.offset) + '%'"
+            mwlResizable
+            [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
+            [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
+            [validateResize]="validateResize"
+            (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"
+            (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
+            (resizeEnd)="resizeEnded(weekEvent)"
+            mwlDraggable
+            [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"
+            [validateDrag]="validateDrag"
+            (dragStart)="dragStart(weekViewContainer, event)"
+            [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: allowDragOutside}"
+            (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"
+            [dropData]="{event: weekEvent.event}">
+            <mwl-calendar-week-view-event
+              [weekEvent]="weekEvent"
+              [tooltipPlacement]="tooltipPlacement"
+              [customTemplate]="eventTemplate"
+              (eventClicked)="eventClicked.emit({event: weekEvent.event})">
+            </mwl-calendar-week-view-event>
+          </div>
         </div>
       </div>
     </div>
@@ -139,6 +141,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * Allow events to be dragged outside of the calendar
    */
   @Input() allowDragOutside: boolean = false;
+
+  /**
+   * Maximum height for the events rows
+   */
+  @Input() maxHeight: number;
 
   /**
    * Called when a header week day is clicked
