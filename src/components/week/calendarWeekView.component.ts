@@ -337,6 +337,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.allowDragOutside) {
       const eventRect: ClientRect = event.getBoundingClientRect();
       event.style.left = eventRect.left + 'px';
+      event.style.top= eventRect.top + 'px';
       event.style.width = eventRect.width + 'px';
       event.style.position = 'fixed';
       event.style.marginLeft = '';
