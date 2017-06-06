@@ -332,12 +332,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
 
+    event.parentNode.insertBefore(event.cloneNode(), event.nextSibling);
+
     // With a scrollbar during the drag, the event is only visible inside the calendar.
     // The "fixed" position bring the event on top, even when dragged outside the calendar.
     if (this.allowDragOutside) {
       const eventRect: ClientRect = event.getBoundingClientRect();
       event.style.left = eventRect.left + 'px';
-      event.style.top= eventRect.top + 'px';
+      event.style.top = eventRect.top + 'px';
       event.style.width = eventRect.width + 'px';
       event.style.position = 'fixed';
       event.style.marginLeft = '';
@@ -365,7 +367,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
       precision: this.precision,
-      absolutePositionedEvents: true
+      absolutePositionedEvents: false
     });
   }
 
