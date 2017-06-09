@@ -93,6 +93,10 @@ export default config => {
       fixWebpackSourcePaths: true
     },
 
+    mime: {
+      'text/x-typescript': ['ts']
+    },
+
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
@@ -104,16 +108,6 @@ export default config => {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-    phantomjsLauncher: {
-      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-      exitOnResourceError: true
-    },
-
-    browserConsoleLogOptions: {
-      terminal: true,
-      level: 'log'
-    }
+    browsers: ['ChromeHeadless']
   });
 };
