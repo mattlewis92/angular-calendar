@@ -38,6 +38,15 @@ const SEGMENT_HEIGHT: number = 30;
 const MINUTES_IN_HOUR: number = 60;
 
 /**
+ * @hidden
+ */
+export interface DayViewEventResize {
+  originalTop: number;
+  originalHeight: number;
+  edge: string;
+}
+
+/**
  * Shows all events on a given day. Example usage:
  *
  * ```typescript
@@ -72,7 +81,7 @@ const MINUTES_IN_HOUR: number = 60;
             (resizing)="resizing(dayEvent, $event)"
             (resizeEnd)="resizeEnded(dayEvent)"
             mwlDraggable
-            [dragAxis]="{x: false, y: dayEvent.event.draggable && !currentResize}"
+            [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="{y: eventSnapSize}"
             [validateDrag]="validateDrag"
             (dragStart)="dragStart(event, dayViewContainer)"
@@ -228,11 +237,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  currentResize: {
-    originalTop: number,
-    originalHeight: number,
-    edge: string
-  };
+  currentResizes: Map<DayViewEvent, DayViewEventResize> = new Map();
 
   /**
    * @hidden
@@ -308,55 +313,58 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent, dayViewContainer: HTMLElement): void {
-    this.currentResize = {
+    this.currentResizes.set(event, {
       originalTop: event.top,
       originalHeight: event.height,
       edge: typeof resizeEvent.edges.top !== 'undefined' ? 'top' : 'bottom'
-    };
+    });
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(dayViewContainer);
     this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
     this.cdr.markForCheck();
   }
 
   resizing(event: DayViewEvent, resizeEvent: ResizeEvent): void {
+    const currentResize: DayViewEventResize = this.currentResizes.get(event);
     if (resizeEvent.edges.top) {
-      event.top = this.currentResize.originalTop + +resizeEvent.edges.top;
-      event.height = this.currentResize.originalHeight - +resizeEvent.edges.top;
+      event.top = currentResize.originalTop + +resizeEvent.edges.top;
+      event.height = currentResize.originalHeight - +resizeEvent.edges.top;
     } else if (resizeEvent.edges.bottom) {
-      event.height = this.currentResize.originalHeight + +resizeEvent.edges.bottom;
+      event.height = currentResize.originalHeight + +resizeEvent.edges.bottom;
     }
   }
 
   resizeEnded(dayEvent: DayViewEvent): void {
 
+    const currentResize: DayViewEventResize = this.currentResizes.get(dayEvent);
+
     let pixelsMoved: number;
-    if (this.currentResize.edge === 'top') {
-      pixelsMoved = (dayEvent.top - this.currentResize.originalTop);
+    if (currentResize.edge === 'top') {
+      pixelsMoved = (dayEvent.top - currentResize.originalTop);
     } else {
-      pixelsMoved = (dayEvent.height - this.currentResize.originalHeight);
+      pixelsMoved = (dayEvent.height - currentResize.originalHeight);
     }
 
-    dayEvent.top = this.currentResize.originalTop;
-    dayEvent.height = this.currentResize.originalHeight;
+    dayEvent.top = currentResize.originalTop;
+    dayEvent.height = currentResize.originalHeight;
 
     const pixelAmountInMinutes: number = MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
     const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
-    if (this.currentResize.edge === 'top') {
+    if (currentResize.edge === 'top') {
       newStart = addMinutes(newStart, minutesMoved);
     } else if (newEnd) {
       newEnd = addMinutes(newEnd, minutesMoved);
     }
 
     this.eventTimesChanged.emit({newStart, newEnd, event: dayEvent.event});
-    this.currentResize = null;
+    this.currentResizes.delete(dayEvent);
 
   }
 
   dragStart(event: HTMLElement, dayViewContainer: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(dayViewContainer, event);
-    this.validateDrag = ({x, y}) => !this.currentResize && dragHelper.validateDrag({x, y});
+    this.validateDrag = ({x, y}) => this.currentResizes.size === 0 && dragHelper.validateDrag({x, y});
     this.cdr.markForCheck();
   }
 

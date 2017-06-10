@@ -28,7 +28,7 @@ import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provi
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 import { CalendarUtils } from '../../providers/calendarUtils.provider';
 
-export interface CurrentResize {
+export interface WeekViewEventResize {
   originalOffset: number;
   originalSpan: number;
   edge: string;
@@ -179,7 +179,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  currentResizes: Map<WeekViewEvent, CurrentResize> = new Map();
+  currentResizes: Map<WeekViewEvent, WeekViewEventResize> = new Map();
 
   /**
    * @hidden
@@ -253,7 +253,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   resizing(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent, dayWidth: number): void {
 
-    const currentResize: CurrentResize = this.currentResizes.get(weekEvent);
+    const currentResize: WeekViewEventResize = this.currentResizes.get(weekEvent);
 
     if (resizeEvent.edges.left) {
       const diff: number = Math.round(+resizeEvent.edges.left / dayWidth);
@@ -271,7 +271,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   resizeEnded(weekEvent: WeekViewEvent): void {
 
-    const currentResize: CurrentResize = this.currentResizes.get(weekEvent);
+    const currentResize: WeekViewEventResize = this.currentResizes.get(weekEvent);
 
     let daysDiff: number;
     if (currentResize.edge === 'left') {
