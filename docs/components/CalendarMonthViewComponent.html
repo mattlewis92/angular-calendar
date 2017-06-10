@@ -617,7 +617,7 @@
                             <code>openDayEventsTemplate</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>A custom template to use to replace the day cell</p><br/></div>
+                            <div><p>A custom template to use for the slide down box of events for the active day</p><br/></div>
                               <p>
                                 <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
 
@@ -931,7 +931,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Input() cellTemplate: TemplateRef&lt;any&gt;;
 
   /**
-   * A custom template to use to replace the day cell
+   * A custom template to use for the slide down box of events for the active day
    */
   @Input() openDayEventsTemplate: TemplateRef&lt;any&gt;;
 

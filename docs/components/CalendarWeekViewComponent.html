@@ -439,7 +439,7 @@
       [dragSnapGrid]&#x3D;&quot;{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}&quot;
       [validateDrag]&#x3D;&quot;validateDrag&quot;
       (dragStart)&#x3D;&quot;dragStart(weekViewContainer, event)&quot;
-      [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; !currentResize, y: allowDragOutside}&quot;
+      [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0, y: allowDragOutside}&quot;
       (dragEnd)&#x3D;&quot;eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))&quot;
       [dropData]&#x3D;&quot;{event: weekEvent.event}&quot;&gt;
       &lt;mwl-calendar-week-view-event
@@ -481,7 +481,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/components/week/calendarWeekView.component.ts:141</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/components/week/calendarWeekView.component.ts:147</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -502,7 +502,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/components/week/calendarWeekView.component.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/components/week/calendarWeekView.component.ts:101</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -523,7 +523,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/components/week/calendarWeekView.component.ts:130</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/components/week/calendarWeekView.component.ts:136</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -544,7 +544,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/components/week/calendarWeekView.component.ts:100</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/components/week/calendarWeekView.component.ts:106</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -565,7 +565,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/components/week/calendarWeekView.component.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/components/week/calendarWeekView.component.ts:131</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -586,7 +586,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/components/week/calendarWeekView.component.ts:110</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/components/week/calendarWeekView.component.ts:116</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -610,7 +610,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/components/week/calendarWeekView.component.ts:136</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/components/week/calendarWeekView.component.ts:142</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -631,7 +631,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/components/week/calendarWeekView.component.ts:105</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/components/week/calendarWeekView.component.ts:111</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -655,7 +655,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/components/week/calendarWeekView.component.ts:115</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/components/week/calendarWeekView.component.ts:121</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -676,7 +676,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/components/week/calendarWeekView.component.ts:90</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/components/week/calendarWeekView.component.ts:96</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -697,7 +697,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/components/week/calendarWeekView.component.ts:120</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/components/week/calendarWeekView.component.ts:126</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -720,7 +720,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/components/week/calendarWeekView.component.ts:146</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/components/week/calendarWeekView.component.ts:152</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -739,7 +739,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/components/week/calendarWeekView.component.ts:151</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/components/week/calendarWeekView.component.ts:157</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -758,7 +758,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/components/week/calendarWeekView.component.ts:156</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/components/week/calendarWeekView.component.ts:162</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -801,6 +801,12 @@ import { CalendarResizeHelper } from &#x27;../../providers/calendarResizeHelper.
 import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEventTimesChangedEvent.interface&#x27;;
 import { CalendarUtils } from &#x27;../../providers/calendarUtils.provider&#x27;;
 
+export interface WeekViewEventResize {
+  originalOffset: number;
+  originalSpan: number;
+  edge: string;
+}
+
 /**
  * Shows all events on a given week. Example usage:
  *
@@ -841,7 +847,7 @@ import { CalendarUtils } from &#x27;../../providers/calendarUtils.provider&#x27;
           [dragSnapGrid]&#x3D;&quot;{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}&quot;
           [validateDrag]&#x3D;&quot;validateDrag&quot;
           (dragStart)&#x3D;&quot;dragStart(weekViewContainer, event)&quot;
-          [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; !currentResize, y: allowDragOutside}&quot;
+          [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0, y: allowDragOutside}&quot;
           (dragEnd)&#x3D;&quot;eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))&quot;
           [dropData]&#x3D;&quot;{event: weekEvent.event}&quot;&gt;
           &lt;mwl-calendar-week-view-event
@@ -946,11 +952,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  currentResize: {
-    originalOffset: number,
-    originalSpan: number,
-    edge: string
-  };
+  currentResizes: Map&lt;WeekViewEvent, WeekViewEventResize&gt; &#x3D; new Map();
 
   /**
    * @hidden
@@ -1009,11 +1011,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   resizeStarted(weekViewContainer: HTMLElement, weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
-    this.currentResize &#x3D; {
+    this.currentResizes.set(weekEvent, {
       originalOffset: weekEvent.offset,
       originalSpan: weekEvent.span,
       edge: typeof resizeEvent.edges.left !&#x3D;&#x3D; &#x27;undefined&#x27; ? &#x27;left&#x27; : &#x27;right&#x27;
-    };
+    });
     const resizeHelper: CalendarResizeHelper &#x3D; new CalendarResizeHelper(weekViewContainer, this.getDayColumnWidth(weekViewContainer));
     this.validateResize &#x3D; ({rectangle}) &#x3D;&gt; resizeHelper.validateResize({rectangle});
     this.cdr.markForCheck();
@@ -1023,14 +1025,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   resizing(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent, dayWidth: number): void {
+
+    const currentResize: WeekViewEventResize &#x3D; this.currentResizes.get(weekEvent);
+
     if (resizeEvent.edges.left) {
       const diff: number &#x3D; Math.round(+resizeEvent.edges.left / dayWidth);
-      weekEvent.offset &#x3D; this.currentResize.originalOffset + diff;
-      weekEvent.span &#x3D; this.currentResize.originalSpan - diff;
+      weekEvent.offset &#x3D; currentResize.originalOffset + diff;
+      weekEvent.span &#x3D; currentResize.originalSpan - diff;
     } else if (resizeEvent.edges.right) {
       const diff: number &#x3D; Math.round(+resizeEvent.edges.right / dayWidth);
-      weekEvent.span &#x3D; this.currentResize.originalSpan + diff;
+      weekEvent.span &#x3D; currentResize.originalSpan + diff;
     }
+
   }
 
   /**
@@ -1038,26 +1044,28 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   resizeEnded(weekEvent: WeekViewEvent): void {
 
+    const currentResize: WeekViewEventResize &#x3D; this.currentResizes.get(weekEvent);
+
     let daysDiff: number;
-    if (this.currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;) {
-      daysDiff &#x3D; weekEvent.offset - this.currentResize.originalOffset;
+    if (currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;) {
+      daysDiff &#x3D; weekEvent.offset - currentResize.originalOffset;
     } else {
-      daysDiff &#x3D; weekEvent.span - this.currentResize.originalSpan;
+      daysDiff &#x3D; weekEvent.span - currentResize.originalSpan;
     }
 
-    weekEvent.offset &#x3D; this.currentResize.originalOffset;
-    weekEvent.span &#x3D; this.currentResize.originalSpan;
+    weekEvent.offset &#x3D; currentResize.originalOffset;
+    weekEvent.span &#x3D; currentResize.originalSpan;
 
     let newStart: Date &#x3D; weekEvent.event.start;
     let newEnd: Date &#x3D; weekEvent.event.end;
-    if (this.currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;) {
+    if (currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;) {
       newStart &#x3D; addDays(newStart, daysDiff);
     } else if (newEnd) {
       newEnd &#x3D; addDays(newEnd, daysDiff);
     }
 
     this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
-    this.currentResize &#x3D; null;
+    this.currentResizes.delete(weekEvent);
 
   }
 
@@ -1104,7 +1112,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
     if (!this.allowDragOutside) {
       const dragHelper: CalendarDragHelper &#x3D; new CalendarDragHelper(weekViewContainer, event);
-      this.validateDrag &#x3D; ({x, y}) &#x3D;&gt; !this.currentResize &amp;&amp; dragHelper.validateDrag({x, y});
+      this.validateDrag &#x3D; ({x, y}) &#x3D;&gt; this.currentResizes.size &#x3D;&#x3D;&#x3D; 0 &amp;&amp; dragHelper.validateDrag({x, y});
       this.cdr.markForCheck();
     }
   }
@@ -1161,7 +1169,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view" #weekViewContainer>  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayClicked)="dayClicked.emit($event)"    (eventDropped)="eventTimesChanged.emit($event)">  </mwl-calendar-week-view-header>  <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">    <div      class="cal-event-container"      #event      [class.cal-draggable]="weekEvent.event.draggable"      *ngFor="let weekEvent of eventRow.row"      [style.width]="((100 / days.length) * weekEvent.span) + \'%\'"      [style.marginLeft]="((100 / days.length) * weekEvent.offset) + \'%\'"      mwlResizable      [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"      [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"      [validateResize]="validateResize"      (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"      (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"      (resizeEnd)="resizeEnded(weekEvent)"      mwlDraggable      [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"      [validateDrag]="validateDrag"      (dragStart)="dragStart(weekViewContainer, event)"      [dragAxis]="{x: weekEvent.event.draggable && !currentResize, y: allowDragOutside}"      (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"      [dropData]="{event: weekEvent.event}">      <mwl-calendar-week-view-event        [weekEvent]="weekEvent"        [tooltipPlacement]="tooltipPlacement"        [customTemplate]="eventTemplate"        (eventClicked)="eventClicked.emit({event: weekEvent.event})">      </mwl-calendar-week-view-event>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view" #weekViewContainer>  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayClicked)="dayClicked.emit($event)"    (eventDropped)="eventTimesChanged.emit($event)">  </mwl-calendar-week-view-header>  <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">    <div      class="cal-event-container"      #event      [class.cal-draggable]="weekEvent.event.draggable"      *ngFor="let weekEvent of eventRow.row"      [style.width]="((100 / days.length) * weekEvent.span) + \'%\'"      [style.marginLeft]="((100 / days.length) * weekEvent.offset) + \'%\'"      mwlResizable      [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"      [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"      [validateResize]="validateResize"      (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"      (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"      (resizeEnd)="resizeEnded(weekEvent)"      mwlDraggable      [dragSnapGrid]="{x: allowDragOutside ? 0 : getDayColumnWidth(eventRowContainer)}"      [validateDrag]="validateDrag"      (dragStart)="dragStart(weekViewContainer, event)"      [dragAxis]="{x: weekEvent.event.draggable && currentResizes.size === 0, y: allowDragOutside}"      (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))"      [dropData]="{event: weekEvent.event}">      <mwl-calendar-week-view-event        [weekEvent]="weekEvent"        [tooltipPlacement]="tooltipPlacement"        [customTemplate]="eventTemplate"        (eventClicked)="eventClicked.emit({event: weekEvent.event})">      </mwl-calendar-week-view-event>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarWeekViewComponent'};
