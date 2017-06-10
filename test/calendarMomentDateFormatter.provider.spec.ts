@@ -4,6 +4,7 @@ import {
 } from '@angular/core/testing';
 import { expect } from 'chai';
 import * as moment from 'moment';
+import startOfDay from 'date-fns/start_of_day';
 import {
   CalendarMomentDateFormatter,
   MOMENT
@@ -50,7 +51,7 @@ describe('calendarMomentDateFormatter provider', () => {
   });
 
   it('dayViewHour', () => {
-    expect(dateFormatter.dayViewHour({date: new Date('2016-01-01'), locale: 'en'})).to.equal('12am');
+    expect(dateFormatter.dayViewHour({date: startOfDay(new Date('2016-01-01')), locale: 'en'})).to.equal('12am');
   });
 
   it('dayViewTitle', () => {

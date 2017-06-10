@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.1"></a>
+## [0.17.1](https://github.com/mattlewis92/angular-calendar/compare/v0.17.0...v0.17.1) (2017-06-10)
+
+
+### Bug Fixes
+
+* **dayView:** allow events to be resized that are next to each other ([f627b8e](https://github.com/mattlewis92/angular-calendar/commit/f627b8e)), closes [#225](https://github.com/mattlewis92/angular-calendar/issues/225)
+* **weekView:** allow events to be resized that are next to each other ([01b776c](https://github.com/mattlewis92/angular-calendar/commit/01b776c))
+
+
+
 <a name="0.17.0"></a>
 # [0.17.0](https://github.com/mattlewis92/angular-calendar/compare/v0.16.0...v0.17.0) (2017-05-29)
 
@@ -19,7 +30,9 @@ All notable changes to this project will be documented in this file. See [standa
 * **meta:** make the event meta property generic so it can be strongly typed ([d74c8e8](https://github.com/mattlewis92/angular-calendar/commit/d74c8e8))
 * **weekView:** show event actions ([7e7af92](https://github.com/mattlewis92/angular-calendar/commit/7e7af92)), closes [#219](https://github.com/mattlewis92/angular-calendar/issues/219)
 
+### BREAKING CHANGES
 
+* Typescript 2.3 or higher is now required to use this library
 
 <a name="0.16.0"></a>
 # [0.16.0](https://github.com/mattlewis92/angular-calendar/compare/v0.15.4...v0.16.0) (2017-05-27)

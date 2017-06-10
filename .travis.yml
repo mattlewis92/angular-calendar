@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '6'
+  - '8'
 
 script: npm test
 
@@ -12,3 +12,8 @@ cache: yarn
 
 after_success:
 - npm run codecov
+
+addons:
+  chrome: stable
+
+dist: trusty
