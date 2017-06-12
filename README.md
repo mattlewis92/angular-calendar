@@ -17,6 +17,7 @@ https://mattlewis92.github.io/angular-calendar/
 - [About](#about)
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
+- [Breaking changes](#breaking-changes)
 - [FAQ](#faq)
 - [Angular 1 version](#angular-1-version)
 - [Development](#development)
@@ -78,6 +79,10 @@ See [this comment](https://github.com/mattlewis92/angular-calendar/issues/158#is
 ## Documentation
 
 To see all available API options, take a look at the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). You may find it helpful to view the examples on the demo page.
+
+## Breaking changes
+
+Where possible this library will strictly adhere to [semver](http://semver.org/) and only introduce API breaking changes in 0.x releases or new major versions post 1.0. The only exception to this is if you are using custom templates or extending the base components to add additional functionality, whereby critical bug fixes may introduce breakages as the internal API changes.
 
 ## FAQ
 

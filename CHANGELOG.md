@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.2"></a>
+## [0.17.2](https://github.com/mattlewis92/angular-calendar/compare/v0.17.1...v0.17.2) (2017-06-12)
+
+
+### Bug Fixes
+
+* **weekView:** use correct event span when the the week doesn't start on a sunday ([f19e970](https://github.com/mattlewis92/angular-calendar/commit/f19e970))
+
+
+
 <a name="0.17.1"></a>
 ## [0.17.1](https://github.com/mattlewis92/angular-calendar/compare/v0.17.0...v0.17.1) (2017-06-10)
 
