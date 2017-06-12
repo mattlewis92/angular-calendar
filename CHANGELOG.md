@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.3"></a>
+## [0.17.3](https://github.com/mattlewis92/angular-calendar/compare/v0.17.2...v0.17.3) (2017-06-12)
+
+
+### Bug Fixes
+
+* add explicit peer dependency on typescript 2.3.x ([3998c9c](https://github.com/mattlewis92/angular-calendar/commit/3998c9c)), closes [#221](https://github.com/mattlewis92/angular-calendar/issues/221)
+
+
+
 <a name="0.17.2"></a>
 ## [0.17.2](https://github.com/mattlewis92/angular-calendar/compare/v0.17.1...v0.17.2) (2017-06-12)
 
