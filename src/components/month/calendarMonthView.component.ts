@@ -63,6 +63,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [tooltipPlacement]="tooltipPlacement"
               [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
+              (press)="dayPressed.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -150,6 +151,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * Called when the day cell is clicked
    */
   @Output() dayClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
+  /**
+   *
+   * Called when the day cell is clicked
+   */
+  @Output() dayPressed: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
 
   /**
    * Called when the event title is clicked
