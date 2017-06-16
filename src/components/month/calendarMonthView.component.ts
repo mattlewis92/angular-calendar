@@ -153,7 +153,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Output() dayClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
   /**
    *
-   * Called when the day cell is clicked
+   * Called when the day cell is pressed
    */
   @Output() dayPressed: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
 
