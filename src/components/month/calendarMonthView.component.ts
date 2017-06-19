@@ -54,7 +54,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
         <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek); let i = index"
               [class.cal-drag-over]="day.dragOver"
               [ngClass]="day?.cssClass"
               [day]="day"
@@ -70,7 +70,8 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               (dragEnter)="day.dragOver = true"
               (dragLeave)="day.dragOver = false"
               (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"
-              (eventClicked)="eventClicked.emit({event: $event.event})">
+              (eventClicked)="eventClicked.emit({event: $event.event})"
+              id="ngCal_Main_Item_CalendarDay_{{i}}">
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
