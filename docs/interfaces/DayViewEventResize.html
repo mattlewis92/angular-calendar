@@ -593,10 +593,10 @@ export interface DayViewEventResize {
  * Shows all events on a given day. Example usage:
  *
  * &#x60;&#x60;&#x60;typescript
- * &amp;lt;mwl-calendar-day-view
+ * &lt;mwl-calendar-day-view
  *  [viewDate]&#x3D;&quot;viewDate&quot;
- *  [events]&#x3D;&quot;events&quot;&amp;gt;
- * &amp;lt;/mwl-calendar-day-view&amp;gt;
+ *  [events]&#x3D;&quot;events&quot;&gt;
+ * &lt;/mwl-calendar-day-view&gt;
  * &#x60;&#x60;&#x60;
  */
 @Component({
@@ -668,6 +668,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   /**
    * An array of events to display on view
+   * The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63
    */
   @Input() events: CalendarEvent[] &#x3D; [];
 
