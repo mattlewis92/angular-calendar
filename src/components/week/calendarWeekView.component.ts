@@ -38,10 +38,10 @@ export interface WeekViewEventResize {
  * Shows all events on a given week. Example usage:
  *
  * ```typescript
- * &lt;mwl-calendar-week-view
+ * <mwl-calendar-week-view
  *  [viewDate]="viewDate"
- *  [events]="events"&gt;
- * &lt;/mwl-calendar-week-view&gt;
+ *  [events]="events">
+ * </mwl-calendar-week-view>
  * ```
  */
 @Component({

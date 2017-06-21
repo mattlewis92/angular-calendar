@@ -7,12 +7,12 @@ import subMonths from 'date-fns/sub_months';
  * Change the view date to the previous view. For example:
  *
  * ```typescript
- * &lt;button
+ * <button
  *  mwlCalendarPreviousView
  *  [(viewDate)]="viewDate"
- *  [view]="view"&gt;
+ *  [view]="view">
  *  Previous
- * &lt;/button&gt;
+ * </button>
  * ```
  */
 @Directive({

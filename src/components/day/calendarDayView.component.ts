@@ -50,10 +50,10 @@ export interface DayViewEventResize {
  * Shows all events on a given day. Example usage:
  *
  * ```typescript
- * &lt;mwl-calendar-day-view
+ * <mwl-calendar-day-view
  *  [viewDate]="viewDate"
- *  [events]="events"&gt;
- * &lt;/mwl-calendar-day-view&gt;
+ *  [events]="events">
+ * </mwl-calendar-day-view>
  * ```
  */
 @Component({

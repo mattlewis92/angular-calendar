@@ -35,10 +35,10 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
  * Shows all events on a given month. Example usage:
  *
  * ```typescript
- * &lt;mwl-calendar-month-view
+ * <mwl-calendar-month-view
  *  [viewDate]="viewDate"
- *  [events]="events"&gt;
- * &lt;/mwl-calendar-month-view&gt;
+ *  [events]="events">
+ * </mwl-calendar-month-view>
  * ```
  */
 @Component({
