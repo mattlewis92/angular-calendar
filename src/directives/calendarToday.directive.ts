@@ -5,11 +5,11 @@ import startOfToday from 'date-fns/start_of_today';
  * Change the view date to the current day. For example:
  *
  * ```typescript
- * &lt;button
+ * <button
  *  mwlCalendarToday
- *  [(viewDate)]="viewDate"&gt;
+ *  [(viewDate)]="viewDate">
  *  Today
- * &lt;/button&gt;
+ * </button>
  * ```
  */
 @Directive({

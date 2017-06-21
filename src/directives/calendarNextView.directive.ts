@@ -7,12 +7,12 @@ import addMonths from 'date-fns/add_months';
  * Change the view date to the next view. For example:
  *
  * ```typescript
- * &lt;button
+ * <button
  *  mwlCalendarNextView
  *  [(viewDate)]="viewDate"
- *  [view]="view"&gt;
+ *  [view]="view">
  *  Next
- * &lt;/button&gt;
+ * </button>
  * ```
  */
 @Directive({

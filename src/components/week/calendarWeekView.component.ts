@@ -38,10 +38,10 @@ export interface WeekViewEventResize {
  * Shows all events on a given week. Example usage:
  *
  * ```typescript
- * &lt;mwl-calendar-week-view
+ * <mwl-calendar-week-view
  *  [viewDate]="viewDate"
- *  [events]="events"&gt;
- * &lt;/mwl-calendar-week-view&gt;
+ *  [events]="events">
+ * </mwl-calendar-week-view>
  * ```
  */
 @Component({
@@ -97,6 +97,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   /**
    * An array of events to display on view
+   * The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63
    */
   @Input() events: CalendarEvent[] = [];
 
