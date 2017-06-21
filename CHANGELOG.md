@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.4"></a>
+## [0.17.4](https://github.com/mattlewis92/angular-calendar/compare/v0.17.3...v0.17.4) (2017-06-21)
+
+
+### Bug Fixes
+
+* various fixes when excluding days on the week and month views ([58ce981](https://github.com/mattlewis92/angular-calendar/commit/58ce981))
+
+
+
 <a name="0.17.3"></a>
 ## [0.17.3](https://github.com/mattlewis92/angular-calendar/compare/v0.17.2...v0.17.3) (2017-06-12)
 
