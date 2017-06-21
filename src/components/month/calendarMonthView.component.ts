@@ -54,7 +54,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
         <div *ngFor="let rowIndex of view.rowOffsets">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"
+              *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek); let i = index"
               [class.cal-drag-over]="day.dragOver"
               [ngClass]="day?.cssClass"
               [day]="day"
@@ -63,13 +63,15 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [tooltipPlacement]="tooltipPlacement"
               [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
+              (press)="dayPressed.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
               (dragEnter)="day.dragOver = true"
               (dragLeave)="day.dragOver = false"
               (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"
-              (eventClicked)="eventClicked.emit({event: $event.event})">
+              (eventClicked)="eventClicked.emit({event: $event.event})"
+              id="ngCal_Main_Item_CalendarDay_{{i}}">
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
@@ -150,6 +152,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * Called when the day cell is clicked
    */
   @Output() dayClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
+  /**
+   *
+   * Called when the day cell is pressed
+   */
+  @Output() dayPressed: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
 
   /**
    * Called when the event title is clicked
