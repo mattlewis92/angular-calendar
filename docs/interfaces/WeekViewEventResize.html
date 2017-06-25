@@ -593,7 +593,7 @@ export interface WeekViewEventResize {
         [days]&#x3D;&quot;days&quot;
         [locale]&#x3D;&quot;locale&quot;
         [customTemplate]&#x3D;&quot;headerTemplate&quot;
-        (dayClicked)&#x3D;&quot;dayClicked.emit($event)&quot;
+        (dayHeaderClicked)&#x3D;&quot;dayHeaderClicked.emit($event)&quot;
         (eventDropped)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;
       &lt;/mwl-calendar-week-view-header&gt;
       &lt;div *ngFor&#x3D;&quot;let eventRow of eventRows&quot; #eventRowContainer class&#x3D;&quot;cal-events-row&quot;&gt;
@@ -694,9 +694,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() weekendDays: number[];
 
   /**
-   * Called when a header week day is clicked
+   * Called when a header week day is clicked. Adding a &#x60;cssClass&#x60; property on &#x60;$event.day&#x60; will add that class to the header element
    */
-  @Output() dayClicked: EventEmitter&lt;{date: Date}&gt; &#x3D; new EventEmitter&lt;{date: Date}&gt;();
+  @Output() dayHeaderClicked: EventEmitter&lt;{day: WeekDay}&gt; &#x3D; new EventEmitter&lt;{day: WeekDay}&gt;();
 
   /**
    * Called when the event title is clicked
