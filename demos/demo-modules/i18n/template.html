@@ -10,14 +10,16 @@
     [viewDate]="viewDate"
     [events]="events"
     [locale]="locale"
-    [weekStartsOn]="weekStartsOn">
+    [weekStartsOn]="weekStartsOn"
+    [weekendDays]="weekendDays">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
     [locale]="locale"
-    [weekStartsOn]="weekStartsOn">
+    [weekStartsOn]="weekStartsOn"
+    [weekendDays]="weekendDays">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
