@@ -40,7 +40,7 @@
   </div>
 </ng-template>
 
-<ng-template #weekHeaderTemplate let-days="days" let-locale="locale" let-dayClicked="dayClicked">
+<ng-template #weekHeaderTemplate let-days="days" let-locale="locale" let-dayHeaderClicked="dayHeaderClicked">
   <div class="cal-day-headers">
     <div
       class="cal-header"
@@ -50,7 +50,7 @@
       [class.cal-future]="day.isFuture"
       [class.cal-weekend]="day.isWeekend"
       [class.cal-drag-over]="day.dragOver"
-      (click)="dayClicked.emit({date: day.date})"
+      (click)="dayHeaderClicked.emit({day: day})"
       [contextMenu]="basicMenu"
       [contextMenuSubject]="day.date">
       <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br>

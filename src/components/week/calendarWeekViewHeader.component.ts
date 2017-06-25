@@ -15,7 +15,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
           [class.cal-weekend]="day.isWeekend"
           [class.cal-drag-over]="day.dragOver"
           [ngClass]="day.cssClass"
-          (mwlClick)="dayClicked.emit({date: day.date})"
+          (mwlClick)="dayHeaderClicked.emit({day: day})"
           mwlDroppable
           (dragEnter)="day.dragOver = true"
           (dragLeave)="day.dragOver = false"
@@ -27,7 +27,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngTemplateOutletContext]="{days: days, locale: locale, dayClicked: dayClicked, eventDropped: eventDropped}">
+      [ngTemplateOutletContext]="{days: days, locale: locale, dayHeaderClicked: dayHeaderClicked, eventDropped: eventDropped}">
     </ng-template>
   `
 })
@@ -39,7 +39,7 @@ export class CalendarWeekViewHeaderComponent {
 
   @Input() customTemplate: TemplateRef<any>;
 
-  @Output() dayClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
+  @Output() dayHeaderClicked: EventEmitter<{day: WeekDay}> = new EventEmitter<{day: WeekDay}>();
 
   @Output() eventDropped: EventEmitter<{event: CalendarEvent, newStart: Date}> = new EventEmitter<{event: CalendarEvent, newStart: Date}>();
 

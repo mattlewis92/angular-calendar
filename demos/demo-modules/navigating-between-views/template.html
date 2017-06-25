@@ -22,7 +22,7 @@
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
-    (dayClicked)="viewDate = $event.date; view = 'day'">
+    (dayHeaderClicked)="viewDate = $event.day.date; view = 'day'">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
