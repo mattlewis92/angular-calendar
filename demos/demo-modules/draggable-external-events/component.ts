@@ -9,9 +9,7 @@ import {
   CalendarWeekViewEventRow
 } from 'angular-calendar';
 import { Subject } from 'rxjs/Subject';
-import addDays from 'date-fns/add_days';
-import differenceInDays from 'date-fns/difference_in_days';
-import startOfDay from 'date-fns/start_of_day';
+import { addDays, differenceInDays, startOfDay } from 'date-fns';
 import { colors } from '../demo-utils/colors';
 
 interface MyCalendarEventTimesChangedEvent extends CalendarEventTimesChangedEvent {
