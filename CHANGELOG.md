@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/mattlewis92/angular-calendar/compare/v0.18.0...v0.18.1) (2017-06-25)
+
+
+### Features
+
+* **weekView:** introduce the `dayHeaderClicked` output ([2f11094](https://github.com/mattlewis92/angular-calendar/commit/2f11094)), closes [#222](https://github.com/mattlewis92/angular-calendar/issues/222)
+
+
+### BREAKING CHANGES
+
+* **weekView:** the `dayClicked` output has been replaced with the `dayHeaderClicked` output. To migrate:
+
+Before:
+```
+(dayClicked)="clickedDate = $event.date"
+```
+
+After:
+```
+(dayHeaderClicked)="clickedDate = $event.day.date"
+```
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/mattlewis92/angular-calendar/compare/v0.17.4...v0.18.0) (2017-06-25)
 
@@ -20,12 +45,10 @@ All notable changes to this project will be documented in this file. See [standa
 ### BREAKING CHANGES
 
 * **monthView:** the `dayModifier` input has been replaced with a more powerful `beforeViewRender`
-output
+output. See [the demo](https://mattlewis92.github.io/angular-calendar/#/before-view-render) for an example of how to migrate your code.
 * **dayView:** the `hourSegmentModifier` has been replaced with the `beforeViewRender` output.
 * For system.js users only, the UMD path to the `calendar-utils` module has changed from `calendar-utils/dist/umd/calendarUtils.js` to `calendar-utils/dist/umd/calendar-utils.js`
-* **weekView:** the `allowDragOutside` option has been removed from the week view as this can be implemented in user land.
-
-Please see this plunker for how to introduce it yourself: http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview
+* **weekView:** the `allowDragOutside` option has been removed from the week view as this can be implemented in user land. Please see this plunker for how to introduce it yourself: http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview
 
 
 

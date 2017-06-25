@@ -84,14 +84,14 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
-  it('should emit on the dayClicked output', () => {
+  it('should emit on the dayHeaderClicked output', () => {
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({viewDate: {}});
     fixture.detectChanges();
-    fixture.componentInstance.dayClicked.subscribe(val => {
+    fixture.componentInstance.dayHeaderClicked.subscribe(val => {
       expect(val).to.deep.equal({
-        date: fixture.componentInstance.days[0].date
+        day: fixture.componentInstance.days[0]
       });
     });
     fixture.nativeElement.querySelector('.cal-header').click();
