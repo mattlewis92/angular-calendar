@@ -7,7 +7,7 @@
   "module": "./dist/esm/src/index.js",
   "typings": "./dist/esm/src/index.d.ts",
   "scripts": {
-    "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
+    "start": "webpack-dev-server --open",
     "build:demos": "webpack -p",
     "build:umd": "webpack --config webpack.config.umd.ts",
     "build:ngc": "ngc -p tsconfig-ngc.json",
