@@ -23,7 +23,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [cellTemplate]="customCellTemplate"
-    [dayModifier]="groupEvents"
+    (beforeViewRender)="beforeMonthViewRender($event)"
     [activeDayIsOpen]="true">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view

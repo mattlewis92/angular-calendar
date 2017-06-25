@@ -11,108 +11,29 @@ import {
   ElementRef,
   ComponentFactory,
   Inject,
-  Renderer2
+  Renderer2,
+  TemplateRef
 } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Positioning } from 'positioning';
+import { CalendarEvent } from 'calendar-utils';
 
 @Component({
-  styles: [`
-    .cal-tooltip {
-      position: absolute;
-      z-index: 1070;
-      display: block;
-      font-style: normal;
-      font-weight: normal;
-      letter-spacing: normal;
-      line-break: auto;
-      line-height: 1.5;
-      text-align: start;
-      text-decoration: none;
-      text-shadow: none;
-      text-transform: none;
-      white-space: normal;
-      word-break: normal;
-      word-spacing: normal;
-      font-size: 11px;
-      word-wrap: break-word;
-      opacity: 0.9;
-    }
-
-    .cal-tooltip.cal-tooltip-top {
-      padding: 5px 0;
-      margin-top: -3px;
-    }
-
-    .cal-tooltip.cal-tooltip-top .cal-tooltip-arrow {
-      bottom: 0;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px 5px 0;
-      border-top-color: #000;
-    }
-
-    .cal-tooltip.cal-tooltip-right {
-      padding: 0 5px;
-      margin-left: 3px;
-    }
-
-    .cal-tooltip.cal-tooltip-right .cal-tooltip-arrow {
-      top: 50%;
-      left: 0;
-      margin-top: -5px;
-      border-width: 5px 5px 5px 0;
-      border-right-color: #000;
-    }
-
-    .cal-tooltip.cal-tooltip-bottom {
-      padding: 5px 0;
-      margin-top: 3px;
-    }
-
-    .cal-tooltip.cal-tooltip-bottom .cal-tooltip-arrow {
-      top: 0;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 0 5px 5px;
-      border-bottom-color: #000;
-    }
-
-    .cal-tooltip.cal-tooltip-left {
-      padding: 0 5px;
-      margin-left: -3px;
-    }
-
-    .cal-tooltip.cal-tooltip-left .cal-tooltip-arrow {
-      top: 50%;
-      right: 0;
-      margin-top: -5px;
-      border-width: 5px 0 5px 5px;
-      border-left-color: #000;
-    }
-
-    .cal-tooltip-inner {
-      max-width: 200px;
-      padding: 3px 8px;
-      color: #fff;
-      text-align: center;
-      background-color: #000;
-      border-radius: 0.25rem;
-    }
-
-    .cal-tooltip-arrow {
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-color: transparent;
-      border-style: solid;
-    }
-  `],
   template: `
-    <div class="cal-tooltip" [ngClass]="'cal-tooltip-' + placement">
-      <div class="cal-tooltip-arrow"></div>
-      <div class="cal-tooltip-inner" [innerHtml]="contents"></div>
-    </div>
+    <ng-template #defaultTemplate>
+      <div class="cal-tooltip" [ngClass]="'cal-tooltip-' + placement">
+        <div class="cal-tooltip-arrow"></div>
+        <div class="cal-tooltip-inner" [innerHtml]="contents"></div>
+      </div>
+    </ng-template>
+    <ng-template
+      [ngTemplateOutlet]="customTemplate || defaultTemplate"
+      [ngTemplateOutletContext]="{
+        contents: contents,
+        placement: placement,
+        event: event
+      }">
+    </ng-template>
   `
 })
 export class CalendarTooltipWindowComponent {
@@ -120,6 +41,10 @@ export class CalendarTooltipWindowComponent {
   @Input() contents: string;
 
   @Input() placement: string;
+
+  @Input() event: CalendarEvent;
+
+  @Input() customTemplate: TemplateRef<any>;
 
 }
 
@@ -131,6 +56,10 @@ export class CalendarTooltipDirective implements OnDestroy {
   @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
 
   @Input('tooltipPlacement') placement: string = 'top'; // tslint:disable-line no-input-rename
+
+  @Input('tooltipTemplate') customTemplate: TemplateRef<any>; // tslint:disable-line no-input-rename
+
+  @Input('tooltipEvent') event: CalendarEvent; // tslint:disable-line no-input-rename
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
@@ -166,6 +95,8 @@ export class CalendarTooltipDirective implements OnDestroy {
       this.tooltipRef = this.viewContainerRef.createComponent(this.tooltipFactory, 0, this.injector, []);
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.placement = this.placement;
+      this.tooltipRef.instance.customTemplate = this.customTemplate;
+      this.tooltipRef.instance.event = this.event;
       this.document.body.appendChild(this.tooltipRef.location.nativeElement);
       requestAnimationFrame(() => {
         this.positionTooltip();

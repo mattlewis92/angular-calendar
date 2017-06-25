@@ -7,7 +7,7 @@
   "module": "./dist/esm/src/index.js",
   "typings": "./dist/esm/src/index.d.ts",
   "scripts": {
-    "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
+    "start": "webpack-dev-server --open",
     "build:demos": "webpack -p",
     "build:umd": "webpack --config webpack.config.umd.ts",
     "build:ngc": "ngc -p tsconfig-ngc.json",
@@ -143,7 +143,7 @@
   "dependencies": {
     "angular-draggable-droppable": "^1.0.1",
     "angular-resizable-element": "^1.1.1",
-    "calendar-utils": "0.0.53",
+    "calendar-utils": "0.0.56",
     "date-fns": "^1.28.5",
     "positioning": "^1.0.4"
   }

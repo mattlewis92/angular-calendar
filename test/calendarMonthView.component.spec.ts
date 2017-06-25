@@ -16,7 +16,8 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarMonthViewDay
+  CalendarMonthViewDay,
+  DAYS_OF_WEEK
 } from './../src';
 import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
@@ -118,15 +119,27 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should add a custom CSS class to days via the day modifier', () => {
+  it('should add a custom CSS class to days via the beforeViewRender output', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.dayModifier = day => {
-      day.cssClass = 'foo';
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body[0].cssClass = 'foo';
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.equal(true);
+    fixture.destroy();
+  });
+
+  it('should add a custom CSS class to headers via the beforeViewRender output', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({header}) => {
+      header[0].cssClass = 'foo';
+    });
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.cal-header .cal-cell').classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
@@ -134,12 +147,10 @@ describe('calendarMonthView component', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     let firstDay: CalendarMonthViewDay;
-    fixture.componentInstance.dayModifier = (day) => {
-      if (!firstDay) {
-        firstDay = day;
-        day.cssClass = 'foo';
-      }
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body[0].cssClass = 'foo';
+      firstDay = body[0];
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const cell: HTMLElement = fixture.nativeElement.querySelector('.cal-days .cal-cell');
@@ -287,10 +298,9 @@ describe('calendarMonthView component', () => {
   it('should allow the badge total to be customised', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.dayModifier = day => {
-      day.badgeTotal = 100;
-      return day;
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body[0].badgeTotal = 100;
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-day-badge').innerHTML).to.equal('100');
@@ -523,6 +533,25 @@ describe('calendarMonthView component', () => {
     expect(headerCells[0].classList.contains('cal-future')).to.equal(false);
     expect(headerCells[0].classList.contains('cal-weekend')).to.equal(true);
     expect(headerCells[1].classList.contains('cal-weekend')).to.equal(false);
+    expect(headerCells[6].classList.contains('cal-weekend')).to.equal(true);
+    fixture.destroy();
+  });
+
+  it('should allow the weekend days to be customised', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2017-06-25');
+    fixture.componentInstance.weekendDays = [
+      DAYS_OF_WEEK.FRIDAY,
+      DAYS_OF_WEEK.SATURDAY
+    ];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, weekendDays: {}});
+    fixture.detectChanges();
+    expect(fixture.componentInstance.view.days[0].isWeekend).to.equal(false);
+    expect(fixture.componentInstance.view.days[5].isWeekend).to.equal(true);
+    expect(fixture.componentInstance.view.days[6].isWeekend).to.equal(true);
+    const headerCells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-header .cal-cell');
+    expect(headerCells[0].classList.contains('cal-weekend')).to.equal(false);
+    expect(headerCells[5].classList.contains('cal-weekend')).to.equal(true);
     expect(headerCells[6].classList.contains('cal-weekend')).to.equal(true);
     fixture.destroy();
   });

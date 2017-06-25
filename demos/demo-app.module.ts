@@ -26,7 +26,7 @@ import * as clickableDays from './demo-modules/clickable-days';
 import * as dayViewStartEnd from './demo-modules/day-view-start-end';
 import * as dayViewHourSplit from './demo-modules/day-view-hour-split';
 import * as navigatingBetweenViews from './demo-modules/navigating-between-views';
-import * as dayModifier from './demo-modules/day-modifier';
+import * as beforeViewRender from './demo-modules/before-view-render';
 import * as i18n from './demo-modules/i18n';
 import * as draggableExternalEvents from './demo-modules/draggable-external-events';
 import * as allDayEvents from './demo-modules/all-day-events';
@@ -66,7 +66,7 @@ import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
     dayViewStartEnd.DemoModule,
     dayViewHourSplit.DemoModule,
     navigatingBetweenViews.DemoModule,
-    dayModifier.DemoModule,
+    beforeViewRender.DemoModule,
     i18n.DemoModule,
     draggableExternalEvents.DemoModule,
     allDayEvents.DemoModule,
@@ -169,9 +169,9 @@ import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
       }
     }, {
       path: 'day-modifier',
-      component: dayModifier.DemoComponent,
+      component: beforeViewRender.DemoComponent,
       data: {
-        label: 'Day modifier'
+        label: 'Before view render'
       }
     }, {
       path: 'exclude-days',
