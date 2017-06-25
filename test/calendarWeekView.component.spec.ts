@@ -1,7 +1,9 @@
 import {
   inject,
   ComponentFixture,
-  TestBed
+  TestBed,
+  fakeAsync,
+  flush
 } from '@angular/core/testing';
 import * as moment from 'moment';
 import { expect } from 'chai';
@@ -192,7 +194,7 @@ describe('calendarWeekView component', () => {
 
   });
 
-  it('should show a tooltip on mouseover of the event', () => {
+  it('should show a tooltip on mouseover of the event', fakeAsync(() => {
 
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     eventTitle.weekTooltip = (event: CalendarEvent) => {
@@ -213,20 +215,19 @@ describe('calendarWeekView component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    setTimeout(() => {
-      const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
-      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-      expect(tooltip.classList.contains('cal-tooltip-bottom')).to.equal(true);
-      expect(!!tooltip.style.top).to.equal(true);
-      expect(!!tooltip.style.left).to.equal(true);
-      triggerDomEvent('mouseleave', event);
-      fixture.detectChanges();
-      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
-    });
+    flush();
+    const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
+    expect(tooltip.classList.contains('cal-tooltip-bottom')).to.equal(true);
+    expect(!!tooltip.style.top).to.equal(true);
+    expect(!!tooltip.style.left).to.equal(true);
+    triggerDomEvent('mouseleave', event);
+    fixture.detectChanges();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
-  });
+  }));
 
-  it('should disable the tooltip', () => {
+  it('should disable the tooltip', fakeAsync(() => {
 
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
     eventTitle.weekTooltip = () => '';
@@ -245,11 +246,10 @@ describe('calendarWeekView component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    setTimeout(() => {
-      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
-    });
+    flush();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
-  });
+  }));
 
   it('should allow the start of the week to be changed', () => {
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
