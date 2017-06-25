@@ -1,7 +1,9 @@
 import {
   inject,
   ComponentFixture,
-  TestBed
+  TestBed,
+  fakeAsync,
+  flush
 } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
@@ -295,7 +297,7 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should show a tooltip on mouseover of the event', () => {
+  it('should show a tooltip on mouseover of the event', fakeAsync(() => {
 
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     eventTitle.monthTooltip = (event: CalendarEvent) => {
@@ -318,20 +320,19 @@ describe('calendarMonthView component', () => {
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    setTimeout(() => {
-      const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
-      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-      expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
-      expect(!!tooltip.style.top).to.equal(true);
-      expect(!!tooltip.style.left).to.equal(true);
-      triggerDomEvent('mouseleave', event);
-      fixture.detectChanges();
-      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
-    });
+    flush();
+    const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
+    expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
+    expect(!!tooltip.style.top).to.equal(true);
+    expect(!!tooltip.style.left).to.equal(true);
+    triggerDomEvent('mouseleave', event);
+    fixture.detectChanges();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
-  });
+  }));
 
-  it('should disable the tooltip', () => {
+  it('should disable the tooltip', fakeAsync(() => {
 
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     eventTitle.monthTooltip = () => '';
@@ -352,11 +353,10 @@ describe('calendarMonthView component', () => {
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    setTimeout(() => {
-      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
-    });
+    flush();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
-  });
+  }));
 
   it('should allow the start of the week to be changed', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
