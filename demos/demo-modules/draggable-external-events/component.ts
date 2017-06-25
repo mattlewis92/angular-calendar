@@ -31,18 +31,33 @@ export class DemoComponent {
   activeDayIsOpen: boolean = false;
   refresh: Subject<any> = new Subject();
 
-  eventDropped({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
-    const externalIndex: number = this.externalEvents.indexOf(event);
-    if (externalIndex > -1) {
-      this.externalEvents.splice(externalIndex, 1);
-      this.events.push(event);
+  eventDropped({event, newStart, newEnd, droppedOutsideCalendar}: CalendarEventTimesChangedEvent): void {
+    
+    if (!droppedOutsideCalendar) {
+      const externalIndex: number = this.externalEvents.indexOf(event);
+      if (externalIndex > -1) {
+        this.externalEvents.splice(externalIndex, 1);
+        this.events.push(event);
+      }
+      event.start = newStart;
+      if (newEnd) {
+        event.end = newEnd;
+      }
+      this.viewDate = newStart;
+      this.activeDayIsOpen = true;
     }
-    event.start = newStart;
-    if (newEnd) {
-      event.end = newEnd;
+  }
+
+  droppedBack(event: CalendarEvent): void {
+
+    const internalIndex: number = this.events.indexOf(event);
+
+    if (internalIndex > -1) {
+      this.events.splice(internalIndex, 1);
+      this.externalEvents.push(event);
+
+      this.refresh.next();
     }
-    this.viewDate = newStart;
-    this.activeDayIsOpen = true;
   }
 
   droppedBack(event: CalendarEvent): void {

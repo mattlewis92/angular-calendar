@@ -292,7 +292,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       newEnd = addDays(newEnd, daysDiff);
     }
 
-    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event, droppedOutsideCalendar: false});
     this.currentResizes.delete(weekEvent);
 
   }
@@ -304,27 +304,28 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
     let daysDragged: number = Math.round(draggedByPx / dayWidth);
     let newStart: Date = addDays(weekEvent.event.start, daysDragged);
+    let droppedOutsideCalendar: boolean = false;
 
     if (this.allowDragOutside) {
       // Restrict start to first and last day on current week
       if (newStart < this.days[0].date) {
         daysDragged += differenceInDays(startOfDay(this.days[0].date), startOfDay(newStart));
+        droppedOutsideCalendar = true;
       }
       const lastDate: Date = this.days[this.days.length - 1].date;
       if (newStart > lastDate) {
         daysDragged -= differenceInDays(startOfDay(newStart), startOfDay(lastDate));
+        droppedOutsideCalendar = true;
       }
     }
 
     newStart = addDays(weekEvent.event.start, daysDragged);
-
     let newEnd: Date;
     if (weekEvent.event.end) {
       newEnd = addDays(weekEvent.event.end, daysDragged);
     }
 
-    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
-
+    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event, droppedOutsideCalendar: droppedOutsideCalendar});
   }
 
   /**
