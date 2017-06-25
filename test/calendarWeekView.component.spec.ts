@@ -547,4 +547,16 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
+  it('should add a custom CSS class to headers via the beforeViewRender output', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({header}) => {
+      header[0].cssClass = 'foo';
+    });
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.cal-header').classList.contains('foo')).to.equal(true);
+    fixture.destroy();
+  });
+
 });

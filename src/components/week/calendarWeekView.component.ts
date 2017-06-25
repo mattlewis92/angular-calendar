@@ -166,6 +166,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
+   * An output that will be called before the view is rendered for the current week.
+   * If you add the `cssClass` property to a day in the header it will add that class to the cell element in the template
+   */
+  @Output() beforeViewRender: EventEmitter<{header: WeekDay[]}> = new EventEmitter();
+
+  /**
    * @hidden
    */
   days: WeekDay[];
@@ -338,6 +344,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
+    });
+    this.beforeViewRender.emit({
+      header: this.days
     });
   }
 
