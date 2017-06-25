@@ -636,6 +636,7 @@ export interface DayViewEventResize {
             &lt;mwl-calendar-day-view-event
               [dayEvent]&#x3D;&quot;dayEvent&quot;
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+              [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
               (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
             &lt;/mwl-calendar-day-view-event&gt;
@@ -713,12 +714,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() locale: string;
 
   /**
-   * A function that will be called before each hour segment is called. The first argument will contain the hour segment.
-   * If you add the &#x60;cssClass&#x60; property to the segment it will add that class to the hour segment in the template
-   */
-  @Input() hourSegmentModifier: Function;
-
-  /**
    * The grid size to snap resizing and dragging of events to
    */
   @Input() eventSnapSize: number &#x3D; 30;
@@ -727,6 +722,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * The placement of the event tooltip
    */
   @Input() tooltipPlacement: string &#x3D; &#x27;top&#x27;;
+
+  /**
+   * A custom template to use for the event tooltips
+   */
+  @Input() tooltipTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use to replace the hour segment
@@ -757,6 +757,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event is resized or dragged and dropped
    */
   @Output() eventTimesChanged: EventEmitter&lt;CalendarEventTimesChangedEvent&gt; &#x3D; new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
+
+  /**
+   * An output that will be called before the view is rendered for the current day.
+   * If you add the &#x60;cssClass&#x60; property to a segment it will add that class to the hour segment in the template
+   */
+  @Output() beforeViewRender: EventEmitter&lt;{body: DayViewHour[]}&gt; &#x3D; new EventEmitter();
 
   /**
    * @hidden
@@ -936,11 +942,9 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    if (this.hourSegmentModifier) {
-      this.hours.forEach(hour &#x3D;&gt; {
-        hour.segments.forEach(segment &#x3D;&gt; this.hourSegmentModifier(segment));
-      });
-    }
+    this.beforeViewRender.emit({
+      body: this.hours
+    });
   }
 
   private refreshView(): void {

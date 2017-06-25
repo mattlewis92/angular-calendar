@@ -499,6 +499,7 @@
           [openDay]&#x3D;&quot;openDay&quot;
           [locale]&#x3D;&quot;locale&quot;
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+          [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
           [customTemplate]&#x3D;&quot;cellTemplate&quot;
           (click)&#x3D;&quot;dayClicked.emit({day: day})&quot;
           (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
@@ -550,7 +551,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/components/month/calendarMonthView.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/components/month/calendarMonthView.component.ts:108</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -581,29 +582,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>dayModifier</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
-If you add the <code>cssClass</code> property to the cell it will add that class to the cell in the template</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>any</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/components/month/calendarMonthView.component.ts:113</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
                             <code>events</code>
                         </td>
                         <td class="col-md-10">
@@ -618,7 +596,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/components/month/calendarMonthView.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/components/month/calendarMonthView.component.ts:98</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -640,7 +618,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/components/month/calendarMonthView.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/components/month/calendarMonthView.component.ts:103</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -684,7 +662,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/components/month/calendarMonthView.component.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/components/month/calendarMonthView.component.ts:118</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -728,7 +706,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/components/month/calendarMonthView.component.ts:118</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/components/month/calendarMonthView.component.ts:113</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -749,6 +727,28 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                             <p>
                               <em>Default value: </em><code>top</code>
                             </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/components/month/calendarMonthView.component.ts:123</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>tooltipTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use for the event tooltips</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>any</code>
+
+                              </p>
                         </td>
                     </tr>
                             <tr>
@@ -775,7 +775,29 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/components/month/calendarMonthView.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/components/month/calendarMonthView.component.ts:92</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>weekendDays</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>{}</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/components/month/calendarMonthView.component.ts:153</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -810,6 +832,27 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <code>beforeViewRender</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>An output that will be called before the view is rendered for the current month.
+If you add the <code>cssClass</code> property to a day in the body it will add that class to the cell element in the template</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>any</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/components/month/calendarMonthView.component.ts:159</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <code>dayClicked</code>
                         </td>
                         <td class="col-md-10">
@@ -821,7 +864,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/components/month/calendarMonthView.component.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/components/month/calendarMonthView.component.ts:164</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -841,7 +884,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/components/month/calendarMonthView.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/components/month/calendarMonthView.component.ts:169</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -861,7 +904,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/components/month/calendarMonthView.component.ts:163</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/components/month/calendarMonthView.component.ts:174</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -937,6 +980,7 @@ import { CalendarUtils } from &#x27;../../providers/calendarUtils.provider&#x27;
               [openDay]&#x3D;&quot;openDay&quot;
               [locale]&#x3D;&quot;locale&quot;
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+              [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [customTemplate]&#x3D;&quot;cellTemplate&quot;
               (click)&#x3D;&quot;dayClicked.emit({day: day})&quot;
               (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
@@ -983,12 +1027,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Input() activeDayIsOpen: boolean &#x3D; false;
 
   /**
-   * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
-   * If you add the &#x60;cssClass&#x60; property to the cell it will add that class to the cell in the template
-   */
-  @Input() dayModifier: Function;
-
-  /**
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject&lt;any&gt;;
@@ -1002,6 +1040,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * The placement of the event tooltip
    */
   @Input() tooltipPlacement: string &#x3D; &#x27;top&#x27;;
+
+  /**
+   * A custom template to use for the event tooltips
+   */
+  @Input() tooltipTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * The start number of the week
@@ -1022,6 +1065,17 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * A custom template to use for the slide down box of events for the active day
    */
   @Input() openDayEventsTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * An array of day indexes (0 &#x3D; sunday, 1 &#x3D; monday etc) that indicate which days are weekends
+   */
+  @Input() weekendDays: number[];
+
+  /**
+   * An output that will be called before the view is rendered for the current month.
+   * If you add the &#x60;cssClass&#x60; property to a day in the body it will add that class to the cell element in the template
+   */
+  @Output() beforeViewRender: EventEmitter&lt;{header: WeekDay[], body: MonthViewDay[]}&gt; &#x3D; new EventEmitter();
 
   /**
    * Called when the day cell is clicked
@@ -1087,11 +1141,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    */
   ngOnChanges(changes: any): void {
 
-    if (changes.viewDate || changes.excludeDays) {
+    if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
       this.refreshHeader();
     }
 
-    if (changes.viewDate || changes.events || changes.excludeDays) {
+    if (changes.viewDate || changes.events || changes.excludeDays || changes.weekendDays) {
       this.refreshBody();
     }
 
@@ -1142,8 +1196,10 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.columnHeaders &#x3D; this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      weekendDays: this.weekendDays
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
@@ -1151,11 +1207,10 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      weekendDays: this.weekendDays
     });
-    if (this.dayModifier) {
-      this.view.days.forEach(day &#x3D;&gt; this.dayModifier(day));
-    }
+    this.emitBeforeViewRender();
   }
 
   private checkActiveDayIsOpen(): void {
@@ -1173,6 +1228,15 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.refreshHeader();
     this.refreshBody();
     this.checkActiveDayIsOpen();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.columnHeaders &amp;&amp; this.view) {
+      this.beforeViewRender.emit({
+        header: this.columnHeaders,
+        body: this.view.days
+      });
+    }
   }
 
 }
@@ -1203,7 +1267,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    [customTemplate]="headerTemplate">  </mwl-calendar-month-view-header>  <div class="cal-days">    <div *ngFor="let rowIndex of view.rowOffsets">      <div class="cal-cell-row">        <mwl-calendar-month-cell          *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"          [class.cal-drag-over]="day.dragOver"          [ngClass]="day?.cssClass"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [customTemplate]="cellTemplate"          (click)="dayClicked.emit({day: day})"          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          (dragEnter)="day.dragOver = true"          (dragLeave)="day.dragOver = false"          (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"          (eventClicked)="eventClicked.emit({event: $event.event})">        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [customTemplate]="openDayEventsTemplate"        (eventClicked)="eventClicked.emit({event: $event.event})">      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    [customTemplate]="headerTemplate">  </mwl-calendar-month-view-header>  <div class="cal-days">    <div *ngFor="let rowIndex of view.rowOffsets">      <div class="cal-cell-row">        <mwl-calendar-month-cell          *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"          [class.cal-drag-over]="day.dragOver"          [ngClass]="day?.cssClass"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [customTemplate]="cellTemplate"          (click)="dayClicked.emit({day: day})"          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          (dragEnter)="day.dragOver = true"          (dragLeave)="day.dragOver = false"          (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"          (eventClicked)="eventClicked.emit({event: $event.event})">        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [customTemplate]="openDayEventsTemplate"        (eventClicked)="eventClicked.emit({event: $event.event})">      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarMonthViewComponent'};
