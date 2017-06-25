@@ -13,5 +13,8 @@ export {
   CalendarEvent,
   EventAction as CalendarEventAction,
   MonthViewDay as CalendarMonthViewDay,
+  WeekViewEvent as CalendarWeekViewEvent,
+  WeekViewEventRow as CalendarWeekViewEventRow,
+  GetWeekViewArgs as CalendarGetWeekViewArgs,
   DAYS_OF_WEEK
 } from 'calendar-utils';
