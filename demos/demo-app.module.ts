@@ -168,7 +168,7 @@ import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
         label: 'Navigating between views'
       }
     }, {
-      path: 'day-modifier',
+      path: 'before-view-render',
       component: beforeViewRender.DemoComponent,
       data: {
         label: 'Before view render'
