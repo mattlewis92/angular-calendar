@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/mattlewis92/angular-calendar/compare/v0.18.0...v0.18.1) (2017-06-25)
+
+
+### Features
+
+* **weekView:** introduce the `dayHeaderClicked` output ([2f11094](https://github.com/mattlewis92/angular-calendar/commit/2f11094)), closes [#222](https://github.com/mattlewis92/angular-calendar/issues/222)
+
+
+### BREAKING CHANGES
+
+* **weekView:** the `dayClicked` output has been replaced with the `dayHeaderClicked` output. To migrate:
+
+Before:
+```
+(dayClicked)="clickedDate = $event.date"
+```
+
+After:
+```
+(dayHeaderClicked)="clickedDate = $event.day.date"
+```
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/mattlewis92/angular-calendar/compare/v0.17.4...v0.18.0) (2017-06-25)
 
