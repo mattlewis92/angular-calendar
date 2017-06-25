@@ -32,6 +32,6 @@
 <mwl-calendar-month-view
   [viewDate]="viewDate"
   [events]="events"
-  [dayModifier]="selectDay"
+  (beforeViewRender)="beforeMonthViewRender($event)"
   (dayClicked)="dayClicked($event.day)">
 </mwl-calendar-month-view>

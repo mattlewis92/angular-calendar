@@ -61,6 +61,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
+              [tooltipTemplate]="tooltipTemplate"
               [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
@@ -107,12 +108,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Input() activeDayIsOpen: boolean = false;
 
   /**
-   * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
-   * If you add the `cssClass` property to the cell it will add that class to the cell in the template
-   */
-  @Input() dayModifier: Function;
-
-  /**
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject<any>;
@@ -126,6 +121,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * The placement of the event tooltip
    */
   @Input() tooltipPlacement: string = 'top';
+
+  /**
+   * A custom template to use for the event tooltips
+   */
+  @Input() tooltipTemplate: TemplateRef<any>;
 
   /**
    * The start number of the week
@@ -146,6 +146,17 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * A custom template to use for the slide down box of events for the active day
    */
   @Input() openDayEventsTemplate: TemplateRef<any>;
+
+  /**
+   * An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends
+   */
+  @Input() weekendDays: number[];
+
+  /**
+   * An output that will be called before the view is rendered for the current month.
+   * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
+   */
+  @Output() beforeViewRender: EventEmitter<{header: WeekDay[], body: MonthViewDay[]}> = new EventEmitter();
 
   /**
    * Called when the day cell is clicked
@@ -211,11 +222,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    */
   ngOnChanges(changes: any): void {
 
-    if (changes.viewDate || changes.excludeDays) {
+    if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
       this.refreshHeader();
     }
 
-    if (changes.viewDate || changes.events || changes.excludeDays) {
+    if (changes.viewDate || changes.events || changes.excludeDays || changes.weekendDays) {
       this.refreshBody();
     }
 
@@ -266,8 +277,10 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.columnHeaders = this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      weekendDays: this.weekendDays
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
@@ -275,11 +288,10 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      weekendDays: this.weekendDays
     });
-    if (this.dayModifier) {
-      this.view.days.forEach(day => this.dayModifier(day));
-    }
+    this.emitBeforeViewRender();
   }
 
   private checkActiveDayIsOpen(): void {
@@ -297,6 +309,15 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.refreshHeader();
     this.refreshBody();
     this.checkActiveDayIsOpen();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.columnHeaders && this.view) {
+      this.beforeViewRender.emit({
+        header: this.columnHeaders,
+        body: this.view.days
+      });
+    }
   }
 
 }

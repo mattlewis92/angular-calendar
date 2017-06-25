@@ -2,6 +2,8 @@ import {
   inject,
   ComponentFixture,
   TestBed,
+  fakeAsync,
+  flush,
   async
 } from '@angular/core/testing';
 import * as moment from 'moment';
@@ -249,12 +251,16 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
   });
 
-  it('should add a custom CSS class to days via the hour segment modifier', () => {
+  it('should add a custom CSS class to days via the beforeViewRender output', () => {
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.hourSegmentModifier = segment => {
-      segment.cssClass = 'foo';
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body.forEach((hour) => {
+        hour.segments.forEach((segment) => {
+          segment.cssClass = 'foo';
+        });
+      });
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-hour-segment').classList.contains('foo')).to.equal(true);
@@ -373,7 +379,7 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
-  it('should show a tooltip on mouseover of the event', () => {
+  it('should show a tooltip on mouseover of the event', fakeAsync(() => {
 
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     eventTitle.dayTooltip = (event: CalendarEvent) => {
@@ -394,20 +400,19 @@ describe('CalendarDayViewComponent component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    setTimeout(() => {
-      const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
-      expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
-      expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
-      expect(!!tooltip.style.top).to.equal(true);
-      expect(!!tooltip.style.left).to.equal(true);
-      triggerDomEvent('mouseleave', event);
-      fixture.detectChanges();
-      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
-    });
+    flush();
+    const tooltip: HTMLElement = document.body.querySelector('.cal-tooltip') as HTMLElement;
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal('title: foo <b>bar</b>');
+    expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
+    expect(!!tooltip.style.top).to.equal(true);
+    expect(!!tooltip.style.left).to.equal(true);
+    triggerDomEvent('mouseleave', event);
+    fixture.detectChanges();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
-  });
+  }));
 
-  it('should disable the tooltip', () => {
+  it('should disable the tooltip', fakeAsync(() => {
 
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     eventTitle.dayTooltip = () => '';
@@ -426,11 +431,10 @@ describe('CalendarDayViewComponent component', () => {
     const event: HTMLElement = fixture.nativeElement.querySelector('.cal-event');
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
-    setTimeout(() => {
-      expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
-    });
+    flush();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
 
-  });
+  }));
 
   it('should allow events to be dragged and dropped', () => {
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);

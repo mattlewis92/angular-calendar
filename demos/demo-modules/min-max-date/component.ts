@@ -69,18 +69,11 @@ export class DemoComponent {
 
   maxDate: Date = addMonths(new Date(), 1);
 
-  dayModifier: Function;
-
   prevBtnDisabled: boolean = false;
 
   nextBtnDisabled: boolean = false;
 
   constructor() {
-    this.dayModifier = function(day: CalendarMonthViewDay): void {
-      if (!this.dateIsValid(day.date)) {
-        day.cssClass = 'cal-disabled';
-      }
-    }.bind(this);
     this.dateOrViewChanged();
   }
 
@@ -118,6 +111,14 @@ export class DemoComponent {
     } else if (this.viewDate > this.maxDate) {
       this.changeDate(this.maxDate);
     }
+  }
+
+  beforeMonthViewRender({body}: {body: CalendarMonthViewDay[]}): void {
+    body.forEach((day) => {
+      if (!this.dateIsValid(day.date)) {
+        day.cssClass = 'cal-disabled';
+      }
+    });
   }
 
 }

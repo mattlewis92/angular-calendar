@@ -113,6 +113,7 @@ export default {
       `.trim(),
       raw: true,
       entryOnly: true
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 };

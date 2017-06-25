@@ -9,4 +9,12 @@ export * from './calendar.module';
 export * from './components/day/calendarDayView.component';
 export * from './components/month/calendarMonthView.component';
 export * from './components/week/calendarWeekView.component';
-export { CalendarEvent, EventAction as CalendarEventAction, MonthViewDay as CalendarMonthViewDay } from 'calendar-utils';
+export {
+  CalendarEvent,
+  EventAction as CalendarEventAction,
+  MonthViewDay as CalendarMonthViewDay,
+  WeekViewEvent as CalendarWeekViewEvent,
+  WeekViewEventRow as CalendarWeekViewEventRow,
+  GetWeekViewArgs as CalendarGetWeekViewArgs,
+  DAYS_OF_WEEK
+} from 'calendar-utils';

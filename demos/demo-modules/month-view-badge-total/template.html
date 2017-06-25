@@ -2,5 +2,5 @@
   [viewDate]="viewDate"
   [events]="events"
   [activeDayIsOpen]="true"
-  [dayModifier]="addBadgeTotal">
+  (beforeViewRender)="beforeMonthViewRender($event)">
 </mwl-calendar-month-view>

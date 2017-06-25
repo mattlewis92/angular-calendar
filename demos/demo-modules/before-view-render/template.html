@@ -8,7 +8,7 @@
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
-    [dayModifier]="addCssClass">
+    (beforeViewRender)="beforeMonthViewRender($event)">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"

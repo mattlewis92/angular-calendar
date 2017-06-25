@@ -29,21 +29,19 @@ export class DemoComponent {
 
   refresh: Subject<any> = new Subject();
 
-  addCssClass: (day: CalendarMonthViewDay) => void;
-
   cssClass: string = RED_CELL;
-
-  constructor() {
-    this.addCssClass = (day: CalendarMonthViewDay): void => {
-      if (day.date.getDate() % 2 === 1) {
-        day.cssClass = this.cssClass;
-      }
-    };
-  }
 
   refreshView(): void {
     this.cssClass = this.cssClass === RED_CELL ? BLUE_CELL : RED_CELL;
     this.refresh.next();
+  }
+
+  beforeMonthViewRender({body}: {body: CalendarMonthViewDay[]}): void {
+    body.forEach((day) => {
+      if (day.date.getDate() % 2 === 1) {
+        day.cssClass = this.cssClass;
+      }
+    });
   }
 
 }
