@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.0"></a>
+# [0.18.0](https://github.com/mattlewis92/angular-calendar/compare/v0.17.4...v0.18.0) (2017-06-25)
+
+
+### Bug Fixes
+
+* **weekView:** revert allowDragOutside feature ([ac70656](https://github.com/mattlewis92/angular-calendar/commit/ac70656))
+* upgrade calendar-utils ([0dd602b](https://github.com/mattlewis92/angular-calendar/commit/0dd602b))
+
+
+### Features
+
+* **dayView:** introduce the `beforeViewRender` output ([cfab254](https://github.com/mattlewis92/angular-calendar/commit/cfab254))
+* **monthView:** allow a css class to be added to a column header ([abf02d8](https://github.com/mattlewis92/angular-calendar/commit/abf02d8))
+* **monthView:** introduce the `beforeViewRender` output ([c9a2366](https://github.com/mattlewis92/angular-calendar/commit/c9a2366))
+* **tooltip:** allow the event tooltip templates to be customised ([82faaf4](https://github.com/mattlewis92/angular-calendar/commit/82faaf4)), closes [#249](https://github.com/mattlewis92/angular-calendar/issues/249)
+* **weekendDays:** allow weekend days to be customised ([581b9a8](https://github.com/mattlewis92/angular-calendar/commit/581b9a8)), closes [#255](https://github.com/mattlewis92/angular-calendar/issues/255)
+* **weekView:** allow a custom css class to be added to a column header ([068d08b](https://github.com/mattlewis92/angular-calendar/commit/068d08b)), closes [#222](https://github.com/mattlewis92/angular-calendar/issues/222)
+
+
+### BREAKING CHANGES
+
+* **monthView:** the `dayModifier` input has been replaced with a more powerful `beforeViewRender`
+output
+* **dayView:** the `hourSegmentModifier` has been replaced with the `beforeViewRender` output.
+* For system.js users only, the UMD path to the `calendar-utils` module has changed from `calendar-utils/dist/umd/calendarUtils.js` to `calendar-utils/dist/umd/calendar-utils.js`
+* **weekView:** The `allowDragOutside` option has been removed from the week view as this can be implemented in user land.
+
+Please see this plunker for how to introduce it yourself: TODO
+
+
+
 <a name="0.17.4"></a>
 ## [0.17.4](https://github.com/mattlewis92/angular-calendar/compare/v0.17.3...v0.17.4) (2017-06-21)
 
