@@ -1,9 +1,7 @@
 <div class="row">
 
   <div class="col-md-3">
-    <div class="card"
-         mwlDroppable
-         (drop)="droppedBack($event.dropData.event)">
+    <div class="card">
       <div class="card-block">
         <ul>
           <li
@@ -34,23 +32,19 @@
         [viewDate]="viewDate"
         [events]="events"
         [activeDayIsOpen]="activeDayIsOpen"
-        (eventTimesChanged)="eventDropped($event)"
-        [refresh]="refresh">
+        (eventTimesChanged)="eventDropped($event)">
       </mwl-calendar-month-view>
       <mwl-calendar-week-view
         *ngSwitchCase="'week'"
         [viewDate]="viewDate"
         [events]="events"
-        (eventTimesChanged)="eventDropped($event)"
-        [refresh]="refresh"
-        [allowDragOutside]="true">
+        (eventTimesChanged)="eventDropped($event)">
       </mwl-calendar-week-view>
       <mwl-calendar-day-view
         *ngSwitchCase="'day'"
         [viewDate]="viewDate"
         [events]="events"
-        (eventTimesChanged)="eventDropped($event)"
-        [refresh]="refresh">
+        (eventTimesChanged)="eventDropped($event)">
       </mwl-calendar-day-view>
     </div>
   </div>
