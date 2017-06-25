@@ -119,7 +119,7 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should add a custom CSS class to days via the day modifier', () => {
+  it('should add a custom CSS class to days via the beforeViewRender output', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
@@ -128,6 +128,18 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.equal(true);
+    fixture.destroy();
+  });
+
+  it('should add a custom CSS class to headers via the beforeViewRender output', () => {
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({header}) => {
+      header[0].cssClass = 'foo';
+    });
+    fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.cal-header .cal-cell').classList.contains('foo')).to.equal(true);
     fixture.destroy();
   });
 
