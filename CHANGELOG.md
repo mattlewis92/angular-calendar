@@ -20,12 +20,10 @@ All notable changes to this project will be documented in this file. See [standa
 ### BREAKING CHANGES
 
 * **monthView:** the `dayModifier` input has been replaced with a more powerful `beforeViewRender`
-output
+output. See [the demo](https://mattlewis92.github.io/angular-calendar/#/before-view-render) for an example of how to migrate your code.
 * **dayView:** the `hourSegmentModifier` has been replaced with the `beforeViewRender` output.
 * For system.js users only, the UMD path to the `calendar-utils` module has changed from `calendar-utils/dist/umd/calendarUtils.js` to `calendar-utils/dist/umd/calendar-utils.js`
-* **weekView:** the `allowDragOutside` option has been removed from the week view as this can be implemented in user land.
-
-Please see this plunker for how to introduce it yourself: http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview
+* **weekView:** the `allowDragOutside` option has been removed from the week view as this can be implemented in user land. Please see this plunker for how to introduce it yourself: http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview
 
 
 
