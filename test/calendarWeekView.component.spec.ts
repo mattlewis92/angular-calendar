@@ -14,7 +14,8 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  DAYS_OF_WEEK
 } from '../src';
 import { CalendarWeekViewComponent } from '../src/components/week/calendarWeekView.component';
 import { DragAndDropModule } from 'angular-draggable-droppable';
@@ -598,6 +599,22 @@ describe('calendarWeekView component', () => {
       newStart: moment('2016-12-07').startOf('week').add(6, 'days').add(4, 'hours').toDate(),
       newEnd: moment('2016-12-07').startOf('week').add(6, 'days').add(6, 'hours').toDate()
     });
+  });
+
+  it('should allow the weekend days to be customised', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2017-06-25');
+    fixture.componentInstance.weekendDays = [
+      DAYS_OF_WEEK.FRIDAY,
+      DAYS_OF_WEEK.SATURDAY
+    ];
+    fixture.componentInstance.ngOnChanges({viewDate: {}, weekendDays: {}});
+    fixture.detectChanges();
+    const headerCells: HTMLElement[] = fixture.nativeElement.querySelectorAll('.cal-header');
+    expect(headerCells[0].classList.contains('cal-weekend')).to.equal(false);
+    expect(headerCells[5].classList.contains('cal-weekend')).to.equal(true);
+    expect(headerCells[6].classList.contains('cal-weekend')).to.equal(true);
+    fixture.destroy();
   });
 
 });
