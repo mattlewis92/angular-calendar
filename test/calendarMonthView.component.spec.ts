@@ -122,9 +122,9 @@ describe('calendarMonthView component', () => {
   it('should add a custom CSS class to days via the day modifier', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.dayModifier = day => {
-      day.cssClass = 'foo';
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body[0].cssClass = 'foo';
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-days .cal-cell').classList.contains('foo')).to.equal(true);
@@ -135,12 +135,10 @@ describe('calendarMonthView component', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     let firstDay: CalendarMonthViewDay;
-    fixture.componentInstance.dayModifier = (day) => {
-      if (!firstDay) {
-        firstDay = day;
-        day.cssClass = 'foo';
-      }
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body[0].cssClass = 'foo';
+      firstDay = body[0];
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     const cell: HTMLElement = fixture.nativeElement.querySelector('.cal-days .cal-cell');
@@ -288,10 +286,9 @@ describe('calendarMonthView component', () => {
   it('should allow the badge total to be customised', () => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.dayModifier = day => {
-      day.badgeTotal = 100;
-      return day;
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body[0].badgeTotal = 100;
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-day-badge').innerHTML).to.equal('100');

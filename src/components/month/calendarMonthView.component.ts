@@ -108,12 +108,6 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   @Input() activeDayIsOpen: boolean = false;
 
   /**
-   * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
-   * If you add the `cssClass` property to the cell it will add that class to the cell in the template
-   */
-  @Input() dayModifier: Function;
-
-  /**
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject<any>;
@@ -157,6 +151,12 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends
    */
   @Input() weekendDays: number[];
+
+  /**
+   * An output that will be called before the view is rendered for the current month.
+   * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
+   */
+  @Output() beforeViewRender: EventEmitter<{header: WeekDay[], body: MonthViewDay[]}> = new EventEmitter();
 
   /**
    * Called when the day cell is clicked
@@ -280,6 +280,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
@@ -290,9 +291,7 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    if (this.dayModifier) {
-      this.view.days.forEach(day => this.dayModifier(day));
-    }
+    this.emitBeforeViewRender();
   }
 
   private checkActiveDayIsOpen(): void {
@@ -310,6 +309,15 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     this.refreshHeader();
     this.refreshBody();
     this.checkActiveDayIsOpen();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.columnHeaders && this.view) {
+      this.beforeViewRender.emit({
+        header: this.columnHeaders,
+        body: this.view.days
+      });
+    }
   }
 
 }

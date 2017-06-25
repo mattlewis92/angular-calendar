@@ -59,13 +59,15 @@ export class DemoComponent {
     }
   }];
 
-  groupEvents(cell: CalendarMonthViewDay): void {
-    const groups: any = {};
-    cell.events.forEach((event: CalendarEvent<{type: string}>) => {
-      groups[event.meta.type] = groups[event.meta.type] || [];
-      groups[event.meta.type].push(event);
+  beforeMonthViewRender({body}: {body: CalendarMonthViewDay[]}): void {
+    body.forEach((cell) => {
+      const groups: any = {};
+      cell.events.forEach((event: CalendarEvent<{type: string}>) => {
+        groups[event.meta.type] = groups[event.meta.type] || [];
+        groups[event.meta.type].push(event);
+      });
+      cell['eventGroups'] = Object.entries(groups);
     });
-    cell['eventGroups'] = Object.entries(groups);
   }
 
 }
