@@ -30,7 +30,7 @@ TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicT
 let rafStub: sinon.SinonStub;
 beforeEach(() => {
   // TODO - delete this once zone.js v0.8.13 lands
-  rafStub = sinon.stub(window, 'requestAnimationFrame').callsArg(0);
+  rafStub = sinon.stub(window, 'requestAnimationFrame').callsArgAsync(0);
 });
 
 afterEach(() => {
