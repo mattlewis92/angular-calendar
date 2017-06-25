@@ -251,12 +251,16 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
   });
 
-  it('should add a custom CSS class to days via the hour segment modifier', () => {
+  it('should add a custom CSS class to days via the beforeViewRender output', () => {
     const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.hourSegmentModifier = segment => {
-      segment.cssClass = 'foo';
-    };
+    fixture.componentInstance.beforeViewRender.take(1).subscribe(({body}) => {
+      body.forEach((hour) => {
+        hour.segments.forEach((segment) => {
+          segment.cssClass = 'foo';
+        });
+      });
+    });
     fixture.componentInstance.ngOnChanges({viewDate: {}, events: {}});
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.cal-hour-segment').classList.contains('foo')).to.equal(true);

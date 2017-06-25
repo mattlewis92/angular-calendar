@@ -171,12 +171,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() locale: string;
 
   /**
-   * A function that will be called before each hour segment is called. The first argument will contain the hour segment.
-   * If you add the `cssClass` property to the segment it will add that class to the hour segment in the template
-   */
-  @Input() hourSegmentModifier: Function;
-
-  /**
    * The grid size to snap resizing and dragging of events to
    */
   @Input() eventSnapSize: number = 30;
@@ -220,6 +214,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event is resized or dragged and dropped
    */
   @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
+
+  /**
+   * An output that will be called before the view is rendered for the current day.
+   * If you add the `cssClass` property to a segment it will add that class to the hour segment in the template
+   */
+  @Output() beforeViewRender: EventEmitter<{body: DayViewHour[]}> = new EventEmitter();
 
   /**
    * @hidden
@@ -399,11 +399,9 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    if (this.hourSegmentModifier) {
-      this.hours.forEach(hour => {
-        hour.segments.forEach(segment => this.hourSegmentModifier(segment));
-      });
-    }
+    this.beforeViewRender.emit({
+      body: this.hours
+    });
   }
 
   private refreshView(): void {
