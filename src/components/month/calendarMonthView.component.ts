@@ -61,6 +61,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
+              [tooltipTemplate]="tooltipTemplate"
               [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
               (highlightDay)="toggleDayHighlight($event.event, true)"
@@ -126,6 +127,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * The placement of the event tooltip
    */
   @Input() tooltipPlacement: string = 'top';
+
+  /**
+   * A custom template to use for the event tooltips
+   */
+  @Input() tooltipTemplate: TemplateRef<any>;
 
   /**
    * The start number of the week

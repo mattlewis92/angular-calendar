@@ -12,7 +12,9 @@ import { WeekViewEvent } from 'calendar-utils';
         [style.backgroundColor]="weekEvent.event.color.secondary"
         [ngClass]="weekEvent.event?.cssClass"
         [mwlCalendarTooltip]="weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event"
-        [tooltipPlacement]="tooltipPlacement">
+        [tooltipPlacement]="tooltipPlacement"
+        [tooltipEvent]="weekEvent.event"
+        [tooltipTemplate]="tooltipTemplate">
         <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="weekEvent.event"
@@ -34,6 +36,8 @@ export class CalendarWeekViewEventComponent {
   @Input() tooltipPlacement: string;
 
   @Input() customTemplate: TemplateRef<any>;
+
+  @Input() tooltipTemplate: TemplateRef<any>;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 
