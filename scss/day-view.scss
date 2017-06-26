@@ -10,7 +10,9 @@
     background-color: #fafafa;
   }
 
+  mwl-calendar-day-view-hour-segment, // fix for https://github.com/mattlewis92/angular-calendar/issues/260
   .cal-hour-segment {
+    display: block;
     height: 30px;
   }
 
