@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.2"></a>
+## [0.18.2](https://github.com/mattlewis92/angular-calendar/compare/v0.18.1...v0.18.2) (2017-06-26)
+
+
+### Bug Fixes
+
+* **dayView:** force hour segments to be 30px in height for non bootstrap users ([ffc708b](https://github.com/mattlewis92/angular-calendar/commit/ffc708b)), closes [#260](https://github.com/mattlewis92/angular-calendar/issues/260)
+
+
+
 <a name="0.18.1"></a>
 ## [0.18.1](https://github.com/mattlewis92/angular-calendar/compare/v0.18.0...v0.18.1) (2017-06-25)
 
