@@ -25,7 +25,12 @@ import { WeekViewEvent } from 'calendar-utils';
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngTemplateOutletContext]="{weekEvent: weekEvent, tooltipPlacement: tooltipPlacement, eventClicked: eventClicked}">
+      [ngTemplateOutletContext]="{
+        weekEvent: weekEvent,
+        tooltipPlacement: tooltipPlacement,
+        eventClicked: eventClicked,
+        tooltipTemplate: tooltipTemplate
+      }">
     </ng-template>
   `
 })

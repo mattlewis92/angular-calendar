@@ -37,7 +37,8 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
         tooltipPlacement: tooltipPlacement,
         highlightDay: highlightDay,
         unhighlightDay: unhighlightDay,
-        eventClicked: eventClicked
+        eventClicked: eventClicked,
+        tooltipTemplate: tooltipTemplate
       }">
     </ng-template>
   `,

@@ -26,7 +26,12 @@ import { DayViewEvent } from 'calendar-utils';
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngTemplateOutletContext]="{dayEvent: dayEvent, tooltipPlacement: tooltipPlacement, eventClicked: eventClicked}">
+      [ngTemplateOutletContext]="{
+        dayEvent: dayEvent,
+        tooltipPlacement: tooltipPlacement,
+        eventClicked: eventClicked,
+        tooltipTemplate: tooltipTemplate
+      }">
     </ng-template>
   `
 })
