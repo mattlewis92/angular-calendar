@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.3"></a>
+## [0.18.3](https://github.com/mattlewis92/angular-calendar/compare/v0.18.2...v0.18.3) (2017-06-28)
+
+
+### Bug Fixes
+
+* **tooltipTemplate:** ensure custom tooltip template is available to other custom templates ([ce14b96](https://github.com/mattlewis92/angular-calendar/commit/ce14b96))
+
+
+
 <a name="0.18.2"></a>
 ## [0.18.2](https://github.com/mattlewis92/angular-calendar/compare/v0.18.1...v0.18.2) (2017-06-26)
 
