@@ -2,8 +2,6 @@
 
 FAQ (please read!):
 
-Support question? Please ask over at stackoverflow: https://stackoverflow.com/ This tracker is for bugs and feature requests only.
-
 Problems with build tooling? Please check the examples folder first: https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples
 
 Styling not appearing? Make sure you're including node_modules/angular-calendar/dist/css/angular-calendar.css
@@ -28,7 +26,7 @@ Please note that issues that ignore this template will be closed without notice!
 [ ] Support request => Please do not submit a support request here, please ask on https://stackoverflow.com/
 </pre>
 
-### Bug description / Feature request:
+### Bug description / Feature request
 <!-- Please describe the bug you're experiencing here, or for feature requests a clear explanation of what you're trying to achieve and your use case -->
 
 ### Minimal reproduction of the problem with instructions
