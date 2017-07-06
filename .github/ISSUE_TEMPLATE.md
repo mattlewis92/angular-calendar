@@ -21,12 +21,12 @@ Please note that issues that ignore this template will be closed without notice!
 
 ## I'm submitting a ...
 <!-- Check one of the following options with "x" -->
-<pre><code>
+<pre>
 [ ] Bug report <!-- Please search github for a similar issue or PR before submitting -->
 [ ] Feature request
 [ ] Documentation issue or request
 [ ] Support request => Please do not submit a support request here, please ask on https://stackoverflow.com/
-</code></pre>
+</pre>
 
 ### Bug description / Feature request:
 <!-- Please describe the bug you're experiencing here, or for feature requests a clear explanation of what you're trying to achieve and your use case -->
