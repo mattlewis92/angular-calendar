@@ -451,7 +451,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>edge:     <code>string</code>
+                                        <code>edge:     <code>void</code>
 </bcode>
                                     </td>
                                 </tr>
@@ -459,7 +459,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>string</code>
+                                            <i>Type : </i>    <code>void</code>
 
                                         </td>
                                     </tr>
@@ -483,7 +483,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>originalOffset:     <code>number</code>
+                                        <code>originalOffset:     <code>void</code>
 </bcode>
                                     </td>
                                 </tr>
@@ -491,7 +491,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>number</code>
+                                            <i>Type : </i>    <code>void</code>
 
                                         </td>
                                     </tr>
@@ -515,7 +515,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>originalSpan:     <code>number</code>
+                                        <code>originalSpan:     <code>void</code>
 </bcode>
                                     </td>
                                 </tr>
@@ -523,7 +523,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>number</code>
+                                            <i>Type : </i>    <code>void</code>
 
                                         </td>
                                     </tr>
@@ -539,6 +539,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import {
@@ -621,6 +622,7 @@ export interface WeekViewEventResize {
             [weekEvent]&#x3D;&quot;weekEvent&quot;
             [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
             [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+            [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
             [customTemplate]&#x3D;&quot;eventTemplate&quot;
             (eventClicked)&#x3D;&quot;eventClicked.emit({event: weekEvent.event})&quot;&gt;
           &lt;/mwl-calendar-week-view-event&gt;
@@ -666,6 +668,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for the event tooltips
    */
   @Input() tooltipTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * Whether to append tooltips to the body or next to the trigger element
+   */
+  @Input() tooltipAppendToBody: boolean &#x3D; true;
 
   /**
    * The start number of the week
