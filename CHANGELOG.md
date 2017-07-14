@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.0"></a>
+# [0.19.0](https://github.com/mattlewis92/angular-calendar/compare/v0.18.3...v0.19.0) (2017-07-14)
+
+
+### Features
+
+* **tooltip:** allow the tooltip not to be appended to the body ([100fd75](https://github.com/mattlewis92/angular-calendar/commit/100fd75)), closes [#270](https://github.com/mattlewis92/angular-calendar/issues/270)
+
+
+
 <a name="0.18.3"></a>
 ## [0.18.3](https://github.com/mattlewis92/angular-calendar/compare/v0.18.2...v0.18.3) (2017-06-28)
 
