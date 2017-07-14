@@ -21,6 +21,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
           [tooltipPlacement]="tooltipPlacement"
           [tooltipEvent]="event"
           [tooltipTemplate]="tooltipTemplate"
+          [tooltipAppendToBody]="tooltipAppendToBody"
           mwlDraggable
           [dropData]="{event: event}"
           [dragAxis]="{x: event.draggable, y: event.draggable}"
@@ -38,7 +39,8 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
         highlightDay: highlightDay,
         unhighlightDay: unhighlightDay,
         eventClicked: eventClicked,
-        tooltipTemplate: tooltipTemplate
+        tooltipTemplate: tooltipTemplate,
+        tooltipAppendToBody: tooltipAppendToBody
       }">
     </ng-template>
   `,
@@ -64,6 +66,8 @@ export class CalendarMonthCellComponent {
   @Input() locale: string;
 
   @Input() tooltipPlacement: string;
+
+  @Input() tooltipAppendToBody: boolean;
 
   @Input() customTemplate: TemplateRef<any>;
 

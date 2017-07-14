@@ -61,6 +61,8 @@ export class CalendarTooltipDirective implements OnDestroy {
 
   @Input('tooltipEvent') event: CalendarEvent; // tslint:disable-line no-input-rename
 
+  @Input('tooltipAppendToBody') appendToBody: boolean; // tslint:disable-line no-input-rename
+
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
   private positioning: Positioning = new Positioning();
@@ -97,7 +99,9 @@ export class CalendarTooltipDirective implements OnDestroy {
       this.tooltipRef.instance.placement = this.placement;
       this.tooltipRef.instance.customTemplate = this.customTemplate;
       this.tooltipRef.instance.event = this.event;
-      this.document.body.appendChild(this.tooltipRef.location.nativeElement);
+      if (this.appendToBody) {
+        this.document.body.appendChild(this.tooltipRef.location.nativeElement);
+      }
       requestAnimationFrame(() => {
         this.positionTooltip();
       });
@@ -114,7 +118,10 @@ export class CalendarTooltipDirective implements OnDestroy {
   private positionTooltip(): void {
     if (this.tooltipRef) {
       const targetPosition: ClientRect = this.positioning.positionElements(
-        this.elementRef.nativeElement, this.tooltipRef.location.nativeElement.children[0], this.placement, true
+        this.elementRef.nativeElement,
+        this.tooltipRef.location.nativeElement.children[0],
+        this.placement,
+        this.appendToBody
       );
 
       const elm: HTMLElement = this.tooltipRef.location.nativeElement.children[0];

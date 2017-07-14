@@ -6,7 +6,15 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
+  styles: [`
+    .fill-height {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  `]
 })
 export class DemoComponent {
 
