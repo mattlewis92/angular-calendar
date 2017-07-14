@@ -15,7 +15,8 @@ import { DayViewEvent } from 'calendar-utils';
         [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:'dayTooltip':dayEvent.event"
         [tooltipPlacement]="tooltipPlacement"
         [tooltipEvent]="dayEvent.event"
-        [tooltipTemplate]="tooltipTemplate">
+        [tooltipTemplate]="tooltipTemplate"
+        [tooltipAppendToBody]="tooltipAppendToBody">
         <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="dayEvent.event"
@@ -30,7 +31,8 @@ import { DayViewEvent } from 'calendar-utils';
         dayEvent: dayEvent,
         tooltipPlacement: tooltipPlacement,
         eventClicked: eventClicked,
-        tooltipTemplate: tooltipTemplate
+        tooltipTemplate: tooltipTemplate,
+        tooltipAppendToBody: tooltipAppendToBody
       }">
     </ng-template>
   `
@@ -40,6 +42,8 @@ export class CalendarDayViewEventComponent {
   @Input() dayEvent: DayViewEvent;
 
   @Input() tooltipPlacement: string;
+
+  @Input() tooltipAppendToBody: boolean;
 
   @Input() customTemplate: TemplateRef<any>;
 

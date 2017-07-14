@@ -14,7 +14,8 @@ import { WeekViewEvent } from 'calendar-utils';
         [mwlCalendarTooltip]="weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event"
         [tooltipPlacement]="tooltipPlacement"
         [tooltipEvent]="weekEvent.event"
-        [tooltipTemplate]="tooltipTemplate">
+        [tooltipTemplate]="tooltipTemplate"
+        [tooltipAppendToBody]="tooltipAppendToBody">
         <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="weekEvent.event"
@@ -29,7 +30,8 @@ import { WeekViewEvent } from 'calendar-utils';
         weekEvent: weekEvent,
         tooltipPlacement: tooltipPlacement,
         eventClicked: eventClicked,
-        tooltipTemplate: tooltipTemplate
+        tooltipTemplate: tooltipTemplate,
+        tooltipAppendToBody: tooltipAppendToBody
       }">
     </ng-template>
   `
@@ -39,6 +41,8 @@ export class CalendarWeekViewEventComponent {
   @Input() weekEvent: WeekViewEvent;
 
   @Input() tooltipPlacement: string;
+
+  @Input() tooltipAppendToBody: boolean;
 
   @Input() customTemplate: TemplateRef<any>;
 

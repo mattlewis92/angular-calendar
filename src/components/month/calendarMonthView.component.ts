@@ -61,6 +61,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [openDay]="openDay"
               [locale]="locale"
               [tooltipPlacement]="tooltipPlacement"
+              [tooltipAppendToBody]="tooltipAppendToBody"
               [tooltipTemplate]="tooltipTemplate"
               [customTemplate]="cellTemplate"
               (click)="dayClicked.emit({day: day})"
@@ -126,6 +127,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * A custom template to use for the event tooltips
    */
   @Input() tooltipTemplate: TemplateRef<any>;
+
+  /**
+   * Whether to append tooltips to the body or next to the trigger element
+   */
+  @Input() tooltipAppendToBody: boolean = true;
 
   /**
    * The start number of the week

@@ -94,6 +94,7 @@ export interface DayViewEventResize {
               [dayEvent]="dayEvent"
               [tooltipPlacement]="tooltipPlacement"
               [tooltipTemplate]="tooltipTemplate"
+              [tooltipAppendToBody]="tooltipAppendToBody"
               [customTemplate]="eventTemplate"
               (eventClicked)="eventClicked.emit({event: dayEvent.event})">
             </mwl-calendar-day-view-event>
@@ -184,6 +185,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for the event tooltips
    */
   @Input() tooltipTemplate: TemplateRef<any>;
+
+  /**
+   * Whether to append tooltips to the body or next to the trigger element
+   */
+  @Input() tooltipAppendToBody: boolean = true;
 
   /**
    * A custom template to use to replace the hour segment
