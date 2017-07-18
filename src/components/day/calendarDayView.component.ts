@@ -414,16 +414,16 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.view = this.utils.getDayView({
       events: this.events,
       viewDate: this.viewDate,
-      hourSegments: this.hourSegments,
+      hourSegments: +this.hourSegments,
       dayStart: {
-        hour: this.dayStartHour,
-        minute: this.dayStartMinute
+        hour: +this.dayStartHour,
+        minute: +this.dayStartMinute
       },
       dayEnd: {
-        hour: this.dayEndHour,
-        minute: this.dayEndMinute
+        hour: +this.dayEndHour,
+        minute: +this.dayEndMinute
       },
-      eventWidth: this.eventWidth,
+      eventWidth: +this.eventWidth,
       segmentHeight: SEGMENT_HEIGHT
     });
   }
