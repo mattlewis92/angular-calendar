@@ -19,23 +19,12 @@ import 'intl/locale-data/jsonp/de';
 import 'moment/locale/de';
 import 'moment/locale/en-ca';
 import { use } from 'chai';
-import * as sinon from 'sinon';
 import * as sinonChai from 'sinon-chai';
 import { TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 use(sinonChai);
 TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
-
-let rafStub: sinon.SinonStub;
-beforeEach(() => {
-  // TODO - delete this once zone.js v0.8.13 lands
-  rafStub = sinon.stub(window, 'requestAnimationFrame').callsArgAsync(0);
-});
-
-afterEach(() => {
-  rafStub.restore();
-});
 
 declare const require: any;
 const testsContext: any = require.context('./', true, /\.spec/);
