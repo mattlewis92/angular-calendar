@@ -12,11 +12,7 @@ import { DemoComponent } from './component';
     CalendarModule.forRoot(),
     DemoUtilsModule
   ],
-  declarations: [
-    DemoComponent
-  ],
-  exports: [
-    DemoComponent
-  ]
+  declarations: [DemoComponent],
+  exports: [DemoComponent]
 })
 export class DemoModule {}

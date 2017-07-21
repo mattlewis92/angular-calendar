@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation
+} from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 import {
   subMonths,
@@ -58,7 +62,6 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   encapsulation: ViewEncapsulation.None
 })
 export class DemoComponent {
-
   view: CalendarPeriod = 'month';
 
   viewDate: Date = new Date();
@@ -104,8 +107,12 @@ export class DemoComponent {
   }
 
   dateOrViewChanged(): void {
-    this.prevBtnDisabled = !this.dateIsValid(endOfPeriod(this.view, subPeriod(this.view, this.viewDate, 1)));
-    this.nextBtnDisabled = !this.dateIsValid(startOfPeriod(this.view, addPeriod(this.view, this.viewDate, 1)));
+    this.prevBtnDisabled = !this.dateIsValid(
+      endOfPeriod(this.view, subPeriod(this.view, this.viewDate, 1))
+    );
+    this.nextBtnDisabled = !this.dateIsValid(
+      startOfPeriod(this.view, addPeriod(this.view, this.viewDate, 1))
+    );
     if (this.viewDate < this.minDate) {
       this.changeDate(this.minDate);
     } else if (this.viewDate > this.maxDate) {
@@ -113,13 +120,11 @@ export class DemoComponent {
     }
   }
 
-  beforeMonthViewRender({body}: {body: CalendarMonthViewDay[]}): void {
-    body.forEach((day) => {
+  beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+    body.forEach(day => {
       if (!this.dateIsValid(day.date)) {
         day.cssClass = 'cal-disabled';
       }
     });
   }
-
 }
-

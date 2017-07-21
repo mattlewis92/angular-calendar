@@ -83,198 +83,234 @@ import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
     contextMenu.DemoModule,
     weekViewMinutePrecision.DemoModule,
     extraMonthViewWeeks.DemoModule,
-    RouterModule.forRoot([{
-      path: 'kitchen-sink',
-      component: kitchenSink.DemoComponent,
-      data: {
-        label: 'Kitchen sink'
+    RouterModule.forRoot(
+      [
+        {
+          path: 'kitchen-sink',
+          component: kitchenSink.DemoComponent,
+          data: {
+            label: 'Kitchen sink'
+          }
+        },
+        {
+          path: 'async-events',
+          component: asyncEvents.DemoComponent,
+          data: {
+            label: 'Async events'
+          }
+        },
+        {
+          path: 'optional-event-end-dates',
+          component: optionalEventEndDates.DemoComponent,
+          data: {
+            label: 'Optional event end dates'
+          }
+        },
+        {
+          path: 'editable-deletable-events',
+          component: editableDeletableEvents.DemoComponent,
+          data: {
+            label: 'Editable / deletable events'
+          }
+        },
+        {
+          path: 'draggable-events',
+          component: draggableEvents.DemoComponent,
+          data: {
+            label: 'Draggable events'
+          }
+        },
+        {
+          path: 'resizable-events',
+          component: resizableEvents.DemoComponent,
+          data: {
+            label: 'Resizable events'
+          }
+        },
+        {
+          path: 'month-view-badge-total',
+          component: monthViewBadgeTotal.DemoComponent,
+          data: {
+            label: 'Month view badge total'
+          }
+        },
+        {
+          path: 'recurring-events',
+          component: recurringEvents.DemoComponent,
+          data: {
+            label: 'Recurring events'
+          }
+        },
+        {
+          path: 'custom-event-class',
+          component: customEventClass.DemoComponent,
+          data: {
+            label: 'Custom event class'
+          }
+        },
+        {
+          path: 'clickable-events',
+          component: clickableEvents.DemoComponent,
+          data: {
+            label: 'Clickable events'
+          }
+        },
+        {
+          path: 'clickable-days',
+          component: clickableDays.DemoComponent,
+          data: {
+            label: 'Clickable days'
+          }
+        },
+        {
+          path: 'day-view-start-end',
+          component: dayViewStartEnd.DemoComponent,
+          data: {
+            label: 'Day view start / end time'
+          }
+        },
+        {
+          path: 'day-view-hour-split',
+          component: dayViewHourSplit.DemoComponent,
+          data: {
+            label: 'Day view hour split'
+          }
+        },
+        {
+          path: 'navigating-between-views',
+          component: navigatingBetweenViews.DemoComponent,
+          data: {
+            label: 'Navigating between views'
+          }
+        },
+        {
+          path: 'before-view-render',
+          component: beforeViewRender.DemoComponent,
+          data: {
+            label: 'Before view render'
+          }
+        },
+        {
+          path: 'exclude-days',
+          component: excludeDays.DemoComponent,
+          data: {
+            label: 'Exclude Weekends'
+          }
+        },
+        {
+          path: 'i18n',
+          component: i18n.DemoComponent,
+          data: {
+            label: 'Internationalisation'
+          }
+        },
+        {
+          path: 'draggable-external-events',
+          component: draggableExternalEvents.DemoComponent,
+          data: {
+            label: 'Draggable external events'
+          }
+        },
+        {
+          path: 'all-day-events',
+          component: allDayEvents.DemoComponent,
+          data: {
+            label: 'All day events'
+          }
+        },
+        {
+          path: 'customise-date-formats',
+          component: customiseDateFormats.DemoComponent,
+          data: {
+            label: 'Customise date formats'
+          }
+        },
+        {
+          path: 'show-dates-on-titles',
+          component: showDatesOnTitles.DemoComponent,
+          data: {
+            label: 'Show dates on title'
+          }
+        },
+        {
+          path: 'disable-tooltips',
+          component: disableTooltips.DemoComponent,
+          data: {
+            label: 'Disable tooltips'
+          }
+        },
+        {
+          path: 'additional-event-properties',
+          component: additionalEventProperties.DemoComponent,
+          data: {
+            label: 'Additional event properties'
+          }
+        },
+        {
+          path: 'selectable-month-day',
+          component: selectableMonthDay.DemoComponent,
+          data: {
+            label: 'Selectable month day'
+          }
+        },
+        {
+          path: 'min-max-date',
+          component: minMaxDate.DemoComponent,
+          data: {
+            label: 'Min max date'
+          }
+        },
+        {
+          path: 'refreshing-the-view',
+          component: refreshingTheView.DemoComponent,
+          data: {
+            label: 'Refreshing the view'
+          }
+        },
+        {
+          path: 'custom-templates',
+          component: customTemplates.DemoComponent,
+          data: {
+            label: 'Custom templates'
+          }
+        },
+        {
+          path: 'group-month-view-events',
+          component: groupMonthViewEvents.DemoComponent,
+          data: {
+            label: 'Group month view events'
+          }
+        },
+        {
+          path: 'context-menu',
+          component: contextMenu.DemoComponent,
+          data: {
+            label: 'Context menu'
+          }
+        },
+        {
+          path: 'week-view-minute-precision',
+          component: weekViewMinutePrecision.DemoComponent,
+          data: {
+            label: 'Week view minute precision'
+          }
+        },
+        {
+          path: 'extra-month-view-weeks',
+          component: extraMonthViewWeeks.DemoComponent,
+          data: {
+            label: 'Extra month view weeks'
+          }
+        },
+        {
+          path: '**',
+          redirectTo: 'kitchen-sink'
+        }
+      ],
+      {
+        useHash: true
       }
-    }, {
-      path: 'async-events',
-      component: asyncEvents.DemoComponent,
-      data: {
-        label: 'Async events'
-      }
-    }, {
-      path: 'optional-event-end-dates',
-      component: optionalEventEndDates.DemoComponent,
-      data: {
-        label: 'Optional event end dates'
-      }
-    }, {
-      path: 'editable-deletable-events',
-      component: editableDeletableEvents.DemoComponent,
-      data: {
-        label: 'Editable / deletable events'
-      }
-    }, {
-      path: 'draggable-events',
-      component: draggableEvents.DemoComponent,
-      data: {
-        label: 'Draggable events'
-      }
-    }, {
-      path: 'resizable-events',
-      component: resizableEvents.DemoComponent,
-      data: {
-        label: 'Resizable events'
-      }
-    }, {
-      path: 'month-view-badge-total',
-      component: monthViewBadgeTotal.DemoComponent,
-      data: {
-        label: 'Month view badge total'
-      }
-    }, {
-      path: 'recurring-events',
-      component: recurringEvents.DemoComponent,
-      data: {
-        label: 'Recurring events'
-      }
-    }, {
-      path: 'custom-event-class',
-      component: customEventClass.DemoComponent,
-      data: {
-        label: 'Custom event class'
-      }
-    }, {
-      path: 'clickable-events',
-      component: clickableEvents.DemoComponent,
-      data: {
-        label: 'Clickable events'
-      }
-    }, {
-      path: 'clickable-days',
-      component: clickableDays.DemoComponent,
-      data: {
-        label: 'Clickable days'
-      }
-    }, {
-      path: 'day-view-start-end',
-      component: dayViewStartEnd.DemoComponent,
-      data: {
-        label: 'Day view start / end time'
-      }
-    }, {
-      path: 'day-view-hour-split',
-      component: dayViewHourSplit.DemoComponent,
-      data: {
-        label: 'Day view hour split'
-      }
-    }, {
-      path: 'navigating-between-views',
-      component: navigatingBetweenViews.DemoComponent,
-      data: {
-        label: 'Navigating between views'
-      }
-    }, {
-      path: 'before-view-render',
-      component: beforeViewRender.DemoComponent,
-      data: {
-        label: 'Before view render'
-      }
-    }, {
-      path: 'exclude-days',
-      component: excludeDays.DemoComponent,
-      data: {
-        label: 'Exclude Weekends'
-      }
-    }, {
-      path: 'i18n',
-      component: i18n.DemoComponent,
-      data: {
-        label: 'Internationalisation'
-      }
-    }, {
-      path: 'draggable-external-events',
-      component: draggableExternalEvents.DemoComponent,
-      data: {
-        label: 'Draggable external events'
-      }
-    }, {
-      path: 'all-day-events',
-      component: allDayEvents.DemoComponent,
-      data: {
-        label: 'All day events'
-      }
-    }, {
-      path: 'customise-date-formats',
-      component: customiseDateFormats.DemoComponent,
-      data: {
-        label: 'Customise date formats'
-      }
-    }, {
-      path: 'show-dates-on-titles',
-      component: showDatesOnTitles.DemoComponent,
-      data: {
-        label: 'Show dates on title'
-      }
-    }, {
-      path: 'disable-tooltips',
-      component: disableTooltips.DemoComponent,
-      data: {
-        label: 'Disable tooltips'
-      }
-    }, {
-      path: 'additional-event-properties',
-      component: additionalEventProperties.DemoComponent,
-      data: {
-        label: 'Additional event properties'
-      }
-    }, {
-      path: 'selectable-month-day',
-      component: selectableMonthDay.DemoComponent,
-      data: {
-        label: 'Selectable month day'
-      }
-    }, {
-      path: 'min-max-date',
-      component: minMaxDate.DemoComponent,
-      data: {
-        label: 'Min max date'
-      }
-    }, {
-      path: 'refreshing-the-view',
-      component: refreshingTheView.DemoComponent,
-      data: {
-        label: 'Refreshing the view'
-      }
-    }, {
-      path: 'custom-templates',
-      component: customTemplates.DemoComponent,
-      data: {
-        label: 'Custom templates'
-      }
-    }, {
-      path: 'group-month-view-events',
-      component: groupMonthViewEvents.DemoComponent,
-      data: {
-        label: 'Group month view events'
-      }
-    }, {
-      path: 'context-menu',
-      component: contextMenu.DemoComponent,
-      data: {
-        label: 'Context menu'
-      }
-    }, {
-      path: 'week-view-minute-precision',
-      component: weekViewMinutePrecision.DemoComponent,
-      data: {
-        label: 'Week view minute precision'
-      }
-    }, {
-      path: 'extra-month-view-weeks',
-      component: extraMonthViewWeeks.DemoComponent,
-      data: {
-        label: 'Extra month view weeks'
-      }
-    }, {
-      path: '**',
-      redirectTo: 'kitchen-sink'
-    }], {
-      useHash: true
-    })
+    )
   ],
   bootstrap: [DemoAppComponent]
 })

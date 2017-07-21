@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation
+} from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
@@ -8,24 +12,25 @@ import { colors } from '../demo-utils/colors';
   encapsulation: ViewEncapsulation.None, // hack to get the styles to apply locally
   templateUrl: 'template.html',
   // you should really include this CSS in your global stylesheet
-  styles: [`
+  styles: [
+    `
    .my-custom-class a {
      color: #FF3D7F !important;
    }
-  `]
+  `
+  ]
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [{
-    title: 'Has custom class',
-    color: colors.yellow,
-    start: new Date(),
-    cssClass: 'my-custom-class'
-  }];
-
+  events: CalendarEvent[] = [
+    {
+      title: 'Has custom class',
+      color: colors.yellow,
+      start: new Date(),
+      cssClass: 'my-custom-class'
+    }
+  ];
 }
-

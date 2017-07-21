@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation
+} from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 import { Subject } from 'rxjs/Subject';
 
@@ -10,17 +14,18 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   templateUrl: 'template.html',
-  styles: [`
+  styles: [
+    `
     .red-cell {
       background-color: red !important;
     }
     .blue-cell {
       background-color: blue !important;
     }
-  `]
+  `
+  ]
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
@@ -36,13 +41,11 @@ export class DemoComponent {
     this.refresh.next();
   }
 
-  beforeMonthViewRender({body}: {body: CalendarMonthViewDay[]}): void {
-    body.forEach((day) => {
+  beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+    body.forEach(day => {
       if (day.date.getDate() % 2 === 1) {
         day.cssClass = this.cssClass;
       }
     });
   }
-
 }
-

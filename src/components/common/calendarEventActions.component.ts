@@ -17,7 +17,5 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarEventActionsComponent {
-
   @Input() event: CalendarEvent;
-
 }

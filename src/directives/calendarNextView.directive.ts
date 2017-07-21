@@ -1,4 +1,10 @@
-import { Directive, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import addDays from 'date-fns/add_days';
 import addWeeks from 'date-fns/add_weeks';
 import addMonths from 'date-fns/add_months';
@@ -19,7 +25,6 @@ import addMonths from 'date-fns/add_months';
   selector: '[mwlCalendarNextView]'
 })
 export class CalendarNextViewDirective {
-
   /**
    * The current view
    */
@@ -40,7 +45,6 @@ export class CalendarNextViewDirective {
    */
   @HostListener('click')
   onClick(): void {
-
     const addFn: any = {
       day: addDays,
       week: addWeeks,
@@ -48,7 +52,5 @@ export class CalendarNextViewDirective {
     }[this.view];
 
     this.viewDateChange.emit(addFn(this.viewDate, 1));
-
   }
-
 }

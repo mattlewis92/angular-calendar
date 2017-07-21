@@ -12,9 +12,7 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarEventTitleComponent {
-
   @Input() event: CalendarEvent;
 
   @Input() view: string;
-
 }

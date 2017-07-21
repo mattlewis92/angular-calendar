@@ -88,7 +88,6 @@ export interface WeekViewEventResize {
   `
 })
 export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
-
   /**
    * The current view date
    */
@@ -159,23 +158,33 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
    */
-  @Output() dayHeaderClicked: EventEmitter<{day: WeekDay}> = new EventEmitter<{day: WeekDay}>();
+  @Output()
+  dayHeaderClicked: EventEmitter<{ day: WeekDay }> = new EventEmitter<{
+    day: WeekDay;
+  }>();
 
   /**
    * Called when the event title is clicked
    */
-  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+  @Output()
+  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+    event: CalendarEvent;
+  }>();
 
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
+  @Output()
+  eventTimesChanged: EventEmitter<
+    CalendarEventTimesChangedEvent
+  > = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * An output that will be called before the view is rendered for the current week.
    * If you add the `cssClass` property to a day in the header it will add that class to the cell element in the template
    */
-  @Output() beforeViewRender: EventEmitter<{header: WeekDay[]}> = new EventEmitter();
+  @Output()
+  beforeViewRender: EventEmitter<{ header: WeekDay[] }> = new EventEmitter();
 
   /**
    * @hidden
@@ -200,17 +209,21 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  validateDrag: Function;
+  validateDrag: (args: any) => boolean;
 
   /**
    * @hidden
    */
-  validateResize: Function;
+  validateResize: (args: any) => boolean;
 
   /**
    * @hidden
    */
-  constructor(private cdr: ChangeDetectorRef, private utils: CalendarUtils, @Inject(LOCALE_ID) locale: string) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private utils: CalendarUtils,
+    @Inject(LOCALE_ID) locale: string
+  ) {
     this.locale = locale;
   }
 
@@ -230,7 +243,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-
     if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
       this.refreshHeader();
     }
@@ -238,7 +250,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (changes.events || changes.viewDate || changes.excludeDays) {
       this.refreshBody();
     }
-
   }
 
   /**
@@ -253,23 +264,36 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  resizeStarted(weekViewContainer: HTMLElement, weekEvent: WeekViewEvent, resizeEvent: ResizeEvent): void {
+  resizeStarted(
+    weekViewContainer: HTMLElement,
+    weekEvent: WeekViewEvent,
+    resizeEvent: ResizeEvent
+  ): void {
     this.currentResizes.set(weekEvent, {
       originalOffset: weekEvent.offset,
       originalSpan: weekEvent.span,
       edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right'
     });
-    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(weekViewContainer, this.getDayColumnWidth(weekViewContainer));
-    this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
+    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
+      weekViewContainer,
+      this.getDayColumnWidth(weekViewContainer)
+    );
+    this.validateResize = ({ rectangle }) =>
+      resizeHelper.validateResize({ rectangle });
     this.cdr.markForCheck();
   }
 
   /**
    * @hidden
    */
-  resizing(weekEvent: WeekViewEvent, resizeEvent: ResizeEvent, dayWidth: number): void {
-
-    const currentResize: WeekViewEventResize = this.currentResizes.get(weekEvent);
+  resizing(
+    weekEvent: WeekViewEvent,
+    resizeEvent: ResizeEvent,
+    dayWidth: number
+  ): void {
+    const currentResize: WeekViewEventResize = this.currentResizes.get(
+      weekEvent
+    );
 
     if (resizeEvent.edges.left) {
       const diff: number = Math.round(+resizeEvent.edges.left / dayWidth);
@@ -279,15 +303,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const diff: number = Math.round(+resizeEvent.edges.right / dayWidth);
       weekEvent.span = currentResize.originalSpan + diff;
     }
-
   }
 
   /**
    * @hidden
    */
   resizeEnded(weekEvent: WeekViewEvent): void {
-
-    const currentResize: WeekViewEventResize = this.currentResizes.get(weekEvent);
+    const currentResize: WeekViewEventResize = this.currentResizes.get(
+      weekEvent
+    );
 
     let daysDiff: number;
     if (currentResize.edge === 'left') {
@@ -307,16 +331,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       newEnd = addDays(newEnd, daysDiff);
     }
 
-    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
+    this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
     this.currentResizes.delete(weekEvent);
-
   }
 
   /**
    * @hidden
    */
-  eventDragged(weekEvent: WeekViewEvent, draggedByPx: number, dayWidth: number): void {
-
+  eventDragged(
+    weekEvent: WeekViewEvent,
+    draggedByPx: number,
+    dayWidth: number
+  ): void {
     const daysDragged: number = draggedByPx / dayWidth;
     const newStart: Date = addDays(weekEvent.event.start, daysDragged);
     let newEnd: Date;
@@ -324,8 +350,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       newEnd = addDays(weekEvent.event.end, daysDragged);
     }
 
-    this.eventTimesChanged.emit({newStart, newEnd, event: weekEvent.event});
-
+    this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
   }
 
   /**
@@ -339,8 +364,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
-    const dragHelper: CalendarDragHelper = new CalendarDragHelper(weekViewContainer, event);
-    this.validateDrag = ({x, y}) => this.currentResizes.size === 0 && dragHelper.validateDrag({x, y});
+    const dragHelper: CalendarDragHelper = new CalendarDragHelper(
+      weekViewContainer,
+      event
+    );
+    this.validateDrag = ({ x, y }) =>
+      this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
     this.cdr.markForCheck();
   }
 
@@ -371,5 +400,4 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.refreshHeader();
     this.refreshBody();
   }
-
 }

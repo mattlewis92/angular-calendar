@@ -8,19 +8,19 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [{
-    title: 'An all day event',
-    color: colors.yellow,
-    start: new Date(),
-    allDay: true
-  }, {
-    title: 'A non all day event',
-    color: colors.blue,
-    start: new Date()
-  }];
-
+  events: CalendarEvent[] = [
+    {
+      title: 'An all day event',
+      color: colors.yellow,
+      start: new Date(),
+      allDay: true
+    },
+    {
+      title: 'A non all day event',
+      color: colors.blue,
+      start: new Date()
+    }
+  ];
 }
-

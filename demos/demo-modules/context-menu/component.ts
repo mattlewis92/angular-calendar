@@ -7,17 +7,18 @@ import { colors } from '../demo-utils/colors';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  styles: [`
+  styles: [
+    `
     .fill-height {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: stretch;
     }
-  `]
+  `
+  ]
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
@@ -34,6 +35,4 @@ export class DemoComponent {
     });
     this.refresh.next();
   }
-
 }
-

@@ -7,12 +7,9 @@ import { CalendarEvent } from 'angular-calendar';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-
   view: string = 'day';
 
   viewDate: Date = new Date();
 
   events: CalendarEvent[] = [];
-
 }
-

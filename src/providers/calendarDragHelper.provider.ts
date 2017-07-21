@@ -1,15 +1,16 @@
 import { isInside } from './util';
 
 export class CalendarDragHelper {
-
   startPosition: ClientRect;
 
-  constructor(private dragContainerElement: HTMLElement, draggableElement: HTMLElement) {
+  constructor(
+    private dragContainerElement: HTMLElement,
+    draggableElement: HTMLElement
+  ) {
     this.startPosition = draggableElement.getBoundingClientRect();
   }
 
-  validateDrag({x, y}: {x: number, y: number}): boolean {
-
+  validateDrag({ x, y }: { x: number; y: number }): boolean {
     const newRect: ClientRect = Object.assign({}, this.startPosition, {
       left: this.startPosition.left + x,
       right: this.startPosition.right + x,
@@ -18,7 +19,5 @@ export class CalendarDragHelper {
     });
 
     return isInside(this.dragContainerElement.getBoundingClientRect(), newRect);
-
   }
-
 }

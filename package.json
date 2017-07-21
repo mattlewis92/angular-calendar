@@ -22,7 +22,15 @@
     "release": "git add package.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
     "postrelease": "npm run build:clean && npm run gh-pages",
     "commitmsg": "validate-commit-msg",
-    "codecov": "cat coverage/lcov.info | codecov"
+    "codecov": "cat coverage/lcov.info | codecov",
+    "prettier": "prettier --single-quote --parser typescript --write",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "{demos,src,test}/**/*.ts": [
+      "npm run prettier",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -93,12 +101,15 @@
     "karma-mocha-reporter": "^2.2.3",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.1",
+    "lint-staged": "^4.0.2",
     "mocha": "^3.4.2",
     "moment": "^2.17.0",
     "ngx-contextmenu": "^1.1.0",
     "node-sass": "^4.5.3",
     "postcss-flexibility": "^2.0.0",
     "postcss-loader": "^2.0.5",
+    "prettier": "^1.5.3",
+    "prettier-loader": "^1.0.1",
     "raw-loader": "^0.5.1",
     "rrule": "^2.1.0",
     "rxjs": "^5.0.1",
@@ -112,7 +123,7 @@
     "stylelint-webpack-plugin": "^0.8.0",
     "ts-node": "^3.0.0",
     "tslint": "^5.4.2",
-    "tslint-eslint-rules": "^4.1.0",
+    "tslint-config-mwl": "^0.1.0",
     "tslint-loader": "^3.5.3",
     "typescript": "~2.4.1",
     "url-loader": "^0.5.7",

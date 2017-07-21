@@ -6,18 +6,17 @@ import { CustomDateFormatter } from './custom-date-formatter.provider';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  providers: [{
-    provide: CalendarDateFormatter,
-    useClass: CustomDateFormatter
-  }]
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter
+    }
+  ]
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
 
   events: CalendarEvent[] = [];
-
 }
-

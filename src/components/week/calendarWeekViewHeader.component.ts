@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef
+} from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
 
 @Component({
@@ -32,15 +38,20 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
   `
 })
 export class CalendarWeekViewHeaderComponent {
-
   @Input() days: WeekDay[];
 
   @Input() locale: string;
 
   @Input() customTemplate: TemplateRef<any>;
 
-  @Output() dayHeaderClicked: EventEmitter<{day: WeekDay}> = new EventEmitter<{day: WeekDay}>();
+  @Output()
+  dayHeaderClicked: EventEmitter<{ day: WeekDay }> = new EventEmitter<{
+    day: WeekDay;
+  }>();
 
-  @Output() eventDropped: EventEmitter<{event: CalendarEvent, newStart: Date}> = new EventEmitter<{event: CalendarEvent, newStart: Date}>();
-
+  @Output()
+  eventDropped: EventEmitter<{
+    event: CalendarEvent;
+    newStart: Date;
+  }> = new EventEmitter<{ event: CalendarEvent; newStart: Date }>();
 }

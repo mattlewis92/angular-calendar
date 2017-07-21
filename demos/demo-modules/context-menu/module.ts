@@ -14,11 +14,7 @@ import { DemoComponent } from './component';
     }),
     DemoUtilsModule
   ],
-  declarations: [
-    DemoComponent
-  ],
-  exports: [
-    DemoComponent
-  ]
+  declarations: [DemoComponent],
+  exports: [DemoComponent]
 })
 export class DemoModule {}

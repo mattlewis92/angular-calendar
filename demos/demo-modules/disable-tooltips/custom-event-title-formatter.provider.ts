@@ -1,7 +1,6 @@
 import { CalendarEventTitleFormatter, CalendarEvent } from 'angular-calendar';
 
 export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
-
   // you can override any of the methods defined in the parent class
 
   monthTooltip(event: CalendarEvent): string {
@@ -15,5 +14,4 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   dayTooltip(event: CalendarEvent): string {
     return;
   }
-
 }

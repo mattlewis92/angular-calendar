@@ -37,7 +37,6 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarTooltipWindowComponent {
-
   @Input() contents: string;
 
   @Input() placement: string;
@@ -45,14 +44,12 @@ export class CalendarTooltipWindowComponent {
   @Input() event: CalendarEvent;
 
   @Input() customTemplate: TemplateRef<any>;
-
 }
 
 @Directive({
   selector: '[mwlCalendarTooltip]'
 })
 export class CalendarTooltipDirective implements OnDestroy {
-
   @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
 
   @Input('tooltipPlacement') placement: string = 'top'; // tslint:disable-line no-input-rename
@@ -75,7 +72,9 @@ export class CalendarTooltipDirective implements OnDestroy {
     private viewContainerRef: ViewContainerRef,
     @Inject(DOCUMENT) private document //tslint:disable-line
   ) {
-    this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(CalendarTooltipWindowComponent);
+    this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
+      CalendarTooltipWindowComponent
+    );
   }
 
   ngOnDestroy(): void {
@@ -94,7 +93,12 @@ export class CalendarTooltipDirective implements OnDestroy {
 
   private show(): void {
     if (!this.tooltipRef && this.contents) {
-      this.tooltipRef = this.viewContainerRef.createComponent(this.tooltipFactory, 0, this.injector, []);
+      this.tooltipRef = this.viewContainerRef.createComponent(
+        this.tooltipFactory,
+        0,
+        this.injector,
+        []
+      );
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.placement = this.placement;
       this.tooltipRef.instance.customTemplate = this.customTemplate;
@@ -110,7 +114,9 @@ export class CalendarTooltipDirective implements OnDestroy {
 
   private hide(): void {
     if (this.tooltipRef) {
-      this.viewContainerRef.remove(this.viewContainerRef.indexOf(this.tooltipRef.hostView));
+      this.viewContainerRef.remove(
+        this.viewContainerRef.indexOf(this.tooltipRef.hostView)
+      );
       this.tooltipRef = null;
     }
   }
@@ -124,11 +130,11 @@ export class CalendarTooltipDirective implements OnDestroy {
         this.appendToBody
       );
 
-      const elm: HTMLElement = this.tooltipRef.location.nativeElement.children[0];
+      const elm: HTMLElement = this.tooltipRef.location.nativeElement
+        .children[0];
 
       this.renderer.setStyle(elm, 'top', `${targetPosition.top}px`);
       this.renderer.setStyle(elm, 'left', `${targetPosition.left}px`);
     }
   }
-
 }

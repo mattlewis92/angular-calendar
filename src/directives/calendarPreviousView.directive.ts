@@ -1,4 +1,10 @@
-import { Directive, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import subDays from 'date-fns/sub_days';
 import subWeeks from 'date-fns/sub_weeks';
 import subMonths from 'date-fns/sub_months';
@@ -19,7 +25,6 @@ import subMonths from 'date-fns/sub_months';
   selector: '[mwlCalendarPreviousView]'
 })
 export class CalendarPreviousViewDirective {
-
   /**
    * The current view
    */
@@ -40,7 +45,6 @@ export class CalendarPreviousViewDirective {
    */
   @HostListener('click')
   onClick(): void {
-
     const subFn: any = {
       day: subDays,
       week: subWeeks,
@@ -48,7 +52,5 @@ export class CalendarPreviousViewDirective {
     }[this.view];
 
     this.viewDateChange.emit(subFn(this.viewDate, 1));
-
   }
-
 }

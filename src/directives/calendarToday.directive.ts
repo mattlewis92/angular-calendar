@@ -1,4 +1,10 @@
-import { Directive, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import startOfToday from 'date-fns/start_of_today';
 
 /**
@@ -16,7 +22,6 @@ import startOfToday from 'date-fns/start_of_today';
   selector: '[mwlCalendarToday]'
 })
 export class CalendarTodayDirective {
-
   /**
    * The current view date
    */
@@ -34,5 +39,4 @@ export class CalendarTodayDirective {
   onClick(): void {
     this.viewDateChange.emit(startOfToday());
   }
-
 }

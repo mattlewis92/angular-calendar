@@ -119,7 +119,6 @@ export interface DayViewEventResize {
   `
 })
 export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
-
   /**
    * The current view date
    */
@@ -209,23 +208,33 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when an event title is clicked
    */
-  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+  @Output()
+  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+    event: CalendarEvent;
+  }>();
 
   /**
    * Called when an hour segment is clicked
    */
-  @Output() hourSegmentClicked: EventEmitter<{date: Date}> = new EventEmitter<{date: Date}>();
+  @Output()
+  hourSegmentClicked: EventEmitter<{ date: Date }> = new EventEmitter<{
+    date: Date;
+  }>();
 
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
+  @Output()
+  eventTimesChanged: EventEmitter<
+    CalendarEventTimesChangedEvent
+  > = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * An output that will be called before the view is rendered for the current day.
    * If you add the `cssClass` property to a segment it will add that class to the hour segment in the template
    */
-  @Output() beforeViewRender: EventEmitter<{body: DayViewHour[]}> = new EventEmitter();
+  @Output()
+  beforeViewRender: EventEmitter<{ body: DayViewHour[] }> = new EventEmitter();
 
   /**
    * @hidden
@@ -255,17 +264,21 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  validateDrag: Function;
+  validateDrag: (args: any) => boolean;
 
   /**
    * @hidden
    */
-  validateResize: Function;
+  validateResize: (args: any) => boolean;
 
   /**
    * @hidden
    */
-  constructor(private cdr: ChangeDetectorRef, private utils: CalendarUtils, @Inject(LOCALE_ID) locale: string) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private utils: CalendarUtils,
+    @Inject(LOCALE_ID) locale: string
+  ) {
     this.locale = locale;
   }
 
@@ -294,7 +307,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-
     if (
       changes.viewDate ||
       changes.dayStartHour ||
@@ -316,23 +328,35 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     ) {
       this.refreshView();
     }
-
   }
 
-  eventDropped(dropEvent: {dropData?: {event?: CalendarEvent}}, segment: DayViewHourSegment): void {
+  eventDropped(
+    dropEvent: { dropData?: { event?: CalendarEvent } },
+    segment: DayViewHourSegment
+  ): void {
     if (dropEvent.dropData && dropEvent.dropData.event) {
-      this.eventTimesChanged.emit({event: dropEvent.dropData.event, newStart: segment.date});
+      this.eventTimesChanged.emit({
+        event: dropEvent.dropData.event,
+        newStart: segment.date
+      });
     }
   }
 
-  resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent, dayViewContainer: HTMLElement): void {
+  resizeStarted(
+    event: DayViewEvent,
+    resizeEvent: ResizeEvent,
+    dayViewContainer: HTMLElement
+  ): void {
     this.currentResizes.set(event, {
       originalTop: event.top,
       originalHeight: event.height,
       edge: typeof resizeEvent.edges.top !== 'undefined' ? 'top' : 'bottom'
     });
-    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(dayViewContainer);
-    this.validateResize = ({rectangle}) => resizeHelper.validateResize({rectangle});
+    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
+      dayViewContainer
+    );
+    this.validateResize = ({ rectangle }) =>
+      resizeHelper.validateResize({ rectangle });
     this.cdr.markForCheck();
   }
 
@@ -347,20 +371,20 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   resizeEnded(dayEvent: DayViewEvent): void {
-
     const currentResize: DayViewEventResize = this.currentResizes.get(dayEvent);
 
     let pixelsMoved: number;
     if (currentResize.edge === 'top') {
-      pixelsMoved = (dayEvent.top - currentResize.originalTop);
+      pixelsMoved = dayEvent.top - currentResize.originalTop;
     } else {
-      pixelsMoved = (dayEvent.height - currentResize.originalHeight);
+      pixelsMoved = dayEvent.height - currentResize.originalHeight;
     }
 
     dayEvent.top = currentResize.originalTop;
     dayEvent.height = currentResize.originalHeight;
 
-    const pixelAmountInMinutes: number = MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+    const pixelAmountInMinutes: number =
+      MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
     const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
@@ -370,26 +394,30 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       newEnd = addMinutes(newEnd, minutesMoved);
     }
 
-    this.eventTimesChanged.emit({newStart, newEnd, event: dayEvent.event});
+    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
     this.currentResizes.delete(dayEvent);
-
   }
 
   dragStart(event: HTMLElement, dayViewContainer: HTMLElement): void {
-    const dragHelper: CalendarDragHelper = new CalendarDragHelper(dayViewContainer, event);
-    this.validateDrag = ({x, y}) => this.currentResizes.size === 0 && dragHelper.validateDrag({x, y});
+    const dragHelper: CalendarDragHelper = new CalendarDragHelper(
+      dayViewContainer,
+      event
+    );
+    this.validateDrag = ({ x, y }) =>
+      this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
     this.cdr.markForCheck();
   }
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
-    const pixelAmountInMinutes: number = MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+    const pixelAmountInMinutes: number =
+      MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
     const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
     const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
     let newEnd: Date;
     if (dayEvent.event.end) {
       newEnd = addMinutes(dayEvent.event.end, minutesMoved);
     }
-    this.eventTimesChanged.emit({newStart, newEnd, event: dayEvent.event});
+    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }
 
   private refreshHourGrid(): void {
@@ -432,5 +460,4 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.refreshHourGrid();
     this.refreshView();
   }
-
 }

@@ -16,7 +16,16 @@ export default {
     rules: [{
       enforce: 'pre',
       test: /\.ts$/,
-      loader: 'tslint-loader?emitErrors=false&failOnHint=false',
+      loader: 'prettier-loader',
+      exclude: /node_modules/,
+      options: {
+        singleQuote: true,
+        parser: 'typescript'
+      }
+    }, {
+      enforce: 'pre',
+      test: /\.ts$/,
+      loader: 'tslint-loader',
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
@@ -37,7 +46,11 @@ export default {
       loader: 'style-loader!css-loader'
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'application/font-woff'
+      }
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file-loader'

@@ -12,11 +12,7 @@ import { DemoComponent } from './component';
     DragAndDropModule,
     DemoUtilsModule
   ],
-  declarations: [
-    DemoComponent
-  ],
-  exports: [
-    DemoComponent
-  ]
+  declarations: [DemoComponent],
+  exports: [DemoComponent]
 })
 export class DemoModule {}

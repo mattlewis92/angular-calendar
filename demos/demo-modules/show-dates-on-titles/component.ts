@@ -7,22 +7,23 @@ import { colors } from '../demo-utils/colors';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  providers: [{
-    provide: CalendarEventTitleFormatter,
-    useClass: CustomEventTitleFormatter
-  }]
+  providers: [
+    {
+      provide: CalendarEventTitleFormatter,
+      useClass: CustomEventTitleFormatter
+    }
+  ]
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [{
-    title: 'An event',
-    start: new Date(),
-    color: colors.red
-  }];
-
+  events: CalendarEvent[] = [
+    {
+      title: 'An event',
+      start: new Date(),
+      color: colors.red
+    }
+  ];
 }
-

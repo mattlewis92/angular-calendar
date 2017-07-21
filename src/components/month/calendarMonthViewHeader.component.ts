@@ -25,11 +25,9 @@ import { WeekDay } from 'calendar-utils';
   `
 })
 export class CalendarMonthViewHeaderComponent {
-
   @Input() days: WeekDay[];
 
   @Input() locale: string;
 
   @Input() customTemplate: TemplateRef<any>;
-
 }

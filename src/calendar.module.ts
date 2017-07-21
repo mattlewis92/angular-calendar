@@ -1,7 +1,10 @@
 import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResizableModule } from 'angular-resizable-element';
-import { DragAndDropModule, DraggableHelper } from 'angular-draggable-droppable';
+import {
+  DragAndDropModule,
+  DraggableHelper
+} from 'angular-draggable-droppable';
 import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
 import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
 import { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';
@@ -15,7 +18,10 @@ import { CalendarWeekViewEventComponent } from './components/week/calendarWeekVi
 import { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';
 import { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';
 import { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';
-import { CalendarTooltipWindowComponent, CalendarTooltipDirective } from './directives/calendarTooltip.directive';
+import {
+  CalendarTooltipWindowComponent,
+  CalendarTooltipDirective
+} from './directives/calendarTooltip.directive';
 import { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';
 import { CalendarNextViewDirective } from './directives/calendarNextView.directive';
 import { CalendarTodayDirective } from './directives/calendarToday.directive';
@@ -71,11 +77,7 @@ export interface CalendarModuleConfig {
     CalendarDayViewEventComponent,
     ClickDirective
   ],
-  imports: [
-    CommonModule,
-    ResizableModule,
-    DragAndDropModule
-  ],
+  imports: [CommonModule, ResizableModule, DragAndDropModule],
   exports: [
     CalendarDayViewComponent,
     CalendarWeekViewComponent,
@@ -99,14 +101,10 @@ export interface CalendarModuleConfig {
     CalendarDayViewEventComponent,
     ClickDirective
   ],
-  entryComponents: [
-    CalendarTooltipWindowComponent
-  ]
+  entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarModule {
-
   static forRoot(config: CalendarModuleConfig = {}): ModuleWithProviders {
-
     return {
       ngModule: CalendarModule,
       providers: [
@@ -116,7 +114,5 @@ export class CalendarModule {
         config.utils || CalendarUtils
       ]
     };
-
   }
-
 }

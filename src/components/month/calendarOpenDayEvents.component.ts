@@ -5,12 +5,7 @@ import {
   EventEmitter,
   TemplateRef
 } from '@angular/core';
-import {
-  trigger,
-  style,
-  transition,
-  animate
-} from '@angular/animations';
+import { trigger, style, transition, animate } from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
@@ -48,24 +43,25 @@ import { CalendarEvent } from 'calendar-utils';
   animations: [
     trigger('collapse', [
       transition('void => *', [
-        style({height: 0}),
-        animate('150ms linear', style({height: '*'}))
+        style({ height: 0 }),
+        animate('150ms linear', style({ height: '*' }))
       ]),
       transition('* => void', [
-        style({height: '*'}),
-        animate('150ms linear', style({height: 0}))
+        style({ height: '*' }),
+        animate('150ms linear', style({ height: 0 }))
       ])
     ])
   ]
 })
 export class CalendarOpenDayEventsComponent {
-
   @Input() isOpen: boolean = false;
 
   @Input() events: CalendarEvent[];
 
   @Input() customTemplate: TemplateRef<any>;
 
-  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
-
+  @Output()
+  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+    event: CalendarEvent;
+  }>();
 }
