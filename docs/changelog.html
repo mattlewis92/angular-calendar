@@ -1,0 +1,1026 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-calendar documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	    <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">angular-calendar documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="./index.html">angular-calendar documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="./overview.html" 
+                                         href="./overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                         class="active" >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="./modules/CalendarModule.html" >CalendarModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="./components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/CalendarWeekViewComponent.html" >CalendarWeekViewComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="./classes/CalendarDateFormatter.html" >CalendarDateFormatter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/CalendarEventTitleFormatter.html" >CalendarEventTitleFormatter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/CalendarMomentDateFormatter.html" >CalendarMomentDateFormatter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/CalendarNativeDateFormatter.html" >CalendarNativeDateFormatter</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/DateFormatterParams.html" >DateFormatterParams</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/DayViewEventResize.html" >DayViewEventResize</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/WeekViewEventResize.html" >WeekViewEventResize</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="./index.html">angular-calendar documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="./overview.html" 
+                                                href="./overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                                class="active" >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="./modules/CalendarModule.html" >CalendarModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="./components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/CalendarWeekViewComponent.html" >CalendarWeekViewComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./classes/CalendarDateFormatter.html" >CalendarDateFormatter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/CalendarEventTitleFormatter.html" >CalendarEventTitleFormatter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/CalendarMomentDateFormatter.html" >CalendarMomentDateFormatter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/CalendarNativeDateFormatter.html" >CalendarNativeDateFormatter</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/DateFormatterParams.html" >DateFormatterParams</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/DayViewEventResize.html" >DayViewEventResize</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/WeekViewEventResize.html" >WeekViewEventResize</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="change-log">Change Log</h1>
+<p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<p><a name="0.19.0"></a></p>
+<h1 id="-0-19-0-https-github-com-mattlewis92-angular-calendar-compare-v0-18-3-v0-19-0-2017-07-14-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.18.3...v0.19.0">0.19.0</a> (2017-07-14)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>tooltip:</strong> allow the tooltip not to be appended to the body (<a href="https://github.com/mattlewis92/angular-calendar/commit/100fd75">100fd75</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/270">#270</a></li>
+</ul>
+<p><a name="0.18.3"></a></p>
+<h2 id="-0-18-3-https-github-com-mattlewis92-angular-calendar-compare-v0-18-2-v0-18-3-2017-06-28-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.18.2...v0.18.3">0.18.3</a> (2017-06-28)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>tooltipTemplate:</strong> ensure custom tooltip template is available to other custom templates (<a href="https://github.com/mattlewis92/angular-calendar/commit/ce14b96">ce14b96</a>)</li>
+</ul>
+<p><a name="0.18.2"></a></p>
+<h2 id="-0-18-2-https-github-com-mattlewis92-angular-calendar-compare-v0-18-1-v0-18-2-2017-06-26-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.18.1...v0.18.2">0.18.2</a> (2017-06-26)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> force hour segments to be 30px in height for non bootstrap users (<a href="https://github.com/mattlewis92/angular-calendar/commit/ffc708b">ffc708b</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/260">#260</a></li>
+</ul>
+<p><a name="0.18.1"></a></p>
+<h2 id="-0-18-1-https-github-com-mattlewis92-angular-calendar-compare-v0-18-0-v0-18-1-2017-06-25-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.18.0...v0.18.1">0.18.1</a> (2017-06-25)</h2>
+<ul>
+<li>Missed a breaking change that wasn&#39;t included in 0.18.0</li>
+</ul>
+<p><a name="0.18.0"></a></p>
+<h1 id="-0-18-0-https-github-com-mattlewis92-angular-calendar-compare-v0-17-4-v0-18-0-2017-06-25-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.17.4...v0.18.0">0.18.0</a> (2017-06-25)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>dayView:</strong> introduce the <code>beforeViewRender</code> output (<a href="https://github.com/mattlewis92/angular-calendar/commit/cfab254">cfab254</a>)</li>
+<li><strong>monthView:</strong> allow a css class to be added to a column header (<a href="https://github.com/mattlewis92/angular-calendar/commit/abf02d8">abf02d8</a>)</li>
+<li><strong>monthView:</strong> introduce the <code>beforeViewRender</code> output (<a href="https://github.com/mattlewis92/angular-calendar/commit/c9a2366">c9a2366</a>)</li>
+<li><strong>tooltip:</strong> allow the event tooltip templates to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/82faaf4">82faaf4</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/249">#249</a></li>
+<li><strong>weekendDays:</strong> allow weekend days to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/581b9a8">581b9a8</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/255">#255</a></li>
+<li><strong>weekView:</strong> allow a custom css class to be added to a column header (<a href="https://github.com/mattlewis92/angular-calendar/commit/068d08b">068d08b</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/222">#222</a></li>
+<li><strong>weekView:</strong> revert allowDragOutside feature (<a href="https://github.com/mattlewis92/angular-calendar/commit/ac70656">ac70656</a>)</li>
+<li>upgrade calendar-utils (<a href="https://github.com/mattlewis92/angular-calendar/commit/0dd602b">0dd602b</a>)</li>
+<li><strong>weekView:</strong> introduce the <code>dayHeaderClicked</code> output (<a href="https://github.com/mattlewis92/angular-calendar/commit/2f11094">2f11094</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/222">#222</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>monthView:</strong> the <code>dayModifier</code> input has been replaced with a more powerful <code>beforeViewRender</code>
+output. See <a href="https://mattlewis92.github.io/angular-calendar/#/before-view-render">the demo</a> for an example of how to migrate your code.</li>
+<li><strong>dayView:</strong> the <code>hourSegmentModifier</code> has been replaced with the <code>beforeViewRender</code> output.</li>
+<li>For system.js users only, the UMD path to the <code>calendar-utils</code> module has changed from <code>calendar-utils/dist/umd/calendarUtils.js</code> to <code>calendar-utils/dist/umd/calendar-utils.js</code></li>
+<li><strong>weekView:</strong> the <code>allowDragOutside</code> option has been removed from the week view as this can be implemented in user land. Please see this plunker for how to introduce it yourself: <a href="http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview">http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview</a></li>
+<li><strong>weekView:</strong> the <code>dayClicked</code> output has been replaced with the <code>dayHeaderClicked</code> output. To migrate:</li>
+</ul>
+<p>Before:</p>
+<pre class="line-numbers"><code class="language-none">(dayClicked)=&quot;clickedDate = $event.date&quot;</code></pre><p>After:</p>
+<pre class="line-numbers"><code class="language-none">(dayHeaderClicked)=&quot;clickedDate = $event.day.date&quot;</code></pre><p><a name="0.17.4"></a></p>
+<h2 id="-0-17-4-https-github-com-mattlewis92-angular-calendar-compare-v0-17-3-v0-17-4-2017-06-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.17.3...v0.17.4">0.17.4</a> (2017-06-21)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>various fixes when excluding days on the week and month views (<a href="https://github.com/mattlewis92/angular-calendar/commit/58ce981">58ce981</a>)</li>
+</ul>
+<p><a name="0.17.3"></a></p>
+<h2 id="-0-17-3-https-github-com-mattlewis92-angular-calendar-compare-v0-17-2-v0-17-3-2017-06-12-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.17.2...v0.17.3">0.17.3</a> (2017-06-12)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>add explicit peer dependency on typescript 2.3.x (<a href="https://github.com/mattlewis92/angular-calendar/commit/3998c9c">3998c9c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/221">#221</a></li>
+</ul>
+<p><a name="0.17.2"></a></p>
+<h2 id="-0-17-2-https-github-com-mattlewis92-angular-calendar-compare-v0-17-1-v0-17-2-2017-06-12-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.17.1...v0.17.2">0.17.2</a> (2017-06-12)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>weekView:</strong> use correct event span when the the week doesn&#39;t start on a sunday (<a href="https://github.com/mattlewis92/angular-calendar/commit/f19e970">f19e970</a>)</li>
+</ul>
+<p><a name="0.17.1"></a></p>
+<h2 id="-0-17-1-https-github-com-mattlewis92-angular-calendar-compare-v0-17-0-v0-17-1-2017-06-10-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.17.0...v0.17.1">0.17.1</a> (2017-06-10)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> allow events to be resized that are next to each other (<a href="https://github.com/mattlewis92/angular-calendar/commit/f627b8e">f627b8e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/225">#225</a></li>
+<li><strong>weekView:</strong> allow events to be resized that are next to each other (<a href="https://github.com/mattlewis92/angular-calendar/commit/01b776c">01b776c</a>)</li>
+</ul>
+<p><a name="0.17.0"></a></p>
+<h1 id="-0-17-0-https-github-com-mattlewis92-angular-calendar-compare-v0-16-0-v0-17-0-2017-05-29-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.16.0...v0.17.0">0.17.0</a> (2017-05-29)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> ensure all day event actions are always visible (<a href="https://github.com/mattlewis92/angular-calendar/commit/132d990">132d990</a>)</li>
+<li><strong>dayView:</strong> ensure event actions are always visible (<a href="https://github.com/mattlewis92/angular-calendar/commit/445b74f">445b74f</a>)</li>
+<li><strong>weekView:</strong> stop events pushing others along when resizing (<a href="https://github.com/mattlewis92/angular-calendar/commit/e6e02c5">e6e02c5</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/191">#191</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>meta:</strong> add <code>CalendarEvent</code> <code>meta</code> property for storing arbritary data (<a href="https://github.com/mattlewis92/angular-calendar/commit/43b0124">43b0124</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/218">#218</a></li>
+<li><strong>meta:</strong> make the event meta property generic so it can be strongly typed (<a href="https://github.com/mattlewis92/angular-calendar/commit/d74c8e8">d74c8e8</a>)</li>
+<li><strong>weekView:</strong> show event actions (<a href="https://github.com/mattlewis92/angular-calendar/commit/7e7af92">7e7af92</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/219">#219</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>Typescript 2.3 or higher is now required to use this library</li>
+</ul>
+<p><a name="0.16.0"></a></p>
+<h1 id="-0-16-0-https-github-com-mattlewis92-angular-calendar-compare-v0-15-4-v0-16-0-2017-05-27-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.15.4...v0.16.0">0.16.0</a> (2017-05-27)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>weekView:</strong> Allow drag outside calendar view (<a href="https://github.com/mattlewis92/angular-calendar/issues/214">#214</a>) (<a href="https://github.com/mattlewis92/angular-calendar/commit/dcff88a">dcff88a</a>)</li>
+</ul>
+<p><a name="0.15.4"></a></p>
+<h2 id="-0-15-4-https-github-com-mattlewis92-angular-calendar-compare-v0-15-3-v0-15-4-2017-05-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.15.3...v0.15.4">0.15.4</a> (2017-05-21)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> ensure events are dropped onto the correct dates (<a href="https://github.com/mattlewis92/angular-calendar/commit/af48ed2">af48ed2</a>)</li>
+</ul>
+<p><a name="0.15.3"></a></p>
+<h2 id="-0-15-3-https-github-com-mattlewis92-angular-calendar-compare-v0-15-2-v0-15-3-2017-05-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.15.2...v0.15.3">0.15.3</a> (2017-05-21)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> fix clicking an event dot when using hammerjs (<a href="https://github.com/mattlewis92/angular-calendar/commit/0a9e9fe">0a9e9fe</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/211">#211</a></li>
+</ul>
+<p><a name="0.15.2"></a></p>
+<h2 id="-0-15-2-https-github-com-mattlewis92-angular-calendar-compare-v0-15-1-v0-15-2-2017-05-18-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.15.1...v0.15.2">0.15.2</a> (2017-05-18)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> preserve classes when removing a days cssClass (<a href="https://github.com/mattlewis92/angular-calendar/commit/a7c902d">a7c902d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/210">#210</a></li>
+</ul>
+<p><a name="0.15.1"></a></p>
+<h2 id="-0-15-1-https-github-com-mattlewis92-angular-calendar-compare-v0-15-0-v0-15-1-2017-05-17-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.15.0...v0.15.1">0.15.1</a> (2017-05-17)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>refresh:</strong> use markForCheck instead of detectChanges (<a href="https://github.com/mattlewis92/angular-calendar/commit/16dc938">16dc938</a>)</li>
+</ul>
+<p><a name="0.15.0"></a></p>
+<h1 id="-0-15-0-https-github-com-mattlewis92-angular-calendar-compare-v0-14-0-v0-15-0-2017-05-14-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.14.0...v0.15.0">0.15.0</a> (2017-05-14)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> correct events dimensions for apps without bootstrap (<a href="https://github.com/mattlewis92/angular-calendar/commit/977c344">977c344</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/201">#201</a></li>
+<li><strong>tooltip:</strong> avoid ExpressionChangedAfterItHasBeenCheckedError when sometimes showing the tooltip (<a href="https://github.com/mattlewis92/angular-calendar/commit/f9776c6">f9776c6</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/196">#196</a></li>
+<li><strong>tooltip:</strong> position the tooltip correctly when using AoT (<a href="https://github.com/mattlewis92/angular-calendar/commit/4531ebc">4531ebc</a>)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>touch:</strong> use tap event instead of click if hammerjs is loaded (<a href="https://github.com/mattlewis92/angular-calendar/commit/665520e">665520e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/203">#203</a></li>
+<li>allow calendar-utils functions to be overridden (<a href="https://github.com/mattlewis92/angular-calendar/commit/35ae95a">35ae95a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/199">#199</a></li>
+<li>allow overriding of providers via the calendar modules forRoot method (<a href="https://github.com/mattlewis92/angular-calendar/commit/847212e">847212e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/205">#205</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>if not using <code>CalendarModule.forRoot()</code> you must explicitly add the <code>CalendarUtils</code>
+provider to your module declaration</li>
+</ul>
+<p><a name="0.14.0"></a></p>
+<h1 id="-0-14-0-https-github-com-mattlewis92-angular-calendar-compare-v0-13-6-v0-14-0-2017-04-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.6...v0.14.0">0.14.0</a> (2017-04-21)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>weekView:</strong> add support for minute level precision on week view events (<a href="https://github.com/mattlewis92/angular-calendar/commit/25d6933">25d6933</a>)</li>
+</ul>
+<p><a name="0.13.6"></a></p>
+<h2 id="-0-13-6-https-github-com-mattlewis92-angular-calendar-compare-v0-13-5-v0-13-6-2017-04-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.5...v0.13.6">0.13.6</a> (2017-04-21)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> respect eventSnapSize when dragging events (<a href="https://github.com/mattlewis92/angular-calendar/commit/028005f">028005f</a>)</li>
+<li><strong>dayView:</strong> respect eventSnapSize when resizing events (<a href="https://github.com/mattlewis92/angular-calendar/commit/c0be926">c0be926</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/188">#188</a></li>
+</ul>
+<p><a name="0.13.5"></a></p>
+<h2 id="-0-13-5-https-github-com-mattlewis92-angular-calendar-compare-v0-13-4-v0-13-5-2017-04-14-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.4...v0.13.5">0.13.5</a> (2017-04-14)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>draggable:</strong> ensure text isnt selected on firefox (<a href="https://github.com/mattlewis92/angular-calendar/commit/ac26e14">ac26e14</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/183">#183</a></li>
+</ul>
+<p><a name="0.13.4"></a></p>
+<h2 id="-0-13-4-https-github-com-mattlewis92-angular-calendar-compare-v0-13-3-v0-13-4-2017-04-10-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.3...v0.13.4">0.13.4</a> (2017-04-10)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> fix resizing of events (<a href="https://github.com/mattlewis92/angular-calendar/commit/18b573f">18b573f</a>)</li>
+</ul>
+<p><a name="0.13.3"></a></p>
+<h2 id="-0-13-3-https-github-com-mattlewis92-angular-calendar-compare-v0-13-2-v0-13-3-2017-04-10-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.2...v0.13.3">0.13.3</a> (2017-04-10)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> allow all events to be clicked (<a href="https://github.com/mattlewis92/angular-calendar/commit/c1c165d">c1c165d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/179">#179</a></li>
+</ul>
+<p><a name="0.13.2"></a></p>
+<h2 id="-0-13-2-https-github-com-mattlewis92-angular-calendar-compare-v0-13-1-v0-13-2-2017-04-10-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.1...v0.13.2">0.13.2</a> (2017-04-10)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> handle DST changes in the middle of the month (<a href="https://github.com/mattlewis92/angular-calendar/commit/fcbca8a">fcbca8a</a>)</li>
+</ul>
+<p><a name="0.13.1"></a></p>
+<h2 id="-0-13-1-https-github-com-mattlewis92-angular-calendar-compare-v0-13-0-v0-13-1-2017-04-09-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.13.0...v0.13.1">0.13.1</a> (2017-04-09)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> handle DST changes in the middle of the current month (<a href="https://github.com/mattlewis92/angular-calendar/commit/28b4be2">28b4be2</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/173">#173</a></li>
+</ul>
+<p><a name="0.13.0"></a></p>
+<h1 id="-0-13-0-https-github-com-mattlewis92-angular-calendar-compare-v0-12-0-v0-13-0-2017-04-07-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.12.0...v0.13.0">0.13.0</a> (2017-04-07)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>dayView:</strong> allow the day view event template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/be4d5ee">be4d5ee</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/178">#178</a></li>
+</ul>
+<p><a name="0.12.0"></a></p>
+<h1 id="-0-12-0-https-github-com-mattlewis92-angular-calendar-compare-v0-11-0-v0-12-0-2017-04-05-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.11.0...v0.12.0">0.12.0</a> (2017-04-05)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>dayView:</strong> allow the all day event template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/d542d13">d542d13</a>)</li>
+<li><strong>dayView:</strong> allow the hour segment template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/149b605">149b605</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/172">#172</a></li>
+</ul>
+<p><a name="0.11.0"></a></p>
+<h1 id="-0-11-0-https-github-com-mattlewis92-angular-calendar-compare-v0-10-1-v0-11-0-2017-03-29-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.10.1...v0.11.0">0.11.0</a> (2017-03-29)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>weekView:</strong> allow the event template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/0be434d">0be434d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/171">#171</a></li>
+</ul>
+<p><a name="0.10.1"></a></p>
+<h2 id="-0-10-1-https-github-com-mattlewis92-angular-calendar-compare-v0-10-0-v0-10-1-2017-03-25-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.10.0...v0.10.1">0.10.1</a> (2017-03-25)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>allow events array to be null (<a href="https://github.com/mattlewis92/angular-calendar/commit/bcdf335">bcdf335</a>)</li>
+</ul>
+<p><a name="0.10.0"></a></p>
+<h1 id="-0-10-0-https-github-com-mattlewis92-angular-calendar-compare-v0-9-1-v0-10-0-2017-03-24-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.9.1...v0.10.0">0.10.0</a> (2017-03-24)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>ng4:</strong> upgrade to angular 4 to remove the <code>&lt;template&gt;</code> tag deprecation warning (<a href="https://github.com/mattlewis92/angular-calendar/commit/68a8f39">68a8f39</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/163">#163</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>ng4:</strong> angular 4.0 or higher is now required to use this library. The
+<a href="http://angularjs.blogspot.co.uk/2017/03/angular-400-now-available.html">upgrade</a> should be seamless
+for most users.</li>
+</ul>
+<p><a name="0.9.1"></a></p>
+<h2 id="-0-9-1-https-github-com-mattlewis92-angular-calendar-compare-v0-9-0-v0-9-1-2017-03-23-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.9.0...v0.9.1">0.9.1</a> (2017-03-23)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>draggable:</strong> upgrade draggable dependency to allow touch events (<a href="https://github.com/mattlewis92/angular-calendar/commit/96145d1">96145d1</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/165">#165</a></li>
+</ul>
+<p><a name="0.9.0"></a></p>
+<h1 id="-0-9-0-https-github-com-mattlewis92-angular-calendar-compare-v0-8-0-v0-9-0-2017-03-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.8.0...v0.9.0">0.9.0</a> (2017-03-21)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>monthView:</strong> allow open day events template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/ef5a37f">ef5a37f</a>)</li>
+<li><strong>monthView:</strong> allow the cell templates to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/4603e6b">4603e6b</a>)</li>
+<li><strong>monthView:</strong> allow the header template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/53db16b">53db16b</a>)</li>
+<li><strong>weekView:</strong> allow the header template to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/595a667">595a667</a>)</li>
+<li>expose day, week and month view components so they can be extended with inheritance (<a href="https://github.com/mattlewis92/angular-calendar/commit/426c287">426c287</a>)</li>
+</ul>
+<p><a name="0.8.0"></a></p>
+<h1 id="-0-8-0-https-github-com-mattlewis92-angular-calendar-compare-v0-7-3-v0-8-0-2017-03-12-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.7.3...v0.8.0">0.8.0</a> (2017-03-12)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>excludeDays:</strong> add an option to hide days on the month and week views (<a href="https://github.com/mattlewis92/angular-calendar/commit/e296357">e296357</a>)</li>
+</ul>
+<p><a name="0.7.3"></a></p>
+<h2 id="-0-7-3-https-github-com-mattlewis92-angular-calendar-compare-v0-7-2-v0-7-3-2017-03-04-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.7.2...v0.7.3">0.7.3</a> (2017-03-04)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>loosen angular peer dependency to support angular 4 (<a href="https://github.com/mattlewis92/angular-calendar/commit/e00c115">e00c115</a>)</li>
+<li><strong>dayView:</strong> allow dropping of external events (<a href="https://github.com/mattlewis92/angular-calendar/commit/86e5d06">86e5d06</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/150">#150</a></li>
+<li><strong>monthView:</strong> add helper classes to the month view header (<a href="https://github.com/mattlewis92/angular-calendar/commit/0008a83">0008a83</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/152">#152</a></li>
+<li><strong>weekView:</strong> allow external events to be dropped on the column headers (<a href="https://github.com/mattlewis92/angular-calendar/commit/83266f7">83266f7</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/150">#150</a></li>
+</ul>
+<h3 id="performance-improvements">Performance Improvements</h3>
+<ul>
+<li>improve performance of draggable and resizable events (<a href="https://github.com/mattlewis92/angular-calendar/commit/71fe9cd">71fe9cd</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/149">#149</a></li>
+</ul>
+<p><a name="0.7.2"></a></p>
+<h2 id="-0-7-2-https-github-com-mattlewis92-angular-calendar-compare-v0-7-1-v0-7-2-2017-02-03-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.7.1...v0.7.2">0.7.2</a> (2017-02-03)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>disable drag events when resizing (<a href="https://github.com/mattlewis92/angular-calendar/commit/43c128c">43c128c</a>)</li>
+</ul>
+<p><a name="0.7.1"></a></p>
+<h2 id="-0-7-1-https-github-com-mattlewis92-angular-calendar-compare-v0-7-0-v0-7-1-2017-02-01-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.7.0...v0.7.1">0.7.1</a> (2017-02-01)</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>add all declarations to exports (<em>Please note that these sub components will be subject to breaking changes in the next release once <a href="https://github.com/mattlewis92/angular-calendar/issues/16">#16</a> lands, however will eventually become part of the public API. Use at your own risk!</em>) (<a href="https://github.com/mattlewis92/angular-calendar/commit/f20a991">f20a991</a>)</li>
+</ul>
+<p><a name="0.7.0"></a></p>
+<h1 id="-0-7-0-https-github-com-mattlewis92-angular-calendar-compare-v0-6-2-v0-7-0-2017-01-28-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.6.2...v0.7.0">0.7.0</a> (2017-01-28)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li>add helper directives for changing the current view (<a href="https://github.com/mattlewis92/angular-calendar/commit/df398cb">df398cb</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/124">#124</a></li>
+</ul>
+<p><a name="0.6.2"></a></p>
+<h2 id="-0-6-2-https-github-com-mattlewis92-angular-calendar-compare-v0-6-1-v0-6-2-2017-01-06-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.6.1...v0.6.2">0.6.2</a> (2017-01-06)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>allow events to be dragged and clicked (<a href="https://github.com/mattlewis92/angular-calendar/commit/bc909a3">bc909a3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/123">#123</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li>export the CalendarMonthViewDay interface (<a href="https://github.com/mattlewis92/angular-calendar/commit/4142231">4142231</a>)</li>
+</ul>
+<p><a name="0.6.1"></a></p>
+<h2 id="-0-6-1-https-github-com-mattlewis92-angular-calendar-compare-v0-5-0-v0-6-1-2016-12-30-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.5.0...v0.6.1">0.6.1</a> (2016-12-30)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>update the event title in the UI when it changes (<a href="https://github.com/mattlewis92/angular-calendar/commit/3b611bf">3b611bf</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/116">#116</a></li>
+<li><strong>monthView:</strong> cell events should be clickable (<a href="https://github.com/mattlewis92/angular-calendar/commit/d61719e">d61719e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/111">#111</a></li>
+</ul>
+<p><a name="0.6.0"></a></p>
+<h1 id="-0-6-0-https-github-com-mattlewis92-angular-calendar-compare-v0-5-0-v0-6-0-2016-12-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.5.0...v0.6.0">0.6.0</a> (2016-12-21)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>draggable:</strong> allow external draggable events (<a href="https://github.com/mattlewis92/angular-calendar/commit/8ba068c">8ba068c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/106">#106</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>draggable: if not using CalendarModule.forRoot() and manually adding providers you must now also include the DraggableHelper from the angular-draggable-droppable module</li>
+</ul>
+<p>Before:</p>
+<pre class="line-numbers"><code class="language-none">import {CalendarModule, CalendarEventTitleFormatter, CalendarDateFormatter} from &#39;angular-calendar&#39;;
+
+imports: [
+  CalendarModule
+],
+providers: [
+  CalendarEventTitleFormatter,
+  CalendarDateFormatter
+]</code></pre><p>After:</p>
+<pre class="line-numbers"><code class="language-none">import {CalendarModule, CalendarEventTitleFormatter, CalendarDateFormatter} from &#39;angular-calendar&#39;;
+import {DraggableHelper} from &#39;angular-draggable-droppable&#39;;
+
+imports: [
+  CalendarModule
+],
+providers: [
+  CalendarEventTitleFormatter,
+  CalendarDateFormatter,
+  DraggableHelper
+]</code></pre><p><a name="0.5.0"></a></p>
+<h1 id="-0-5-0-https-github-com-mattlewis92-angular-calendar-compare-v0-4-4-v0-5-0-2016-12-18-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.4.4...v0.5.0">0.5.0</a> (2016-12-18)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> don&#39;t allow events to be resized outside of the calendar (<a href="https://github.com/mattlewis92/angular-calendar/commit/78eb123">78eb123</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/99">#99</a></li>
+<li><strong>dayView:</strong> use correct event height when resizing from the top (<a href="https://github.com/mattlewis92/angular-calendar/commit/1c5e74f">1c5e74f</a>)</li>
+<li><strong>weekView:</strong> dont allow events to be resized outside of the calendar component (<a href="https://github.com/mattlewis92/angular-calendar/commit/007fbc5">007fbc5</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/99">#99</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li>add drag and drop support (<a href="https://github.com/mattlewis92/angular-calendar/issues/100">#100</a>) (<a href="https://github.com/mattlewis92/angular-calendar/commit/bbc02f3">bbc02f3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/10">#10</a> <a href="https://github.com/mattlewis92/angular-calendar/issues/102">#102</a></li>
+<li>remove change detection strategy from all components (<a href="https://github.com/mattlewis92/angular-calendar/issues/101">#101</a>) (<a href="https://github.com/mattlewis92/angular-calendar/commit/36458ab">36458ab</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/94">#94</a></li>
+<li>rename <code>CalendarEventTitle</code> service to <code>CalendarEventTitleFormatter</code> (<a href="https://github.com/mattlewis92/angular-calendar/commit/45c0142">45c0142</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>the <code>CalendarEventTitle</code> service has been renamed to <code>CalendarEventTitleFormatter</code></li>
+<li>A dependency on the <code>angular-draggable-droppable</code> library has been added. System.js users will need to add this to their config:</li>
+</ul>
+<pre class="line-numbers"><code class="language-none">&#39;angular-draggable-droppable&#39;: &#39;npm:angular-draggable-droppable/dist/umd/angular-draggable-droppable.js&#39;</code></pre><ul>
+<li>For enhanced performance it is recommended that you add <code>changeDetection: ChangeDetectionStrategy.OnPush</code> on all components that use this library. This will restrict change detection to only run when the components inputs change</li>
+</ul>
+<p><a name="0.4.4"></a></p>
+<h2 id="-0-4-4-https-github-com-mattlewis92-angular-calendar-compare-v0-4-3-v0-4-4-2016-12-07-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.4.3...v0.4.4">0.4.4</a> (2016-12-07)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>date-fns:</strong> upgrade date-fns to fix module not found TS errors (<a href="https://github.com/mattlewis92/angular-calendar/commit/733ed3e">733ed3e</a>)</li>
+</ul>
+<p><a name="0.4.3"></a></p>
+<h2 id="-0-4-3-https-github-com-mattlewis92-angular-calendar-compare-v0-4-1-v0-4-3-2016-12-05-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.4.1...v0.4.3">0.4.3</a> (2016-12-05)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>allow events array to be undefined (<a href="https://github.com/mattlewis92/angular-calendar/commit/3a475b9">3a475b9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/96">#96</a></li>
+</ul>
+<p><a name="0.4.2"></a></p>
+<h2 id="-0-4-2-https-github-com-mattlewis92-angular-calendar-compare-v0-4-1-v0-4-2-2016-12-05-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.4.1...v0.4.2">0.4.2</a> (2016-12-05)</h2>
+<ul>
+<li>botched release</li>
+</ul>
+<p><a name="0.4.1"></a></p>
+<h2 id="-0-4-1-https-github-com-mattlewis92-angular-calendar-compare-v0-4-0-v0-4-1-2016-11-25-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.4.0...v0.4.1">0.4.1</a> (2016-11-25)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>date-fns:</strong> fix duplicate module declaration typescript errors (<a href="https://github.com/mattlewis92/angular-calendar/commit/24be6f3">24be6f3</a>)</li>
+</ul>
+<p><a name="0.4.0"></a></p>
+<h1 id="-0-4-0-https-github-com-mattlewis92-angular-calendar-compare-v0-3-6-v0-4-0-2016-11-04-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.3.6...v0.4.0">0.4.0</a> (2016-11-04)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>aot:</strong> remove hacks required for AOT to work (<a href="https://github.com/mattlewis92/angular-calendar/commit/72a6e41">72a6e41</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/81">#81</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>dayView:</strong> add tooltips to events (<a href="https://github.com/mattlewis92/angular-calendar/commit/2cc7929">2cc7929</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/75">#75</a></li>
+<li><strong>dayView:</strong> allow resizing of events (<a href="https://github.com/mattlewis92/angular-calendar/commit/95b9033">95b9033</a>)</li>
+<li><strong>weekView:</strong> support resizing of events (<a href="https://github.com/mattlewis92/angular-calendar/commit/c034a9d">c034a9d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/9">#9</a></li>
+<li>rename module from angular2-calendar to angular-calendar (<a href="https://github.com/mattlewis92/angular-calendar/commit/fa1ef98">fa1ef98</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/69">#69</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>The module has now been renamed from angular2-calendar to angular-calendar</li>
+</ul>
+<p>The path to the sass and UMD builds has now changed. To migrate change all occurences of <code>angular2-calendar</code> to <code>angular-calendar</code></p>
+<ul>
+<li>dayView: day view events now have tooltips by default</li>
+<li>aot: angular 2.1.2 or higher is now required for AOT to work</li>
+<li>dayView: A dependency on the <code>angular-resizable-element</code> library has now been added. System.js users will need to add this to their config</li>
+</ul>
+<pre class="line-numbers"><code class="language-none">&#39;angular-resizable-element&#39;: &#39;npm:angular-resizable-element/dist/umd/angular-resizable-element.js&#39;,</code></pre><p>Part of #9</p>
+<p><a name="0.3.6"></a></p>
+<h2 id="-0-3-6-https-github-com-mattlewis92-angular2-calendar-compare-v0-3-5-v0-3-6-2016-10-30-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.3.5...v0.3.6">0.3.6</a> (2016-10-30)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> fix event column stacking (<a href="https://github.com/mattlewis92/angular2-calendar/commit/4570fc6">4570fc6</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/80">#80</a></li>
+<li><strong>dayView:</strong> show all day events that start outside of the day view start (<a href="https://github.com/mattlewis92/angular2-calendar/commit/edb2614">edb2614</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/79">#79</a></li>
+</ul>
+<p><a name="0.3.5"></a></p>
+<h2 id="-0-3-5-https-github-com-mattlewis92-angular2-calendar-compare-v0-3-4-v0-3-5-2016-10-13-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.3.4...v0.3.5">0.3.5</a> (2016-10-13)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>system.js:</strong> use date-fns index imports for system.js users (<a href="https://github.com/mattlewis92/angular2-calendar/commit/096d6a2">096d6a2</a>)</li>
+</ul>
+<p><a name="0.3.4"></a></p>
+<h2 id="-0-3-4-https-github-com-mattlewis92-angular2-calendar-compare-v0-3-3-v0-3-4-2016-10-08-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.3.3...v0.3.4">0.3.4</a> (2016-10-08)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>umd:</strong> more robust fix for umd build (<a href="https://github.com/mattlewis92/angular2-calendar/commit/135116a">135116a</a>)</li>
+</ul>
+<p><a name="0.3.3"></a></p>
+<h2 id="-0-3-3-https-github-com-mattlewis92-angular2-calendar-compare-v0-3-2-v0-3-3-2016-10-07-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.3.2...v0.3.3">0.3.3</a> (2016-10-07)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>umd:</strong> fix umd build imports (<a href="https://github.com/mattlewis92/angular2-calendar/commit/87c4764">87c4764</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/68">#68</a></li>
+</ul>
+<p><a name="0.3.2"></a></p>
+<h2 id="-0-3-2-https-github-com-mattlewis92-angular2-calendar-compare-v0-3-1-v0-3-2-2016-10-06-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.3.1...v0.3.2">0.3.2</a> (2016-10-06)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>rollup:</strong> allow the module to be bundled with rollup (<a href="https://github.com/mattlewis92/angular2-calendar/commit/e6deeea">e6deeea</a>)</li>
+</ul>
+<p><a name="0.3.1"></a></p>
+<h2 id="-0-3-1-https-github-com-mattlewis92-angular2-calendar-compare-v0-3-0-v0-3-1-2016-10-05-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.3.0...v0.3.1">0.3.1</a> (2016-10-05)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>support building with rollup (<a href="https://github.com/mattlewis92/angular2-calendar/commit/428e254">428e254</a>)</li>
+</ul>
+<p><a name="0.3.0"></a></p>
+<h1 id="-0-3-0-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-7-v0-3-0-2016-10-05-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.7...v0.3.0">0.3.0</a> (2016-10-05)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>only versions of angular &gt;= 2.0.0 are supported (<a href="https://github.com/mattlewis92/angular2-calendar/commit/6b1700b">6b1700b</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/66">#66</a></li>
+<li>remove positioning sourcemap from umd build (<a href="https://github.com/mattlewis92/angular2-calendar/commit/d7ea482">d7ea482</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/66">#66</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li>add CalendarModule.forRoot so providers dont need to be specified (<a href="https://github.com/mattlewis92/angular2-calendar/commit/ee54b8f">ee54b8f</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>no RC versions of angular are supported. This was probably introduced in 0.2.x of this module, but clarifying here as a distinct breaking change</li>
+</ul>
+<p><a name="0.2.7"></a></p>
+<h2 id="-0-2-7-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-6-v0-2-7-2016-10-05-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.6...v0.2.7">0.2.7</a> (2016-10-05)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>use commonjs date-fns imports for rollup (<a href="https://github.com/mattlewis92/angular2-calendar/commit/7e758ba">7e758ba</a>)</li>
+</ul>
+<p><a name="0.2.6"></a></p>
+<h2 id="-0-2-6-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-5-v0-2-6-2016-09-28-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.5...v0.2.6">0.2.6</a> (2016-09-28)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>typings:</strong> dont include reference to core-js (<a href="https://github.com/mattlewis92/angular2-calendar/commit/4daac27">4daac27</a>)</li>
+</ul>
+<p><a name="0.2.5"></a></p>
+<h2 id="-0-2-5-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-4-v0-2-5-2016-09-24-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.4...v0.2.5">0.2.5</a> (2016-09-24)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>aot:</strong> export all components for aot (<a href="https://github.com/mattlewis92/angular2-calendar/commit/f701f86">f701f86</a>)</li>
+</ul>
+<p><a name="0.2.4"></a></p>
+<h2 id="-0-2-4-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-3-v0-2-4-2016-09-24-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.3...v0.2.4">0.2.4</a> (2016-09-24)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>aot:</strong> export components so aot works (<a href="https://github.com/mattlewis92/angular2-calendar/commit/8b7ffc7">8b7ffc7</a>)</li>
+</ul>
+<p><a name="0.2.3"></a></p>
+<h2 id="-0-2-3-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-2-v0-2-3-2016-09-24-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.2...v0.2.3">0.2.3</a> (2016-09-24)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>aot:</strong> fix typescript errors when doing aot (<a href="https://github.com/mattlewis92/angular2-calendar/commit/c5ac3f9">c5ac3f9</a>)</li>
+</ul>
+<p><a name="0.2.2"></a></p>
+<h2 id="-0-2-2-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-1-v0-2-2-2016-09-23-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.1...v0.2.2">0.2.2</a> (2016-09-23)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>typings and esm paths (<a href="https://github.com/mattlewis92/angular2-calendar/commit/b70b92a">b70b92a</a>)</li>
+</ul>
+<p><a name="0.2.1"></a></p>
+<h2 id="-0-2-1-https-github-com-mattlewis92-angular2-calendar-compare-v0-2-0-v0-2-1-2016-09-23-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.2.0...v0.2.1">0.2.1</a> (2016-09-23)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>allow any 1.x version of date-fns to be installed (<a href="https://github.com/mattlewis92/angular2-calendar/commit/726aaac">726aaac</a>)</li>
+<li><strong>esm:</strong> dont import sass files in the esm build (<a href="https://github.com/mattlewis92/angular2-calendar/commit/00120f9">00120f9</a>)</li>
+<li><strong>ng-bootstrap:</strong> add ng-bootstrap dependency to fix es module imports (<a href="https://github.com/mattlewis92/angular2-calendar/commit/af91adc">af91adc</a>)</li>
+</ul>
+<p><a name="0.2.0"></a></p>
+<h1 id="-0-2-0-https-github-com-mattlewis92-angular2-calendar-compare-v0-1-3-v0-2-0-2016-09-23-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.1.3...v0.2.0">0.2.0</a> (2016-09-23)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>build:</strong> support offline template compilation (<a href="https://github.com/mattlewis92/angular2-calendar/commit/dc12621">dc12621</a>)</li>
+<li>replace the moment dependency with the date-fns library (<a href="https://github.com/mattlewis92/angular2-calendar/commit/c147827">c147827</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/48">#48</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>1/ The <code>dayClicked</code>, <code>dayModifier</code> and <code>hourSegmentModifier</code> output objects now return pure date objects instead of moments</li>
+</ul>
+<p>2/ If using the <code>CalendarMomentDateFormatter</code> you must now also provide moment to the calendar like so</p>
+<pre class="line-numbers"><code class="language-none">import * as moment from &#39;moment&#39;;
+import {
+  CalendarMomentDateFormatter,
+  CalendarDateFormatter,
+  MOMENT
+} from &#39;./../angular2-calendar&#39;;
+
+...
+
+providers: [
+  {provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter},
+  {provide: MOMENT, useValue: moment}
+]</code></pre><p>3/ The week start day is now no longer determined by moment. You must manually pass it to the month and week view components like so</p>
+<pre class="line-numbers"><code class="language-none">// the first day of the week is Monday
+[weekStartsOn]=&quot;1&quot;</code></pre><p>4/ If using this library without a module bundler you must make sure the date-fns library is included in a script tag</p>
+<ul>
+<li>build: The dist file paths have changed. To migrate</li>
+</ul>
+<p>Before</p>
+<pre class="line-numbers"><code class="language-none">import &#39;angular2-calendar/css/angular2-calendar.css&#39;;</code></pre><p>After:</p>
+<pre class="line-numbers"><code class="language-none">import &#39;angular2-calendar/dist/css/angular2-calendar.css&#39;;</code></pre><p>For System.js users the path to the UMD files has changed:</p>
+<p>Before:</p>
+<pre class="line-numbers"><code class="language-none">node_modules/angular2-calendar/angular2-calendar.js</code></pre><p>After:</p>
+<pre class="line-numbers"><code class="language-none">node_modules/angular2-calendar/dist/umd/angular2-calendar.js</code></pre><p>Webpack / browserify users aren&#39;t affected</p>
+<p><a name="0.1.3"></a></p>
+<h2 id="-0-1-3-https-github-com-mattlewis92-angular2-calendar-compare-v0-1-2-v0-1-3-2016-09-13-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.1.2...v0.1.3">0.1.3</a> (2016-09-13)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>peerDependencies:</strong> support any version of angular &gt;= RC5 (<a href="https://github.com/mattlewis92/angular2-calendar/commit/2698bcf">2698bcf</a>)</li>
+</ul>
+<p><a name="0.1.2"></a></p>
+<h2 id="-0-1-2-https-github-com-mattlewis92-angular2-calendar-compare-v0-1-1-v0-1-2-2016-09-08-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.1.1...v0.1.2">0.1.2</a> (2016-09-08)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> Change month-view header text-overflow to ellipsis (<a href="https://github.com/mattlewis92/angular2-calendar/issues/60">#60</a>) (<a href="https://github.com/mattlewis92/angular2-calendar/commit/23ba526">23ba526</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/59">#59</a></li>
+</ul>
+<p><a name="0.1.1"></a></p>
+<h2 id="-0-1-1-https-github-com-mattlewis92-angular2-calendar-compare-v0-1-0-v0-1-1-2016-09-03-"><a href="https://github.com/mattlewis92/angular2-calendar/compare/v0.1.0...v0.1.1">0.1.1</a> (2016-09-03)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>monthView:</strong> fix the eventClicked output (<a href="https://github.com/mattlewis92/angular2-calendar/commit/745fff7">745fff7</a>)</li>
+</ul>
+<p><a name="0.1.0"></a></p>
+<h1 id="0-1-0-2016-09-03-">0.1.0 (2016-09-03)</h1>
+<p><em>Initial release</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 0;</script>
+
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/search/search_index.js"></script>
+
+    </body>
+</html>
