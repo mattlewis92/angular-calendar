@@ -12,11 +12,12 @@ import { CalendarDateFormatter } from './../providers/calendarDateFormatter.prov
   name: 'calendarDate'
 })
 export class CalendarDatePipe implements PipeTransform {
-
-  constructor(private dateFormatter: CalendarDateFormatter, @Inject(LOCALE_ID) private locale: string) {}
+  constructor(
+    private dateFormatter: CalendarDateFormatter,
+    @Inject(LOCALE_ID) private locale: string
+  ) {}
 
   transform(date: Date, method: string, locale: string = this.locale): string {
-    return this.dateFormatter[method]({date, locale});
+    return this.dateFormatter[method]({ date, locale });
   }
-
 }

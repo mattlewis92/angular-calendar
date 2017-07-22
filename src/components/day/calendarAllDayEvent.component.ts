@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef
+} from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
@@ -27,11 +33,9 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarAllDayEventComponent {
-
   @Input() event: CalendarEvent;
 
   @Input() customTemplate: TemplateRef<any>;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
-
 }

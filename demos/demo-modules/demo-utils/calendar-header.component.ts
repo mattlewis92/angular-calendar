@@ -61,7 +61,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   `
 })
 export class CalendarHeaderComponent {
-
   @Input() view: string;
 
   @Input() viewDate: Date;
@@ -71,5 +70,4 @@ export class CalendarHeaderComponent {
   @Output() viewChange: EventEmitter<string> = new EventEmitter();
 
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
-
 }

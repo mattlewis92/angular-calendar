@@ -2,7 +2,17 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CalendarEvent } from 'angular-calendar';
-import { isSameMonth, isSameDay, startOfMonth, endOfMonth, startOfWeek, endOfWeek, startOfDay, endOfDay, format } from 'date-fns';
+import {
+  isSameMonth,
+  isSameDay,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  startOfDay,
+  endOfDay,
+  format
+} from 'date-fns';
 import { Observable } from 'rxjs/Observable';
 import { colors } from '../demo-utils/colors';
 
@@ -18,12 +28,11 @@ interface Film {
   templateUrl: 'template.html'
 })
 export class DemoComponent implements OnInit {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
 
-  events$: Observable<CalendarEvent<{film: Film}>[]>;
+  events$: Observable<Array<CalendarEvent<{ film: Film }>>>;
 
   activeDayIsOpen: boolean = false;
 
@@ -34,7 +43,6 @@ export class DemoComponent implements OnInit {
   }
 
   fetchEvents(): void {
-
     const getStart: any = {
       month: startOfMonth,
       week: startOfWeek,
@@ -48,13 +56,19 @@ export class DemoComponent implements OnInit {
     }[this.view];
 
     const search: URLSearchParams = new URLSearchParams();
-    search.set('primary_release_date.gte', format(getStart(this.viewDate), 'YYYY-MM-DD'));
-    search.set('primary_release_date.lte', format(getEnd(this.viewDate), 'YYYY-MM-DD'));
+    search.set(
+      'primary_release_date.gte',
+      format(getStart(this.viewDate), 'YYYY-MM-DD')
+    );
+    search.set(
+      'primary_release_date.lte',
+      format(getEnd(this.viewDate), 'YYYY-MM-DD')
+    );
     search.set('api_key', '0ec33936a68018857d727958dca1424f');
     this.events$ = this.http
-      .get('https://api.themoviedb.org/3/discover/movie', {search})
+      .get('https://api.themoviedb.org/3/discover/movie', { search })
       .map(res => res.json())
-      .map(({results}: {results: Film[]}) => {
+      .map(({ results }: { results: Film[] }) => {
         return results.map((film: Film) => {
           return {
             title: film.title,
@@ -68,8 +82,13 @@ export class DemoComponent implements OnInit {
       });
   }
 
-  dayClicked({date, events}: {date: Date, events: CalendarEvent<{film: Film}>[]}): void {
-
+  dayClicked({
+    date,
+    events
+  }: {
+    date: Date;
+    events: Array<CalendarEvent<{ film: Film }>>;
+  }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -83,9 +102,10 @@ export class DemoComponent implements OnInit {
     }
   }
 
-  eventClicked(event: CalendarEvent<{film: Film}>): void {
-    window.open(`https://www.themoviedb.org/movie/${event.meta.film.id}`, '_blank');
+  eventClicked(event: CalendarEvent<{ film: Film }>): void {
+    window.open(
+      `https://www.themoviedb.org/movie/${event.meta.film.id}`,
+      '_blank'
+    );
   }
-
 }
-

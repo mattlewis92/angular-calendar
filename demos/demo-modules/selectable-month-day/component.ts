@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation
+} from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 
 @Component({
@@ -6,16 +10,17 @@ import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
   // don't do this in your app, its only so the styles get applied globally
-  styles: [`
+  styles: [
+    `
     .cal-day-selected,
     .cal-day-selected:hover {
       background-color: deeppink !important;
     }
-  `],
+  `
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class DemoComponent {
-
   viewDate: Date = new Date();
 
   selectedDay: CalendarMonthViewDay;
@@ -30,13 +35,15 @@ export class DemoComponent {
     this.selectedDay = day;
   }
 
-  beforeMonthViewRender({body}: {body: CalendarMonthViewDay[]}): void {
-    body.forEach((day) => {
-      if (this.selectedDay && day.date.getTime() === this.selectedDay.date.getTime()) {
+  beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+    body.forEach(day => {
+      if (
+        this.selectedDay &&
+        day.date.getTime() === this.selectedDay.date.getTime()
+      ) {
         day.cssClass = 'cal-day-selected';
         this.selectedDay = day;
       }
     });
   }
-
 }

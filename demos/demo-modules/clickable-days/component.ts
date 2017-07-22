@@ -7,7 +7,6 @@ import { CalendarEvent } from 'angular-calendar';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
@@ -15,6 +14,4 @@ export class DemoComponent {
   events: CalendarEvent[] = [];
 
   clickedDate: Date;
-
 }
-

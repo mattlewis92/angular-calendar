@@ -6,11 +6,9 @@ import { CalendarEventTitleFormatter } from '../providers/calendarEventTitleForm
   name: 'calendarEventTitle'
 })
 export class CalendarEventTitlePipe implements PipeTransform {
-
   constructor(private calendarEventTitle: CalendarEventTitleFormatter) {}
 
   transform(title: string, titleType: string, event: CalendarEvent): string {
     return this.calendarEventTitle[titleType](event);
   }
-
 }

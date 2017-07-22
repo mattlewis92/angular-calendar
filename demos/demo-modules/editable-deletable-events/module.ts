@@ -5,16 +5,8 @@ import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CalendarModule.forRoot(),
-    DemoUtilsModule
-  ],
-  declarations: [
-    DemoComponent
-  ],
-  exports: [
-    DemoComponent
-  ]
+  imports: [CommonModule, CalendarModule.forRoot(), DemoUtilsModule],
+  declarations: [DemoComponent],
+  exports: [DemoComponent]
 })
 export class DemoModule {}

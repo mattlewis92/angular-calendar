@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef
+} from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 
 @Component({
@@ -45,7 +51,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
     </ng-template>
   `,
   host: {
-    'class': 'cal-cell cal-day-cell',
+    class: 'cal-cell cal-day-cell',
     '[class.cal-past]': 'day.isPast',
     '[class.cal-today]': 'day.isToday',
     '[class.cal-future]': 'day.isFuture',
@@ -58,7 +64,6 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
   }
 })
 export class CalendarMonthCellComponent {
-
   @Input() day: MonthViewDay;
 
   @Input() openDay: MonthViewDay;
@@ -77,7 +82,10 @@ export class CalendarMonthCellComponent {
 
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
-  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+  @Output()
+  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+    event: CalendarEvent;
+  }>();
 
   /**
    * @hidden
@@ -86,7 +94,6 @@ export class CalendarMonthCellComponent {
     if (mouseEvent.stopPropagation) {
       mouseEvent.stopPropagation();
     }
-    this.eventClicked.emit({event: calendarEvent});
+    this.eventClicked.emit({ event: calendarEvent });
   }
-
 }

@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef
+} from '@angular/core';
 import { WeekViewEvent } from 'calendar-utils';
 
 @Component({
@@ -37,7 +43,6 @@ import { WeekViewEvent } from 'calendar-utils';
   `
 })
 export class CalendarWeekViewEventComponent {
-
   @Input() weekEvent: WeekViewEvent;
 
   @Input() tooltipPlacement: string;
@@ -49,5 +54,4 @@ export class CalendarWeekViewEventComponent {
   @Input() tooltipTemplate: TemplateRef<any>;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
-
 }

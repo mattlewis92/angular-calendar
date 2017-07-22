@@ -9,14 +9,13 @@ import {
 } from './../src';
 
 describe('calendar module', () => {
-
   it('should not require providers to be specified when using CalendarModule.forRoot()', () => {
     TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot()
-      ]
+      imports: [CalendarModule.forRoot()]
     });
-    const dateFormatter: CalendarDateFormatter = TestBed.get(CalendarDateFormatter);
+    const dateFormatter: CalendarDateFormatter = TestBed.get(
+      CalendarDateFormatter
+    );
     expect(dateFormatter instanceof CalendarDateFormatter).to.equal(true);
   });
 
@@ -30,13 +29,12 @@ describe('calendar module', () => {
           }
         })
       ],
-      providers: [
-        {provide: MOMENT, useValue: moment}
-      ]
+      providers: [{ provide: MOMENT, useValue: moment }]
     });
-    const dateFormatter: CalendarDateFormatter = TestBed.get(CalendarDateFormatter);
+    const dateFormatter: CalendarDateFormatter = TestBed.get(
+      CalendarDateFormatter
+    );
     expect(dateFormatter instanceof CalendarDateFormatter).to.equal(false);
     expect(dateFormatter instanceof CalendarMomentDateFormatter).to.equal(true);
   });
-
 });

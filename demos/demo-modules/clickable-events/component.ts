@@ -8,24 +8,24 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [{
-    title: 'Click me',
-    color: colors.yellow,
-    start: new Date()
-  }, {
-    title: 'Or click me',
-    color: colors.blue,
-    start: new Date()
-  }];
+  events: CalendarEvent[] = [
+    {
+      title: 'Click me',
+      color: colors.yellow,
+      start: new Date()
+    },
+    {
+      title: 'Or click me',
+      color: colors.blue,
+      start: new Date()
+    }
+  ];
 
-  eventClicked({event}: {event: CalendarEvent}): void {
+  eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
   }
-
 }
-

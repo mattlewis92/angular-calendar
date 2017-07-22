@@ -20,10 +20,7 @@ import {
   setMonth,
   setYear
 } from 'date-fns';
-import {
-  NgbDateStruct,
-  NgbTimeStruct
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'mwl-demo-utils-date-time-picker',
@@ -48,14 +45,15 @@ import {
     </form>
     <ngb-timepicker [(ngModel)]="timeStruct" (ngModelChange)="updateTime()" [meridian]="true"></ngb-timepicker>
   `,
-  styles: [`
+  styles: [
+    `
     .form-group {
       width: 100%;
     }
-  `]
+  `
+  ]
 })
 export class DateTimePickerComponent implements OnChanges {
-
   @Input() placeholder: string;
 
   @Input() date: Date;
@@ -65,6 +63,8 @@ export class DateTimePickerComponent implements OnChanges {
   dateStruct: NgbDateStruct;
 
   timeStruct: NgbTimeStruct;
+
+  datePicker: any;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['date']) {
@@ -82,13 +82,24 @@ export class DateTimePickerComponent implements OnChanges {
   }
 
   updateDate(): void {
-    const newDate: Date = setYear(setMonth(setDate(this.date, this.dateStruct.day), this.dateStruct.month - 1), this.dateStruct.year);
+    const newDate: Date = setYear(
+      setMonth(
+        setDate(this.date, this.dateStruct.day),
+        this.dateStruct.month - 1
+      ),
+      this.dateStruct.year
+    );
     this.dateChange.next(newDate);
   }
 
   updateTime(): void {
-    const newDate: Date = setHours(setMinutes(setSeconds(this.date, this.timeStruct.second), this.timeStruct.minute), this.timeStruct.hour);
+    const newDate: Date = setHours(
+      setMinutes(
+        setSeconds(this.date, this.timeStruct.second),
+        this.timeStruct.minute
+      ),
+      this.timeStruct.hour
+    );
     this.dateChange.next(newDate);
   }
-
 }

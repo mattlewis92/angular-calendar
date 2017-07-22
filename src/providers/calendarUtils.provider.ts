@@ -19,7 +19,6 @@ import {
 
 @Injectable()
 export class CalendarUtils {
-
   getMonthView(args: GetMonthViewArgs): MonthView {
     return getMonthView(args);
   }
@@ -39,5 +38,4 @@ export class CalendarUtils {
   getDayViewHourGrid(args: GetDayViewHourGridArgs): DayViewHour[] {
     return getDayViewHourGrid(args);
   }
-
 }

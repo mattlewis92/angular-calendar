@@ -8,26 +8,26 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-
   view: string = 'month';
 
   viewDate: Date = new Date();
 
-  events: CalendarEvent<{id: number}>[] = [{
-    title: 'Event 1',
-    color: colors.yellow,
-    start: new Date(),
-    meta: {
-      id: 1
+  events: Array<CalendarEvent<{ id: number }>> = [
+    {
+      title: 'Event 1',
+      color: colors.yellow,
+      start: new Date(),
+      meta: {
+        id: 1
+      }
+    },
+    {
+      title: 'Event 2',
+      color: colors.blue,
+      start: new Date(),
+      meta: {
+        id: 2
+      }
     }
-  }, {
-    title: 'Event 2',
-    color: colors.blue,
-    start: new Date(),
-    meta: {
-      id: 2
-    }
-  }];
-
+  ];
 }
-

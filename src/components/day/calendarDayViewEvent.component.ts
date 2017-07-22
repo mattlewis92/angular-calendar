@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef
+} from '@angular/core';
 import { DayViewEvent } from 'calendar-utils';
 
 @Component({
@@ -38,7 +44,6 @@ import { DayViewEvent } from 'calendar-utils';
   `
 })
 export class CalendarDayViewEventComponent {
-
   @Input() dayEvent: DayViewEvent;
 
   @Input() tooltipPlacement: string;
@@ -50,5 +55,4 @@ export class CalendarDayViewEventComponent {
   @Input() tooltipTemplate: TemplateRef<any>;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
-
 }

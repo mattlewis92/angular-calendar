@@ -85,8 +85,8 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
     </div>
   `
 })
-export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy {
-
+export class CalendarMonthViewComponent
+  implements OnChanges, OnInit, OnDestroy {
   /**
    * The current view date
    */
@@ -162,22 +162,35 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * An output that will be called before the view is rendered for the current month.
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
-  @Output() beforeViewRender: EventEmitter<{header: WeekDay[], body: MonthViewDay[]}> = new EventEmitter();
+  @Output()
+  beforeViewRender: EventEmitter<{
+    header: WeekDay[];
+    body: MonthViewDay[];
+  }> = new EventEmitter();
 
   /**
    * Called when the day cell is clicked
    */
-  @Output() dayClicked: EventEmitter<{day: MonthViewDay}> = new EventEmitter<{day: MonthViewDay}>();
+  @Output()
+  dayClicked: EventEmitter<{ day: MonthViewDay }> = new EventEmitter<{
+    day: MonthViewDay;
+  }>();
 
   /**
    * Called when the event title is clicked
    */
-  @Output() eventClicked: EventEmitter<{event: CalendarEvent}> = new EventEmitter<{event: CalendarEvent}>();
+  @Output()
+  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+    event: CalendarEvent;
+  }>();
 
   /**
    * Called when an event is dragged and dropped
    */
-  @Output() eventTimesChanged: EventEmitter<CalendarEventTimesChangedEvent> = new EventEmitter<CalendarEventTimesChangedEvent>();
+  @Output()
+  eventTimesChanged: EventEmitter<
+    CalendarEventTimesChangedEvent
+  > = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * @hidden
@@ -207,7 +220,11 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
   /**
    * @hidden
    */
-  constructor(private cdr: ChangeDetectorRef, private utils: CalendarUtils, @Inject(LOCALE_ID) locale: string) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private utils: CalendarUtils,
+    @Inject(LOCALE_ID) locale: string
+  ) {
     this.locale = locale;
   }
 
@@ -227,16 +244,25 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
    * @hidden
    */
   ngOnChanges(changes: any): void {
-
     if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
       this.refreshHeader();
     }
 
-    if (changes.viewDate || changes.events || changes.excludeDays || changes.weekendDays) {
+    if (
+      changes.viewDate ||
+      changes.events ||
+      changes.excludeDays ||
+      changes.weekendDays
+    ) {
       this.refreshBody();
     }
 
-    if (changes.activeDayIsOpen || changes.viewDate || changes.events || changes.excludeDays) {
+    if (
+      changes.activeDayIsOpen ||
+      changes.viewDate ||
+      changes.events ||
+      changes.excludeDays
+    ) {
       this.checkActiveDayIsOpen();
     }
   }
@@ -270,13 +296,16 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
     const year: number = getYear(day.date);
     const month: number = getMonth(day.date);
     const date: number = getDate(day.date);
-    const newStart: Date = setDate(setMonth(setYear(event.start, year), month), date);
+    const newStart: Date = setDate(
+      setMonth(setYear(event.start, year), month),
+      date
+    );
     let newEnd: Date;
     if (event.end) {
       const secondsDiff: number = differenceInSeconds(newStart, event.start);
       newEnd = addSeconds(event.end, secondsDiff);
     }
-    this.eventTimesChanged.emit({event, newStart, newEnd});
+    this.eventTimesChanged.emit({ event, newStart, newEnd });
   }
 
   private refreshHeader(): void {
@@ -302,9 +331,13 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
 
   private checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen === true) {
-      this.openDay = this.view.days.find(day => isSameDay(day.date, this.viewDate));
+      this.openDay = this.view.days.find(day =>
+        isSameDay(day.date, this.viewDate)
+      );
       const index: number = this.view.days.indexOf(this.openDay);
-      this.openRowIndex = Math.floor(index / this.view.totalDaysVisibleInWeek) * this.view.totalDaysVisibleInWeek;
+      this.openRowIndex =
+        Math.floor(index / this.view.totalDaysVisibleInWeek) *
+        this.view.totalDaysVisibleInWeek;
     } else {
       this.openRowIndex = null;
       this.openDay = null;
@@ -325,5 +358,4 @@ export class CalendarMonthViewComponent implements OnChanges, OnInit, OnDestroy 
       });
     }
   }
-
 }

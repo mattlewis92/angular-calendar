@@ -1,5 +1,8 @@
 import { InjectionToken, Inject } from '@angular/core';
-import { CalendarDateFormatterInterface, DateFormatterParams } from '../interfaces/calendarDateFormatter.interface';
+import {
+  CalendarDateFormatterInterface,
+  DateFormatterParams
+} from '../interfaces/calendarDateFormatter.interface';
 
 export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 
@@ -19,8 +22,8 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
  *
  * ```
  */
-export class CalendarMomentDateFormatter implements CalendarDateFormatterInterface {
-
+export class CalendarMomentDateFormatter
+  implements CalendarDateFormatterInterface {
   /**
    * @hidden
    */
@@ -29,57 +32,59 @@ export class CalendarMomentDateFormatter implements CalendarDateFormatterInterfa
   /**
    * The month view header week day labels
    */
-  public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
+  public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd');
   }
 
   /**
    * The month view cell day number
    */
-  public monthViewDayNumber({date, locale}: DateFormatterParams): string {
+  public monthViewDayNumber({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('D');
   }
 
   /**
    * The month view title
    */
-  public monthViewTitle({date, locale}: DateFormatterParams): string {
+  public monthViewTitle({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('MMMM YYYY');
   }
 
   /**
    * The week view header week day labels
    */
-  public weekViewColumnHeader({date, locale}: DateFormatterParams): string {
+  public weekViewColumnHeader({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd');
   }
 
   /**
    * The week view sub header day and month labels
    */
-  public weekViewColumnSubHeader({date, locale}: DateFormatterParams): string {
+  public weekViewColumnSubHeader({
+    date,
+    locale
+  }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('D MMM');
   }
 
   /**
    * The week view title
    */
-  public weekViewTitle({date, locale}: DateFormatterParams): string {
+  public weekViewTitle({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('[Week] W [of] YYYY');
   }
 
   /**
    * The time formatting down the left hand side of the day view
    */
-  public dayViewHour({date, locale}: DateFormatterParams): string {
+  public dayViewHour({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('ha');
   }
 
   /**
    * The day view title
    */
-  public dayViewTitle({date, locale}: DateFormatterParams): string {
+  public dayViewTitle({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd, D MMMM, YYYY');
   }
-
 }

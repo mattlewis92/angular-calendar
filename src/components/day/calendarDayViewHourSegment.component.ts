@@ -25,11 +25,9 @@ import { DayViewHourSegment } from 'calendar-utils';
   `
 })
 export class CalendarDayViewHourSegmentComponent {
-
   @Input() segment: DayViewHourSegment;
 
   @Input() locale: string;
 
   @Input() customTemplate: TemplateRef<any>;
-
 }

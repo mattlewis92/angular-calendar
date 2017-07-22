@@ -22,7 +22,6 @@ import { CalendarEvent } from 'calendar-utils';
  * ```
  */
 export class CalendarEventTitleFormatter {
-
   /**
    * The month view event title.
    */
@@ -64,5 +63,4 @@ export class CalendarEventTitleFormatter {
   dayTooltip(event: CalendarEvent): string {
     return event.title;
   }
-
 }
