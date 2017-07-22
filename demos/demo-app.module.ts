@@ -43,6 +43,7 @@ import * as groupMonthViewEvents from './demo-modules/group-month-view-events';
 import * as contextMenu from './demo-modules/context-menu';
 import * as weekViewMinutePrecision from './demo-modules/week-view-minute-precision';
 import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
+import * as disableSlideAnimation from './demo-modules/disable-slide-animation';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -83,6 +84,7 @@ import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
     contextMenu.DemoModule,
     weekViewMinutePrecision.DemoModule,
     extraMonthViewWeeks.DemoModule,
+    disableSlideAnimation.DemoModule,
     RouterModule.forRoot(
       [
         {
@@ -300,6 +302,13 @@ import * as extraMonthViewWeeks from './demo-modules/extra-month-view-weeks';
           component: extraMonthViewWeeks.DemoComponent,
           data: {
             label: 'Extra month view weeks'
+          }
+        },
+        {
+          path: 'disable-slide-animation',
+          component: disableSlideAnimation.DemoComponent,
+          data: {
+            label: 'Disable slide animation'
           }
         },
         {
