@@ -79,7 +79,7 @@
               </ng-template>
             </ngb-tab>
 
-            <ngb-tab *ngFor="let source of activeDemo.sources">
+            <ngb-tab *ngFor="let source of activeDemo?.sources">
               <ng-template ngbTabTitle>
                 <span [ngSwitch]="source.language">
                   <i class="fa fa-fw fa-html5" *ngSwitchCase="'html'"></i>
