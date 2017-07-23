@@ -1,12 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es2015", "dom"]
-  },
+  "extends": "./tsconfig.json",
   "files": [
     "src/calendar.module.ts",
     "src/components/day/calendarDayView.component.ts",

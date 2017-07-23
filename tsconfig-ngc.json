@@ -5,16 +5,16 @@
     "declaration": true,
     "stripInternal": true,
     "outDir": "./dist/esm",
-    "rootDir": "./",
     "types": [],
-    "emitDecoratorMetadata": false
+    "emitDecoratorMetadata": false,
+    "baseUrl": ""
   },
   "files": [
     "src/index.ts"
   ],
   "exclude": [
-    "test/**/*",
-    "demos/**/*"
+    "test",
+    "demos"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
