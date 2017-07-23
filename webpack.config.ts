@@ -3,17 +3,20 @@ import * as webpack from 'webpack';
 import { TsConfigPathsPlugin, CheckerPlugin } from 'awesome-typescript-loader';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import { getIfUtils, removeEmpty } from 'webpack-config-utils';
+import { AotPlugin } from '@ngtools/webpack';
 
-const IS_PROD = process.argv.indexOf('-p') > -1;
+const env = process.argv.indexOf('-p') > -1 ? 'production' : 'development';
+const { ifProduction, ifDevelopment } = getIfUtils(env);
 
 export default {
-  devtool: IS_PROD ? 'source-map' : 'eval',
+  devtool: ifProduction('source-map', 'eval'),
   entry: path.join(__dirname, 'demos', 'entry.ts'),
   output: {
-    filename: IS_PROD ? '[name]-[chunkhash].js' : '[name].js'
+    filename: ifProduction('[name]-[chunkhash].js', '[name].js')
   },
   module: {
-    rules: [{
+    rules: removeEmpty([ifDevelopment({
       enforce: 'pre',
       test: /\.ts$/,
       loader: 'prettier-loader',
@@ -22,12 +25,12 @@ export default {
         singleQuote: true,
         parser: 'typescript'
       }
-    }, {
+    }), ifDevelopment({
       enforce: 'pre',
       test: /\.ts$/,
       loader: 'tslint-loader',
       exclude: /node_modules/
-    }, {
+    }), ifDevelopment({
       test: /\.ts$/,
       use: [{
         loader: 'awesome-typescript-loader',
@@ -41,6 +44,9 @@ export default {
       }],
       exclude: /node_modules/
     }, {
+      test: /\.ts$/,
+      loader: '@ngtools/webpack'
+    }), {
       test: /\.scss$/,
       loader: 'style-loader!css-loader!sass-loader'
     }, {
@@ -62,7 +68,7 @@ export default {
     }, {
       test: /\.ejs$/,
       loader: 'ejs-compiled-loader'
-    }]
+    }])
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -76,17 +82,20 @@ export default {
     hot: true,
     historyApiFallback: true
   },
-  plugins: [
-    new CheckerPlugin(),
-    new TsConfigPathsPlugin(),
-    ...(IS_PROD ? [] : [new webpack.HotModuleReplacementPlugin()]),
+  plugins: removeEmpty([
+    ifDevelopment(new CheckerPlugin()),
+    ifDevelopment(new TsConfigPathsPlugin()),
+    ifDevelopment(new webpack.HotModuleReplacementPlugin()),
+    ifProduction(new AotPlugin({
+      tsConfigPath: './tsconfig-demos.json'
+    })),
     new webpack.DefinePlugin({
-      ENV: JSON.stringify(IS_PROD ? 'production' : 'development')
+      ENV: JSON.stringify(env)
     }),
-    new StyleLintPlugin({
+    ifDevelopment(new StyleLintPlugin({
       syntax: 'scss',
       context: 'scss'
-    }),
+    })),
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)@angular/,
       __dirname + '/src'
@@ -99,5 +108,5 @@ export default {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'demos', 'index.ejs')
     })
-  ]
+  ])
 };

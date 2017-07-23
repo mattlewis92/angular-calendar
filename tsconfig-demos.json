@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "outDir": "./dist/esm",
+    "rootDir": ".",
+    "baseUrl": "",
+    "sourceMap": true,
+    "lib": ["es2017", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "angular-calendar": ["./src/index"]
+    }
+  },
+  "exclude": [
+    "test",
+    "node_modules",
+    "build-tool-examples"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipMetadataEmit" : true,
+    "genDir": "./dist/aot",
+    "entryModule": "demos/demo-app.module#DemoAppModule",
+    "trace": true
+  }
+}
