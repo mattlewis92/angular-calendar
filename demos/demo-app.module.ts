@@ -6,10 +6,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import * as hljs from 'highlight.js';
-import { HighlightJsModule } from 'angular-highlight-js';
+import * as hljs from 'highlight.js/lib/highlight';
+import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
+import * as hljsCss from 'highlight.js/lib/languages/css';
+import * as hljsXml from 'highlight.js/lib/languages/xml';
+import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoAppComponent } from './demo-app.component';
+
+export function hljsFactory(): any {
+  hljs.registerLanguage('typescript', hljsTypescript);
+  hljs.registerLanguage('css', hljsCss);
+  hljs.registerLanguage('xml', hljsXml);
+  return hljs;
+}
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -18,7 +28,10 @@ import { DemoAppComponent } from './demo-app.component';
     BrowserAnimationsModule,
     NgbTabsetModule.forRoot(),
     NgbCollapseModule.forRoot(),
-    HighlightJsModule.forRoot(hljs),
+    HighlightJsModule.forRoot({
+      provide: HIGHLIGHT_JS,
+      useFactory: hljsFactory
+    }),
     RouterModule.forRoot(
       [
         {

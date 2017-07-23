@@ -70,7 +70,7 @@
     "@types/sinon": "^2.2.2",
     "@types/sinon-chai": "^2.7.26",
     "@types/webpack": "^3.0.0",
-    "angular-highlight-js": "^1.0.0",
+    "angular-highlight-js": "^2.0.0",
     "angular-router-loader": "^0.6.0",
     "angular2-template-loader": "^0.6.0",
     "autoprefixer": "^7.1.1",
