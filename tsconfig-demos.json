@@ -1,18 +1,10 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
     "module": "esnext",
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
     "outDir": "./dist/esm",
-    "rootDir": ".",
     "baseUrl": "",
-    "sourceMap": true,
-    "lib": ["es2017", "dom"],
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "angular-calendar": ["./src/index"]
-    }
+    "emitDecoratorMetadata": false
   },
   "exclude": [
     "test",

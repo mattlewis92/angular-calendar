@@ -7,15 +7,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "baseUrl": "",
+    "rootDir": ".",
     "paths": {
       "angular-calendar": ["./src/index"]
     },
     "lib": ["es2017", "dom"]
   },
-  "include": [
-    "src/**/*",
-    "test/**/*",
-    "demos/**/*"
+  "exclude": [
+    "build-tool-examples",
+    "node_modules"
   ]
 }

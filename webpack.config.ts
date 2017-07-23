@@ -84,9 +84,23 @@ export default (env = 'development') => {
       historyApiFallback: true
     },
     plugins: removeEmpty([
+      ifDevelopment(new CheckerPlugin()),
+      ifDevelopment(new TsConfigPathsPlugin()),
+      ifDevelopment(new webpack.HotModuleReplacementPlugin()),
+      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
+      ifProduction(new AotPlugin({
+        tsConfigPath: './tsconfig-demos.json'
+      })),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env)
       }),
+      ifProduction(new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true
+      })),
+      ifDevelopment(new StyleLintPlugin({
+        syntax: 'scss',
+        context: 'scss'
+      })),
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)@angular/,
         __dirname + '/demos'
@@ -98,21 +112,7 @@ export default (env = 'development') => {
       }),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'demos', 'index.ejs')
-      }),
-      ifDevelopment(new CheckerPlugin()),
-      ifDevelopment(new TsConfigPathsPlugin()),
-      ifDevelopment(new webpack.HotModuleReplacementPlugin()),
-      ifDevelopment(new StyleLintPlugin({
-        syntax: 'scss',
-        context: 'scss'
-      })),
-      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
-      ifProduction(new AotPlugin({
-        tsConfigPath: './tsconfig-demos.json'
-      })),
-      ifProduction(new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true
-      }))
+      })
     ])
   }
 };
