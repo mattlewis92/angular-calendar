@@ -1,20 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { Plunker } from 'create-plunker';
-
-declare const require: any;
-const demosContext: any = require.context(
-  './demo-modules',
-  true,
-  /sources\.ts$/
-);
-const demoSources: {
-  [path: string]: { sources: Array<{ filename: string; contents: string }> };
-} = {};
-demosContext.keys().forEach(key => {
-  demoSources[key] = demosContext(key);
-});
+import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
 interface Source {
   filename: string;
@@ -25,13 +13,11 @@ interface Source {
 interface Demo {
   label: string;
   path: string;
-  sources: Source[];
+  sources?: Source[];
 }
 
-function getSources(folder: string): Source[] {
-  const [, { sources }] = Object.entries(demoSources).find(([filepath]) =>
-    filepath.startsWith(`./${folder}`)
-  );
+async function getSources(folder: string): Promise<Source[]> {
+  const { sources } = await import('./demo-modules/' + folder + '/sources.ts');
 
   return sources.map(({ filename, contents }) => {
     const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
@@ -73,26 +59,28 @@ const dependencyVersions: any = {
   styleUrls: ['./demo-app.css'],
   templateUrl: './demo-app.html'
 })
-export class DemoAppComponent {
+export class DemoAppComponent implements OnInit {
   demos: Demo[] = [];
   activeDemo: Demo;
   isMenuVisible = false;
 
-  constructor(router: Router) {
-    this.demos = router.config
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.demos = this.router.config
       .filter(route => route.path !== '**')
       .map(route => ({
         path: route.path,
-        label: route.data['label'],
-        sources: getSources(route.path)
+        label: route.data['label']
       }));
 
-    router.events
+    this.router.events
       .filter(event => event instanceof NavigationEnd)
-      .subscribe((event: NavigationEnd) => {
+      .subscribe(async (event: NavigationEnd) => {
         this.activeDemo = this.demos.find(
           demo => `/${demo.path}` === event.urlAfterRedirects
         );
+        this.activeDemo.sources = await getSources(this.activeDemo.path);
       });
   }
 
@@ -130,7 +118,7 @@ export class DemoAppComponent {
       )
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
       .addFiles(
-        getSources('demo-utils').map(source => ({
+        demoUtilsSources.map(source => ({
           name: `demo-utils/${source.filename}`,
           contents: source.contents
         }))
