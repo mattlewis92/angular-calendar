@@ -26,6 +26,12 @@ async function getSources(folder: string): Promise<Source[]> {
       html: 'html',
       css: 'css'
     };
+    contents = contents
+      .replace(
+        ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
+        ''
+      )
+      .replace("\nimport { RouterModule } from '@angular/router';", '');
     return {
       filename,
       contents,
@@ -128,16 +134,10 @@ export class DemoAppComponent implements OnInit {
           return {
             name: `demo/${source.filename}`,
             // hacky fix to get relative style and template urls to work with system.js
-            contents: source.contents
-              .replace(
-                /@Component\({/g,
-                '@Component({\n  moduleId: __moduleName,'
-              )
-              .replace(
-                ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-                ''
-              )
-              .replace("\nimport { RouterModule } from '@angular/router';", '')
+            contents: source.contents.replace(
+              /@Component\({/g,
+              '@Component({\n  moduleId: __moduleName,'
+            )
           };
         }),
         true
