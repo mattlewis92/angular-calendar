@@ -1,5 +1,5 @@
 import * as webpack from 'webpack';
-import { CheckerPlugin } from 'awesome-typescript-loader';
+import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 
 export default config => {
@@ -44,10 +44,12 @@ export default config => {
           exclude: /node_modules/
         }, {
           test: /\.ts$/,
-          loader: 'awesome-typescript-loader',
+          loader: 'ts-loader',
           exclude: /node_modules/,
           options: {
-            module: 'esnext'
+            compilerOptions: {
+              module: 'esnext'
+            }
           }
         }, {
           test: /\.scss$/,
@@ -72,7 +74,10 @@ export default config => {
             failOnError: true
           })
         ] : []),
-        new CheckerPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+          watch: ['./src', './test'],
+          async: !config.singleRun
+        }),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           test: /\.(ts|js)($|\?)/i

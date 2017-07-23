@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import { TsConfigPathsPlugin, CheckerPlugin } from 'awesome-typescript-loader';
+import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
@@ -35,9 +35,12 @@ export default (env = 'development') => {
       }), ifDevelopment({
         test: /\.ts$/,
         use: [{
-          loader: 'awesome-typescript-loader',
+          loader: 'ts-loader',
           options: {
-            module: 'esnext'
+            transpileOnly: true,
+            compilerOptions: {
+              module: 'esnext'
+            }
           }
         }, {
           loader: 'angular2-template-loader'
@@ -82,11 +85,17 @@ export default (env = 'development') => {
       port: 8000,
       inline: true,
       hot: true,
-      historyApiFallback: true
+      historyApiFallback: true,
+      stats: {
+        warningsFilter: /export '\w+' was not found in 'calendar-utils'/
+      },
+      clientLogLevel: 'error'
     },
     plugins: removeEmpty([
-      ifDevelopment(new CheckerPlugin()),
-      ifDevelopment(new TsConfigPathsPlugin()),
+      ifDevelopment(new ForkTsCheckerWebpackPlugin({
+        watch: ['./src', './demos'],
+        formatter: 'codeframe'
+      })),
       ifDevelopment(new webpack.HotModuleReplacementPlugin()),
       ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(new AotPlugin({
