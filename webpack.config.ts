@@ -7,7 +7,7 @@ import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import { AotPlugin } from '@ngtools/webpack';
 
 const env = process.argv.indexOf('-p') > -1 ? 'production' : 'development';
-const {ifProduction, ifDevelopment, ifNotDevelopment} = getIfUtils(env);
+const { ifProduction, ifDevelopment } = getIfUtils(env);
 
 export default {
   devtool: ifProduction('source-map', 'eval'),
@@ -16,7 +16,7 @@ export default {
     filename: ifProduction('[name]-[chunkhash].js', '[name].js')
   },
   module: {
-    rules: removeEmpty([ifNotDevelopment({
+    rules: removeEmpty([ifDevelopment({
       enforce: 'pre',
       test: /\.ts$/,
       loader: 'prettier-loader',
@@ -25,12 +25,12 @@ export default {
         singleQuote: true,
         parser: 'typescript'
       }
-    }), ifNotDevelopment({
+    }), ifDevelopment({
       enforce: 'pre',
       test: /\.ts$/,
       loader: 'tslint-loader',
       exclude: /node_modules/
-    }), ifNotDevelopment({
+    }), ifDevelopment({
       test: /\.ts$/,
       use: [{
         loader: 'awesome-typescript-loader',
@@ -86,7 +86,7 @@ export default {
     ifDevelopment(new CheckerPlugin()),
     ifDevelopment(new TsConfigPathsPlugin()),
     ifDevelopment(new webpack.HotModuleReplacementPlugin()),
-    ifDevelopment(new AotPlugin({
+    ifProduction(new AotPlugin({
       tsConfigPath: './tsconfig-demos.json'
     })),
     new webpack.DefinePlugin({
