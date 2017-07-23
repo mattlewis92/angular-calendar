@@ -4,14 +4,16 @@ import 'rxjs/add/operator/filter';
 import { Plunker } from 'create-plunker';
 
 declare const require: any;
-const testsContext: any = require.context(
-  '!!raw-loader!./demo-modules',
+const demosContext: any = require.context(
+  './demo-modules',
   true,
-  /\.(ts|css|html)$/
+  /sources\.ts$/
 );
-const demoFiles: any = {};
-testsContext.keys().forEach(key => {
-  demoFiles[key] = testsContext(key);
+const demoSources: {
+  [path: string]: { sources: Array<{ filename: string; contents: string }> };
+} = {};
+demosContext.keys().forEach(key => {
+  demoSources[key] = demosContext(key);
 });
 
 interface Source {
@@ -27,47 +29,23 @@ interface Demo {
 }
 
 function getSources(folder: string): Source[] {
-  return Object.entries(demoFiles)
-    .filter(([path]) => path.startsWith(`./${folder}`))
-    .filter(([path]) => !path.endsWith('/index.ts'))
-    .map(([path, contents]) => {
-      const [, filename, extension]: RegExpMatchArray = path.match(
-        /^\.\/.+\/(.+)\.(.+)$/
-      );
-      const languages: any = {
-        ts: 'typescript',
-        html: 'html',
-        css: 'css'
-      };
-      return {
-        filename: `${filename}.${extension}`,
-        contents,
-        language: languages[extension]
-      };
-    })
-    .sort((sourceA: Source, sourceB: Source) => {
-      const precedences: string[] = [
-        'component.ts',
-        'provider.ts',
-        '.html',
-        '.css',
-        'module.ts'
-      ];
+  const [, { sources }] = Object.entries(demoSources).find(([filepath]) =>
+    filepath.startsWith(`./${folder}`)
+  );
 
-      let scoreA: number = precedences.length;
-      let scoreB: number = precedences.length;
-
-      precedences.forEach((suffix, index) => {
-        if (sourceA.filename.endsWith(suffix)) {
-          scoreA = index;
-        }
-        if (sourceB.filename.endsWith(suffix)) {
-          scoreB = index;
-        }
-      });
-
-      return scoreA - scoreB;
-    });
+  return sources.map(({ filename, contents }) => {
+    const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
+    const languages: { [extension: string]: string } = {
+      ts: 'typescript',
+      html: 'html',
+      css: 'css'
+    };
+    return {
+      filename,
+      contents,
+      language: languages[extension]
+    };
+  });
 }
 
 const dependencyVersions: any = {
