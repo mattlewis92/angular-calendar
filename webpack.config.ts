@@ -91,6 +91,11 @@ export default {
       /angular(\\|\/)core(\\|\/)@angular/,
       __dirname + '/src'
     ),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'main',
+      async: true,
+      minChunks: 2
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'demos', 'index.ejs')
     })
