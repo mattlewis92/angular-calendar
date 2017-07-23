@@ -3,7 +3,7 @@ import 'font-awesome/css/font-awesome.css';
 import 'highlight.js/styles/github.css';
 import '../scss/angular-calendar.scss';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as hljs from 'highlight.js/lib/highlight';
@@ -275,7 +275,8 @@ export function hljsFactory(): any {
         }
       ],
       {
-        useHash: true
+        useHash: true,
+        preloadingStrategy: PreloadAllModules
       }
     )
   ],

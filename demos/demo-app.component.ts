@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/take';
 import { Plunker } from 'create-plunker';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
@@ -69,6 +70,7 @@ export class DemoAppComponent implements OnInit {
   demos: Demo[] = [];
   activeDemo: Demo;
   isMenuVisible = false;
+  firstDemoLoaded = false;
 
   constructor(private router: Router) {}
 
@@ -82,9 +84,15 @@ export class DemoAppComponent implements OnInit {
 
     this.router.events
       .filter(event => event instanceof NavigationEnd)
-      .subscribe(async (event: NavigationEnd) => {
+      .take(1)
+      .subscribe(() => (this.firstDemoLoaded = true));
+
+    this.router.events
+      .filter(event => event instanceof NavigationStart)
+      .filter((event: NavigationStart) => event.url !== '/')
+      .subscribe(async (event: NavigationStart) => {
         this.activeDemo = this.demos.find(
-          demo => `/${demo.path}` === event.urlAfterRedirects
+          demo => `/${demo.path}` === event.url
         );
         this.activeDemo.sources = await getSources(this.activeDemo.path);
       });
