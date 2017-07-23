@@ -8,7 +8,7 @@
   "typings": "./dist/esm/src/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build:demos": "webpack -p",
+    "build:demos": "webpack --env=production",
     "build:umd": "webpack --config webpack.config.umd.ts",
     "build:ngc": "ngc -p tsconfig-ngc.json",
     "build:dist": "npm run build:umd && npm run build:ngc",
