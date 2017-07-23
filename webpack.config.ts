@@ -114,11 +114,7 @@ export default (env = 'development') => {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'demos', 'index.ejs')
       }),
-      ifProduction(new OfflinePlugin({
-        ServiceWorker: {
-          minify: true
-        }
-      }))
+      ifProduction(new OfflinePlugin())
     ])
   }
 };
