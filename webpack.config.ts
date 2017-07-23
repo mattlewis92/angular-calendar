@@ -80,7 +80,8 @@ export default (env = 'development') => {
       stats: {
         warningsFilter: /export '\w+' was not found in 'calendar-utils'/
       },
-      clientLogLevel: 'error'
+      clientLogLevel: 'error',
+      overlay: true
     },
     plugins: removeEmpty([
       ifDevelopment(new ForkTsCheckerWebpackPlugin({
