@@ -89,7 +89,7 @@ export default (env = 'development') => {
       }),
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)@angular/,
-        __dirname + '/src'
+        __dirname + '/demos'
       ),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'main',
