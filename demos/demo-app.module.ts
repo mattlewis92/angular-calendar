@@ -13,6 +13,8 @@ import * as hljsXml from 'highlight.js/lib/languages/xml';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoAppComponent } from './demo-app.component';
+import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
+import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 
 export function hljsFactory(): any {
   hljs.registerLanguage('typescript', hljsTypescript);
@@ -32,11 +34,12 @@ export function hljsFactory(): any {
       provide: HIGHLIGHT_JS,
       useFactory: hljsFactory
     }),
+    DefaultDemoModule,
     RouterModule.forRoot(
       [
         {
           path: 'kitchen-sink',
-          loadChildren: './demo-modules/kitchen-sink/module#DemoModule',
+          component: DefaultDemoComponent,
           data: {
             label: 'Kitchen sink'
           }
