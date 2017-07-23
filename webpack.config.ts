@@ -21,15 +21,6 @@ export default (env = 'development') => {
       rules: removeEmpty([ifDevelopment({
         enforce: 'pre',
         test: /\.ts$/,
-        loader: 'prettier-loader',
-        exclude: /node_modules/,
-        options: {
-          singleQuote: true,
-          parser: 'typescript'
-        }
-      }), ifDevelopment({
-        enforce: 'pre',
-        test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: /node_modules/
       }), ifDevelopment({

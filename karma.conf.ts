@@ -31,15 +31,6 @@ export default config => {
         rules: [{
           enforce: 'pre',
           test: /\.ts$/,
-          loader: 'prettier-loader',
-          exclude: /node_modules/,
-          options: {
-            singleQuote: true,
-            parser: 'typescript'
-          }
-        }, {
-          enforce: 'pre',
-          test: /\.ts$/,
           loader: 'tslint-loader',
           exclude: /node_modules/
         }, {
