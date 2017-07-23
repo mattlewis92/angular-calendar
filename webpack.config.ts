@@ -29,10 +29,10 @@ export default {
       exclude: /node_modules/
     }, {
       test: /\.ts$/,
-      loaders: [{
+      use: [{
         loader: 'awesome-typescript-loader',
         options: {
-          module: 'es2015'
+          module: 'esnext'
         }
       }, {
         loader: 'angular2-template-loader'
