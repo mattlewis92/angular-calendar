@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
 import { Plunker } from 'create-plunker';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
@@ -89,7 +90,12 @@ export class DemoAppComponent implements OnInit {
 
     this.router.events
       .filter(event => event instanceof NavigationStart)
-      .filter((event: NavigationStart) => event.url !== '/')
+      .map((event: NavigationStart) => {
+        if (event.url === '/') {
+          return { url: '/kitchen-sink' };
+        }
+        return event;
+      })
       .subscribe(async (event: NavigationStart) => {
         this.activeDemo = this.demos.find(
           demo => `/${demo.path}` === event.url
