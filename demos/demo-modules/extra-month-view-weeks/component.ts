@@ -11,7 +11,7 @@ import {
 } from 'date-fns';
 import { GetMonthViewArgs, MonthView, getMonthView } from 'calendar-utils';
 
-class MyCalendarUtils extends CalendarUtils {
+export class MyCalendarUtils extends CalendarUtils {
   getMonthView(args: GetMonthViewArgs): MonthView {
     args.viewStart = subWeeks(startOfMonth(args.viewDate), 1);
     args.viewEnd = addWeeks(endOfMonth(args.viewDate), 1);

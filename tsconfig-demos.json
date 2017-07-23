@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "outDir": "./dist/esm",
+    "rootDir": ".",
+    "emitDecoratorMetadata": false
+  },
+  "exclude": [
+    "test",
+    "node_modules",
+    "build-tool-examples"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipMetadataEmit" : true,
+    "genDir": "./dist/aot",
+    "entryModule": "demos/demo-app.module#DemoAppModule",
+    "trace": true
+  }
+}
