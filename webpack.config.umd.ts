@@ -57,7 +57,7 @@ export default {
       loader: 'awesome-typescript-loader',
       exclude: /node_modules/,
       options: {
-        module: 'es2015'
+        module: 'esnext'
       }
     }, {
       test: /\.scss/,
