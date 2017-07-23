@@ -14,8 +14,9 @@
     },
     "lib": ["es2017", "dom"]
   },
-  "exclude": [
-    "build-tool-examples",
-    "node_modules"
+  "include": [
+    "src",
+    "test",
+    "demos"
   ]
 }

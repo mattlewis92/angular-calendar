@@ -7,9 +7,7 @@
     "emitDecoratorMetadata": false
   },
   "exclude": [
-    "test",
-    "node_modules",
-    "build-tool-examples"
+    "test"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
