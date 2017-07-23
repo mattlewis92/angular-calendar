@@ -36,6 +36,8 @@ export default {
         }
       }, {
         loader: 'angular2-template-loader'
+      }, {
+        loader: 'angular-router-loader'
       }],
       exclude: /node_modules/
     }, {
