@@ -76,6 +76,8 @@ export class DemoAppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    const defaultRoute = this.router.config.find(route => route.path === '**');
+
     this.demos = this.router.config
       .filter(route => route.path !== '**')
       .map(route => ({
@@ -92,7 +94,7 @@ export class DemoAppComponent implements OnInit {
       .filter(event => event instanceof NavigationStart)
       .map((event: NavigationStart) => {
         if (event.url === '/') {
-          return { url: '/kitchen-sink' };
+          return { url: `/${defaultRoute.redirectTo}` };
         }
         return event;
       })
