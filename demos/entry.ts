@@ -24,6 +24,8 @@ import { DemoAppModule } from './demo-app.module';
 
 declare const ENV: string;
 if (ENV === 'production') {
+  const { install } = require('offline-plugin/runtime'); // tslint:disable-line
+  install();
   enableProdMode();
 }
 

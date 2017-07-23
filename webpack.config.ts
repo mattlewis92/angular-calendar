@@ -5,6 +5,7 @@ import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import { AotPlugin } from '@ngtools/webpack';
+import * as OfflinePlugin from 'offline-plugin';
 
 export default (env = 'development') => {
 
@@ -112,7 +113,12 @@ export default (env = 'development') => {
       }),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'demos', 'index.ejs')
-      })
+      }),
+      ifProduction(new OfflinePlugin({
+        ServiceWorker: {
+          navigateFallbackURL: '/'
+        }
+      }))
     ])
   }
 };
