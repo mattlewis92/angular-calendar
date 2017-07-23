@@ -87,6 +87,7 @@ export default (env = 'development') => {
       ifDevelopment(new CheckerPlugin()),
       ifDevelopment(new TsConfigPathsPlugin()),
       ifDevelopment(new webpack.HotModuleReplacementPlugin()),
+      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(new AotPlugin({
         tsConfigPath: './tsconfig-demos.json'
       })),
