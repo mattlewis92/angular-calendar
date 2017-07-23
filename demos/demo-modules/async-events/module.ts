@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
@@ -10,7 +11,8 @@ import { DemoComponent } from './component';
     CommonModule,
     HttpModule,
     CalendarModule.forRoot(),
-    DemoUtilsModule
+    DemoUtilsModule,
+    RouterModule.forChild([{ path: '', component: DemoComponent }])
   ],
   declarations: [DemoComponent],
   exports: [DemoComponent]

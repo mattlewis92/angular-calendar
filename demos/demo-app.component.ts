@@ -1,18 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { Plunker } from 'create-plunker';
-
-declare const require: any;
-const testsContext: any = require.context(
-  '!!raw-loader!./demo-modules',
-  true,
-  /\.(ts|css|html)$/
-);
-const demoFiles: any = {};
-testsContext.keys().forEach(key => {
-  demoFiles[key] = testsContext(key);
-});
+import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
 interface Source {
   filename: string;
@@ -23,51 +13,31 @@ interface Source {
 interface Demo {
   label: string;
   path: string;
-  sources: Source[];
+  sources?: Source[];
 }
 
-function getSources(folder: string): Source[] {
-  return Object.entries(demoFiles)
-    .filter(([path]) => path.startsWith(`./${folder}`))
-    .filter(([path]) => !path.endsWith('/index.ts'))
-    .map(([path, contents]) => {
-      const [, filename, extension]: RegExpMatchArray = path.match(
-        /^\.\/.+\/(.+)\.(.+)$/
-      );
-      const languages: any = {
-        ts: 'typescript',
-        html: 'html',
-        css: 'css'
-      };
-      return {
-        filename: `${filename}.${extension}`,
-        contents,
-        language: languages[extension]
-      };
-    })
-    .sort((sourceA: Source, sourceB: Source) => {
-      const precedences: string[] = [
-        'component.ts',
-        'provider.ts',
-        '.html',
-        '.css',
-        'module.ts'
-      ];
+async function getSources(folder: string): Promise<Source[]> {
+  const { sources } = await import('./demo-modules/' + folder + '/sources.ts');
 
-      let scoreA: number = precedences.length;
-      let scoreB: number = precedences.length;
-
-      precedences.forEach((suffix, index) => {
-        if (sourceA.filename.endsWith(suffix)) {
-          scoreA = index;
-        }
-        if (sourceB.filename.endsWith(suffix)) {
-          scoreB = index;
-        }
-      });
-
-      return scoreA - scoreB;
-    });
+  return sources.map(({ filename, contents }) => {
+    const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
+    const languages: { [extension: string]: string } = {
+      ts: 'typescript',
+      html: 'html',
+      css: 'css'
+    };
+    contents = contents
+      .replace(
+        ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
+        ''
+      )
+      .replace("\nimport { RouterModule } from '@angular/router';", '');
+    return {
+      filename,
+      contents,
+      language: languages[extension]
+    };
+  });
 }
 
 const dependencyVersions: any = {
@@ -95,26 +65,28 @@ const dependencyVersions: any = {
   styleUrls: ['./demo-app.css'],
   templateUrl: './demo-app.html'
 })
-export class DemoAppComponent {
+export class DemoAppComponent implements OnInit {
   demos: Demo[] = [];
   activeDemo: Demo;
   isMenuVisible = false;
 
-  constructor(router: Router) {
-    this.demos = router.config
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.demos = this.router.config
       .filter(route => route.path !== '**')
       .map(route => ({
         path: route.path,
-        label: route.data['label'],
-        sources: getSources(route.path)
+        label: route.data['label']
       }));
 
-    router.events
+    this.router.events
       .filter(event => event instanceof NavigationEnd)
-      .subscribe((event: NavigationEnd) => {
+      .subscribe(async (event: NavigationEnd) => {
         this.activeDemo = this.demos.find(
           demo => `/${demo.path}` === event.urlAfterRedirects
         );
+        this.activeDemo.sources = await getSources(this.activeDemo.path);
       });
   }
 
@@ -152,7 +124,7 @@ export class DemoAppComponent {
       )
       .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
       .addFiles(
-        getSources('demo-utils').map(source => ({
+        demoUtilsSources.map(source => ({
           name: `demo-utils/${source.filename}`,
           contents: source.contents
         }))

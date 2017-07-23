@@ -57,7 +57,7 @@ export default {
       loader: 'awesome-typescript-loader',
       exclude: /node_modules/,
       options: {
-        module: 'es2015'
+        module: 'esnext'
       }
     }, {
       test: /\.scss/,
@@ -91,6 +91,7 @@ export default {
     extensions: ['.ts', '.js']
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new StyleLintPlugin({
       syntax: 'scss',
       context: 'scss',
@@ -113,7 +114,6 @@ export default {
       `.trim(),
       raw: true,
       entryOnly: true
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin()
+    })
   ]
 };
