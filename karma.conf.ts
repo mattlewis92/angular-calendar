@@ -67,7 +67,8 @@ export default config => {
         ] : []),
         new ForkTsCheckerWebpackPlugin({
           watch: ['./src', './test'],
-          async: !config.singleRun
+          async: !config.singleRun,
+          formatter: 'codeframe'
         }),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
