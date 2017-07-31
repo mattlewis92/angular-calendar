@@ -136,6 +136,7 @@
     "webpack-config-utils": "^2.3.0",
     "webpack-date-fns-externals": "^1.0.0",
     "webpack-dev-server": "^2.6.1",
+    "webpack-filter-warnings-plugin": "^1.0.0",
     "webpack-rxjs-externals": "^1.0.0",
     "zone.js": "^0.8.11"
   },

@@ -1,6 +1,7 @@
 import * as webpack from 'webpack';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
+import * as FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 
 export default config => {
   config.set({
@@ -62,6 +63,9 @@ export default config => {
         }]
       },
       plugins: [
+        new FilterWarningsPlugin({
+          exclude: /export '\w+' was not found in 'calendar-utils'/
+        }),
         ...(config.singleRun ? [
           new webpack.NoEmitOnErrorsPlugin(),
           new StyleLintPlugin({
