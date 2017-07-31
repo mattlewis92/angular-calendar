@@ -44,7 +44,7 @@ export default config => {
           loader: 'ts-loader',
           exclude: /node_modules/,
           options: {
-            transpileOnly: true,
+            transpileOnly: !config.singleRun,
             compilerOptions: {
               module: 'esnext'
             }
@@ -75,12 +75,12 @@ export default config => {
             context: 'scss',
             failOnError: true
           })
-        ] : []),
-        new ForkTsCheckerWebpackPlugin({
-          watch: ['./src', './test'],
-          async: !config.singleRun,
-          formatter: 'codeframe'
-        }),
+        ] : [
+          new ForkTsCheckerWebpackPlugin({
+            watch: ['./src', './test'],
+            formatter: 'codeframe'
+          })
+        ]),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           columns: false,
