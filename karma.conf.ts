@@ -83,7 +83,7 @@ export default config => {
         }),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
-          columns: config.singleRun,
+          columns: false,
           test: /\.(ts|js)($|\?)/i
         }),
         new webpack.ContextReplacementPlugin(
