@@ -32,7 +32,11 @@ export default config => {
           enforce: 'pre',
           test: /\.ts$/,
           loader: 'tslint-loader',
-          exclude: /node_modules/
+          exclude: /node_modules/,
+          options: {
+            emitErrors: config.singleRun,
+            failOnHint: config.singleRun
+          }
         }, {
           test: /\.ts$/,
           loader: 'ts-loader',
@@ -78,15 +82,7 @@ export default config => {
         new webpack.ContextReplacementPlugin(
           /angular(\\|\/)core(\\|\/)@angular/,
           __dirname + '/src'
-        ),
-        new webpack.LoaderOptionsPlugin({
-          options: {
-            tslint: {
-              emitErrors: config.singleRun,
-              failOnHint: config.singleRun
-            }
-          }
-        })
+        )
       ]
     },
 
