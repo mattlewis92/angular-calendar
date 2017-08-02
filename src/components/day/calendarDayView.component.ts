@@ -72,6 +72,7 @@ export interface DayViewEventResize {
             #event
             *ngFor="let dayEvent of view?.events"
             class="cal-event-container"
+            [ngClass]="dayEvent.event?.containerCssClass"
             [class.cal-draggable]="dayEvent.event.draggable"
             mwlResizable
             [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
