@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  SimpleChanges,
-  OnChanges
-} from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Input } from '@angular/core';
 import {
   getSeconds,
   getMinutes,
@@ -21,6 +14,13 @@ import {
   setYear
 } from 'date-fns';
 import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export const DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => DateTimePickerComponent),
+  multi: true
+};
 
 @Component({
   selector: 'mwl-demo-utils-date-time-picker',
@@ -43,7 +43,11 @@ import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
         </div>
       </div>
     </form>
-    <ngb-timepicker [(ngModel)]="timeStruct" (ngModelChange)="updateTime()" [meridian]="true"></ngb-timepicker>
+    <ngb-timepicker
+      [(ngModel)]="timeStruct"
+      (ngModelChange)="updateTime()"
+      [meridian]="true">
+    </ngb-timepicker>
   `,
   styles: [
     `
@@ -51,14 +55,13 @@ import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
       width: 100%;
     }
   `
-  ]
+  ],
+  providers: [DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR]
 })
-export class DateTimePickerComponent implements OnChanges {
+export class DateTimePickerComponent implements ControlValueAccessor {
   @Input() placeholder: string;
 
-  @Input() date: Date;
-
-  @Output() dateChange: EventEmitter<Date> = new EventEmitter();
+  date: Date;
 
   dateStruct: NgbDateStruct;
 
@@ -66,20 +69,30 @@ export class DateTimePickerComponent implements OnChanges {
 
   datePicker: any;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['date']) {
-      this.dateStruct = {
-        day: getDate(this.date),
-        month: getMonth(this.date) + 1,
-        year: getYear(this.date)
-      };
-      this.timeStruct = {
-        second: getSeconds(this.date),
-        minute: getMinutes(this.date),
-        hour: getHours(this.date)
-      };
-    }
+  private onChangeCallback: (date: Date) => void = () => {};
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  writeValue(date: Date): void {
+    this.date = date;
+    this.dateStruct = {
+      day: getDate(date),
+      month: getMonth(date) + 1,
+      year: getYear(date)
+    };
+    this.timeStruct = {
+      second: getSeconds(date),
+      minute: getMinutes(date),
+      hour: getHours(date)
+    };
+    this.cdr.detectChanges();
   }
+
+  registerOnChange(fn: any): void {
+    this.onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any): void {}
 
   updateDate(): void {
     const newDate: Date = setYear(
@@ -89,7 +102,7 @@ export class DateTimePickerComponent implements OnChanges {
       ),
       this.dateStruct.year
     );
-    this.dateChange.next(newDate);
+    this.onChangeCallback(newDate);
   }
 
   updateTime(): void {
@@ -100,6 +113,6 @@ export class DateTimePickerComponent implements OnChanges {
       ),
       this.timeStruct.hour
     );
-    this.dateChange.next(newDate);
+    this.onChangeCallback(newDate);
   }
 }
