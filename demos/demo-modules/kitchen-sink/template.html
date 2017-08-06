@@ -149,15 +149,15 @@
       </td>
       <td>
         <mwl-demo-utils-date-time-picker
-          [(date)]="event.start"
-          (dateChange)="refresh.next()"
+          [(ngModel)]="event.start"
+          (ngModelChange)="refresh.next()"
           placeholder="Not set">
         </mwl-demo-utils-date-time-picker>
       </td>
       <td>
         <mwl-demo-utils-date-time-picker
-          [(date)]="event.end"
-          (dateChange)="refresh.next()"
+          [(ngModel)]="event.end"
+          (ngModelChange)="refresh.next()"
           placeholder="Not set">
         </mwl-demo-utils-date-time-picker>
       </td>

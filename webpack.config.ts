@@ -6,6 +6,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import { AotPlugin } from '@ngtools/webpack';
 import * as OfflinePlugin from 'offline-plugin';
+import * as FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 
 export default (env = 'development') => {
 
@@ -77,13 +78,12 @@ export default (env = 'development') => {
       inline: true,
       hot: true,
       historyApiFallback: true,
-      stats: {
-        warningsFilter: /export '\w+' was not found in 'calendar-utils'/
-      },
-      clientLogLevel: 'error',
       overlay: true
     },
     plugins: removeEmpty([
+      new FilterWarningsPlugin({
+        exclude: /export '\w+' was not found in 'calendar-utils'/
+      }),
       ifDevelopment(new ForkTsCheckerWebpackPlugin({
         watch: ['./src', './demos'],
         formatter: 'codeframe'

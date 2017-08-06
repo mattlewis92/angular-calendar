@@ -63,12 +63,12 @@
     cursor: move;
   }
 
-  .cal-event.cal-starts-within-day {
+  .cal-starts-within-day .cal-event {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
 
-  .cal-event.cal-ends-within-day {
+  .cal-ends-within-day .cal-event {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }

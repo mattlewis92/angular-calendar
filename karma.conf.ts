@@ -1,6 +1,8 @@
 import * as webpack from 'webpack';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
+import * as FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
+import * as WebpackKarmaDieHardPlugin from '@mattlewis92/webpack-karma-die-hard';
 
 export default config => {
   config.set({
@@ -32,12 +34,17 @@ export default config => {
           enforce: 'pre',
           test: /\.ts$/,
           loader: 'tslint-loader',
-          exclude: /node_modules/
+          exclude: /node_modules/,
+          options: {
+            emitErrors: config.singleRun,
+            failOnHint: config.singleRun
+          }
         }, {
           test: /\.ts$/,
           loader: 'ts-loader',
           exclude: /node_modules/,
           options: {
+            transpileOnly: !config.singleRun,
             compilerOptions: {
               module: 'esnext'
             }
@@ -57,35 +64,32 @@ export default config => {
         }]
       },
       plugins: [
+        new FilterWarningsPlugin({
+          exclude: /export '\w+' was not found in 'calendar-utils'/
+        }),
         ...(config.singleRun ? [
+          new WebpackKarmaDieHardPlugin(),
           new webpack.NoEmitOnErrorsPlugin(),
           new StyleLintPlugin({
             syntax: 'scss',
             context: 'scss',
             failOnError: true
           })
-        ] : []),
-        new ForkTsCheckerWebpackPlugin({
-          watch: ['./src', './test'],
-          async: !config.singleRun,
-          formatter: 'codeframe'
-        }),
+        ] : [
+          new ForkTsCheckerWebpackPlugin({
+            watch: ['./src', './test'],
+            formatter: 'codeframe'
+          })
+        ]),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
+          columns: false,
           test: /\.(ts|js)($|\?)/i
         }),
         new webpack.ContextReplacementPlugin(
           /angular(\\|\/)core(\\|\/)@angular/,
           __dirname + '/src'
-        ),
-        new webpack.LoaderOptionsPlugin({
-          options: {
-            tslint: {
-              emitErrors: config.singleRun,
-              failOnHint: config.singleRun
-            }
-          }
-        })
+        )
       ]
     },
 

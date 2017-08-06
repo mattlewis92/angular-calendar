@@ -50,12 +50,12 @@
     cursor: move;
   }
 
-  .cal-event.cal-starts-within-week {
+  .cal-starts-within-week .cal-event {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
 
-  .cal-event.cal-ends-within-week {
+  .cal-ends-within-week .cal-event {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }

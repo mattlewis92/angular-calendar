@@ -1,5 +1,4 @@
 /// <reference types="mocha" />
-/// <reference types="sinon" />
 
 import './../scss/angular-calendar.scss';
 import 'core-js';
@@ -17,6 +16,7 @@ import 'intl/locale-data/jsonp/de';
 import 'moment/locale/de';
 import 'moment/locale/en-ca';
 import { use } from 'chai';
+import * as sinon from 'sinon';
 import * as sinonChai from 'sinon-chai';
 import { TestBed } from '@angular/core/testing';
 import {
@@ -29,6 +29,15 @@ TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
 );
+
+let rafStub: sinon.SinonStub;
+beforeEach(() => {
+  rafStub = sinon.stub(window, 'requestAnimationFrame').callsArgAsync(0);
+});
+
+afterEach(() => {
+  rafStub.restore();
+});
 
 declare const require: any;
 const testsContext: any = require.context('./', true, /\.spec/);

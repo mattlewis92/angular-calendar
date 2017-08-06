@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/mattlewis92/angular-calendar/compare/v0.19.0...v0.20.0) (2017-08-06)
+
+
+### Bug Fixes
+
+* **dayView:** add the event.cssClass to the event container instead of the event itself ([591dd4a](https://github.com/mattlewis92/angular-calendar/commit/591dd4a)), closes [#299](https://github.com/mattlewis92/angular-calendar/issues/299)
+* **monthView:** only call beforeViewRender once when refreshing the view ([3dd3118](https://github.com/mattlewis92/angular-calendar/commit/3dd3118)), closes [#293](https://github.com/mattlewis92/angular-calendar/issues/293)
+* **weekView:** custom event `cssClass`'s are now added to the event container instead of the event i ([712ded8](https://github.com/mattlewis92/angular-calendar/commit/712ded8))
+
+
+### BREAKING CHANGES
+
+* **weekView:** you may need to adjust your CSS slightly to account for this change. See the day
+view breaking change for how to migrate.
+* **dayView:** the `event.cssClass` property is now added to the parent container element, rather
+than the event itself. You may need to update your CSS.
+
+Before:
+```
+.my-custom-event-class {}
+```
+
+After:
+```
+.my-custom-event-class .cal-event {}
+```
+
+People using custom day event event templates can also remove these lines from their template:
+
+```
+[class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
+[class.cal-ends-within-day]="!dayEvent.endsAfterDay"
+[ngClass]="dayEvent.event.cssClass"
+```
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/mattlewis92/angular-calendar/compare/v0.18.3...v0.19.0) (2017-07-14)
 

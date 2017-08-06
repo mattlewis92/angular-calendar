@@ -7,6 +7,7 @@ import {
 } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
+import * as sinon from 'sinon';
 import { expect } from 'chai';
 import { spy } from 'sinon';
 import {
@@ -720,6 +721,24 @@ describe('calendarMonthView component', () => {
     expect(headerCells[0].classList.contains('cal-weekend')).to.equal(false);
     expect(headerCells[5].classList.contains('cal-weekend')).to.equal(true);
     expect(headerCells[6].classList.contains('cal-weekend')).to.equal(true);
+    fixture.destroy();
+  });
+
+  it('should only call the beforeViewRender output once when refreshing the view', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.refresh = new Subject();
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    const beforeViewRenderCalled = sinon.spy();
+    const subscription = fixture.componentInstance.beforeViewRender.subscribe(
+      beforeViewRenderCalled
+    );
+    fixture.componentInstance.refresh.next(true);
+    expect(beforeViewRenderCalled).to.have.callCount(1);
+    subscription.unsubscribe();
     fixture.destroy();
   });
 });

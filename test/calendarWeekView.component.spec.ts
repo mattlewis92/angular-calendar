@@ -127,7 +127,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     expect(
       fixture.nativeElement
-        .querySelector('.cal-event-container .cal-event')
+        .querySelector('.cal-event-container')
         .classList.contains('foo')
     ).to.equal(true);
     fixture.destroy();
