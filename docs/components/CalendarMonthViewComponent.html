@@ -1316,6 +1316,8 @@ export class CalendarMonthViewComponent
   }
 
   private refreshAll(): void {
+    this.columnHeaders &#x3D; null;
+    this.view &#x3D; null;
     this.refreshHeader();
     this.refreshBody();
     this.checkActiveDayIsOpen();

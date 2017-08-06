@@ -433,7 +433,27 @@
 
 <h1 id="change-log">Change Log</h1>
 <p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
-<p><a name="0.19.0"></a></p>
+<p><a name="0.20.0"></a></p>
+<h1 id="-0-20-0-https-github-com-mattlewis92-angular-calendar-compare-v0-19-0-v0-20-0-2017-08-06-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.19.0...v0.20.0">0.20.0</a> (2017-08-06)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>dayView:</strong> add the event.cssClass to the event container instead of the event itself (<a href="https://github.com/mattlewis92/angular-calendar/commit/591dd4a">591dd4a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/299">#299</a></li>
+<li><strong>monthView:</strong> only call beforeViewRender once when refreshing the view (<a href="https://github.com/mattlewis92/angular-calendar/commit/3dd3118">3dd3118</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/293">#293</a></li>
+<li><strong>weekView:</strong> custom event <code>cssClass</code>&#39;s are now added to the event container instead of the event i (<a href="https://github.com/mattlewis92/angular-calendar/commit/712ded8">712ded8</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>weekView:</strong> you may need to adjust your CSS slightly to account for this change. See the day
+view breaking change for how to migrate.</li>
+<li><strong>dayView:</strong> the <code>event.cssClass</code> property is now added to the parent container element, rather
+than the event itself. You may need to update your CSS.</li>
+</ul>
+<p>Before:</p>
+<pre class="line-numbers"><code class="language-none">.my-custom-event-class {}</code></pre><p>After:</p>
+<pre class="line-numbers"><code class="language-none">.my-custom-event-class .cal-event {}</code></pre><p>People using custom day event event templates can also remove these lines from their template:</p>
+<pre class="line-numbers"><code class="language-none">[class.cal-starts-within-day]=&quot;!dayEvent.startsBeforeDay&quot;
+[class.cal-ends-within-day]=&quot;!dayEvent.endsAfterDay&quot;
+[ngClass]=&quot;dayEvent.event.cssClass&quot;</code></pre><p><a name="0.19.0"></a></p>
 <h1 id="-0-19-0-https-github-com-mattlewis92-angular-calendar-compare-v0-18-3-v0-19-0-2017-07-14-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.18.3...v0.19.0">0.19.0</a> (2017-07-14)</h1>
 <h3 id="features">Features</h3>
 <ul>
