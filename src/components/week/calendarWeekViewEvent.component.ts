@@ -13,10 +13,7 @@ import { WeekViewEvent } from 'calendar-utils';
     <ng-template #defaultTemplate>
       <div
         class="cal-event"
-        [class.cal-starts-within-week]="!weekEvent.startsBeforeWeek"
-        [class.cal-ends-within-week]="!weekEvent.endsAfterWeek"
         [style.backgroundColor]="weekEvent.event.color.secondary"
-        [ngClass]="weekEvent.event?.cssClass"
         [mwlCalendarTooltip]="weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event"
         [tooltipPlacement]="tooltipPlacement"
         [tooltipEvent]="weekEvent.event"

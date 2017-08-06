@@ -55,10 +55,13 @@ export interface WeekViewEventResize {
       </mwl-calendar-week-view-header>
       <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
         <div
-          class="cal-event-container"
-          #event
-          [class.cal-draggable]="weekEvent.event.draggable"
           *ngFor="let weekEvent of eventRow.row"
+          #event
+          class="cal-event-container"
+          [class.cal-draggable]="weekEvent.event.draggable"
+          [class.cal-starts-within-week]="!weekEvent.startsBeforeWeek"
+          [class.cal-ends-within-week]="!weekEvent.endsAfterWeek"
+          [ngClass]="weekEvent.event?.cssClass"
           [style.width]="((100 / days.length) * weekEvent.span) + '%'"
           [style.marginLeft]="((100 / days.length) * weekEvent.offset) + '%'"
           mwlResizable
