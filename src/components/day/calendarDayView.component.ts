@@ -73,6 +73,9 @@ export interface DayViewEventResize {
             *ngFor="let dayEvent of view?.events"
             class="cal-event-container"
             [class.cal-draggable]="dayEvent.event.draggable"
+            [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
+            [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
+            [ngClass]="dayEvent.event.cssClass"
             mwlResizable
             [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
             [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
