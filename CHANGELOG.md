@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.20.1"></a>
+## [0.20.1](https://github.com/mattlewis92/angular-calendar/compare/v0.20.0...v0.20.1) (2017-08-14)
+
+
+### Bug Fixes
+
+* **monthView:** make collapse animation smoother ([7b52366](https://github.com/mattlewis92/angular-calendar/commit/7b52366))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/mattlewis92/angular-calendar/compare/v0.19.0...v0.20.0) (2017-08-06)
 
