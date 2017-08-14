@@ -43,12 +43,12 @@ import { CalendarEvent } from 'calendar-utils';
   animations: [
     trigger('collapse', [
       transition('void => *', [
-        style({ height: 0 }),
-        animate('150ms linear', style({ height: '*' }))
+        style({ height: 0, overflow: 'hidden' }),
+        animate('150ms', style({ height: '*' }))
       ]),
       transition('* => void', [
-        style({ height: '*' }),
-        animate('150ms linear', style({ height: 0 }))
+        style({ height: '*', overflow: 'hidden' }),
+        animate('150ms', style({ height: 0 }))
       ])
     ])
   ]
