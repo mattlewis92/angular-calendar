@@ -204,10 +204,23 @@
                         </ul>
                     </li>
             
-            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
                     </li>
+            
             
             
                     <li class="divider"></li>
@@ -411,10 +424,23 @@
                                </ul>
                            </li>
                    
-                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
                            </li>
+                   
                    
                    
                            <li class="divider"></li>
@@ -489,6 +515,50 @@ provide: [{
 
 
             <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#dayViewHour">dayViewHour</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#dayViewTitle">dayViewTitle</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#monthViewColumnHeader">monthViewColumnHeader</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#monthViewDayNumber">monthViewDayNumber</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#monthViewTitle">monthViewTitle</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#weekViewColumnHeader">weekViewColumnHeader</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#weekViewColumnSubHeader">weekViewColumnSubHeader</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#weekViewTitle">weekViewTitle</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section>
                 
                     <h3 id="methods">
                         Methods
@@ -497,210 +567,7 @@ provide: [{
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> monthViewColumnHeader</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
-                                    <code>monthViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:35</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The month view header week day labels</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> monthViewDayNumber</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
-                                    <code>monthViewDayNumber(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:42</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The month view cell day number</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> monthViewTitle</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
-                                    <code>monthViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:49</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The month view title</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> weekViewColumnHeader</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
-                                    <code>weekViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:56</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The week view header week day labels</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> weekViewColumnSubHeader</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
-                                    <code>weekViewColumnSubHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:63</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The week view sub header day and month labels</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> weekViewTitle</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
-                                    <code>weekViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:73</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The week view title</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
+                                    <a name="dayViewHour"></a>
                                     <b><span class="modifier">Public</span> dayViewHour</b>
                                 </td>
                             </tr>
@@ -724,7 +591,7 @@ provide: [{
             </div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
             
                                         </div>
                                 </td>
@@ -735,6 +602,7 @@ provide: [{
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="dayViewTitle"></a>
                                     <b><span class="modifier">Public</span> dayViewTitle</b>
                                 </td>
                             </tr>
@@ -758,7 +626,217 @@ provide: [{
             </div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>string</code>
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="monthViewColumnHeader"></a>
+                                    <b><span class="modifier">Public</span> monthViewColumnHeader</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>monthViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:35</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The month view header week day labels</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="monthViewDayNumber"></a>
+                                    <b><span class="modifier">Public</span> monthViewDayNumber</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>monthViewDayNumber(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:42</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The month view cell day number</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="monthViewTitle"></a>
+                                    <b><span class="modifier">Public</span> monthViewTitle</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>monthViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:49</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The month view title</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="weekViewColumnHeader"></a>
+                                    <b><span class="modifier">Public</span> weekViewColumnHeader</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>weekViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:56</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The week view header week day labels</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="weekViewColumnSubHeader"></a>
+                                    <b><span class="modifier">Public</span> weekViewColumnSubHeader</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>weekViewColumnSubHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:63</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The week view sub header day and month labels</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="weekViewTitle"></a>
+                                    <b><span class="modifier">Public</span> weekViewTitle</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>weekViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:73</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The week view title</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
             
                                         </div>
                                 </td>

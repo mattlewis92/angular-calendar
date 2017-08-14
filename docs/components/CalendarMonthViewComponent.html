@@ -204,10 +204,23 @@
                         </ul>
                     </li>
             
-            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
                     </li>
+            
             
             
                     <li class="divider"></li>
@@ -411,10 +424,23 @@
                                </ul>
                            </li>
                    
-                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
                            </li>
+                   
                    
                    
                            <li class="divider"></li>
@@ -557,18 +583,104 @@
 </section>
 
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeDayIsOpen">activeDayIsOpen</a>
+                            </li>
+                            <li>
+                                <a href="#cellTemplate">cellTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#events">events</a>
+                            </li>
+                            <li>
+                                <a href="#excludeDays">excludeDays</a>
+                            </li>
+                            <li>
+                                <a href="#headerTemplate">headerTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#locale">locale</a>
+                            </li>
+                            <li>
+                                <a href="#openDayEventsTemplate">openDayEventsTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#refresh">refresh</a>
+                            </li>
+                            <li>
+                                <a href="#tooltipAppendToBody">tooltipAppendToBody</a>
+                            </li>
+                            <li>
+                                <a href="#tooltipPlacement">tooltipPlacement</a>
+                            </li>
+                            <li>
+                                <a href="#tooltipTemplate">tooltipTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#viewDate">viewDate</a>
+                            </li>
+                            <li>
+                                <a href="#weekendDays">weekendDays</a>
+                            </li>
+                            <li>
+                                <a href="#weekStartsOn">weekStartsOn</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#beforeViewRender">beforeViewRender</a>
+                            </li>
+                            <li>
+                                <a href="#dayClicked">dayClicked</a>
+                            </li>
+                            <li>
+                                <a href="#eventClicked">eventClicked</a>
+                            </li>
+                            <li>
+                                <a href="#eventTimesChanged">eventTimesChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
         <h3 id="inputs">Inputs</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="activeDayIsOpen"></a>
                             <code>activeDayIsOpen</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Whether the events list for the day of the <code>viewDate</code> option is visible or not</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                             <p>
@@ -587,6 +699,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="cellTemplate"></a>
                             <code>cellTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -609,6 +722,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="events"></a>
                             <code>events</code>
                         </td>
                         <td class="col-md-10">
@@ -632,13 +746,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="excludeDays"></a>
                             <code>excludeDays</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>[]</code>
+                                <em>Type:</em>    <code>number[]</code>
 
                               </p>
                         </td>
@@ -654,6 +769,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="headerTemplate"></a>
                             <code>headerTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -676,13 +792,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="locale"></a>
                             <code>locale</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The locale used to format dates</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                               </p>
                         </td>
@@ -698,6 +815,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="openDayEventsTemplate"></a>
                             <code>openDayEventsTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -720,6 +838,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="refresh"></a>
                             <code>refresh</code>
                         </td>
                         <td class="col-md-10">
@@ -742,13 +861,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="tooltipAppendToBody"></a>
                             <code>tooltipAppendToBody</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Whether to append tooltips to the body or next to the trigger element</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                             <p>
@@ -767,13 +887,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="tooltipPlacement"></a>
                             <code>tooltipPlacement</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The placement of the event tooltip</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                               </p>
                             <p>
@@ -792,6 +913,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="tooltipTemplate"></a>
                             <code>tooltipTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -814,13 +936,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="viewDate"></a>
                             <code>viewDate</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The current view date</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>Date</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
                               </p>
                         </td>
@@ -836,13 +959,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="weekendDays"></a>
                             <code>weekendDays</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>[]</code>
+                                <em>Type:</em>    <code>number[]</code>
 
                               </p>
                         </td>
@@ -858,13 +982,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="weekStartsOn"></a>
                             <code>weekStartsOn</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The start number of the week</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                         </td>
@@ -884,13 +1009,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="beforeViewRender"></a>
                             <code>beforeViewRender</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>An output that will be called before the view is rendered for the current month.
 If you add the <code>cssClass</code> property to a day in the body it will add that class to the cell element in the template</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -905,12 +1031,13 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="dayClicked"></a>
                             <code>dayClicked</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Called when the day cell is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -925,12 +1052,13 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventClicked"></a>
                             <code>eventClicked</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Called when the event title is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -945,6 +1073,7 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventTimesChanged"></a>
                             <code>eventTimesChanged</code>
                         </td>
                         <td class="col-md-10">
@@ -962,7 +1091,6 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tbody>
             </table>
     </section>
-
 
 
 </div>

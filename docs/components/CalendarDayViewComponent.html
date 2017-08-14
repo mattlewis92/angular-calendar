@@ -204,10 +204,23 @@
                         </ul>
                     </li>
             
-            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
                     </li>
+            
             
             
                     <li class="divider"></li>
@@ -411,10 +424,23 @@
                                </ul>
                            </li>
                    
-                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
                            </li>
+                   
                    
                    
                            <li class="divider"></li>
@@ -578,11 +604,135 @@
 </section>
 
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#dragStart">dragStart</a>
+                            </li>
+                            <li>
+                                 <a href="#eventDragged">eventDragged</a>
+                            </li>
+                            <li>
+                                 <a href="#eventDropped">eventDropped</a>
+                            </li>
+                            <li>
+                                 <a href="#resizeEnded">resizeEnded</a>
+                            </li>
+                            <li>
+                                 <a href="#resizeStarted">resizeStarted</a>
+                            </li>
+                            <li>
+                                 <a href="#resizing">resizing</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allDayEventTemplate">allDayEventTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#dayEndHour">dayEndHour</a>
+                            </li>
+                            <li>
+                                <a href="#dayEndMinute">dayEndMinute</a>
+                            </li>
+                            <li>
+                                <a href="#dayStartHour">dayStartHour</a>
+                            </li>
+                            <li>
+                                <a href="#dayStartMinute">dayStartMinute</a>
+                            </li>
+                            <li>
+                                <a href="#events">events</a>
+                            </li>
+                            <li>
+                                <a href="#eventSnapSize">eventSnapSize</a>
+                            </li>
+                            <li>
+                                <a href="#eventTemplate">eventTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#eventWidth">eventWidth</a>
+                            </li>
+                            <li>
+                                <a href="#hourSegments">hourSegments</a>
+                            </li>
+                            <li>
+                                <a href="#hourSegmentTemplate">hourSegmentTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#locale">locale</a>
+                            </li>
+                            <li>
+                                <a href="#refresh">refresh</a>
+                            </li>
+                            <li>
+                                <a href="#tooltipAppendToBody">tooltipAppendToBody</a>
+                            </li>
+                            <li>
+                                <a href="#tooltipPlacement">tooltipPlacement</a>
+                            </li>
+                            <li>
+                                <a href="#tooltipTemplate">tooltipTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#viewDate">viewDate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#beforeViewRender">beforeViewRender</a>
+                            </li>
+                            <li>
+                                <a href="#eventClicked">eventClicked</a>
+                            </li>
+                            <li>
+                                <a href="#eventTimesChanged">eventTimesChanged</a>
+                            </li>
+                            <li>
+                                <a href="#hourSegmentClicked">hourSegmentClicked</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
         <h3 id="inputs">Inputs</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="allDayEventTemplate"></a>
                             <code>allDayEventTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -605,13 +755,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="dayEndHour"></a>
                             <code>dayEndHour</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The day end hours in 24 hour time. Must be 0-23</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -630,13 +781,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="dayEndMinute"></a>
                             <code>dayEndMinute</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The day end minutes. Must be 0-59</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -655,13 +807,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="dayStartHour"></a>
                             <code>dayStartHour</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The day start hours in 24 hour time. Must be 0-23</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -680,13 +833,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="dayStartMinute"></a>
                             <code>dayStartMinute</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The day start minutes. Must be 0-59</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -705,6 +859,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="events"></a>
                             <code>events</code>
                         </td>
                         <td class="col-md-10">
@@ -728,13 +883,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventSnapSize"></a>
                             <code>eventSnapSize</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The grid size to snap resizing and dragging of events to</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -753,6 +909,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventTemplate"></a>
                             <code>eventTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -775,13 +932,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventWidth"></a>
                             <code>eventWidth</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The width in pixels of each event on the view</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -800,13 +958,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="hourSegments"></a>
                             <code>hourSegments</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The number of segments in an hour. Must be &lt;= 6</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                             <p>
@@ -825,6 +984,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="hourSegmentTemplate"></a>
                             <code>hourSegmentTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -847,13 +1007,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="locale"></a>
                             <code>locale</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The locale used to format dates</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                               </p>
                         </td>
@@ -869,6 +1030,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="refresh"></a>
                             <code>refresh</code>
                         </td>
                         <td class="col-md-10">
@@ -891,13 +1053,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="tooltipAppendToBody"></a>
                             <code>tooltipAppendToBody</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Whether to append tooltips to the body or next to the trigger element</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                             <p>
@@ -916,13 +1079,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="tooltipPlacement"></a>
                             <code>tooltipPlacement</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The placement of the event tooltip</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                               </p>
                             <p>
@@ -941,6 +1105,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="tooltipTemplate"></a>
                             <code>tooltipTemplate</code>
                         </td>
                         <td class="col-md-10">
@@ -963,13 +1128,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="viewDate"></a>
                             <code>viewDate</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>The current view date</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>Date</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
                               </p>
                         </td>
@@ -989,13 +1155,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="beforeViewRender"></a>
                             <code>beforeViewRender</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>An output that will be called before the view is rendered for the current day.
 If you add the <code>cssClass</code> property to a segment it will add that class to the hour segment in the template</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -1010,12 +1177,13 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventClicked"></a>
                             <code>eventClicked</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Called when an event title is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -1030,6 +1198,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="eventTimesChanged"></a>
                             <code>eventTimesChanged</code>
                         </td>
                         <td class="col-md-10">
@@ -1050,12 +1219,13 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="hourSegmentClicked"></a>
                             <code>hourSegmentClicked</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Called when an hour segment is clicked</p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;&gt;</code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -1068,7 +1238,204 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
             </table>
     </section>
 
-
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="dragStart"></a>
+                            <b> dragStart</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>dragStart(event: HTMLElement, dayViewContainer: HTMLElement)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="404" class="link-to-prism">src/components/day/calendarDayView.component.ts:404</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="eventDragged"></a>
+                            <b> eventDragged</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>eventDragged(dayEvent: DayViewEvent, draggedInPixels: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">src/components/day/calendarDayView.component.ts:414</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="eventDropped"></a>
+                            <b> eventDropped</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>eventDropped(dropEvent: literal type, segment: DayViewHourSegment)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="336" class="link-to-prism">src/components/day/calendarDayView.component.ts:336</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="resizeEnded"></a>
+                            <b> resizeEnded</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizeEnded(dayEvent: DayViewEvent)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="376" class="link-to-prism">src/components/day/calendarDayView.component.ts:376</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="resizeStarted"></a>
+                            <b> resizeStarted</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent, dayViewContainer: HTMLElement)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="348" class="link-to-prism">src/components/day/calendarDayView.component.ts:348</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="resizing"></a>
+                            <b> resizing</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizing(event: DayViewEvent, resizeEvent: ResizeEvent)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="366" class="link-to-prism">src/components/day/calendarDayView.component.ts:366</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
 </div>
 

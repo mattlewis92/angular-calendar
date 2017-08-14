@@ -204,10 +204,23 @@
                         </ul>
                     </li>
             
-            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
                     </li>
+            
             
             
                     <li class="divider"></li>
@@ -411,10 +424,23 @@
                                </ul>
                            </li>
                    
-                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
                            </li>
+                   
                    
                    
                            <li class="divider"></li>
@@ -491,18 +517,45 @@
         </section>
 
             <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Inputs</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <a href="#view">view</a>
+                                    </li>
+                                    <li>
+                                        <a href="#viewDate">viewDate</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section>
                 <h3 id="inputs">Inputs</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-2">
+                                    <a name="view"></a>
                                     <code>view</code>
                                 </td>
                                 <td class="col-md-10">
                                     <div><p>The current view</p>
 </div>
                                       <p>
-                                        <em>Type:</em>    <code>string</code>
+                                        <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                       </p>
                                 </td>
@@ -518,13 +571,14 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-2">
+                                    <a name="viewDate"></a>
                                     <code>viewDate</code>
                                 </td>
                                 <td class="col-md-10">
                                     <div><p>The current view date</p>
 </div>
                                       <p>
-                                        <em>Type:</em>    <code>Date</code>
+                                        <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
                                       </p>
                                 </td>
@@ -544,6 +598,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-2">
+                                    <a name="viewDateChange"></a>
                                     <code>viewDateChange</code>
                                 </td>
                                 <td class="col-md-10">
@@ -561,7 +616,6 @@
                         </tbody>
                     </table>
             </section>
-
 
 
 
@@ -627,7 +681,7 @@ export class CalendarPreviousViewDirective {
 }
 </code></pre>
     </div>
-    
+
 </div>
 
 
