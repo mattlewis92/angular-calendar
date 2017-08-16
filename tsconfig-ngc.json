@@ -7,7 +7,8 @@
     "outDir": "./dist/esm",
     "types": [],
     "emitDecoratorMetadata": false,
-    "baseUrl": ""
+    "baseUrl": "",
+    "inlineSources": true
   },
   "files": [
     "src/index.ts"
