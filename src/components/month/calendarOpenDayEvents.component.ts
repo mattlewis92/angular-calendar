@@ -27,6 +27,7 @@ import { CalendarEvent } from 'calendar-utils';
         </span>
         <mwl-calendar-event-title
           [event]="event"
+          [customTemplate]="eventTitleTemplate"
           view="month"
           (mwlClick)="eventClicked.emit({event: event})">
         </mwl-calendar-event-title>
@@ -62,6 +63,8 @@ export class CalendarOpenDayEventsComponent {
   @Input() events: CalendarEvent[];
 
   @Input() customTemplate: TemplateRef<any>;
+
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{

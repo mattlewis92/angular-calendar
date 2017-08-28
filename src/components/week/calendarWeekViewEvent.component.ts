@@ -28,6 +28,7 @@ import { WeekViewEvent } from 'calendar-utils';
         <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="weekEvent.event"
+          [customTemplate]="eventTitleTemplate"
           view="week"
           (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
@@ -53,6 +54,8 @@ export class CalendarWeekViewEventComponent {
   @Input() tooltipAppendToBody: boolean;
 
   @Input() customTemplate: TemplateRef<any>;
+
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   @Input() tooltipTemplate: TemplateRef<any>;
 

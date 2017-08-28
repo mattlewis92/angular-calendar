@@ -83,6 +83,7 @@ export interface WeekViewEventResize {
             [tooltipTemplate]="tooltipTemplate"
             [tooltipAppendToBody]="tooltipAppendToBody"
             [customTemplate]="eventTemplate"
+            [eventTitleTemplate]="eventTitleTemplate"
             (eventClicked)="eventClicked.emit({event: weekEvent.event})">
           </mwl-calendar-week-view-event>
         </div>
@@ -146,6 +147,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for week view events
    */
   @Input() eventTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for event titles
+   */
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   /**
    * The precision to display events.

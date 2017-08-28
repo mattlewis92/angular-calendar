@@ -29,6 +29,7 @@ import { DayViewEvent } from 'calendar-utils';
         <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="dayEvent.event"
+          [customTemplate]="eventTitleTemplate"
           view="day"
           (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
@@ -54,6 +55,8 @@ export class CalendarDayViewEventComponent {
   @Input() tooltipAppendToBody: boolean;
 
   @Input() customTemplate: TemplateRef<any>;
+
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   @Input() tooltipTemplate: TemplateRef<any>;
 

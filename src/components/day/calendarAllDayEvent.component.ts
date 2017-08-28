@@ -21,6 +21,7 @@ import { CalendarEvent } from 'calendar-utils';
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="event"
+          [customTemplate]="eventTitleTemplate"
           view="day"
           (mwlClick)="eventClicked.emit()">
         </mwl-calendar-event-title>
@@ -39,6 +40,8 @@ export class CalendarAllDayEventComponent {
   @Input() event: CalendarEvent;
 
   @Input() customTemplate: TemplateRef<any>;
+
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 }

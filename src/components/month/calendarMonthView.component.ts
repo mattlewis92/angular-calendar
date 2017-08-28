@@ -78,6 +78,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
             [customTemplate]="openDayEventsTemplate"
+            [eventTitleTemplate]="eventTitleTemplate"
             (eventClicked)="eventClicked.emit({event: $event.event})">
           </mwl-calendar-open-day-events>
         </div>
@@ -152,6 +153,11 @@ export class CalendarMonthViewComponent
    * A custom template to use for the slide down box of events for the active day
    */
   @Input() openDayEventsTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for event titles
+   */
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   /**
    * An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends
