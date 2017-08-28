@@ -4,7 +4,10 @@ import { DayViewHourSegment } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-day-view-hour-segment',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-segment="segment"
+      let-locale="locale">
       <div
         class="cal-hour-segment"
         [class.cal-hour-start]="segment.isStart"

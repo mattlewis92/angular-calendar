@@ -10,7 +10,12 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-week-view-header',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-days="days"
+      let-locale="locale"
+      let-dayHeaderClicked="dayHeaderClicked"
+      let-eventDropped="eventDropped">
       <div class="cal-day-headers">
         <div
           class="cal-header"

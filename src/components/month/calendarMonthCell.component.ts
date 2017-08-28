@@ -10,7 +10,17 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-month-cell',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-day="day"
+      let-openDay="openDay"
+      let-locale="locale"
+      let-tooltipPlacement="tooltipPlacement"
+      let-highlightDay="highlightDay"
+      let-unhighlightDay="unhighlightDay"
+      let-eventClicked="eventClicked"
+      let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody">
       <div class="cal-cell-top">
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
         <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>

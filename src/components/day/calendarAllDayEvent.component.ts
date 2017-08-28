@@ -10,7 +10,10 @@ import { CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-all-day-event',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-event="event"
+      let-eventClicked="eventClicked">
       <div
         class="cal-all-day-event"
         [style.backgroundColor]="event.color.secondary"

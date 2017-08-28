@@ -11,7 +11,10 @@ import { CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-open-day-events',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-events="events"
+      let-eventClicked="eventClicked">
       <div
         *ngFor="let event of events"
         [ngClass]="event?.cssClass"

@@ -10,7 +10,13 @@ import { DayViewEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-day-view-event',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-dayEvent="dayEvent"
+      let-tooltipPlacement="tooltipPlacement"
+      let-eventClicked="eventClicked"
+      let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody">
       <div
         class="cal-event"
         [style.backgroundColor]="dayEvent.event.color.secondary"

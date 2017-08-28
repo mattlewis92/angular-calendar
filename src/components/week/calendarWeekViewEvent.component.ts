@@ -10,7 +10,13 @@ import { WeekViewEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-week-view-event',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-weekEvent="weekEvent"
+      let-tooltipPlacement="tooltipPlacement"
+      let-eventClicked="eventClicked"
+      let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody">
       <div
         class="cal-event"
         [style.backgroundColor]="weekEvent.event.color.secondary"

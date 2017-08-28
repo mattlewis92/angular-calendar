@@ -20,7 +20,11 @@ import { CalendarEvent } from 'calendar-utils';
 
 @Component({
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-contents="contents"
+      let-placement="placement"
+      let-event="event">
       <div class="cal-tooltip" [ngClass]="'cal-tooltip-' + placement">
         <div class="cal-tooltip-arrow"></div>
         <div class="cal-tooltip-inner" [innerHtml]="contents"></div>
