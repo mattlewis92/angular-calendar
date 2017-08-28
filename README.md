@@ -120,6 +120,15 @@ As there are so many events to show on each month, it doesn’t provide a lot of
 
 This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and [including hammerjs](http://hammerjs.github.io/) but your mileage may vary.
 
+### How do I use a custom template?
+
+All parts of this calendar can be customised via the use of an `ng-template`. The recipe for applying one is as follows:
+* Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the [documentation](https://mattlewis92.github.io/angular-calendar/docs/) for each component. For this example we will pick the [`cellTemplate`](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthView.component.ts#L149) from the month view.
+* Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is [this component](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthCell.component.ts)
+* Now copy the [template source](https://github.com/mattlewis92/angular-calendar/blob/18df151d679804fd097dbfcc80fa86e99211d88d/src/components/month/calendarMonthCell.component.ts#L13-L47) for your chosen template into your own component and modify as your see fit.
+* Finally pass the template to the components input: `<mwl-calendar-month-view [cellTemplate]="cellTemplateId" />`
+* You can see an e2e working example of this [here](https://mattlewis92.github.io/angular-calendar/#/custom-templates)
+
 ## Angular 1 version
 
 https://github.com/mattlewis92/angular-bootstrap-calendar
