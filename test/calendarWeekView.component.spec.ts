@@ -324,8 +324,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -371,7 +375,9 @@ describe('calendarWeekView component', () => {
         .add(4, 'hours')
         .subtract(1, 'day')
         .toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').toDate()
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .toDate()
     });
   });
 
@@ -384,8 +390,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           afterEnd: true
         }
@@ -427,8 +437,13 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').add(1, 'day').toDate()
+      newStart: moment('2016-06-27')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .add(1, 'day')
+        .toDate()
     });
   });
 
@@ -441,8 +456,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'event 1',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true,
           afterEnd: true
@@ -451,8 +470,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'event 2',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-28').add(4, 'hours').toDate(),
-        end: moment('2016-06-29').add(6, 'hours').toDate(),
+        start: moment('2016-06-28')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-29')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true,
           afterEnd: true
@@ -505,13 +528,23 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
     expect(resizeEvents[0]).to.deep.equal({
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').add(1, 'day').toDate()
+      newStart: moment('2016-06-27')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .add(1, 'day')
+        .toDate()
     });
     expect(resizeEvents[1]).to.deep.equal({
       event: fixture.componentInstance.events[1],
-      newStart: moment('2016-06-28').add(1, 'day').add(4, 'hours').toDate(),
-      newEnd: moment('2016-06-29').add(6, 'hours').toDate()
+      newStart: moment('2016-06-28')
+        .add(1, 'day')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-06-29')
+        .add(6, 'hours')
+        .toDate()
     });
   });
 
@@ -524,8 +557,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-12-08').add(4, 'hours').toDate(),
-        end: moment('2016-12-08').add(6, 'hours').toDate(),
+        start: moment('2016-12-08')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-12-08')
+          .add(6, 'hours')
+          .toDate(),
         draggable: true
       }
     ];
@@ -567,8 +604,12 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
     expect(dragEvent).to.deep.equal({
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-12-07').add(4, 'hours').toDate(),
-      newEnd: moment('2016-12-07').add(6, 'hours').toDate()
+      newStart: moment('2016-12-07')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-12-07')
+        .add(6, 'hours')
+        .toDate()
     });
   });
 
@@ -581,8 +622,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -629,8 +674,12 @@ describe('calendarWeekView component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -728,7 +777,10 @@ describe('calendarWeekView component', () => {
     externalEventFixture.destroy();
     expect(eventDropped).to.have.been.calledWith({
       event: externalEventFixture.componentInstance.event,
-      newStart: moment('2016-06-27').startOf('week').add(2, 'days').toDate()
+      newStart: moment('2016-06-27')
+        .startOf('week')
+        .add(2, 'days')
+        .toDate()
     });
   });
 

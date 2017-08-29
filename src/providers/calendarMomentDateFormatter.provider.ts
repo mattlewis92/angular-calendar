@@ -33,28 +33,36 @@ export class CalendarMomentDateFormatter
    * The month view header week day labels
    */
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('dddd');
+    return this.moment(date)
+      .locale(locale)
+      .format('dddd');
   }
 
   /**
    * The month view cell day number
    */
   public monthViewDayNumber({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('D');
+    return this.moment(date)
+      .locale(locale)
+      .format('D');
   }
 
   /**
    * The month view title
    */
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('MMMM YYYY');
+    return this.moment(date)
+      .locale(locale)
+      .format('MMMM YYYY');
   }
 
   /**
    * The week view header week day labels
    */
   public weekViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('dddd');
+    return this.moment(date)
+      .locale(locale)
+      .format('dddd');
   }
 
   /**
@@ -64,27 +72,35 @@ export class CalendarMomentDateFormatter
     date,
     locale
   }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('D MMM');
+    return this.moment(date)
+      .locale(locale)
+      .format('D MMM');
   }
 
   /**
    * The week view title
    */
   public weekViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('[Week] W [of] YYYY');
+    return this.moment(date)
+      .locale(locale)
+      .format('[Week] W [of] YYYY');
   }
 
   /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('ha');
+    return this.moment(date)
+      .locale(locale)
+      .format('ha');
   }
 
   /**
    * The day view title
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('dddd, D MMMM, YYYY');
+    return this.moment(date)
+      .locale(locale)
+      .format('dddd, D MMMM, YYYY');
   }
 }

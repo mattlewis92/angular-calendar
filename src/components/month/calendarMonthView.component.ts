@@ -64,7 +64,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [tooltipAppendToBody]="tooltipAppendToBody"
               [tooltipTemplate]="tooltipTemplate"
               [customTemplate]="cellTemplate"
-              (click)="dayClicked.emit({day: day})"
+              (click)="handleDayClick($event, day)"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -78,6 +78,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
             [customTemplate]="openDayEventsTemplate"
+            [eventTitleTemplate]="eventTitleTemplate"
             (eventClicked)="eventClicked.emit({event: $event.event})">
           </mwl-calendar-open-day-events>
         </div>
@@ -152,6 +153,11 @@ export class CalendarMonthViewComponent
    * A custom template to use for the slide down box of events for the active day
    */
   @Input() openDayEventsTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for event titles
+   */
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   /**
    * An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends
@@ -306,6 +312,16 @@ export class CalendarMonthViewComponent
       newEnd = addSeconds(event.end, secondsDiff);
     }
     this.eventTimesChanged.emit({ event, newStart, newEnd });
+  }
+
+  /**
+   * @hidden
+   */
+  handleDayClick(clickEvent: any, day: MonthViewDay) {
+    // when using hammerjs, stopPropagation doesn't work. See https://github.com/mattlewis92/angular-calendar/issues/318
+    if (!clickEvent.target.classList.contains('cal-event')) {
+      this.dayClicked.emit({ day });
+    }
   }
 
   private refreshHeader(): void {

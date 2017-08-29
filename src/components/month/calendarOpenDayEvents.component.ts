@@ -11,7 +11,10 @@ import { CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-open-day-events',
   template: `
-    <ng-template #defaultTemplate>
+    <ng-template
+      #defaultTemplate
+      let-events="events"
+      let-eventClicked="eventClicked">
       <div
         *ngFor="let event of events"
         [ngClass]="event?.cssClass"
@@ -24,6 +27,7 @@ import { CalendarEvent } from 'calendar-utils';
         </span>
         <mwl-calendar-event-title
           [event]="event"
+          [customTemplate]="eventTitleTemplate"
           view="month"
           (mwlClick)="eventClicked.emit({event: event})">
         </mwl-calendar-event-title>
@@ -59,6 +63,8 @@ export class CalendarOpenDayEventsComponent {
   @Input() events: CalendarEvent[];
 
   @Input() customTemplate: TemplateRef<any>;
+
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{

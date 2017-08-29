@@ -343,8 +343,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -385,7 +389,9 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .subtract(30, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').toDate()
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .toDate()
     });
   });
 
@@ -398,8 +404,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           afterEnd: true
         }
@@ -436,8 +446,13 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').add(30, 'minutes').toDate()
+      newStart: moment('2016-06-27')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .add(30, 'minutes')
+        .toDate()
     });
   });
 
@@ -450,8 +465,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -493,7 +512,9 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .subtract(10, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').toDate()
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .toDate()
     });
   });
 
@@ -581,8 +602,14 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .startOf('day')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .startOf('day')
+          .add(6, 'hours')
+          .toDate(),
         draggable: true
       }
     ];
@@ -623,7 +650,10 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .add(30, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').add(30, 'minutes').toDate()
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .add(30, 'minutes')
+        .toDate()
     });
   });
 
@@ -636,8 +666,14 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .startOf('day')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .startOf('day')
+          .add(6, 'hours')
+          .toDate(),
         draggable: true
       }
     ];
@@ -690,8 +726,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(1, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(1, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -780,7 +820,10 @@ describe('CalendarDayViewComponent component', () => {
     externalEventFixture.destroy();
     expect(eventDropped).to.have.been.calledWith({
       event: externalEventFixture.componentInstance.event,
-      newStart: moment('2016-06-27').startOf('day').add(1, 'hours').toDate()
+      newStart: moment('2016-06-27')
+        .startOf('day')
+        .add(1, 'hours')
+        .toDate()
     });
   });
 
@@ -793,8 +836,14 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .startOf('day')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .startOf('day')
+          .add(6, 'hours')
+          .toDate(),
         draggable: true
       }
     ];
@@ -836,7 +885,10 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .add(10, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').add(10, 'minutes').toDate()
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .add(10, 'minutes')
+        .toDate()
     });
   });
 
@@ -849,8 +901,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(4, 'hours').toDate(),
-        end: moment('2016-06-27').add(6, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
         resizable: {
           afterEnd: true
         }
@@ -858,8 +914,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27').add(6, 'hours').toDate(),
-        end: moment('2016-06-27').add(8, 'hours').toDate(),
+        start: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(8, 'hours')
+          .toDate(),
         resizable: {
           beforeStart: true
         }
@@ -902,8 +962,13 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
     expect(resizeEvents[0]).to.deep.equal({
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
-      newEnd: moment('2016-06-27').add(6, 'hours').add(30, 'minutes').toDate()
+      newStart: moment('2016-06-27')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-06-27')
+        .add(6, 'hours')
+        .add(30, 'minutes')
+        .toDate()
     });
     expect(resizeEvents[1]).to.deep.equal({
       event: fixture.componentInstance.events[1],
@@ -911,7 +976,9 @@ describe('CalendarDayViewComponent component', () => {
         .add(6, 'hours')
         .add(30, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27').add(8, 'hours').toDate()
+      newEnd: moment('2016-06-27')
+        .add(8, 'hours')
+        .toDate()
     });
   });
 });

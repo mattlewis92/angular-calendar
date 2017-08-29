@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.21.0"></a>
+# [0.21.0](https://github.com/mattlewis92/angular-calendar/compare/v0.20.1...v0.21.0) (2017-08-29)
+
+
+### Bug Fixes
+
+* **monthView:** don't fire dayClicked output when clicking on an event and using hammerjs ([283c50e](https://github.com/mattlewis92/angular-calendar/commit/283c50e)), closes [#318](https://github.com/mattlewis92/angular-calendar/issues/318)
+
+
+### Features
+
+* **eventTitleTemplate:** allow the event title template to be customised ([e956463](https://github.com/mattlewis92/angular-calendar/commit/e956463)), closes [#312](https://github.com/mattlewis92/angular-calendar/issues/312)
+
+
+
 <a name="0.20.1"></a>
 ## [0.20.1](https://github.com/mattlewis92/angular-calendar/compare/v0.20.0...v0.20.1) (2017-08-14)
 
