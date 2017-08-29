@@ -64,7 +64,7 @@ import { CalendarUtils } from '../../providers/calendarUtils.provider';
               [tooltipAppendToBody]="tooltipAppendToBody"
               [tooltipTemplate]="tooltipTemplate"
               [customTemplate]="cellTemplate"
-              (click)="dayClicked.emit({day: day})"
+              (click)="handleDayClick($event, day)"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -312,6 +312,16 @@ export class CalendarMonthViewComponent
       newEnd = addSeconds(event.end, secondsDiff);
     }
     this.eventTimesChanged.emit({ event, newStart, newEnd });
+  }
+
+  /**
+   * @hidden
+   */
+  handleDayClick(clickEvent: any, day: MonthViewDay) {
+    // when using hammerjs, stopPropagation doesn't work. See https://github.com/mattlewis92/angular-calendar/issues/318
+    if (!clickEvent.target.classList.contains('cal-event')) {
+      this.dayClicked.emit({ day });
+    }
   }
 
   private refreshHeader(): void {
