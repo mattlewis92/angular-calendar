@@ -23,7 +23,7 @@
     "postrelease": "npm run build:clean && npm run gh-pages",
     "commitmsg": "validate-commit-msg",
     "codecov": "cat coverage/lcov.info | codecov",
-    "prettier": "prettier --single-quote --parser typescript --write",
+    "prettier": "prettier --write",
     "precommit": "lint-staged"
   },
   "lint-staged": {
