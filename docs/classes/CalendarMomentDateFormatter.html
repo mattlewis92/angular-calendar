@@ -581,7 +581,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:80</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -616,7 +616,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:101</a></div>
                                         </td>
                                     </tr>
             
@@ -686,7 +686,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:42</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:44</a></div>
                                         </td>
                                     </tr>
             
@@ -721,7 +721,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:49</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:53</a></div>
                                         </td>
                                     </tr>
             
@@ -756,7 +756,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:56</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -791,7 +791,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:63</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:71</a></div>
                                         </td>
                                     </tr>
             
@@ -826,7 +826,7 @@ provide: [{
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:73</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/providers/calendarMomentDateFormatter.provider.ts:83</a></div>
                                         </td>
                                     </tr>
             
@@ -885,28 +885,36 @@ export class CalendarMomentDateFormatter
    * The month view header week day labels
    */
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;dddd&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;dddd&#x27;);
   }
 
   /**
    * The month view cell day number
    */
   public monthViewDayNumber({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;D&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;D&#x27;);
   }
 
   /**
    * The month view title
    */
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;MMMM YYYY&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;MMMM YYYY&#x27;);
   }
 
   /**
    * The week view header week day labels
    */
   public weekViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;dddd&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;dddd&#x27;);
   }
 
   /**
@@ -916,28 +924,36 @@ export class CalendarMomentDateFormatter
     date,
     locale
   }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;D MMM&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;D MMM&#x27;);
   }
 
   /**
    * The week view title
    */
   public weekViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;[Week] W [of] YYYY&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;[Week] W [of] YYYY&#x27;);
   }
 
   /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;ha&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;ha&#x27;);
   }
 
   /**
    * The day view title
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;dddd, D MMMM, YYYY&#x27;);
+    return this.moment(date)
+      .locale(locale)
+      .format(&#x27;dddd, D MMMM, YYYY&#x27;);
   }
 }
 </code></pre>

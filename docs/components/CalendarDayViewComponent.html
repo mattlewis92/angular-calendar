@@ -539,6 +539,7 @@
     *ngFor&#x3D;&quot;let event of view.allDayEvents&quot;
     [event]&#x3D;&quot;event&quot;
     [customTemplate]&#x3D;&quot;allDayEventTemplate&quot;
+    [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
     (eventClicked)&#x3D;&quot;eventClicked.emit({event: event})&quot;&gt;
   &lt;/mwl-calendar-all-day-event&gt;
   &lt;div class&#x3D;&quot;cal-hour-rows&quot;&gt;
@@ -574,6 +575,7 @@
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
           [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
           [customTemplate]&#x3D;&quot;eventTemplate&quot;
+          [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
           (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
         &lt;/mwl-calendar-day-view-event&gt;
       &lt;/div&gt;
@@ -669,6 +671,9 @@
                                 <a href="#eventTemplate">eventTemplate</a>
                             </li>
                             <li>
+                                <a href="#eventTitleTemplate">eventTitleTemplate</a>
+                            </li>
+                            <li>
                                 <a href="#eventWidth">eventWidth</a>
                             </li>
                             <li>
@@ -746,7 +751,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/components/day/calendarDayView.component.ts:204</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">src/components/day/calendarDayView.component.ts:206</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -772,7 +777,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/components/day/calendarDayView.component.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/components/day/calendarDayView.component.ts:156</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -798,7 +803,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/components/day/calendarDayView.component.ts:159</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/components/day/calendarDayView.component.ts:161</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -824,7 +829,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/components/day/calendarDayView.component.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/components/day/calendarDayView.component.ts:146</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -850,7 +855,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/components/day/calendarDayView.component.ts:149</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/components/day/calendarDayView.component.ts:151</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -874,7 +879,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/components/day/calendarDayView.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/components/day/calendarDayView.component.ts:136</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -900,7 +905,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/components/day/calendarDayView.component.ts:179</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/components/day/calendarDayView.component.ts:181</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -923,7 +928,30 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/components/day/calendarDayView.component.ts:209</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">src/components/day/calendarDayView.component.ts:211</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="eventTitleTemplate"></a>
+                            <code>eventTitleTemplate</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A custom template to use for event titles</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>TemplateRef&lt;any&gt;</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/components/day/calendarDayView.component.ts:216</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -949,7 +977,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/components/day/calendarDayView.component.ts:164</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/components/day/calendarDayView.component.ts:166</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -975,7 +1003,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/components/day/calendarDayView.component.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/components/day/calendarDayView.component.ts:141</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -998,7 +1026,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/components/day/calendarDayView.component.ts:199</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/components/day/calendarDayView.component.ts:201</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1021,7 +1049,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/components/day/calendarDayView.component.ts:174</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/components/day/calendarDayView.component.ts:176</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1044,7 +1072,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/components/day/calendarDayView.component.ts:169</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/components/day/calendarDayView.component.ts:171</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1070,7 +1098,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">src/components/day/calendarDayView.component.ts:194</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/components/day/calendarDayView.component.ts:196</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1096,7 +1124,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/components/day/calendarDayView.component.ts:184</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/components/day/calendarDayView.component.ts:186</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1119,7 +1147,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">src/components/day/calendarDayView.component.ts:189</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/components/day/calendarDayView.component.ts:191</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1142,7 +1170,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/components/day/calendarDayView.component.ts:128</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/components/day/calendarDayView.component.ts:130</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1168,7 +1196,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">src/components/day/calendarDayView.component.ts:240</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="247" class="link-to-prism">src/components/day/calendarDayView.component.ts:247</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1189,7 +1217,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/components/day/calendarDayView.component.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/components/day/calendarDayView.component.ts:222</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1210,7 +1238,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">src/components/day/calendarDayView.component.ts:231</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="238" class="link-to-prism">src/components/day/calendarDayView.component.ts:238</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1231,7 +1259,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="223" class="link-to-prism">src/components/day/calendarDayView.component.ts:223</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">src/components/day/calendarDayView.component.ts:230</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1260,7 +1288,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="404" class="link-to-prism">src/components/day/calendarDayView.component.ts:404</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">src/components/day/calendarDayView.component.ts:411</a></div>
                                 </td>
                             </tr>
     
@@ -1292,7 +1320,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">src/components/day/calendarDayView.component.ts:414</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="421" class="link-to-prism">src/components/day/calendarDayView.component.ts:421</a></div>
                                 </td>
                             </tr>
     
@@ -1324,7 +1352,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="336" class="link-to-prism">src/components/day/calendarDayView.component.ts:336</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="343" class="link-to-prism">src/components/day/calendarDayView.component.ts:343</a></div>
                                 </td>
                             </tr>
     
@@ -1356,7 +1384,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="376" class="link-to-prism">src/components/day/calendarDayView.component.ts:376</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="383" class="link-to-prism">src/components/day/calendarDayView.component.ts:383</a></div>
                                 </td>
                             </tr>
     
@@ -1388,7 +1416,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="348" class="link-to-prism">src/components/day/calendarDayView.component.ts:348</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="355" class="link-to-prism">src/components/day/calendarDayView.component.ts:355</a></div>
                                 </td>
                             </tr>
     
@@ -1420,7 +1448,7 @@ If you add the <code>cssClass</code> property to a segment it will add that clas
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="366" class="link-to-prism">src/components/day/calendarDayView.component.ts:366</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">src/components/day/calendarDayView.component.ts:373</a></div>
                                 </td>
                             </tr>
     
@@ -1507,6 +1535,7 @@ export interface DayViewEventResize {
         *ngFor&#x3D;&quot;let event of view.allDayEvents&quot;
         [event]&#x3D;&quot;event&quot;
         [customTemplate]&#x3D;&quot;allDayEventTemplate&quot;
+        [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
         (eventClicked)&#x3D;&quot;eventClicked.emit({event: event})&quot;&gt;
       &lt;/mwl-calendar-all-day-event&gt;
       &lt;div class&#x3D;&quot;cal-hour-rows&quot;&gt;
@@ -1542,6 +1571,7 @@ export interface DayViewEventResize {
               [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
+              [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
               (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
             &lt;/mwl-calendar-day-view-event&gt;
           &lt;/div&gt;
@@ -1650,6 +1680,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for day view events
    */
   @Input() eventTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * A custom template to use for event titles
+   */
+  @Input() eventTitleTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Called when an event title is clicked
@@ -1934,7 +1969,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-day-view" #dayViewContainer>  <mwl-calendar-all-day-event    *ngFor="let event of view.allDayEvents"    [event]="event"    [customTemplate]="allDayEventTemplate"    (eventClicked)="eventClicked.emit({event: event})">  </mwl-calendar-all-day-event>  <div class="cal-hour-rows">    <div class="cal-events">      <div        #event        *ngFor="let dayEvent of view?.events"        class="cal-event-container"        [class.cal-draggable]="dayEvent.event.draggable"        [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"        [class.cal-ends-within-day]="!dayEvent.endsAfterDay"        [ngClass]="dayEvent.event.cssClass"        mwlResizable        [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"        [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"        [validateResize]="validateResize"        (resizeStart)="resizeStarted(dayEvent, $event, dayViewContainer)"        (resizing)="resizing(dayEvent, $event)"        (resizeEnd)="resizeEnded(dayEvent)"        mwlDraggable        [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"        [dragSnapGrid]="{y: eventSnapSize}"        [validateDrag]="validateDrag"        (dragStart)="dragStart(event, dayViewContainer)"        (dragEnd)="eventDragged(dayEvent, $event.y)"        [style.marginTop.px]="dayEvent.top"        [style.height.px]="dayEvent.height"        [style.marginLeft.px]="dayEvent.left + 70"        [style.width.px]="dayEvent.width - 1">        <mwl-calendar-day-view-event          [dayEvent]="dayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [customTemplate]="eventTemplate"          (eventClicked)="eventClicked.emit({event: dayEvent.event})">        </mwl-calendar-day-view-event>      </div>    </div>    <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">      <mwl-calendar-day-view-hour-segment        *ngFor="let segment of hour.segments"        [segment]="segment"        [locale]="locale"        [customTemplate]="hourSegmentTemplate"        (mwlClick)="hourSegmentClicked.emit({date: segment.date})"        [class.cal-drag-over]="segment.dragOver"        mwlDroppable        (dragEnter)="segment.dragOver = true"        (dragLeave)="segment.dragOver = false"        (drop)="segment.dragOver = false; eventDropped($event, segment)">      </mwl-calendar-day-view-hour-segment>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-day-view" #dayViewContainer>  <mwl-calendar-all-day-event    *ngFor="let event of view.allDayEvents"    [event]="event"    [customTemplate]="allDayEventTemplate"    [eventTitleTemplate]="eventTitleTemplate"    (eventClicked)="eventClicked.emit({event: event})">  </mwl-calendar-all-day-event>  <div class="cal-hour-rows">    <div class="cal-events">      <div        #event        *ngFor="let dayEvent of view?.events"        class="cal-event-container"        [class.cal-draggable]="dayEvent.event.draggable"        [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"        [class.cal-ends-within-day]="!dayEvent.endsAfterDay"        [ngClass]="dayEvent.event.cssClass"        mwlResizable        [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"        [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"        [validateResize]="validateResize"        (resizeStart)="resizeStarted(dayEvent, $event, dayViewContainer)"        (resizing)="resizing(dayEvent, $event)"        (resizeEnd)="resizeEnded(dayEvent)"        mwlDraggable        [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"        [dragSnapGrid]="{y: eventSnapSize}"        [validateDrag]="validateDrag"        (dragStart)="dragStart(event, dayViewContainer)"        (dragEnd)="eventDragged(dayEvent, $event.y)"        [style.marginTop.px]="dayEvent.top"        [style.height.px]="dayEvent.height"        [style.marginLeft.px]="dayEvent.left + 70"        [style.width.px]="dayEvent.width - 1">        <mwl-calendar-day-view-event          [dayEvent]="dayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          (eventClicked)="eventClicked.emit({event: dayEvent.event})">        </mwl-calendar-day-view-event>      </div>    </div>    <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">      <mwl-calendar-day-view-hour-segment        *ngFor="let segment of hour.segments"        [segment]="segment"        [locale]="locale"        [customTemplate]="hourSegmentTemplate"        (mwlClick)="hourSegmentClicked.emit({date: segment.date})"        [class.cal-drag-over]="segment.dragOver"        mwlDroppable        (dragEnter)="segment.dragOver = true"        (dragLeave)="segment.dragOver = false"        (drop)="segment.dragOver = false; eventDropped($event, segment)">      </mwl-calendar-day-view-hour-segment>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarDayViewComponent'};

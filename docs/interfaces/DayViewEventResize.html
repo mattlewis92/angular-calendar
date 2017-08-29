@@ -693,6 +693,7 @@ export interface DayViewEventResize {
         *ngFor&#x3D;&quot;let event of view.allDayEvents&quot;
         [event]&#x3D;&quot;event&quot;
         [customTemplate]&#x3D;&quot;allDayEventTemplate&quot;
+        [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
         (eventClicked)&#x3D;&quot;eventClicked.emit({event: event})&quot;&gt;
       &lt;/mwl-calendar-all-day-event&gt;
       &lt;div class&#x3D;&quot;cal-hour-rows&quot;&gt;
@@ -728,6 +729,7 @@ export interface DayViewEventResize {
               [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
+              [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
               (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
             &lt;/mwl-calendar-day-view-event&gt;
           &lt;/div&gt;
@@ -836,6 +838,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * A custom template to use for day view events
    */
   @Input() eventTemplate: TemplateRef&lt;any&gt;;
+
+  /**
+   * A custom template to use for event titles
+   */
+  @Input() eventTitleTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Called when an event title is clicked
