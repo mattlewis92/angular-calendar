@@ -112,7 +112,7 @@
     "offline-plugin": "^4.8.3",
     "postcss-flexibility": "^2.0.0",
     "postcss-loader": "^2.0.5",
-    "prettier": "^1.6.0",
+    "prettier": "^1.6.1",
     "raw-loader": "^0.5.1",
     "rrule": "^2.1.0",
     "rxjs": "^5.4.3",
