@@ -47,6 +47,10 @@ if (
   dynamicPolyfills.push(Promise.all([import('core-js/es7/object')]));
 }
 
+if (typeof Element.prototype['animate'] === 'undefined') {
+  dynamicPolyfills.push(import('web-animations-js'));
+}
+
 Promise.all(dynamicPolyfills).then(() =>
   platformBrowserDynamic().bootstrapModule(DemoAppModule)
 );

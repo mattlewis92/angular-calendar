@@ -1,6 +1,6 @@
 {
   "name": "angular-calendar",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "A calendar component for angular 4.0+ that can display events on a month, week or day view",
   "main": "./dist/umd/angular-calendar.js",
   "style": "./dist/css/angular-calendar.css",
@@ -132,6 +132,7 @@
     "typescript": "~2.4.1",
     "url-loader": "^0.5.7",
     "validate-commit-msg": "^2.14.0",
+    "web-animations-js": "^2.3.1",
     "webpack": "^3.5.5",
     "webpack-angular-externals": "^1.0.0",
     "webpack-config-utils": "^2.3.0",
