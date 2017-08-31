@@ -66,17 +66,17 @@ export interface WeekViewEventResize {
           [style.marginLeft]="((100 / days.length) * weekEvent.offset) + '%'"
           mwlResizable
           [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"
-          [resizeSnapGrid]="{left: getDayColumnWidth(eventRowContainer), right: getDayColumnWidth(eventRowContainer)}"
+          [resizeSnapGrid]="{left: dayColumnWidth, right: dayColumnWidth}"
           [validateResize]="validateResize"
           (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"
-          (resizing)="resizing(weekEvent, $event, getDayColumnWidth(eventRowContainer))"
+          (resizing)="resizing(weekEvent, $event, dayColumnWidth)"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
           [dragAxis]="{x: weekEvent.event.draggable && currentResizes.size === 0, y: false}"
-          [dragSnapGrid]="{x: getDayColumnWidth(eventRowContainer)}"
+          [dragSnapGrid]="{x: dayColumnWidth}"
           [validateDrag]="validateDrag"
           (dragStart)="dragStart(weekViewContainer, event)"
-          (dragEnd)="eventDragged(weekEvent, $event.x, getDayColumnWidth(eventRowContainer))">
+          (dragEnd)="eventDragged(weekEvent, $event.x, dayColumnWidth)">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
             [tooltipPlacement]="tooltipPlacement"
@@ -228,6 +228,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  dayColumnWidth: number;
+
+  /**
+   * @hidden
+   */
   constructor(
     private cdr: ChangeDetectorRef,
     private utils: CalendarUtils,
@@ -283,9 +288,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       originalSpan: weekEvent.span,
       edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right'
     });
+    this.dayColumnWidth = this.getDayColumnWidth(weekViewContainer);
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
       weekViewContainer,
-      this.getDayColumnWidth(weekViewContainer)
+      this.dayColumnWidth
     );
     this.validateResize = ({ rectangle }) =>
       resizeHelper.validateResize({ rectangle });
@@ -373,6 +379,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dragStart(weekViewContainer: HTMLElement, event: HTMLElement): void {
+    this.dayColumnWidth = this.getDayColumnWidth(weekViewContainer);
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
       weekViewContainer,
       event
