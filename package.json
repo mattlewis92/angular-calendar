@@ -129,7 +129,7 @@
     "tslint": "^5.7.0",
     "tslint-config-mwl": "^0.2.0",
     "tslint-loader": "^3.5.3",
-    "typescript": "~2.4.1",
+    "typescript": "~2.5.2",
     "url-loader": "^0.5.7",
     "validate-commit-msg": "^2.14.0",
     "web-animations-js": "^2.3.1",
