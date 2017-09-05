@@ -15,7 +15,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             Previous
           </div>
           <div
-            class="btn btn-secondary"
+            class="btn btn-outline-secondary"
             mwlCalendarToday
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
