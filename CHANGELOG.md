@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.21.2"></a>
+## [0.21.2](https://github.com/mattlewis92/angular-calendar/compare/v0.21.1...v0.21.2) (2017-09-07)
+
+
+### Bug Fixes
+
+* **monthView:** allow adding extra weeks to the month view ([529ebd3](https://github.com/mattlewis92/angular-calendar/commit/529ebd3))
+
+
+
 <a name="0.21.1"></a>
 ## [0.21.1](https://github.com/mattlewis92/angular-calendar/compare/v0.21.0...v0.21.1) (2017-08-31)
 
