@@ -129,6 +129,10 @@ All parts of this calendar can be customised via the use of an `ng-template`. Th
 * Finally pass the template to the components input: `<mwl-calendar-month-view [cellTemplate]="cellTemplateId" />`
 * You can see an e2e working example of this [here](https://mattlewis92.github.io/angular-calendar/#/custom-templates)
 
+### What is the browser compatibility?
+
+All browsers supported by angular, apart from IE9 as it doesn't support flexbox.
+
 ## Angular 1 version
 
 https://github.com/mattlewis92/angular-bootstrap-calendar
