@@ -15,7 +15,8 @@
   ],
   "exclude": [
     "test",
-    "demos"
+    "demos",
+    "src/index.umd.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
