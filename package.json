@@ -21,9 +21,9 @@
     "prerelease": "npm test",
     "release": "git add package.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master && npm run build:dist && npm publish",
     "postrelease": "npm run build:clean && npm run gh-pages",
-    "commitmsg": "validate-commit-msg",
     "codecov": "cat coverage/lcov.info | codecov",
     "prettier": "prettier --write",
+    "commitmsg": "commitlint -e",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -31,6 +31,14 @@
       "npm run prettier",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-angular"]
   },
   "repository": {
     "type": "git",
@@ -60,6 +68,9 @@
     "@angular/platform-browser": "^4.4.4",
     "@angular/platform-browser-dynamic": "^4.4.4",
     "@angular/router": "^4.4.4",
+    "@commitlint/cli": "^4.1.0",
+    "@commitlint/config-angular": "^3.1.1",
+    "@commitlint/prompt": "^4.1.0",
     "@compodoc/compodoc": "^1.0.1",
     "@mattlewis92/webpack-karma-die-hard": "^1.0.4",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
@@ -85,7 +96,6 @@
     "core-js": "^2.5.1",
     "create-plunker": "^1.2.0",
     "css-loader": "^0.28.7",
-    "cz-conventional-changelog": "^2.0.0",
     "ejs-compiled-loader": "^1.1.0",
     "extract-text-webpack-plugin": "^3.0.0-beta.3",
     "file-loader": "^1.1.4",
@@ -131,7 +141,6 @@
     "tslint-loader": "^3.5.3",
     "typescript": "^2.5.3",
     "url-loader": "^0.6.1",
-    "validate-commit-msg": "^2.14.0",
     "web-animations-js": "^2.3.1",
     "webpack": "^3.6.0",
     "webpack-angular-externals": "^1.0.0",
@@ -153,11 +162,6 @@
     "dist",
     "scss"
   ],
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  },
   "dependencies": {
     "angular-draggable-droppable": "^1.1.0",
     "angular-resizable-element": "^1.2.3",
