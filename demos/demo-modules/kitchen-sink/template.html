@@ -27,7 +27,8 @@
         class="btn btn-primary"
         mwlCalendarPreviousView
         [view]="view"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
         Previous
       </div>
       <div
@@ -40,7 +41,8 @@
         class="btn btn-primary"
         mwlCalendarNextView
         [view]="view"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
         Next
       </div>
     </div>

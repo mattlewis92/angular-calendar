@@ -8,6 +8,10 @@
 [![GitHub stars](https://img.shields.io/github/stars/mattlewis92/angular-calendar.svg)](https://github.com/mattlewis92/angular-calendar/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-calendar/master/LICENSE)
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/uSyax6FrP6eVdiUSuyThrNTG/mattlewis92/angular-calendar'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/uSyax6FrP6eVdiUSuyThrNTG/mattlewis92/angular-calendar.svg' />
+</a>
+
 ## Demo
 
 https://mattlewis92.github.io/angular-calendar/
@@ -128,6 +132,10 @@ All parts of this calendar can be customised via the use of an `ng-template`. Th
 * Now copy the [template source](https://github.com/mattlewis92/angular-calendar/blob/18df151d679804fd097dbfcc80fa86e99211d88d/src/components/month/calendarMonthCell.component.ts#L13-L47) for your chosen template into your own component and modify as your see fit.
 * Finally pass the template to the components input: `<mwl-calendar-month-view [cellTemplate]="cellTemplateId" />`
 * You can see an e2e working example of this [here](https://mattlewis92.github.io/angular-calendar/#/custom-templates)
+
+### What is the browser compatibility?
+
+All browsers supported by angular, apart from IE9 as it doesn't support flexbox.
 
 ## Angular 1 version
 
