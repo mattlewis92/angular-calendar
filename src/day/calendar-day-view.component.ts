@@ -22,11 +22,11 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { ResizeEvent } from 'angular-resizable-element';
 import addMinutes from 'date-fns/add_minutes';
-import { CalendarDragHelper } from '../../providers/calendar-drag-helper.provider';
-import { CalendarResizeHelper } from '../../providers/calendar-resize-helper.provider';
-import { CalendarEventTimesChangedEvent } from '../../interfaces/calendar-event-times-changed-event.interface';
-import { CalendarUtils } from '../../providers/calendar-utils.provider';
-import { validateEvents } from '../../providers/util';
+import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
+import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
+import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
+import { CalendarUtils } from '../common/calendar-utils.provider';
+import { validateEvents } from '../common/util';
 
 /**
  * @hidden

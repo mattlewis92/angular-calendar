@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, LOCALE_ID, Inject } from '@angular/core';
-import { CalendarDateFormatter } from '../providers/calendar-date-formatter.provider';
+import { CalendarDateFormatter } from './calendar-date-formatter.provider';
 
 /**
  * This pipe is primarily for rendering the current view title. Example usage:
