@@ -823,4 +823,18 @@ describe('calendarWeekView component', () => {
     ).to.equal(true);
     fixture.destroy();
   });
+
+  it('should log on invalid events', () => {
+    const stub = sinon.stub(console, 'warn');
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.events = [
+      { start: '2017-01-01', title: '', color: { primary: '', secondary: '' } }
+    ] as any;
+    fixture.componentInstance.ngOnChanges({ events: {} });
+    fixture.detectChanges();
+    stub.restore();
+    expect(stub).to.have.been.calledOnce; // tslint:disable-line
+  });
 });

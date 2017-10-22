@@ -26,6 +26,7 @@ import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider'
 import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 import { CalendarUtils } from '../../providers/calendarUtils.provider';
+import { validateEvents } from '../common/util';
 
 /**
  * @hidden
@@ -325,6 +326,10 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.dayEndMinute
     ) {
       this.refreshHourGrid();
+    }
+
+    if (changes.events) {
+      validateEvents(this.events);
     }
 
     if (

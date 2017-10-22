@@ -30,6 +30,7 @@ import differenceInSeconds from 'date-fns/difference_in_seconds';
 import addSeconds from 'date-fns/add_seconds';
 import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
 import { CalendarUtils } from '../../providers/calendarUtils.provider';
+import { validateEvents } from '../common/util';
 
 /**
  * Shows all events on a given month. Example usage:
@@ -252,6 +253,10 @@ export class CalendarMonthViewComponent
   ngOnChanges(changes: any): void {
     if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
       this.refreshHeader();
+    }
+
+    if (changes.events) {
+      validateEvents(this.events);
     }
 
     if (
