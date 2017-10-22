@@ -5,7 +5,7 @@ export * from './providers/calendar-date-formatter.provider';
 export * from './providers/calendar-utils.provider';
 export * from './interfaces/calendar-date-formatter.interface';
 export * from './interfaces/calendar-event-times-changed-event.interface';
-export * from './calendar.module';
+export * from './modules/calendar';
 export * from './components/day/calendar-day-view.component';
 export * from './components/month/calendar-month-view.component';
 export * from './components/week/calendar-week-view.component';
