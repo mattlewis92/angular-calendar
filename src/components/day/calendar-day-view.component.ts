@@ -31,11 +31,6 @@ import { validateEvents } from '../../providers/util';
 /**
  * @hidden
  */
-const SEGMENT_HEIGHT: number = 30;
-
-/**
- * @hidden
- */
 const MINUTES_IN_HOUR: number = 60;
 
 /**
@@ -109,7 +104,9 @@ export interface DayViewEventResize {
         <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">
           <mwl-calendar-day-view-hour-segment
             *ngFor="let segment of hour.segments"
+            [style.height.px]="hourSegmentHeight"
             [segment]="segment"
+            [segmentHeight]="hourSegmentHeight"
             [locale]="locale"
             [customTemplate]="hourSegmentTemplate"
             (mwlClick)="hourSegmentClicked.emit({date: segment.date})"
@@ -140,6 +137,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * The number of segments in an hour. Must be <= 6
    */
   @Input() hourSegments: number = 2;
+
+  /**
+   * The height in pixels of each hour segment
+   */
+  @Input() hourSegmentHeight: number = 30;
 
   /**
    * The day start hours in 24 hour time. Must be 0-23
@@ -179,7 +181,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The grid size to snap resizing and dragging of events to
    */
-  @Input() eventSnapSize: number = 30;
+  @Input() eventSnapSize: number = this.hourSegmentHeight;
 
   /**
    * The placement of the event tooltip
@@ -399,7 +401,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     dayEvent.height = currentResize.originalHeight;
 
     const pixelAmountInMinutes: number =
-      MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+      MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
@@ -425,7 +427,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
     const pixelAmountInMinutes: number =
-      MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+      MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
     const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
     let newEnd: Date;
@@ -467,7 +469,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       },
       eventWidth: this.eventWidth,
-      segmentHeight: SEGMENT_HEIGHT
+      segmentHeight: this.hourSegmentHeight
     });
   }
 

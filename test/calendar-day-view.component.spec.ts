@@ -995,4 +995,21 @@ describe('CalendarDayViewComponent component', () => {
     stub.restore();
     expect(stub).to.have.been.calledOnce; // tslint:disable-line
   });
+
+  it('should allow the hour segment height to be customised', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.hourSegmentHeight = 45;
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('mwl-calendar-day-view-hour-segment')
+        .style.height
+    ).to.equal('45px');
+    expect(
+      fixture.nativeElement.querySelector('.cal-hour-segment').style.height
+    ).to.equal('45px');
+  });
 });
