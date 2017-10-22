@@ -1,14 +1,14 @@
-export * from './providers/calendarEventTitleFormatter.provider';
-export * from './providers/calendarMomentDateFormatter.provider';
-export * from './providers/calendarNativeDateFormatter.provider';
-export * from './providers/calendarDateFormatter.provider';
-export * from './providers/calendarUtils.provider';
-export * from './interfaces/calendarDateFormatter.interface';
-export * from './interfaces/calendarEventTimesChangedEvent.interface';
+export * from './providers/calendar-event-title-formatter.provider';
+export * from './providers/calendar-moment-date-formatter.provider';
+export * from './providers/calendar-native-date-formatter.provider';
+export * from './providers/calendar-date-formatter.provider';
+export * from './providers/calendar-utils.provider';
+export * from './interfaces/calendar-date-formatter.interface';
+export * from './interfaces/calendar-event-times-changed-event.interface';
 export * from './calendar.module';
-export * from './components/day/calendarDayView.component';
-export * from './components/month/calendarMonthView.component';
-export * from './components/week/calendarWeekView.component';
+export * from './components/day/calendar-day-view.component';
+export * from './components/month/calendar-month-view.component';
+export * from './components/week/calendar-week-view.component';
 export {
   CalendarEvent,
   EventAction as CalendarEventAction,

@@ -15,9 +15,9 @@ import {
   CalendarModule,
   MOMENT,
   CalendarEventTimesChangedEvent,
-  DAYS_OF_WEEK
+  DAYS_OF_WEEK,
+  CalendarWeekViewComponent
 } from '../src';
-import { CalendarWeekViewComponent } from '../src/components/week/calendarWeekView.component';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs/Subject';
 import * as sinon from 'sinon';

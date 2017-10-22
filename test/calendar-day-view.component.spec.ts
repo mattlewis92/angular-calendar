@@ -17,9 +17,9 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarDayViewComponent
 } from './../src';
-import { CalendarDayViewComponent } from './../src/components/day/calendarDayView.component';
 import { Subject } from 'rxjs/Rx';
 import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';

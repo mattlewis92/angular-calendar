@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
-import { CalendarEventTitleFormatter } from '../providers/calendarEventTitleFormatter.provider';
+import { CalendarEventTitleFormatter } from '../providers/calendar-event-title-formatter.provider';
 
 @Pipe({
   name: 'calendarEventTitle'

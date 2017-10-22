@@ -2,7 +2,7 @@ import { InjectionToken, Inject } from '@angular/core';
 import {
   CalendarDateFormatterInterface,
   DateFormatterParams
-} from '../interfaces/calendarDateFormatter.interface';
+} from '../interfaces/calendar-date-formatter.interface';
 
 export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 

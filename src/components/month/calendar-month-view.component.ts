@@ -28,8 +28,8 @@ import getMonth from 'date-fns/get_month';
 import getYear from 'date-fns/get_year';
 import differenceInSeconds from 'date-fns/difference_in_seconds';
 import addSeconds from 'date-fns/add_seconds';
-import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
-import { CalendarUtils } from '../../providers/calendarUtils.provider';
+import { CalendarEventTimesChangedEvent } from '../../interfaces/calendar-event-times-changed-event.interface';
+import { CalendarUtils } from '../../providers/calendar-utils.provider';
 
 /**
  * Shows all events on a given month. Example usage:

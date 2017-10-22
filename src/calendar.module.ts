@@ -5,32 +5,32 @@ import {
   DragAndDropModule,
   DraggableHelper
 } from 'angular-draggable-droppable';
-import { CalendarDayViewComponent } from './components/day/calendarDayView.component';
-import { CalendarWeekViewComponent } from './components/week/calendarWeekView.component';
-import { CalendarMonthViewComponent } from './components/month/calendarMonthView.component';
-import { CalendarMonthViewHeaderComponent } from './components/month/calendarMonthViewHeader.component';
-import { CalendarEventActionsComponent } from './components/common/calendarEventActions.component';
-import { CalendarEventTitleComponent } from './components/common/calendarEventTitle.component';
-import { CalendarMonthCellComponent } from './components/month/calendarMonthCell.component';
-import { CalendarOpenDayEventsComponent } from './components/month/calendarOpenDayEvents.component';
-import { CalendarWeekViewHeaderComponent } from './components/week/calendarWeekViewHeader.component';
-import { CalendarWeekViewEventComponent } from './components/week/calendarWeekViewEvent.component';
-import { CalendarAllDayEventComponent } from './components/day/calendarAllDayEvent.component';
-import { CalendarDayViewHourSegmentComponent } from './components/day/calendarDayViewHourSegment.component';
-import { CalendarDayViewEventComponent } from './components/day/calendarDayViewEvent.component';
+import { CalendarDayViewComponent } from './components/day/calendar-day-view.component';
+import { CalendarWeekViewComponent } from './components/week/calendar-week-view.component';
+import { CalendarMonthViewComponent } from './components/month/calendar-month-view.component';
+import { CalendarMonthViewHeaderComponent } from './components/month/calendar-month-view-header.component';
+import { CalendarEventActionsComponent } from './components/common/calendar-event-actions.component';
+import { CalendarEventTitleComponent } from './components/common/calendar-event-title.component';
+import { CalendarMonthCellComponent } from './components/month/calendar-month-cell.component';
+import { CalendarOpenDayEventsComponent } from './components/month/calendar-open-day-events.component';
+import { CalendarWeekViewHeaderComponent } from './components/week/calendar-week-view-header.component';
+import { CalendarWeekViewEventComponent } from './components/week/calendar-week-view-event.component';
+import { CalendarAllDayEventComponent } from './components/day/calendar-all-day-event.component';
+import { CalendarDayViewHourSegmentComponent } from './components/day/calendar-day-view-hour-segment.component';
+import { CalendarDayViewEventComponent } from './components/day/calendar-day-view-event.component';
 import {
   CalendarTooltipWindowComponent,
   CalendarTooltipDirective
-} from './directives/calendarTooltip.directive';
-import { CalendarPreviousViewDirective } from './directives/calendarPreviousView.directive';
-import { CalendarNextViewDirective } from './directives/calendarNextView.directive';
-import { CalendarTodayDirective } from './directives/calendarToday.directive';
+} from './directives/calendar-tooltip.directive';
+import { CalendarPreviousViewDirective } from './directives/calendar-previous-view.directive';
+import { CalendarNextViewDirective } from './directives/calendar-next-view.directive';
+import { CalendarTodayDirective } from './directives/calendar-today.directive';
 import { ClickDirective } from './directives/click.directive';
-import { CalendarDatePipe } from './pipes/calendarDate.pipe';
-import { CalendarEventTitlePipe } from './pipes/calendarEventTitle.pipe';
-import { CalendarEventTitleFormatter } from './providers/calendarEventTitleFormatter.provider';
-import { CalendarDateFormatter } from './providers/calendarDateFormatter.provider';
-import { CalendarUtils } from './providers/calendarUtils.provider';
+import { CalendarDatePipe } from './pipes/calendar-date.pipe';
+import { CalendarEventTitlePipe } from './pipes/calendar-event-title.pipe';
+import { CalendarEventTitleFormatter } from './providers/calendar-event-title-formatter.provider';
+import { CalendarDateFormatter } from './providers/calendar-date-formatter.provider';
+import { CalendarUtils } from './providers/calendar-utils.provider';
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;

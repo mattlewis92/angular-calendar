@@ -1,7 +1,7 @@
 import {
   CalendarDateFormatterInterface,
   DateFormatterParams
-} from './../interfaces/calendarDateFormatter.interface';
+} from './../interfaces/calendar-date-formatter.interface';
 import getISOWeek from 'date-fns/get_iso_week';
 
 /**

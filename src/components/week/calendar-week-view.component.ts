@@ -21,10 +21,10 @@ import {
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
-import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
-import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
-import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
-import { CalendarUtils } from '../../providers/calendarUtils.provider';
+import { CalendarDragHelper } from '../../providers/calendar-drag-helper.provider';
+import { CalendarResizeHelper } from '../../providers/calendar-resize-helper.provider';
+import { CalendarEventTimesChangedEvent } from '../../interfaces/calendar-event-times-changed-event.interface';
+import { CalendarUtils } from '../../providers/calendar-utils.provider';
 
 export interface WeekViewEventResize {
   originalOffset: number;

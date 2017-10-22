@@ -18,12 +18,12 @@ import {
   CalendarModule,
   MOMENT,
   CalendarMonthViewDay,
-  DAYS_OF_WEEK
+  DAYS_OF_WEEK,
+  CalendarEventTimesChangedEvent,
+  CalendarMonthViewComponent
 } from './../src';
-import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
-import { CalendarEventTimesChangedEvent } from '../src/interfaces/calendarEventTimesChangedEvent.interface';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
