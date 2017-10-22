@@ -8,7 +8,6 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "",
-    "rootDir": ".",
     "paths": {
       "angular-calendar": ["./src/index"]
     },
