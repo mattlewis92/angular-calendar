@@ -22,7 +22,6 @@ Please note that issues that ignore this template will be closed without notice!
 <pre>
 [ ] Bug report <!-- Please search github for a similar issue or PR before submitting -->
 [ ] Feature request
-[ ] Documentation issue or request
 [ ] Support request => Please do not submit a support request here, please ask on https://stackoverflow.com/
 </pre>
 
