@@ -65,7 +65,6 @@
     "@angular/compiler-cli": "^4.4.4",
     "@angular/core": "^4.4.4",
     "@angular/forms": "^4.4.4",
-    "@angular/http": "^4.4.4",
     "@angular/language-service": "^4.4.4",
     "@angular/platform-browser": "^4.4.4",
     "@angular/platform-browser-dynamic": "^4.4.4",

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { CalendarEvent } from 'angular-calendar';
 import {
@@ -36,7 +36,7 @@ export class DemoComponent implements OnInit {
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetchEvents();
@@ -55,19 +55,19 @@ export class DemoComponent implements OnInit {
       day: endOfDay
     }[this.view];
 
-    const search: URLSearchParams = new URLSearchParams();
-    search.set(
-      'primary_release_date.gte',
-      format(getStart(this.viewDate), 'YYYY-MM-DD')
-    );
-    search.set(
-      'primary_release_date.lte',
-      format(getEnd(this.viewDate), 'YYYY-MM-DD')
-    );
-    search.set('api_key', '0ec33936a68018857d727958dca1424f');
+    const params = new HttpParams()
+      .set(
+        'primary_release_date.gte',
+        format(getStart(this.viewDate), 'YYYY-MM-DD')
+      )
+      .set(
+        'primary_release_date.lte',
+        format(getEnd(this.viewDate), 'YYYY-MM-DD')
+      )
+      .set('api_key', '0ec33936a68018857d727958dca1424f');
+
     this.events$ = this.http
-      .get('https://api.themoviedb.org/3/discover/movie', { search })
-      .map(res => res.json())
+      .get('https://api.themoviedb.org/3/discover/movie', { params })
       .map(({ results }: { results: Film[] }) => {
         return results.map((film: Film) => {
           return {
