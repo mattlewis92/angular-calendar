@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators/map';
 import { CalendarEvent } from 'angular-calendar';
 import {
   isSameMonth,
@@ -68,18 +68,20 @@ export class DemoComponent implements OnInit {
 
     this.events$ = this.http
       .get('https://api.themoviedb.org/3/discover/movie', { params })
-      .map(({ results }: { results: Film[] }) => {
-        return results.map((film: Film) => {
-          return {
-            title: film.title,
-            start: new Date(film.release_date),
-            color: colors.yellow,
-            meta: {
-              film
-            }
-          };
-        });
-      });
+      .pipe(
+        map(({ results }: { results: Film[] }) => {
+          return results.map((film: Film) => {
+            return {
+              title: film.title,
+              start: new Date(film.release_date),
+              color: colors.yellow,
+              meta: {
+                film
+              }
+            };
+          });
+        })
+      );
   }
 
   dayClicked({
