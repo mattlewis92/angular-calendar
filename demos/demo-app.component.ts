@@ -8,7 +8,10 @@ import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
 interface Source {
   filename: string;
-  contents: string;
+  contents: {
+    raw: string;
+    highlighted: string;
+  };
   language: string;
 }
 
@@ -28,15 +31,25 @@ async function getSources(folder: string): Promise<Source[]> {
       html: 'html',
       css: 'css'
     };
-    contents = contents
-      .replace(
-        ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-        ''
-      )
-      .replace("\nimport { RouterModule } from '@angular/router';", '');
     return {
       filename,
-      contents,
+      contents: {
+        raw: contents.raw
+          .replace(
+            ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
+            ''
+          )
+          .replace("\nimport { RouterModule } from '@angular/router';", ''),
+        highlighted: contents.highlighted // TODO - move this into a regexp replace for both
+          .replace(
+            ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
+            ''
+          )
+          .replace(
+            '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
+            ''
+          )
+      },
       language: languages[extension]
     };
   });
@@ -142,7 +155,7 @@ export class DemoAppComponent implements OnInit {
       .addFiles(
         demoUtilsSources.map(source => ({
           name: `demo-utils/${source.filename}`,
-          contents: source.contents
+          contents: source.contents.raw
         }))
       )
       .addFiles(
@@ -150,7 +163,7 @@ export class DemoAppComponent implements OnInit {
           return {
             name: `demo/${source.filename}`,
             // hacky fix to get relative style and template urls to work with system.js
-            contents: source.contents.replace(
+            contents: source.contents.raw.replace(
               /@Component\({/g,
               '@Component({\n  moduleId: __moduleName,'
             )
