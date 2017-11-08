@@ -72,7 +72,8 @@ const dependencyVersions: any = {
   reflectMetadata: require('reflect-metadata/package.json').version,
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
-  ngxContextmenu: require('ngx-contextmenu/package.json').version
+  ngxContextmenu: require('ngx-contextmenu/package.json').version,
+  fontAwesome: require('font-awesome/package.json').version
 };
 
 @Component({
@@ -125,6 +126,10 @@ export class DemoAppComponent implements OnInit {
       .addNpmPackage('bootstrap', {
         version: dependencyVersions.bootstrap,
         filename: 'dist/css/bootstrap.min.css'
+      })
+      .addNpmPackage('font-awesome', {
+        version: dependencyVersions.fontAwesome,
+        filename: 'css/font-awesome.css'
       })
       .addNpmPackage('angular-calendar', {
         version: dependencyVersions.angularCalendar,
