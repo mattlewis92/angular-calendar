@@ -23,17 +23,23 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
+* **styles:** css styles have moved from:
+```
+node_modules/angular-calendar/dist/css/angular-calendar.css
+```
+to
+```
+node_modules/angular-calendar/css/angular-calendar.css
+```
+
 * The umd path for system.js users has changed from:
 ```
 node_modules/angular-calendar/dist/umd/angular-calendar.js
 ```
-
 to
 ```
 node_modules/angular-calendar/umd/angular-calendar.js
 ```
-* **styles:** css styles have moved from dist/css/angular-calendar.css to css/angular-calendar.css
-
 
 
 <a name="0.21.3"></a>
