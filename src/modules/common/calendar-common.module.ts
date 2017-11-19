@@ -26,6 +26,7 @@ export interface CalendarModuleConfig {
 export * from './calendar-event-title-formatter.provider';
 export * from './calendar-moment-date-formatter.provider';
 export * from './calendar-native-date-formatter.provider';
+export * from './calendar-angular-date-formatter.provider';
 export * from './calendar-date-formatter.provider';
 export * from './calendar-utils.provider';
 export * from './calendar-date-formatter.interface';
