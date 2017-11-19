@@ -1,6 +1,6 @@
 /// <reference types="mocha" />
 
-import './../scss/angular-calendar.scss';
+import '../src/angular-calendar.scss';
 import 'core-js';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/long-stack-trace-zone';
