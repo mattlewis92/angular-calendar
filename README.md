@@ -72,7 +72,7 @@ You can find quick start examples for all common module bundlers in the [build-t
 ### Usage without a module bundler
 
 ```html
-<script src="node_modules/angular-calendar/dist/umd/angular-calendar.js"></script>
+<script src="node_modules/angular-calendar/umd/angular-calendar.js"></script>
 <script>
     // everything is exported angularCalendar namespace
 </script>
