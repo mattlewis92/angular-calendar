@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.0"></a>
+# [0.22.0](https://github.com/mattlewis92/angular-calendar/compare/v0.21.3...v0.22.0) (2017-11-19)
+
+
+### Bug Fixes
+
+* **day-view:** fix scrolling on touch devices ([e887b89](https://github.com/mattlewis92/angular-calendar/commit/e887b89)), closes [#358](https://github.com/mattlewis92/angular-calendar/issues/358)
+
+
+### Features
+
+* **day-view:** allow the hour segment height to be customised ([688693c](https://github.com/mattlewis92/angular-calendar/commit/688693c)), closes [#360](https://github.com/mattlewis92/angular-calendar/issues/360)
+* add individual month / week / day modules ([e87ae23](https://github.com/mattlewis92/angular-calendar/commit/e87ae23)), closes [#361](https://github.com/mattlewis92/angular-calendar/issues/361)
+* add runtime validation of event properties ([194fe59](https://github.com/mattlewis92/angular-calendar/commit/194fe59)), closes [#362](https://github.com/mattlewis92/angular-calendar/issues/362)
+* introduce angular date formatter ([cd40235](https://github.com/mattlewis92/angular-calendar/commit/cd40235)), closes [#376](https://github.com/mattlewis92/angular-calendar/issues/376)
+* **styles:** move css files into the css root directory ([72ae546](https://github.com/mattlewis92/angular-calendar/commit/72ae546))
+* move umd bundle up and out of the dist directory ([59d0049](https://github.com/mattlewis92/angular-calendar/commit/59d0049))
+
+
+### BREAKING CHANGES
+
+* The umd path for system.js users has changed from:
+```
+node_modules/angular-calendar/dist/umd/angular-calendar.js
+```
+
+to
+```
+node_modules/angular-calendar/umd/angular-calendar.js
+```
+* **styles:** css styles have moved from dist/css/angular-calendar.css to css/angular-calendar.css
+
+
+
 <a name="0.21.3"></a>
 ## [0.21.3](https://github.com/mattlewis92/angular-calendar/compare/v0.21.2...v0.21.3) (2017-10-21)
 
