@@ -37,6 +37,22 @@ export {
   DAYS_OF_WEEK
 } from 'calendar-utils';
 
+/**
+ * Import this module to if you're just using a singular view and want to save on bundle size. Example usage:
+ *
+ * ```typescript
+ * import { CalendarCommonModule, CalendarMonthModule } from 'angular-calendar';
+ *
+ * @NgModule({
+ *   imports: [
+ *     CalendarCommonModule.forRoot(),
+ *     CalendarMonthModule
+ *   ]
+ * })
+ * class MyModule {}
+ * ```
+ *
+ */
 @NgModule({
   declarations: [
     CalendarEventActionsComponent,
