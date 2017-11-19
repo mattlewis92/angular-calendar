@@ -104,7 +104,7 @@ export default (env = 'development') => {
         context: 'scss'
       })),
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)@angular/,
+        /angular(\\|\/)core(\\|\/)esm5/,
         __dirname + '/demos'
       ),
       new webpack.optimize.CommonsChunkPlugin({
