@@ -18,12 +18,12 @@ import {
   CalendarModule,
   MOMENT,
   CalendarMonthViewDay,
-  DAYS_OF_WEEK
+  DAYS_OF_WEEK,
+  CalendarEventTimesChangedEvent,
+  CalendarMonthViewComponent
 } from './../src';
-import { CalendarMonthViewComponent } from './../src/components/month/calendarMonthView.component';
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
-import { CalendarEventTimesChangedEvent } from '../src/interfaces/calendarEventTimesChangedEvent.interface';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -740,5 +740,19 @@ describe('calendarMonthView component', () => {
     expect(beforeViewRenderCalled).to.have.callCount(1);
     subscription.unsubscribe();
     fixture.destroy();
+  });
+
+  it('should log on invalid events', () => {
+    const stub = sinon.stub(console, 'warn');
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.events = [
+      { start: '2017-01-01', title: '', color: { primary: '', secondary: '' } }
+    ] as any;
+    fixture.componentInstance.ngOnChanges({ events: {} });
+    fixture.detectChanges();
+    stub.restore();
+    expect(stub).to.have.been.calledOnce; // tslint:disable-line
   });
 });

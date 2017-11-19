@@ -17,9 +17,9 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   MOMENT,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarDayViewComponent
 } from './../src';
-import { CalendarDayViewComponent } from './../src/components/day/calendarDayView.component';
 import { Subject } from 'rxjs/Rx';
 import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
@@ -980,5 +980,36 @@ describe('CalendarDayViewComponent component', () => {
         .add(8, 'hours')
         .toDate()
     });
+  });
+
+  it('should log on invalid events', () => {
+    const stub = sinon.stub(console, 'warn');
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.events = [
+      { start: '2017-01-01', title: '', color: { primary: '', secondary: '' } }
+    ] as any;
+    fixture.componentInstance.ngOnChanges({ events: {} });
+    fixture.detectChanges();
+    stub.restore();
+    expect(stub).to.have.been.calledOnce; // tslint:disable-line
+  });
+
+  it('should allow the hour segment height to be customised', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.hourSegmentHeight = 45;
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('mwl-calendar-day-view-hour-segment')
+        .style.height
+    ).to.equal('45px');
+    expect(
+      fixture.nativeElement.querySelector('.cal-hour-segment').style.height
+    ).to.equal('45px');
   });
 });

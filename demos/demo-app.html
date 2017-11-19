@@ -89,11 +89,7 @@
                 {{ source.filename }}
               </ng-template>
               <ng-template ngbTabContent>
-                <pre><code
-                  mwlHighlightJs
-                  [source]="source.contents"
-                  [language]="source.language">
-                </code></pre>
+                <pre><code [innerHTML]="source.contents.highlighted"></code></pre>
               </ng-template>
             </ngb-tab>
 

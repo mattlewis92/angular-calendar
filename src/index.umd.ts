@@ -1,2 +1,2 @@
-import './../scss/angular-calendar.scss';
+import './angular-calendar.scss';
 export * from './index';

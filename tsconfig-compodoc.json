@@ -1,19 +1,23 @@
 {
   "extends": "./tsconfig.json",
   "files": [
-    "src/calendar.module.ts",
-    "src/components/day/calendarDayView.component.ts",
-    "src/components/week/calendarWeekView.component.ts",
-    "src/components/month/calendarMonthView.component.ts",
-    "src/pipes/calendarDate.pipe.ts",
-    "src/interfaces/calendarDateFormatter.interface.ts",
-    "src/interfaces/calendarEventTimesChangedEvent.interface.ts",
-    "src/providers/calendarDateFormatter.provider.ts",
-    "src/providers/calendarEventTitleFormatter.provider.ts",
-    "src/providers/calendarMomentDateFormatter.provider.ts",
-    "src/providers/calendarNativeDateFormatter.provider.ts",
-    "src/directives/calendarNextView.directive.ts",
-    "src/directives/calendarPreviousView.directive.ts",
-    "src/directives/calendarToday.directive.ts"
+    "src/modules/calendar.module.ts",
+    "src/modules/day/calendar-day.module.ts",
+    "src/modules/day/calendar-day-view.component.ts",
+    "src/modules/week/calendar-week.module.ts",
+    "src/modules/week/calendar-week-view.component.ts",
+    "src/modules/month/calendar-month.module.ts",
+    "src/modules/month/calendar-month-view.component.ts",
+    "src/modules/common/calendar-common.module.ts",
+    "src/modules/common/calendar-date.pipe.ts",
+    "src/modules/common/calendar-date-formatter.interface.ts",
+    "src/modules/common/calendar-event-times-changed-event.interface.ts",
+    "src/modules/common/calendar-date-formatter.provider.ts",
+    "src/modules/common/calendar-event-title-formatter.provider.ts",
+    "src/modules/common/calendar-moment-date-formatter.provider.ts",
+    "src/modules/common/calendar-native-date-formatter.provider.ts",
+    "src/modules/common/calendar-next-view.directive.ts",
+    "src/modules/common/calendar-previous-view.directive.ts",
+    "src/modules/common/calendar-today.directive.ts"
   ]
 }

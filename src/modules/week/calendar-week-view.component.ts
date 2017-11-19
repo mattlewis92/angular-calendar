@@ -21,10 +21,11 @@ import {
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
-import { CalendarDragHelper } from '../../providers/calendarDragHelper.provider';
-import { CalendarResizeHelper } from '../../providers/calendarResizeHelper.provider';
-import { CalendarEventTimesChangedEvent } from '../../interfaces/calendarEventTimesChangedEvent.interface';
-import { CalendarUtils } from '../../providers/calendarUtils.provider';
+import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
+import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
+import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
+import { CalendarUtils } from '../common/calendar-utils.provider';
+import { validateEvents } from '../common/util';
 
 export interface WeekViewEventResize {
   originalOffset: number;
@@ -259,6 +260,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ngOnChanges(changes: any): void {
     if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
       this.refreshHeader();
+    }
+
+    if (changes.events) {
+      validateEvents(this.events);
     }
 
     if (changes.events || changes.viewDate || changes.excludeDays) {
