@@ -135,7 +135,7 @@ export class DemoAppComponent implements OnInit {
       })
       .addNpmPackage('angular-calendar', {
         version: dependencyVersions.angularCalendar,
-        filename: 'dist/css/angular-calendar.css'
+        filename: 'css/angular-calendar.css'
       })
       .addNpmPackage('zone.js', { version: dependencyVersions.zoneJs })
       .addNpmPackage('zone.js', {

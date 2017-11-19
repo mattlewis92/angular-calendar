@@ -42,7 +42,7 @@ npm install --save angular-calendar
 Next include the CSS file somewhere into your app:
 
 ```
-node_modules/angular-calendar/dist/css/angular-calendar.css
+node_modules/angular-calendar/css/angular-calendar.css
 ```
 
 Finally import the calendar module into your apps module:
@@ -106,7 +106,7 @@ See the [examples list](https://github.com/mattlewis92/angular-calendar/tree/mas
 
 ### No styles are appearing?
 
-No component styles are included with each component to make it easier to override them (otherwise you’d have to use `!important` on every rule that you customised). Thus you need to import the CSS file separately from `node_modules/angular-calendar/dist/css/angular-calendar.css`.
+No component styles are included with each component to make it easier to override them (otherwise you’d have to use `!important` on every rule that you customised). Thus you need to import the CSS file separately from `node_modules/angular-calendar/css/angular-calendar.css`.
 
 ### How come there are so many dependencies?
 

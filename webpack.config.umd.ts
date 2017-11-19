@@ -99,6 +99,7 @@ export default {
       failOnError: true
     }),
     new ExtractTextPlugin('./../css/angular-calendar.css'),
+    new ExtractTextPlugin('./../dist/css/angular-calendar.css'),
     new webpack.SourceMapDevToolPlugin({
       filename: 'angular-calendar.js.map',
       test: /\.js($|\?)/i
