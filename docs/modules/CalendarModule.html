@@ -48,14 +48,14 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
                                 <li class="link">
-                                    <a href="./license.html"
-                                        >
+                                        <a href="../license.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>LICENSE
                                     </a>
                                 </li>
@@ -77,7 +77,19 @@
                                 id="xs-modules-links"
                             >
                                 <li class="link">
+                                    <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/CalendarModule.html"  data-type="entity-link" class="active" >CalendarModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -153,6 +165,7 @@
                                 </li>
                         </ul>
                     </li>
+            
             
             
                     <li class="chapter">
@@ -268,14 +281,14 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
                                        <li class="link">
-                                           <a href="./license.html"
-                                               >
+                                               <a href="../license.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>LICENSE
                                            </a>
                                        </li>
@@ -297,7 +310,19 @@
                                        id="modules-links"
                    >
                                        <li class="link">
+                                           <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/CalendarModule.html"  data-type="entity-link" class="active" >CalendarModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -373,6 +398,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                    
                            <li class="chapter">
@@ -483,7 +509,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/calendar.module.ts</code>
+            <code>src/modules/calendar.module.ts</code>
         </p>
 
             <p class="comment">
@@ -491,41 +517,27 @@
             </p>
             <p class="comment">
                 <p>The main module of this library. Example usage:</p>
-<pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from &#39;angular-calendar&#39;;
+<p>```typescript
+import { CalenderModule } from &#39;angular-calendar&#39;;</p>
 
-&amp;commat;NgModule({
-   imports: [
-     CalenderModule.forRoot()
-   ]
-})
-class MyModule {}</code></pre>
             </p>
 
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank" title="Official documentation about module declarations"><span class="fa fa-info-circle"></span></a></h3>
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span class="fa fa-info-circle"></a></h3>
                     <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="../components/CalendarDayViewComponent.html">CalendarDayViewComponent</a>
+                                    <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="../components/CalendarWeekViewComponent.html">CalendarWeekViewComponent</a>
+                                    <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="../components/CalendarMonthViewComponent.html">CalendarMonthViewComponent</a>
+                                    <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="../directives/CalendarPreviousViewDirective.html">CalendarPreviousViewDirective</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="../directives/CalendarNextViewDirective.html">CalendarNextViewDirective</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="../directives/CalendarTodayDirective.html">CalendarTodayDirective</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="../pipes/CalendarDatePipe.html">CalendarDatePipe</a>
+                                    <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
                             </li>
                     </ul>
                 </div>
@@ -533,25 +545,16 @@ class MyModule {}</code></pre>
                     <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" title="Official documentation about module exports"><span class="fa fa-info-circle"></a></h3>
                     <ul class="list-group">
                             <li class="list-group-item">
-                                    <a href="../components/CalendarDayViewComponent.html" >CalendarDayViewComponent</a>
+                                    <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
                             </li>
                             <li class="list-group-item">
-                                    <a href="../components/CalendarWeekViewComponent.html" >CalendarWeekViewComponent</a>
+                                    <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
                             </li>
                             <li class="list-group-item">
-                                    <a href="../components/CalendarMonthViewComponent.html" >CalendarMonthViewComponent</a>
+                                    <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                             </li>
                             <li class="list-group-item">
-                                    <a href="../directives/CalendarPreviousViewDirective.html" >CalendarPreviousViewDirective</a>
-                            </li>
-                            <li class="list-group-item">
-                                    <a href="../directives/CalendarNextViewDirective.html" >CalendarNextViewDirective</a>
-                            </li>
-                            <li class="list-group-item">
-                                    <a href="../directives/CalendarTodayDirective.html" >CalendarTodayDirective</a>
-                            </li>
-                            <li class="list-group-item">
-                                    <a href="../pipes/CalendarDatePipe.html" >CalendarDatePipe</a>
+                                    <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
                             </li>
                     </ul>
                 </div>
@@ -561,45 +564,23 @@ class MyModule {}</code></pre>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders, Provider } from &#x27;@angular/core&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
-import { ResizableModule } from &#x27;angular-resizable-element&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders } from &#x27;@angular/core&#x27;;
+import { DraggableHelper } from &#x27;angular-draggable-droppable&#x27;;
 import {
-  DragAndDropModule,
-  DraggableHelper
-} from &#x27;angular-draggable-droppable&#x27;;
-import { CalendarDayViewComponent } from &#x27;./components/day/calendarDayView.component&#x27;;
-import { CalendarWeekViewComponent } from &#x27;./components/week/calendarWeekView.component&#x27;;
-import { CalendarMonthViewComponent } from &#x27;./components/month/calendarMonthView.component&#x27;;
-import { CalendarMonthViewHeaderComponent } from &#x27;./components/month/calendarMonthViewHeader.component&#x27;;
-import { CalendarEventActionsComponent } from &#x27;./components/common/calendarEventActions.component&#x27;;
-import { CalendarEventTitleComponent } from &#x27;./components/common/calendarEventTitle.component&#x27;;
-import { CalendarMonthCellComponent } from &#x27;./components/month/calendarMonthCell.component&#x27;;
-import { CalendarOpenDayEventsComponent } from &#x27;./components/month/calendarOpenDayEvents.component&#x27;;
-import { CalendarWeekViewHeaderComponent } from &#x27;./components/week/calendarWeekViewHeader.component&#x27;;
-import { CalendarWeekViewEventComponent } from &#x27;./components/week/calendarWeekViewEvent.component&#x27;;
-import { CalendarAllDayEventComponent } from &#x27;./components/day/calendarAllDayEvent.component&#x27;;
-import { CalendarDayViewHourSegmentComponent } from &#x27;./components/day/calendarDayViewHourSegment.component&#x27;;
-import { CalendarDayViewEventComponent } from &#x27;./components/day/calendarDayViewEvent.component&#x27;;
-import {
-  CalendarTooltipWindowComponent,
-  CalendarTooltipDirective
-} from &#x27;./directives/calendarTooltip.directive&#x27;;
-import { CalendarPreviousViewDirective } from &#x27;./directives/calendarPreviousView.directive&#x27;;
-import { CalendarNextViewDirective } from &#x27;./directives/calendarNextView.directive&#x27;;
-import { CalendarTodayDirective } from &#x27;./directives/calendarToday.directive&#x27;;
-import { ClickDirective } from &#x27;./directives/click.directive&#x27;;
-import { CalendarDatePipe } from &#x27;./pipes/calendarDate.pipe&#x27;;
-import { CalendarEventTitlePipe } from &#x27;./pipes/calendarEventTitle.pipe&#x27;;
-import { CalendarEventTitleFormatter } from &#x27;./providers/calendarEventTitleFormatter.provider&#x27;;
-import { CalendarDateFormatter } from &#x27;./providers/calendarDateFormatter.provider&#x27;;
-import { CalendarUtils } from &#x27;./providers/calendarUtils.provider&#x27;;
+  CalendarCommonModule,
+  CalendarModuleConfig,
+  CalendarEventTitleFormatter,
+  CalendarDateFormatter,
+  CalendarUtils
+} from &#x27;./common/calendar-common.module&#x27;;
+import { CalendarMonthModule } from &#x27;./month/calendar-month.module&#x27;;
+import { CalendarWeekModule } from &#x27;./week/calendar-week.module&#x27;;
+import { CalendarDayModule } from &#x27;./day/calendar-day.module&#x27;;
 
-export interface CalendarModuleConfig {
-  eventTitleFormatter?: Provider;
-  dateFormatter?: Provider;
-  utils?: Provider;
-}
+export * from &#x27;./common/calendar-common.module&#x27;;
+export * from &#x27;./month/calendar-month.module&#x27;;
+export * from &#x27;./week/calendar-week.module&#x27;;
+export * from &#x27;./day/calendar-day.module&#x27;;
 
 /**
  * The main module of this library. Example usage:
@@ -607,7 +588,7 @@ export interface CalendarModuleConfig {
  * &#x60;&#x60;&#x60;typescript
  * import { CalenderModule } from &#x27;angular-calendar&#x27;;
  *
- * &amp;commat;NgModule({
+ * @NgModule({
  *   imports: [
  *     CalenderModule.forRoot()
  *   ]
@@ -617,54 +598,18 @@ export interface CalendarModuleConfig {
  *
  */
 @NgModule({
-  declarations: [
-    CalendarDayViewComponent,
-    CalendarWeekViewComponent,
-    CalendarMonthViewComponent,
-    CalendarEventActionsComponent,
-    CalendarEventTitleComponent,
-    CalendarMonthCellComponent,
-    CalendarOpenDayEventsComponent,
-    CalendarWeekViewHeaderComponent,
-    CalendarWeekViewEventComponent,
-    CalendarAllDayEventComponent,
-    CalendarDayViewHourSegmentComponent,
-    CalendarTooltipWindowComponent,
-    CalendarTooltipDirective,
-    CalendarPreviousViewDirective,
-    CalendarNextViewDirective,
-    CalendarTodayDirective,
-    CalendarDatePipe,
-    CalendarEventTitlePipe,
-    CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent,
-    ClickDirective
+  imports: [
+    CalendarCommonModule,
+    CalendarMonthModule,
+    CalendarWeekModule,
+    CalendarDayModule
   ],
-  imports: [CommonModule, ResizableModule, DragAndDropModule],
   exports: [
-    CalendarDayViewComponent,
-    CalendarWeekViewComponent,
-    CalendarMonthViewComponent,
-    CalendarEventActionsComponent,
-    CalendarEventTitleComponent,
-    CalendarMonthCellComponent,
-    CalendarOpenDayEventsComponent,
-    CalendarWeekViewHeaderComponent,
-    CalendarWeekViewEventComponent,
-    CalendarAllDayEventComponent,
-    CalendarDayViewHourSegmentComponent,
-    CalendarTooltipWindowComponent,
-    CalendarTooltipDirective,
-    CalendarPreviousViewDirective,
-    CalendarNextViewDirective,
-    CalendarTodayDirective,
-    CalendarDatePipe,
-    CalendarEventTitlePipe,
-    CalendarMonthViewHeaderComponent,
-    CalendarDayViewEventComponent,
-    ClickDirective
-  ],
-  entryComponents: [CalendarTooltipWindowComponent]
+    CalendarCommonModule,
+    CalendarMonthModule,
+    CalendarWeekModule,
+    CalendarDayModule
+  ]
 })
 export class CalendarModule {
   static forRoot(config: CalendarModuleConfig &#x3D; {}): ModuleWithProviders {
@@ -682,6 +627,7 @@ export class CalendarModule {
 </code></pre>
     </div>
 </div>
+
 
 
 

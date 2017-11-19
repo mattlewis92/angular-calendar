@@ -48,14 +48,14 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
                                 <li class="link">
-                                    <a href="./license.html"
-                                        >
+                                        <a href="../license.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>LICENSE
                                     </a>
                                 </li>
@@ -77,7 +77,19 @@
                                 id="xs-modules-links"
                             >
                                 <li class="link">
+                                    <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/CalendarModule.html" >CalendarModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -153,6 +165,7 @@
                                 </li>
                         </ul>
                     </li>
+            
             
             
                     <li class="chapter">
@@ -268,14 +281,14 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
                                        <li class="link">
-                                           <a href="./license.html"
-                                               >
+                                               <a href="../license.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>LICENSE
                                            </a>
                                        </li>
@@ -297,7 +310,19 @@
                                        id="modules-links"
                    >
                                        <li class="link">
+                                           <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/CalendarModule.html" >CalendarModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -373,6 +398,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                    
                            <li class="chapter">
@@ -463,6 +489,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Pipes</li>
   <li>CalendarDatePipe</li>
@@ -477,6 +504,7 @@
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
+
 </ul>
 
 <div class="tab-content">
@@ -486,7 +514,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/pipes/calendarDate.pipe.ts</code>
+            <code>src/modules/common/calendar-date.pipe.ts</code>
         </p>
 
             <p class="comment">
@@ -499,12 +527,111 @@
             </p>
 
 
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">name</td>
+                        <td class="col-md-9">calendarDate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="transform"></a>
+                                    <span class="name"><b> transform</b><a href="#transform"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>transform(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>, method: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, locale: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/modules/common/calendar-date.pipe.ts:20</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>method</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>locale</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Pipe, PipeTransform, LOCALE_ID, Inject } from &#x27;@angular/core&#x27;;
-import { CalendarDateFormatter } from &#x27;./../providers/calendarDateFormatter.provider&#x27;;
+import { CalendarDateFormatter } from &#x27;./calendar-date-formatter.provider&#x27;;
 
 /**
  * This pipe is primarily for rendering the current view title. Example usage:
@@ -528,6 +655,7 @@ export class CalendarDatePipe implements PipeTransform {
 }
 </code></pre>
     </div>
+
 </div>
 
 

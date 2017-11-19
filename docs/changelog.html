@@ -48,14 +48,14 @@
                                   <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="./changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
                                 <li class="link">
-                                    <a href="./license.html"
-                                        >
+                                        <a href="./license.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>LICENSE
                                     </a>
                                 </li>
@@ -77,7 +77,19 @@
                                 id="xs-modules-links"
                             >
                                 <li class="link">
+                                    <a href="./modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="./modules/CalendarModule.html" >CalendarModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -153,6 +165,7 @@
                                 </li>
                         </ul>
                     </li>
+            
             
             
                     <li class="chapter">
@@ -268,14 +281,14 @@
                                          <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="./changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
                                        <li class="link">
-                                           <a href="./license.html"
-                                               >
+                                               <a href="./license.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>LICENSE
                                            </a>
                                        </li>
@@ -297,7 +310,19 @@
                                        id="modules-links"
                    >
                                        <li class="link">
+                                           <a href="./modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./modules/CalendarModule.html" >CalendarModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -373,6 +398,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                    
                            <li class="chapter">
@@ -459,6 +485,29 @@
 
 <h1 id="change-log">Change Log</h1>
 <p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<p><a name="0.22.0"></a></p>
+<h1 id="-0-22-0-https-github-com-mattlewis92-angular-calendar-compare-v0-21-3-v0-22-0-2017-11-19-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.21.3...v0.22.0">0.22.0</a> (2017-11-19)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>day-view:</strong> fix scrolling on touch devices (<a href="https://github.com/mattlewis92/angular-calendar/commit/e887b89">e887b89</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/358">#358</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>day-view:</strong> allow the hour segment height to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/688693c">688693c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/360">#360</a></li>
+<li>add individual month / week / day modules (<a href="https://github.com/mattlewis92/angular-calendar/commit/e87ae23">e87ae23</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/361">#361</a></li>
+<li>add runtime validation of event properties (<a href="https://github.com/mattlewis92/angular-calendar/commit/194fe59">194fe59</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/362">#362</a></li>
+<li>introduce angular date formatter (<a href="https://github.com/mattlewis92/angular-calendar/commit/cd40235">cd40235</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/376">#376</a></li>
+<li><strong>styles:</strong> move css files into the css root directory (<a href="https://github.com/mattlewis92/angular-calendar/commit/72ae546">72ae546</a>)</li>
+<li>move umd bundle up and out of the dist directory (<a href="https://github.com/mattlewis92/angular-calendar/commit/59d0049">59d0049</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>The umd path for system.js users has changed from:<pre class="line-numbers"><code class="language-none">node_modules/angular-calendar/dist/umd/angular-calendar.js</code></pre></li>
+</ul>
+<p>to</p>
+<pre class="line-numbers"><code class="language-none">node_modules/angular-calendar/umd/angular-calendar.js</code></pre><ul>
+<li><strong>styles:</strong> css styles have moved from dist/css/angular-calendar.css to css/angular-calendar.css</li>
+</ul>
 <p><a name="0.21.3"></a></p>
 <h2 id="-0-21-3-https-github-com-mattlewis92-angular-calendar-compare-v0-21-2-v0-21-3-2017-10-21-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.21.2...v0.21.3">0.21.3</a> (2017-10-21)</h2>
 <h3 id="bug-fixes">Bug Fixes</h3>
@@ -1055,6 +1104,7 @@ providers: [
 <p><a name="0.1.0"></a></p>
 <h1 id="0-1-0-2016-09-03-">0.1.0 (2016-09-03)</h1>
 <p><em>Initial release</em></p>
+
 
 
 

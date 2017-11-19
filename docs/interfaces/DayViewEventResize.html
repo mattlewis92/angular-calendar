@@ -48,14 +48,14 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
                                 <li class="link">
-                                    <a href="./license.html"
-                                        >
+                                        <a href="../license.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>LICENSE
                                     </a>
                                 </li>
@@ -77,7 +77,19 @@
                                 id="xs-modules-links"
                             >
                                 <li class="link">
+                                    <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/CalendarModule.html" >CalendarModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -153,6 +165,7 @@
                                 </li>
                         </ul>
                     </li>
+            
             
             
                     <li class="chapter">
@@ -268,14 +281,14 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
                                        <li class="link">
-                                           <a href="./license.html"
-                                               >
+                                               <a href="../license.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>LICENSE
                                            </a>
                                        </li>
@@ -297,7 +310,19 @@
                                        id="modules-links"
                    >
                                        <li class="link">
+                                           <a href="../modules/CalendarCommonModule.html" >CalendarCommonModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarDayModule.html" >CalendarDayModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/CalendarModule.html" >CalendarModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarMonthModule.html" >CalendarMonthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CalendarWeekModule.html" >CalendarWeekModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -373,6 +398,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                    
                            <li class="chapter">
@@ -465,6 +491,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Interfaces</li>
   <li>DayViewEventResize</li>
@@ -487,7 +514,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/components/day/calendarDayView.component.ts</code>
+            <code>src/modules/day/calendar-day-view.component.ts</code>
         </p>
 
 
@@ -551,7 +578,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/components/day/calendarDayView.component.ts:46</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:42</a></div>
                                         </td>
                                     </tr>
 
@@ -584,7 +611,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/components/day/calendarDayView.component.ts:45</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:41</a></div>
                                         </td>
                                     </tr>
 
@@ -617,7 +644,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/components/day/calendarDayView.component.ts:44</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:40</a></div>
                                         </td>
                                     </tr>
 
@@ -652,15 +679,11 @@ import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 import { ResizeEvent } from &#x27;angular-resizable-element&#x27;;
 import addMinutes from &#x27;date-fns/add_minutes&#x27;;
-import { CalendarDragHelper } from &#x27;../../providers/calendarDragHelper.provider&#x27;;
-import { CalendarResizeHelper } from &#x27;../../providers/calendarResizeHelper.provider&#x27;;
-import { CalendarEventTimesChangedEvent } from &#x27;../../interfaces/calendarEventTimesChangedEvent.interface&#x27;;
-import { CalendarUtils } from &#x27;../../providers/calendarUtils.provider&#x27;;
-
-/**
- * @hidden
- */
-const SEGMENT_HEIGHT: number &#x3D; 30;
+import { CalendarDragHelper } from &#x27;../common/calendar-drag-helper.provider&#x27;;
+import { CalendarResizeHelper } from &#x27;../common/calendar-resize-helper.provider&#x27;;
+import { CalendarEventTimesChangedEvent } from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
+import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
+import { validateEvents } from &#x27;../common/util&#x27;;
 
 /**
  * @hidden
@@ -738,7 +761,9 @@ export interface DayViewEventResize {
         &lt;div class&#x3D;&quot;cal-hour&quot; *ngFor&#x3D;&quot;let hour of hours&quot; [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;&gt;
           &lt;mwl-calendar-day-view-hour-segment
             *ngFor&#x3D;&quot;let segment of hour.segments&quot;
+            [style.height.px]&#x3D;&quot;hourSegmentHeight&quot;
             [segment]&#x3D;&quot;segment&quot;
+            [segmentHeight]&#x3D;&quot;hourSegmentHeight&quot;
             [locale]&#x3D;&quot;locale&quot;
             [customTemplate]&#x3D;&quot;hourSegmentTemplate&quot;
             (mwlClick)&#x3D;&quot;hourSegmentClicked.emit({date: segment.date})&quot;
@@ -769,6 +794,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * The number of segments in an hour. Must be &lt;&#x3D; 6
    */
   @Input() hourSegments: number &#x3D; 2;
+
+  /**
+   * The height in pixels of each hour segment
+   */
+  @Input() hourSegmentHeight: number &#x3D; 30;
 
   /**
    * The day start hours in 24 hour time. Must be 0-23
@@ -808,7 +838,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The grid size to snap resizing and dragging of events to
    */
-  @Input() eventSnapSize: number &#x3D; 30;
+  @Input() eventSnapSize: number &#x3D; this.hourSegmentHeight;
 
   /**
    * The placement of the event tooltip
@@ -957,6 +987,10 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       this.refreshHourGrid();
     }
 
+    if (changes.events) {
+      validateEvents(this.events);
+    }
+
     if (
       changes.viewDate ||
       changes.events ||
@@ -1024,7 +1058,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     dayEvent.height &#x3D; currentResize.originalHeight;
 
     const pixelAmountInMinutes: number &#x3D;
-      MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+      MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number &#x3D; pixelsMoved * pixelAmountInMinutes;
     let newStart: Date &#x3D; dayEvent.event.start;
     let newEnd: Date &#x3D; dayEvent.event.end;
@@ -1050,7 +1084,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
     const pixelAmountInMinutes: number &#x3D;
-      MINUTES_IN_HOUR / (this.hourSegments * SEGMENT_HEIGHT);
+      MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number &#x3D; draggedInPixels * pixelAmountInMinutes;
     const newStart: Date &#x3D; addMinutes(dayEvent.event.start, minutesMoved);
     let newEnd: Date;
@@ -1092,7 +1126,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       },
       eventWidth: this.eventWidth,
-      segmentHeight: SEGMENT_HEIGHT
+      segmentHeight: this.hourSegmentHeight
     });
   }
 
