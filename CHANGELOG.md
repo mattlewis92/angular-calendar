@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.1"></a>
+## [0.22.1](https://github.com/mattlewis92/angular-calendar/compare/v0.22.0...v0.22.1) (2017-11-22)
+
+
+### Bug Fixes
+
+* restore aot compatibility with angular 4 ([f5e500a](https://github.com/mattlewis92/angular-calendar/commit/f5e500a)), closes [#397](https://github.com/mattlewis92/angular-calendar/issues/397)
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://github.com/mattlewis92/angular-calendar/compare/v0.21.3...v0.22.0) (2017-11-19)
 
