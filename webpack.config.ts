@@ -4,7 +4,7 @@ import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
-import { AngularCompilerPlugin } from '@ngtools/webpack';
+import { AotPlugin } from '@ngtools/webpack';
 import * as OfflinePlugin from 'offline-plugin';
 import * as FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 
@@ -90,9 +90,8 @@ export default (env = 'development') => {
       })),
       ifDevelopment(new webpack.HotModuleReplacementPlugin()),
       ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
-      ifProduction(new AngularCompilerPlugin({
-        tsConfigPath: './tsconfig-demos.json',
-        sourceMap: true
+      ifProduction(new AotPlugin({
+        tsConfigPath: './tsconfig-demos.json'
       })),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env)
@@ -105,7 +104,7 @@ export default (env = 'development') => {
         context: 'scss'
       })),
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)esm5/,
+        /angular(\\|\/)core(\\|\/)@angular/,
         __dirname + '/demos'
       ),
       new webpack.optimize.CommonsChunkPlugin({
