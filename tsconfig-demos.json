@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
-    "outDir": "./tsc",
+    "outDir": "./dist/aot",
     "baseUrl": "",
     "emitDecoratorMetadata": false
   },
@@ -12,10 +12,8 @@
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
     "skipMetadataEmit" : true,
+    "genDir": "./dist/aot",
     "entryModule": "demos/demo-app.module#DemoAppModule",
-    "trace": true,
-    "strictInjectionParameters": true,
-    "preserveWhitespaces": true,
-    "fullTemplateTypeCheck": false
+    "trace": true
   }
 }
