@@ -506,7 +506,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -529,9 +529,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -558,6 +558,50 @@
 
 
 
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;cal-month-view&quot;&gt;
+  &lt;mwl-calendar-month-view-header
+    [days]&#x3D;&quot;columnHeaders&quot;
+    [locale]&#x3D;&quot;locale&quot;
+    [customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;
+  &lt;/mwl-calendar-month-view-header&gt;
+  &lt;div class&#x3D;&quot;cal-days&quot;&gt;
+    &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets&quot;&gt;
+      &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
+        &lt;mwl-calendar-month-cell
+          *ngFor&#x3D;&quot;let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)&quot;
+          [class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;
+          [ngClass]&#x3D;&quot;day?.cssClass&quot;
+          [day]&#x3D;&quot;day&quot;
+          [openDay]&#x3D;&quot;openDay&quot;
+          [locale]&#x3D;&quot;locale&quot;
+          [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+          [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+          [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+          [customTemplate]&#x3D;&quot;cellTemplate&quot;
+          (click)&#x3D;&quot;handleDayClick($event, day)&quot;
+          (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
+          (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
+          mwlDroppable
+          (dragEnter)&#x3D;&quot;day.dragOver &#x3D; true&quot;
+          (dragLeave)&#x3D;&quot;day.dragOver &#x3D; false&quot;
+          (drop)&#x3D;&quot;day.dragOver &#x3D; false; eventDropped(day, $event.dropData.event)&quot;
+          (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;&gt;
+        &lt;/mwl-calendar-month-cell&gt;
+      &lt;/div&gt;
+      &lt;mwl-calendar-open-day-events
+        [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
+        [events]&#x3D;&quot;openDay?.events&quot;
+        [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
+        [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
+        (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;&gt;
+      &lt;/mwl-calendar-open-day-events&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
 
 
 
@@ -719,6 +763,9 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                 <em>Type:</em>    <code>CalendarEvent[]</code>
 
                               </p>
+                            <p>
+                              <em>Default value: </em><code>[]</code>
+                            </p>
                         </td>
                     </tr>
                             <tr>
@@ -765,6 +812,9 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                 <em>Type:</em>    <code>number[]</code>
 
                               </p>
+                            <p>
+                              <em>Default value: </em><code>[]</code>
+                            </p>
                         </td>
                     </tr>
                             <tr>
@@ -907,7 +957,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
 
                               </p>
                             <p>
-                              <em>Default value: </em><code>top</code>
+                              <em>Default value: </em><code>&#x27;top&#x27;</code>
                             </p>
                         </td>
                     </tr>
@@ -1108,7 +1158,7 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import {
   Component,
   OnChanges,
@@ -1497,7 +1547,7 @@ export class CalendarMonthViewComponent
     </div>
 
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1520,7 +1570,7 @@ export class CalendarMonthViewComponent
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    [customTemplate]="headerTemplate">  </mwl-calendar-month-view-header>  <div class="cal-days">    <div *ngFor="let rowIndex of view.rowOffsets">      <div class="cal-cell-row">        <mwl-calendar-month-cell          *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"          [class.cal-drag-over]="day.dragOver"          [ngClass]="day?.cssClass"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipTemplate]="tooltipTemplate"          [customTemplate]="cellTemplate"          (click)="handleDayClick($event, day)"          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          (dragEnter)="day.dragOver = true"          (dragLeave)="day.dragOver = false"          (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"          (eventClicked)="eventClicked.emit({event: $event.event})">        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [customTemplate]="openDayEventsTemplate"        [eventTitleTemplate]="eventTitleTemplate"        (eventClicked)="eventClicked.emit({event: $event.event})">      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarMonthViewComponent'};

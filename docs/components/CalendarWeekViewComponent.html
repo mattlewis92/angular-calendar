@@ -506,7 +506,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -529,9 +529,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -558,6 +558,54 @@
 
 
 
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;cal-week-view&quot; #weekViewContainer&gt;
+  &lt;mwl-calendar-week-view-header
+    [days]&#x3D;&quot;days&quot;
+    [locale]&#x3D;&quot;locale&quot;
+    [customTemplate]&#x3D;&quot;headerTemplate&quot;
+    (dayHeaderClicked)&#x3D;&quot;dayHeaderClicked.emit($event)&quot;
+    (eventDropped)&#x3D;&quot;eventTimesChanged.emit($event)&quot;&gt;
+  &lt;/mwl-calendar-week-view-header&gt;
+  &lt;div *ngFor&#x3D;&quot;let eventRow of eventRows&quot; #eventRowContainer class&#x3D;&quot;cal-events-row&quot;&gt;
+    &lt;div
+      *ngFor&#x3D;&quot;let weekEvent of eventRow.row&quot;
+      #event
+      class&#x3D;&quot;cal-event-container&quot;
+      [class.cal-draggable]&#x3D;&quot;weekEvent.event.draggable&quot;
+      [class.cal-starts-within-week]&#x3D;&quot;!weekEvent.startsBeforeWeek&quot;
+      [class.cal-ends-within-week]&#x3D;&quot;!weekEvent.endsAfterWeek&quot;
+      [ngClass]&#x3D;&quot;weekEvent.event?.cssClass&quot;
+      [style.width]&#x3D;&quot;((100 / days.length) * weekEvent.span) + &#x27;%&#x27;&quot;
+      [style.marginLeft]&#x3D;&quot;((100 / days.length) * weekEvent.offset) + &#x27;%&#x27;&quot;
+      mwlResizable
+      [resizeEdges]&#x3D;&quot;{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}&quot;
+      [resizeSnapGrid]&#x3D;&quot;{left: dayColumnWidth, right: dayColumnWidth}&quot;
+      [validateResize]&#x3D;&quot;validateResize&quot;
+      (resizeStart)&#x3D;&quot;resizeStarted(weekViewContainer, weekEvent, $event)&quot;
+      (resizing)&#x3D;&quot;resizing(weekEvent, $event, dayColumnWidth)&quot;
+      (resizeEnd)&#x3D;&quot;resizeEnded(weekEvent)&quot;
+      mwlDraggable
+      [dragAxis]&#x3D;&quot;{x: weekEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0, y: false}&quot;
+      [dragSnapGrid]&#x3D;&quot;{x: dayColumnWidth}&quot;
+      [validateDrag]&#x3D;&quot;validateDrag&quot;
+      (dragStart)&#x3D;&quot;dragStart(weekViewContainer, event)&quot;
+      (dragEnd)&#x3D;&quot;eventDragged(weekEvent, $event.x, dayColumnWidth)&quot;&gt;
+      &lt;mwl-calendar-week-view-event
+        [weekEvent]&#x3D;&quot;weekEvent&quot;
+        [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+        [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+        [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+        [customTemplate]&#x3D;&quot;eventTemplate&quot;
+        [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
+        (eventClicked)&#x3D;&quot;eventClicked.emit({event: weekEvent.event})&quot;&gt;
+      &lt;/mwl-calendar-week-view-event&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
 
 
 
@@ -667,6 +715,9 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                 <em>Type:</em>    <code>CalendarEvent[]</code>
 
                               </p>
+                            <p>
+                              <em>Default value: </em><code>[]</code>
+                            </p>
                         </td>
                     </tr>
                             <tr>
@@ -736,6 +787,9 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                 <em>Type:</em>    <code>number[]</code>
 
                               </p>
+                            <p>
+                              <em>Default value: </em><code>[]</code>
+                            </p>
                         </td>
                     </tr>
                             <tr>
@@ -807,7 +861,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
 
                               </p>
                             <p>
-                              <em>Default value: </em><code>days</code>
+                              <em>Default value: </em><code>&#x27;days&#x27;</code>
                             </p>
                         </td>
                     </tr>
@@ -882,7 +936,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
 
                               </p>
                             <p>
-                              <em>Default value: </em><code>bottom</code>
+                              <em>Default value: </em><code>&#x27;bottom&#x27;</code>
                             </p>
                         </td>
                     </tr>
@@ -1083,7 +1137,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import {
   Component,
   Input,
@@ -1512,7 +1566,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     </div>
 
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1535,7 +1589,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view" #weekViewContainer>  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayHeaderClicked)="dayHeaderClicked.emit($event)"    (eventDropped)="eventTimesChanged.emit($event)">  </mwl-calendar-week-view-header>  <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">    <div      *ngFor="let weekEvent of eventRow.row"      #event      class="cal-event-container"      [class.cal-draggable]="weekEvent.event.draggable"      [class.cal-starts-within-week]="!weekEvent.startsBeforeWeek"      [class.cal-ends-within-week]="!weekEvent.endsAfterWeek"      [ngClass]="weekEvent.event?.cssClass"      [style.width]="((100 / days.length) * weekEvent.span) + \'%\'"      [style.marginLeft]="((100 / days.length) * weekEvent.offset) + \'%\'"      mwlResizable      [resizeEdges]="{left: weekEvent.event?.resizable?.beforeStart, right: weekEvent.event?.resizable?.afterEnd}"      [resizeSnapGrid]="{left: dayColumnWidth, right: dayColumnWidth}"      [validateResize]="validateResize"      (resizeStart)="resizeStarted(weekViewContainer, weekEvent, $event)"      (resizing)="resizing(weekEvent, $event, dayColumnWidth)"      (resizeEnd)="resizeEnded(weekEvent)"      mwlDraggable      [dragAxis]="{x: weekEvent.event.draggable && currentResizes.size === 0, y: false}"      [dragSnapGrid]="{x: dayColumnWidth}"      [validateDrag]="validateDrag"      (dragStart)="dragStart(weekViewContainer, event)"      (dragEnd)="eventDragged(weekEvent, $event.x, dayColumnWidth)">      <mwl-calendar-week-view-event        [weekEvent]="weekEvent"        [tooltipPlacement]="tooltipPlacement"        [tooltipTemplate]="tooltipTemplate"        [tooltipAppendToBody]="tooltipAppendToBody"        [customTemplate]="eventTemplate"        [eventTitleTemplate]="eventTitleTemplate"        (eventClicked)="eventClicked.emit({event: weekEvent.event})">      </mwl-calendar-week-view-event>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarWeekViewComponent'};
