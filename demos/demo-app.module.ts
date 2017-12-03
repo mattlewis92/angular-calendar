@@ -190,10 +190,10 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
           }
         },
         {
-          path: 'selectable-month-day',
-          loadChildren: './demo-modules/selectable-month-day/module#DemoModule',
+          path: 'selectable-period',
+          loadChildren: './demo-modules/selectable-period/module#DemoModule',
           data: {
-            label: 'Selectable month day'
+            label: 'Selectable period'
           }
         },
         {
