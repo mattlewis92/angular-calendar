@@ -6,7 +6,7 @@ import {
   flush
 } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import * as moment from 'moment';
+import moment from 'moment';
 import * as sinon from 'sinon';
 import { expect } from 'chai';
 import { spy } from 'sinon';

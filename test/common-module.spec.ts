@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import * as moment from 'moment';
+import moment from 'moment';
 import {
   CalendarCommonModule,
   CalendarMonthModule,

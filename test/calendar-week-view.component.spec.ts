@@ -5,7 +5,7 @@ import {
   fakeAsync,
   flush
 } from '@angular/core/testing';
-import * as moment from 'moment';
+import moment from 'moment';
 import { expect } from 'chai';
 import {
   CalendarEventTitleFormatter,
