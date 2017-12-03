@@ -2,7 +2,7 @@ import { Component, LOCALE_ID } from '@angular/core';
 import { inject, ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import { spy } from 'sinon';
-import * as moment from 'moment';
+import moment from 'moment';
 import {
   CalendarModule,
   CalendarMomentDateFormatter,

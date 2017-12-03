@@ -6,7 +6,7 @@ import {
   flush,
   async
 } from '@angular/core/testing';
-import * as moment from 'moment';
+import moment from 'moment';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { DragAndDropModule } from 'angular-draggable-droppable';

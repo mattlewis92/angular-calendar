@@ -11,7 +11,7 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
  *
  * ```typescript
  * import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from 'angular-calendar';
- * import * as moment from 'moment';
+ * import moment from 'moment';
  *
  * // in your component
  * provide: [{
