@@ -1,4 +1,4 @@
-import 'angular-calendar/dist/css/angular-calendar.css';
+import 'angular-calendar/css/angular-calendar.css';
 import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
