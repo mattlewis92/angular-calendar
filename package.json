@@ -77,7 +77,7 @@
     "@commitlint/prompt": "^5.2.0",
     "@compodoc/compodoc": "^1.0.5",
     "@mattlewis92/webpack-karma-die-hard": "^1.0.4",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.6",
+    "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.6",
     "@ngtools/webpack": "^1.8.5",
     "@types/chai": "^4.0.6",
     "@types/mocha": "^2.2.44",
