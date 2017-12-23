@@ -20,7 +20,7 @@
     "gh-pages": "git checkout gh-pages && git merge master --no-edit && rm -rf *.js *.js.map && npm run build:demos && npm run compodoc && git add . && git commit -m 'docs: build demos and docs' && git push && git checkout master",
     "copyfiles": "copyfiles package.json LICENSE README.md CHANGELOG.md dist && copyfiles -u 1 src/**/*.scss dist/scss",
     "prerelease": "npm test",
-    "release:git": "git add package.json package-lock.json && git commit -m 'build: bump version number' && standard-version --first-release && git push --follow-tags origin master",
+    "release:git": "git add package.json package-lock.json && git commit -m 'chore: bump version number' && standard-version --first-release && git push --follow-tags origin master",
     "release:npm": "npm run build:dist && npm run copyfiles && npm publish dist",
     "release": "npm run release:git && npm run release:npm",
     "postrelease": "npm run build:clean && npm run gh-pages",
@@ -42,7 +42,7 @@
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-angular"
+      "@commitlint/config-conventional"
     ]
   },
   "repository": {
@@ -73,7 +73,7 @@
     "@angular/platform-browser-dynamic": "^4.4.4",
     "@angular/router": "^4.4.4",
     "@commitlint/cli": "^5.2.0",
-    "@commitlint/config-angular": "^5.1.1",
+    "@commitlint/config-conventional": "^5.2.3",
     "@commitlint/prompt": "^5.2.0",
     "@compodoc/compodoc": "^1.0.5",
     "@mattlewis92/webpack-karma-die-hard": "^1.0.4",
