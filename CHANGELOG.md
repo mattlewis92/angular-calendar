@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.2"></a>
+## [0.22.2](https://github.com/mattlewis92/angular-calendar/compare/v0.22.1...v0.22.2) (2017-12-23)
+
+
+### Bug Fixes
+
+* restore TS < 2.4 compatibility ([fbfe430](https://github.com/mattlewis92/angular-calendar/commit/fbfe430))
+
+
+
 <a name="0.22.1"></a>
 ## [0.22.1](https://github.com/mattlewis92/angular-calendar/compare/v0.22.0...v0.22.1) (2017-11-22)
 
