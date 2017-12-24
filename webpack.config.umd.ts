@@ -1,10 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
-import * as autoprefixer from 'autoprefixer';
-import * as postCssFlexibility from 'postcss-flexibility';
-import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as angularExternals from 'webpack-angular-externals';
 import * as dateFnsExternals from 'webpack-date-fns-externals';
 import * as rxjsExternals from 'webpack-rxjs-externals';
@@ -12,7 +8,7 @@ import * as rxjsExternals from 'webpack-rxjs-externals';
 const pkg = JSON.parse(fs.readFileSync('./package.json').toString());
 
 export default {
-  entry: path.join(__dirname, 'src/index.umd.ts'),
+  entry: path.join(__dirname, 'src/index.ts'),
   output: {
     path: path.join(__dirname, 'dist/umd'),
     filename: 'angular-calendar.js',
@@ -61,44 +57,12 @@ export default {
           module: 'esnext'
         }
       }
-    }, {
-      test: /\.scss/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [
-                autoprefixer({
-                  browsers: [
-                    '> 1%',
-                    'last 4 versions',
-                    'last 20 Chrome versions',
-                    'last 20 Firefox versions'
-                  ]
-                }),
-                postCssFlexibility
-              ]
-            }
-          },
-          'sass-loader'
-        ]
-      }),
-      exclude: /node_modules/
     }]
   },
   resolve: {
     extensions: ['.ts', '.js']
   },
   plugins: [
-    new StyleLintPlugin({
-      syntax: 'scss',
-      context: 'scss',
-      failOnError: true
-    }),
-    new ExtractTextPlugin('./../css/angular-calendar.css'),
     new webpack.SourceMapDevToolPlugin({
       filename: 'angular-calendar.js.map',
       test: /\.js($|\?)/i
