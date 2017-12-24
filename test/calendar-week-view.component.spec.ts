@@ -837,4 +837,52 @@ describe('calendarWeekView component', () => {
     stub.restore();
     expect(stub).to.have.been.calledOnce; // tslint:disable-line
   });
+
+  it('should not called the event times changed callback when the event was not dragged', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-12-08');
+    fixture.componentInstance.events = [
+      {
+        title: 'foo',
+        color: { primary: '', secondary: '' },
+        start: moment('2016-12-08')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-12-08')
+          .add(6, 'hours')
+          .toDate(),
+        draggable: true
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+    const eventTimesChanged = sinon.spy();
+    fixture.componentInstance.eventTimesChanged.subscribe(() =>
+      eventTimesChanged()
+    );
+    triggerDomEvent('mousedown', event, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', document.body, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(eventTimesChanged.callCount).to.equal(0);
+  });
 });
