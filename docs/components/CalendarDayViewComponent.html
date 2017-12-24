@@ -2221,12 +2221,15 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     const pixelAmountInMinutes: number &#x3D;
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number &#x3D; draggedInPixels * pixelAmountInMinutes;
-    const newStart: Date &#x3D; addMinutes(dayEvent.event.start, minutesMoved);
-    let newEnd: Date;
-    if (dayEvent.event.end) {
-      newEnd &#x3D; addMinutes(dayEvent.event.end, minutesMoved);
+    // TODO - remove this check once https://github.com/mattlewis92/angular-draggable-droppable/issues/21 is fixed
+    if (minutesMoved !&#x3D;&#x3D; 0) {
+      const newStart: Date &#x3D; addMinutes(dayEvent.event.start, minutesMoved);
+      let newEnd: Date;
+      if (dayEvent.event.end) {
+        newEnd &#x3D; addMinutes(dayEvent.event.end, minutesMoved);
+      }
+      this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
     }
-    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }
 
   private refreshHourGrid(): void {
