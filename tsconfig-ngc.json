@@ -19,8 +19,10 @@
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
-    "genDir": "./dist",
     "skipTemplateCodegen": true,
-    "trace": true
+    "trace": true,
+    "strictInjectionParameters": true,
+    "preserveWhitespaces": true,
+    "fullTemplateTypeCheck": false
   }
 }

@@ -87,7 +87,7 @@ export default config => {
           test: /\.(ts|js)($|\?)/i
         }),
         new webpack.ContextReplacementPlugin(
-          /angular(\\|\/)core(\\|\/)@angular/,
+          /angular(\\|\/)core(\\|\/)esm5/,
           __dirname + '/src'
         )
       ]
