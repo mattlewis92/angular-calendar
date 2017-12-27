@@ -132,7 +132,6 @@
     "highlightjs-loader": "^0.2.3",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.1",
-    "intl": "^1.2.4",
     "istanbul-instrumenter-loader": "^3.0.0",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.1.1",
