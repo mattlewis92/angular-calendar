@@ -162,7 +162,7 @@
     "@angular/core": ">=5.0.0 <7.0.0"
   },
   "dependencies": {
-    "angular-draggable-droppable": "^1.1.1",
+    "angular-draggable-droppable": "^2.0.0",
     "angular-resizable-element": "^2.0.0",
     "calendar-utils": "0.0.59",
     "date-fns": "^1.28.5",

@@ -76,7 +76,7 @@ export interface WeekViewEventResize {
           [dragAxis]="{x: weekEvent.event.draggable && currentResizes.size === 0, y: false}"
           [dragSnapGrid]="{x: dayColumnWidth}"
           [validateDrag]="validateDrag"
-          (dragStart)="dragStart(weekViewContainer, event)"
+          (dragPointerDown)="dragStart(weekViewContainer, event)"
           (dragEnd)="eventDragged(weekEvent, $event.x, dayColumnWidth)">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"

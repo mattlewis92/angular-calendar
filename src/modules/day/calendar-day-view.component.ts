@@ -84,7 +84,7 @@ export interface DayViewEventResize {
             [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="{y: eventSnapSize}"
             [validateDrag]="validateDrag"
-            (dragStart)="dragStart(event, dayViewContainer)"
+            (dragPointerDown)="dragStart(event, dayViewContainer)"
             (dragEnd)="eventDragged(dayEvent, $event.y)"
             [style.marginTop.px]="dayEvent.top"
             [style.height.px]="dayEvent.height"
