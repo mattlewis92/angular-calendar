@@ -364,16 +364,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     dayWidth: number
   ): void {
     const daysDragged: number = draggedByPx / dayWidth;
-    // TODO - remove this check once https://github.com/mattlewis92/angular-draggable-droppable/issues/21 is fixed
-    if (daysDragged !== 0) {
-      const newStart: Date = addDays(weekEvent.event.start, daysDragged);
-      let newEnd: Date;
-      if (weekEvent.event.end) {
-        newEnd = addDays(weekEvent.event.end, daysDragged);
-      }
-
-      this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
+    const newStart: Date = addDays(weekEvent.event.start, daysDragged);
+    let newEnd: Date;
+    if (weekEvent.event.end) {
+      newEnd = addDays(weekEvent.event.end, daysDragged);
     }
+
+    this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
   }
 
   /**
