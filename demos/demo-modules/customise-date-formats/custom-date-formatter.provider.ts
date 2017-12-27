@@ -1,27 +1,22 @@
 import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';
+import { DatePipe } from '@angular/common';
 
 export class CustomDateFormatter extends CalendarDateFormatter {
   // you can override any of the methods defined in the parent class
 
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date);
+    return new DatePipe(locale).transform(date, 'EEE', locale);
   }
 
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
-    return new Intl.DateTimeFormat(locale, {
-      year: 'numeric',
-      month: 'short'
-    }).format(date);
+    return new DatePipe(locale).transform(date, 'MMM y', locale);
   }
 
   public weekViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date);
+    return new DatePipe(locale).transform(date, 'EEE', locale);
   }
 
   public dayViewHour({ date, locale }: DateFormatterParams): string {
-    return new Intl.DateTimeFormat(locale, {
-      hour: 'numeric',
-      minute: 'numeric'
-    }).format(date);
+    return new DatePipe(locale).transform(date, 'HH:mm', locale);
   }
 }

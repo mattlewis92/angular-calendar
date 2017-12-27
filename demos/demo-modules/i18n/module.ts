@@ -1,9 +1,13 @@
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   imports: [
