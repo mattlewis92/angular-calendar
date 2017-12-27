@@ -6,9 +6,7 @@ import getISOWeek from 'date-fns/get_iso_week';
 import { DatePipe } from '@angular/common';
 
 /**
- * This will use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to do all date formatting. It is the default date formatter used by the calendar.
- *
- * You will need to include a <a href="https://github.com/andyearnshaw/Intl.js/">polyfill</a> for older browsers.
+ * This will use the angular date pipe to do all date formatting. It is the default date formatter used by the calendar.
  */
 export class CalendarAngularDateFormatter
   implements CalendarDateFormatterInterface {
