@@ -24,6 +24,8 @@ export { CalendarDayViewComponent } from './calendar-day-view.component';
     CalendarDayViewEventComponent
   ],
   exports: [
+    ResizableModule,
+    DragAndDropModule,
     CalendarDayViewComponent,
     CalendarAllDayEventComponent,
     CalendarDayViewHourSegmentComponent,

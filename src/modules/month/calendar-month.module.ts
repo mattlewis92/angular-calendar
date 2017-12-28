@@ -19,6 +19,7 @@ export { MonthViewDay as CalendarMonthViewDay } from 'calendar-utils';
     CalendarMonthViewHeaderComponent
   ],
   exports: [
+    DragAndDropModule,
     CalendarMonthViewComponent,
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,

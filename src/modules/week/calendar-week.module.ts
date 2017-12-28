@@ -27,6 +27,8 @@ export {
     CalendarWeekViewEventComponent
   ],
   exports: [
+    ResizableModule,
+    DragAndDropModule,
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent
