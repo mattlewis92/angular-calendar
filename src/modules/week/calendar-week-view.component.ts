@@ -414,7 +414,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       excluded: this.excludeDays,
       precision: this.precision,
       absolutePositionedEvents: true
-    });
+    }).eventRows;
   }
 
   private refreshAll(): void {
