@@ -75,13 +75,16 @@ Where possible this library will strictly adhere to [semver](http://semver.org/)
 
 ## FAQ
 
-### Is this library AoT compatible?
+### Is this library AoT and universal compatible?
 
 Yes.
 
 ### Does this library work with angular 2.x?
 
 The last version of this library that supports 2.x is `0.9.1`. However the upgrade from angular 2.x to 4.x is just a matter of [changing the dependencies in your package.json](https://github.com/mattlewis92/angular2-tv-tracker/commit/9439e3cec40293b2a86bc2222f610ee6ad4b5229) and [adding the `angular/animations` module](https://github.com/mattlewis92/angular2-tv-tracker/commit/9fe0e3158290c2612d20e4c0f54d2204fb70791e)
+
+### Does this library work with angular 4.x?
+The last version of this library that supports 4.x is `0.22.3`.
 
 ### How do I use this with my favourite module bundler?
 
