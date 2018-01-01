@@ -35,7 +35,8 @@ export * from './calendar-event-times-changed-event.interface';
 export {
   CalendarEvent,
   EventAction as CalendarEventAction,
-  DAYS_OF_WEEK
+  DAYS_OF_WEEK,
+  ViewPeriod as CalendarViewPeriod
 } from 'calendar-utils';
 
 /**

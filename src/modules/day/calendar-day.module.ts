@@ -8,7 +8,10 @@ import { CalendarDayViewHourSegmentComponent } from './calendar-day-view-hour-se
 import { CalendarDayViewEventComponent } from './calendar-day-view-event.component';
 import { CalendarCommonModule } from '../common/calendar-common.module';
 
-export { CalendarDayViewComponent } from './calendar-day-view.component';
+export {
+  CalendarDayViewComponent,
+  CalendarDayViewBeforeRenderEvent
+} from './calendar-day-view.component';
 
 @NgModule({
   imports: [
