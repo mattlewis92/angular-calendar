@@ -17,7 +17,10 @@ import {
   WeekDay,
   CalendarEvent,
   WeekViewEvent,
-  WeekViewEventRow
+  WeekViewEventRow,
+  WeekView,
+  ViewPeriod,
+  MonthViewDay
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
@@ -31,6 +34,11 @@ export interface WeekViewEventResize {
   originalOffset: number;
   originalSpan: number;
   edge: string;
+}
+
+export interface CalendarWeekViewBeforeRenderEvent {
+  header: WeekDay[];
+  period: ViewPeriod;
 }
 
 /**
@@ -54,7 +62,7 @@ export interface WeekViewEventResize {
         (dayHeaderClicked)="dayHeaderClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
+      <div *ngFor="let eventRow of view.eventRows" #eventRowContainer class="cal-events-row">
         <div
           *ngFor="let weekEvent of eventRow.row"
           #event
@@ -194,7 +202,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * If you add the `cssClass` property to a day in the header it will add that class to the cell element in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<{ header: WeekDay[] }> = new EventEmitter();
+  beforeViewRender = new EventEmitter<CalendarWeekViewBeforeRenderEvent>();
 
   /**
    * @hidden
@@ -204,7 +212,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  eventRows: WeekViewEventRow[] = [];
+  view: WeekView;
 
   /**
    * @hidden
@@ -401,24 +409,32 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    this.beforeViewRender.emit({
-      header: this.days
-    });
+    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
-    this.eventRows = this.utils.getWeekView({
+    this.view = this.utils.getWeekView({
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
       precision: this.precision,
       absolutePositionedEvents: true
-    }).eventRows;
+    });
+    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.days && this.view) {
+      this.beforeViewRender.emit({
+        header: this.days,
+        period: this.view.period
+      });
+    }
   }
 }
