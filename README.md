@@ -65,15 +65,6 @@ Once you are up and running, to access a full list of options for each component
 
 You can find quick start examples for all common module bundlers in the [build-tool-examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
 
-### Usage without a module bundler
-
-```html
-<script src="node_modules/angular-calendar/umd/angular-calendar.js"></script>
-<script>
-    // everything is exported angularCalendar namespace
-</script>
-```
-
 ## Documentation
 
 To see all available API options, take a look at the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). You may find it helpful to view the examples on the demo page.
