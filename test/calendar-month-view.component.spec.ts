@@ -24,6 +24,7 @@ import {
 } from './../src';
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
+import { take } from 'rxjs/operators';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -733,12 +734,14 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     const beforeViewRenderCalled = sinon.spy();
-    const subscription = fixture.componentInstance.beforeViewRender.subscribe(
-      beforeViewRenderCalled
-    );
+    fixture.componentInstance.beforeViewRender
+      .pipe(take(1))
+      .subscribe(beforeViewRenderCalled);
     fixture.componentInstance.refresh.next(true);
     expect(beforeViewRenderCalled).to.have.callCount(1);
-    subscription.unsubscribe();
+    expect(typeof beforeViewRenderCalled.getCall(0).args[0].period).to.equal(
+      'object'
+    );
     fixture.destroy();
   });
 

@@ -15,7 +15,8 @@ import {
   CalendarEvent,
   WeekDay,
   MonthView,
-  MonthViewDay
+  MonthViewDay,
+  ViewPeriod
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
@@ -31,6 +32,12 @@ import addSeconds from 'date-fns/add_seconds';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
+
+export interface MonthViewBeforeRenderEvent {
+  header: WeekDay[];
+  body: MonthViewDay[];
+  period: ViewPeriod;
+}
 
 /**
  * Shows all events on a given month. Example usage:
@@ -170,10 +177,9 @@ export class CalendarMonthViewComponent
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<{
-    header: WeekDay[];
-    body: MonthViewDay[];
-  }> = new EventEmitter();
+  beforeViewRender: EventEmitter<
+    MonthViewBeforeRenderEvent
+  > = new EventEmitter();
 
   /**
    * Called when the day cell is clicked
@@ -377,7 +383,8 @@ export class CalendarMonthViewComponent
     if (this.columnHeaders && this.view) {
       this.beforeViewRender.emit({
         header: this.columnHeaders,
-        body: this.view.days
+        body: this.view.days,
+        period: this.view.period
       });
     }
   }
