@@ -20,7 +20,9 @@ export class ClickDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const eventName: string =
-      typeof window['Hammer'] !== 'undefined' ? 'tap' : 'click';
+      typeof window !== 'undefined' && typeof window['Hammer'] !== 'undefined'
+        ? 'tap'
+        : 'click';
     this.removeListener = this.renderer.listen(
       this.elm.nativeElement,
       eventName,
