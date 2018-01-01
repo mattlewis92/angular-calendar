@@ -33,7 +33,7 @@ import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-c
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
 
-export interface MonthViewBeforeRenderEvent {
+export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
   body: MonthViewDay[];
   period: ViewPeriod;
@@ -178,7 +178,7 @@ export class CalendarMonthViewComponent
    */
   @Output()
   beforeViewRender: EventEmitter<
-    MonthViewBeforeRenderEvent
+    CalendarMonthViewBeforeRenderEvent
   > = new EventEmitter();
 
   /**

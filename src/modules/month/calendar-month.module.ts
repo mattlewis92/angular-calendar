@@ -9,7 +9,7 @@ import { CalendarCommonModule } from '../common/calendar-common.module';
 
 export {
   CalendarMonthViewComponent,
-  MonthViewBeforeRenderEvent
+  CalendarMonthViewBeforeRenderEvent
 } from './calendar-month-view.component';
 export { MonthViewDay as CalendarMonthViewDay } from 'calendar-utils';
 
