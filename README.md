@@ -74,10 +74,6 @@ You can find quick start examples for all common module bundlers in the [build-t
 </script>
 ```
 
-### Usage with Angular Universal
-
-See [this comment](https://github.com/mattlewis92/angular-calendar/issues/158#issuecomment-285330700) for how to use with Universal.
-
 ## Documentation
 
 To see all available API options, take a look at the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). You may find it helpful to view the examples on the demo page.
