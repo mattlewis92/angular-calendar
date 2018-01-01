@@ -24,7 +24,6 @@ import {
 } from './../src';
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
-import { take } from 'rxjs/operators';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -734,14 +733,13 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     const beforeViewRenderCalled = sinon.spy();
-    fixture.componentInstance.beforeViewRender
-      .pipe(take(1))
-      .subscribe(beforeViewRenderCalled);
+    // use subscription to test that it was only called a max of one times
+    const subscription = fixture.componentInstance.beforeViewRender.subscribe(
+      beforeViewRenderCalled
+    );
     fixture.componentInstance.refresh.next(true);
     expect(beforeViewRenderCalled).to.have.callCount(1);
-    expect(typeof beforeViewRenderCalled.getCall(0).args[0].period).to.equal(
-      'object'
-    );
+    subscription.unsubscribe();
     fixture.destroy();
   });
 
@@ -757,5 +755,28 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     stub.restore();
     expect(stub).to.have.been.calledOnce; // tslint:disable-line
+  });
+
+  it('should expose the view period on the beforeViewRender output', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    const beforeViewRenderCalled = sinon.spy();
+    fixture.componentInstance.beforeViewRender
+      .take(1)
+      .subscribe(beforeViewRenderCalled);
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(
+      beforeViewRenderCalled.getCall(0).args[0].period.start instanceof Date
+    ).to.equal(true);
+    expect(
+      beforeViewRenderCalled.getCall(0).args[0].period.end instanceof Date
+    ).to.equal(true);
+    expect(
+      Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
+    ).to.equal(true);
+    fixture.destroy();
   });
 });
