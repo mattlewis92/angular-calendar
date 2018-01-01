@@ -22,7 +22,7 @@
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
-    (beforeViewRender)="beforeDayViewRender($event.body)"
+    (beforeViewRender)="beforeDayViewRender($event.body.hourGrid)"
     (hourSegmentClicked)="hourSegmentClicked($event.date)">
   </mwl-calendar-day-view>
 </div>

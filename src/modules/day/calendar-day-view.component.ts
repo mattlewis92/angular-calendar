@@ -16,7 +16,8 @@ import {
   DayView,
   DayViewHour,
   DayViewHourSegment,
-  DayViewEvent
+  DayViewEvent,
+  ViewPeriod
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
@@ -27,6 +28,13 @@ import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider'
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
+
+export interface CalendarDayViewBeforeRenderEvent {
+  body: {
+    hourGrid: DayViewHour[];
+  };
+  period: ViewPeriod;
+}
 
 /**
  * @hidden
@@ -222,7 +230,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event title is clicked
    */
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
   }>();
 
@@ -230,7 +238,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an hour segment is clicked
    */
   @Output()
-  hourSegmentClicked: EventEmitter<{ date: Date }> = new EventEmitter<{
+  hourSegmentClicked = new EventEmitter<{
     date: Date;
   }>();
 
@@ -238,16 +246,14 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event is resized or dragged and dropped
    */
   @Output()
-  eventTimesChanged: EventEmitter<
-    CalendarEventTimesChangedEvent
-  > = new EventEmitter<CalendarEventTimesChangedEvent>();
+  eventTimesChanged = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * An output that will be called before the view is rendered for the current day.
-   * If you add the `cssClass` property to a segment it will add that class to the hour segment in the template
+   * If you add the `cssClass` property to an hour grid segment it will add that class to the hour segment in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<{ body: DayViewHour[] }> = new EventEmitter();
+  beforeViewRender = new EventEmitter<CalendarDayViewBeforeRenderEvent>();
 
   /**
    * @hidden
@@ -450,9 +456,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    this.beforeViewRender.emit({
-      body: this.hours
-    });
+    this.emitBeforeViewRender();
   }
 
   private refreshView(): void {
@@ -471,10 +475,22 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       eventWidth: this.eventWidth,
       segmentHeight: this.hourSegmentHeight
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHourGrid();
     this.refreshView();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.hours && this.view) {
+      this.beforeViewRender.emit({
+        body: {
+          hourGrid: this.hours
+        },
+        period: this.view.period
+      });
+    }
   }
 }
