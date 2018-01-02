@@ -183,10 +183,19 @@
                                     <a href="./interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -416,10 +425,19 @@
                                            <a href="./interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -485,6 +503,39 @@
 
 <h1 id="change-log">Change Log</h1>
 <p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<p><a name="0.23.0"></a></p>
+<h1 id="-0-23-0-https-github-com-mattlewis92-angular-calendar-compare-v0-22-3-v0-23-0-2018-01-02-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.22.3...v0.23.0">0.23.0</a> (2018-01-02)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>universal:</strong> make the calendar work with universal (again) (<a href="https://github.com/mattlewis92/angular-calendar/commit/8ae8419">8ae8419</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/408">#408</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>date-formatter:</strong> use the angular date formatter by default (<a href="https://github.com/mattlewis92/angular-calendar/commit/bd68045">bd68045</a>)</li>
+<li>export drag+drop and resizable modules for use in custom templates (<a href="https://github.com/mattlewis92/angular-calendar/commit/579a51a">579a51a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/419">#419</a></li>
+<li>upgrade angular draggable droppable package (<a href="https://github.com/mattlewis92/angular-calendar/commit/fd30c39">fd30c39</a>)</li>
+<li>upgrade angular resizable element (<a href="https://github.com/mattlewis92/angular-calendar/commit/26e2b53">26e2b53</a>)</li>
+<li>upgrade calendar-utils (<a href="https://github.com/mattlewis92/angular-calendar/commit/fe59aad">fe59aad</a>)</li>
+<li>upgrade to angular 5 (<a href="https://github.com/mattlewis92/angular-calendar/commit/775a62e">775a62e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/417">#417</a></li>
+<li>use ng-packagr for bundling the package (<a href="https://github.com/mattlewis92/angular-calendar/commit/5744e9b">5744e9b</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/408">#408</a></li>
+<li><strong>day-view:</strong> expose the period on the beforeViewRender output (<a href="https://github.com/mattlewis92/angular-calendar/commit/24739ce">24739ce</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/418">#418</a></li>
+<li><strong>month-view:</strong> call beforeViewRender with the view period (<a href="https://github.com/mattlewis92/angular-calendar/commit/a9ab6d9">a9ab6d9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/418">#418</a></li>
+<li><strong>week-view:</strong> expose the view period on beforeViewRender (<a href="https://github.com/mattlewis92/angular-calendar/commit/cb73eff">cb73eff</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/418">#418</a></li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>day-view:</strong> the event signature of the beforeViewRender output has changed from $event.body to $event.body.hourGrid</li>
+<li><strong>week-view:</strong> for people extending the root week view component, eventRows is now named view.eventRows</li>
+<li>the getWeekView function return signature has changed from an array of event rows to an object with the eventRows property set to the previous arrat value. This should only affect people overriding the CalendarUtils.getWeekView method.</li>
+<li>the umd entry path has changed from <code>angular-calendar/umd/angular-calendar.js</code> to <code>angular-calendar/bundles/angular-calendar.umd.js</code>. System.js users will need to update their config</li>
+<li>The UMD entry point for the <code>angular-draggable-droppable</code> package has changed from <code>angular-draggable-droppable/dist/umd/angular-draggable-droppable.js</code> to <code>angular-draggable-droppable/bundles/angular-draggable-droppable.umd.js</code>. System.js users will need to update their config accordingly.</li>
+</ul>
+<p>Also the dragStart output was renamed to dragPointerDown. Users using a custom template for the root day or week view components will need to adjust their templates accordingly.</p>
+<ul>
+<li>The UMD entry point for the <code>angular-resizable-element</code> package has changed from <code>angular-resizable-element/dist/umd/angular-resizable-element.js</code> to <code>angular-resizable-element/bundles/angular-resizable-element.umd.js</code>. System.js users will need to update their config accordingly.</li>
+<li><strong>date-formatter:</strong> the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill</li>
+<li>angular 5 or higher is now required to use this package</li>
+</ul>
 <p><a name="0.22.3"></a></p>
 <h2 id="-0-22-3-https-github-com-mattlewis92-angular-calendar-compare-v0-22-1-v0-22-3-2017-12-24-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.22.1...v0.22.3">0.22.3</a> (2017-12-24)</h2>
 <h3 id="bug-fixes">Bug Fixes</h3>

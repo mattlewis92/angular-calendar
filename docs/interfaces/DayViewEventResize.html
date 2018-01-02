@@ -183,10 +183,19 @@
                                     <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -416,10 +425,19 @@
                                            <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -578,7 +596,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:42</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:50</a></div>
                                         </td>
                                     </tr>
 
@@ -611,7 +629,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:41</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:49</a></div>
                                         </td>
                                     </tr>
 
@@ -644,7 +662,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:40</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/modules/day/calendar-day-view.component.ts:48</a></div>
                                         </td>
                                     </tr>
 
@@ -673,7 +691,8 @@ import {
   DayView,
   DayViewHour,
   DayViewHourSegment,
-  DayViewEvent
+  DayViewEvent,
+  ViewPeriod
 } from &#x27;calendar-utils&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
@@ -684,6 +703,13 @@ import { CalendarResizeHelper } from &#x27;../common/calendar-resize-helper.prov
 import { CalendarEventTimesChangedEvent } from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
 import { validateEvents } from &#x27;../common/util&#x27;;
+
+export interface CalendarDayViewBeforeRenderEvent {
+  body: {
+    hourGrid: DayViewHour[];
+  };
+  period: ViewPeriod;
+}
 
 /**
  * @hidden
@@ -741,7 +767,7 @@ export interface DayViewEventResize {
             [dragAxis]&#x3D;&quot;{x: false, y: dayEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0}&quot;
             [dragSnapGrid]&#x3D;&quot;{y: eventSnapSize}&quot;
             [validateDrag]&#x3D;&quot;validateDrag&quot;
-            (dragStart)&#x3D;&quot;dragStart(event, dayViewContainer)&quot;
+            (dragPointerDown)&#x3D;&quot;dragStart(event, dayViewContainer)&quot;
             (dragEnd)&#x3D;&quot;eventDragged(dayEvent, $event.y)&quot;
             [style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;
             [style.height.px]&#x3D;&quot;dayEvent.height&quot;
@@ -879,7 +905,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event title is clicked
    */
   @Output()
-  eventClicked: EventEmitter&lt;{ event: CalendarEvent }&gt; &#x3D; new EventEmitter&lt;{
+  eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
   }&gt;();
 
@@ -887,7 +913,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an hour segment is clicked
    */
   @Output()
-  hourSegmentClicked: EventEmitter&lt;{ date: Date }&gt; &#x3D; new EventEmitter&lt;{
+  hourSegmentClicked &#x3D; new EventEmitter&lt;{
     date: Date;
   }&gt;();
 
@@ -895,16 +921,14 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event is resized or dragged and dropped
    */
   @Output()
-  eventTimesChanged: EventEmitter&lt;
-    CalendarEventTimesChangedEvent
-  &gt; &#x3D; new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
+  eventTimesChanged &#x3D; new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
 
   /**
    * An output that will be called before the view is rendered for the current day.
-   * If you add the &#x60;cssClass&#x60; property to a segment it will add that class to the hour segment in the template
+   * If you add the &#x60;cssClass&#x60; property to an hour grid segment it will add that class to the hour segment in the template
    */
   @Output()
-  beforeViewRender: EventEmitter&lt;{ body: DayViewHour[] }&gt; &#x3D; new EventEmitter();
+  beforeViewRender &#x3D; new EventEmitter&lt;CalendarDayViewBeforeRenderEvent&gt;();
 
   /**
    * @hidden
@@ -1086,15 +1110,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     const pixelAmountInMinutes: number &#x3D;
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number &#x3D; draggedInPixels * pixelAmountInMinutes;
-    // TODO - remove this check once https://github.com/mattlewis92/angular-draggable-droppable/issues/21 is fixed
-    if (minutesMoved !&#x3D;&#x3D; 0) {
-      const newStart: Date &#x3D; addMinutes(dayEvent.event.start, minutesMoved);
-      let newEnd: Date;
-      if (dayEvent.event.end) {
-        newEnd &#x3D; addMinutes(dayEvent.event.end, minutesMoved);
-      }
-      this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
+    const newStart: Date &#x3D; addMinutes(dayEvent.event.start, minutesMoved);
+    let newEnd: Date;
+    if (dayEvent.event.end) {
+      newEnd &#x3D; addMinutes(dayEvent.event.end, minutesMoved);
     }
+    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }
 
   private refreshHourGrid(): void {
@@ -1110,9 +1131,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    this.beforeViewRender.emit({
-      body: this.hours
-    });
+    this.emitBeforeViewRender();
   }
 
   private refreshView(): void {
@@ -1131,11 +1150,23 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       eventWidth: this.eventWidth,
       segmentHeight: this.hourSegmentHeight
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHourGrid();
     this.refreshView();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.hours &amp;&amp; this.view) {
+      this.beforeViewRender.emit({
+        body: {
+          hourGrid: this.hours
+        },
+        period: this.view.period
+      });
+    }
   }
 }
 </code></pre>

@@ -183,10 +183,19 @@
                                     <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -416,10 +425,19 @@
                                            <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -554,7 +572,10 @@ import { CalendarMonthCellComponent } from &#x27;./calendar-month-cell.component
 import { CalendarOpenDayEventsComponent } from &#x27;./calendar-open-day-events.component&#x27;;
 import { CalendarCommonModule } from &#x27;../common/calendar-common.module&#x27;;
 
-export { CalendarMonthViewComponent } from &#x27;./calendar-month-view.component&#x27;;
+export {
+  CalendarMonthViewComponent,
+  CalendarMonthViewBeforeRenderEvent
+} from &#x27;./calendar-month-view.component&#x27;;
 export { MonthViewDay as CalendarMonthViewDay } from &#x27;calendar-utils&#x27;;
 
 @NgModule({
@@ -566,6 +587,7 @@ export { MonthViewDay as CalendarMonthViewDay } from &#x27;calendar-utils&#x27;;
     CalendarMonthViewHeaderComponent
   ],
   exports: [
+    DragAndDropModule,
     CalendarMonthViewComponent,
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,

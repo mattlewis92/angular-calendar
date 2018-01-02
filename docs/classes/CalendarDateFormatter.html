@@ -183,10 +183,19 @@
                                     <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -416,10 +425,19 @@
                                            <a href="../interfaces/CalendarDateFormatterInterface.html" >CalendarDateFormatterInterface</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CalendarDayViewBeforeRenderEvent.html" >CalendarDayViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CalendarEventTimesChangedEvent.html" >CalendarEventTimesChangedEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/CalendarModuleConfig.html" >CalendarModuleConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html" >CalendarMonthViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/DateFormatterParams.html" >DateFormatterParams</a>
@@ -520,14 +538,15 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This class is responsible for all formatting of dates. There are 2 implementations available, the <code>CalendarNativeDateFormatter</code> (default) which will use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to format dates, or there is the <code>CalendarMomentDateFormatter</code> which uses <a href="http://momentjs.com/" target="_blank">moment</a>.</p>
+                <p>This class is responsible for all formatting of dates. There are 3 implementations available, the <code>CalendarAngularDateFormatter</code> (default) which uses the angular date pipe to format dates, the <code>CalendarNativeDateFormatter</code> which will use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to format dates, or there is the <code>CalendarMomentDateFormatter</code> which uses <a href="http://momentjs.com/" target="_blank">moment</a>.</p>
 <p>If you wish, you may override any of the defaults via angulars DI. For example:</p>
 <pre class="line-numbers"><code class="language-typescript">import { CalendarDateFormatter, DateFormatterParams } from &#39;angular-calendar&#39;;
+import { DatePipe } from &#39;&#64;angular/common&#39;;
 
 class CustomDateFormatter extends CalendarDateFormatter {
 
    public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
-     return new Intl.DateTimeFormat(locale, {weekday: &#39;short&#39;}).format(date); // use short week days
+     return new DatePipe(locale).transform(date, &#39;EEE&#39;, locale); // use short week days
    }
 
 }
@@ -543,7 +562,7 @@ providers: [{
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                    <code><a href="../classes/CalendarNativeDateFormatter.html" target="_self" >CalendarNativeDateFormatter</a></code>
+                    <code>CalendarAngularDateFormatter</code>
             </p>
 
 
@@ -557,20 +576,21 @@ providers: [{
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { CalendarNativeDateFormatter } from &#x27;./calendar-native-date-formatter.provider&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { CalendarAngularDateFormatter } from &#x27;./calendar-angular-date-formatter.provider&#x27;;
 
 /**
- * This class is responsible for all formatting of dates. There are 2 implementations available, the &#x60;CalendarNativeDateFormatter&#x60; (default) which will use the &lt;a href&#x3D;&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl&quot; target&#x3D;&quot;_blank&quot;&gt;Intl&lt;/a&gt; API to format dates, or there is the &#x60;CalendarMomentDateFormatter&#x60; which uses &lt;a href&#x3D;&quot;http://momentjs.com/&quot; target&#x3D;&quot;_blank&quot;&gt;moment&lt;/a&gt;.
+ * This class is responsible for all formatting of dates. There are 3 implementations available, the &#x60;CalendarAngularDateFormatter&#x60; (default) which uses the angular date pipe to format dates, the &#x60;CalendarNativeDateFormatter&#x60; which will use the &lt;a href&#x3D;&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl&quot; target&#x3D;&quot;_blank&quot;&gt;Intl&lt;/a&gt; API to format dates, or there is the &#x60;CalendarMomentDateFormatter&#x60; which uses &lt;a href&#x3D;&quot;http://momentjs.com/&quot; target&#x3D;&quot;_blank&quot;&gt;moment&lt;/a&gt;.
  *
  * If you wish, you may override any of the defaults via angulars DI. For example:
  *
  * &#x60;&#x60;&#x60;typescript
  * import { CalendarDateFormatter, DateFormatterParams } from &#x27;angular-calendar&#x27;;
+ * import { DatePipe } from &#x27;@angular/common&#x27;;
  *
  * class CustomDateFormatter extends CalendarDateFormatter {
  *
  *   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
- *     return new Intl.DateTimeFormat(locale, {weekday: &#x27;short&#x27;}).format(date); // use short week days
+ *     return new DatePipe(locale).transform(date, &#x27;EEE&#x27;, locale); // use short week days
  *   }
  *
  * }
@@ -582,7 +602,7 @@ providers: [{
  * }]
  * &#x60;&#x60;&#x60;
  */
-export class CalendarDateFormatter extends CalendarNativeDateFormatter {}
+export class CalendarDateFormatter extends CalendarAngularDateFormatter {}
 </code></pre>
     </div>
 </div>
