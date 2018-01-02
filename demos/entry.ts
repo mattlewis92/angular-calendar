@@ -16,8 +16,6 @@ import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'hammerjs';
-import 'intl';
-import 'intl/locale-data/jsonp/en';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DemoAppModule } from './demo-app.module';
@@ -30,15 +28,6 @@ if (ENV === 'production') {
 }
 
 const dynamicPolyfills = [];
-
-if (typeof Intl === 'undefined') {
-  dynamicPolyfills.push(
-    Promise.all([
-      import(/* webpackChunkName: "intl" */ 'intl'),
-      import(/* webpackChunkName: "intl" */ 'intl/locale-data/jsonp/en')
-    ])
-  );
-}
 
 if (
   typeof Object.entries === 'undefined' ||

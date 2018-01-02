@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/mattlewis92/angular-calendar/compare/v0.22.3...v0.23.0) (2018-01-02)
+
+
+### Bug Fixes
+
+* **universal:** make the calendar work with universal (again) ([8ae8419](https://github.com/mattlewis92/angular-calendar/commit/8ae8419)), closes [#408](https://github.com/mattlewis92/angular-calendar/issues/408)
+
+
+### Features
+
+* **date-formatter:** use the angular date formatter by default ([bd68045](https://github.com/mattlewis92/angular-calendar/commit/bd68045))
+* export drag+drop and resizable modules for use in custom templates ([579a51a](https://github.com/mattlewis92/angular-calendar/commit/579a51a)), closes [#419](https://github.com/mattlewis92/angular-calendar/issues/419)
+* upgrade angular draggable droppable package ([fd30c39](https://github.com/mattlewis92/angular-calendar/commit/fd30c39))
+* upgrade angular resizable element ([26e2b53](https://github.com/mattlewis92/angular-calendar/commit/26e2b53))
+* upgrade calendar-utils ([fe59aad](https://github.com/mattlewis92/angular-calendar/commit/fe59aad))
+* upgrade to angular 5 ([775a62e](https://github.com/mattlewis92/angular-calendar/commit/775a62e)), closes [#417](https://github.com/mattlewis92/angular-calendar/issues/417)
+* use ng-packagr for bundling the package ([5744e9b](https://github.com/mattlewis92/angular-calendar/commit/5744e9b)), closes [#408](https://github.com/mattlewis92/angular-calendar/issues/408)
+* **day-view:** expose the period on the beforeViewRender output ([24739ce](https://github.com/mattlewis92/angular-calendar/commit/24739ce)), closes [#418](https://github.com/mattlewis92/angular-calendar/issues/418)
+* **month-view:** call beforeViewRender with the view period ([a9ab6d9](https://github.com/mattlewis92/angular-calendar/commit/a9ab6d9)), closes [#418](https://github.com/mattlewis92/angular-calendar/issues/418)
+* **week-view:** expose the view period on beforeViewRender ([cb73eff](https://github.com/mattlewis92/angular-calendar/commit/cb73eff)), closes [#418](https://github.com/mattlewis92/angular-calendar/issues/418)
+
+
+### BREAKING CHANGES
+
+* **day-view:** the event signature of the beforeViewRender output has changed from $event.body to $event.body.hourGrid
+* **week-view:** for people extending the root week view component, eventRows is now named view.eventRows
+* the getWeekView function return signature has changed from an array of event rows to an object with the eventRows property set to the previous arrat value. This should only affect people overriding the CalendarUtils.getWeekView method.
+* the umd entry path has changed from `angular-calendar/umd/angular-calendar.js` to `angular-calendar/bundles/angular-calendar.umd.js`. System.js users will need to update their config
+* The UMD entry point for the `angular-draggable-droppable` package has changed from `angular-draggable-droppable/dist/umd/angular-draggable-droppable.js` to `angular-draggable-droppable/bundles/angular-draggable-droppable.umd.js`. System.js users will need to update their config accordingly.
+
+Also the dragStart output was renamed to dragPointerDown. Users using a custom template for the root day or week view components will need to adjust their templates accordingly.
+* The UMD entry point for the `angular-resizable-element` package has changed from `angular-resizable-element/dist/umd/angular-resizable-element.js` to `angular-resizable-element/bundles/angular-resizable-element.umd.js`. System.js users will need to update their config accordingly.
+* **date-formatter:** the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill
+* angular 5 or higher is now required to use this package
+
+
+
 <a name="0.22.3"></a>
 ## [0.22.3](https://github.com/mattlewis92/angular-calendar/compare/v0.22.1...v0.22.3) (2017-12-24)
 

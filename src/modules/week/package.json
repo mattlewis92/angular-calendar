@@ -1,0 +1,5 @@
+{
+  "name": "angular-calendar/week",
+  "module": "./index.js",
+  "typings": "./index.d.ts"
+}

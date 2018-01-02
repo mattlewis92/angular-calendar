@@ -16,7 +16,8 @@ import {
   DayView,
   DayViewHour,
   DayViewHourSegment,
-  DayViewEvent
+  DayViewEvent,
+  ViewPeriod
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
@@ -27,6 +28,13 @@ import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider'
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
+
+export interface CalendarDayViewBeforeRenderEvent {
+  body: {
+    hourGrid: DayViewHour[];
+  };
+  period: ViewPeriod;
+}
 
 /**
  * @hidden
@@ -84,7 +92,7 @@ export interface DayViewEventResize {
             [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="{y: eventSnapSize}"
             [validateDrag]="validateDrag"
-            (dragStart)="dragStart(event, dayViewContainer)"
+            (dragPointerDown)="dragStart(event, dayViewContainer)"
             (dragEnd)="eventDragged(dayEvent, $event.y)"
             [style.marginTop.px]="dayEvent.top"
             [style.height.px]="dayEvent.height"
@@ -222,7 +230,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event title is clicked
    */
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
   }>();
 
@@ -230,7 +238,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an hour segment is clicked
    */
   @Output()
-  hourSegmentClicked: EventEmitter<{ date: Date }> = new EventEmitter<{
+  hourSegmentClicked = new EventEmitter<{
     date: Date;
   }>();
 
@@ -238,16 +246,14 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Called when an event is resized or dragged and dropped
    */
   @Output()
-  eventTimesChanged: EventEmitter<
-    CalendarEventTimesChangedEvent
-  > = new EventEmitter<CalendarEventTimesChangedEvent>();
+  eventTimesChanged = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * An output that will be called before the view is rendered for the current day.
-   * If you add the `cssClass` property to a segment it will add that class to the hour segment in the template
+   * If you add the `cssClass` property to an hour grid segment it will add that class to the hour segment in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<{ body: DayViewHour[] }> = new EventEmitter();
+  beforeViewRender = new EventEmitter<CalendarDayViewBeforeRenderEvent>();
 
   /**
    * @hidden
@@ -429,15 +435,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     const pixelAmountInMinutes: number =
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
-    // TODO - remove this check once https://github.com/mattlewis92/angular-draggable-droppable/issues/21 is fixed
-    if (minutesMoved !== 0) {
-      const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
-      let newEnd: Date;
-      if (dayEvent.event.end) {
-        newEnd = addMinutes(dayEvent.event.end, minutesMoved);
-      }
-      this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
+    const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
+    let newEnd: Date;
+    if (dayEvent.event.end) {
+      newEnd = addMinutes(dayEvent.event.end, minutesMoved);
     }
+    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }
 
   private refreshHourGrid(): void {
@@ -453,9 +456,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    this.beforeViewRender.emit({
-      body: this.hours
-    });
+    this.emitBeforeViewRender();
   }
 
   private refreshView(): void {
@@ -474,10 +475,22 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       eventWidth: this.eventWidth,
       segmentHeight: this.hourSegmentHeight
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHourGrid();
     this.refreshView();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.hours && this.view) {
+      this.beforeViewRender.emit({
+        body: {
+          hourGrid: this.hours
+        },
+        period: this.view.period
+      });
+    }
   }
 }

@@ -8,13 +8,13 @@ import {
   WeekDay,
   getWeekView,
   GetWeekViewArgs,
-  WeekViewEventRow,
   getDayView,
   GetDayViewArgs,
   DayView,
   getDayViewHourGrid,
   GetDayViewHourGridArgs,
-  DayViewHour
+  DayViewHour,
+  WeekView
 } from 'calendar-utils';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class CalendarUtils {
     return getWeekViewHeader(args);
   }
 
-  getWeekView(args: GetWeekViewArgs): WeekViewEventRow[] {
+  getWeekView(args: GetWeekViewArgs): WeekView {
     return getWeekView(args);
   }
 

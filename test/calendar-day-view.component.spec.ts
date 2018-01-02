@@ -318,7 +318,7 @@ describe('CalendarDayViewComponent component', () => {
     > = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender.take(1).subscribe(({ body }) => {
-      body.forEach(hour => {
+      body.hourGrid.forEach(hour => {
         hour.segments.forEach(segment => {
           segment.cssClass = 'foo';
         });
@@ -1013,53 +1013,44 @@ describe('CalendarDayViewComponent component', () => {
     ).to.equal('45px');
   });
 
-  it('should not called the event times changed callback when the event was not dragged', () => {
+  it('should only call the beforeViewRender output once when refreshing the view', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.refresh = new Subject();
+    fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.events = [
-      {
-        title: 'foo',
-        color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .startOf('day')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .startOf('day')
-          .add(6, 'hours')
-          .toDate(),
-        draggable: true
-      }
-    ];
-    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
-    fixture.detectChanges();
-    document.body.appendChild(fixture.nativeElement);
-    const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event'
+    const beforeViewRenderCalled = sinon.spy();
+    // use subscription to test that it was only called a max of one times
+    const subscription = fixture.componentInstance.beforeViewRender.subscribe(
+      beforeViewRenderCalled
     );
-    const eventPosition: ClientRect = event.getBoundingClientRect();
-    const eventTimesChanged = sinon.spy();
-    fixture.componentInstance.eventTimesChanged.subscribe(() =>
-      eventTimesChanged()
-    );
-    triggerDomEvent('mousedown', event, {
-      clientY: eventPosition.top + 5,
-      clientX: eventPosition.left + 10
-    });
-    fixture.detectChanges();
-    triggerDomEvent('mousemove', document.body, {
-      clientY: eventPosition.top + 5,
-      clientX: eventPosition.left + 10
-    });
-    fixture.detectChanges();
-    triggerDomEvent('mouseup', document.body, {
-      clientY: eventPosition.top + 5,
-      clientX: eventPosition.left + 10
-    });
-    fixture.detectChanges();
+    fixture.componentInstance.refresh.next(true);
+    expect(beforeViewRenderCalled).to.have.callCount(1);
+    subscription.unsubscribe();
     fixture.destroy();
-    expect(eventTimesChanged.callCount).to.equal(0);
+  });
+
+  it('should expose the view period on the beforeViewRender output', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    const beforeViewRenderCalled = sinon.spy();
+    fixture.componentInstance.beforeViewRender
+      .take(1)
+      .subscribe(beforeViewRenderCalled);
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(
+      beforeViewRenderCalled.getCall(0).args[0].period.start instanceof Date
+    ).to.equal(true);
+    expect(
+      beforeViewRenderCalled.getCall(0).args[0].period.end instanceof Date
+    ).to.equal(true);
+    expect(
+      Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
+    ).to.equal(true);
+    fixture.destroy();
   });
 });

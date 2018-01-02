@@ -257,6 +257,13 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
           }
         },
         {
+          path: 'no-events-label',
+          loadChildren: './demo-modules/no-events-label/module#DemoModule',
+          data: {
+            label: 'No events label'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }

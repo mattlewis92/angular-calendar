@@ -73,7 +73,8 @@ const dependencyVersions: any = {
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
   ngxContextmenu: require('ngx-contextmenu/package.json').version,
-  fontAwesome: require('font-awesome/package.json').version
+  fontAwesome: require('font-awesome/package.json').version,
+  angularCdk: require('@angular/cdk/package.json').version
 };
 
 @Component({

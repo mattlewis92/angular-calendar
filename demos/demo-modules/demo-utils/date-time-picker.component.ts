@@ -102,6 +102,7 @@ export class DateTimePickerComponent implements ControlValueAccessor {
       ),
       this.dateStruct.year
     );
+    this.writeValue(newDate);
     this.onChangeCallback(newDate);
   }
 
@@ -113,6 +114,7 @@ export class DateTimePickerComponent implements ControlValueAccessor {
       ),
       this.timeStruct.hour
     );
+    this.writeValue(newDate);
     this.onChangeCallback(newDate);
   }
 }

@@ -1,4 +1,4 @@
-# angular 4.0+ calendar
+# angular 5.0+ calendar
 
 [![Build Status](https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-calendar)
 [![codecov](https://codecov.io/gh/mattlewis92/angular-calendar/branch/master/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-calendar)
@@ -25,7 +25,7 @@ https://mattlewis92.github.io/angular-calendar/
 
 ## About
 
-A calendar component for Angular 4.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
+A calendar component for Angular 5.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
 ## Getting started
 
@@ -65,19 +65,6 @@ Once you are up and running, to access a full list of options for each component
 
 You can find quick start examples for all common module bundlers in the [build-tool-examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
 
-### Usage without a module bundler
-
-```html
-<script src="node_modules/angular-calendar/umd/angular-calendar.js"></script>
-<script>
-    // everything is exported angularCalendar namespace
-</script>
-```
-
-### Usage with Angular Universal
-
-See [this comment](https://github.com/mattlewis92/angular-calendar/issues/158#issuecomment-285330700) for how to use with Universal.
-
 ## Documentation
 
 To see all available API options, take a look at the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). You may find it helpful to view the examples on the demo page.
@@ -88,13 +75,16 @@ Where possible this library will strictly adhere to [semver](http://semver.org/)
 
 ## FAQ
 
-### Is this library AoT compatible?
+### Is this library AoT and universal compatible?
 
 Yes.
 
 ### Does this library work with angular 2.x?
 
 The last version of this library that supports 2.x is `0.9.1`. However the upgrade from angular 2.x to 4.x is just a matter of [changing the dependencies in your package.json](https://github.com/mattlewis92/angular2-tv-tracker/commit/9439e3cec40293b2a86bc2222f610ee6ad4b5229) and [adding the `angular/animations` module](https://github.com/mattlewis92/angular2-tv-tracker/commit/9fe0e3158290c2612d20e4c0f54d2204fb70791e)
+
+### Does this library work with angular 4.x?
+The last version of this library that supports 4.x is `0.22.3`.
 
 ### How do I use this with my favourite module bundler?
 

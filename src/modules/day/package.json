@@ -1,0 +1,5 @@
+{
+  "name": "angular-calendar/day",
+  "module": "./index.js",
+  "typings": "./index.d.ts"
+}

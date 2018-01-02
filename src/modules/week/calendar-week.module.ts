@@ -7,7 +7,10 @@ import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.com
 import { CalendarWeekViewEventComponent } from './calendar-week-view-event.component';
 import { CalendarCommonModule } from '../common/calendar-common.module';
 
-export { CalendarWeekViewComponent } from './calendar-week-view.component';
+export {
+  CalendarWeekViewComponent,
+  CalendarWeekViewBeforeRenderEvent
+} from './calendar-week-view.component';
 export {
   WeekViewEvent as CalendarWeekViewEvent,
   WeekViewEventRow as CalendarWeekViewEventRow,
@@ -27,6 +30,8 @@ export {
     CalendarWeekViewEventComponent
   ],
   exports: [
+    ResizableModule,
+    DragAndDropModule,
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent

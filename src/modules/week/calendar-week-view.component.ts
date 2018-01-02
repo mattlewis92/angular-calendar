@@ -17,7 +17,10 @@ import {
   WeekDay,
   CalendarEvent,
   WeekViewEvent,
-  WeekViewEventRow
+  WeekViewEventRow,
+  WeekView,
+  ViewPeriod,
+  MonthViewDay
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days';
@@ -31,6 +34,11 @@ export interface WeekViewEventResize {
   originalOffset: number;
   originalSpan: number;
   edge: string;
+}
+
+export interface CalendarWeekViewBeforeRenderEvent {
+  header: WeekDay[];
+  period: ViewPeriod;
 }
 
 /**
@@ -54,7 +62,7 @@ export interface WeekViewEventResize {
         (dayHeaderClicked)="dayHeaderClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div *ngFor="let eventRow of eventRows" #eventRowContainer class="cal-events-row">
+      <div *ngFor="let eventRow of view.eventRows" #eventRowContainer class="cal-events-row">
         <div
           *ngFor="let weekEvent of eventRow.row"
           #event
@@ -76,7 +84,7 @@ export interface WeekViewEventResize {
           [dragAxis]="{x: weekEvent.event.draggable && currentResizes.size === 0, y: false}"
           [dragSnapGrid]="{x: dayColumnWidth}"
           [validateDrag]="validateDrag"
-          (dragStart)="dragStart(weekViewContainer, event)"
+          (dragPointerDown)="dragStart(weekViewContainer, event)"
           (dragEnd)="eventDragged(weekEvent, $event.x, dayColumnWidth)">
           <mwl-calendar-week-view-event
             [weekEvent]="weekEvent"
@@ -194,7 +202,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * If you add the `cssClass` property to a day in the header it will add that class to the cell element in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<{ header: WeekDay[] }> = new EventEmitter();
+  beforeViewRender = new EventEmitter<CalendarWeekViewBeforeRenderEvent>();
 
   /**
    * @hidden
@@ -204,7 +212,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  eventRows: WeekViewEventRow[] = [];
+  view: WeekView;
 
   /**
    * @hidden
@@ -364,16 +372,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     dayWidth: number
   ): void {
     const daysDragged: number = draggedByPx / dayWidth;
-    // TODO - remove this check once https://github.com/mattlewis92/angular-draggable-droppable/issues/21 is fixed
-    if (daysDragged !== 0) {
-      const newStart: Date = addDays(weekEvent.event.start, daysDragged);
-      let newEnd: Date;
-      if (weekEvent.event.end) {
-        newEnd = addDays(weekEvent.event.end, daysDragged);
-      }
-
-      this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
+    const newStart: Date = addDays(weekEvent.event.start, daysDragged);
+    let newEnd: Date;
+    if (weekEvent.event.end) {
+      newEnd = addDays(weekEvent.event.end, daysDragged);
     }
+
+    this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
   }
 
   /**
@@ -404,13 +409,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    this.beforeViewRender.emit({
-      header: this.days
-    });
+    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
-    this.eventRows = this.utils.getWeekView({
+    this.view = this.utils.getWeekView({
       events: this.events,
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
@@ -418,10 +421,20 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       precision: this.precision,
       absolutePositionedEvents: true
     });
+    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.days && this.view) {
+      this.beforeViewRender.emit({
+        header: this.days,
+        period: this.view.period
+      });
+    }
   }
 }
