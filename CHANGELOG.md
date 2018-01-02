@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.1"></a>
+## [0.23.1](https://github.com/mattlewis92/angular-calendar/compare/v0.23.0...v0.23.1) (2018-01-02)
+
+
+### Bug Fixes
+
+* restore compatibility with system.js ([1b3c27a](https://github.com/mattlewis92/angular-calendar/commit/1b3c27a))
+
+
+
 <a name="0.23.0"></a>
 # [0.23.0](https://github.com/mattlewis92/angular-calendar/compare/v0.22.3...v0.23.0) (2018-01-02)
 
