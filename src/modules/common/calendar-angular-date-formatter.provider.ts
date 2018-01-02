@@ -2,7 +2,7 @@ import {
   CalendarDateFormatterInterface,
   DateFormatterParams
 } from './calendar-date-formatter.interface';
-import getISOWeek from 'date-fns/get_iso_week';
+import getISOWeek from 'date-fns/get_iso_week/index';
 import { DatePipe } from '@angular/common';
 
 /**
