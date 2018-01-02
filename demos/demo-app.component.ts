@@ -74,7 +74,8 @@ const dependencyVersions: any = {
   rrule: require('rrule/package.json').version,
   ngxContextmenu: require('ngx-contextmenu/package.json').version,
   fontAwesome: require('font-awesome/package.json').version,
-  angularCdk: require('@angular/cdk/package.json').version
+  angularCdk: require('@angular/cdk/package.json').version,
+  positioning: require('positioning/package.json').version
 };
 
 @Component({
