@@ -27,11 +27,12 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      'angular-calendar': 'npm:angular-calendar/umd/angular-calendar.js',
+      'angular-calendar': 'npm:angular-calendar/bundles/angular-calendar.umd.js',
       'calendar-utils': 'npm:calendar-utils/dist/umd/calendar-utils.js',
-      'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',
-      'angular-draggable-droppable': 'npm:angular-draggable-droppable/dist/umd/angular-draggable-droppable.js',
-      'date-fns': 'npm:date-fns'
+      'angular-resizable-element': 'npm:angular-resizable-element/bundles/angular-resizable-element.umd.js',
+      'angular-draggable-droppable': 'npm:angular-draggable-droppable/bundles/angular-draggable-droppable.umd.js',
+      'date-fns': 'npm:date-fns',
+      'positioning': 'npm:positioning/dist/umd/positioning.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
