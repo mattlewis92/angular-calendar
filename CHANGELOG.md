@@ -47,7 +47,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 Also the dragStart output was renamed to dragPointerDown. Users using a custom template for the root day or week view components will need to adjust their templates accordingly.
 * The UMD entry point for the `angular-resizable-element` package has changed from `angular-resizable-element/dist/umd/angular-resizable-element.js` to `angular-resizable-element/bundles/angular-resizable-element.umd.js`. System.js users will need to update their config accordingly.
-* System.js users will now need to add an entry for the `positioning` package to their config `'calendar-utils': 'npm:positioning/dist/umd/positioning.js'`.
+* System.js users will now need to add an entry for the `positioning` package to their config `'positioning': 'npm:positioning/dist/umd/positioning.js'`.
 
 
 <a name="0.22.3"></a>
