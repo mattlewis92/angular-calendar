@@ -503,6 +503,12 @@
 
 <h1 id="change-log">Change Log</h1>
 <p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<p><a name="0.23.1"></a></p>
+<h2 id="-0-23-1-https-github-com-mattlewis92-angular-calendar-compare-v0-23-0-v0-23-1-2018-01-02-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.0...v0.23.1">0.23.1</a> (2018-01-02)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>restore compatibility with system.js (<a href="https://github.com/mattlewis92/angular-calendar/commit/1b3c27a">1b3c27a</a>)</li>
+</ul>
 <p><a name="0.23.0"></a></p>
 <h1 id="-0-23-0-https-github-com-mattlewis92-angular-calendar-compare-v0-22-3-v0-23-0-2018-01-02-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.22.3...v0.23.0">0.23.0</a> (2018-01-02)</h1>
 <h3 id="bug-fixes">Bug Fixes</h3>
@@ -524,6 +530,8 @@
 </ul>
 <h3 id="breaking-changes">BREAKING CHANGES</h3>
 <ul>
+<li>angular 5 or higher is now required to use this package</li>
+<li><strong>date-formatter:</strong> the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill</li>
 <li><strong>day-view:</strong> the event signature of the beforeViewRender output has changed from $event.body to $event.body.hourGrid</li>
 <li><strong>week-view:</strong> for people extending the root week view component, eventRows is now named view.eventRows</li>
 <li>the getWeekView function return signature has changed from an array of event rows to an object with the eventRows property set to the previous arrat value. This should only affect people overriding the CalendarUtils.getWeekView method.</li>
@@ -533,8 +541,7 @@
 <p>Also the dragStart output was renamed to dragPointerDown. Users using a custom template for the root day or week view components will need to adjust their templates accordingly.</p>
 <ul>
 <li>The UMD entry point for the <code>angular-resizable-element</code> package has changed from <code>angular-resizable-element/dist/umd/angular-resizable-element.js</code> to <code>angular-resizable-element/bundles/angular-resizable-element.umd.js</code>. System.js users will need to update their config accordingly.</li>
-<li><strong>date-formatter:</strong> the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill</li>
-<li>angular 5 or higher is now required to use this package</li>
+<li>System.js users will now need to add an entry for the <code>positioning</code> package to their config <code>&#39;calendar-utils&#39;: &#39;npm:positioning/dist/umd/positioning.js&#39;</code>.</li>
 </ul>
 <p><a name="0.22.3"></a></p>
 <h2 id="-0-22-3-https-github-com-mattlewis92-angular-calendar-compare-v0-22-1-v0-22-3-2017-12-24-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.22.1...v0.22.3">0.22.3</a> (2017-12-24)</h2>
