@@ -27,6 +27,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
+* angular 5 or higher is now required to use this package
+* **date-formatter:** the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill
 * **day-view:** the event signature of the beforeViewRender output has changed from $event.body to $event.body.hourGrid
 * **week-view:** for people extending the root week view component, eventRows is now named view.eventRows
 * the getWeekView function return signature has changed from an array of event rows to an object with the eventRows property set to the previous arrat value. This should only affect people overriding the CalendarUtils.getWeekView method.
@@ -35,9 +37,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 Also the dragStart output was renamed to dragPointerDown. Users using a custom template for the root day or week view components will need to adjust their templates accordingly.
 * The UMD entry point for the `angular-resizable-element` package has changed from `angular-resizable-element/dist/umd/angular-resizable-element.js` to `angular-resizable-element/bundles/angular-resizable-element.umd.js`. System.js users will need to update their config accordingly.
-* **date-formatter:** the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill
-* angular 5 or higher is now required to use this package
-
+* System.js users will now need to add an entry for the `positioning` package to their config `'calendar-utils': 'npm:positioning/dist/umd/positioning.js'`.
 
 
 <a name="0.22.3"></a>
