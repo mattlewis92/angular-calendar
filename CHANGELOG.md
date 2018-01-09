@@ -38,6 +38,13 @@ All notable changes to this project will be documented in this file. See [standa
 ### BREAKING CHANGES
 
 * angular 5 or higher is now required to use this package
+* if using a locale other than english you will need to import the appropriate locale data somewhere in your app:
+```
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr'; // to register french
+
+registerLocaleData(localeFr);
+```
 * **date-formatter:** the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill
 * **day-view:** the event signature of the beforeViewRender output has changed from $event.body to $event.body.hourGrid
 * **week-view:** for people extending the root week view component, eventRows is now named view.eventRows
