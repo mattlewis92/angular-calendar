@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.2"></a>
+## [0.23.2](https://github.com/mattlewis92/angular-calendar/compare/v0.23.1...v0.23.2) (2018-01-10)
+
+
+### Bug Fixes
+
+* **week-view:** ensure event span is correct in some edge cases ([8b8adef](https://github.com/mattlewis92/angular-calendar/commit/8b8adef)), closes [#432](https://github.com/mattlewis92/angular-calendar/issues/432)
+
+
+
 <a name="0.23.1"></a>
 ## [0.23.1](https://github.com/mattlewis92/angular-calendar/compare/v0.23.0...v0.23.1) (2018-01-02)
 
@@ -38,6 +48,13 @@ All notable changes to this project will be documented in this file. See [standa
 ### BREAKING CHANGES
 
 * angular 5 or higher is now required to use this package
+* if using a locale other than english you will need to import the appropriate locale data somewhere in your app:
+```
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr'; // to register french
+
+registerLocaleData(localeFr);
+```
 * **date-formatter:** the angular date formatter is now used by default to format dates instead of the formatter that requires the Intl polyfill
 * **day-view:** the event signature of the beforeViewRender output has changed from $event.body to $event.body.hourGrid
 * **week-view:** for people extending the root week view component, eventRows is now named view.eventRows

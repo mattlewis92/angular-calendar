@@ -37,8 +37,8 @@ export const DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
             (ngModelChange)="updateDate()"
             ngbDatepicker
             #datePicker="ngbDatepicker">
-            <div class="input-group-addon" (click)="datePicker.toggle()" >
-              <i class="fa fa-calendar"></i>
+            <div class="input-group-append" (click)="datePicker.toggle()" >
+              <span class="input-group-text"><i class="fa fa-calendar"></i></span>
             </div>
         </div>
       </div>
