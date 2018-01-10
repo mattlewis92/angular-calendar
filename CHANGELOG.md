@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.2"></a>
+## [0.23.2](https://github.com/mattlewis92/angular-calendar/compare/v0.23.1...v0.23.2) (2018-01-10)
+
+
+### Bug Fixes
+
+* **week-view:** ensure event span is correct in some edge cases ([8b8adef](https://github.com/mattlewis92/angular-calendar/commit/8b8adef)), closes [#432](https://github.com/mattlewis92/angular-calendar/issues/432)
+
+
+
 <a name="0.23.1"></a>
 ## [0.23.1](https://github.com/mattlewis92/angular-calendar/compare/v0.23.0...v0.23.1) (2018-01-02)
 
