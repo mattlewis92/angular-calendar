@@ -706,7 +706,7 @@ import differenceInSeconds from &#x27;date-fns/difference_in_seconds/index&#x27;
 import addSeconds from &#x27;date-fns/add_seconds/index&#x27;;
 import { CalendarEventTimesChangedEvent } from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
-import { validateEvents } from &#x27;../common/util&#x27;;
+import { validateEvents, trackByIndex } from &#x27;../common/util&#x27;;
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -734,10 +734,10 @@ export interface CalendarMonthViewBeforeRenderEvent {
         [customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;
       &lt;/mwl-calendar-month-view-header&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
-        &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets&quot;&gt;
+        &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackByIndex&quot;&gt;
           &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
             &lt;mwl-calendar-month-cell
-              *ngFor&#x3D;&quot;let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)&quot;
+              *ngFor&#x3D;&quot;let day of (view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)); trackBy:trackByDate&quot;
               [class.cal-drag-over]&#x3D;&quot;day.dragOver&quot;
               [ngClass]&#x3D;&quot;day?.cssClass&quot;
               [day]&#x3D;&quot;day&quot;
@@ -904,6 +904,16 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   refreshSubscription: Subscription;
+
+  /**
+   * @hidden
+   */
+  trackByIndex &#x3D; trackByIndex;
+
+  /**
+   * @hidden
+   */
+  trackByDate &#x3D; (index: number, day: MonthViewDay) &#x3D;&gt; day.date.toISOString();
 
   /**
    * @hidden

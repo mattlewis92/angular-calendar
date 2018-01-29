@@ -702,7 +702,7 @@ import { CalendarDragHelper } from &#x27;../common/calendar-drag-helper.provider
 import { CalendarResizeHelper } from &#x27;../common/calendar-resize-helper.provider&#x27;;
 import { CalendarEventTimesChangedEvent } from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
-import { validateEvents } from &#x27;../common/util&#x27;;
+import { validateEvents, trackByEventId } from &#x27;../common/util&#x27;;
 
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
@@ -740,7 +740,7 @@ export interface DayViewEventResize {
   template: &#x60;
     &lt;div class&#x3D;&quot;cal-day-view&quot; #dayViewContainer&gt;
       &lt;mwl-calendar-all-day-event
-        *ngFor&#x3D;&quot;let event of view.allDayEvents&quot;
+        *ngFor&#x3D;&quot;let event of view.allDayEvents; trackBy:trackByEventId&quot;
         [event]&#x3D;&quot;event&quot;
         [customTemplate]&#x3D;&quot;allDayEventTemplate&quot;
         [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
@@ -750,7 +750,7 @@ export interface DayViewEventResize {
         &lt;div class&#x3D;&quot;cal-events&quot;&gt;
           &lt;div
             #event
-            *ngFor&#x3D;&quot;let dayEvent of view?.events&quot;
+            *ngFor&#x3D;&quot;let dayEvent of view?.events; trackBy:trackByDayEvent&quot;
             class&#x3D;&quot;cal-event-container&quot;
             [class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;
             [class.cal-starts-within-day]&#x3D;&quot;!dayEvent.startsBeforeDay&quot;
@@ -784,9 +784,9 @@ export interface DayViewEventResize {
             &lt;/mwl-calendar-day-view-event&gt;
           &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;cal-hour&quot; *ngFor&#x3D;&quot;let hour of hours&quot; [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;&gt;
+        &lt;div class&#x3D;&quot;cal-hour&quot; *ngFor&#x3D;&quot;let hour of hours; trackBy:trackByHour&quot; [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;&gt;
           &lt;mwl-calendar-day-view-hour-segment
-            *ngFor&#x3D;&quot;let segment of hour.segments&quot;
+            *ngFor&#x3D;&quot;let segment of hour.segments; trackBy:trackByHourSegment&quot;
             [style.height.px]&#x3D;&quot;hourSegmentHeight&quot;
             [segment]&#x3D;&quot;segment&quot;
             [segmentHeight]&#x3D;&quot;hourSegmentHeight&quot;
@@ -964,6 +964,29 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   validateResize: (args: any) &#x3D;&gt; boolean;
+
+  /**
+   * @hidden
+   */
+  trackByEventId &#x3D; trackByEventId;
+
+  /**
+   * @hidden
+   */
+  trackByDayEvent &#x3D; (index: number, dayEvent: DayViewEvent) &#x3D;&gt;
+    dayEvent.event.id ? dayEvent.event.id : dayEvent.event;
+
+  /**
+   * @hidden
+   */
+  trackByHour &#x3D; (index: number, hour: DayViewHour) &#x3D;&gt;
+    hour.segments[0].date.toISOString();
+
+  /**
+   * @hidden
+   */
+  trackByHourSegment &#x3D; (index: number, segment: DayViewHourSegment) &#x3D;&gt;
+    segment.date.toISOString();
 
   /**
    * @hidden
