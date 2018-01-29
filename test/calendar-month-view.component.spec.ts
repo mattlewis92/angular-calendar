@@ -24,6 +24,7 @@ import {
 } from './../src';
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
+import { take } from 'rxjs/operators/take';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -164,9 +165,11 @@ describe('calendarMonthView component', () => {
       CalendarMonthViewComponent
     > = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.beforeViewRender.take(1).subscribe(({ body }) => {
-      body[0].cssClass = 'foo';
-    });
+    fixture.componentInstance.beforeViewRender
+      .pipe(take(1))
+      .subscribe(({ body }) => {
+        body[0].cssClass = 'foo';
+      });
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
@@ -183,7 +186,7 @@ describe('calendarMonthView component', () => {
     > = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender
-      .take(1)
+      .pipe(take(1))
       .subscribe(({ header }) => {
         header[0].cssClass = 'foo';
       });
@@ -203,10 +206,12 @@ describe('calendarMonthView component', () => {
     > = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     let firstDay: CalendarMonthViewDay;
-    fixture.componentInstance.beforeViewRender.take(1).subscribe(({ body }) => {
-      body[0].cssClass = 'foo';
-      firstDay = body[0];
-    });
+    fixture.componentInstance.beforeViewRender
+      .pipe(take(1))
+      .subscribe(({ body }) => {
+        body[0].cssClass = 'foo';
+        firstDay = body[0];
+      });
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const cell: HTMLElement = fixture.nativeElement.querySelector(
@@ -392,9 +397,11 @@ describe('calendarMonthView component', () => {
       CalendarMonthViewComponent
     > = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.beforeViewRender.take(1).subscribe(({ body }) => {
-      body[0].badgeTotal = 100;
-    });
+    fixture.componentInstance.beforeViewRender
+      .pipe(take(1))
+      .subscribe(({ body }) => {
+        body[0].badgeTotal = 100;
+      });
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
@@ -763,7 +770,7 @@ describe('calendarMonthView component', () => {
     > = TestBed.createComponent(CalendarMonthViewComponent);
     const beforeViewRenderCalled = sinon.spy();
     fixture.componentInstance.beforeViewRender
-      .take(1)
+      .pipe(take(1))
       .subscribe(beforeViewRenderCalled);
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');

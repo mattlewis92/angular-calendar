@@ -9,7 +9,7 @@ import 'zone.js/dist/fake-async-test';
 import 'zone.js/dist/sync-test';
 import 'zone.js/dist/proxy';
 import 'zone.js/dist/mocha-patch';
-import 'rxjs/Rx';
+import 'rxjs/Observable';
 import 'moment/locale/de';
 import 'moment/locale/en-ca';
 import { use } from 'chai';
