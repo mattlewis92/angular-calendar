@@ -1,6 +1,7 @@
 import {
   CalendarEvent,
-  validateEvents as validateEventsWithoutLog
+  validateEvents as validateEventsWithoutLog,
+  WeekDay
 } from 'calendar-utils';
 
 export const validateEvents = (events: CalendarEvent[]) => {
@@ -20,3 +21,11 @@ export function isInside(outer: ClientRect, inner: ClientRect): boolean {
     inner.bottom <= outer.bottom
   );
 }
+
+export const trackByEventId = (index: number, event: CalendarEvent) =>
+  event.id ? event.id : event;
+
+export const trackByWeekDayHeaderDate = (index: number, day: WeekDay) =>
+  day.date.toISOString();
+
+export const trackByIndex = (index: number) => index;

@@ -17,10 +17,8 @@ import {
   WeekDay,
   CalendarEvent,
   WeekViewEvent,
-  WeekViewEventRow,
   WeekView,
-  ViewPeriod,
-  MonthViewDay
+  ViewPeriod
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import addDays from 'date-fns/add_days/index';
@@ -28,7 +26,7 @@ import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
-import { validateEvents } from '../common/util';
+import { validateEvents, trackByIndex } from '../common/util';
 
 export interface WeekViewEventResize {
   originalOffset: number;
@@ -62,9 +60,9 @@ export interface CalendarWeekViewBeforeRenderEvent {
         (dayHeaderClicked)="dayHeaderClicked.emit($event)"
         (eventDropped)="eventTimesChanged.emit($event)">
       </mwl-calendar-week-view-header>
-      <div *ngFor="let eventRow of view.eventRows" #eventRowContainer class="cal-events-row">
+      <div *ngFor="let eventRow of view.eventRows; trackBy:trackByIndex" #eventRowContainer class="cal-events-row">
         <div
-          *ngFor="let weekEvent of eventRow.row"
+          *ngFor="let weekEvent of eventRow.row; trackBy:trackByEventId"
           #event
           class="cal-event-container"
           [class.cal-draggable]="weekEvent.event.draggable"
@@ -238,6 +236,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dayColumnWidth: number;
+
+  /**
+   * @hidden
+   */
+  trackByIndex = trackByIndex;
+
+  /**
+   * @hidden
+   */
+  trackByEventId = (index: number, weekEvent: WeekViewEvent) =>
+    weekEvent.event.id ? weekEvent.event.id : weekEvent;
 
   /**
    * @hidden

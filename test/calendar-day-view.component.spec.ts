@@ -20,9 +20,10 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarDayViewComponent
 } from './../src';
-import { Subject } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
 import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
+import { take } from 'rxjs/operators/take';
 
 describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
@@ -317,13 +318,15 @@ describe('CalendarDayViewComponent component', () => {
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
-    fixture.componentInstance.beforeViewRender.take(1).subscribe(({ body }) => {
-      body.hourGrid.forEach(hour => {
-        hour.segments.forEach(segment => {
-          segment.cssClass = 'foo';
+    fixture.componentInstance.beforeViewRender
+      .pipe(take(1))
+      .subscribe(({ body }) => {
+        body.hourGrid.forEach(hour => {
+          hour.segments.forEach(segment => {
+            segment.cssClass = 'foo';
+          });
         });
       });
-    });
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
@@ -1037,7 +1040,7 @@ describe('CalendarDayViewComponent component', () => {
     > = TestBed.createComponent(CalendarDayViewComponent);
     const beforeViewRenderCalled = sinon.spy();
     fixture.componentInstance.beforeViewRender
-      .take(1)
+      .pipe(take(1))
       .subscribe(beforeViewRenderCalled);
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');

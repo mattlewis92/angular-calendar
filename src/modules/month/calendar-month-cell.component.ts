@@ -6,6 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
+import { trackByEventId } from '../common/util';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -28,7 +29,7 @@ import { MonthViewDay, CalendarEvent } from 'calendar-utils';
       <div class="cal-events" *ngIf="day.events.length > 0">
         <div
           class="cal-event"
-          *ngFor="let event of day.events"
+          *ngFor="let event of day.events; trackBy:trackByEventId"
           [style.backgroundColor]="event.color.primary"
           [ngClass]="event?.cssClass"
           (mouseenter)="highlightDay.emit({event: event})"
@@ -96,4 +97,6 @@ export class CalendarMonthCellComponent {
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
     event: CalendarEvent;
   }>();
+
+  trackByEventId = trackByEventId;
 }

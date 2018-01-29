@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.3"></a>
+## [0.23.3](https://github.com/mattlewis92/angular-calendar/compare/v0.23.2...v0.23.3) (2018-01-29)
+
+
+### Performance Improvements
+
+* **track-by:** use track by on all ngFor elements ([aebe832](https://github.com/mattlewis92/angular-calendar/commit/aebe832)), closes [#444](https://github.com/mattlewis92/angular-calendar/issues/444)
+
+
+
 <a name="0.23.2"></a>
 ## [0.23.2](https://github.com/mattlewis92/angular-calendar/compare/v0.23.1...v0.23.2) (2018-01-10)
 

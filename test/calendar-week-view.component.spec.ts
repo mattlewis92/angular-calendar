@@ -22,6 +22,7 @@ import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs/Subject';
 import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
+import { take } from 'rxjs/operators/take';
 
 describe('calendarWeekView component', () => {
   beforeEach(() => {
@@ -810,7 +811,7 @@ describe('calendarWeekView component', () => {
     > = TestBed.createComponent(CalendarWeekViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender
-      .take(1)
+      .pipe(take(1))
       .subscribe(({ header }) => {
         header[0].cssClass = 'foo';
       });
@@ -862,7 +863,7 @@ describe('calendarWeekView component', () => {
     > = TestBed.createComponent(CalendarWeekViewComponent);
     const beforeViewRenderCalled = sinon.spy();
     fixture.componentInstance.beforeViewRender
-      .take(1)
+      .pipe(take(1))
       .subscribe(beforeViewRenderCalled);
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
