@@ -6,6 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
+import { trackByWeekDayHeaderDate } from '../common/util';
 
 @Component({
   selector: 'mwl-calendar-week-view-header',
@@ -19,7 +20,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
       <div class="cal-day-headers">
         <div
           class="cal-header"
-          *ngFor="let day of days"
+          *ngFor="let day of days; trackBy:trackByWeekDayHeaderDate"
           [class.cal-past]="day.isPast"
           [class.cal-today]="day.isToday"
           [class.cal-future]="day.isFuture"
@@ -59,4 +60,6 @@ export class CalendarWeekViewHeaderComponent {
     event: CalendarEvent;
     newStart: Date;
   }> = new EventEmitter<{ event: CalendarEvent; newStart: Date }>();
+
+  trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 }

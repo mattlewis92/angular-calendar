@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
+import { trackByEventId } from '../common/util';
 
 @Component({
   selector: 'mwl-calendar-open-day-events',
@@ -16,7 +17,7 @@ import { CalendarEvent } from 'calendar-utils';
       let-events="events"
       let-eventClicked="eventClicked">
       <div
-        *ngFor="let event of events"
+        *ngFor="let event of events; trackBy:trackByEventId"
         [ngClass]="event?.cssClass"
         mwlDraggable
         [dropData]="{event: event}"
@@ -70,4 +71,6 @@ export class CalendarOpenDayEventsComponent {
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
     event: CalendarEvent;
   }>();
+
+  trackByEventId = trackByEventId;
 }
