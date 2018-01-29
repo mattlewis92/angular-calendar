@@ -8,7 +8,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/mattlewis92/angular-calendar.svg)](https://github.com/mattlewis92/angular-calendar/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-calendar/master/LICENSE)
 
-Like what you see here? <a href="https://mattlewis.me/?section=hire-me" target="_blank">Hire me</a>! 👨‍💻
+Like what you see here? [Hire me](https://mattlewis.me/?section=hire-me&utm_source=github&utm_medium=banner&utm_campaign=contracting)! 👨‍💻
 
 ## Demo
 
