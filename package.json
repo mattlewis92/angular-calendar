@@ -87,7 +87,7 @@
   "homepage": "https://github.com/mattlewis92/angular-calendar#readme",
   "devDependencies": {
     "@angular/animations": "^5.2.2",
-    "@angular/cdk": "^5.1.0",
+    "@angular/cdk": "^5.1.1",
     "@angular/common": "^5.2.2",
     "@angular/compiler": "^5.2.2",
     "@angular/compiler-cli": "^5.2.2",
@@ -144,7 +144,7 @@
     "mocha": "^5.0.0",
     "moment": "^2.19.3",
     "ng-packagr": "^2.0.0-rc.12",
-    "ngx-contextmenu": "^4.1.1",
+    "ngx-contextmenu": "^4.1.2",
     "node-sass": "^4.7.2",
     "offline-plugin": "^4.9.0",
     "postcss-cli": "^4.1.1",
