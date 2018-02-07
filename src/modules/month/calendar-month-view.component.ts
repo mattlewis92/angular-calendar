@@ -20,15 +20,17 @@ import {
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import isSameDay from 'date-fns/is_same_day/index';
-import setDate from 'date-fns/set_date/index';
-import setMonth from 'date-fns/set_month/index';
-import setYear from 'date-fns/set_year/index';
-import getDate from 'date-fns/get_date/index';
-import getMonth from 'date-fns/get_month/index';
-import getYear from 'date-fns/get_year/index';
-import differenceInSeconds from 'date-fns/difference_in_seconds/index';
-import addSeconds from 'date-fns/add_seconds/index';
+import {
+  isSameDay,
+  setDate,
+  setMonth,
+  setYear,
+  getDate,
+  getMonth,
+  getYear,
+  differenceInSeconds,
+  addSeconds
+} from 'date-fns/esm';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByIndex } from '../common/util';

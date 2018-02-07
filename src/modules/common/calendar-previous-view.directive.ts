@@ -5,9 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import subDays from 'date-fns/sub_days/index';
-import subWeeks from 'date-fns/sub_weeks/index';
-import subMonths from 'date-fns/sub_months/index';
+import { subDays, subWeeks, subMonths } from 'date-fns/esm';
 
 /**
  * Change the view date to the previous view. For example:

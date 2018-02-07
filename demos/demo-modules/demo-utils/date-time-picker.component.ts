@@ -12,7 +12,7 @@ import {
   setDate,
   setMonth,
   setYear
-} from 'date-fns';
+} from 'date-fns/esm';
 import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 

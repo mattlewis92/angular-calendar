@@ -13,7 +13,7 @@ import {
   isSameDay,
   isSameMonth,
   addHours
-} from 'date-fns';
+} from 'date-fns/esm';
 import { Subject } from 'rxjs/Subject';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {

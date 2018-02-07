@@ -12,7 +12,7 @@ import {
   startOfDay,
   endOfDay,
   format
-} from 'date-fns';
+} from 'date-fns/esm';
 import { Observable } from 'rxjs/Observable';
 import { colors } from '../demo-utils/colors';
 

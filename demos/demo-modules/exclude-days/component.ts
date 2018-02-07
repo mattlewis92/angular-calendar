@@ -4,7 +4,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { subDays, addDays } from 'date-fns';
+import { subDays, addDays } from 'date-fns/esm';
 import { colors } from '../demo-utils/colors';
 
 @Component({

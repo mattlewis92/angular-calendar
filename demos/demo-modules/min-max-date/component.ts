@@ -17,7 +17,7 @@ import {
   endOfWeek,
   startOfDay,
   endOfDay
-} from 'date-fns';
+} from 'date-fns/esm';
 
 type CalendarPeriod = 'day' | 'week' | 'month';
 

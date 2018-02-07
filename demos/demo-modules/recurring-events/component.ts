@@ -7,7 +7,7 @@ import {
   endOfMonth,
   endOfWeek,
   endOfDay
-} from 'date-fns';
+} from 'date-fns/esm';
 import RRule from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
