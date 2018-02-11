@@ -39,6 +39,11 @@ export interface CalendarMonthViewBeforeRenderEvent {
   period: ViewPeriod;
 }
 
+export interface CalendarMonthViewEventTimesChangedEvent
+  extends CalendarEventTimesChangedEvent {
+  day: MonthViewDay;
+}
+
 /**
  * Shows all events on a given month. Example usage:
  *
@@ -177,15 +182,13 @@ export class CalendarMonthViewComponent
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<
-    CalendarMonthViewBeforeRenderEvent
-  > = new EventEmitter();
+  beforeViewRender = new EventEmitter<CalendarMonthViewBeforeRenderEvent>();
 
   /**
    * Called when the day cell is clicked
    */
   @Output()
-  dayClicked: EventEmitter<{ day: MonthViewDay }> = new EventEmitter<{
+  dayClicked = new EventEmitter<{
     day: MonthViewDay;
   }>();
 
@@ -193,7 +196,7 @@ export class CalendarMonthViewComponent
    * Called when the event title is clicked
    */
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
   }>();
 
@@ -201,9 +204,9 @@ export class CalendarMonthViewComponent
    * Called when an event is dragged and dropped
    */
   @Output()
-  eventTimesChanged: EventEmitter<
-    CalendarEventTimesChangedEvent
-  > = new EventEmitter<CalendarEventTimesChangedEvent>();
+  eventTimesChanged = new EventEmitter<
+    CalendarMonthViewEventTimesChangedEvent
+  >();
 
   /**
    * @hidden
@@ -332,7 +335,7 @@ export class CalendarMonthViewComponent
       const secondsDiff: number = differenceInSeconds(newStart, event.start);
       newEnd = addSeconds(event.end, secondsDiff);
     }
-    this.eventTimesChanged.emit({ event, newStart, newEnd });
+    this.eventTimesChanged.emit({ event, newStart, newEnd, day });
   }
 
   /**
