@@ -26,6 +26,7 @@
     "skipTemplateCodegen": true,
     "trace": true,
     "strictInjectionParameters": true,
-    "preserveWhitespaces": true
+    "preserveWhitespaces": true,
+    "fullTemplateTypeCheck": true
   }
 }

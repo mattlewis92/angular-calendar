@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.4"></a>
+## [0.23.4](https://github.com/mattlewis92/angular-calendar/compare/v0.23.3...v0.23.4) (2018-02-11)
+
+
+### Bug Fixes
+
+* **day-view:** fix scrolling on an ipad ([b5955ae](https://github.com/mattlewis92/angular-calendar/commit/b5955ae)), closes [#458](https://github.com/mattlewis92/angular-calendar/issues/458)
+
+
+
 <a name="0.23.3"></a>
 ## [0.23.3](https://github.com/mattlewis92/angular-calendar/compare/v0.23.2...v0.23.3) (2018-01-29)
 

@@ -16,6 +16,6 @@
     "trace": true,
     "strictInjectionParameters": true,
     "preserveWhitespaces": true,
-    "fullTemplateTypeCheck": false
+    "fullTemplateTypeCheck": true
   }
 }
