@@ -177,15 +177,13 @@ export class CalendarMonthViewComponent
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
   @Output()
-  beforeViewRender: EventEmitter<
-    CalendarMonthViewBeforeRenderEvent
-  > = new EventEmitter();
+  beforeViewRender = new EventEmitter<CalendarMonthViewBeforeRenderEvent>();
 
   /**
    * Called when the day cell is clicked
    */
   @Output()
-  dayClicked: EventEmitter<{ day: MonthViewDay }> = new EventEmitter<{
+  dayClicked = new EventEmitter<{
     day: MonthViewDay;
   }>();
 
@@ -193,7 +191,7 @@ export class CalendarMonthViewComponent
    * Called when the event title is clicked
    */
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
   }>();
 
@@ -201,9 +199,7 @@ export class CalendarMonthViewComponent
    * Called when an event is dragged and dropped
    */
   @Output()
-  eventTimesChanged: EventEmitter<
-    CalendarEventTimesChangedEvent
-  > = new EventEmitter<CalendarEventTimesChangedEvent>();
+  eventTimesChanged = new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * @hidden
