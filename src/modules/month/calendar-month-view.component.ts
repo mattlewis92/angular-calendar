@@ -39,6 +39,11 @@ export interface CalendarMonthViewBeforeRenderEvent {
   period: ViewPeriod;
 }
 
+export interface CalendarMonthViewEventTimesChangedEvent
+  extends CalendarEventTimesChangedEvent {
+  day: MonthViewDay;
+}
+
 /**
  * Shows all events on a given month. Example usage:
  *
@@ -199,7 +204,9 @@ export class CalendarMonthViewComponent
    * Called when an event is dragged and dropped
    */
   @Output()
-  eventTimesChanged = new EventEmitter<CalendarEventTimesChangedEvent>();
+  eventTimesChanged = new EventEmitter<
+    CalendarMonthViewEventTimesChangedEvent
+  >();
 
   /**
    * @hidden
@@ -328,7 +335,7 @@ export class CalendarMonthViewComponent
       const secondsDiff: number = differenceInSeconds(newStart, event.start);
       newEnd = addSeconds(event.end, secondsDiff);
     }
-    this.eventTimesChanged.emit({ event, newStart, newEnd });
+    this.eventTimesChanged.emit({ event, newStart, newEnd, day });
   }
 
   /**

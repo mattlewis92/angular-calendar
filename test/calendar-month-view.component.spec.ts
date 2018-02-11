@@ -25,6 +25,7 @@ import {
 import { Subject } from 'rxjs/Subject';
 import { triggerDomEvent } from './util';
 import { take } from 'rxjs/operators/take';
+import { CalendarMonthViewEventTimesChangedEvent } from '../src/modules/month';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -517,7 +518,7 @@ describe('calendarMonthView component', () => {
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
-    let dragEvent: CalendarEventTimesChangedEvent;
+    let dragEvent: CalendarMonthViewEventTimesChangedEvent;
     fixture.componentInstance.eventTimesChanged.subscribe(e => {
       dragEvent = e;
     });
@@ -560,11 +561,10 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     expect(cells[10].classList.contains('cal-drag-over')).to.equal(false);
     fixture.destroy();
-    expect(dragEvent).to.deep.equal({
-      event: fixture.componentInstance.events[0],
-      newStart: new Date(2016, 11, 7, 10, 39, 14),
-      newEnd: new Date(2016, 11, 7, 15, 11, 5)
-    });
+    expect(dragEvent.event).to.equal(fixture.componentInstance.events[0]);
+    expect(dragEvent.newStart).to.deep.equal(new Date(2016, 11, 7, 10, 39, 14));
+    expect(dragEvent.newEnd).to.deep.equal(new Date(2016, 11, 7, 15, 11, 5));
+    expect(dragEvent.day.date).to.deep.equal(new Date('2016-12-07'));
   });
 
   it('should apply the year, month and date changes in the correct order when dragging and dropping events', () => {
@@ -616,11 +616,9 @@ describe('calendarMonthView component', () => {
     });
     fixture.detectChanges();
     fixture.destroy();
-    expect(dragEvent).to.deep.equal({
-      event: fixture.componentInstance.events[0],
-      newStart: new Date('2017-01-31'),
-      newEnd: undefined
-    });
+    expect(dragEvent.event).to.equal(fixture.componentInstance.events[0]);
+    expect(dragEvent.newStart).to.deep.equal(new Date('2017-01-31'));
+    expect(dragEvent.newEnd).to.deep.equal(undefined);
   });
 
   it('should update the event title', () => {
