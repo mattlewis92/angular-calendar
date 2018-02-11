@@ -792,7 +792,7 @@ export interface DayViewEventResize {
             [segmentHeight]&#x3D;&quot;hourSegmentHeight&quot;
             [locale]&#x3D;&quot;locale&quot;
             [customTemplate]&#x3D;&quot;hourSegmentTemplate&quot;
-            (mwlClick)&#x3D;&quot;hourSegmentClicked.emit({date: segment.date})&quot;
+            (click)&#x3D;&quot;hourSegmentClicked.emit({date: segment.date})&quot;
             [class.cal-drag-over]&#x3D;&quot;segment.dragOver&quot;
             mwlDroppable
             (dragEnter)&#x3D;&quot;segment.dragOver &#x3D; true&quot;
