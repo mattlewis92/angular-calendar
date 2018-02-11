@@ -195,6 +195,9 @@
                                     <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html"  data-type="entity-link" class="active" >CalendarMonthViewBeforeRenderEvent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CalendarMonthViewEventTimesChangedEvent.html" >CalendarMonthViewEventTimesChangedEvent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
                                 </li>
                                 <li class="link">
@@ -435,6 +438,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/CalendarMonthViewBeforeRenderEvent.html"  data-type="entity-link" class="active" >CalendarMonthViewBeforeRenderEvent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CalendarMonthViewEventTimesChangedEvent.html" >CalendarMonthViewEventTimesChangedEvent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/CalendarWeekViewBeforeRenderEvent.html" >CalendarWeekViewBeforeRenderEvent</a>
@@ -714,6 +720,11 @@ export interface CalendarMonthViewBeforeRenderEvent {
   period: ViewPeriod;
 }
 
+export interface CalendarMonthViewEventTimesChangedEvent
+  extends CalendarEventTimesChangedEvent {
+  day: MonthViewDay;
+}
+
 /**
  * Shows all events on a given month. Example usage:
  *
@@ -852,15 +863,13 @@ export class CalendarMonthViewComponent
    * If you add the &#x60;cssClass&#x60; property to a day in the body it will add that class to the cell element in the template
    */
   @Output()
-  beforeViewRender: EventEmitter&lt;
-    CalendarMonthViewBeforeRenderEvent
-  &gt; &#x3D; new EventEmitter();
+  beforeViewRender &#x3D; new EventEmitter&lt;CalendarMonthViewBeforeRenderEvent&gt;();
 
   /**
    * Called when the day cell is clicked
    */
   @Output()
-  dayClicked: EventEmitter&lt;{ day: MonthViewDay }&gt; &#x3D; new EventEmitter&lt;{
+  dayClicked &#x3D; new EventEmitter&lt;{
     day: MonthViewDay;
   }&gt;();
 
@@ -868,7 +877,7 @@ export class CalendarMonthViewComponent
    * Called when the event title is clicked
    */
   @Output()
-  eventClicked: EventEmitter&lt;{ event: CalendarEvent }&gt; &#x3D; new EventEmitter&lt;{
+  eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
   }&gt;();
 
@@ -876,9 +885,9 @@ export class CalendarMonthViewComponent
    * Called when an event is dragged and dropped
    */
   @Output()
-  eventTimesChanged: EventEmitter&lt;
-    CalendarEventTimesChangedEvent
-  &gt; &#x3D; new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
+  eventTimesChanged &#x3D; new EventEmitter&lt;
+    CalendarMonthViewEventTimesChangedEvent
+  &gt;();
 
   /**
    * @hidden
@@ -1007,7 +1016,7 @@ export class CalendarMonthViewComponent
       const secondsDiff: number &#x3D; differenceInSeconds(newStart, event.start);
       newEnd &#x3D; addSeconds(event.end, secondsDiff);
     }
-    this.eventTimesChanged.emit({ event, newStart, newEnd });
+    this.eventTimesChanged.emit({ event, newStart, newEnd, day });
   }
 
   /**
