@@ -11,14 +11,6 @@
   }
 
   /* stylelint-disable-next-line selector-type-no-unknown */
-  mwl-calendar-day-view-hour-segment {
-    // hacky fix for https://github.com/mattlewis92/angular-calendar/issues/358 and hammerjs breaking scrolling
-    touch-action: initial !important;
-    user-select: initial !important;
-    -webkit-user-drag: initial !important;
-  }
-
-  /* stylelint-disable-next-line selector-type-no-unknown */
   mwl-calendar-day-view-hour-segment, // fix for https://github.com/mattlewis92/angular-calendar/issues/260
   .cal-hour-segment {
     display: block;
