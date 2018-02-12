@@ -113,7 +113,7 @@
     "@types/webpack": "^3.8.5",
     "angular-router-loader": "^0.8.0",
     "angular2-template-loader": "^0.6.0",
-    "autoprefixer": "^7.2.6",
+    "autoprefixer": "^8.0.0",
     "bootstrap": "^4.0.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
