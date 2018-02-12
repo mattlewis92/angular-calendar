@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.6"></a>
+## [0.23.6](https://github.com/mattlewis92/angular-calendar/compare/v0.23.5...v0.23.6) (2018-02-12)
+
+
+### Bug Fixes
+
+* fix partial module imports ([8540a28](https://github.com/mattlewis92/angular-calendar/commit/8540a28)), closes [#461](https://github.com/mattlewis92/angular-calendar/issues/461)
+
+
+
 <a name="0.23.5"></a>
 ## [0.23.5](https://github.com/mattlewis92/angular-calendar/compare/v0.23.4...v0.23.5) (2018-02-11)
 
