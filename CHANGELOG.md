@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.6"></a>
+## [0.23.6](https://github.com/mattlewis92/angular-calendar/compare/v0.23.5...v0.23.6) (2018-02-12)
+
+
+### Bug Fixes
+
+* fix partial module imports ([8540a28](https://github.com/mattlewis92/angular-calendar/commit/8540a28)), closes [#461](https://github.com/mattlewis92/angular-calendar/issues/461)
+
+
+
+<a name="0.23.5"></a>
+## [0.23.5](https://github.com/mattlewis92/angular-calendar/compare/v0.23.4...v0.23.5) (2018-02-11)
+
+
+### Bug Fixes
+
+* **month-view:** expose the day the event was dropped on ([6aeb550](https://github.com/mattlewis92/angular-calendar/commit/6aeb550)), closes [#443](https://github.com/mattlewis92/angular-calendar/issues/443)
+
+
+
+<a name="0.23.4"></a>
+## [0.23.4](https://github.com/mattlewis92/angular-calendar/compare/v0.23.3...v0.23.4) (2018-02-11)
+
+
+### Bug Fixes
+
+* **day-view:** fix scrolling on an ipad ([b5955ae](https://github.com/mattlewis92/angular-calendar/commit/b5955ae)), closes [#458](https://github.com/mattlewis92/angular-calendar/issues/458)
+
+
+
 <a name="0.23.3"></a>
 ## [0.23.3](https://github.com/mattlewis92/angular-calendar/compare/v0.23.2...v0.23.3) (2018-01-29)
 
