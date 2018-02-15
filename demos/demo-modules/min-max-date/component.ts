@@ -4,20 +4,18 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
-import {
-  subMonths,
-  addMonths,
-  addDays,
-  addWeeks,
-  subDays,
-  subWeeks,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
-  startOfDay,
-  endOfDay
-} from 'date-fns/esm';
+import subMonths from 'date-fns/esm/subMonths';
+import addMonths from 'date-fns/esm/addMonths';
+import addDays from 'date-fns/esm/addDays';
+import addWeeks from 'date-fns/esm/addWeeks';
+import subDays from 'date-fns/esm/subDays';
+import subWeeks from 'date-fns/esm/subWeeks';
+import startOfMonth from 'date-fns/esm/startOfMonth';
+import endOfMonth from 'date-fns/esm/endOfMonth';
+import startOfWeek from 'date-fns/esm/startOfWeek';
+import endOfWeek from 'date-fns/esm/endOfWeek';
+import startOfDay from 'date-fns/esm/startOfDay';
+import endOfDay from 'date-fns/esm/endOfDay';
 
 type CalendarPeriod = 'day' | 'week' | 'month';
 

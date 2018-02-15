@@ -1,6 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent, CalendarUtils } from 'angular-calendar';
-import { subWeeks, startOfMonth, endOfMonth, addWeeks } from 'date-fns/esm';
+import subWeeks from 'date-fns/esm/subWeeks';
+import startOfMonth from 'date-fns/esm/startOfMonth';
+import endOfMonth from 'date-fns/esm/endOfMonth';
+import addWeeks from 'date-fns/esm/addWeeks';
 import { GetMonthViewArgs, MonthView, getMonthView } from 'calendar-utils';
 
 export class MyCalendarUtils extends CalendarUtils {

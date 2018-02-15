@@ -143,7 +143,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The start number of the week
    */
-  @Input() weekStartsOn: number;
+  @Input() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
   /**
    * A custom template to use to replace the header

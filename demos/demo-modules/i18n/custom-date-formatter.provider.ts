@@ -1,5 +1,5 @@
 import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';
-import { getISOWeek } from 'date-fns/esm';
+import getISOWeek from 'date-fns/esm/getISOWeek';
 import { DatePipe } from '@angular/common';
 
 export class CustomDateFormatter extends CalendarDateFormatter {

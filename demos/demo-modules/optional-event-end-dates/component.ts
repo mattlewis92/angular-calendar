@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { setHours, setMinutes } from 'date-fns/esm';
+import setHours from 'date-fns/esm/setHours';
+import setMinutes from 'date-fns/esm/setMinutes';
 import { colors } from '../demo-utils/colors';
 
 @Component({

@@ -20,17 +20,15 @@ import {
 } from 'calendar-utils';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import {
-  isSameDay,
-  setDate,
-  setMonth,
-  setYear,
-  getDate,
-  getMonth,
-  getYear,
-  differenceInSeconds,
-  addSeconds
-} from 'date-fns/esm';
+import isSameDay from 'date-fns/esm/isSameDay';
+import setDate from 'date-fns/esm/setDate';
+import setMonth from 'date-fns/esm/setMonth';
+import setYear from 'date-fns/esm/setYear';
+import getDate from 'date-fns/esm/getDate';
+import getMonth from 'date-fns/esm/getMonth';
+import getYear from 'date-fns/esm/getYear';
+import differenceInSeconds from 'date-fns/esm/differenceInSeconds';
+import addSeconds from 'date-fns/esm/addSeconds';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByIndex } from '../common/util';
@@ -152,7 +150,7 @@ export class CalendarMonthViewComponent
   /**
    * The start number of the week
    */
-  @Input() weekStartsOn: number;
+  @Input() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
   /**
    * A custom template to use to replace the header

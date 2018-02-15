@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { addDays } from 'date-fns/esm';
+import addDays from 'date-fns/esm/addDays';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent

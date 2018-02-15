@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { startOfDay } from 'date-fns/esm';
+import startOfDay from 'date-fns/esm/startOfDay';
 
 @Component({
   selector: 'my-app',
