@@ -1,6 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import { startOfDay } from 'date-fns/esm';
+import startOfDay from 'date-fns/esm/startOfDay';
 import { CalendarNativeDateFormatter } from './../src';
 
 describe('calendarNativeDateFormatter provider', () => {

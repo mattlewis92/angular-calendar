@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { startOfDay } from 'date-fns/esm';
+import startOfDay from 'date-fns/esm/startOfDay';
 
 /**
  * Change the view date to the current day. For example:

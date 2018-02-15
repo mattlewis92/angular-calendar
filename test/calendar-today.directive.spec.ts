@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import { startOfDay } from 'date-fns/esm';
+import startOfDay from 'date-fns/esm/startOfDay';
 import { CalendarModule } from '../src';
 
 @Component({
