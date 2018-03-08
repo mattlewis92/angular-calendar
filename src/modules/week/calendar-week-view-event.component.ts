@@ -19,7 +19,7 @@ import { WeekViewEvent } from 'calendar-utils';
       let-tooltipAppendToBody="tooltipAppendToBody">
       <div
         class="cal-event"
-        [style.backgroundColor]="weekEvent.event.color.secondary"
+        [style.backgroundColor]="weekEvent.event.color?.secondary"
         [mwlCalendarTooltip]="weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event"
         [tooltipPlacement]="tooltipPlacement"
         [tooltipEvent]="weekEvent.event"
