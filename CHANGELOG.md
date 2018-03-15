@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.7"></a>
+## [0.23.7](https://github.com/mattlewis92/angular-calendar/compare/v0.23.6...v0.23.7) (2018-03-15)
+
+
+### Bug Fixes
+
+* **day-view:** refresh the view when hourSegments changes ([f99a07b](https://github.com/mattlewis92/angular-calendar/commit/f99a07b)), closes [#470](https://github.com/mattlewis92/angular-calendar/issues/470)
+
+
+
 <a name="0.23.6"></a>
 ## [0.23.6](https://github.com/mattlewis92/angular-calendar/compare/v0.23.5...v0.23.6) (2018-02-12)
 
