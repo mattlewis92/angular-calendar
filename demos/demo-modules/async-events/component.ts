@@ -2,17 +2,17 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators/map';
 import { CalendarEvent } from 'angular-calendar';
-import {
-  isSameMonth,
-  isSameDay,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
-  startOfDay,
-  endOfDay,
-  format
-} from 'date-fns';
+
+import isSameMonth from 'date-fns/esm/isSameMonth';
+import isSameDay from 'date-fns/esm/isSameDay';
+import startOfMonth from 'date-fns/esm/startOfMonth';
+import endOfMonth from 'date-fns/esm/endOfMonth';
+import startOfWeek from 'date-fns/esm/startOfWeek';
+import endOfWeek from 'date-fns/esm/endOfWeek';
+import startOfDay from 'date-fns/esm/startOfDay';
+import endOfDay from 'date-fns/esm/endOfDay';
+import format from 'date-fns/esm/format';
+
 import { Observable } from 'rxjs/Observable';
 import { colors } from '../demo-utils/colors';
 

@@ -1,13 +1,11 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import {
-  getMonth,
-  startOfMonth,
-  startOfWeek,
-  startOfDay,
-  endOfMonth,
-  endOfWeek,
-  endOfDay
-} from 'date-fns';
+import getMonth from 'date-fns/esm/getMonth';
+import startOfMonth from 'date-fns/esm/startOfMonth';
+import startOfWeek from 'date-fns/esm/startOfWeek';
+import startOfDay from 'date-fns/esm/startOfDay';
+import endOfMonth from 'date-fns/esm/endOfMonth';
+import endOfWeek from 'date-fns/esm/endOfWeek';
+import endOfDay from 'date-fns/esm/endOfDay';
 import RRule from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';

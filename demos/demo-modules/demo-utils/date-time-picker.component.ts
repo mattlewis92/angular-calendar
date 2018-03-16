@@ -1,18 +1,17 @@
 import { ChangeDetectorRef, Component, forwardRef, Input } from '@angular/core';
-import {
-  getSeconds,
-  getMinutes,
-  getHours,
-  getDate,
-  getMonth,
-  getYear,
-  setSeconds,
-  setMinutes,
-  setHours,
-  setDate,
-  setMonth,
-  setYear
-} from 'date-fns';
+
+import getSeconds from 'date-fns/esm/getSeconds';
+import getMinutes from 'date-fns/esm/getMinutes';
+import getHours from 'date-fns/esm/getHours';
+import getDate from 'date-fns/esm/getDate';
+import getMonth from 'date-fns/esm/getMonth';
+import getYear from 'date-fns/esm/getYear';
+import setSeconds from 'date-fns/esm/setSeconds';
+import setMinutes from 'date-fns/esm/setMinutes';
+import setHours from 'date-fns/esm/setHours';
+import setDate from 'date-fns/esm/setDate';
+import setMonth from 'date-fns/esm/setMonth';
+import setYear from 'date-fns/esm/setYear';
 import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 

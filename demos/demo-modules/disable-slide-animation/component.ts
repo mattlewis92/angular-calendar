@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { isSameDay, isSameMonth } from 'date-fns';
+import isSameDay from 'date-fns/esm/isSameDay';
+import isSameMonth from 'date-fns/esm/isSameMonth';
 import { colors } from '../demo-utils/colors';
 
 @Component({

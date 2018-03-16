@@ -4,16 +4,14 @@ import {
   ViewChild,
   TemplateRef
 } from '@angular/core';
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours
-} from 'date-fns';
+import startOfDay from 'date-fns/esm/startOfDay';
+import endOfDay from 'date-fns/esm/endOfDay';
+import subDays from 'date-fns/esm/subDays';
+import addDays from 'date-fns/esm/addDays';
+import endOfMonth from 'date-fns/esm/endOfMonth';
+import isSameDay from 'date-fns/esm/isSameDay';
+import isSameMonth from 'date-fns/esm/isSameMonth';
+import addHours from 'date-fns/esm/addHours';
 import { Subject } from 'rxjs/Subject';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {

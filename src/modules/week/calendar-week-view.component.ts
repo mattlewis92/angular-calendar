@@ -21,7 +21,7 @@ import {
   ViewPeriod
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
-import addDays from 'date-fns/add_days/index';
+import addDays from 'date-fns/esm/addDays';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
@@ -143,7 +143,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The start number of the week
    */
-  @Input() weekStartsOn: number;
+  @Input() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
   /**
    * A custom template to use to replace the header

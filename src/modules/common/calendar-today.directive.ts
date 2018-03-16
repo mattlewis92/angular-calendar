@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import startOfToday from 'date-fns/start_of_today/index';
+import startOfDay from 'date-fns/esm/startOfDay';
 
 /**
  * Change the view date to the current day. For example:
@@ -37,6 +37,6 @@ export class CalendarTodayDirective {
    */
   @HostListener('click')
   onClick(): void {
-    this.viewDateChange.emit(startOfToday());
+    this.viewDateChange.emit(startOfDay(Date.now()));
   }
 }
