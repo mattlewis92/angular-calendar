@@ -112,13 +112,13 @@ describe('calendarWeekView component', () => {
       fixture.nativeElement.querySelector('.cal-event')
     );
     expect(computedStyles.getPropertyValue('background-color')).to.equal(
-      'rgb(0, 98, 204)'
+      'rgb(209, 232, 255)'
     );
     expect(computedStyles.getPropertyValue('border-color')).to.equal(
-      'rgb(0, 92, 191)'
+      'rgb(30, 144, 255)'
     );
     expect(computedStyles.getPropertyValue('color')).to.equal(
-      'rgb(255, 255, 255)'
+      'rgb(30, 144, 255)'
     );
     fixture.destroy();
   });
