@@ -48,7 +48,6 @@
   }
 
   .cal-event {
-    border: solid 1px;
     padding: 5px;
     font-size: 12px;
     overflow: hidden;
@@ -56,6 +55,13 @@
     white-space: nowrap;
     height: 100%;
     box-sizing: border-box;
+    background-color: #D1E8FF;
+    border: 1px solid #1e90ff;
+    color: #1e90ff;
+  }
+
+  .cal-event-title:link {
+    color: currentColor;
   }
 
   .cal-draggable {

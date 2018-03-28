@@ -19,8 +19,8 @@ import { DayViewEvent } from 'calendar-utils';
       let-tooltipAppendToBody="tooltipAppendToBody">
       <div
         class="cal-event"
-        [style.backgroundColor]="dayEvent.event.color.secondary"
-        [style.borderColor]="dayEvent.event.color.primary"
+        [style.backgroundColor]="dayEvent.event.color?.secondary"
+        [style.borderColor]="dayEvent.event.color?.primary"
         [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:'dayTooltip':dayEvent.event"
         [tooltipPlacement]="tooltipPlacement"
         [tooltipEvent]="dayEvent.event"

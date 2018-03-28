@@ -97,6 +97,13 @@
     border-radius: 50%;
     display: inline-block;
     margin: 2px;
+    background-color: #1e90ff;
+    border-color: #D1E8FF;
+    color: #fff;
+  }
+
+  .cal-event-title:link {
+    color: currentColor;
   }
 
   .cal-day-cell.cal-in-month.cal-has-events {
@@ -134,10 +141,6 @@
   .cal-open-day-events .cal-event {
     position: relative;
     top: 2px;
-  }
-
-  .cal-event-title {
-    color: white;
   }
 
   .cal-out-month {
