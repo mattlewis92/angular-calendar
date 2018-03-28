@@ -102,6 +102,10 @@
     color: #fff;
   }
 
+  .cal-event-title:link {
+    color: currentColor;
+  }
+
   .cal-day-cell.cal-in-month.cal-has-events {
     cursor: pointer;
   }
