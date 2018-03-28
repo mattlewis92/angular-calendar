@@ -9,7 +9,7 @@
     "build:package": "ng-packagr -p package.json",
     "build:dist": "npm run build:package && npm run build:ngc && npm run build:styles && npm run copyfiles",
     "build:styles": "node-sass src/angular-calendar.scss | postcss --output dist/css/angular-calendar.css",
-    "build:clean": "rm -rf dist",
+    "build:clean": "rm -rf dist dist.tgz",
     "test": "karma start --single-run && npm run build:dist && npm run build:clean",
     "test:watch": "karma start --auto-watch",
     "commit": "git-cz",
@@ -51,7 +51,15 @@
         "date-fns/add_seconds/index": "dateFns.addSeconds",
         "date-fns/add_minutes/index": "dateFns.addMinutes"
       }
-    }
+    },
+    "whitelistedNonPeerDependencies": [
+      "tslib",
+      "angular-draggable-droppable",
+      "angular-resizable-element",
+      "calendar-utils",
+      "date-fns",
+      "positioning"
+    ]
   },
   "lint-staged": {
     "{demos,src,test}/**/*.ts": [
