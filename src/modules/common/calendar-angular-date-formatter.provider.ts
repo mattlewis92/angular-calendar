@@ -14,28 +14,28 @@ export class CalendarAngularDateFormatter
    * The month view header week day labels
    */
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'EEEE', locale);
+    return new DatePipe(locale).transform(date, 'EEEE', null, locale);
   }
 
   /**
    * The month view cell day number
    */
   public monthViewDayNumber({ date, locale }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'd', locale);
+    return new DatePipe(locale).transform(date, 'd', null, locale);
   }
 
   /**
    * The month view title
    */
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'MMMM y', locale);
+    return new DatePipe(locale).transform(date, 'MMMM y', null, locale);
   }
 
   /**
    * The week view header week day labels
    */
   public weekViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'EEEE', locale);
+    return new DatePipe(locale).transform(date, 'EEEE', null, locale);
   }
 
   /**
@@ -45,14 +45,19 @@ export class CalendarAngularDateFormatter
     date,
     locale
   }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'MMM d', locale);
+    return new DatePipe(locale).transform(date, 'MMM d', null, locale);
   }
 
   /**
    * The week view title
    */
   public weekViewTitle({ date, locale }: DateFormatterParams): string {
-    const year: string = new DatePipe(locale).transform(date, 'y', locale);
+    const year: string = new DatePipe(locale).transform(
+      date,
+      'y',
+      null,
+      locale
+    );
     const weekNumber: number = getISOWeek(date);
     return `Week ${weekNumber} of ${year}`;
   }
@@ -61,13 +66,18 @@ export class CalendarAngularDateFormatter
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'h a', locale);
+    return new DatePipe(locale).transform(date, 'h a', null, locale);
   }
 
   /**
    * The day view title
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
-    return new DatePipe(locale).transform(date, 'EEEE, MMMM d, y', locale);
+    return new DatePipe(locale).transform(
+      date,
+      'EEEE, MMMM d, y',
+      null,
+      locale
+    );
   }
 }
