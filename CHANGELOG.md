@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.24.0"></a>
+# [0.24.0](https://github.com/mattlewis92/angular-calendar/compare/v0.23.7...v0.24.0) (2018-04-17)
+
+
+### Bug Fixes
+
+* use the browsers timezone in the angular date formatter ([41fa40b](https://github.com/mattlewis92/angular-calendar/commit/41fa40b)), closes [#502](https://github.com/mattlewis92/angular-calendar/issues/502)
+
+
+### Features
+
+* make event colors optional ([4f9ed24](https://github.com/mattlewis92/angular-calendar/commit/4f9ed24)), closes [#468](https://github.com/mattlewis92/angular-calendar/issues/468)
+
+
+
 <a name="0.23.7"></a>
 ## [0.23.7](https://github.com/mattlewis92/angular-calendar/compare/v0.23.6...v0.23.7) (2018-03-15)
 
