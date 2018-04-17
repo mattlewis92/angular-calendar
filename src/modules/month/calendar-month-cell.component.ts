@@ -30,7 +30,7 @@ import { trackByEventId } from '../common/util';
         <div
           class="cal-event"
           *ngFor="let event of day.events; trackBy:trackByEventId"
-          [style.backgroundColor]="event.color.primary"
+          [style.backgroundColor]="event.color?.primary"
           [ngClass]="event?.cssClass"
           (mouseenter)="highlightDay.emit({event: event})"
           (mouseleave)="unhighlightDay.emit({event: event})"

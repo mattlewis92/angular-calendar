@@ -16,8 +16,8 @@ import { CalendarEvent } from 'calendar-utils';
       let-eventClicked="eventClicked">
       <div
         class="cal-all-day-event"
-        [style.backgroundColor]="event.color.secondary"
-        [style.borderColor]="event.color.primary">
+        [style.backgroundColor]="event.color?.secondary"
+        [style.borderColor]="event.color?.primary">
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
         <mwl-calendar-event-title
           [event]="event"

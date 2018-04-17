@@ -28,8 +28,7 @@ export class DemoComponent {
     {
       start: new Date('2016-01-01'),
       end: new Date('2016-01-09'),
-      title: 'Multiple weeks event',
-      color: colors.blue
+      title: 'Multiple weeks event'
     }
   ];
 

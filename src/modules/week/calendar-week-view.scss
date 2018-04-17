@@ -44,6 +44,13 @@
     margin-right: 2px;
     height: 30px;
     line-height: 30px;
+    background-color: #D1E8FF;
+    border: 1px solid #1e90ff;
+    color: #1e90ff;
+  }
+
+  .cal-event-title:link {
+    color: currentColor;
   }
 
   .cal-draggable {

@@ -312,7 +312,8 @@ export class CalendarMonthViewComponent
   toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
     this.view.days.forEach(day => {
       if (isHighlighted && day.events.indexOf(event) > -1) {
-        day.backgroundColor = event.color.secondary;
+        day.backgroundColor =
+          (event.color && event.color.secondary) || '#D1E8FF';
       } else {
         delete day.backgroundColor;
       }

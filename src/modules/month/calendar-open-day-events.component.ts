@@ -24,7 +24,7 @@ import { trackByEventId } from '../common/util';
         [dragAxis]="{x: event.draggable, y: event.draggable}">
         <span
           class="cal-event"
-          [style.backgroundColor]="event.color.primary">
+          [style.backgroundColor]="event.color?.primary">
         </span>
         <mwl-calendar-event-title
           [event]="event"

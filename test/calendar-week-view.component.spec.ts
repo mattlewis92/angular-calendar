@@ -92,6 +92,37 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
+  it('should generate the week view with default colors for events', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo'
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+
+    const computedStyles: CSSStyleDeclaration = window.getComputedStyle(
+      fixture.nativeElement.querySelector('.cal-event')
+    );
+    expect(computedStyles.getPropertyValue('background-color')).to.equal(
+      'rgb(209, 232, 255)'
+    );
+    expect(computedStyles.getPropertyValue('border-color')).to.equal(
+      'rgb(30, 144, 255)'
+    );
+    expect(computedStyles.getPropertyValue('color')).to.equal(
+      'rgb(30, 144, 255)'
+    );
+    fixture.destroy();
+  });
+
   it('should emit on the dayHeaderClicked output', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
