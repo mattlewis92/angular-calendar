@@ -115,7 +115,6 @@
     "@types/chai": "^4.1.2",
     "@types/mocha": "^5.0.0",
     "@types/node": "^9.6.5",
-    "@types/rrule": "^2.1.7",
     "@types/sinon": "^4.3.1",
     "@types/sinon-chai": "^2.7.29",
     "@types/webpack": "^3.8.11",
