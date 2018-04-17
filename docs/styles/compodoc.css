@@ -62,6 +62,10 @@ h6 {
     font-size: 16px;
 }
 
+a[href] {
+    cursor: pointer;
+}
+
 /**
  * Mobile navbar
  */
@@ -157,10 +161,10 @@ h6 {
     height: 100%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    width: calc(100% - 300px);
+    width: calc(100% - 320px);
     position: absolute;
     top: 0;
-    left: 300px;
+    left: 320px;
     padding: 15px 30px;
 }
 
@@ -195,6 +199,13 @@ h6 {
 
 .fa-long-arrow-down {
     margin-right: 16px;
+}
+
+.fa-file-text-o {
+    margin-left: 2px;
+}
+.fa-file-text-o.fa-fw {
+    margin-left: -1px;
 }
 
 
@@ -249,7 +260,7 @@ h6 {
     border-right: 1px solid #e7e7e7;
     height: 100%;
     padding: 0;
-    width: 300px;
+    width: 320px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -287,13 +298,34 @@ h6 {
     padding-left: 20px;
 }
 
-.menu ul.list li.for-chapter {
+.menu ul.list li.for-chapter2 {
     padding-left: 20px;
 }
+
+.menu ul.list li.for-chapter3 {
+  padding-left: 40px;
+}
+
+.menu ul.list li.for-chapter4 {
+  padding-left: 60px;
+}
+
+.menu ul.list li.for-chapter5 {
+  padding-left: 80px;
+}
+
 
 .menu ul.list li.chapter .simple {
     padding: 10px 15px;
     position: relative;
+}
+
+.menu ul.list li.chapter .inner .simple {
+    padding-left: 35px;
+}
+
+.menu ul.list li.chapter .inner ul.links {
+    padding-left: 40px;
 }
 
 .menu .panel-group {
@@ -365,7 +397,7 @@ h6 {
 
 .breadcrumb {
     background: none;
-    padding-left: 0;
+    padding-left: 0 !important;
     margin-bottom: 10px;
     font-size: 24px;
     padding-top: 0;
@@ -511,6 +543,10 @@ code {
     padding-left: 20px;
 }
 
+example-url {
+    display: none;
+}
+
 i {
     font-style: italic;
 }
@@ -577,6 +613,12 @@ th[role=columnheader].statements:not(.no-sort):after {
     background: #4dc71f;
 }
 
+.content ol {
+    list-style-type: decimal;
+    margin-top: 0;
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
 .content ul {
     list-style: disc;
     margin-top: 0;
@@ -635,7 +677,16 @@ th[role=columnheader].statements:not(.no-sort):after {
     margin-right: 0;
 }
 
-/* Routes graph */
+/**
+ * Modules
+ */
+.card-module {
+    min-hight: 323px
+}
+
+/**
+ * Routes graph
+ */
 
 .node text {
     font-size: 12px;
@@ -662,7 +713,9 @@ path.link {
     overflow: visible;
 }
 
-/* Miscellaneous */
+/**
+ * Miscellaneous
+ */
 
 .content.miscellaneous h2 {
     margin-bottom: 20px;
@@ -788,4 +841,16 @@ ul.index-list {
     right: 5px;
     top: 0;
     cursor: pointer;
+}
+
+/**
+ * Dependencies
+ */
+
+.package-dependencies ul {
+    list-style: none;
+    margin: 0;
+}
+.package-dependencies li {
+    margin: 5px 0;
 }
