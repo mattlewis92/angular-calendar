@@ -19,8 +19,7 @@ import {
   DayViewEvent,
   ViewPeriod
 } from 'calendar-utils';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject, Subscription } from 'rxjs';
 import { ResizeEvent } from 'angular-resizable-element';
 import addMinutes from 'date-fns/add_minutes/index';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';

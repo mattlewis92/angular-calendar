@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { map } from 'rxjs/operators/map';
-import { take } from 'rxjs/operators/take';
-import { filter } from 'rxjs/operators/filter';
+import { map, take, filter } from 'rxjs/operators';
 import { Plunker } from 'create-plunker';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 

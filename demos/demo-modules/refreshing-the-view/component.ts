@@ -4,7 +4,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 const RED_CELL: 'red-cell' = 'red-cell';
 const BLUE_CELL: 'blue-cell' = 'blue-cell';

@@ -3,8 +3,7 @@ import {
   CalendarEvent,
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
-import { Subject } from 'rxjs/Subject';
-import { addDays, differenceInDays, startOfDay } from 'date-fns';
+import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
 
 @Component({

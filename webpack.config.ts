@@ -129,7 +129,7 @@ export default (env = 'development') => {
         })
       ),
       new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)esm5/,
+        /angular(\\|\/)core(\\|\/)fesm5/,
         __dirname + '/demos'
       ),
       new HtmlWebpackPlugin({

@@ -18,8 +18,7 @@ import {
   MonthViewDay,
   ViewPeriod
 } from 'calendar-utils';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject, Subscription } from 'rxjs';
 import isSameDay from 'date-fns/is_same_day/index';
 import setDate from 'date-fns/set_date/index';
 import setMonth from 'date-fns/set_month/index';
