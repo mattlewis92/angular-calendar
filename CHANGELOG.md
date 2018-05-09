@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.24.1"></a>
+## [0.24.1](https://github.com/mattlewis92/angular-calendar/compare/v0.24.0...v0.24.1) (2018-05-09)
+
+
+### Bug Fixes
+
+* **day-view:** prevent selection when dragging cal-event ([#521](https://github.com/mattlewis92/angular-calendar/issues/521)) ([f799bf5](https://github.com/mattlewis92/angular-calendar/commit/f799bf5)), closes [#522](https://github.com/mattlewis92/angular-calendar/issues/522)
+
+
+
 <a name="0.24.0"></a>
 # [0.24.0](https://github.com/mattlewis92/angular-calendar/compare/v0.23.7...v0.24.0) (2018-04-17)
 
