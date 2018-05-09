@@ -132,7 +132,8 @@ export default (env = 'development') => {
         __dirname + '/demos'
       ),
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, 'demos', 'index.ejs')
+        template: path.join(__dirname, 'demos', 'index.ejs'),
+        chunksSortMode: false
       }),
       ifProduction(new OfflinePlugin())
     ]),
