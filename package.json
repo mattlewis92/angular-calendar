@@ -22,9 +22,8 @@
     "release": "npm run release:git && npm run release:npm",
     "postrelease": "npm run build:clean && npm run gh-pages",
     "codecov": "cat coverage/lcov.info | codecov",
-    "prettier": "prettier --write",
     "commitmsg": "commitlint -e",
-    "precommit": "lint-staged"
+    "precommit": "pretty-quick --staged"
   },
   "ngPackage": {
     "lib": {
@@ -59,12 +58,6 @@
       "calendar-utils",
       "date-fns",
       "positioning"
-    ]
-  },
-  "lint-staged": {
-    "{demos,src,test}/**/*.ts": [
-      "npm run prettier",
-      "git add"
     ]
   },
   "config": {
@@ -147,7 +140,6 @@
     "karma-mocha-reporter": "^2.2.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.0",
-    "lint-staged": "^7.1.0",
     "mocha": "^5.1.1",
     "moment": "^2.22.1",
     "ng-packagr": "^2.4.4",
@@ -157,6 +149,7 @@
     "postcss-cli": "^5.0.0",
     "postcss-flexibility": "^2.0.0",
     "prettier": "^1.12.1",
+    "pretty-quick": "^1.4.1",
     "raw-loader": "^0.5.1",
     "rrule": "^2.2.9",
     "rxjs": "^5.5.10",
