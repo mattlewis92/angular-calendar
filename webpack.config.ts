@@ -12,7 +12,7 @@ export default (env = 'development') => {
   const { ifProduction, ifDevelopment } = getIfUtils(env);
 
   return {
-    devtool: ifProduction('source-map', 'eval'),
+    mode: env,
     entry: path.join(__dirname, 'demos', 'entry.ts'),
     output: {
       filename: ifProduction('[name]-[chunkhash].js', '[name].js')
@@ -79,6 +79,12 @@ export default (env = 'development') => {
         {
           test: /\.ejs$/,
           loader: 'ejs-compiled-loader'
+        },
+        {
+          test: /node_modules\/@angular\/core\/.+\/core\.js$/,
+          parser: {
+            system: true // disable `System.import() is deprecated and will be removed soon. Use import() instead.` warning
+          }
         }
       ])
     },
@@ -97,7 +103,7 @@ export default (env = 'development') => {
     },
     plugins: removeEmpty([
       new FilterWarningsPlugin({
-        exclude: /export '\w+' was not found in 'calendar-utils'/
+        exclude: /export '\w+'.* was not found in/
       }),
       ifDevelopment(
         new ForkTsCheckerWebpackPlugin({
@@ -106,7 +112,6 @@ export default (env = 'development') => {
         })
       ),
       ifDevelopment(new webpack.HotModuleReplacementPlugin()),
-      ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
       ifProduction(
         new AngularCompilerPlugin({
           tsConfigPath: './tsconfig-demos.json',
@@ -116,11 +121,6 @@ export default (env = 'development') => {
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env)
       }),
-      ifProduction(
-        new webpack.optimize.UglifyJsPlugin({
-          sourceMap: true
-        })
-      ),
       ifDevelopment(
         new StyleLintPlugin({
           syntax: 'scss',
@@ -131,15 +131,23 @@ export default (env = 'development') => {
         /angular(\\|\/)core(\\|\/)esm5/,
         __dirname + '/demos'
       ),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'main',
-        async: true,
-        minChunks: 2
-      }),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'demos', 'index.ejs')
       }),
       ifProduction(new OfflinePlugin())
-    ])
+    ]),
+    optimization: {
+      splitChunks: ifProduction(
+        {
+          chunks: 'all',
+          automaticNameDelimiter: '.'
+        },
+        false
+      ),
+      runtimeChunk: ifProduction(true, false),
+      noEmitOnErrors: ifProduction(true, false),
+      removeAvailableModules: ifProduction(true, false), // disable tree shaking in dev mode for faster rebuilds
+      removeEmptyChunks: ifProduction(true, false)
+    }
   };
 };

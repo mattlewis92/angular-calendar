@@ -23,6 +23,7 @@ export default config => {
     },
 
     webpack: {
+      mode: 'development',
       resolve: {
         extensions: ['.ts', '.js', '.json']
       },
@@ -62,6 +63,12 @@ export default config => {
             options: {
               esModules: true
             }
+          },
+          {
+            test: /node_modules\/@angular\/core\/.+\/core\.js$/,
+            parser: {
+              system: true // disable `System.import() is deprecated and will be removed soon. Use import() instead.` warning
+            }
           }
         ]
       },
@@ -72,7 +79,6 @@ export default config => {
         ...(config.singleRun
           ? [
               new WebpackKarmaDieHardPlugin(),
-              new webpack.NoEmitOnErrorsPlugin(),
               new StyleLintPlugin({
                 syntax: 'scss',
                 context: 'scss',
@@ -94,7 +100,10 @@ export default config => {
           /angular(\\|\/)core(\\|\/)esm5/,
           __dirname + '/src'
         )
-      ]
+      ],
+      optimization: {
+        noEmitOnErrors: config.singleRun
+      }
     },
 
     mochaReporter: {
