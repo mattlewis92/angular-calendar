@@ -15,6 +15,7 @@ export default (env = 'development') => {
     mode: env,
     entry: path.join(__dirname, 'demos', 'entry.ts'),
     output: {
+      path: __dirname,
       filename: ifProduction('[name]-[chunkhash].js', '[name].js')
     },
     module: {
