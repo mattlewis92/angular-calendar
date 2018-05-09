@@ -58,12 +58,7 @@
     background-color: #D1E8FF;
     border: 1px solid #1e90ff;
     color: #1e90ff;
-    -webkit-touch-callout: none;
-      -webkit-user-select: none;
-       -khtml-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
+    user-select: none;
   }
 
   .cal-event-title:link {
