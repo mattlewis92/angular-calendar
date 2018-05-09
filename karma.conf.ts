@@ -6,7 +6,6 @@ import * as WebpackKarmaDieHardPlugin from '@mattlewis92/webpack-karma-die-hard'
 
 export default config => {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: './',
 
@@ -15,9 +14,7 @@ export default config => {
     frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
-    files: [
-      'test/entry.ts'
-    ],
+    files: ['test/entry.ts'],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -30,57 +27,64 @@ export default config => {
         extensions: ['.ts', '.js', '.json']
       },
       module: {
-        rules: [{
-          enforce: 'pre',
-          test: /\.ts$/,
-          loader: 'tslint-loader',
-          exclude: /node_modules/,
-          options: {
-            emitErrors: config.singleRun,
-            failOnHint: config.singleRun
-          }
-        }, {
-          test: /\.ts$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/,
-          options: {
-            transpileOnly: !config.singleRun,
-            compilerOptions: {
-              module: 'esnext'
+        rules: [
+          {
+            enforce: 'pre',
+            test: /\.ts$/,
+            loader: 'tslint-loader',
+            exclude: /node_modules/,
+            options: {
+              emitErrors: config.singleRun,
+              failOnHint: config.singleRun
+            }
+          },
+          {
+            test: /\.ts$/,
+            loader: 'ts-loader',
+            exclude: /node_modules/,
+            options: {
+              transpileOnly: !config.singleRun,
+              compilerOptions: {
+                module: 'esnext'
+              }
+            }
+          },
+          {
+            test: /\.scss$/,
+            loader: 'style-loader!css-loader!sass-loader',
+            exclude: /node_modules/
+          },
+          {
+            enforce: 'post',
+            test: /src\/.+\.ts$/,
+            exclude: /(node_modules|\.spec\.ts$|\.interface\.ts$)/,
+            loader: 'istanbul-instrumenter-loader',
+            options: {
+              esModules: true
             }
           }
-        }, {
-          test: /\.scss$/,
-          loader: 'style-loader!css-loader!sass-loader',
-          exclude: /node_modules/
-        }, {
-          enforce: 'post',
-          test: /src\/.+\.ts$/,
-          exclude: /(node_modules|\.spec\.ts$|\.interface\.ts$)/,
-          loader: 'istanbul-instrumenter-loader',
-          options: {
-            esModules: true
-          }
-        }]
+        ]
       },
       plugins: [
         new FilterWarningsPlugin({
           exclude: /export '\w+' was not found in 'calendar-utils'/
         }),
-        ...(config.singleRun ? [
-          new WebpackKarmaDieHardPlugin(),
-          new webpack.NoEmitOnErrorsPlugin(),
-          new StyleLintPlugin({
-            syntax: 'scss',
-            context: 'scss',
-            failOnError: true
-          })
-        ] : [
-          new ForkTsCheckerWebpackPlugin({
-            watch: ['./src', './test'],
-            formatter: 'codeframe'
-          })
-        ]),
+        ...(config.singleRun
+          ? [
+              new WebpackKarmaDieHardPlugin(),
+              new webpack.NoEmitOnErrorsPlugin(),
+              new StyleLintPlugin({
+                syntax: 'scss',
+                context: 'scss',
+                failOnError: true
+              })
+            ]
+          : [
+              new ForkTsCheckerWebpackPlugin({
+                watch: ['./src', './test'],
+                formatter: 'codeframe'
+              })
+            ]),
         new webpack.SourceMapDevToolPlugin({
           filename: null,
           columns: false,

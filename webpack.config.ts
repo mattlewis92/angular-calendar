@@ -9,7 +9,6 @@ import * as OfflinePlugin from 'offline-plugin';
 import * as FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 
 export default (env = 'development') => {
-
   const { ifProduction, ifDevelopment } = getIfUtils(env);
 
   return {
@@ -19,53 +18,69 @@ export default (env = 'development') => {
       filename: ifProduction('[name]-[chunkhash].js', '[name].js')
     },
     module: {
-      rules: removeEmpty([ifDevelopment({
-        enforce: 'pre',
-        test: /\.ts$/,
-        loader: 'tslint-loader',
-        exclude: /node_modules/
-      }), ifDevelopment({
-        test: /\.ts$/,
-        use: [{
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true,
-            compilerOptions: {
-              module: 'esnext'
-            }
+      rules: removeEmpty([
+        ifDevelopment({
+          enforce: 'pre',
+          test: /\.ts$/,
+          loader: 'tslint-loader',
+          exclude: /node_modules/
+        }),
+        ifDevelopment(
+          {
+            test: /\.ts$/,
+            use: [
+              {
+                loader: 'ts-loader',
+                options: {
+                  transpileOnly: true,
+                  compilerOptions: {
+                    module: 'esnext'
+                  }
+                }
+              },
+              {
+                loader: 'angular2-template-loader'
+              },
+              {
+                loader: 'angular-router-loader'
+              }
+            ],
+            exclude: /node_modules/
+          },
+          {
+            test: /\.ts$/,
+            loader: '@ngtools/webpack'
           }
-        }, {
-          loader: 'angular2-template-loader'
-        }, {
-          loader: 'angular-router-loader'
-        }],
-        exclude: /node_modules/
-      }, {
-        test: /\.ts$/,
-        loader: '@ngtools/webpack'
-      }), {
-        test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
-      }, {
-        test: /(node_modules).+\.css$/,
-        loader: 'style-loader!css-loader'
-      }, {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          mimetype: 'application/font-woff'
+        ),
+        {
+          test: /\.scss$/,
+          loader: 'style-loader!css-loader!sass-loader'
+        },
+        {
+          test: /(node_modules).+\.css$/,
+          loader: 'style-loader!css-loader'
+        },
+        {
+          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/font-woff'
+          }
+        },
+        {
+          test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'file-loader'
+        },
+        {
+          test: /demos[\/\\].+\.(css|html)$/,
+          loader: 'raw-loader'
+        },
+        {
+          test: /\.ejs$/,
+          loader: 'ejs-compiled-loader'
         }
-      }, {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
-      }, {
-        test: /demos[\/\\].+\.(css|html)$/,
-        loader: 'raw-loader'
-      }, {
-        test: /\.ejs$/,
-        loader: 'ejs-compiled-loader'
-      }])
+      ])
     },
     resolve: {
       extensions: ['.ts', '.js'],
@@ -84,26 +99,34 @@ export default (env = 'development') => {
       new FilterWarningsPlugin({
         exclude: /export '\w+' was not found in 'calendar-utils'/
       }),
-      ifDevelopment(new ForkTsCheckerWebpackPlugin({
-        watch: ['./src', './demos'],
-        formatter: 'codeframe'
-      })),
+      ifDevelopment(
+        new ForkTsCheckerWebpackPlugin({
+          watch: ['./src', './demos'],
+          formatter: 'codeframe'
+        })
+      ),
       ifDevelopment(new webpack.HotModuleReplacementPlugin()),
       ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
-      ifProduction(new AngularCompilerPlugin({
-        tsConfigPath: './tsconfig-demos.json',
-        sourceMap: true
-      })),
+      ifProduction(
+        new AngularCompilerPlugin({
+          tsConfigPath: './tsconfig-demos.json',
+          sourceMap: true
+        })
+      ),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env)
       }),
-      ifProduction(new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true
-      })),
-      ifDevelopment(new StyleLintPlugin({
-        syntax: 'scss',
-        context: 'scss'
-      })),
+      ifProduction(
+        new webpack.optimize.UglifyJsPlugin({
+          sourceMap: true
+        })
+      ),
+      ifDevelopment(
+        new StyleLintPlugin({
+          syntax: 'scss',
+          context: 'scss'
+        })
+      ),
       new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)esm5/,
         __dirname + '/demos'
@@ -118,5 +141,5 @@ export default (env = 'development') => {
       }),
       ifProduction(new OfflinePlugin())
     ])
-  }
+  };
 };
