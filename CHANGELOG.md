@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.25.0"></a>
+# [0.25.0](https://github.com/mattlewis92/angular-calendar/compare/v0.24.1...v0.25.0) (2018-05-11)
+
+
+### Bug Fixes
+
+* adjust event title margins for angular 6 ([a29883a](https://github.com/mattlewis92/angular-calendar/commit/a29883a))
+* proper fix for preserveWhitespaces being false ([73d00c0](https://github.com/mattlewis92/angular-calendar/commit/73d00c0))
+
+
+### Features
+
+* upgrade to angular 6 ([71091ab](https://github.com/mattlewis92/angular-calendar/commit/71091ab)), closes [#512](https://github.com/mattlewis92/angular-calendar/issues/512)
+
+
+### BREAKING CHANGES
+
+* angular 6 or higher is now required to use this package
+
+
+
 <a name="0.24.1"></a>
 ## [0.24.1](https://github.com/mattlewis92/angular-calendar/compare/v0.24.0...v0.24.1) (2018-05-09)
 

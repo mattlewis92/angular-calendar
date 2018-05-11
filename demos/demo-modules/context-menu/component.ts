@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
 
 @Component({

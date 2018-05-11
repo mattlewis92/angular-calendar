@@ -11,7 +11,7 @@
   }
 
   /* stylelint-disable-next-line selector-type-no-unknown */
-  mwl-calendar-day-view-hour-segment, // fix for https://github.com/mattlewis92/angular-calendar/issues/260
+  mwl-calendar-day-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
   .cal-hour-segment {
     display: block;
   }
@@ -55,7 +55,7 @@
     white-space: nowrap;
     height: 100%;
     box-sizing: border-box;
-    background-color: #D1E8FF;
+    background-color: #d1e8ff;
     border: 1px solid #1e90ff;
     color: #1e90ff;
     user-select: none;

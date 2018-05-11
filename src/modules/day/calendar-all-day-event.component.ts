@@ -19,6 +19,7 @@ import { CalendarEvent } from 'calendar-utils';
         [style.backgroundColor]="event.color?.secondary"
         [style.borderColor]="event.color?.primary">
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
+        &ngsp;
         <mwl-calendar-event-title
           [event]="event"
           [customTemplate]="eventTitleTemplate"

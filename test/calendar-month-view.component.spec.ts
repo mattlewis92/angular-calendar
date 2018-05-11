@@ -22,9 +22,9 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarMonthViewComponent
 } from './../src';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
-import { take } from 'rxjs/operators/take';
+import { take } from 'rxjs/operators';
 import { CalendarMonthViewEventTimesChangedEvent } from '../src/modules/month';
 
 describe('calendarMonthView component', () => {

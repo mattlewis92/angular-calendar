@@ -1,4 +1,4 @@
-# angular 5.0+ calendar
+# angular 6.0+ calendar
 
 [![Build Status](https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-calendar)
 [![codecov](https://codecov.io/gh/mattlewis92/angular-calendar/branch/master/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-calendar)
@@ -27,7 +27,7 @@ https://mattlewis92.github.io/angular-calendar/
 
 ## About
 
-A calendar component for Angular 5.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
+A calendar component for Angular 6.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
 ## Getting started
 
@@ -37,10 +37,11 @@ First install through npm:
 npm install --save angular-calendar
 ```
 
-Next include the CSS file somewhere into your app:
+Next include the CSS file in the global (not component scoped) styles of your app:
 
 ```
-node_modules/angular-calendar/css/angular-calendar.css
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 ```
 
 Finally import the calendar module into your apps module:
@@ -80,11 +81,15 @@ Yes.
 
 ### Does this library work with angular 2.x?
 
-The last version of this library that supports 2.x is `0.9.1`. However the upgrade from angular 2.x to 4.x is just a matter of [changing the dependencies in your package.json](https://github.com/mattlewis92/angular2-tv-tracker/commit/9439e3cec40293b2a86bc2222f610ee6ad4b5229) and [adding the `angular/animations` module](https://github.com/mattlewis92/angular2-tv-tracker/commit/9fe0e3158290c2612d20e4c0f54d2204fb70791e)
+The last version of this library that supports 2.x is `0.9.1`.
 
 ### Does this library work with angular 4.x?
 
 The last version of this library that supports 4.x is `0.22.3`.
+
+### Does this library work with angular 5.x?
+
+The last version of this library that supports 5.x is `0.24.1`.
 
 ### How do I use this with my favourite module bundler?
 

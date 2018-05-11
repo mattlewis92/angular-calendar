@@ -20,10 +20,10 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarDayViewComponent
 } from './../src';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
-import { take } from 'rxjs/operators/take';
+import { take } from 'rxjs/operators';
 
 describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
@@ -103,62 +103,56 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
   });
 
-  it(
-    'should call the event clicked callback',
-    async(() => {
-      const fixture: ComponentFixture<
-        CalendarDayViewComponent
-      > = TestBed.createComponent(CalendarDayViewComponent);
-      fixture.componentInstance.viewDate = new Date('2016-06-29');
-      fixture.componentInstance.events = [
-        {
-          start: new Date('2016-06-29'),
-          title: 'foo',
-          color: {
-            primary: '',
-            secondary: ''
-          }
+  it('should call the event clicked callback', async(() => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-06-29'),
+        title: 'foo',
+        color: {
+          primary: '',
+          secondary: ''
         }
-      ];
-      fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
-      fixture.detectChanges();
-      fixture.componentInstance.eventClicked.subscribe(val => {
-        expect(val).to.deep.equal({
-          event: fixture.componentInstance.events[0]
-        });
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    fixture.componentInstance.eventClicked.subscribe(val => {
+      expect(val).to.deep.equal({
+        event: fixture.componentInstance.events[0]
       });
-      fixture.nativeElement.querySelector('.cal-event a').click();
-    })
-  );
+    });
+    fixture.nativeElement.querySelector('.cal-event a').click();
+  }));
 
-  it(
-    'should call the event clicked callback on all day events',
-    async(() => {
-      const fixture: ComponentFixture<
-        CalendarDayViewComponent
-      > = TestBed.createComponent(CalendarDayViewComponent);
-      fixture.componentInstance.viewDate = new Date('2016-06-29');
-      fixture.componentInstance.events = [
-        {
-          start: new Date('2016-06-29'),
-          title: 'foo',
-          allDay: true,
-          color: {
-            primary: '',
-            secondary: ''
-          }
+  it('should call the event clicked callback on all day events', async(() => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-06-29'),
+        title: 'foo',
+        allDay: true,
+        color: {
+          primary: '',
+          secondary: ''
         }
-      ];
-      fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
-      fixture.detectChanges();
-      fixture.componentInstance.eventClicked.subscribe(val => {
-        expect(val).to.deep.equal({
-          event: fixture.componentInstance.events[0]
-        });
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    fixture.componentInstance.eventClicked.subscribe(val => {
+      expect(val).to.deep.equal({
+        event: fixture.componentInstance.events[0]
       });
-      fixture.nativeElement.querySelector('mwl-calendar-event-title a').click();
-    })
-  );
+    });
+    fixture.nativeElement.querySelector('mwl-calendar-event-title a').click();
+  }));
 
   it('should add a custom CSS class to events', () => {
     const fixture: ComponentFixture<

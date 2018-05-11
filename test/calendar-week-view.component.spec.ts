@@ -19,10 +19,10 @@ import {
   CalendarWeekViewComponent
 } from '../src';
 import { DragAndDropModule } from 'angular-draggable-droppable';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
-import { take } from 'rxjs/operators/take';
+import { take } from 'rxjs/operators';
 
 describe('calendarWeekView component', () => {
   beforeEach(() => {
