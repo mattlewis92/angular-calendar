@@ -98,15 +98,12 @@
     display: inline-block;
     margin: 2px;
     background-color: #1e90ff;
-    border-color: #d1e8ff;
+    border-color: #D1E8FF;
     color: #fff;
   }
 
-  .cal-event-title {
-    margin: 0 4px;
-    &:link {
-      color: currentColor;
-    }
+  .cal-event-title:link {
+    color: currentColor;
   }
 
   .cal-day-cell.cal-in-month.cal-has-events {
