@@ -37,10 +37,11 @@ First install through npm:
 npm install --save angular-calendar
 ```
 
-Next include the CSS file somewhere into your app:
+Next include the CSS file in the global (not component scoped) styles of your app:
 
 ```
-node_modules/angular-calendar/css/angular-calendar.css
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 ```
 
 Finally import the calendar module into your apps module:
