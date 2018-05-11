@@ -78,10 +78,6 @@ export default (env = 'development') => {
           loader: 'raw-loader'
         },
         {
-          test: /\.ejs$/,
-          loader: 'ejs-compiled-loader'
-        },
-        {
           test: /node_modules\/@angular\/core\/.+\/core\.js$/,
           parser: {
             system: true // disable `System.import() is deprecated and will be removed soon. Use import() instead.` warning

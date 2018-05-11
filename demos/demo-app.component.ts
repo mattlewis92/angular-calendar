@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
-import { Plunker } from 'create-plunker';
+import StackBlitzSDK from '@stackblitz/sdk';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
 interface Source {
@@ -122,66 +122,93 @@ export class DemoAppComponent implements OnInit {
       });
   }
 
-  editInPlunker(demo: Demo): void {
-    Plunker.create()
-      .addIndexHeadLine(`<title>${demo.label}</title>`)
-      .addNpmPackage('bootstrap', {
-        version: dependencyVersions.bootstrap,
-        filename: 'dist/css/bootstrap.min.css'
-      })
-      .addNpmPackage('font-awesome', {
-        version: dependencyVersions.fontAwesome,
-        filename: 'css/font-awesome.css'
-      })
-      .addNpmPackage('angular-calendar', {
-        version: dependencyVersions.angularCalendar,
-        filename: 'css/angular-calendar.css'
-      })
-      .addNpmPackage('zone.js', { version: dependencyVersions.zoneJs })
-      .addNpmPackage('zone.js', {
-        version: dependencyVersions.zoneJs,
-        filename: 'dist/long-stack-trace-zone.js'
-      })
-      .addNpmPackage('reflect-metadata', {
-        version: dependencyVersions.reflectMetadata
-      })
-      .addNpmPackage('systemjs', {
-        version: '0.19',
-        filename: 'dist/system.js'
-      })
-      .addFile({
-        name: 'config.js',
-        contents: require('./plunker-assets/plunker-system-config.ejs')({
-          dependencyVersions
-        })
-      })
-      .addInlineScript(
-        `System.import('app').catch(console.error.bind(console));`
-      )
-      .setIndexBody('<mwl-demo-component>Loading...</mwl-demo-component>')
-      .addFiles(
-        demoUtilsSources.map(source => ({
-          name: `demo-utils/${source.filename}`,
-          contents: source.contents.raw
-        }))
-      )
-      .addFiles(
-        demo.sources.map(source => {
-          return {
-            name: `demo/${source.filename}`,
-            // hacky fix to get relative style and template urls to work with system.js
-            contents: source.contents.raw.replace(
-              /@Component\({/g,
-              '@Component({\n  moduleId: __moduleName,'
-            )
-          };
-        }),
-        true
-      )
-      .addFile({
-        name: 'bootstrap.ts',
-        contents: require('./plunker-assets/plunker-bootstrap.ejs')()
-      })
-      .save();
+  editInStackblitz(demo: Demo): void {
+    const files: {
+      [path: string]: string;
+    } = {
+      'index.html': `
+<link href="https://unpkg.com/bootstrap@${
+        dependencyVersions.bootstrap
+      }/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/font-awesome@${
+        dependencyVersions.fontAwesome
+      }/css/font-awesome.css" rel="stylesheet">
+<link href="https://unpkg.com/angular-calendar@${
+        dependencyVersions.angularCalendar
+      }/css/angular-calendar.css" rel="stylesheet">
+<mwl-demo-component>Loading...</mwl-demo-component>
+`.trim(),
+      'main.ts': `
+import 'core-js/es6/reflect';
+import 'core-js/es7/reflect';
+import 'zone.js/dist/zone';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { DemoModule } from './demo/module';
+import { DemoComponent } from './demo/component';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    DemoModule
+  ],
+  bootstrap: [DemoComponent]
+})
+export class BootstrapModule {}
+
+platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
+  // Ensure Angular destroys itself on hot reloads.
+  if (window['ngRef']) {
+    window['ngRef'].destroy();
+  }
+  window['ngRef'] = ref;
+
+  // Otherwise, log the boot error
+}).catch(err => console.error(err));
+`.trim()
+    };
+
+    demoUtilsSources.forEach(source => {
+      files[`demo-utils/${source.filename}`] = source.contents.raw;
+    });
+
+    demo.sources.forEach(source => {
+      files[`demo/${source.filename}`] = source.contents.raw;
+    });
+
+    StackBlitzSDK.openProject(
+      {
+        title: 'Angular Calendar Demo',
+        description: demo.label,
+        template: 'angular-cli',
+        tags: ['angular-calendar'],
+        files,
+        dependencies: {
+          '@angular/core': dependencyVersions.angular,
+          '@angular/common': dependencyVersions.angular,
+          '@angular/compiler': dependencyVersions.angular,
+          '@angular/platform-browser': dependencyVersions.angular,
+          '@angular/platform-browser-dynamic': dependencyVersions.angular,
+          '@angular/router': dependencyVersions.angular,
+          '@angular/forms': dependencyVersions.angular,
+          '@angular/animations': dependencyVersions.angular,
+          '@angular/cdk': dependencyVersions.angularCdk,
+          rxjs: dependencyVersions.rxjs,
+          'zone.js': dependencyVersions.zoneJs,
+          'angular-calendar': dependencyVersions.angularCalendar,
+          'date-fns': dependencyVersions.dateFns,
+          '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
+          'ngx-contextmenu': dependencyVersions.ngxContextmenu,
+          rrule: dependencyVersions.rrule,
+          bootstrap: dependencyVersions.bootstrap
+        }
+      },
+      {
+        openFile: 'demo/component.ts'
+      }
+    );
   }
 }
