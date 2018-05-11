@@ -27,6 +27,7 @@ import { WeekViewEvent } from 'calendar-utils';
         [tooltipTemplate]="tooltipTemplate"
         [tooltipAppendToBody]="tooltipAppendToBody">
         <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
+        &ngsp;
         <mwl-calendar-event-title
           [event]="weekEvent.event"
           [customTemplate]="eventTitleTemplate"

@@ -27,6 +27,7 @@ import { DayViewEvent } from 'calendar-utils';
         [tooltipTemplate]="tooltipTemplate"
         [tooltipAppendToBody]="tooltipAppendToBody">
         <mwl-calendar-event-actions [event]="dayEvent.event"></mwl-calendar-event-actions>
+        &ngsp;
         <mwl-calendar-event-title
           [event]="dayEvent.event"
           [customTemplate]="eventTitleTemplate"

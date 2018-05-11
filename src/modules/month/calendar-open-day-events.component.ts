@@ -26,12 +26,14 @@ import { trackByEventId } from '../common/util';
           class="cal-event"
           [style.backgroundColor]="event.color?.primary">
         </span>
+        &ngsp;
         <mwl-calendar-event-title
           [event]="event"
           [customTemplate]="eventTitleTemplate"
           view="month"
           (mwlClick)="eventClicked.emit({event: event})">
         </mwl-calendar-event-title>
+        &ngsp;
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
       </div>
     </ng-template>
