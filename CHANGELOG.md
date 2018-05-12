@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.25.2"></a>
+## [0.25.2](https://github.com/mattlewis92/angular-calendar/compare/v0.25.1...v0.25.2) (2018-05-12)
+
+
+### Bug Fixes
+
+* properly mark styles as having side effects ([625e586](https://github.com/mattlewis92/angular-calendar/commit/625e586))
+
+
+
 <a name="0.25.1"></a>
 ## [0.25.1](https://github.com/mattlewis92/angular-calendar/compare/v0.25.0...v0.25.1) (2018-05-11)
 
