@@ -32,7 +32,8 @@
       'angular-resizable-element': 'npm:angular-resizable-element/bundles/angular-resizable-element.umd.js',
       'angular-draggable-droppable': 'npm:angular-draggable-droppable/bundles/angular-draggable-droppable.umd.js',
       'date-fns': 'npm:date-fns',
-      'positioning': 'npm:positioning/dist/umd/positioning.js'
+      'positioning': 'npm:positioning/dist/umd/positioning.js',
+      'tslib': 'npm:tslib'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -41,6 +42,11 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
+      'rxjs/operators': {
+        main: 'index.js',
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
@@ -50,6 +56,9 @@
       'date-fns': {
         main: './index.js',
         defaultExtension: 'js'
+      },
+      tslib: {
+        main: './tslib.js'
       }
     }
   });
