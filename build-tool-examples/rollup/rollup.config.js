@@ -6,8 +6,10 @@ import * as ts from 'typescript';
 
 export default {
   input: 'app/app.main.ts',
-  sourcemap: true,
-  name: 'main',
+  output: {
+    name: 'main',
+    sourcemap: true
+  },
   plugins: [
     typescript({
       typescript: ts
