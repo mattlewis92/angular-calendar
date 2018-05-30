@@ -47,13 +47,14 @@
     background-color: #d1e8ff;
     border: 1px solid #1e90ff;
     color: #1e90ff;
+    cursor: pointer;
   }
 
   .cal-event-title:link {
     color: currentColor;
   }
 
-  .cal-draggable {
+  .cal-draggable .cal-event {
     cursor: move;
   }
 
