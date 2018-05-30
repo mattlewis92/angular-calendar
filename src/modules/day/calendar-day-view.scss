@@ -59,13 +59,14 @@
     border: 1px solid #1e90ff;
     color: #1e90ff;
     user-select: none;
+    cursor: pointer;
   }
 
   .cal-event-title:link {
     color: currentColor;
   }
 
-  .cal-draggable {
+  .cal-draggable .cal-event {
     cursor: move;
   }
 
@@ -82,5 +83,6 @@
   .cal-all-day-event {
     padding: 8px;
     border: solid 1px;
+    cursor: pointer;
   }
 }
