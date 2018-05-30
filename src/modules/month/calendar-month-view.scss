@@ -107,10 +107,6 @@
     color: #fff;
   }
 
-  .cal-event-title:link {
-    color: currentColor;
-  }
-
   .cal-day-cell.cal-in-month.cal-has-events {
     cursor: pointer;
   }
@@ -161,5 +157,13 @@
 
   .cal-drag-active * {
     pointer-events: none;
+  }
+
+  .cal-event-title {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

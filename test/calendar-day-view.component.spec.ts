@@ -22,7 +22,6 @@ import {
   DateAdapter
 } from '../src';
 import { Subject } from 'rxjs';
-import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
 import { take } from 'rxjs/operators';
 import { adapterFactory } from '../src/date-adapters/date-fns';
@@ -131,7 +130,7 @@ describe('CalendarDayViewComponent component', () => {
         event: fixture.componentInstance.events[0]
       });
     });
-    fixture.nativeElement.querySelector('.cal-event a').click();
+    fixture.nativeElement.querySelector('.cal-event-title').click();
   }));
 
   it('should call the event clicked callback on all day events', async(() => {
@@ -157,7 +156,7 @@ describe('CalendarDayViewComponent component', () => {
         event: fixture.componentInstance.events[0]
       });
     });
-    fixture.nativeElement.querySelector('mwl-calendar-event-title a').click();
+    fixture.nativeElement.querySelector('.cal-event-title').click();
   }));
 
   it('should add a custom CSS class to events', () => {
@@ -285,6 +284,8 @@ describe('CalendarDayViewComponent component', () => {
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
+    const eventClicked = sinon.spy();
+    fixture.componentInstance.eventClicked.subscribe(eventClicked);
     fixture.componentInstance.events = [
       {
         start: new Date('2016-06-26'),
@@ -297,7 +298,7 @@ describe('CalendarDayViewComponent component', () => {
         actions: [
           {
             label: '<i class="fa fa-fw fa-times"></i>',
-            onClick: spy(),
+            onClick: sinon.spy(),
             cssClass: 'foo'
           }
         ]
@@ -310,10 +311,11 @@ describe('CalendarDayViewComponent component', () => {
     );
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
-    action.click();
+    action.querySelector('i').click();
     expect(
       fixture.componentInstance.events[0].actions[0].onClick
     ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+    expect(eventClicked).not.to.have.been.called;
   });
 
   it('should allow the event width to be customised', () => {

@@ -17,14 +17,14 @@ import { CalendarEvent } from 'calendar-utils';
       <div
         class="cal-all-day-event"
         [style.backgroundColor]="event.color?.secondary"
-        [style.borderColor]="event.color?.primary">
+        [style.borderColor]="event.color?.primary"
+        (mwlClick)="eventClicked.emit()">
         <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
         &ngsp;
         <mwl-calendar-event-title
           [event]="event"
           [customTemplate]="eventTitleTemplate"
-          view="day"
-          (mwlClick)="eventClicked.emit()">
+          view="day">
         </mwl-calendar-event-title>
       </div>
     </ng-template>

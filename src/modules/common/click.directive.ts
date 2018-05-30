@@ -5,8 +5,10 @@ import {
   OnInit,
   OnDestroy,
   Output,
-  EventEmitter
+  EventEmitter,
+  Inject
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 const clickElements = new WeakSet<HTMLElement>();
 
@@ -20,7 +22,8 @@ export class ClickDirective implements OnInit, OnDestroy {
 
   constructor(
     private renderer: Renderer2,
-    private elm: ElementRef<HTMLElement>
+    private elm: ElementRef<HTMLElement>,
+    @Inject(DOCUMENT) private document
   ) {}
 
   ngOnInit(): void {
@@ -33,9 +36,17 @@ export class ClickDirective implements OnInit, OnDestroy {
       this.elm.nativeElement,
       eventName,
       event => {
-        const isClickableElement = clickElements.has(event.target);
-        const isThisClickableElement = this.elm.nativeElement === event.target;
-        if (!isClickableElement || isThisClickableElement) {
+        // prevent child click events from firing on parent elements that also have click events
+        let nearestClickableParent: HTMLElement = event.target;
+        while (
+          !clickElements.has(nearestClickableParent) &&
+          nearestClickableParent !== this.document.body
+        ) {
+          nearestClickableParent = nearestClickableParent.parentElement;
+        }
+        const isThisClickableElement =
+          this.elm.nativeElement === nearestClickableParent;
+        if (isThisClickableElement) {
           this.click.next(event);
         }
       }

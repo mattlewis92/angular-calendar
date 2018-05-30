@@ -49,6 +49,7 @@
 
   .cal-event-container {
     position: absolute;
+    cursor: pointer;
 
     &.resize-active {
       z-index: 1;
@@ -69,10 +70,6 @@
     color: #1e90ff;
   }
 
-  .cal-event-title:link {
-    color: currentColor;
-  }
-
   .cal-draggable {
     cursor: move;
   }
@@ -90,6 +87,7 @@
   .cal-all-day-event {
     padding: 8px;
     border: solid 1px;
+    cursor: pointer;
   }
 
   .cal-drag-active {

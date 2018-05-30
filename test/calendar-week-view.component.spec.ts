@@ -1102,4 +1102,43 @@ describe('calendarWeekView component', () => {
     ).to.equal(true);
     fixture.destroy();
   });
+
+  it('should add event actions to each event', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    const eventClicked = sinon.spy();
+    fixture.componentInstance.eventClicked.subscribe(eventClicked);
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        },
+        actions: [
+          {
+            label: '<i class="fa fa-fw fa-times"></i>',
+            onClick: sinon.spy(),
+            cssClass: 'foo'
+          }
+        ]
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    const action: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event .cal-event-action'
+    );
+    expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
+    expect(action.classList.contains('foo')).to.equal(true);
+    action.querySelector('i').click();
+    expect(
+      fixture.componentInstance.events[0].actions[0].onClick
+    ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+    expect(eventClicked).not.to.have.been.called;
+  });
 });
