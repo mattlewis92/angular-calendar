@@ -34,7 +34,7 @@ A calendar component for Angular 6.0+ that can display events on a month, week o
 First install through npm:
 
 ```bash
-npm install --save angular-calendar
+npm install --save angular-calendar date-fns
 ```
 
 Next include the CSS file in the global (not component scoped) styles of your app:
@@ -49,10 +49,17 @@ Finally import the calendar module into your apps module:
 ```typescript
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule, CalendarUtils } from 'angular-calendar';
+import { CalendarUtilsDateFns } from 'angular-calendar/calendar-utils/date-fns';
 
 @NgModule({
-  imports: [BrowserAnimationsModule, CalendarModule.forRoot()]
+  imports: [
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: CalendarUtils,
+      useClass: CalendarUtilsDateFns
+    })
+  ]
 })
 export class MyModule {}
 ```

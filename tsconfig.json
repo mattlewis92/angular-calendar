@@ -7,11 +7,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "",
+    "baseUrl": "./",
     "paths": {
-      "angular-calendar": ["./src/index"]
+      "angular-calendar": ["./src/index"],
+      "angular-calendar/calendar-utils/date-fns": ["./src/calendar-utils/date-fns"]
     },
-    "lib": ["es2017", "dom"]
+    "lib": ["es2017", "dom"],
   },
   "include": [
     "src",

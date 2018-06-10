@@ -5,9 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import subDays from 'date-fns/sub_days/index';
-import subWeeks from 'date-fns/sub_weeks/index';
-import subMonths from 'date-fns/sub_months/index';
+import { CalendarUtils } from './calendar-utils.provider';
 
 /**
  * Change the view date to the previous view. For example:
@@ -40,15 +38,17 @@ export class CalendarPreviousViewDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
+  constructor(private calendarUtils: CalendarUtils) {}
+
   /**
    * @hidden
    */
   @HostListener('click')
   onClick(): void {
     const subFn: any = {
-      day: subDays,
-      week: subWeeks,
-      month: subMonths
+      day: this.calendarUtils.dateAdapter.subDays,
+      week: this.calendarUtils.dateAdapter.subWeeks,
+      month: this.calendarUtils.dateAdapter.subMonths
     }[this.view];
 
     this.viewDateChange.emit(subFn(this.viewDate, 1));

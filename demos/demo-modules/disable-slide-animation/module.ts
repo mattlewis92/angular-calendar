@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule, CalendarUtils } from 'angular-calendar';
 import { RouterModule } from '@angular/router';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
+import { CalendarUtilsDateFns } from 'angular-calendar/calendar-utils/date-fns';
 
 @NgModule({
   imports: [
     CommonModule,
-    CalendarModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: CalendarUtils,
+      useClass: CalendarUtilsDateFns
+    }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }])
   ],

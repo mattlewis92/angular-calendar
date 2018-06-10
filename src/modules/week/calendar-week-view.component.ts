@@ -20,7 +20,6 @@ import {
   ViewPeriod
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
-import addDays from 'date-fns/add_days/index';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
@@ -362,9 +361,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     let newStart: Date = weekEvent.event.start;
     let newEnd: Date = weekEvent.event.end;
     if (currentResize.edge === 'left') {
-      newStart = addDays(newStart, daysDiff);
+      newStart = this.utils.dateAdapter.addDays(newStart, daysDiff);
     } else if (newEnd) {
-      newEnd = addDays(newEnd, daysDiff);
+      newEnd = this.utils.dateAdapter.addDays(newEnd, daysDiff);
     }
 
     this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });
@@ -380,10 +379,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     dayWidth: number
   ): void {
     const daysDragged: number = draggedByPx / dayWidth;
-    const newStart: Date = addDays(weekEvent.event.start, daysDragged);
+    const newStart: Date = this.utils.dateAdapter.addDays(
+      weekEvent.event.start,
+      daysDragged
+    );
     let newEnd: Date;
     if (weekEvent.event.end) {
-      newEnd = addDays(weekEvent.event.end, daysDragged);
+      newEnd = this.utils.dateAdapter.addDays(weekEvent.event.end, daysDragged);
     }
 
     this.eventTimesChanged.emit({ newStart, newEnd, event: weekEvent.event });

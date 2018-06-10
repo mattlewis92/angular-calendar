@@ -20,24 +20,32 @@ import {
   CalendarMonthViewDay,
   DAYS_OF_WEEK,
   CalendarEventTimesChangedEvent,
-  CalendarMonthViewComponent
-} from './../src';
+  CalendarMonthViewComponent,
+  CalendarUtils
+} from '../src';
 import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
 import { take } from 'rxjs/operators';
 import { CalendarMonthViewEventTimesChangedEvent } from '../src/modules/month';
+import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        CalendarModule.forRoot({
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter
+        CalendarModule.forRoot(
+          {
+            provide: CalendarUtils,
+            useClass: CalendarUtilsDateFns
+          },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter
+            }
           }
-        })
+        )
       ],
       providers: [{ provide: MOMENT, useValue: moment }]
     });

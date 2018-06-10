@@ -21,7 +21,6 @@ import {
 } from 'calendar-utils';
 import { Subject, Subscription } from 'rxjs';
 import { ResizeEvent } from 'angular-resizable-element';
-import addMinutes from 'date-fns/add_minutes/index';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
@@ -435,9 +434,9 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
     if (currentResize.edge === 'top') {
-      newStart = addMinutes(newStart, minutesMoved);
+      newStart = this.utils.dateAdapter.addMinutes(newStart, minutesMoved);
     } else if (newEnd) {
-      newEnd = addMinutes(newEnd, minutesMoved);
+      newEnd = this.utils.dateAdapter.addMinutes(newEnd, minutesMoved);
     }
 
     this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
@@ -458,10 +457,16 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     const pixelAmountInMinutes: number =
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
-    const newStart: Date = addMinutes(dayEvent.event.start, minutesMoved);
+    const newStart: Date = this.utils.dateAdapter.addMinutes(
+      dayEvent.event.start,
+      minutesMoved
+    );
     let newEnd: Date;
     if (dayEvent.event.end) {
-      newEnd = addMinutes(dayEvent.event.end, minutesMoved);
+      newEnd = this.utils.dateAdapter.addMinutes(
+        dayEvent.event.end,
+        minutesMoved
+      );
     }
     this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }

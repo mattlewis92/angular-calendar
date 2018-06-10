@@ -5,9 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import addDays from 'date-fns/add_days/index';
-import addWeeks from 'date-fns/add_weeks/index';
-import addMonths from 'date-fns/add_months/index';
+import { CalendarUtils } from './calendar-utils.provider';
 
 /**
  * Change the view date to the next view. For example:
@@ -40,15 +38,17 @@ export class CalendarNextViewDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
+  constructor(private calendarUtils: CalendarUtils) {}
+
   /**
    * @hidden
    */
   @HostListener('click')
   onClick(): void {
     const addFn: any = {
-      day: addDays,
-      week: addWeeks,
-      month: addMonths
+      day: this.calendarUtils.dateAdapter.addDays,
+      week: this.calendarUtils.dateAdapter.addWeeks,
+      month: this.calendarUtils.dateAdapter.addMonths
     }[this.view];
 
     this.viewDateChange.emit(addFn(this.viewDate, 1));

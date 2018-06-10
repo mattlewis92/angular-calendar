@@ -15,12 +15,10 @@ import { CalendarEventTitlePipe } from './calendar-event-title.pipe';
 import { ClickDirective } from './click.directive';
 import { CalendarEventTitleFormatter } from './calendar-event-title-formatter.provider';
 import { CalendarDateFormatter } from './calendar-date-formatter.provider';
-import { CalendarUtils } from './calendar-utils.provider';
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
-  utils?: Provider;
 }
 
 export * from './calendar-event-title-formatter.provider';
@@ -85,14 +83,17 @@ export {
   entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarCommonModule {
-  static forRoot(config: CalendarModuleConfig = {}): ModuleWithProviders {
+  static forRoot(
+    calendarUtils: Provider,
+    config: CalendarModuleConfig = {}
+  ): ModuleWithProviders {
     return {
       ngModule: CalendarCommonModule,
       providers: [
         DraggableHelper,
+        calendarUtils,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
-        config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils
+        config.dateFormatter || CalendarDateFormatter
       ]
     };
   }

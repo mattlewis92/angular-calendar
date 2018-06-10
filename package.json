@@ -30,25 +30,7 @@
       "entryFile": "src/index.ts",
       "umdModuleIds": {
         "angular-draggable-droppable": "angular-draggable-droppable",
-        "angular-resizable-element": "angular-resizable-element",
-        "date-fns/sub_days/index": "dateFns.subDays",
-        "date-fns/sub_weeks/index": "dateFns.subWeeks",
-        "date-fns/sub_months/index": "dateFns.subMonths",
-        "date-fns/add_days/index": "dateFns.addDays",
-        "date-fns/add_weeks/index": "dateFns.addWeeks",
-        "date-fns/add_months/index": "dateFns.addMonths",
-        "date-fns/start_of_today/index": "dateFns.startOfToday",
-        "date-fns/get_iso_week/index": "dateFns.getIsoWeek",
-        "date-fns/is_same_day/index": "dateFns.isSameDay",
-        "date-fns/set_date/index": "dateFns.setDate",
-        "date-fns/set_month/index": "dateFns.setMonth",
-        "date-fns/set_year/index": "dateFns.setYear",
-        "date-fns/get_date/index": "dateFns.getDate",
-        "date-fns/get_month/index": "dateFns.getMonth",
-        "date-fns/get_year/index": "dateFns.getYear",
-        "date-fns/difference_in_seconds/index": "dateFns.differenceInSeconds",
-        "date-fns/add_seconds/index": "dateFns.addSeconds",
-        "date-fns/add_minutes/index": "dateFns.addMinutes"
+        "angular-resizable-element": "angular-resizable-element"
       }
     },
     "whitelistedNonPeerDependencies": [
@@ -56,7 +38,6 @@
       "angular-draggable-droppable",
       "angular-resizable-element",
       "calendar-utils",
-      "date-fns",
       "positioning"
     ]
   },
@@ -124,6 +105,7 @@
     "copyfiles": "^2.0.0",
     "core-js": "^2.5.7",
     "css-loader": "^0.28.11",
+    "date-fns": "^1.29.0",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "fork-ts-checker-webpack-plugin": "^0.4.1",
@@ -183,8 +165,7 @@
   "dependencies": {
     "angular-draggable-droppable": "^3.0.0",
     "angular-resizable-element": "^3.0.0",
-    "calendar-utils": "^0.1.2",
-    "date-fns": "^1.28.5",
+    "calendar-utils": "^0.2.0-alpha.5",
     "positioning": "^1.3.1"
   },
   "sideEffects": [

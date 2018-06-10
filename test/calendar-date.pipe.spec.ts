@@ -7,8 +7,10 @@ import {
   CalendarModule,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  MOMENT
-} from './../src';
+  MOMENT,
+  CalendarUtils
+} from '../src';
+import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
 
 @Component({
   template: '{{ date | calendarDate:method:locale }}'
@@ -25,12 +27,18 @@ describe('calendarDate pipe', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        CalendarModule.forRoot({
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter
+        CalendarModule.forRoot(
+          {
+            provide: CalendarUtils,
+            useClass: CalendarUtilsDateFns
+          },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter
+            }
           }
-        })
+        )
       ],
       declarations: [TestComponent],
       providers: [{ provide: MOMENT, useValue: moment }]

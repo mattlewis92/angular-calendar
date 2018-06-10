@@ -18,23 +18,31 @@ import {
   CalendarModule,
   MOMENT,
   CalendarEventTimesChangedEvent,
-  CalendarDayViewComponent
-} from './../src';
+  CalendarDayViewComponent,
+  CalendarUtils
+} from '../src';
 import { Subject } from 'rxjs';
 import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
 import { take } from 'rxjs/operators';
+import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
 
 describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        CalendarModule.forRoot({
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter
+        CalendarModule.forRoot(
+          {
+            provide: CalendarUtils,
+            useClass: CalendarUtilsDateFns
+          },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter
+            }
           }
-        }),
+        ),
         DragAndDropModule
       ],
       declarations: [ExternalEventComponent],
