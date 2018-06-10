@@ -10,7 +10,8 @@
     "baseUrl": "./",
     "paths": {
       "angular-calendar": ["./src/index"],
-      "angular-calendar/calendar-utils/date-fns": ["./src/calendar-utils/date-fns"]
+      "angular-calendar/calendar-utils/date-fns": ["./src/calendar-utils/date-fns"],
+      "angular-calendar/calendar-utils/moment": ["./src/calendar-utils/moment"]
     },
     "lib": ["es2017", "dom"],
   },

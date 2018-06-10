@@ -264,6 +264,13 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
           }
         },
         {
+          path: 'moment',
+          loadChildren: './demo-modules/moment/module#DemoModule',
+          data: {
+            label: 'Use moment'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }

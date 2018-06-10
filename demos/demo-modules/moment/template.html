@@ -1,3 +1,7 @@
+<div class="alert alert-info">
+  Use this if you're already using moment heavily in your app and don't want to include date-fns in your bundle, or you need to be able to adjust dates to be in a different timezone than the users browser via moment-locale
+</div>
+
 <mwl-demo-utils-calendar-header
   [(view)]="view"
   [(viewDate)]="viewDate"
@@ -8,23 +12,16 @@
   <mwl-calendar-month-view
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
-    [events]="events"
-    [locale]="locale"
-    [weekStartsOn]="weekStartsOn"
-    [weekendDays]="weekendDays">
+    [events]="events">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
-    [events]="events"
-    [locale]="locale"
-    [weekStartsOn]="weekStartsOn"
-    [weekendDays]="weekendDays">
+    [events]="events">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
-    [events]="events"
-    [locale]="locale">
+    [events]="events">
   </mwl-calendar-day-view>
 </div>

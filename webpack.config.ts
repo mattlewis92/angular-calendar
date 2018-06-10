@@ -92,6 +92,10 @@ export default (env = 'development') => {
         'angular-calendar/calendar-utils/date-fns$': path.resolve(
           __dirname,
           'src/calendar-utils/date-fns.ts'
+        ),
+        'angular-calendar/calendar-utils/moment$': path.resolve(
+          __dirname,
+          'src/calendar-utils/moment.ts'
         )
       }
     },

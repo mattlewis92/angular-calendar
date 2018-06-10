@@ -16,7 +16,8 @@
     "src/modules/day/index.ts",
     "src/modules/week/index.ts",
     "src/modules/month/index.ts",
-    "src/calendar-utils/date-fns.ts"
+    "src/calendar-utils/date-fns.ts",
+    "src/calendar-utils/moment.ts"
   ],
   "exclude": [
     "test",
