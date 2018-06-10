@@ -201,7 +201,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'angular-calendar': dependencyVersions.angularCalendar,
           'date-fns': dependencyVersions.dateFns,
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
-          'ngx-contextmenu': dependencyVersions.ngxContextmenu,
+          // 'ngx-contextmenu': dependencyVersions.ngxContextmenu,
           rrule: dependencyVersions.rrule,
           bootstrap: dependencyVersions.bootstrap
         }
