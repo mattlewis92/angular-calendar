@@ -15,11 +15,9 @@ describe('calendarMomentDateFormatter provider', () => {
   });
 
   let dateFormatter: CalendarMomentDateFormatter;
-  beforeEach(
-    inject([CalendarMomentDateFormatter], _dateFormatter_ => {
-      dateFormatter = _dateFormatter_;
-    })
-  );
+  beforeEach(inject([CalendarMomentDateFormatter], _dateFormatter_ => {
+    dateFormatter = _dateFormatter_;
+  }));
 
   it('monthViewColumnHeader', () => {
     expect(
@@ -63,7 +61,7 @@ describe('calendarMomentDateFormatter provider', () => {
         date: new Date('2016-01-01'),
         locale: 'en'
       })
-    ).to.equal('1 Jan');
+    ).to.equal('Jan 1');
   });
 
   it('weekViewTitle', () => {
