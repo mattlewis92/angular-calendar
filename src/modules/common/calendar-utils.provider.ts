@@ -9,7 +9,12 @@ import {
   DayView,
   GetDayViewHourGridArgs,
   DayViewHour,
-  WeekView
+  WeekView,
+  getDayView,
+  getDayViewHourGrid,
+  getMonthView,
+  getWeekViewHeader,
+  getWeekView
 } from 'calendar-utils';
 import { DateAdapter } from 'calendar-utils/date-adapters';
 
@@ -43,13 +48,23 @@ export interface AngularCalendarDateAdapter extends DateAdapter {
 export abstract class CalendarUtils {
   abstract dateAdapter: AngularCalendarDateAdapter;
 
-  abstract getMonthView(args: GetMonthViewArgs): MonthView;
+  getMonthView(args: GetMonthViewArgs): MonthView {
+    return getMonthView(this.dateAdapter, args);
+  }
 
-  abstract getWeekViewHeader(args: GetWeekViewHeaderArgs): WeekDay[];
+  getWeekViewHeader(args: GetWeekViewHeaderArgs): WeekDay[] {
+    return getWeekViewHeader(this.dateAdapter, args);
+  }
 
-  abstract getWeekView(args: GetWeekViewArgs): WeekView;
+  getWeekView(args: GetWeekViewArgs): WeekView {
+    return getWeekView(this.dateAdapter, args);
+  }
 
-  abstract getDayView(args: GetDayViewArgs): DayView;
+  getDayView(args: GetDayViewArgs): DayView {
+    return getDayView(this.dateAdapter, args);
+  }
 
-  abstract getDayViewHourGrid(args: GetDayViewHourGridArgs): DayViewHour[];
+  getDayViewHourGrid(args: GetDayViewHourGridArgs): DayViewHour[] {
+    return getDayViewHourGrid(this.dateAdapter, args);
+  }
 }

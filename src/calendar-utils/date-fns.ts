@@ -1,21 +1,4 @@
 import { Injectable } from '@angular/core';
-import {
-  getMonthView,
-  GetMonthViewArgs,
-  MonthView,
-  getWeekViewHeader,
-  GetWeekViewHeaderArgs,
-  WeekDay,
-  getWeekView,
-  GetWeekViewArgs,
-  getDayView,
-  GetDayViewArgs,
-  DayView,
-  getDayViewHourGrid,
-  GetDayViewHourGridArgs,
-  DayViewHour,
-  WeekView
-} from 'calendar-utils';
 import { CalendarUtils } from 'angular-calendar';
 import { adapterFactory } from 'calendar-utils/date-adapters/date-fns';
 import addWeeks from 'date-fns/add_weeks/index';
@@ -48,24 +31,4 @@ export class CalendarUtilsDateFns extends CalendarUtils {
     getMonth,
     getYear
   };
-
-  getMonthView(args: GetMonthViewArgs): MonthView {
-    return getMonthView(this.dateAdapter, args);
-  }
-
-  getWeekViewHeader(args: GetWeekViewHeaderArgs): WeekDay[] {
-    return getWeekViewHeader(this.dateAdapter, args);
-  }
-
-  getWeekView(args: GetWeekViewArgs): WeekView {
-    return getWeekView(this.dateAdapter, args);
-  }
-
-  getDayView(args: GetDayViewArgs): DayView {
-    return getDayView(this.dateAdapter, args);
-  }
-
-  getDayViewHourGrid(args: GetDayViewHourGridArgs): DayViewHour[] {
-    return getDayViewHourGrid(this.dateAdapter, args);
-  }
 }
