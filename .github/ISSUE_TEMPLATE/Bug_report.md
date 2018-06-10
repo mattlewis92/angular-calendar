@@ -17,7 +17,8 @@ Please note that issues that ignore this template will be closed without notice!
 -->
 
 **Describe the bug**
-<!-- Please describe the bug you're experiencing here -->
+<!-- Please describe the bug you're experiencing here. -->
+<!-- Please search existing issues first before opening a new one -->
 
 **Minimal reproduction of the problem with instructions**
 <!-- A link to a minimally working stackblitz that reproduces the issue (you can fork a starter from any of the demos by hitting the "Edit in Stackblitz" button) -->
@@ -25,7 +26,8 @@ Please note that issues that ignore this template will be closed without notice!
 **Screenshots**
 <!-- If applicable, add screenshots to help explain your problem. -->
 
-**Versions (please complete the following information):**
+**Versions:**
+<!-- Please complete the following information -->
  - `@angular/core`: 
  - `angular-calendar`
  - Browser name and version
