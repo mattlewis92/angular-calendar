@@ -1,5 +1,4 @@
 import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
-import { DraggableHelper } from 'angular-draggable-droppable';
 import {
   CalendarCommonModule,
   CalendarModuleConfig,
@@ -52,7 +51,6 @@ export class CalendarModule {
     return {
       ngModule: CalendarModule,
       providers: [
-        DraggableHelper,
         calendarUtils,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter

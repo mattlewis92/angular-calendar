@@ -633,7 +633,8 @@ describe('calendarWeekView component', () => {
       clientY: eventPosition.top
     });
     fixture.detectChanges();
-    expect(Math.round(event.getBoundingClientRect().left)).to.equal(
+    const ghostElement = event.nextSibling as HTMLElement;
+    expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
       Math.round(eventPosition.left - dayWidth)
     );
     triggerDomEvent('mouseup', document.body, {
@@ -807,7 +808,6 @@ describe('calendarWeekView component', () => {
       clientX: headerPosition.left
     });
     fixture.detectChanges();
-    expect(header.classList.contains('cal-drag-over')).to.equal(true);
     triggerDomEvent('mouseup', document.body, {
       clientY: headerPosition.top,
       clientX: headerPosition.left

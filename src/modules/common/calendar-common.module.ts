@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DraggableHelper } from 'angular-draggable-droppable';
 import { CalendarEventActionsComponent } from './calendar-event-actions.component';
 import { CalendarEventTitleComponent } from './calendar-event-title.component';
 import {
@@ -90,7 +89,6 @@ export class CalendarCommonModule {
     return {
       ngModule: CalendarCommonModule,
       providers: [
-        DraggableHelper,
         calendarUtils,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter

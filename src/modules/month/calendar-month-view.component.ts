@@ -58,7 +58,6 @@ export interface CalendarMonthViewEventTimesChangedEvent
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
               *ngFor="let day of (view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)); trackBy:trackByDate"
-              [class.cal-drag-over]="day.dragOver"
               [ngClass]="day?.cssClass"
               [day]="day"
               [openDay]="openDay"
@@ -71,9 +70,8 @@ export interface CalendarMonthViewEventTimesChangedEvent
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
-              (dragEnter)="day.dragOver = true"
-              (dragLeave)="day.dragOver = false"
-              (drop)="day.dragOver = false; eventDropped(day, $event.dropData.event)"
+              dragOverClass="cal-drag-over"
+              (drop)="eventDropped(day, $event.dropData.event)"
               (eventClicked)="eventClicked.emit({event: $event.event})">
             </mwl-calendar-month-cell>
           </div>

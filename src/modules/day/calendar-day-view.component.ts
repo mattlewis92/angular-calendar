@@ -116,11 +116,9 @@ export interface DayViewEventResize {
             [locale]="locale"
             [customTemplate]="hourSegmentTemplate"
             (click)="hourSegmentClicked.emit({date: segment.date})"
-            [class.cal-drag-over]="segment.dragOver"
             mwlDroppable
-            (dragEnter)="segment.dragOver = true"
-            (dragLeave)="segment.dragOver = false"
-            (drop)="segment.dragOver = false; eventDropped($event, segment)">
+            dragOverClass="cal-drag-over"
+            (drop)="eventDropped($event, segment)">
           </mwl-calendar-day-view-hour-segment>
         </div>
       </div>

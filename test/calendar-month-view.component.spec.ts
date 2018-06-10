@@ -584,7 +584,8 @@ describe('calendarMonthView component', () => {
     });
     fixture.detectChanges();
     expect(cells[10].classList.contains('cal-drag-over')).to.equal(true);
-    const eventAfterDragPosition: ClientRect = event.getBoundingClientRect();
+    const ghostElement = event.nextSibling as HTMLElement;
+    const eventAfterDragPosition: ClientRect = ghostElement.getBoundingClientRect();
     const movedLeft: number = dragToCellPosition.left - eventStartPosition.left;
     expect(eventAfterDragPosition.left).to.equal(
       eventStartPosition.left + movedLeft

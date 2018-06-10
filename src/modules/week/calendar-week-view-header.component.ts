@@ -25,13 +25,11 @@ import { trackByWeekDayHeaderDate } from '../common/util';
           [class.cal-today]="day.isToday"
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
-          [class.cal-drag-over]="day.dragOver"
           [ngClass]="day.cssClass"
           (mwlClick)="dayHeaderClicked.emit({day: day})"
           mwlDroppable
-          (dragEnter)="day.dragOver = true"
-          (dragLeave)="day.dragOver = false"
-          (drop)="day.dragOver = false; eventDropped.emit({event: $event.dropData.event, newStart: day.date})">
+          dragOVerClass="cal-drag-over"
+          (drop)="eventDropped.emit({event: $event.dropData.event, newStart: day.date})">
           <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br>
           <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>
         </div>

@@ -49,7 +49,6 @@
       [class.cal-today]="day.isToday"
       [class.cal-future]="day.isFuture"
       [class.cal-weekend]="day.isWeekend"
-      [class.cal-drag-over]="day.dragOver"
       (click)="dayHeaderClicked.emit({day: day})"
       [contextMenu]="basicMenu"
       [contextMenuSubject]="day.date">
