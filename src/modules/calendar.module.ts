@@ -55,7 +55,7 @@ export class CalendarModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.calendarUtils || CalendarUtils
+        config.utils || CalendarUtils
       ]
     };
   }

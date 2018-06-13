@@ -19,7 +19,7 @@ import { CalendarUtils } from './calendar-utils.provider';
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
-  calendarUtils?: Provider;
+  utils?: Provider;
 }
 
 export * from './calendar-event-title-formatter.provider';
@@ -95,7 +95,7 @@ export class CalendarCommonModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.calendarUtils || CalendarUtils
+        config.utils || CalendarUtils
       ]
     };
   }
