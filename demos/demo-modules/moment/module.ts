@@ -13,16 +13,17 @@ import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 
+export function momentAdapterFactory() {
+  return adapterFactory(moment);
+}
+
 @NgModule({
   imports: [
     CommonModule,
     CalendarModule.forRoot(
       {
         provide: DateAdapter,
-        useFactory: function() {
-          // tslint:disable-line
-          return adapterFactory(moment);
-        }
+        useFactory: momentAdapterFactory
       },
       {
         dateFormatter: {
