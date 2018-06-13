@@ -10,17 +10,17 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   MOMENT,
-  CalendarUtils
+  DateAdapter
 } from '../src';
-import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
+import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('common module', () => {
   it('should not require providers to be specified when using CalendarCommonModule.forRoot()', () => {
     TestBed.configureTestingModule({
       imports: [
         CalendarCommonModule.forRoot({
-          provide: CalendarUtils,
-          useClass: CalendarUtilsDateFns
+          provide: DateAdapter,
+          useFactory: adapterFactory
         })
       ]
     });
@@ -35,8 +35,8 @@ describe('common module', () => {
       imports: [
         CalendarCommonModule.forRoot(
           {
-            provide: CalendarUtils,
-            useClass: CalendarUtilsDateFns
+            provide: DateAdapter,
+            useFactory: adapterFactory
           },
           {
             dateFormatter: {
@@ -59,8 +59,8 @@ describe('common module', () => {
     TestBed.configureTestingModule({
       imports: [
         CalendarCommonModule.forRoot({
-          provide: CalendarUtils,
-          useClass: CalendarUtilsDateFns
+          provide: DateAdapter,
+          useFactory: adapterFactory
         }),
         CalendarMonthModule
       ]

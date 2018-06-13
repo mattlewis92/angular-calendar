@@ -5,21 +5,24 @@ import {
   CalendarDateFormatter,
   CalendarModule,
   CalendarMomentDateFormatter,
-  CalendarUtils,
+  DateAdapter,
   MOMENT
 } from 'angular-calendar';
 import moment from 'moment';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
-import { CalendarUtilsMoment } from 'angular-calendar/calendar-utils/moment';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 
 @NgModule({
   imports: [
     CommonModule,
     CalendarModule.forRoot(
       {
-        provide: CalendarUtils,
-        useClass: CalendarUtilsMoment
+        provide: DateAdapter,
+        useFactory: function() {
+          // tslint:disable-line
+          return adapterFactory(moment);
+        }
       },
       {
         dateFormatter: {

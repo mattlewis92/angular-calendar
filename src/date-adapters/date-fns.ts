@@ -1,6 +1,4 @@
-import { Injectable } from '@angular/core';
-import { CalendarUtils } from 'angular-calendar';
-import { adapterFactory } from 'calendar-utils/date-adapters/date-fns';
+import { adapterFactory as baseAdapterFactory } from 'calendar-utils/date-adapters/date-fns';
 import addWeeks from 'date-fns/add_weeks/index';
 import addMonths from 'date-fns/add_months/index';
 import subDays from 'date-fns/sub_days/index';
@@ -13,11 +11,11 @@ import setYear from 'date-fns/set_year/index';
 import getDate from 'date-fns/get_date/index';
 import getMonth from 'date-fns/get_month/index';
 import getYear from 'date-fns/get_year/index';
+import { DateAdapter } from './date-adapter';
 
-@Injectable()
-export class CalendarUtilsDateFns extends CalendarUtils {
-  dateAdapter = {
-    ...adapterFactory(),
+export function adapterFactory(): DateAdapter {
+  return {
+    ...baseAdapterFactory(),
     addWeeks,
     addMonths,
     subDays,

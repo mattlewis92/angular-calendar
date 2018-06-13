@@ -6,17 +6,17 @@ import {
   CalendarDateFormatter,
   CalendarMomentDateFormatter,
   MOMENT,
-  CalendarUtils
+  DateAdapter
 } from '../src';
-import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
+import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('calendar module', () => {
   it('should not require providers to be specified when using CalendarModule.forRoot()', () => {
     TestBed.configureTestingModule({
       imports: [
         CalendarModule.forRoot({
-          provide: CalendarUtils,
-          useClass: CalendarUtilsDateFns
+          provide: DateAdapter,
+          useFactory: adapterFactory
         })
       ]
     });
@@ -31,8 +31,8 @@ describe('calendar module', () => {
       imports: [
         CalendarModule.forRoot(
           {
-            provide: CalendarUtils,
-            useClass: CalendarUtilsDateFns
+            provide: DateAdapter,
+            useFactory: adapterFactory
           },
           {
             dateFormatter: {

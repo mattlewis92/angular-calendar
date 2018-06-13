@@ -89,13 +89,13 @@ export default (env = 'development') => {
       extensions: ['.ts', '.js'],
       alias: {
         'angular-calendar$': path.resolve(__dirname, 'src/index.ts'),
-        'angular-calendar/calendar-utils/date-fns$': path.resolve(
+        'angular-calendar/date-adapters/date-fns$': path.resolve(
           __dirname,
-          'src/calendar-utils/date-fns.ts'
+          'src/date-adapters/date-fns.ts'
         ),
-        'angular-calendar/calendar-utils/moment$': path.resolve(
+        'angular-calendar/date-adapters/moment$': path.resolve(
           __dirname,
-          'src/calendar-utils/moment.ts'
+          'src/date-adapters/moment.ts'
         )
       }
     },

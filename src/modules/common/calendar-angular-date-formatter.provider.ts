@@ -4,7 +4,7 @@ import {
 } from './calendar-date-formatter.interface';
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { CalendarUtils } from './calendar-utils.provider';
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 /**
  * This will use the angular date pipe to do all date formatting. It is the default date formatter used by the calendar.
@@ -12,7 +12,7 @@ import { CalendarUtils } from './calendar-utils.provider';
 @Injectable()
 export class CalendarAngularDateFormatter
   implements CalendarDateFormatterInterface {
-  constructor(private calendarUtils: CalendarUtils) {}
+  constructor(private dateAdapter: DateAdapter) {}
 
   /**
    * The month view header week day labels
@@ -62,7 +62,7 @@ export class CalendarAngularDateFormatter
       null,
       locale
     );
-    const weekNumber: number = this.calendarUtils.dateAdapter.getISOWeek(date);
+    const weekNumber: number = this.dateAdapter.getISOWeek(date);
     return `Week ${weekNumber} of ${year}`;
   }
 

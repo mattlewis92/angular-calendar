@@ -22,6 +22,7 @@ import { Subject, Subscription } from 'rxjs';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByIndex } from '../common/util';
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -237,7 +238,8 @@ export class CalendarMonthViewComponent
   constructor(
     private cdr: ChangeDetectorRef,
     private utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string
+    @Inject(LOCALE_ID) locale: string,
+    private dateAdapter: DateAdapter
   ) {
     this.locale = locale;
   }
@@ -312,23 +314,23 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   eventDropped(day: MonthViewDay, event: CalendarEvent): void {
-    const year: number = this.utils.dateAdapter.getYear(day.date);
-    const month: number = this.utils.dateAdapter.getMonth(day.date);
-    const date: number = this.utils.dateAdapter.getDate(day.date);
-    const newStart: Date = this.utils.dateAdapter.setDate(
-      this.utils.dateAdapter.setMonth(
-        this.utils.dateAdapter.setYear(event.start, year),
+    const year: number = this.dateAdapter.getYear(day.date);
+    const month: number = this.dateAdapter.getMonth(day.date);
+    const date: number = this.dateAdapter.getDate(day.date);
+    const newStart: Date = this.dateAdapter.setDate(
+      this.dateAdapter.setMonth(
+        this.dateAdapter.setYear(event.start, year),
         month
       ),
       date
     );
     let newEnd: Date;
     if (event.end) {
-      const secondsDiff: number = this.utils.dateAdapter.differenceInSeconds(
+      const secondsDiff: number = this.dateAdapter.differenceInSeconds(
         newStart,
         event.start
       );
-      newEnd = this.utils.dateAdapter.addSeconds(event.end, secondsDiff);
+      newEnd = this.dateAdapter.addSeconds(event.end, secondsDiff);
     }
     this.eventTimesChanged.emit({ event, newStart, newEnd, day });
   }
@@ -367,7 +369,7 @@ export class CalendarMonthViewComponent
   private checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen === true) {
       this.openDay = this.view.days.find(day =>
-        this.utils.dateAdapter.isSameDay(day.date, this.viewDate)
+        this.dateAdapter.isSameDay(day.date, this.viewDate)
       );
       const index: number = this.view.days.indexOf(this.openDay);
       this.openRowIndex =

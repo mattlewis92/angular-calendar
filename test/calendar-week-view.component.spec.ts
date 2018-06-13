@@ -17,14 +17,14 @@ import {
   CalendarEventTimesChangedEvent,
   DAYS_OF_WEEK,
   CalendarWeekViewComponent,
-  CalendarUtils
+  DateAdapter
 } from '../src';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs';
 import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
 import { take } from 'rxjs/operators';
-import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
+import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('calendarWeekView component', () => {
   beforeEach(() => {
@@ -32,8 +32,8 @@ describe('calendarWeekView component', () => {
       imports: [
         CalendarModule.forRoot(
           {
-            provide: CalendarUtils,
-            useClass: CalendarUtilsDateFns
+            provide: DateAdapter,
+            useFactory: adapterFactory
           },
           {
             dateFormatter: {
@@ -50,11 +50,9 @@ describe('calendarWeekView component', () => {
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(
-    inject([CalendarEventTitleFormatter], _eventTitle_ => {
-      eventTitle = _eventTitle_;
-    })
-  );
+  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+    eventTitle = _eventTitle_;
+  }));
 
   it('should generate the week view', () => {
     const fixture: ComponentFixture<

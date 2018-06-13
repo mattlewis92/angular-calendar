@@ -3,7 +3,7 @@ import {
   DateFormatterParams
 } from './calendar-date-formatter.interface';
 import { Injectable } from '@angular/core';
-import { CalendarUtils } from './calendar-utils.provider';
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 /**
  * This will use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to do all date formatting.
@@ -13,7 +13,7 @@ import { CalendarUtils } from './calendar-utils.provider';
 @Injectable()
 export class CalendarNativeDateFormatter
   implements CalendarDateFormatterInterface {
-  constructor(private calendarUtils: CalendarUtils) {}
+  constructor(private dateAdapter: DateAdapter) {}
 
   /**
    * The month view header week day labels
@@ -66,7 +66,7 @@ export class CalendarNativeDateFormatter
     const year: string = new Intl.DateTimeFormat(locale, {
       year: 'numeric'
     }).format(date);
-    const weekNumber: number = this.calendarUtils.dateAdapter.getISOWeek(date);
+    const weekNumber: number = this.dateAdapter.getISOWeek(date);
     return `Week ${weekNumber} of ${year}`;
   }
 

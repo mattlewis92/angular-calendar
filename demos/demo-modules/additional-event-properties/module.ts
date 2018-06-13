@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CalendarModule, CalendarUtils } from 'angular-calendar';
-import { CalendarUtilsDateFns } from 'angular-calendar/calendar-utils/date-fns';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
 
@@ -10,8 +10,8 @@ import { DemoComponent } from './component';
   imports: [
     CommonModule,
     CalendarModule.forRoot({
-      provide: CalendarUtils,
-      useClass: CalendarUtilsDateFns
+      provide: DateAdapter,
+      useFactory: adapterFactory
     }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }])

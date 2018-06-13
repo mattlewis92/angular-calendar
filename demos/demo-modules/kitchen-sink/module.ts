@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CalendarModule, CalendarUtils } from 'angular-calendar';
-import { CalendarUtilsDateFns } from 'angular-calendar/calendar-utils/date-fns';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
@@ -13,8 +13,8 @@ import { DemoComponent } from './component';
     FormsModule,
     NgbModalModule.forRoot(),
     CalendarModule.forRoot({
-      provide: CalendarUtils,
-      useClass: CalendarUtilsDateFns
+      provide: DateAdapter,
+      useFactory: adapterFactory
     }),
     DemoUtilsModule
   ],

@@ -16,14 +16,14 @@ https://mattlewis92.github.io/angular-calendar/
 
 ## Table of contents
 
-* [About](#about)
-* [Getting started](#getting-started)
-* [Documentation](#documentation)
-* [Breaking changes](#breaking-changes)
-* [FAQ](#faq)
-* [Angular 1 version](#angular-1-version)
-* [Development](#development)
-* [License](#license)
+- [About](#about)
+- [Getting started](#getting-started)
+- [Documentation](#documentation)
+- [Breaking changes](#breaking-changes)
+- [FAQ](#faq)
+- [Angular 1 version](#angular-1-version)
+- [Development](#development)
+- [License](#license)
 
 ## About
 
@@ -49,15 +49,15 @@ Finally import the calendar module into your apps module:
 ```typescript
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, CalendarUtils } from 'angular-calendar';
-import { CalendarUtilsDateFns } from 'angular-calendar/calendar-utils/date-fns';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     CalendarModule.forRoot({
-      provide: CalendarUtils,
-      useClass: CalendarUtilsDateFns
+      provide: DateAdapter,
+      useFactory: adapterFactory
     })
   ]
 })
@@ -126,11 +126,11 @@ This library is not optimised for mobile. Due to the complex nature of a calenda
 
 All parts of this calendar can be customised via the use of an `ng-template`. The recipe for applying one is as follows:
 
-* Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the [documentation](https://mattlewis92.github.io/angular-calendar/docs/) for each component. For this example we will pick the [`cellTemplate`](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthView.component.ts#L149) from the month view.
-* Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is [this component](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthCell.component.ts)
-* Now copy the [template source](https://github.com/mattlewis92/angular-calendar/blob/18df151d679804fd097dbfcc80fa86e99211d88d/src/components/month/calendarMonthCell.component.ts#L13-L47) for your chosen template into your own component and modify as your see fit.
-* Finally pass the template to the components input: `<mwl-calendar-month-view [cellTemplate]="cellTemplateId" />`
-* You can see an e2e working example of this [here](https://mattlewis92.github.io/angular-calendar/#/custom-templates)
+- Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the [documentation](https://mattlewis92.github.io/angular-calendar/docs/) for each component. For this example we will pick the [`cellTemplate`](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthView.component.ts#L149) from the month view.
+- Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is [this component](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthCell.component.ts)
+- Now copy the [template source](https://github.com/mattlewis92/angular-calendar/blob/18df151d679804fd097dbfcc80fa86e99211d88d/src/components/month/calendarMonthCell.component.ts#L13-L47) for your chosen template into your own component and modify as your see fit.
+- Finally pass the template to the components input: `<mwl-calendar-month-view [cellTemplate]="cellTemplateId" />`
+- You can see an e2e working example of this [here](https://mattlewis92.github.io/angular-calendar/#/custom-templates)
 
 ### What is the browser compatibility?
 
@@ -144,8 +144,8 @@ https://github.com/mattlewis92/angular-bootstrap-calendar
 
 ### Prepare your environment
 
-* Install [Node.js](http://nodejs.org/) and NPM (should come with)
-* Install local dev dependencies: `npm install` while current directory is this repo
+- Install [Node.js](http://nodejs.org/) and NPM (should come with)
+- Install local dev dependencies: `npm install` while current directory is this repo
 
 ### Development server
 
@@ -157,7 +157,7 @@ Run `npm test` to run tests once or `npm run test:watch` to continually run test
 
 ### Release
 
-* Bump the version in package.json (once the module hits 1.0 this will become automatic)
+- Bump the version in package.json (once the module hits 1.0 this will become automatic)
 
 ```bash
 npm run release

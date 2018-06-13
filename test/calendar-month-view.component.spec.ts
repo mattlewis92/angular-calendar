@@ -21,13 +21,13 @@ import {
   DAYS_OF_WEEK,
   CalendarEventTimesChangedEvent,
   CalendarMonthViewComponent,
-  CalendarUtils
+  DateAdapter
 } from '../src';
 import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
 import { take } from 'rxjs/operators';
 import { CalendarMonthViewEventTimesChangedEvent } from '../src/modules/month';
-import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
+import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -36,8 +36,8 @@ describe('calendarMonthView component', () => {
         BrowserAnimationsModule,
         CalendarModule.forRoot(
           {
-            provide: CalendarUtils,
-            useClass: CalendarUtilsDateFns
+            provide: DateAdapter,
+            useFactory: adapterFactory
           },
           {
             dateFormatter: {
@@ -52,11 +52,9 @@ describe('calendarMonthView component', () => {
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(
-    inject([CalendarEventTitleFormatter], _eventTitle_ => {
-      eventTitle = _eventTitle_;
-    })
-  );
+  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+    eventTitle = _eventTitle_;
+  }));
 
   it('should generate the month view', () => {
     const fixture: ComponentFixture<

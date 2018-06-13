@@ -26,6 +26,7 @@ import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider'
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByEventId } from '../common/util';
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
@@ -315,7 +316,8 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   constructor(
     private cdr: ChangeDetectorRef,
     private utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string
+    @Inject(LOCALE_ID) locale: string,
+    private dateAdapter: DateAdapter
   ) {
     this.locale = locale;
   }
@@ -432,9 +434,9 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
     if (currentResize.edge === 'top') {
-      newStart = this.utils.dateAdapter.addMinutes(newStart, minutesMoved);
+      newStart = this.dateAdapter.addMinutes(newStart, minutesMoved);
     } else if (newEnd) {
-      newEnd = this.utils.dateAdapter.addMinutes(newEnd, minutesMoved);
+      newEnd = this.dateAdapter.addMinutes(newEnd, minutesMoved);
     }
 
     this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
@@ -455,16 +457,13 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     const pixelAmountInMinutes: number =
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
-    const newStart: Date = this.utils.dateAdapter.addMinutes(
+    const newStart: Date = this.dateAdapter.addMinutes(
       dayEvent.event.start,
       minutesMoved
     );
     let newEnd: Date;
     if (dayEvent.event.end) {
-      newEnd = this.utils.dateAdapter.addMinutes(
-        dayEvent.event.end,
-        minutesMoved
-      );
+      newEnd = this.dateAdapter.addMinutes(dayEvent.event.end, minutesMoved);
     }
     this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }

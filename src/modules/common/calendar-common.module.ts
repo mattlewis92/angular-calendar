@@ -14,10 +14,12 @@ import { CalendarEventTitlePipe } from './calendar-event-title.pipe';
 import { ClickDirective } from './click.directive';
 import { CalendarEventTitleFormatter } from './calendar-event-title-formatter.provider';
 import { CalendarDateFormatter } from './calendar-date-formatter.provider';
+import { CalendarUtils } from './calendar-utils.provider';
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
+  calendarUtils?: Provider;
 }
 
 export * from './calendar-event-title-formatter.provider';
@@ -28,6 +30,7 @@ export * from './calendar-date-formatter.provider';
 export * from './calendar-utils.provider';
 export * from './calendar-date-formatter.interface';
 export * from './calendar-event-times-changed-event.interface';
+export * from '../../date-adapters/date-adapter';
 
 export {
   CalendarEvent,
@@ -83,15 +86,16 @@ export {
 })
 export class CalendarCommonModule {
   static forRoot(
-    calendarUtils: Provider,
+    dateAdapter: Provider,
     config: CalendarModuleConfig = {}
   ): ModuleWithProviders {
     return {
       ngModule: CalendarCommonModule,
       providers: [
-        calendarUtils,
+        dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
-        config.dateFormatter || CalendarDateFormatter
+        config.dateFormatter || CalendarDateFormatter,
+        config.calendarUtils || CalendarUtils
       ]
     };
   }

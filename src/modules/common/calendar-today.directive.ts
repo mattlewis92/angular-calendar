@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { CalendarUtils } from './calendar-utils.provider';
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 /**
  * Change the view date to the current day. For example:
@@ -32,15 +32,13 @@ export class CalendarTodayDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
-  constructor(private calendarUtils: CalendarUtils) {}
+  constructor(private dateAdapter: DateAdapter) {}
 
   /**
    * @hidden
    */
   @HostListener('click')
   onClick(): void {
-    this.viewDateChange.emit(
-      this.calendarUtils.dateAdapter.startOfDay(new Date())
-    );
+    this.viewDateChange.emit(this.dateAdapter.startOfDay(new Date()));
   }
 }

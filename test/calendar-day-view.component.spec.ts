@@ -19,13 +19,13 @@ import {
   MOMENT,
   CalendarEventTimesChangedEvent,
   CalendarDayViewComponent,
-  CalendarUtils
+  DateAdapter
 } from '../src';
 import { Subject } from 'rxjs';
 import { spy } from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
 import { take } from 'rxjs/operators';
-import { CalendarUtilsDateFns } from '../src/calendar-utils/date-fns';
+import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
@@ -33,8 +33,8 @@ describe('CalendarDayViewComponent component', () => {
       imports: [
         CalendarModule.forRoot(
           {
-            provide: CalendarUtils,
-            useClass: CalendarUtilsDateFns
+            provide: DateAdapter,
+            useFactory: adapterFactory
           },
           {
             dateFormatter: {
@@ -51,11 +51,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(
-    inject([CalendarEventTitleFormatter], _eventTitle_ => {
-      eventTitle = _eventTitle_;
-    })
-  );
+  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+    eventTitle = _eventTitle_;
+  }));
 
   it('should generate the day view', () => {
     const fixture: ComponentFixture<
