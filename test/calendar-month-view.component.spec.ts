@@ -21,12 +21,12 @@ import {
   DAYS_OF_WEEK,
   CalendarEventTimesChangedEvent,
   CalendarMonthViewComponent,
-  DateAdapter
+  DateAdapter,
+  CalendarMonthViewEventTimesChangedEvent
 } from '../src';
 import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
 import { take } from 'rxjs/operators';
-import { CalendarMonthViewEventTimesChangedEvent } from '../src/modules/month';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('calendarMonthView component', () => {

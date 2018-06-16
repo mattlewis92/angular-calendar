@@ -43,8 +43,7 @@ export {
  * Import this module to if you're just using a singular view and want to save on bundle size. Example usage:
  *
  * ```typescript
- * import { CalendarCommonModule } from 'angular-calendar/modules/common';
- * import { CalendarMonthModule } from 'angular-calendar/modules/month';
+ * import { CalendarCommonModule, CalendarMonthModule } from 'angular-calendar';
  *
  * @NgModule({
  *   imports: [
