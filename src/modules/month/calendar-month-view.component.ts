@@ -30,9 +30,11 @@ export interface CalendarMonthViewBeforeRenderEvent {
   period: ViewPeriod;
 }
 
-export interface CalendarMonthViewEventTimesChangedEvent
-  extends CalendarEventTimesChangedEvent {
-  day: MonthViewDay;
+export interface CalendarMonthViewEventTimesChangedEvent<
+  EventMetaType = any,
+  DayMetaType = any
+> extends CalendarEventTimesChangedEvent<EventMetaType> {
+  day: MonthViewDay<DayMetaType>;
 }
 
 /**
