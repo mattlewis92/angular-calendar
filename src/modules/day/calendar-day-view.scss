@@ -43,6 +43,10 @@
     background-color: #ededed;
   }
 
+  .cal-drag-active .cal-hour-segment {
+    pointer-events: none;
+  }
+
   .cal-event-container {
     position: absolute;
   }
