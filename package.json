@@ -3,7 +3,7 @@
   "version": "0.25.2",
   "description": "A calendar component for angular 6.0+ that can display events on a month, week or day view",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "node --max_old_space_size=8192 ./node_modules/.bin/webpack-dev-server --open",
     "build:demos": "webpack --env=production",
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json",
     "build:package": "ng-packagr -p package.json",
