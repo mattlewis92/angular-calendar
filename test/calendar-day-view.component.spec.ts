@@ -1087,15 +1087,51 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
-    expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.start instanceof Date
-    ).to.equal(true);
-    expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.end instanceof Date
-    ).to.equal(true);
-    expect(
-      Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
-    ).to.equal(true);
+    const { period } = beforeViewRenderCalled.getCall(0).args[0];
+    expect(period.start instanceof Date).to.equal(true);
+    expect(period.end instanceof Date).to.equal(true);
+    expect(Array.isArray(period.events)).to.equal(true);
     fixture.destroy();
+  });
+
+  it('should expose the events on the beforeViewRender output', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    const beforeViewRenderCalled = sinon.spy();
+    fixture.componentInstance.beforeViewRender
+      .pipe(take(1))
+      .subscribe(beforeViewRenderCalled);
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo'
+      },
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'bar',
+        allDay: true
+      }
+    ];
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    const { events, allDayEvents } = beforeViewRenderCalled.getCall(
+      0
+    ).args[0].body;
+    expect(events).to.deep.equal([
+      {
+        event: fixture.componentInstance.events[0],
+        endsAfterDay: true,
+        startsBeforeDay: true,
+        height: 1439,
+        top: 0,
+        left: 0,
+        width: 150
+      }
+    ]);
+    expect(allDayEvents).to.deep.equal([fixture.componentInstance.events[1]]);
   });
 });

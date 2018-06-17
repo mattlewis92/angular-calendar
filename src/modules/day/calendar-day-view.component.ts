@@ -31,6 +31,8 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
     hourGrid: DayViewHour[];
+    events: DayViewEvent[];
+    allDayEvents: CalendarEvent[];
   };
   period: ViewPeriod;
 }
@@ -512,7 +514,9 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.hours && this.view) {
       this.beforeViewRender.emit({
         body: {
-          hourGrid: this.hours
+          hourGrid: this.hours,
+          events: this.view.events,
+          allDayEvents: this.view.allDayEvents
         },
         period: this.view.period
       });
