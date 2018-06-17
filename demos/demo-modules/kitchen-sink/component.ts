@@ -19,7 +19,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
   CalendarEventAction,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarView
 } from 'angular-calendar';
 
 const colors: any = {
@@ -46,7 +47,9 @@ const colors: any = {
 export class DemoComponent {
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
+
+  CalendarView = CalendarView;
 
   viewDate: Date = new Date();
 

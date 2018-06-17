@@ -54,20 +54,20 @@
     <div class="btn-group">
       <div
         class="btn btn-primary"
-        (click)="view = 'month'"
-        [class.active]="view === 'month'">
+        (click)="view = CalendarView.Month"
+        [class.active]="view === CalendarView.Month">
         Month
       </div>
       <div
         class="btn btn-primary"
-        (click)="view = 'week'"
-        [class.active]="view === 'week'">
+        (click)="view = CalendarView.Week"
+        [class.active]="view === CalendarView.Week">
         Week
       </div>
       <div
         class="btn btn-primary"
-        (click)="view = 'day'"
-        [class.active]="view === 'day'">
+        (click)="view = CalendarView.Day"
+        [class.active]="view === CalendarView.Day">
         Day
       </div>
     </div>
@@ -76,7 +76,7 @@
 <br>
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
+    *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -86,7 +86,7 @@
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
+    *ngSwitchCase="CalendarView.Week"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -94,7 +94,7 @@
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
+    *ngSwitchCase="CalendarView.Day"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"

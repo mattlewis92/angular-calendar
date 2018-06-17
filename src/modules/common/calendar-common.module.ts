@@ -31,6 +31,7 @@ export * from './calendar-utils.provider';
 export * from './calendar-date-formatter.interface';
 export * from './calendar-event-times-changed-event.interface';
 export * from '../../date-adapters/date-adapter';
+export * from './calendar-view.enum';
 
 export {
   CalendarEvent,

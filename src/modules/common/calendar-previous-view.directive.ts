@@ -6,6 +6,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
+import { CalendarView } from './calendar-view.enum';
 
 /**
  * Change the view date to the previous view. For example:
@@ -26,7 +27,7 @@ export class CalendarPreviousViewDirective {
   /**
    * The current view
    */
-  @Input() view: string;
+  @Input() view: CalendarView;
 
   /**
    * The current view date
