@@ -49,6 +49,10 @@
 
   .cal-event-container {
     position: absolute;
+
+    &.resize-active {
+      z-index: 1;
+    }
   }
 
   .cal-event {
