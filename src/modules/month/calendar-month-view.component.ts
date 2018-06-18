@@ -83,7 +83,10 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             [events]="openDay?.events"
             [customTemplate]="openDayEventsTemplate"
             [eventTitleTemplate]="eventTitleTemplate"
-            (eventClicked)="eventClicked.emit({event: $event.event})">
+            (eventClicked)="eventClicked.emit({event: $event.event})"
+            mwlDroppable
+            dragOverClass="cal-drag-over"
+            (drop)="eventDropped(openDay, $event.dropData.event)">
           </mwl-calendar-open-day-events>
         </div>
       </div>
