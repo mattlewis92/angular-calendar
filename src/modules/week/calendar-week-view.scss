@@ -81,4 +81,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .cal-drag-active * {
+    pointer-events: none;
+  }
 }

@@ -149,4 +149,8 @@
       opacity: 0.3;
     }
   }
+
+  .cal-drag-active * {
+    pointer-events: none;
+  }
 }

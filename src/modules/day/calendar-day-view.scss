@@ -90,4 +90,8 @@
     padding: 8px;
     border: solid 1px;
   }
+
+  .cal-drag-active * {
+    pointer-events: none;
+  }
 }

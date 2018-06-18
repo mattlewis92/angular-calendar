@@ -95,6 +95,7 @@ export interface DayViewEventResize {
             (resizing)="resizing(dayEvent, $event)"
             (resizeEnd)="resizeEnded(dayEvent)"
             mwlDraggable
+            dragActiveClass="cal-drag-active"
             [dropData]="{event: dayEvent.event, isInternal: true}"
             [dragAxis]="{x: !snapDraggedEvents && dayEvent.event.draggable && currentResizes.size === 0, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize} : {}"

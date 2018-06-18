@@ -344,6 +344,7 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   handleDayClick(clickEvent: any, day: MonthViewDay) {
+    console.log('clicked', clickEvent.target);
     // when using hammerjs, stopPropagation doesn't work. See https://github.com/mattlewis92/angular-calendar/issues/318
     if (!clickEvent.target.classList.contains('cal-event')) {
       this.dayClicked.emit({ day });

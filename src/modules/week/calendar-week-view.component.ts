@@ -78,6 +78,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           (resizing)="resizing(weekEvent, $event, dayColumnWidth)"
           (resizeEnd)="resizeEnded(weekEvent)"
           mwlDraggable
+          dragActiveClass="cal-drag-active"
           [dragAxis]="{x: weekEvent.event.draggable && currentResizes.size === 0, y: false}"
           [dragSnapGrid]="{x: dayColumnWidth}"
           [validateDrag]="validateDrag"
