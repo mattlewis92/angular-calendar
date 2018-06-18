@@ -89,7 +89,7 @@ export interface DayViewEventResize {
             [ngClass]="dayEvent.event.cssClass"
             mwlResizable
             [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
-            [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
+            [resizeSnapGrid]="{top: eventSnapSize || hourSegmentHeight, bottom: eventSnapSize || hourSegmentHeight}"
             [validateResize]="validateResize"
             (resizeStart)="resizeStarted(dayEvent, $event, dayEventsContainer)"
             (resizing)="resizing(dayEvent, $event)"
@@ -98,7 +98,7 @@ export interface DayViewEventResize {
             dragActiveClass="cal-drag-active"
             [dropData]="{event: dayEvent.event, isInternal: true}"
             [dragAxis]="{x: !snapDraggedEvents && dayEvent.event.draggable && currentResizes.size === 0, y: dayEvent.event.draggable && currentResizes.size === 0}"
-            [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize} : {}"
+            [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize || hourSegmentHeight} : {}"
             [validateDrag]="snapDraggedEvents ? validateDrag : false"
             (dragPointerDown)="dragStarted(event, dayEventsContainer)"
             (dragEnd)="dragEnded(dayEvent, $event)"
@@ -196,7 +196,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The grid size to snap resizing and dragging of events to
    */
-  @Input() eventSnapSize: number = this.hourSegmentHeight;
+  @Input() eventSnapSize: number;
 
   /**
    * The placement of the event tooltip
@@ -482,7 +482,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.eventDroppedWithinContainer) {
       const draggedInPixelsSnapSize = roundToNearest(
         dragEndEvent.y,
-        this.eventSnapSize
+        this.eventSnapSize || this.hourSegmentHeight
       );
       const pixelAmountInMinutes: number =
         MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
