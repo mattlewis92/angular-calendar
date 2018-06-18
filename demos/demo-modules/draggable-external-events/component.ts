@@ -1,7 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CalendarEvent,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarView
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
@@ -9,12 +10,25 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
+  styles: [
+    `
+      .drag-active {
+        position: relative;
+        z-index: 1;
+      }
+      .drag-over {
+        background-color: #eee;
+      }
+    `
+  ]
 })
 export class DemoComponent {
-  view: string = 'month';
+  CalendarView = CalendarView;
 
-  viewDate: Date = new Date();
+  view = CalendarView.Month;
+
+  viewDate = new Date();
 
   externalEvents: CalendarEvent[] = [
     {
@@ -33,16 +47,16 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
-  activeDayIsOpen: boolean = false;
+  activeDayIsOpen = false;
 
-  refresh: Subject<any> = new Subject();
+  refresh = new Subject<void>();
 
   eventDropped({
     event,
     newStart,
     newEnd
   }: CalendarEventTimesChangedEvent): void {
-    const externalIndex: number = this.externalEvents.indexOf(event);
+    const externalIndex = this.externalEvents.indexOf(event);
     if (externalIndex > -1) {
       this.externalEvents.splice(externalIndex, 1);
       this.events.push(event);
@@ -51,7 +65,17 @@ export class DemoComponent {
     if (newEnd) {
       event.end = newEnd;
     }
-    this.viewDate = newStart;
-    this.activeDayIsOpen = true;
+    if (this.view === 'month') {
+      this.viewDate = newStart;
+      this.activeDayIsOpen = true;
+    }
+    this.events = [...this.events];
+  }
+
+  externalDrop(event: CalendarEvent) {
+    if (this.externalEvents.indexOf(event) === -1) {
+      this.events = this.events.filter(iEvent => iEvent !== event);
+      this.externalEvents.push(event);
+    }
   }
 }

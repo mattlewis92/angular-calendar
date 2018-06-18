@@ -25,8 +25,9 @@ import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
-import { validateEvents, trackByEventId } from '../common/util';
+import { validateEvents, trackByEventId, roundToNearest } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
+import { DragEnd } from 'angular-draggable-droppable/draggable.directive';
 
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
@@ -64,7 +65,7 @@ export interface DayViewEventResize {
 @Component({
   selector: 'mwl-calendar-day-view',
   template: `
-    <div class="cal-day-view" #dayViewContainer>
+    <div class="cal-day-view">
       <mwl-calendar-all-day-event
         *ngFor="let event of view.allDayEvents; trackBy:trackByEventId"
         [event]="event"
@@ -72,7 +73,11 @@ export interface DayViewEventResize {
         [eventTitleTemplate]="eventTitleTemplate"
         (eventClicked)="eventClicked.emit({event: event})">
       </mwl-calendar-all-day-event>
-      <div class="cal-hour-rows">
+      <div
+        class="cal-hour-rows"
+        #dayEventsContainer
+        mwlDroppable
+        (drop)="eventDroppedWithinContainer = true">
         <div class="cal-events">
           <div
             #event
@@ -86,15 +91,16 @@ export interface DayViewEventResize {
             [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
             [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
             [validateResize]="validateResize"
-            (resizeStart)="resizeStarted(dayEvent, $event, dayViewContainer)"
+            (resizeStart)="resizeStarted(dayEvent, $event, dayEventsContainer)"
             (resizing)="resizing(dayEvent, $event)"
             (resizeEnd)="resizeEnded(dayEvent)"
             mwlDraggable
-            [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"
-            [dragSnapGrid]="{y: eventSnapSize}"
-            [validateDrag]="validateDrag"
-            (dragPointerDown)="dragStart(event, dayViewContainer)"
-            (dragEnd)="eventDragged(dayEvent, $event.y)"
+            [dropData]="{event: dayEvent.event, isInternal: true}"
+            [dragAxis]="{x: !snapDraggedEvents && dayEvent.event.draggable && currentResizes.size === 0, y: dayEvent.event.draggable && currentResizes.size === 0}"
+            [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize} : {}"
+            [validateDrag]="snapDraggedEvents ? validateDrag : false"
+            (dragPointerDown)="dragStarted(event, dayEventsContainer)"
+            (dragEnd)="dragEnded(dayEvent, $event)"
             [style.marginTop.px]="dayEvent.top"
             [style.height.px]="dayEvent.height"
             [style.marginLeft.px]="dayEvent.left + 70"
@@ -227,6 +233,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() eventTitleTemplate: TemplateRef<any>;
 
   /**
+   * Whether to snap events to a grid when dragging
+   */
+  @Input() snapDraggedEvents: boolean = true;
+
+  /**
    * Called when an event title is clicked
    */
   @Output()
@@ -279,6 +290,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   currentResizes: Map<DayViewEvent, DayViewEventResize> = new Map();
+
+  /**
+   * @hidden
+   */
+  eventDroppedWithinContainer = false;
 
   /**
    * @hidden
@@ -379,10 +395,14 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   eventDropped(
-    dropEvent: { dropData?: { event?: CalendarEvent } },
+    dropEvent: { dropData?: { event?: CalendarEvent; isInternal?: boolean } },
     segment: DayViewHourSegment
   ): void {
-    if (dropEvent.dropData && dropEvent.dropData.event) {
+    if (
+      dropEvent.dropData &&
+      dropEvent.dropData.event &&
+      !dropEvent.dropData.isInternal
+    ) {
       this.eventTimesChanged.emit({
         event: dropEvent.dropData.event,
         newStart: segment.date
@@ -393,7 +413,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   resizeStarted(
     event: DayViewEvent,
     resizeEvent: ResizeEvent,
-    dayViewContainer: HTMLElement
+    dayEventsContainer: HTMLElement
   ): void {
     this.currentResizes.set(event, {
       originalTop: event.top,
@@ -401,7 +421,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       edge: typeof resizeEvent.edges.top !== 'undefined' ? 'top' : 'bottom'
     });
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
-      dayViewContainer
+      dayEventsContainer
     );
     this.validateResize = ({ rectangle }) =>
       resizeHelper.validateResize({ rectangle });
@@ -446,29 +466,37 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.currentResizes.delete(dayEvent);
   }
 
-  dragStart(event: HTMLElement, dayViewContainer: HTMLElement): void {
+  dragStarted(event: HTMLElement, dayEventsContainer: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
-      dayViewContainer,
+      dayEventsContainer,
       event
     );
     this.validateDrag = ({ x, y }) =>
       this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
+    this.eventDroppedWithinContainer = false;
     this.cdr.markForCheck();
   }
 
-  eventDragged(dayEvent: DayViewEvent, draggedInPixels: number): void {
-    const pixelAmountInMinutes: number =
-      MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
-    const minutesMoved: number = draggedInPixels * pixelAmountInMinutes;
-    const newStart: Date = this.dateAdapter.addMinutes(
-      dayEvent.event.start,
-      minutesMoved
-    );
-    let newEnd: Date;
-    if (dayEvent.event.end) {
-      newEnd = this.dateAdapter.addMinutes(dayEvent.event.end, minutesMoved);
+  dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEnd): void {
+    if (this.eventDroppedWithinContainer) {
+      const draggedInPixelsSnapSize = roundToNearest(
+        dragEndEvent.y,
+        this.eventSnapSize
+      );
+      const pixelAmountInMinutes: number =
+        MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
+      const minutesMoved: number =
+        draggedInPixelsSnapSize * pixelAmountInMinutes;
+      const newStart: Date = this.dateAdapter.addMinutes(
+        dayEvent.event.start,
+        minutesMoved
+      );
+      let newEnd: Date;
+      if (dayEvent.event.end) {
+        newEnd = this.dateAdapter.addMinutes(dayEvent.event.end, minutesMoved);
+      }
+      this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
     }
-    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
   }
 
   private refreshHourGrid(): void {

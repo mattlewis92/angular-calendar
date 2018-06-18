@@ -1,14 +1,19 @@
 <div class="row">
 
   <div class="col-md-3">
-    <div class="card">
+    <div
+      class="card"
+      mwlDroppable
+      (drop)="externalDrop($event.dropData.event)"
+      dragOverClass="drag-over">
       <div class="card-body">
+        <p *ngIf="externalEvents.length === 0"><em>No events added</em></p>
         <ul>
           <li
             *ngFor="let event of externalEvents"
             mwlDraggable
             [dropData]="{event: event}"
-            style="position:relative; z-index: 10">
+            dragActiveClass="drag-active">
             <a
               href="javascript:;"
               [style.color]="event.color.primary">
@@ -28,7 +33,7 @@
 
     <div [ngSwitch]="view">
       <mwl-calendar-month-view
-        *ngSwitchCase="'month'"
+        *ngSwitchCase="CalendarView.Month"
         [viewDate]="viewDate"
         [events]="events"
         [activeDayIsOpen]="activeDayIsOpen"
@@ -36,17 +41,18 @@
         (eventTimesChanged)="eventDropped($event)">
       </mwl-calendar-month-view>
       <mwl-calendar-week-view
-        *ngSwitchCase="'week'"
+        *ngSwitchCase="CalendarView.Week"
         [viewDate]="viewDate"
         [events]="events"
         [refresh]="refresh"
         (eventTimesChanged)="eventDropped($event)">
       </mwl-calendar-week-view>
       <mwl-calendar-day-view
-        *ngSwitchCase="'day'"
+        *ngSwitchCase="CalendarView.Day"
         [viewDate]="viewDate"
         [events]="events"
         [refresh]="refresh"
+        [snapDraggedEvents]="false"
         (eventTimesChanged)="eventDropped($event)">
       </mwl-calendar-day-view>
     </div>
