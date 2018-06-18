@@ -78,7 +78,7 @@ export default config => {
       },
       plugins: [
         new FilterWarningsPlugin({
-          exclude: /was not found in 'calendar-utils'/
+          exclude: /was not found in /
         }),
         ...(config.singleRun
           ? [
