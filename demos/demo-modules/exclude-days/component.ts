@@ -4,7 +4,6 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { subDays, addDays } from 'date-fns';
 import { colors } from '../demo-utils/colors';
 
 @Component({
@@ -34,18 +33,4 @@ export class DemoComponent {
 
   // exclude weekends
   excludeDays: number[] = [0, 6];
-
-  skipWeekends(direction: 'back' | 'forward'): void {
-    if (this.view === 'day') {
-      if (direction === 'back') {
-        while (this.excludeDays.indexOf(this.viewDate.getDay()) > -1) {
-          this.viewDate = subDays(this.viewDate, 1);
-        }
-      } else if (direction === 'forward') {
-        while (this.excludeDays.indexOf(this.viewDate.getDay()) > -1) {
-          this.viewDate = addDays(this.viewDate, 1);
-        }
-      }
-    }
-  }
 }

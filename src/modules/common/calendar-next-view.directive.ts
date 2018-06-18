@@ -35,6 +35,11 @@ export class CalendarNextViewDirective {
   @Input() viewDate: Date;
 
   /**
+   * Days to skip when going forward by 1 day
+   */
+  @Input() excludeDays: number[];
+
+  /**
    * Called when the view date is changed
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
@@ -52,6 +57,16 @@ export class CalendarNextViewDirective {
       month: this.dateAdapter.addMonths
     }[this.view];
 
-    this.viewDateChange.emit(addFn(this.viewDate, 1));
+    let newDate = addFn(this.viewDate, 1);
+
+    while (
+      this.view === CalendarView.Day &&
+      this.excludeDays &&
+      this.excludeDays.indexOf(newDate.getDay()) > -1
+    ) {
+      newDate = this.dateAdapter.addDays(newDate, 1);
+    }
+
+    this.viewDateChange.emit(newDate);
   }
 }
