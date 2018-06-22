@@ -45,6 +45,11 @@
 
   .cal-day-cell {
     min-height: 100px;
+
+    // ie11 hack for https://github.com/mattlewis92/angular-calendar/issues/501
+    @media all and (-ms-high-contrast: none) {
+      display: block;
+    }
   }
 
   .cal-day-cell:not(:last-child) {
