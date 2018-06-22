@@ -64,15 +64,11 @@ const dependencyVersions: any = {
     .version,
   dateFns: require('date-fns/package.json').version,
   rxjs: require('rxjs/package.json').version,
-  typescript: '2.2.2',
   bootstrap: require('bootstrap/package.json').version,
   zoneJs: require('zone.js/package.json').version,
-  reflectMetadata: require('reflect-metadata/package.json').version,
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
-  ngxContextmenu: require('ngx-contextmenu/package.json').version,
   fontAwesome: require('font-awesome/package.json').version,
-  angularCdk: require('@angular/cdk/package.json').version,
   positioning: require('positioning/package.json').version
 };
 
@@ -195,19 +191,16 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/router': dependencyVersions.angular,
           '@angular/forms': dependencyVersions.angular,
           '@angular/animations': dependencyVersions.angular,
-          '@angular/cdk': dependencyVersions.angularCdk,
           rxjs: dependencyVersions.rxjs,
           'zone.js': dependencyVersions.zoneJs,
-          'angular-calendar': dependencyVersions.angularCalendar,
-          'date-fns': dependencyVersions.dateFns,
-          '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
-          // 'ngx-contextmenu': dependencyVersions.ngxContextmenu,
-          rrule: dependencyVersions.rrule,
-          bootstrap: dependencyVersions.bootstrap,
           'angular-draggable-droppable':
             dependencyVersions.angularDraggableDroppable,
           'angular-resizable-element':
-            dependencyVersions.angularResizableElement
+            dependencyVersions.angularResizableElement,
+          'date-fns': dependencyVersions.dateFns,
+          'angular-calendar': dependencyVersions.angularCalendar,
+          '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
+          rrule: dependencyVersions.rrule
         }
       },
       {
