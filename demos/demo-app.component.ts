@@ -203,7 +203,11 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
           // 'ngx-contextmenu': dependencyVersions.ngxContextmenu,
           rrule: dependencyVersions.rrule,
-          bootstrap: dependencyVersions.bootstrap
+          bootstrap: dependencyVersions.bootstrap,
+          'angular-draggable-droppable':
+            dependencyVersions.angularDraggableDroppable,
+          'angular-resizable-element':
+            dependencyVersions.angularResizableElement
         }
       },
       {
