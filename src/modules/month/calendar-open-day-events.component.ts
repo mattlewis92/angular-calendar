@@ -20,6 +20,7 @@ import { trackByEventId } from '../common/util';
         *ngFor="let event of events; trackBy:trackByEventId"
         [ngClass]="event?.cssClass"
         mwlDraggable
+        [class.cal-draggable]="event.draggable"
         dragActiveClass="cal-drag-active"
         [dropData]="{event: event}"
         [dragAxis]="{x: event.draggable, y: event.draggable}">

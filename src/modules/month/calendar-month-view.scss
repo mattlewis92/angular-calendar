@@ -150,6 +150,10 @@
     }
   }
 
+  .cal-draggable {
+    cursor: move;
+  }
+
   .cal-drag-active * {
     pointer-events: none;
   }
