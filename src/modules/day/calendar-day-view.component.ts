@@ -32,7 +32,6 @@ import { DragEnd } from 'angular-draggable-droppable/draggable.directive';
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
     hourGrid: DayViewHour[];
-    events: DayViewEvent[];
     allDayEvents: CalendarEvent[];
   };
   period: ViewPeriod;
@@ -545,7 +544,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       this.beforeViewRender.emit({
         body: {
           hourGrid: this.hours,
-          events: this.view.events,
           allDayEvents: this.view.allDayEvents
         },
         period: this.view.period
