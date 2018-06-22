@@ -200,7 +200,8 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
-          rrule: dependencyVersions.rrule
+          rrule: dependencyVersions.rrule,
+          'calendar-utils': dependencyVersions.calendarUtils
         }
       },
       {
