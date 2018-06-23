@@ -1253,9 +1253,10 @@ describe('CalendarDayViewComponent component', () => {
     ];
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
-    const { events, allDayEvents } = beforeViewRenderCalled.getCall(
-      0
-    ).args[0].body;
+    const {
+      period: { events },
+      allDayEvents
+    } = beforeViewRenderCalled.getCall(0).args[0].body;
     expect(events).to.deep.equal([
       {
         event: fixture.componentInstance.events[0],
