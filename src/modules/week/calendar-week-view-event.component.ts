@@ -25,14 +25,14 @@ import { WeekViewEvent } from 'calendar-utils';
         [tooltipPlacement]="tooltipPlacement"
         [tooltipEvent]="weekEvent.event"
         [tooltipTemplate]="tooltipTemplate"
-        [tooltipAppendToBody]="tooltipAppendToBody">
+        [tooltipAppendToBody]="tooltipAppendToBody"
+        (mwlClick)="handleEventClick($event)">
         <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
         &ngsp;
         <mwl-calendar-event-title
           [event]="weekEvent.event"
           [customTemplate]="eventTitleTemplate"
-          view="week"
-          (mwlClick)="eventClicked.emit()">
+          view="week">
         </mwl-calendar-event-title>
       </div>
     </ng-template>
@@ -62,4 +62,17 @@ export class CalendarWeekViewEventComponent {
   @Input() tooltipTemplate: TemplateRef<any>;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * @hidden
+   */
+  handleEventClick(clickEvent: any) {
+    // only fire click event when clicked on host element or title therein, ignore other underlying elements
+    if (
+      clickEvent.target.classList.contains('cal-event') ||
+      clickEvent.target.classList.contains('cal-event-title')
+    ) {
+      this.eventClicked.emit();
+    }
+  }
 }
