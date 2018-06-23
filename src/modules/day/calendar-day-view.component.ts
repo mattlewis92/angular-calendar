@@ -456,10 +456,15 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
     const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
     let newStart: Date = dayEvent.event.start;
-    let newEnd: Date = dayEvent.event.end;
+    let newEnd: Date =
+      dayEvent.event.end ||
+      this.dateAdapter.addMinutes(
+        dayEvent.event.start,
+        30 * pixelAmountInMinutes
+      );
     if (resizingBeforeStart) {
       newStart = this.dateAdapter.addMinutes(newStart, minutesMoved);
-    } else if (newEnd) {
+    } else {
       newEnd = this.dateAdapter.addMinutes(newEnd, minutesMoved);
     }
 
