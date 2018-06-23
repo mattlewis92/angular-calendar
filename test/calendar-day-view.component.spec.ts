@@ -1255,19 +1255,9 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     const {
       period: { events },
-      allDayEvents
-    } = beforeViewRenderCalled.getCall(0).args[0].body;
-    expect(events).to.deep.equal([
-      {
-        event: fixture.componentInstance.events[0],
-        endsAfterDay: true,
-        startsBeforeDay: true,
-        height: 1439,
-        top: 0,
-        left: 0,
-        width: 150
-      }
-    ]);
+      body: { allDayEvents }
+    } = beforeViewRenderCalled.getCall(0).args[0];
+    expect(events).to.deep.equal([fixture.componentInstance.events[0]]);
     expect(allDayEvents).to.deep.equal([fixture.componentInstance.events[1]]);
   });
 });
