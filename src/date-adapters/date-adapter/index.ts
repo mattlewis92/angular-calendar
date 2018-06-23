@@ -1,4 +1,4 @@
-import { DateAdapter as BaseDateAdapter } from 'calendar-utils/date-adapters';
+import { DateAdapter as BaseDateAdapter } from 'calendar-utils/date-adapters/date-adapter';
 
 export abstract class DateAdapter implements BaseDateAdapter {
   abstract addWeeks(date: Date | string | number, amount: number): Date;

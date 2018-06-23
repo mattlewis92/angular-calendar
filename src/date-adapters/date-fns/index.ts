@@ -11,7 +11,7 @@ import * as setYear from 'date-fns/set_year/index';
 import * as getDate from 'date-fns/get_date/index';
 import * as getMonth from 'date-fns/get_month/index';
 import * as getYear from 'date-fns/get_year/index';
-import { DateAdapter } from './date-adapter';
+import { DateAdapter } from '../date-adapter';
 
 export function adapterFactory(): DateAdapter {
   return {

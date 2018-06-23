@@ -1,5 +1,5 @@
 import { adapterFactory as baseAdapterFactory } from 'calendar-utils/date-adapters/moment';
-import { DateAdapter } from './date-adapter';
+import { DateAdapter } from '../date-adapter';
 
 export function adapterFactory(moment): DateAdapter {
   return {

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "es2015",
+    "module": "commonjs",
     "declaration": true,
     "stripInternal": true,
     "outDir": "./dist/date-adapters",
@@ -12,8 +12,8 @@
     "importHelpers": true
   },
   "files": [
-    "src/date-adapters/date-fns.ts",
-    "src/date-adapters/moment.ts"
+    "src/date-adapters/date-fns/index.ts",
+    "src/date-adapters/moment/index.ts"
   ],
   "exclude": [
     "test",

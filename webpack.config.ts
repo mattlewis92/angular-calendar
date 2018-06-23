@@ -91,11 +91,11 @@ export default (env = 'development') => {
         'angular-calendar$': path.resolve(__dirname, 'src/index.ts'),
         'angular-calendar/date-adapters/date-fns$': path.resolve(
           __dirname,
-          'src/date-adapters/date-fns.ts'
+          'src/date-adapters/date-fns/index.ts'
         ),
         'angular-calendar/date-adapters/moment$': path.resolve(
           __dirname,
-          'src/date-adapters/moment.ts'
+          'src/date-adapters/moment/index.ts'
         )
       }
     },

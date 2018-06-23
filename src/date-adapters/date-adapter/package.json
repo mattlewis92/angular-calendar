@@ -1,0 +1,5 @@
+{
+  "name": "angular-calendar/date-adapters/date-adapter",
+  "main": "./index.js",
+  "typings": "./index.d.ts"
+}

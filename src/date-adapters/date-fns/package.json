@@ -1,0 +1,5 @@
+{
+  "name": "angular-calendar/date-adapters/date-fns",
+  "typings": "./index.d.ts",
+  "main": "./index.js"
+}
