@@ -490,7 +490,7 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
-  it.only('should resize events with no end date', () => {
+  it('should resize events with no end date', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
@@ -547,7 +547,7 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
-  it.only('should resize events with no end date with a custom amount of segments', () => {
+  it('should resize events with no end date with a custom amount of segments', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
