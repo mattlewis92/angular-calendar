@@ -16,6 +16,7 @@ import { colors } from '../demo-utils/colors';
       .drag-active {
         position: relative;
         z-index: 1;
+        pointer-events: none;
       }
       .drag-over {
         background-color: #eee;

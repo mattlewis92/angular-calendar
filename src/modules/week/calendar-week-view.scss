@@ -82,7 +82,11 @@
     white-space: nowrap;
   }
 
-  .cal-drag-active * {
-    pointer-events: none;
+  .cal-drag-active {
+    z-index: 1;
+
+    & * {
+      pointer-events: none;
+    }
   }
 }
