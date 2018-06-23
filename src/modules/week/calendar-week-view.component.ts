@@ -368,8 +368,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       weekEvent
     );
 
+    const resizingBeforeStart = currentResize.edge === 'left';
     let daysDiff: number;
-    if (currentResize.edge === 'left') {
+    if (resizingBeforeStart) {
       daysDiff = weekEvent.offset - currentResize.originalOffset;
     } else {
       daysDiff = weekEvent.span - currentResize.originalSpan;
@@ -379,10 +380,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     weekEvent.span = currentResize.originalSpan;
 
     let newStart: Date = weekEvent.event.start;
-    let newEnd: Date = weekEvent.event.end;
-    if (currentResize.edge === 'left') {
+    let newEnd: Date = weekEvent.event.end || weekEvent.event.start;
+    if (resizingBeforeStart) {
       newStart = this.dateAdapter.addDays(newStart, daysDiff);
-    } else if (newEnd) {
+    } else {
       newEnd = this.dateAdapter.addDays(newEnd, daysDiff);
     }
 

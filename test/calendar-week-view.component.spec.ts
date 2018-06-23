@@ -485,6 +485,69 @@ describe('calendarWeekView component', () => {
     });
   });
 
+  it('should resize events with no end date', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [
+      {
+        title: 'foo',
+        color: { primary: '', secondary: '' },
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        resizable: {
+          afterEnd: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const dayWidth: number = event.parentElement.offsetWidth / 7;
+    const rect: ClientRect = event.getBoundingClientRect();
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', document.body, {
+      clientX: rect.right,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.right + dayWidth,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    expect(Math.round(event.getBoundingClientRect().left)).to.equal(
+      Math.round(rect.left)
+    );
+    expect(Math.round(event.getBoundingClientRect().width)).to.equal(
+      Math.round(rect.width + dayWidth)
+    );
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.right + dayWidth,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-06-27')
+        .add(4, 'hours')
+        .toDate(),
+      newEnd: moment('2016-06-27')
+        .add(4, 'hours')
+        .add(1, 'day')
+        .toDate()
+    });
+  });
+
   it('should allow 2 events next to each other to be resized at the same time', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
