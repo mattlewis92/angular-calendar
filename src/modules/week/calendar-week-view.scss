@@ -35,6 +35,11 @@
   .cal-event-container {
     display: inline-block;
     position: absolute;
+
+    &.resize-active {
+      z-index: 1;
+      pointer-events: none;
+    }
   }
 
   .cal-event {
