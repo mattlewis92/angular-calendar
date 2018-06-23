@@ -441,8 +441,9 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   resizeEnded(dayEvent: DayViewEvent): void {
     const currentResize: DayViewEventResize = this.currentResizes.get(dayEvent);
 
+    const resizingBeforeStart = currentResize.edge === 'top';
     let pixelsMoved: number;
-    if (currentResize.edge === 'top') {
+    if (resizingBeforeStart) {
       pixelsMoved = dayEvent.top - currentResize.originalTop;
     } else {
       pixelsMoved = dayEvent.height - currentResize.originalHeight;
@@ -456,7 +457,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date = dayEvent.event.end;
-    if (currentResize.edge === 'top') {
+    if (resizingBeforeStart) {
       newStart = this.dateAdapter.addMinutes(newStart, minutesMoved);
     } else if (newEnd) {
       newEnd = this.dateAdapter.addMinutes(newEnd, minutesMoved);
