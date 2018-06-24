@@ -8,6 +8,8 @@ import {
   EventEmitter
 } from '@angular/core';
 
+const clickElements = new WeakSet<HTMLElement>();
+
 @Directive({
   selector: '[mwlClick]'
 })
@@ -16,9 +18,13 @@ export class ClickDirective implements OnInit, OnDestroy {
 
   private removeListener: () => void;
 
-  constructor(private renderer: Renderer2, private elm: ElementRef) {}
+  constructor(
+    private renderer: Renderer2,
+    private elm: ElementRef<HTMLElement>
+  ) {}
 
   ngOnInit(): void {
+    clickElements.add(this.elm.nativeElement);
     const eventName: string =
       typeof window !== 'undefined' && typeof window['Hammer'] !== 'undefined'
         ? 'tap'
@@ -27,12 +33,17 @@ export class ClickDirective implements OnInit, OnDestroy {
       this.elm.nativeElement,
       eventName,
       event => {
-        this.click.next(event);
+        const isClickableElement = clickElements.has(event.target);
+        const isThisClickableElement = this.elm.nativeElement === event.target;
+        if (!isClickableElement || isThisClickableElement) {
+          this.click.next(event);
+        }
       }
     );
   }
 
   ngOnDestroy(): void {
     this.removeListener();
+    clickElements.delete(this.elm.nativeElement);
   }
 }
