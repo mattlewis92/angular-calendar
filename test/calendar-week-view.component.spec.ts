@@ -688,7 +688,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
-      clientX: eventPosition.left - 50,
+      clientX: eventPosition.left - 100,
       clientY: eventPosition.top
     });
     fixture.detectChanges();
