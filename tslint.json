@@ -1,9 +1,8 @@
 {
   "extends": "tslint-config-mwl",
   "rules": {
-    "pipe-naming": [true, "camelCase", "calendar"],
     "use-host-property-decorator": false,
     "no-inferrable-types": false,
-    "no-unused-expression": false
+    "max-inline-declarations": false
   }
 }

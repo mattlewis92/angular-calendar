@@ -35,12 +35,23 @@ export default config => {
         rules: [
           {
             enforce: 'pre',
-            test: /\.ts$/,
+            test: /src\/.+\.ts$/,
             loader: 'tslint-loader',
             exclude: /node_modules/,
             options: {
               emitErrors: config.singleRun,
               failOnHint: config.singleRun
+            }
+          },
+          {
+            enforce: 'pre',
+            test: /test\/.+\.ts$/,
+            loader: 'tslint-loader',
+            exclude: /node_modules/,
+            options: {
+              emitErrors: config.singleRun,
+              failOnHint: config.singleRun,
+              configFile: 'test/tslint.json'
             }
           },
           {

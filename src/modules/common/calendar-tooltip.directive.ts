@@ -19,6 +19,7 @@ import { Positioning } from 'positioning';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
+  selector: 'mwl-calendar-tooltip-window',
   template: `
     <ng-template
       #defaultTemplate
