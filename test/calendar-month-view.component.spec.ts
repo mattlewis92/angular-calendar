@@ -781,7 +781,7 @@ describe('calendarMonthView component', () => {
       beforeViewRenderCalled
     );
     fixture.componentInstance.refresh.next(true);
-    expect(beforeViewRenderCalled).to.have.callCount(1);
+    expect(beforeViewRenderCalled).to.have.been.calledOnce;
     subscription.unsubscribe();
     fixture.destroy();
   });
@@ -812,11 +812,11 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.start instanceof Date
-    ).to.equal(true);
+      beforeViewRenderCalled.getCall(0).args[0].period.start
+    ).to.be.an.instanceOf(Date);
     expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.end instanceof Date
-    ).to.equal(true);
+      beforeViewRenderCalled.getCall(0).args[0].period.end
+    ).to.be.an.instanceOf(Date);
     expect(
       Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
     ).to.equal(true);

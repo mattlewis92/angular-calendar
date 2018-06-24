@@ -27,7 +27,7 @@ describe('common module', () => {
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
     );
-    expect(dateFormatter instanceof CalendarDateFormatter).to.equal(true);
+    expect(dateFormatter).to.be.an.instanceOf(CalendarDateFormatter);
   });
 
   it('should allow the date formatter to be customsied via the forRoot method', () => {
@@ -51,8 +51,8 @@ describe('common module', () => {
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
     );
-    expect(dateFormatter instanceof CalendarDateFormatter).to.equal(false);
-    expect(dateFormatter instanceof CalendarMomentDateFormatter).to.equal(true);
+    expect(dateFormatter).not.to.be.an.instanceOf(CalendarDateFormatter);
+    expect(dateFormatter).to.be.an.instanceOf(CalendarMomentDateFormatter);
   });
 
   it('should allow just the month view to be created', () => {

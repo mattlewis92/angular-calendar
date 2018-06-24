@@ -711,7 +711,7 @@ describe('calendarWeekView component', () => {
         .add(6, 'hours')
         .toDate()
     });
-    expect(eventDropped.callCount).to.equal(1);
+    expect(eventDropped).to.have.been.calledOnce;
   });
 
   it('should allow events to be dragged outside of the calendar', () => {
@@ -773,7 +773,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     fixture.destroy();
-    expect(eventDropped.callCount).to.equal(0);
+    expect(eventDropped).not.to.have.been.called;
   });
 
   it('should round event drag sizes to the event snap size when dragging and dropping non snapped events', () => {
@@ -835,7 +835,7 @@ describe('calendarWeekView component', () => {
         .add(6, 'hours')
         .toDate()
     });
-    expect(eventDropped.callCount).to.equal(1);
+    expect(eventDropped).to.have.been.calledOnce;
   });
 
   it('should not allow events to be resized smaller than 1 day', () => {
@@ -1075,7 +1075,7 @@ describe('calendarWeekView component', () => {
       beforeViewRenderCalled
     );
     fixture.componentInstance.refresh.next(true);
-    expect(beforeViewRenderCalled).to.have.callCount(1);
+    expect(beforeViewRenderCalled).to.have.been.calledOnce;
     subscription.unsubscribe();
     fixture.destroy();
   });
@@ -1092,11 +1092,11 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.start instanceof Date
-    ).to.equal(true);
+      beforeViewRenderCalled.getCall(0).args[0].period.start
+    ).to.be.an.instanceOf(Date);
     expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.end instanceof Date
-    ).to.equal(true);
+      beforeViewRenderCalled.getCall(0).args[0].period.end
+    ).to.be.an.instanceOf(Date);
     expect(
       Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
     ).to.equal(true);

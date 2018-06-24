@@ -808,7 +808,7 @@ describe('CalendarDayViewComponent component', () => {
         .add(30, 'minutes')
         .toDate()
     });
-    expect(eventDropped.callCount).to.equal(1);
+    expect(eventDropped).to.have.been.calledOnce;
   });
 
   it('should not allow events to be dragged outside of the calendar', () => {
@@ -875,7 +875,7 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    expect(eventDropped.callCount).to.equal(1);
+    expect(eventDropped).to.have.been.calledOnce;
     fixture.destroy();
   });
 
@@ -949,7 +949,7 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left - 10
     });
     fixture.detectChanges();
-    expect(eventDropped.callCount).to.equal(0);
+    expect(eventDropped).not.to.have.been.called;
     fixture.destroy();
   });
 
@@ -1324,7 +1324,7 @@ describe('CalendarDayViewComponent component', () => {
       beforeViewRenderCalled
     );
     fixture.componentInstance.refresh.next(true);
-    expect(beforeViewRenderCalled).to.have.callCount(1);
+    expect(beforeViewRenderCalled).to.have.been.calledOnce;
     subscription.unsubscribe();
     fixture.destroy();
   });
@@ -1341,8 +1341,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     const { period } = beforeViewRenderCalled.getCall(0).args[0];
-    expect(period.start instanceof Date).to.equal(true);
-    expect(period.end instanceof Date).to.equal(true);
+    expect(period.start).to.be.an.instanceOf(Date);
+    expect(period.end).to.be.an.instanceOf(Date);
     expect(Array.isArray(period.events)).to.equal(true);
     fixture.destroy();
   });
