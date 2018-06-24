@@ -22,9 +22,18 @@ export default (env = 'development') => {
       rules: removeEmpty([
         ifDevelopment({
           enforce: 'pre',
-          test: /\.ts$/,
+          test: /src\/.+\.ts$/,
           loader: 'tslint-loader',
           exclude: /node_modules/
+        }),
+        ifDevelopment({
+          enforce: 'pre',
+          test: /demos\/.+\.ts$/,
+          loader: 'tslint-loader',
+          exclude: /node_modules/,
+          options: {
+            configFile: 'demos/tslint.json'
+          }
         }),
         ifDevelopment(
           {
