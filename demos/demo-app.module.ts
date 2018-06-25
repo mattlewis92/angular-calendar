@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-css-only/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import 'highlight.js/styles/github.css';
 import '../src/angular-calendar.scss';

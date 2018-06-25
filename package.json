@@ -96,7 +96,7 @@
     "angular-router-loader": "^0.8.5",
     "angular2-template-loader": "^0.6.0",
     "autoprefixer": "^8.6.3",
-    "bootstrap": "^4.1.1",
+    "bootstrap-css-only": "^4.1.1",
     "chai": "^4.1.2",
     "codecov": "^3.0.2",
     "commitizen": "^2.10.1",
