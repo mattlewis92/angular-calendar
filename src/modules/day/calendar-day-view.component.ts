@@ -28,6 +28,7 @@ import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByEventId, roundToNearest } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEnd } from 'angular-draggable-droppable/draggable.directive';
+import { PlacementArray } from 'positioning';
 
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
@@ -200,7 +201,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The placement of the event tooltip
    */
-  @Input() tooltipPlacement: string = 'top';
+  @Input() tooltipPlacement: PlacementArray = 'auto';
 
   /**
    * A custom template to use for the event tooltips

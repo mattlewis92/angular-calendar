@@ -23,6 +23,7 @@ import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-c
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByIndex } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
+import { PlacementArray } from 'positioning';
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -129,7 +130,7 @@ export class CalendarMonthViewComponent
   /**
    * The placement of the event tooltip
    */
-  @Input() tooltipPlacement: string = 'top';
+  @Input() tooltipPlacement: PlacementArray = 'auto';
 
   /**
    * A custom template to use for the event tooltips

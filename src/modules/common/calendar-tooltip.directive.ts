@@ -15,7 +15,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Positioning } from 'positioning';
+import { PlacementArray, positionElements } from 'positioning';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
@@ -57,7 +57,7 @@ export class CalendarTooltipWindowComponent {
 export class CalendarTooltipDirective implements OnDestroy {
   @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
 
-  @Input('tooltipPlacement') placement: string = 'top'; // tslint:disable-line no-input-rename
+  @Input('tooltipPlacement') placement: PlacementArray = 'auto'; // tslint:disable-line no-input-rename
 
   @Input('tooltipTemplate') customTemplate: TemplateRef<any>; // tslint:disable-line no-input-rename
 
@@ -67,7 +67,6 @@ export class CalendarTooltipDirective implements OnDestroy {
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
-  private positioning: Positioning = new Positioning();
 
   constructor(
     private elementRef: ElementRef,
@@ -105,7 +104,6 @@ export class CalendarTooltipDirective implements OnDestroy {
         []
       );
       this.tooltipRef.instance.contents = this.contents;
-      this.tooltipRef.instance.placement = this.placement;
       this.tooltipRef.instance.customTemplate = this.customTemplate;
       this.tooltipRef.instance.event = this.event;
       if (this.appendToBody) {
@@ -126,20 +124,19 @@ export class CalendarTooltipDirective implements OnDestroy {
     }
   }
 
-  private positionTooltip(): void {
+  private positionTooltip(previousPosition?: string): void {
     if (this.tooltipRef) {
-      const targetPosition: ClientRect = this.positioning.positionElements(
+      this.tooltipRef.changeDetectorRef.detectChanges();
+      this.tooltipRef.instance.placement = positionElements(
         this.elementRef.nativeElement,
         this.tooltipRef.location.nativeElement.children[0],
         this.placement,
         this.appendToBody
       );
-
-      const elm: HTMLElement = this.tooltipRef.location.nativeElement
-        .children[0];
-
-      this.renderer.setStyle(elm, 'top', `${targetPosition.top}px`);
-      this.renderer.setStyle(elm, 'left', `${targetPosition.left}px`);
+      // keep re-positioning the tooltip until the arrow position doesn't make a difference
+      if (previousPosition !== this.tooltipRef.instance.placement) {
+        this.positionTooltip(this.tooltipRef.instance.placement);
+      }
     }
   }
 }

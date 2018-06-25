@@ -6,6 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { DayViewEvent } from 'calendar-utils';
+import { PlacementArray } from 'positioning';
 
 @Component({
   selector: 'mwl-calendar-day-view-event',
@@ -51,7 +52,7 @@ import { DayViewEvent } from 'calendar-utils';
 export class CalendarDayViewEventComponent {
   @Input() dayEvent: DayViewEvent;
 
-  @Input() tooltipPlacement: string;
+  @Input() tooltipPlacement: PlacementArray;
 
   @Input() tooltipAppendToBody: boolean;
 

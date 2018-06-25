@@ -6,6 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { WeekViewEvent } from 'calendar-utils';
+import { PlacementArray } from 'positioning';
 
 @Component({
   selector: 'mwl-calendar-week-view-event',
@@ -51,7 +52,7 @@ import { WeekViewEvent } from 'calendar-utils';
 export class CalendarWeekViewEventComponent {
   @Input() weekEvent: WeekViewEvent;
 
-  @Input() tooltipPlacement: string;
+  @Input() tooltipPlacement: PlacementArray;
 
   @Input() tooltipAppendToBody: boolean;
 

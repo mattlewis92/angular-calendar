@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { trackByEventId } from '../common/util';
+import { PlacementArray } from 'positioning';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -83,7 +84,7 @@ export class CalendarMonthCellComponent {
 
   @Input() locale: string;
 
-  @Input() tooltipPlacement: string;
+  @Input() tooltipPlacement: PlacementArray;
 
   @Input() tooltipAppendToBody: boolean;
 
