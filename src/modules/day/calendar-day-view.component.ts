@@ -23,7 +23,10 @@ import { Subject, Subscription } from 'rxjs';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
-import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
+import {
+  CalendarEventTimesChangedEvent,
+  CalendarEventTimesChangedEventType
+} from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByEventId, roundToNearest } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
@@ -405,6 +408,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       !dropEvent.dropData.isInternal
     ) {
       this.eventTimesChanged.emit({
+        type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
         newStart: segment.date
       });
@@ -469,7 +473,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       newEnd = this.dateAdapter.addMinutes(newEnd, minutesMoved);
     }
 
-    this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
+    this.eventTimesChanged.emit({
+      newStart,
+      newEnd,
+      event: dayEvent.event,
+      type: CalendarEventTimesChangedEventType.Resize
+    });
     this.currentResizes.delete(dayEvent);
   }
 
@@ -502,7 +511,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       if (dayEvent.event.end) {
         newEnd = this.dateAdapter.addMinutes(dayEvent.event.end, minutesMoved);
       }
-      this.eventTimesChanged.emit({ newStart, newEnd, event: dayEvent.event });
+      this.eventTimesChanged.emit({
+        newStart,
+        newEnd,
+        event: dayEvent.event,
+        type: CalendarEventTimesChangedEventType.Drag
+      });
     }
   }
 

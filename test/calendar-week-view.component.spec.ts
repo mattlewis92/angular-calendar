@@ -408,6 +408,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
+      type: 'resize',
       event: fixture.componentInstance.events[0],
       newStart: moment('2016-06-27')
         .add(4, 'hours')
@@ -474,6 +475,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
+      type: 'resize',
       event: fixture.componentInstance.events[0],
       newStart: moment('2016-06-27')
         .add(4, 'hours')
@@ -537,6 +539,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
+      type: 'resize',
       event: fixture.componentInstance.events[0],
       newStart: moment('2016-06-27')
         .add(4, 'hours')
@@ -628,6 +631,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvents[0]).to.deep.equal({
+      type: 'resize',
       event: fixture.componentInstance.events[0],
       newStart: moment('2016-06-27')
         .add(4, 'hours')
@@ -638,6 +642,7 @@ describe('calendarWeekView component', () => {
         .toDate()
     });
     expect(resizeEvents[1]).to.deep.equal({
+      type: 'resize',
       event: fixture.componentInstance.events[1],
       newStart: moment('2016-06-28')
         .add(1, 'day')
@@ -703,6 +708,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
     expect(eventDropped.getCall(0).args[0]).to.deep.equal({
+      type: 'drag',
       event: fixture.componentInstance.events[0],
       newStart: moment('2016-12-07')
         .add(4, 'hours')
@@ -827,6 +833,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
     expect(eventDropped.getCall(0).args[0]).to.deep.equal({
+      type: 'drag',
       event: fixture.componentInstance.events[0],
       newStart: moment('2016-12-07')
         .add(4, 'hours')
@@ -1000,6 +1007,7 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
     externalEventFixture.destroy();
     expect(eventDropped).to.have.been.calledWith({
+      type: 'drop',
       event: externalEventFixture.componentInstance.event,
       newStart: moment('2016-06-27')
         .startOf('week')

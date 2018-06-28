@@ -19,7 +19,10 @@ import {
   ViewPeriod
 } from 'calendar-utils';
 import { Subject, Subscription } from 'rxjs';
-import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
+import {
+  CalendarEventTimesChangedEvent,
+  CalendarEventTimesChangedEventType
+} from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByIndex } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
@@ -338,7 +341,13 @@ export class CalendarMonthViewComponent
       );
       newEnd = this.dateAdapter.addSeconds(event.end, secondsDiff);
     }
-    this.eventTimesChanged.emit({ event, newStart, newEnd, day });
+    this.eventTimesChanged.emit({
+      event,
+      newStart,
+      newEnd,
+      day,
+      type: CalendarEventTimesChangedEventType.Drop
+    });
   }
 
   private refreshHeader(): void {

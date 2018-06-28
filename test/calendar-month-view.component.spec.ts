@@ -599,6 +599,7 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
     expect(cells[10].classList.contains('cal-drag-over')).to.equal(false);
     fixture.destroy();
+    expect(dragEvent.type).to.equal('drop');
     expect(dragEvent.event).to.equal(fixture.componentInstance.events[0]);
     expect(dragEvent.newStart).to.deep.equal(new Date(2016, 11, 7, 10, 39, 14));
     expect(dragEvent.newEnd).to.deep.equal(new Date(2016, 11, 7, 15, 11, 5));
@@ -654,6 +655,7 @@ describe('calendarMonthView component', () => {
     });
     fixture.detectChanges();
     fixture.destroy();
+    expect(dragEvent.type).to.equal('drop');
     expect(dragEvent.event).to.equal(fixture.componentInstance.events[0]);
     expect(dragEvent.newStart).to.deep.equal(new Date('2017-01-31'));
     expect(dragEvent.newEnd).to.deep.equal(undefined);
