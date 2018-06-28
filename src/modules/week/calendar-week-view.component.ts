@@ -29,7 +29,7 @@ import {
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByIndex, roundToNearest } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
-import { DragEnd } from 'angular-draggable-droppable/draggable.directive';
+import { DragEndEvent } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
 export interface WeekViewEventResize {
@@ -445,7 +445,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   dragEnded(
     weekEvent: WeekViewEvent,
-    dragEndEvent: DragEnd,
+    dragEndEvent: DragEndEvent,
     dayWidth: number
   ): void {
     if (this.eventDroppedWithinContainer) {

@@ -30,7 +30,7 @@ import {
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents, trackByEventId, roundToNearest } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
-import { DragEnd } from 'angular-draggable-droppable/draggable.directive';
+import { DragEndEvent } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
 export interface CalendarDayViewBeforeRenderEvent {
@@ -493,7 +493,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.cdr.markForCheck();
   }
 
-  dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEnd): void {
+  dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
     if (this.eventDroppedWithinContainer) {
       const draggedInPixelsSnapSize = roundToNearest(
         dragEndEvent.y,
