@@ -14,13 +14,6 @@ export const sources = [
     }
   },
   {
-    filename: 'date-time-picker.component.ts',
-    contents: {
-      raw: require('!!raw-loader!./date-time-picker.component'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./date-time-picker.component')
-    }
-  },
-  {
     filename: 'module.ts',
     contents: {
       raw: require('!!raw-loader!./module'),
