@@ -15,7 +15,7 @@ import {
   addHours
 } from 'date-fns';
 import { Subject } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
 import {
   CalendarEvent,
   CalendarEventAction,
