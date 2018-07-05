@@ -8,7 +8,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/mattlewis92/angular-calendar.svg)](https://github.com/mattlewis92/angular-calendar/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-calendar/master/LICENSE)
 
-For more things like this [follow me](https://twitter.com/mattlewis92_) on twitter 🐦, plus I am also available for [hire](https://mattlewis.me/?section=hire-me&utm_source=github&utm_medium=banner&utm_campaign=contracting) 👨‍💻
+For more things like this [follow me on twitter](https://twitter.com/mattlewis92_) 🐦, plus I am also [available for hire](https://mattlewis.me/?section=hire-me&utm_source=github&utm_medium=banner&utm_campaign=contracting) 👨‍💻
 
 ## Demo
 
