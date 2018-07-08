@@ -74,6 +74,7 @@ import { PlacementArray } from 'positioning';
     '[class.cal-out-month]': '!day.inMonth',
     '[class.cal-has-events]': 'day.events.length > 0',
     '[class.cal-open]': 'day === openDay',
+    '[class.cal-event-highlight]': '!!day.backgroundColor',
     '[style.backgroundColor]': 'day.backgroundColor'
   }
 })

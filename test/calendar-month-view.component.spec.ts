@@ -291,9 +291,11 @@ describe('calendarMonthView component', () => {
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
     expect(day.style.backgroundColor).to.equal('rgb(238, 238, 238)');
+    expect(day.classList.contains('cal-event-highlight')).to.be.true;
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();
     expect(day.style.backgroundColor).to.be.equal('');
+    expect(day.classList.contains('cal-event-highlight')).to.be.false;
   });
 
   it('should add event actions to the active day events', () => {
