@@ -13,11 +13,11 @@ import { DayViewHour } from 'calendar-utils';
   // don't do this in your app, its only so the styles get applied globally
   styles: [
     `
-    .cal-day-selected,
-    .cal-day-selected:hover {
-      background-color: deeppink !important;
-    }
-  `
+      .cal-day-selected,
+      .cal-day-selected:hover {
+        background-color: deeppink !important;
+      }
+    `
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -34,22 +34,30 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
+  selectedDays: any = [];
+  hexTimeArray: any = [];
+
   dayClicked(day: CalendarMonthViewDay): void {
-    if (this.selectedMonthViewDay) {
-      delete this.selectedMonthViewDay.cssClass;
-    }
-    day.cssClass = 'cal-day-selected';
     this.selectedMonthViewDay = day;
+    const selectedDateTime = this.selectedMonthViewDay.date.getTime();
+    const dateIndex = this.hexTimeArray.indexOf(selectedDateTime);
+    if (dateIndex > -1) {
+      delete this.selectedMonthViewDay.cssClass;
+      this.selectedDays.splice(dateIndex, 1);
+      this.hexTimeArray.splice(dateIndex, 1);
+    } else {
+      this.selectedDays.push(this.selectedMonthViewDay);
+      this.hexTimeArray.push(selectedDateTime);
+      day.cssClass = 'cal-day-selected';
+      this.selectedMonthViewDay = day;
+    }
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(day => {
-      if (
-        this.selectedMonthViewDay &&
-        day.date.getTime() === this.selectedMonthViewDay.date.getTime()
-      ) {
+      const index = this.hexTimeArray.indexOf(day.date.getTime());
+      if (index > -1) {
         day.cssClass = 'cal-day-selected';
-        this.selectedMonthViewDay = day;
       }
     });
   }
