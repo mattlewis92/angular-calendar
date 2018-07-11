@@ -61,10 +61,6 @@ export function adapterFactory(moment): DateAdapter {
       return moment(date).date();
     },
 
-    getMonth(date: Date | string | number): number {
-      return moment(date).month();
-    },
-
     getYear(date: Date | string | number): number {
       return moment(date).year();
     }
