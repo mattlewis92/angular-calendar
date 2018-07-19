@@ -6,6 +6,7 @@ import { CalendarWeekViewComponent } from './calendar-week-view.component';
 import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.component';
 import { CalendarWeekViewEventComponent } from './calendar-week-view-event.component';
 import { CalendarCommonModule } from '../common/calendar-common.module';
+import { CalendarWeekViewHourSegmentComponent } from './calendar-week-view-hour-segment.component';
 
 export {
   CalendarWeekViewComponent,
@@ -27,14 +28,16 @@ export {
   declarations: [
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
-    CalendarWeekViewEventComponent
+    CalendarWeekViewEventComponent,
+    CalendarWeekViewHourSegmentComponent
   ],
   exports: [
     ResizableModule,
     DragAndDropModule,
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
-    CalendarWeekViewEventComponent
+    CalendarWeekViewEventComponent,
+    CalendarWeekViewHourSegmentComponent
   ]
 })
 export class CalendarWeekModule {}

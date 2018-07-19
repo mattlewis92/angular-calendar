@@ -1,20 +1,22 @@
 .cal-week-view {
   .cal-day-headers {
     display: flex;
-    margin-bottom: 3px;
     border: 1px solid #e1e1e1;
-    margin-left: 2px;
-    margin-right: 2px;
+    padding-left: 70px;
   }
 
   .cal-day-headers .cal-header {
     flex: 1;
     text-align: center;
     padding: 5px;
-  }
 
-  .cal-day-headers .cal-header:not(:last-child) {
-    border-right: 1px solid #e1e1e1;
+    &:not(:last-child) {
+      border-right: 1px solid #e1e1e1;
+    }
+
+    &:first-child {
+      border-left: 1px solid #e1e1e1;
+    }
   }
 
   .cal-day-headers .cal-header:hover,
@@ -25,6 +27,41 @@
   .cal-day-headers span {
     font-weight: 400;
     opacity: 0.5;
+  }
+
+  .cal-day-columns {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    top: 0;
+    z-index: 0;
+  }
+
+  .cal-day-column {
+    flex-grow: 1;
+    border-left: solid 1px #e1e1e1;
+
+    &:hover,
+    &.cal-drag-over {
+      background-color: #ededed;
+    }
+
+    &::after {
+      content: '\00a0';
+    }
+  }
+
+  .cal-all-day-events {
+    border: solid 1px #e1e1e1;
+    border-top: 0;
+    padding-top: 3px;
+    position: relative;
+    padding-left: 70px;
+
+    .cal-day-columns {
+      width: calc(100% - 70px);
+    }
   }
 
   .cal-events-row {
@@ -85,10 +122,57 @@
   }
 
   .cal-drag-active {
+    pointer-events: none;
     z-index: 1;
 
     & * {
       pointer-events: none;
+    }
+  }
+
+  .cal-hour-events {
+    position: relative;
+    border: solid 1px #e1e1e1;
+    border-top: 0;
+
+    .cal-day-columns {
+      padding-left: 70px;
+    }
+  }
+
+  .cal-hour:nth-child(odd) {
+    background-color: #fafafa;
+  }
+
+  .cal-hour-segment {
+    position: relative;
+  }
+
+  /* stylelint-disable-next-line selector-type-no-unknown */
+  mwl-calendar-week-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
+  .cal-hour-segment {
+    display: block;
+  }
+
+  .cal-hour-segment::after {
+    content: '\00a0';
+  }
+
+  .cal-hour:not(:last-child) .cal-hour-segment,
+  .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+    border-bottom: thin dashed #e1e1e1;
+  }
+
+  .cal-time {
+    font-weight: bold;
+    padding-top: 5px;
+    width: 70px;
+    text-align: center;
+  }
+
+  .cal-hour-segment.cal-after-hour-start {
+    .cal-time {
+      display: none;
     }
   }
 }

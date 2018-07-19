@@ -1,5 +1,7 @@
 import {
   CalendarEvent,
+  DayViewHour,
+  DayViewHourSegment,
   validateEvents as validateEventsWithoutLog,
   WeekDay
 } from 'calendar-utils';

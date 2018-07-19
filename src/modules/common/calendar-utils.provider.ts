@@ -14,7 +14,10 @@ import {
   getDayViewHourGrid,
   getMonthView,
   getWeekViewHeader,
-  getWeekView
+  getWeekView,
+  GetWeekViewHourGridArgs,
+  WeekViewHour,
+  getWeekViewHourGrid
 } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 
@@ -32,6 +35,10 @@ export class CalendarUtils {
 
   getWeekView(args: GetWeekViewArgs): WeekView {
     return getWeekView(this.dateAdapter, args);
+  }
+
+  getWeekViewHourGrid(args: GetWeekViewHourGridArgs): WeekViewHour[] {
+    return getWeekViewHourGrid(this.dateAdapter, args);
   }
 
   getDayView(args: GetDayViewArgs): DayView {

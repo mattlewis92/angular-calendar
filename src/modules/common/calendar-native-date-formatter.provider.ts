@@ -71,6 +71,13 @@ export class CalendarNativeDateFormatter
   }
 
   /**
+   * The time formatting down the left hand side of the week view
+   */
+  public weekViewHour({ date, locale }: DateFormatterParams): string {
+    return new Intl.DateTimeFormat(locale, { hour: 'numeric' }).format(date);
+  }
+
+  /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {

@@ -67,6 +67,13 @@ export class CalendarAngularDateFormatter
   }
 
   /**
+   * The time formatting down the left hand side of the week view
+   */
+  public weekViewHour({ date, locale }: DateFormatterParams): string {
+    return new DatePipe(locale).transform(date, 'h a', null, locale);
+  }
+
+  /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {
