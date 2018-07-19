@@ -15,10 +15,12 @@ import { Subject, Subscription } from 'rxjs';
 import {
   WeekDay,
   CalendarEvent,
-  WeekViewEvent,
+  WeekViewAllDayEvent,
   WeekView,
   ViewPeriod,
-  WeekViewHourColumn
+  WeekViewHourColumn,
+  DayViewHourSegment,
+  DayViewHour
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
@@ -40,7 +42,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent, DropEvent } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
-export interface WeekViewEventResize {
+export interface WeekViewAllDayEventResize {
   originalOffset: number;
   originalSpan: number;
   edge: string;
@@ -77,7 +79,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
         #allDayEventsContainer
         mwlDroppable
         (drop)="eventDroppedWithinContainer = true"
-        *ngIf="view.eventRows.length > 0">
+        *ngIf="view.allDayEventRows.length > 0">
         <div class="cal-day-columns">
           <div
             class="cal-day-column"
@@ -88,7 +90,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           </div>
         </div>
         <div
-          *ngFor="let eventRow of view.eventRows; trackBy:trackByIndex"
+          *ngFor="let eventRow of view.allDayEventRows; trackBy:trackByIndex"
           #eventRowContainer
           class="cal-events-row">
           <div
@@ -137,7 +139,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
       <div class="cal-hour-events">
         <div class="cal-time-label-column">
           <div
-            *ngFor="let hour of hourGrid[0].hours; trackBy:trackByHour; let odd = odd"
+            *ngFor="let hour of view.hourColumns[0].hours; trackBy:trackByHour; let odd = odd"
             class="cal-hour"
             [class.cal-hour-odd]="odd">
             <mwl-calendar-week-view-hour-segment
@@ -152,7 +154,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           </div>
         </div>
         <div class="cal-day-columns">
-          <div class="cal-day-column" *ngFor="let column of hourGrid; trackBy:trackByHourColumn">
+          <div class="cal-day-column" *ngFor="let column of view.hourColumns; trackBy:trackByHourColumn">
 
             <mwl-calendar-week-view-event
               *ngFor="let weekEvent of column.events; trackBy:trackByEventId"
@@ -368,7 +370,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  currentResizes: Map<WeekViewEvent, WeekViewEventResize> = new Map();
+  currentResizes: Map<
+    WeekViewAllDayEvent,
+    WeekViewAllDayEventResize
+  > = new Map();
 
   /**
    * @hidden
@@ -389,11 +394,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dayColumnWidth: number;
-
-  /**
-   * @hidden
-   */
-  hourGrid: WeekViewHourColumn[] = [];
 
   /**
    * @hidden
@@ -419,12 +419,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
-    column.hours[0].segments[0].date.toISOString();
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
 
   /**
    * @hidden
    */
-  trackByEventId = (index: number, weekEvent: WeekViewEvent) =>
+  trackByEventId = (index: number, weekEvent: WeekViewAllDayEvent) =>
     weekEvent.event.id ? weekEvent.event.id : weekEvent;
 
   /**
@@ -463,10 +463,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       validateEvents(this.events);
     }
 
-    if (changes.events || changes.viewDate || changes.excludeDays) {
-      this.refreshBody();
-    }
-
     if (
       changes.viewDate ||
       changes.dayStartHour ||
@@ -480,7 +476,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.hourSegmentHeight ||
       changes.events
     ) {
-      this.refreshHourGrid();
+      this.refreshBody();
     }
   }
 
@@ -498,7 +494,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   resizeStarted(
     allDayEventsContainer: HTMLElement,
-    weekEvent: WeekViewEvent,
+    weekEvent: WeekViewAllDayEvent,
     resizeEvent: ResizeEvent
   ): void {
     this.currentResizes.set(weekEvent, {
@@ -520,11 +516,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   resizing(
-    weekEvent: WeekViewEvent,
+    weekEvent: WeekViewAllDayEvent,
     resizeEvent: ResizeEvent,
     dayWidth: number
   ): void {
-    const currentResize: WeekViewEventResize = this.currentResizes.get(
+    const currentResize: WeekViewAllDayEventResize = this.currentResizes.get(
       weekEvent
     );
 
@@ -541,8 +537,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  resizeEnded(weekEvent: WeekViewEvent): void {
-    const currentResize: WeekViewEventResize = this.currentResizes.get(
+  resizeEnded(weekEvent: WeekViewAllDayEvent): void {
+    const currentResize: WeekViewAllDayEventResize = this.currentResizes.get(
       weekEvent
     );
 
@@ -617,7 +613,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dragEnded(
-    weekEvent: WeekViewEvent,
+    weekEvent: WeekViewAllDayEvent,
     dragEndEvent: DragEndEvent,
     dayWidth: number
   ): void {
@@ -658,30 +654,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
       precision: this.precision,
-      absolutePositionedEvents: true
-    });
-    this.emitBeforeViewRender();
-  }
-
-  private refreshAll(): void {
-    this.refreshHeader();
-    this.refreshBody();
-    this.refreshHourGrid();
-    this.emitBeforeViewRender();
-  }
-
-  private emitBeforeViewRender(): void {
-    if (this.days && this.view && this.hourGrid) {
-      this.beforeViewRender.emit({
-        header: this.days,
-        period: this.view.period
-      });
-    }
-  }
-
-  private refreshHourGrid(): void {
-    this.hourGrid = this.utils.getWeekViewHourGrid({
-      viewDate: this.viewDate,
+      absolutePositionedEvents: true,
       hourSegments: this.hourSegments,
       dayStart: {
         hour: this.dayStartHour,
@@ -691,12 +664,23 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         hour: this.dayEndHour,
         minute: this.dayEndMinute
       },
-      weekStartsOn: this.weekStartsOn,
-      weekendDays: this.weekendDays,
-      excluded: this.excludeDays,
       segmentHeight: this.hourSegmentHeight,
-      events: this.events
+      weekendDays: this.weekendDays
     });
     this.emitBeforeViewRender();
+  }
+
+  private refreshAll(): void {
+    this.refreshHeader();
+    this.refreshBody();
+  }
+
+  private emitBeforeViewRender(): void {
+    if (this.days && this.view) {
+      this.beforeViewRender.emit({
+        header: this.days,
+        period: this.view.period
+      });
+    }
   }
 }

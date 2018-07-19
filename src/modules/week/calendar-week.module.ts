@@ -13,8 +13,8 @@ export {
   CalendarWeekViewBeforeRenderEvent
 } from './calendar-week-view.component';
 export {
-  WeekViewEvent as CalendarWeekViewEvent,
-  WeekViewEventRow as CalendarWeekViewEventRow,
+  WeekViewAllDayEvent as CalendarWeekViewAllDayEvent,
+  WeekViewAllDayEventRow as CalendarWeekViewAllDayEventRow,
   GetWeekViewArgs as CalendarGetWeekViewArgs
 } from 'calendar-utils';
 

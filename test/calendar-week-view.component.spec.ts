@@ -211,20 +211,17 @@ describe('calendarWeekView component', () => {
       start: new Date('2016-06-01'),
       end: new Date('2016-06-02'),
       title: 'foo',
-      color: {
-        primary: 'blue',
-        secondary: 'lightblue'
-      }
+      allDay: true
     };
     fixture.componentInstance.events.push(event);
     fixture.componentInstance.refresh.next(true);
     expect(
-      fixture.componentInstance.view.eventRows[0].row[0].event
+      fixture.componentInstance.view.allDayEventRows[0].row[0].event
     ).to.deep.equal(event);
     fixture.destroy();
   });
 
-  it('should allow the event title to be customised by the calendarConfig provider', () => {
+  it('should allow the event title to be customised', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -353,7 +350,7 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
-  it('should resize the event by dragging from the left edge', () => {
+  it('should resize the all day event by dragging from the left edge', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -370,7 +367,8 @@ describe('calendarWeekView component', () => {
           .toDate(),
         resizable: {
           beforeStart: true
-        }
+        },
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -420,7 +418,7 @@ describe('calendarWeekView component', () => {
     });
   });
 
-  it('should resize the event by dragging from the right edge', () => {
+  it('should resize the all day event by dragging from the right edge', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -437,7 +435,8 @@ describe('calendarWeekView component', () => {
           .toDate(),
         resizable: {
           afterEnd: true
-        }
+        },
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -487,7 +486,7 @@ describe('calendarWeekView component', () => {
     });
   });
 
-  it('should resize events with no end date', () => {
+  it('should resize all day events with no end date', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -501,7 +500,8 @@ describe('calendarWeekView component', () => {
           .toDate(),
         resizable: {
           afterEnd: true
-        }
+        },
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -551,7 +551,7 @@ describe('calendarWeekView component', () => {
     });
   });
 
-  it('should allow 2 events next to each other to be resized at the same time', () => {
+  it('should allow 2 all day events next to each other to be resized at the same time', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -569,7 +569,8 @@ describe('calendarWeekView component', () => {
         resizable: {
           beforeStart: true,
           afterEnd: true
-        }
+        },
+        allDay: true
       },
       {
         title: 'event 2',
@@ -583,7 +584,8 @@ describe('calendarWeekView component', () => {
         resizable: {
           beforeStart: true,
           afterEnd: true
-        }
+        },
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -654,7 +656,7 @@ describe('calendarWeekView component', () => {
     });
   });
 
-  it('should allow the event to be dragged and dropped', () => {
+  it('should allow the all day event to be dragged and dropped', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -669,7 +671,8 @@ describe('calendarWeekView component', () => {
         end: moment('2016-12-08')
           .add(6, 'hours')
           .toDate(),
-        draggable: true
+        draggable: true,
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -699,7 +702,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     const ghostElement = event.nextSibling as HTMLElement;
     expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
-      Math.round(eventPosition.left - dayWidth)
+      Math.round(eventPosition.left - dayWidth) + 1
     );
     triggerDomEvent('mouseup', document.body, {
       clientX: eventPosition.left - dayWidth,
@@ -720,7 +723,7 @@ describe('calendarWeekView component', () => {
     expect(eventDropped).to.have.been.calledOnce;
   });
 
-  it('should allow events to be dragged outside of the calendar', () => {
+  it('should allow all day events to be dragged outside of the calendar', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -735,7 +738,8 @@ describe('calendarWeekView component', () => {
         end: moment('2016-12-08')
           .add(6, 'hours')
           .toDate(),
-        draggable: true
+        draggable: true,
+        allDay: true
       }
     ];
     fixture.componentInstance.snapDraggedEvents = false;
@@ -782,7 +786,7 @@ describe('calendarWeekView component', () => {
     expect(eventDropped).not.to.have.been.called;
   });
 
-  it('should round event drag sizes to the event snap size when dragging and dropping non snapped events', () => {
+  it('should round all day event drag sizes to the event snap size when dragging and dropping non snapped events', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -797,7 +801,8 @@ describe('calendarWeekView component', () => {
         end: moment('2016-12-08')
           .add(6, 'hours')
           .toDate(),
-        draggable: true
+        draggable: true,
+        allDay: true
       }
     ];
     fixture.componentInstance.snapDraggedEvents = false;
@@ -820,7 +825,7 @@ describe('calendarWeekView component', () => {
       clientY: eventPosition.top
     });
     fixture.detectChanges();
-    const dragLeft = event.parentElement.offsetWidth / 7 + 50;
+    const dragLeft = event.parentElement.offsetWidth / 7;
     triggerDomEvent('mousemove', document.body, {
       clientX: eventPosition.left - dragLeft,
       clientY: eventPosition.top
@@ -845,7 +850,7 @@ describe('calendarWeekView component', () => {
     expect(eventDropped).to.have.been.calledOnce;
   });
 
-  it('should not allow events to be resized smaller than 1 day', () => {
+  it('should not allow all day events to be resized smaller than 1 day', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -862,7 +867,8 @@ describe('calendarWeekView component', () => {
           .toDate(),
         resizable: {
           beforeStart: true
-        }
+        },
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -897,7 +903,7 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
-  it('should not allow events to be resized outside of the current view', () => {
+  it('should not allow all day events to be resized outside of the current view', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -914,7 +920,8 @@ describe('calendarWeekView component', () => {
           .toDate(),
         resizable: {
           beforeStart: true
-        }
+        },
+        allDay: true
       }
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
