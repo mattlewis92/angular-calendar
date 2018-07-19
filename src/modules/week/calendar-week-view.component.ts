@@ -528,7 +528,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     dropEvent: DropEvent<{ event?: CalendarEvent; isInternal?: boolean }>,
     date: Date
   ): void {
-    console.log(dropEvent);
     if (
       dropEvent.dropData &&
       dropEvent.dropData.event &&
