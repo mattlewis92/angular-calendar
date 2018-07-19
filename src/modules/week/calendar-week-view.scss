@@ -34,6 +34,13 @@
     border-left: solid 1px #e1e1e1;
   }
 
+  .cal-event {
+    font-size: 12px;
+    background-color: #d1e8ff;
+    border: 1px solid #1e90ff;
+    color: #1e90ff;
+  }
+
   .cal-all-day-events {
     border: solid 1px #e1e1e1;
     border-top: 0;
@@ -50,53 +57,43 @@
       z-index: 0;
     }
 
-    .cal-day-column {
-      &.cal-drag-over {
-        background-color: #ededed;
+    .cal-events-row {
+      position: relative;
+      height: 31px;
+    }
+
+    .cal-event-container {
+      display: inline-block;
+      position: absolute;
+      cursor: pointer;
+
+      &.resize-active {
+        z-index: 1;
+        pointer-events: none;
       }
     }
-  }
 
-  .cal-events-row {
-    position: relative;
-    height: 33px;
-  }
-
-  .cal-event-container {
-    display: inline-block;
-    position: absolute;
-    cursor: pointer;
-
-    &.resize-active {
-      z-index: 1;
-      pointer-events: none;
+    .cal-event {
+      padding: 0 5px;
+      margin-left: 2px;
+      margin-right: 2px;
+      height: 28px;
+      line-height: 28px;
     }
-  }
 
-  .cal-event {
-    padding: 0 10px;
-    font-size: 12px;
-    margin-left: 2px;
-    margin-right: 2px;
-    height: 30px;
-    line-height: 30px;
-    background-color: #d1e8ff;
-    border: 1px solid #1e90ff;
-    color: #1e90ff;
+    .cal-starts-within-week .cal-event {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    .cal-ends-within-week .cal-event {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 
   .cal-draggable {
     cursor: move;
-  }
-
-  .cal-starts-within-week .cal-event {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-  .cal-ends-within-week .cal-event {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
 
   .cal-header.cal-today {
@@ -139,13 +136,27 @@
     }
 
     .cal-day-column {
+      position: relative;
       .cal-hour-segment:hover {
         background-color: #ededed;
       }
     }
+
+    .cal-event-container {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .cal-event {
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      margin: 1px;
+      padding: 0 5px;
+      line-height: 25px;
+    }
   }
 
-  .cal-hour:nth-child(odd) {
+  .cal-hour-odd {
     background-color: #fafafa;
   }
 
@@ -183,5 +194,15 @@
     .cal-time {
       display: none;
     }
+  }
+
+  .cal-starts-within-day .cal-event {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .cal-ends-within-day .cal-event {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }

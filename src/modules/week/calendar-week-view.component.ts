@@ -18,9 +18,7 @@ import {
   WeekViewEvent,
   WeekView,
   ViewPeriod,
-  WeekViewHourColumn,
-  DayViewHourSegment,
-  DayViewHour
+  WeekViewHourColumn
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
@@ -138,7 +136,10 @@ export interface CalendarWeekViewBeforeRenderEvent {
       </div>
       <div class="cal-hour-events">
         <div class="cal-time-label-column">
-          <div class="cal-hour" *ngFor="let hour of hourGrid[0].hours; trackBy:trackByHour">
+          <div
+            *ngFor="let hour of hourGrid[0].hours; trackBy:trackByHour; let odd = odd"
+            class="cal-hour"
+            [class.cal-hour-odd]="odd">
             <mwl-calendar-week-view-hour-segment
               *ngFor="let segment of hour.segments; trackBy:trackByHourSegment"
               [style.height.px]="hourSegmentHeight"
@@ -152,7 +153,31 @@ export interface CalendarWeekViewBeforeRenderEvent {
         </div>
         <div class="cal-day-columns">
           <div class="cal-day-column" *ngFor="let column of hourGrid; trackBy:trackByHourColumn">
-            <div class="cal-hour" *ngFor="let hour of column.hours; trackBy:trackByHour">
+
+            <mwl-calendar-week-view-event
+              *ngFor="let weekEvent of column.events; trackBy:trackByEventId"
+              class="cal-event-container"
+              [class.cal-draggable]="weekEvent.event.draggable"
+              [class.cal-starts-within-day]="!weekEvent.startsBeforeDay"
+              [class.cal-ends-within-day]="!weekEvent.endsAfterDay"
+              [ngClass]="weekEvent.event.cssClass"
+              [weekEvent]="weekEvent"
+              [tooltipPlacement]="tooltipPlacement"
+              [tooltipTemplate]="tooltipTemplate"
+              [tooltipAppendToBody]="tooltipAppendToBody"
+              [customTemplate]="eventTemplate"
+              [eventTitleTemplate]="eventTitleTemplate"
+              (eventClicked)="eventClicked.emit({event: weekEvent.event})"
+              [style.top.px]="weekEvent.top"
+              [style.height.px]="weekEvent.height"
+              [style.left.%]="weekEvent.left"
+              [style.width.%]="weekEvent.width">
+            </mwl-calendar-week-view-event>
+
+            <div
+              *ngFor="let hour of column.hours; trackBy:trackByHour; let odd = odd"
+              class="cal-hour"
+              [class.cal-hour-odd]="odd">
               <mwl-calendar-week-view-hour-segment
                 *ngFor="let segment of hour.segments; trackBy:trackByHourSegment"
                 [style.height.px]="hourSegmentHeight"
@@ -448,7 +473,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.dayStartMinute ||
       changes.dayEndHour ||
       changes.dayEndMinute ||
-      changes.hourSegments
+      changes.hourSegments ||
+      changes.weekStartsOn ||
+      changes.weekendDays ||
+      changes.excludeDays ||
+      changes.hourSegmentHeight ||
+      changes.events
     ) {
       this.refreshHourGrid();
     }
@@ -663,7 +693,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       },
       weekStartsOn: this.weekStartsOn,
       weekendDays: this.weekendDays,
-      excluded: this.excludeDays
+      excluded: this.excludeDays,
+      segmentHeight: this.hourSegmentHeight,
+      events: this.events
     });
     this.emitBeforeViewRender();
   }
