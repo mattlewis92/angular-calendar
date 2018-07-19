@@ -18,8 +18,9 @@ import {
   WeekViewEvent,
   WeekView,
   ViewPeriod,
-  WeekViewHour,
-  WeekViewHourSegment
+  WeekViewHourColumn,
+  DayViewHourSegment,
+  DayViewHour
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
@@ -33,7 +34,9 @@ import {
   validateEvents,
   trackByIndex,
   roundToNearest,
-  trackByWeekDayHeaderDate
+  trackByWeekDayHeaderDate,
+  trackByHourSegment,
+  trackByHour
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent, DropEvent } from 'angular-draggable-droppable';
@@ -79,7 +82,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
         *ngIf="view.eventRows.length > 0">
         <div class="cal-day-columns">
           <div
-            class="cal-day-column" 
+            class="cal-day-column"
             *ngFor="let day of days; trackBy:trackByWeekDayHeaderDate"
             mwlDroppable
             dragOverClass="cal-drag-over"
@@ -134,17 +137,37 @@ export interface CalendarWeekViewBeforeRenderEvent {
         </div>
       </div>
       <div class="cal-hour-events">
-        <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByHour">
-          <mwl-calendar-week-view-hour-segment
-            *ngFor="let segment of hour.segments; trackBy:trackByHourSegment"
-            [style.height.px]="hourSegmentHeight"
-            [segment]="segment"
-            [segmentHeight]="hourSegmentHeight"
-            [locale]="locale"
-            [customTemplate]="hourSegmentTemplate"
-            (hourSegmentClicked)="hourSegmentClicked.emit({date: $event.date})"
-            (eventDropped)="eventDropped($event.dropEvent, $event.date)">
-          </mwl-calendar-week-view-hour-segment>
+        <div class="cal-time-label-column">
+          <div class="cal-hour" *ngFor="let hour of hourGrid[0].hours; trackBy:trackByHour">
+            <mwl-calendar-week-view-hour-segment
+              *ngFor="let segment of hour.segments; trackBy:trackByHourSegment"
+              [style.height.px]="hourSegmentHeight"
+              [segment]="segment"
+              [segmentHeight]="hourSegmentHeight"
+              [locale]="locale"
+              [customTemplate]="hourSegmentTemplate"
+              [isTimeLabel]="true">
+            </mwl-calendar-week-view-hour-segment>
+          </div>
+        </div>
+        <div class="cal-day-columns">
+          <div class="cal-day-column" *ngFor="let column of hourGrid; trackBy:trackByHourColumn">
+            <div class="cal-hour" *ngFor="let hour of column.hours; trackBy:trackByHour">
+              <mwl-calendar-week-view-hour-segment
+                *ngFor="let segment of hour.segments; trackBy:trackByHourSegment"
+                [style.height.px]="hourSegmentHeight"
+                [segment]="segment"
+                [segmentHeight]="hourSegmentHeight"
+                [locale]="locale"
+                [customTemplate]="hourSegmentTemplate"
+                (click)="hourSegmentClicked.emit({date: segment.date})"
+                mwlDroppable
+                dragOverClass="cal-drag-over"
+                dragActiveClass="cal-drag-active"
+                (drop)="eventDropped($event, segment.date)">
+              </mwl-calendar-week-view-hour-segment>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -345,7 +368,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  hours: WeekViewHour[] = [];
+  hourGrid: WeekViewHourColumn[] = [];
 
   /**
    * @hidden
@@ -360,14 +383,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByHourSegment = (index: number, segment: WeekViewHourSegment) =>
-    segment.days[0].date.toISOString();
+  trackByHourSegment = trackByHourSegment;
 
   /**
    * @hidden
    */
-  trackByHour = (index: number, hour: WeekViewHour) =>
-    hour.segments[0].days[0].date.toISOString();
+  trackByHour = trackByHour;
+
+  /**
+   * @hidden
+   */
+  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
+    column.hours[0].segments[0].date.toISOString();
 
   /**
    * @hidden
@@ -614,7 +641,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private emitBeforeViewRender(): void {
-    if (this.days && this.view && this.hours) {
+    if (this.days && this.view && this.hourGrid) {
       this.beforeViewRender.emit({
         header: this.days,
         period: this.view.period
@@ -623,7 +650,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHourGrid(): void {
-    this.hours = this.utils.getWeekViewHourGrid({
+    this.hourGrid = this.utils.getWeekViewHourGrid({
       viewDate: this.viewDate,
       hourSegments: this.hourSegments,
       dayStart: {

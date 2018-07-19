@@ -35,3 +35,11 @@ export const trackByWeekDayHeaderDate = (index: number, day: WeekDay) =>
   day.date.toISOString();
 
 export const trackByIndex = (index: number) => index;
+
+export const trackByHourSegment = (
+  index: number,
+  segment: DayViewHourSegment
+) => segment.date.toISOString();
+
+export const trackByHour = (index: number, hour: DayViewHour) =>
+  hour.segments[0].date.toISOString();

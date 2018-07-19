@@ -47,7 +47,7 @@ const colors: any = {
 export class DemoComponent {
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
-  view: CalendarView = CalendarView.Month;
+  view: CalendarView = CalendarView.Week;
 
   CalendarView = CalendarView;
 

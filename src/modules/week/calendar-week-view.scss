@@ -29,27 +29,9 @@
     opacity: 0.5;
   }
 
-  .cal-day-columns {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    top: 0;
-    z-index: 0;
-  }
-
   .cal-day-column {
     flex-grow: 1;
     border-left: solid 1px #e1e1e1;
-
-    &:hover,
-    &.cal-drag-over {
-      background-color: #ededed;
-    }
-
-    &::after {
-      content: '\00a0';
-    }
   }
 
   .cal-all-day-events {
@@ -60,7 +42,18 @@
     padding-left: 70px;
 
     .cal-day-columns {
+      height: 100%;
       width: calc(100% - 70px);
+      display: flex;
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+
+    .cal-day-column {
+      &.cal-drag-over {
+        background-color: #ededed;
+      }
     }
   }
 
@@ -130,13 +123,25 @@
     }
   }
 
+  .cal-time-label-column {
+    width: 70px;
+  }
+
   .cal-hour-events {
     position: relative;
     border: solid 1px #e1e1e1;
     border-top: 0;
+    display: flex;
 
     .cal-day-columns {
-      padding-left: 70px;
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .cal-day-column {
+      .cal-hour-segment:hover {
+        background-color: #ededed;
+      }
     }
   }
 
@@ -146,16 +151,20 @@
 
   .cal-hour-segment {
     position: relative;
+
+    &::after {
+      content: '\00a0';
+    }
+  }
+
+  .cal-drag-over .cal-hour-segment {
+    background-color: #ededed;
   }
 
   /* stylelint-disable-next-line selector-type-no-unknown */
   mwl-calendar-week-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
   .cal-hour-segment {
     display: block;
-  }
-
-  .cal-hour-segment::after {
-    content: '\00a0';
   }
 
   .cal-hour:not(:last-child) .cal-hour-segment,

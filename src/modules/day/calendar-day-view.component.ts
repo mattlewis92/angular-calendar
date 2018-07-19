@@ -28,7 +28,13 @@ import {
   CalendarEventTimesChangedEventType
 } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
-import { validateEvents, trackByEventId, roundToNearest } from '../common/util';
+import {
+  validateEvents,
+  trackByEventId,
+  roundToNearest,
+  trackByHour,
+  trackByHourSegment
+} from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
@@ -318,20 +324,18 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  trackByHour = trackByHour;
+
+  /**
+   * @hidden
+   */
+  trackByHourSegment = trackByHourSegment;
+
+  /**
+   * @hidden
+   */
   trackByDayEvent = (index: number, dayEvent: DayViewEvent) =>
     dayEvent.event.id ? dayEvent.event.id : dayEvent.event;
-
-  /**
-   * @hidden
-   */
-  trackByHour = (index: number, hour: DayViewHour) =>
-    hour.segments[0].date.toISOString();
-
-  /**
-   * @hidden
-   */
-  trackByHourSegment = (index: number, segment: DayViewHourSegment) =>
-    segment.date.toISOString();
 
   /**
    * @hidden
