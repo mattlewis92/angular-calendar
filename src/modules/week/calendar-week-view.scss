@@ -134,13 +134,16 @@
     .cal-day-columns {
       display: flex;
       flex-grow: 1;
+
+      &:not(.cal-resize-active) {
+        .cal-hour-segment:hover {
+          background-color: #ededed;
+        }
+      }
     }
 
     .cal-day-column {
       position: relative;
-      .cal-hour-segment:hover {
-        background-color: #ededed;
-      }
     }
 
     .cal-event-container {

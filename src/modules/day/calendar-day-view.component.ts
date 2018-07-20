@@ -31,10 +31,10 @@ import { CalendarUtils } from '../common/calendar-utils.provider';
 import {
   validateEvents,
   trackByEventId,
-  MINUTES_IN_HOUR,
   trackByHour,
   trackByHourSegment,
-  getMinutesMoved
+  getMinutesMoved,
+  getDefaultEventEnd
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
@@ -457,9 +457,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     dayEvent.top = currentResize.originalTop;
     dayEvent.height = currentResize.originalHeight;
 
-    const pixelAmountInMinutes =
-      MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
-
     const minutesMoved = getMinutesMoved(
       pixelsMoved,
       this.hourSegments,
@@ -468,12 +465,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     );
 
     let newStart: Date = dayEvent.event.start;
-    let newEnd: Date =
-      dayEvent.event.end ||
-      this.dateAdapter.addMinutes(
-        dayEvent.event.start,
-        30 * pixelAmountInMinutes
-      );
+    let newEnd: Date = getDefaultEventEnd(
+      this.dateAdapter,
+      dayEvent.event,
+      this.hourSegments,
+      this.hourSegmentHeight
+    );
     if (resizingBeforeStart) {
       newStart = this.dateAdapter.addMinutes(newStart, minutesMoved);
     } else {

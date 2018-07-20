@@ -5,8 +5,7 @@ import {
   validateEvents as validateEventsWithoutLog,
   WeekDay
 } from 'calendar-utils';
-
-export const MINUTES_IN_HOUR = 60;
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 export const validateEvents = (events: CalendarEvent[]) => {
   const warn = (...args) => console.warn('angular-calendar', ...args);
@@ -46,6 +45,8 @@ export const trackByHourSegment = (
 export const trackByHour = (index: number, hour: DayViewHour) =>
   hour.segments[0].date.toISOString();
 
+const MINUTES_IN_HOUR = 60;
+
 export function getMinutesMoved(
   movedY: number,
   hourSegments: number,
@@ -59,4 +60,19 @@ export function getMinutesMoved(
   const pixelAmountInMinutes =
     MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
+}
+
+export function getDefaultEventEnd(
+  dateAdapter: DateAdapter,
+  event: CalendarEvent,
+  hourSegments: number,
+  hourSegmentHeight: number
+): Date {
+  if (event.end) {
+    return event.end;
+  } else {
+    const pixelAmountInMinutes =
+      MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+    return dateAdapter.addMinutes(event.start, 30 * pixelAmountInMinutes);
+  }
 }
