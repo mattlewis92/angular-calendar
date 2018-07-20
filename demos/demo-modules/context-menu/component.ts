@@ -9,13 +9,13 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html',
   styles: [
     `
-    .fill-height {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-  `
+      .fill-height {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+    `
   ]
 })
 export class DemoComponent {
