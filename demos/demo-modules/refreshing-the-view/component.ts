@@ -16,13 +16,13 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
   templateUrl: 'template.html',
   styles: [
     `
-    .red-cell {
-      background-color: red !important;
-    }
-    .blue-cell {
-      background-color: blue !important;
-    }
-  `
+      .red-cell {
+        background-color: red !important;
+      }
+      .blue-cell {
+        background-color: blue !important;
+      }
+    `
   ]
 })
 export class DemoComponent {

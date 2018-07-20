@@ -39,12 +39,13 @@ describe('calendarDate pipe', () => {
 
   let dateFormatter: CalendarDateFormatter;
   let defaultLocale: string;
-  beforeEach(
-    inject([CalendarDateFormatter, LOCALE_ID], (_dateFormatter_, locale) => {
+  beforeEach(inject(
+    [CalendarDateFormatter, LOCALE_ID],
+    (_dateFormatter_, locale) => {
       dateFormatter = _dateFormatter_;
       defaultLocale = locale;
-    })
-  );
+    }
+  ));
 
   it('should use the date formatter to format the date', () => {
     const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(

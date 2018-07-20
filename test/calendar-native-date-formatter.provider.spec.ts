@@ -11,11 +11,9 @@ describe('calendarNativeDateFormatter provider', () => {
   });
 
   let dateFormatter: CalendarNativeDateFormatter;
-  beforeEach(
-    inject([CalendarNativeDateFormatter], _dateFormatter_ => {
-      dateFormatter = _dateFormatter_;
-    })
-  );
+  beforeEach(inject([CalendarNativeDateFormatter], _dateFormatter_ => {
+    dateFormatter = _dateFormatter_;
+  }));
 
   it('monthViewColumnHeader', () => {
     expect(

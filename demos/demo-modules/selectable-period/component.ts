@@ -13,11 +13,11 @@ import { DayViewHour } from 'calendar-utils';
   // don't do this in your app, its only so the styles get applied globally
   styles: [
     `
-    .cal-day-selected,
-    .cal-day-selected:hover {
-      background-color: deeppink !important;
-    }
-  `
+      .cal-day-selected,
+      .cal-day-selected:hover {
+        background-color: deeppink !important;
+      }
+    `
   ],
   encapsulation: ViewEncapsulation.None
 })
