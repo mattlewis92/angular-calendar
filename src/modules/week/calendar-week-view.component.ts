@@ -651,7 +651,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
     this.eventDroppedWithinContainer = false;
     this.dragActive = true;
-    if (!this.snapDraggedEvents) {
+    if (!this.snapDraggedEvents && dayEvent) {
       this.view.hourColumns.forEach(column => {
         const linkedEvent = column.events.find(
           columnEvent =>
