@@ -14,10 +14,10 @@ import { colors } from '../demo-utils/colors';
   // you should really include this CSS in your global stylesheet
   styles: [
     `
-   .my-custom-class a {
-     color: #FF3D7F !important;
-   }
-  `
+      .my-custom-class a {
+        color: #ff3d7f !important;
+      }
+    `
   ]
 })
 export class DemoComponent {
