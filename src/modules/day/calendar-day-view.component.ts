@@ -31,9 +31,10 @@ import { CalendarUtils } from '../common/calendar-utils.provider';
 import {
   validateEvents,
   trackByEventId,
-  roundToNearest,
+  MINUTES_IN_HOUR,
   trackByHour,
-  trackByHourSegment
+  trackByHourSegment,
+  getMinutesMoved
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
@@ -46,11 +47,6 @@ export interface CalendarDayViewBeforeRenderEvent {
   };
   period: ViewPeriod;
 }
-
-/**
- * @hidden
- */
-const MINUTES_IN_HOUR: number = 60;
 
 /**
  * @hidden
@@ -461,9 +457,16 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     dayEvent.top = currentResize.originalTop;
     dayEvent.height = currentResize.originalHeight;
 
-    const pixelAmountInMinutes: number =
+    const pixelAmountInMinutes =
       MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
-    const minutesMoved: number = pixelsMoved * pixelAmountInMinutes;
+
+    const minutesMoved = getMinutesMoved(
+      pixelsMoved,
+      this.hourSegments,
+      this.hourSegmentHeight,
+      this.eventSnapSize
+    );
+
     let newStart: Date = dayEvent.event.start;
     let newEnd: Date =
       dayEvent.event.end ||
@@ -499,14 +502,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
     if (this.eventDroppedWithinContainer) {
-      const draggedInPixelsSnapSize = roundToNearest(
+      const minutesMoved = getMinutesMoved(
         dragEndEvent.y,
-        this.eventSnapSize || this.hourSegmentHeight
+        this.hourSegments,
+        this.hourSegmentHeight,
+        this.eventSnapSize
       );
-      const pixelAmountInMinutes: number =
-        MINUTES_IN_HOUR / (this.hourSegments * this.hourSegmentHeight);
-      const minutesMoved: number =
-        draggedInPixelsSnapSize * pixelAmountInMinutes;
       const newStart: Date = this.dateAdapter.addMinutes(
         dayEvent.event.start,
         minutesMoved

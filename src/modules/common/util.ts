@@ -6,6 +6,8 @@ import {
   WeekDay
 } from 'calendar-utils';
 
+export const MINUTES_IN_HOUR = 60;
+
 export const validateEvents = (events: CalendarEvent[]) => {
   const warn = (...args) => console.warn('angular-calendar', ...args);
   return validateEventsWithoutLog(events, warn);
@@ -13,14 +15,14 @@ export const validateEvents = (events: CalendarEvent[]) => {
 
 export function isInside(outer: ClientRect, inner: ClientRect): boolean {
   return (
-    outer.left <= inner.left &&
-    inner.left <= outer.right &&
-    outer.left <= inner.right &&
-    inner.right <= outer.right &&
-    outer.top <= inner.top &&
-    inner.top <= outer.bottom &&
-    outer.top <= inner.bottom &&
-    inner.bottom <= outer.bottom
+    Math.round(outer.left) <= Math.round(inner.left) &&
+    Math.round(inner.left) <= Math.round(outer.right) &&
+    Math.round(outer.left) <= Math.round(inner.right) &&
+    Math.round(inner.right) <= Math.round(outer.right) &&
+    Math.round(outer.top) <= Math.round(inner.top) &&
+    Math.round(inner.top) <= Math.round(outer.bottom) &&
+    Math.round(outer.top) <= Math.round(inner.bottom) &&
+    Math.round(inner.bottom) <= Math.round(outer.bottom)
   );
 }
 
@@ -43,3 +45,18 @@ export const trackByHourSegment = (
 
 export const trackByHour = (index: number, hour: DayViewHour) =>
   hour.segments[0].date.toISOString();
+
+export function getMinutesMoved(
+  movedY: number,
+  hourSegments: number,
+  hourSegmentHeight: number,
+  eventSnapSize: number
+): number {
+  const draggedInPixelsSnapSize = roundToNearest(
+    movedY,
+    eventSnapSize || hourSegmentHeight
+  );
+  const pixelAmountInMinutes =
+    MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+  return draggedInPixelsSnapSize * pixelAmountInMinutes;
+}
