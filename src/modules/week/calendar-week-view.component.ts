@@ -84,7 +84,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
         class="cal-all-day-events"
         #allDayEventsContainer
         mwlDroppable
-        (drop)="eventDroppedWithinContainer = true"
+        (drop)="internalEventDropped(true, $event.dropData.event)"
         *ngIf="view.allDayEventRows.length > 0">
         <div class="cal-day-columns">
           <div
@@ -163,7 +163,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           class="cal-day-columns"
           #dayColumns
           mwlDroppable
-          (drop)="eventDroppedWithinContainer = true">
+          (drop)="internalEventDropped(false, $event.dropData.event)">
           <div
             class="cal-day-column"
             *ngFor="let column of view.hourColumns; trackBy:trackByHourColumn">
@@ -734,6 +734,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         event: weekEvent.event,
         type: CalendarEventTimesChangedEventType.Drag
       });
+    }
+  }
+
+  /**
+   * @hidden
+   */
+  internalEventDropped(isAllDay: boolean, event: CalendarEvent) {
+    if ((isAllDay && event.allDay) || (!isAllDay && !event.allDay)) {
+      this.eventDroppedWithinContainer = true;
     }
   }
 
