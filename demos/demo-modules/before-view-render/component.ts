@@ -12,10 +12,10 @@ import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
   templateUrl: 'template.html',
   styles: [
     `
-   .odd-cell {
-      background-color: pink !important;
-    }
-  `
+      .odd-cell {
+        background-color: pink !important;
+      }
+    `
   ]
 })
 export class DemoComponent {
