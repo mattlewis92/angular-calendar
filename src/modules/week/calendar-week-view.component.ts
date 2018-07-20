@@ -672,7 +672,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   dragMove(dayEvent: DayViewEvent, dragEvent: DragMoveEvent) {
     if (this.snapDraggedEvents) {
-      const newEventTimes = this.getMovedEventTimes(
+      const newEventTimes = this.getDragMovedEventTimes(
         dayEvent,
         dragEvent,
         this.dayColumnWidth,
@@ -722,7 +722,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.view = this.getWeekView(this.events);
     this.dragActive = false;
     if (this.eventDroppedWithinContainer) {
-      const { start, end } = this.getMovedEventTimes(
+      const { start, end } = this.getDragMovedEventTimes(
         weekEvent,
         dragEndEvent,
         dayWidth,
@@ -797,7 +797,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  private getMovedEventTimes(
+  private getDragMovedEventTimes(
     weekEvent: WeekViewAllDayEvent | DayViewEvent,
     dragEndEvent: DragEndEvent | DragMoveEvent,
     dayWidth: number,
