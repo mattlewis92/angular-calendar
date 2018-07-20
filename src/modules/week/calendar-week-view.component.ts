@@ -188,9 +188,9 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 y: weekEvent.event.draggable && currentResizes.size === 0
               }"
               [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth + 0.5, y: eventSnapSize || hourSegmentHeight} : {}"
-              [ghostDragEnabled]="false"
+              [ghostDragEnabled]="!snapDraggedEvents"
               [validateDrag]="snapDraggedEvents ? validateDrag : false"
-              (dragPointerDown)="dragStarted(dayColumns, event)"
+              (dragPointerDown)="dragStarted(dayColumns, event, weekEvent)"
               (dragging)="dragMove(weekEvent, $event)"
               (dragEnd)="dragEnded(weekEvent, $event, dayColumnWidth, true)">
               <mwl-calendar-week-view-event
@@ -218,7 +218,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 [customTemplate]="hourSegmentTemplate"
                 (click)="hourSegmentClicked.emit({date: segment.date})"
                 mwlDroppable
-                [dragOverClass]="!dragActive ? 'cal-drag-over' : ''"
+                [dragOverClass]="!dragActive || !snapDraggedEvents ? 'cal-drag-over' : null"
                 dragActiveClass="cal-drag-active"
                 (drop)="eventDropped($event, segment.date)">
               </mwl-calendar-week-view-hour-segment>
@@ -637,7 +637,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  dragStarted(eventsContainer: HTMLElement, event: HTMLElement): void {
+  dragStarted(
+    eventsContainer: HTMLElement,
+    event: HTMLElement,
+    dayEvent?: DayViewEvent
+  ): void {
     this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
       eventsContainer,
@@ -647,6 +651,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
     this.eventDroppedWithinContainer = false;
     this.dragActive = true;
+    if (!this.snapDraggedEvents) {
+      this.view.hourColumns.forEach(column => {
+        const linkedEvent = column.events.find(
+          columnEvent =>
+            columnEvent.event === dayEvent.event && columnEvent !== dayEvent
+        );
+        // hide any linked events while dragging
+        if (linkedEvent) {
+          linkedEvent.width = 0;
+          linkedEvent.height = 0;
+        }
+      });
+    }
     this.cdr.markForCheck();
   }
 
@@ -654,41 +671,43 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dragMove(dayEvent: DayViewEvent, dragEvent: DragMoveEvent) {
-    const newEventTimes = this.getMovedEventTimes(
-      dayEvent,
-      dragEvent,
-      this.dayColumnWidth,
-      true
-    );
-    const originalEvent = dayEvent.event;
-    const adjustedEvent = { ...originalEvent, ...newEventTimes };
-    const tempEvents = this.events.map(event => {
-      if (event === originalEvent) {
-        return adjustedEvent;
-      }
-      return event;
-    });
-    this.view = this.getWeekView(tempEvents);
-    this.view.hourColumns.forEach(column => {
-      const existingColumnEvent = column.events.find(
-        columnEvent => columnEvent.event === adjustedEvent
+    if (this.snapDraggedEvents) {
+      const newEventTimes = this.getMovedEventTimes(
+        dayEvent,
+        dragEvent,
+        this.dayColumnWidth,
+        true
       );
-      if (existingColumnEvent) {
-        // restore the original event so trackBy kicks in and the dom isn't changed
-        existingColumnEvent.event = originalEvent;
-      } else {
-        // add a dummy event to the drop so if the event was removed from the original column the drag doesn't end early
-        column.events.push({
-          event: originalEvent,
-          left: 0,
-          top: 0,
-          height: 0,
-          width: 0,
-          startsBeforeDay: false,
-          endsAfterDay: false
-        });
-      }
-    });
+      const originalEvent = dayEvent.event;
+      const adjustedEvent = { ...originalEvent, ...newEventTimes };
+      const tempEvents = this.events.map(event => {
+        if (event === originalEvent) {
+          return adjustedEvent;
+        }
+        return event;
+      });
+      this.view = this.getWeekView(tempEvents);
+      this.view.hourColumns.forEach(column => {
+        const existingColumnEvent = column.events.find(
+          columnEvent => columnEvent.event === adjustedEvent
+        );
+        if (existingColumnEvent) {
+          // restore the original event so trackBy kicks in and the dom isn't changed
+          existingColumnEvent.event = originalEvent;
+        } else {
+          // add a dummy event to the drop so if the event was removed from the original column the drag doesn't end early
+          column.events.push({
+            event: originalEvent,
+            left: 0,
+            top: 0,
+            height: 0,
+            width: 0,
+            startsBeforeDay: false,
+            endsAfterDay: false
+          });
+        }
+      });
+    }
   }
 
   /**
