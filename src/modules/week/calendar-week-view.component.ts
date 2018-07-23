@@ -203,7 +203,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
               (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)">
               <div
                 class="cal-resize-handle cal-resize-handle-before-start"
-                *ngIf="timeEvent.event?.resizable?.beforeStart"
+                *ngIf="timeEvent.event?.resizable?.beforeStart && !timeEvent.startsBeforeDay"
                 mwlResizeHandle
                 [resizeEdges]="{
                   left: true,
@@ -222,7 +222,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
               </mwl-calendar-week-view-event>
               <div
                 class="cal-resize-handle cal-resize-handle-after-end"
-                *ngIf="timeEvent.event?.resizable?.afterEnd"
+                *ngIf="timeEvent.event?.resizable?.afterEnd && !timeEvent.endsAfterDay"
                 mwlResizeHandle
                 [resizeEdges]="{
                   right: true,
