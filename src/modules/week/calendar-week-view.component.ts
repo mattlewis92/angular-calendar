@@ -144,7 +144,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           </div>
         </div>
       </div>
-      <div class="cal-hour-events">
+      <div class="cal-time-events">
         <div class="cal-time-label-column">
           <div
             *ngFor="let hour of view.hourColumns[0].hours; trackBy:trackByHour; let odd = odd"
