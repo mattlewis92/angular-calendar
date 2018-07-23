@@ -244,7 +244,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 [segmentHeight]="hourSegmentHeight"
                 [locale]="locale"
                 [customTemplate]="hourSegmentTemplate"
-                (click)="hourSegmentClicked.emit({date: segment.date})"
+                (mwlClick)="hourSegmentClicked.emit({date: segment.date})"
                 mwlDroppable
                 [dragOverClass]="!dragActive || !snapDraggedEvents ? 'cal-drag-over' : null"
                 dragActiveClass="cal-drag-active"

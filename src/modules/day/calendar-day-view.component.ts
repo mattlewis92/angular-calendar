@@ -131,7 +131,7 @@ export interface DayViewEventResize {
             [segmentHeight]="hourSegmentHeight"
             [locale]="locale"
             [customTemplate]="hourSegmentTemplate"
-            (click)="hourSegmentClicked.emit({date: segment.date})"
+            (mwlClick)="hourSegmentClicked.emit({date: segment.date})"
             mwlDroppable
             dragOverClass="cal-drag-over"
             dragActiveClass="cal-drag-active"
