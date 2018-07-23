@@ -62,17 +62,21 @@ export function getMinutesMoved(
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
 }
 
+export function getMinimumEventHeightInMinutes(
+  hourSegments: number,
+  hourSegmentHeight: number
+) {
+  return (MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight)) * 30;
+}
+
 export function getDefaultEventEnd(
   dateAdapter: DateAdapter,
   event: CalendarEvent,
-  hourSegments: number,
-  hourSegmentHeight: number
+  minimumMinutes: number
 ): Date {
   if (event.end) {
     return event.end;
   } else {
-    const pixelAmountInMinutes =
-      MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
-    return dateAdapter.addMinutes(event.start, 30 * pixelAmountInMinutes);
+    return dateAdapter.addMinutes(event.start, minimumMinutes);
   }
 }

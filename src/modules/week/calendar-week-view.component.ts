@@ -39,7 +39,8 @@ import {
   trackByHourSegment,
   trackByHour,
   getMinutesMoved,
-  getDefaultEventEnd
+  getDefaultEventEnd,
+  getMinimumEventHeightInMinutes
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -185,6 +186,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
               mwlResizable
               [resizeSnapGrid]="{left: dayColumnWidth, right: dayColumnWidth, top: eventSnapSize || hourSegmentHeight, bottom: eventSnapSize || hourSegmentHeight}"
               [validateResize]="validateResize"
+              [allowNegativeResizes]="true"
               (resizeStart)="timeEventResizeStarted(dayColumns, timeEvent, $event)"
               (resizing)="timeEventResizing(timeEvent, $event)"
               (resizeEnd)="timeEventResizeEnded(timeEvent)"
@@ -559,11 +561,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private resizeStarted(eventsContainer: HTMLElement) {
+  private resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
     this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
       eventsContainer,
-      this.dayColumnWidth
+      minWidth
     );
     this.validateResize = ({ rectangle }) =>
       resizeHelper.validateResize({ rectangle });
@@ -637,7 +639,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       originalSpan: allDayEvent.span,
       edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right'
     });
-    this.resizeStarted(allDayEventsContainer);
+    this.resizeStarted(
+      allDayEventsContainer,
+      this.getDayColumnWidth(allDayEventsContainer)
+    );
   }
 
   /**
@@ -941,13 +946,28 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     calendarEvent: CalendarEvent,
     resizeEvent: ResizeEvent
   ) {
+    const minimumEventHeight = getMinimumEventHeightInMinutes(
+      this.hourSegments,
+      this.hourSegmentHeight
+    );
     const newEventDates = {
       start: calendarEvent.start,
       end: getDefaultEventEnd(
         this.dateAdapter,
         calendarEvent,
-        this.hourSegments,
-        this.hourSegmentHeight
+        minimumEventHeight
+      )
+    };
+    const { end, ...eventWithoutEnd } = calendarEvent;
+    const smallestResizes = {
+      start: this.dateAdapter.addMinutes(
+        newEventDates.end,
+        minimumEventHeight * -1
+      ),
+      end: getDefaultEventEnd(
+        this.dateAdapter,
+        eventWithoutEnd,
+        minimumEventHeight
       )
     };
 
@@ -955,15 +975,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff = Math.round(
         +resizeEvent.edges.left / this.dayColumnWidth
       );
-      newEventDates.start = this.dateAdapter.addDays(
-        newEventDates.start,
-        daysDiff
-      );
+      const newStart = this.dateAdapter.addDays(newEventDates.start, daysDiff);
+      if (newStart < smallestResizes.start) {
+        newEventDates.start = newStart;
+      } else {
+        newEventDates.start = smallestResizes.start;
+      }
     } else if (resizeEvent.edges.right) {
       const daysDiff = Math.round(
         +resizeEvent.edges.right / this.dayColumnWidth
       );
-      newEventDates.end = this.dateAdapter.addDays(newEventDates.end, daysDiff);
+      const newEnd = this.dateAdapter.addDays(newEventDates.end, daysDiff);
+      if (newEnd > smallestResizes.end) {
+        newEventDates.end = newEnd;
+      } else {
+        newEventDates.end = smallestResizes.end;
+      }
     }
 
     if (resizeEvent.edges.top) {
@@ -973,10 +1000,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.hourSegmentHeight,
         this.eventSnapSize
       );
-      newEventDates.start = this.dateAdapter.addMinutes(
+      const newStart = this.dateAdapter.addMinutes(
         newEventDates.start,
         minutesMoved
       );
+      if (newStart < smallestResizes.start) {
+        newEventDates.start = newStart;
+      } else {
+        newEventDates.start = smallestResizes.start;
+      }
     } else if (resizeEvent.edges.bottom) {
       const minutesMoved = getMinutesMoved(
         resizeEvent.edges.bottom as number,
@@ -984,10 +1016,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.hourSegmentHeight,
         this.eventSnapSize
       );
-      newEventDates.end = this.dateAdapter.addMinutes(
+      const newEnd = this.dateAdapter.addMinutes(
         newEventDates.end,
         minutesMoved
       );
+      if (newEnd > smallestResizes.end) {
+        newEventDates.end = newEnd;
+      } else {
+        newEventDates.end = smallestResizes.end;
+      }
     }
 
     return newEventDates;
