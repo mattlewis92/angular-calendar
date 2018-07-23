@@ -217,7 +217,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 [tooltipPlacement]="tooltipPlacement"
                 [tooltipTemplate]="tooltipTemplate"
                 [tooltipAppendToBody]="tooltipAppendToBody"
-                [tooltipDisabled]="dragActive"
+                [tooltipDisabled]="dragActive || timeEventResizes.size > 0"
                 [customTemplate]="eventTemplate"
                 [eventTitleTemplate]="eventTitleTemplate"
                 (eventClicked)="eventClicked.emit({event: timeEvent.event})">
