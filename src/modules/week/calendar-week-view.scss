@@ -176,6 +176,17 @@
     background-color: #ededed;
   }
 
+  .cal-resize-handle {
+    width: 100%;
+    height: 3px;
+    cursor: row-resize;
+    position: absolute;
+
+    &.cal-resize-handle-after-end {
+      margin-top: -3px;
+    }
+  }
+
   /* stylelint-disable-next-line selector-type-no-unknown */
   mwl-calendar-week-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
   .cal-hour-segment {

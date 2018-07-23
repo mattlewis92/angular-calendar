@@ -104,7 +104,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
             *ngFor="let allDayEvent of eventRow.row; trackBy:trackByEventId"
             #event
             class="cal-event-container"
-            [class.cal-draggable]="allDayEvent.event.draggable"
+            [class.cal-draggable]="allDayEvent.event.draggable && allDayEventResizes.size === 0"
             [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"
             [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"
             [ngClass]="allDayEvent.event?.cssClass"
@@ -173,7 +173,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
               *ngFor="let timeEvent of column.events; trackBy:trackByEventId"
               #event
               class="cal-event-container"
-              [class.cal-draggable]="timeEvent.event.draggable"
+              [class.cal-draggable]="timeEvent.event.draggable && timeEventResizes.size === 0"
               [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"
               [class.cal-ends-within-day]="!timeEvent.endsAfterDay"
               [ngClass]="timeEvent.event.cssClass"
@@ -183,12 +183,6 @@ export interface CalendarWeekViewBeforeRenderEvent {
               [style.left.%]="timeEvent.left"
               [style.width.%]="timeEvent.width"
               mwlResizable
-              [resizeEdges]="{
-                left: timeEvent.event?.resizable?.beforeStart, 
-                top: timeEvent.event?.resizable?.beforeStart, 
-                right: timeEvent.event?.resizable?.afterEnd,
-                bottom: timeEvent.event?.resizable?.afterEnd
-              }"
               [resizeSnapGrid]="{left: dayColumnWidth, right: dayColumnWidth, top: eventSnapSize || hourSegmentHeight, bottom: eventSnapSize || hourSegmentHeight}"
               [validateResize]="validateResize"
               (resizeStart)="timeEventResizeStarted(dayColumns, timeEvent, $event)"
@@ -207,6 +201,15 @@ export interface CalendarWeekViewBeforeRenderEvent {
               (dragPointerDown)="dragStarted(dayColumns, event, timeEvent)"
               (dragging)="dragMove(timeEvent, $event)"
               (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)">
+              <div
+                class="cal-resize-handle cal-resize-handle-before-start"
+                *ngIf="timeEvent.event?.resizable?.beforeStart"
+                mwlResizeHandle
+                [resizeEdges]="{
+                  left: true,
+                  top: true
+                }">
+              </div>
               <mwl-calendar-week-view-event
                 [weekEvent]="timeEvent"
                 [tooltipPlacement]="tooltipPlacement"
@@ -217,6 +220,15 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 [eventTitleTemplate]="eventTitleTemplate"
                 (eventClicked)="eventClicked.emit({event: timeEvent.event})">
               </mwl-calendar-week-view-event>
+              <div
+                class="cal-resize-handle cal-resize-handle-after-end"
+                *ngIf="timeEvent.event?.resizable?.afterEnd"
+                mwlResizeHandle
+                [resizeEdges]="{
+                  right: true,
+                  bottom: true
+                }">
+              </div>
             </div>
 
             <div
