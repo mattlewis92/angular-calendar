@@ -14,14 +14,14 @@ export const validateEvents = (events: CalendarEvent[]) => {
 
 export function isInside(outer: ClientRect, inner: ClientRect): boolean {
   return (
-    Math.round(outer.left) <= Math.round(inner.left) &&
-    Math.round(inner.left) <= Math.round(outer.right) &&
-    Math.round(outer.left) <= Math.round(inner.right) &&
-    Math.round(inner.right) <= Math.round(outer.right) &&
-    Math.round(outer.top) <= Math.round(inner.top) &&
-    Math.round(inner.top) <= Math.round(outer.bottom) &&
-    Math.round(outer.top) <= Math.round(inner.bottom) &&
-    Math.round(inner.bottom) <= Math.round(outer.bottom)
+    Math.ceil(outer.left) <= Math.ceil(inner.left) &&
+    Math.ceil(inner.left) <= Math.ceil(outer.right) &&
+    Math.ceil(outer.left) <= Math.ceil(inner.right) &&
+    Math.ceil(inner.right) <= Math.ceil(outer.right) &&
+    Math.ceil(outer.top) <= Math.ceil(inner.top) &&
+    Math.ceil(inner.top) <= Math.ceil(outer.bottom) &&
+    Math.ceil(outer.top) <= Math.ceil(inner.bottom) &&
+    Math.ceil(inner.bottom) <= Math.ceil(outer.bottom)
   );
 }
 
