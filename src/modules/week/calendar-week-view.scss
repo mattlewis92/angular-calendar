@@ -41,17 +41,21 @@
     color: #1e90ff;
   }
 
+  .cal-time-label-column {
+    width: 70px;
+    height: 100%;
+  }
+
   .cal-all-day-events {
     border: solid 1px #e1e1e1;
     border-top: 0;
     border-bottom-width: 3px;
     padding-top: 3px;
     position: relative;
-    padding-left: 70px;
 
     .cal-day-columns {
       height: 100%;
-      width: calc(100% - 70px);
+      width: 100%;
       display: flex;
       position: absolute;
       top: 0;
@@ -61,6 +65,7 @@
     .cal-events-row {
       position: relative;
       height: 31px;
+      margin-left: 70px;
     }
 
     .cal-event-container {
@@ -91,6 +96,13 @@
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
     }
+
+    .cal-time-label-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
   }
 
   .cal-draggable {
@@ -119,10 +131,6 @@
     & * {
       pointer-events: none;
     }
-  }
-
-  .cal-time-label-column {
-    width: 70px;
   }
 
   .cal-time-events {

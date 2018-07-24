@@ -90,6 +90,10 @@ export interface CalendarWeekViewBeforeRenderEvent {
         *ngIf="view.allDayEventRows.length > 0">
         <div class="cal-day-columns">
           <div
+            class="cal-time-label-column"
+            [ngTemplateOutlet]="allDayEventsLabelTemplate">
+          </div>
+          <div
             class="cal-day-column"
             *ngFor="let day of days; trackBy:trackByWeekDayHeaderDate"
             mwlDroppable
@@ -374,6 +378,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * The grid size to snap resizing and dragging of hourly events to
    */
   @Input() eventSnapSize: number;
+
+  /**
+   * A custom template to use for the all day events label text
+   */
+  @Input() allDayEventsLabelTemplate: TemplateRef<any>;
 
   /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
