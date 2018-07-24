@@ -85,7 +85,6 @@ export interface CalendarWeekViewBeforeRenderEvent {
       <div
         class="cal-all-day-events"
         #allDayEventsContainer
-        mwlDroppable
         *ngIf="view.allDayEventRows.length > 0">
         <div class="cal-day-columns">
           <div
@@ -167,8 +166,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
         <div
           class="cal-day-columns"
           [class.cal-resize-active]="timeEventResizes.size > 0"
-          #dayColumns
-          mwlDroppable>
+          #dayColumns>
           <div
             class="cal-day-column"
             *ngFor="let column of view.hourColumns; trackBy:trackByHourColumn">
