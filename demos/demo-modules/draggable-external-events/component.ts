@@ -55,9 +55,13 @@ export class DemoComponent {
   eventDropped({
     event,
     newStart,
-    newEnd
+    newEnd,
+    allDay
   }: CalendarEventTimesChangedEvent): void {
     const externalIndex = this.externalEvents.indexOf(event);
+    if (typeof allDay !== 'undefined') {
+      event.allDay = allDay;
+    }
     if (externalIndex > -1) {
       this.externalEvents.splice(externalIndex, 1);
       this.events.push(event);

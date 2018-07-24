@@ -730,7 +730,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (
       dropEvent.dropData &&
       dropEvent.dropData.event &&
-      !dropEvent.dropData.isInternal
+      (!dropEvent.dropData.isInternal ||
+        (dropEvent.dropData.event.allDay && !allDay) ||
+        (!dropEvent.dropData.event.allDay && allDay))
     ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
