@@ -86,7 +86,6 @@ export interface CalendarWeekViewBeforeRenderEvent {
         class="cal-all-day-events"
         #allDayEventsContainer
         mwlDroppable
-        (drop)="internalEventDropped(true, $event.dropData.event)"
         *ngIf="view.allDayEventRows.length > 0">
         <div class="cal-day-columns">
           <div
@@ -169,8 +168,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           class="cal-day-columns"
           [class.cal-resize-active]="timeEventResizes.size > 0"
           #dayColumns
-          mwlDroppable
-          (drop)="internalEventDropped(false, $event.dropData.event)">
+          mwlDroppable>
           <div
             class="cal-day-column"
             *ngFor="let column of view.hourColumns; trackBy:trackByHourColumn">
@@ -448,11 +446,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   timeEventResizes: Map<CalendarEvent, ResizeEvent> = new Map();
-
-  /**
-   * @hidden
-   */
-  eventDroppedWithinContainer = false;
 
   /**
    * @hidden
@@ -760,7 +753,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       this.allDayEventResizes.size === 0 &&
       this.timeEventResizes.size === 0 &&
       dragHelper.validateDrag({ x, y });
-    this.eventDroppedWithinContainer = false;
     this.dragActive = true;
     if (!this.snapDraggedEvents && dayEvent) {
       this.view.hourColumns.forEach(column => {
@@ -815,28 +807,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     this.view = this.getWeekView(this.events);
     this.dragActive = false;
-    if (this.eventDroppedWithinContainer) {
-      const { start, end } = this.getDragMovedEventTimes(
-        weekEvent,
-        dragEndEvent,
-        dayWidth,
-        useY
-      );
+    const { start, end } = this.getDragMovedEventTimes(
+      weekEvent,
+      dragEndEvent,
+      dayWidth,
+      useY
+    );
+    if (
+      start >= this.view.period.start &&
+      (end || start) <= this.view.period.end
+    ) {
       this.eventTimesChanged.emit({
         newStart: start,
         newEnd: end,
         event: weekEvent.event,
         type: CalendarEventTimesChangedEventType.Drag
       });
-    }
-  }
-
-  /**
-   * @hidden
-   */
-  internalEventDropped(isAllDay: boolean, event: CalendarEvent) {
-    if ((isAllDay && event.allDay) || (!isAllDay && !event.allDay)) {
-      this.eventDroppedWithinContainer = true;
     }
   }
 

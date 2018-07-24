@@ -83,7 +83,8 @@ export interface DayViewEventResize {
         class="cal-hour-rows"
         #dayEventsContainer
         mwlDroppable
-        (drop)="eventDroppedWithinContainer = true">
+        (dragEnter)="eventDragEnter = eventDragEnter + 1"
+        (dragLeave)="eventDragEnter = eventDragEnter - 1">
         <div class="cal-events">
           <div
             #event
@@ -301,7 +302,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  eventDroppedWithinContainer = false;
+  eventDragEnter = 0;
 
   /**
    * @hidden
@@ -493,12 +494,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     );
     this.validateDrag = ({ x, y }) =>
       this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
-    this.eventDroppedWithinContainer = false;
+    this.eventDragEnter = 0;
     this.cdr.markForCheck();
   }
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
-    if (this.eventDroppedWithinContainer) {
+    if (this.eventDragEnter > 0) {
       const minutesMoved = getMinutesMoved(
         dragEndEvent.y,
         this.hourSegments,
@@ -513,12 +514,17 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       if (dayEvent.event.end) {
         newEnd = this.dateAdapter.addMinutes(dayEvent.event.end, minutesMoved);
       }
-      this.eventTimesChanged.emit({
-        newStart,
-        newEnd,
-        event: dayEvent.event,
-        type: CalendarEventTimesChangedEventType.Drag
-      });
+      if (
+        newStart >= this.view.period.start &&
+        (newEnd || newStart) <= this.view.period.end
+      ) {
+        this.eventTimesChanged.emit({
+          newStart,
+          newEnd,
+          event: dayEvent.event,
+          type: CalendarEventTimesChangedEventType.Drag
+        });
+      }
     }
   }
 
