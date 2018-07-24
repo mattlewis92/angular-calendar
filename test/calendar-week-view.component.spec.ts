@@ -1019,7 +1019,8 @@ describe('calendarWeekView component', () => {
       newStart: moment('2016-06-27')
         .startOf('week')
         .add(2, 'days')
-        .toDate()
+        .toDate(),
+      allDay: true
     });
   });
 
