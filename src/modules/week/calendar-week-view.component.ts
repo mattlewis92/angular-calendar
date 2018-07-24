@@ -85,7 +85,10 @@ export interface CalendarWeekViewBeforeRenderEvent {
       <div
         class="cal-all-day-events"
         #allDayEventsContainer
-        *ngIf="view.allDayEventRows.length > 0">
+        *ngIf="view.allDayEventRows.length > 0"
+        mwlDroppable
+        (dragEnter)="eventDragEnter = eventDragEnter + 1"
+        (dragLeave)="eventDragEnter = eventDragEnter - 1">
         <div class="cal-day-columns">
           <div
             class="cal-time-label-column"
@@ -146,7 +149,11 @@ export interface CalendarWeekViewBeforeRenderEvent {
           </div>
         </div>
       </div>
-      <div class="cal-time-events">
+      <div
+        class="cal-time-events"
+        mwlDroppable
+        (dragEnter)="eventDragEnter = eventDragEnter + 1"
+        (dragLeave)="eventDragEnter = eventDragEnter - 1">
         <div class="cal-time-label-column">
           <div
             *ngFor="let hour of view.hourColumns[0].hours; trackBy:trackByHour; let odd = odd"
@@ -444,6 +451,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   timeEventResizes: Map<CalendarEvent, ResizeEvent> = new Map();
+
+  /**
+   * @hidden
+   */
+  eventDragEnter = 0;
 
   /**
    * @hidden
@@ -752,6 +764,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       this.timeEventResizes.size === 0 &&
       dragHelper.validateDrag({ x, y });
     this.dragActive = true;
+    this.eventDragEnter = 0;
     if (!this.snapDraggedEvents && dayEvent) {
       this.view.hourColumns.forEach(column => {
         const linkedEvent = column.events.find(
@@ -812,6 +825,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       useY
     );
     if (
+      this.eventDragEnter > 0 &&
       start >= this.view.period.start &&
       (end || start) <= this.view.period.end
     ) {
