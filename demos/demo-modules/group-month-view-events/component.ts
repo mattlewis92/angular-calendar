@@ -8,14 +8,14 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html',
   styles: [
     `
-    .cell-totals {
-      margin: 5px;
-      text-align: center;
-    }
-    .badge {
-      margin-right: 5px;
-    }
-  `
+      .cell-totals {
+        margin: 5px;
+        text-align: center;
+      }
+      .badge {
+        margin-right: 5px;
+      }
+    `
   ]
 })
 export class DemoComponent {

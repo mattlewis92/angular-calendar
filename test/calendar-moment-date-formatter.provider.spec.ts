@@ -15,11 +15,9 @@ describe('calendarMomentDateFormatter provider', () => {
   });
 
   let dateFormatter: CalendarMomentDateFormatter;
-  beforeEach(
-    inject([CalendarMomentDateFormatter], _dateFormatter_ => {
-      dateFormatter = _dateFormatter_;
-    })
-  );
+  beforeEach(inject([CalendarMomentDateFormatter], _dateFormatter_ => {
+    dateFormatter = _dateFormatter_;
+  }));
 
   it('monthViewColumnHeader', () => {
     expect(
