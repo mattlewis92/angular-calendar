@@ -833,7 +833,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newStart: start,
         newEnd: end,
         event: weekEvent.event,
-        type: CalendarEventTimesChangedEventType.Drag
+        type: CalendarEventTimesChangedEventType.Drag,
+        allDay: !useY
       });
     }
   }

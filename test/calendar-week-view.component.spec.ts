@@ -718,7 +718,8 @@ describe('calendarWeekView component', () => {
         .toDate(),
       newEnd: moment('2016-12-07')
         .add(6, 'hours')
-        .toDate()
+        .toDate(),
+      allDay: true
     });
     expect(eventDropped).to.have.been.calledOnce;
   });
@@ -845,7 +846,8 @@ describe('calendarWeekView component', () => {
         .toDate(),
       newEnd: moment('2016-12-07')
         .add(6, 'hours')
-        .toDate()
+        .toDate(),
+      allDay: true
     });
     expect(eventDropped).to.have.been.calledOnce;
   });
