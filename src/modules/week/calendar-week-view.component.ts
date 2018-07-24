@@ -80,7 +80,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
         [locale]="locale"
         [customTemplate]="headerTemplate"
         (dayHeaderClicked)="dayHeaderClicked.emit($event)"
-        (eventDropped)="eventDropped({dropData: $event}, $event.newStart)">
+        (eventDropped)="eventDropped({dropData: $event}, $event.newStart, true)">
       </mwl-calendar-week-view-header>
       <div
         class="cal-all-day-events"
@@ -94,7 +94,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
             *ngFor="let day of days; trackBy:trackByWeekDayHeaderDate"
             mwlDroppable
             dragOverClass="cal-drag-over"
-            (drop)="eventDropped($event, day.date)">
+            (drop)="eventDropped($event, day.date, true)">
           </div>
         </div>
         <div
@@ -248,7 +248,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 mwlDroppable
                 [dragOverClass]="!dragActive || !snapDraggedEvents ? 'cal-drag-over' : null"
                 dragActiveClass="cal-drag-active"
-                (drop)="eventDropped($event, segment.date)">
+                (drop)="eventDropped($event, segment.date, false)">
               </mwl-calendar-week-view-hour-segment>
             </div>
           </div>
@@ -715,7 +715,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   eventDropped(
     dropEvent: DropEvent<{ event?: CalendarEvent; isInternal?: boolean }>,
-    date: Date
+    date: Date,
+    allDay: boolean
   ): void {
     if (
       dropEvent.dropData &&
@@ -725,7 +726,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
-        newStart: date
+        newStart: date,
+        allDay
       });
     }
   }
