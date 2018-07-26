@@ -43,11 +43,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(
-    inject([CalendarEventTitleFormatter], _eventTitle_ => {
-      eventTitle = _eventTitle_;
-    })
-  );
+  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+    eventTitle = _eventTitle_;
+  }));
 
   it('should generate the day view', () => {
     const fixture: ComponentFixture<

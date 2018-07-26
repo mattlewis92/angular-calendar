@@ -69,7 +69,9 @@ const dependencyVersions: any = {
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
   fontAwesome: require('font-awesome/package.json').version,
-  positioning: require('positioning/package.json').version
+  positioning: require('positioning/package.json').version,
+  flatpickr: require('flatpickr/package.json').version,
+  angularxFlatpickr: require('angularx-flatpickr/package.json').version
 };
 
 @Component({
@@ -132,6 +134,9 @@ export class DemoAppComponent implements OnInit {
 <link href="https://unpkg.com/angular-calendar@${
         dependencyVersions.angularCalendar
       }/css/angular-calendar.css" rel="stylesheet">
+<link href="https://unpkg.com/flatpickr@${
+        dependencyVersions.flatpickr
+      }/dist/flatpickr.css" rel="stylesheet">
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
       'main.ts': `
@@ -200,7 +205,9 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
-          rrule: dependencyVersions.rrule
+          rrule: dependencyVersions.rrule,
+          flatpickr: dependencyVersions.flatpickr,
+          'angularx-flatpickr': dependencyVersions.angularxFlatpickr
         }
       },
       {

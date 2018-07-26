@@ -42,11 +42,9 @@ describe('calendarWeekView component', () => {
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(
-    inject([CalendarEventTitleFormatter], _eventTitle_ => {
-      eventTitle = _eventTitle_;
-    })
-  );
+  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+    eventTitle = _eventTitle_;
+  }));
 
   it('should generate the week view', () => {
     const fixture: ComponentFixture<

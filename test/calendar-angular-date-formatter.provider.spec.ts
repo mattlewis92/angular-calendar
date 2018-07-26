@@ -11,11 +11,9 @@ describe('CalendarAngularDateFormatter provider', () => {
   });
 
   let dateFormatter: CalendarAngularDateFormatter;
-  beforeEach(
-    inject([CalendarAngularDateFormatter], _dateFormatter_ => {
-      dateFormatter = _dateFormatter_;
-    })
-  );
+  beforeEach(inject([CalendarAngularDateFormatter], _dateFormatter_ => {
+    dateFormatter = _dateFormatter_;
+  }));
 
   it('monthViewColumnHeader', () => {
     expect(
