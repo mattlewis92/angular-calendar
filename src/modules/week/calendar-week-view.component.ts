@@ -19,8 +19,6 @@ import {
   WeekView,
   ViewPeriod,
   WeekViewHourColumn,
-  DayViewHourSegment,
-  DayViewHour,
   DayViewEvent
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
@@ -40,7 +38,8 @@ import {
   trackByHour,
   getMinutesMoved,
   getDefaultEventEnd,
-  getMinimumEventHeightInMinutes
+  getMinimumEventHeightInMinutes,
+  addDaysWithExclusions
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -204,7 +203,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
                 x: timeEvent.event.draggable && timeEventResizes.size === 0,
                 y: timeEvent.event.draggable && timeEventResizes.size === 0
               }"
-              [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth + 0.5, y: eventSnapSize || hourSegmentHeight} : {}"
+              [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight} : {}"
               [ghostDragEnabled]="!snapDraggedEvents"
               [validateDrag]="snapDraggedEvents ? validateDrag : false"
               (dragPointerDown)="dragStarted(dayColumns, event, timeEvent)"
@@ -388,6 +387,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() allDayEventsLabelTemplate: TemplateRef<any>;
 
   /**
+   * The number of days in a week. Can be used to create a shorter or longer week view.
+   * The first day of the week will always be the `viewDate`
+   */
+  @Input() daysInWeek: number;
+
+  /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
    */
   @Output()
@@ -539,7 +544,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
+    if (
+      changes.viewDate ||
+      changes.excludeDays ||
+      changes.weekendDays ||
+      changes.daysInWeek
+    ) {
       this.refreshHeader();
     }
 
@@ -558,7 +568,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.weekendDays ||
       changes.excludeDays ||
       changes.hourSegmentHeight ||
-      changes.events
+      changes.events ||
+      changes.daysInWeek
     ) {
       this.refreshBody();
     }
@@ -840,12 +851,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHeader(): void {
-    this.days = this.utils.getWeekViewHeader({
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      weekendDays: this.weekendDays
-    });
+    this.days = this.utils.getWeekViewHeader(
+      this.adjustDaysInWeek({
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays
+      })
+    );
     this.emitBeforeViewRender();
   }
 
@@ -869,25 +882,27 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private getWeekView(events: CalendarEvent[]) {
-    return this.utils.getWeekView({
-      events,
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      precision: this.precision,
-      absolutePositionedEvents: true,
-      hourSegments: this.hourSegments,
-      dayStart: {
-        hour: this.dayStartHour,
-        minute: this.dayStartMinute
-      },
-      dayEnd: {
-        hour: this.dayEndHour,
-        minute: this.dayEndMinute
-      },
-      segmentHeight: this.hourSegmentHeight,
-      weekendDays: this.weekendDays
-    });
+    return this.utils.getWeekView(
+      this.adjustDaysInWeek({
+        events,
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        precision: this.precision,
+        absolutePositionedEvents: true,
+        hourSegments: this.hourSegments,
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        },
+        segmentHeight: this.hourSegmentHeight,
+        weekendDays: this.weekendDays
+      })
+    );
   }
 
   private getDragMovedEventTimes(
@@ -1040,5 +1055,20 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     return newEventDates;
+  }
+
+  private adjustDaysInWeek(args: any) {
+    if (this.daysInWeek) {
+      args.viewStart = this.dateAdapter.startOfDay(args.viewDate);
+      args.viewEnd = this.dateAdapter.endOfDay(
+        addDaysWithExclusions(
+          this.dateAdapter,
+          args.viewStart,
+          this.daysInWeek - 1,
+          this.excludeDays
+        )
+      );
+    }
+    return args;
   }
 }

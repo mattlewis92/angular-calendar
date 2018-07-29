@@ -1,12 +1,13 @@
 import {
   Directive,
+  EventEmitter,
   HostListener,
   Input,
-  Output,
-  EventEmitter
+  Output
 } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { CalendarView } from './calendar-view.enum';
+import { addDaysWithExclusions } from './util';
 
 /**
  * Change the view date to the next view. For example:
@@ -37,7 +38,12 @@ export class CalendarNextViewDirective {
   /**
    * Days to skip when going forward by 1 day
    */
-  @Input() excludeDays: number[];
+  @Input() excludeDays: number[] = [];
+
+  /**
+   * The number of days in a week. If set will add this amount of days instead of 1 week
+   */
+  @Input() daysInWeek: number;
 
   /**
    * Called when the view date is changed
@@ -57,16 +63,26 @@ export class CalendarNextViewDirective {
       month: this.dateAdapter.addMonths
     }[this.view];
 
-    let newDate = addFn(this.viewDate, 1);
-
-    while (
-      this.view === CalendarView.Day &&
-      this.excludeDays &&
-      this.excludeDays.indexOf(newDate.getDay()) > -1
-    ) {
-      newDate = this.dateAdapter.addDays(newDate, 1);
+    if (this.view === CalendarView.Day) {
+      this.viewDateChange.emit(
+        addDaysWithExclusions(
+          this.dateAdapter,
+          this.viewDate,
+          1,
+          this.excludeDays
+        )
+      );
+    } else if (this.view === CalendarView.Week && this.daysInWeek) {
+      this.viewDateChange.emit(
+        addDaysWithExclusions(
+          this.dateAdapter,
+          this.viewDate,
+          this.daysInWeek,
+          this.excludeDays
+        )
+      );
+    } else {
+      this.viewDateChange.emit(addFn(this.viewDate, 1));
     }
-
-    this.viewDateChange.emit(newDate);
   }
 }
