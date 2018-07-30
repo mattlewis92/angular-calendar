@@ -1133,10 +1133,6 @@ describe('calendarWeekView component', () => {
         start: new Date('2016-06-26'),
         end: new Date('2016-06-28'),
         title: 'foo',
-        color: {
-          primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        },
         actions: [
           {
             label: '<i class="fa fa-fw fa-times"></i>',
@@ -1158,5 +1154,427 @@ describe('calendarWeekView component', () => {
       fixture.componentInstance.events[0].actions[0].onClick
     ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
     expect(eventClicked).not.to.have.been.called;
+  });
+
+  it('should resize a time event from the end to another day on the right', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          afterEnd: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const dayWidth: number = event.parentElement.offsetWidth;
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.right,
+      clientY: rect.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.right + dayWidth,
+      clientY: rect.bottom + 90
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(rect.top);
+    expect(event.getBoundingClientRect().height).to.equal(1259);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(events[0]).to.equal(event);
+    expect(events[1].getBoundingClientRect().top).to.equal(rect.top - 180);
+    expect(events[1].getBoundingClientRect().height).to.equal(1170);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.right + dayWidth,
+      clientY: rect.bottom + 90
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: fixture.componentInstance.events[0].start,
+      newEnd: moment(new Date('2018-07-29'))
+        .startOf('day')
+        .add(1, 'day')
+        .add(19, 'hours')
+        .add(30, 'minutes')
+        .toDate()
+    });
+  });
+
+  it('should resize a time event from the end to another day on the left', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(1, 'day')
+          .add(19, 'hours')
+          .add(30, 'minutes')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          afterEnd: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    )[1];
+    const dayWidth: number = event.parentElement.offsetWidth;
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.right,
+      clientY: rect.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.right - dayWidth,
+      clientY: rect.bottom - 90
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().width).to.equal(0);
+    expect(event.getBoundingClientRect().height).to.equal(0);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(events[1]).to.equal(event);
+    expect(events[0].getBoundingClientRect().top).to.equal(rect.top + 180);
+    expect(events[0].getBoundingClientRect().height).to.equal(900);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.right - dayWidth,
+      clientY: rect.bottom - 90
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: fixture.componentInstance.events[0].start,
+      newEnd: moment(new Date('2018-07-29'))
+        .startOf('day')
+        .add(18, 'hours')
+        .toDate()
+    });
+  });
+
+  it('should resize a time event from the end and not allow it to end before it starts', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(1, 'day')
+          .add(19, 'hours')
+          .add(30, 'minutes')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          afterEnd: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    )[1];
+    const dayWidth: number = event.parentElement.offsetWidth;
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.right,
+      clientY: rect.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.right - dayWidth * 2,
+      clientY: rect.bottom - 1000
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().width).to.equal(0);
+    expect(event.getBoundingClientRect().height).to.equal(0);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(events[1]).to.equal(event);
+    expect(events[0].getBoundingClientRect().top).to.equal(rect.top + 180);
+    expect(events[0].getBoundingClientRect().height).to.equal(30);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.right - dayWidth * 2,
+      clientY: rect.bottom - 1000
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: fixture.componentInstance.events[0].start,
+      newEnd: moment(fixture.componentInstance.events[0].start)
+        .add(30, 'minutes')
+        .toDate()
+    });
+  });
+
+  it('should resize a time event from the start to another day on the left', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-30');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-30'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-30'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          beforeStart: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const dayWidth: number = event.parentElement.offsetWidth;
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.left,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.left - dayWidth,
+      clientY: rect.top - 90
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(rect.top - 180);
+    expect(event.getBoundingClientRect().height).to.equal(rect.height + 180);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(events[1]).to.equal(event);
+    expect(events[0].getBoundingClientRect().top).to.equal(rect.top - 90);
+    expect(events[0].getBoundingClientRect().height).to.equal(1349);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.left - dayWidth,
+      clientY: rect.top - 90
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .subtract(1, 'days')
+        .subtract(90, 'minutes')
+        .toDate(),
+      newEnd: fixture.componentInstance.events[0].end
+    });
+  });
+
+  it('should resize a time event from the start to another day on the right', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-30');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-30'))
+          .startOf('day')
+          .add(3, 'hours')
+          .subtract(1, 'days')
+          .subtract(90, 'minutes')
+          .toDate(),
+        end: moment(new Date('2018-07-30'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          beforeStart: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const dayWidth: number = event.parentElement.offsetWidth;
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.left,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.left + dayWidth,
+      clientY: rect.top + 90
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().width).to.equal(0);
+    expect(event.getBoundingClientRect().height).to.equal(0);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(events[0]).to.equal(event);
+    expect(events[1].getBoundingClientRect().top).to.equal(rect.top + 90);
+    expect(events[1].getBoundingClientRect().height).to.equal(900);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.left + dayWidth,
+      clientY: rect.top + 90
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: moment(new Date('2018-07-30'))
+        .startOf('day')
+        .add(3, 'hours')
+        .toDate(),
+      newEnd: fixture.componentInstance.events[0].end
+    });
+  });
+
+  it('should resize a time event and not allow it to start after it ends', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-30');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-30'))
+          .startOf('day')
+          .add(3, 'hours')
+          .subtract(1, 'days')
+          .subtract(90, 'minutes')
+          .toDate(),
+        end: moment(new Date('2018-07-30'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          beforeStart: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const dayWidth: number = event.parentElement.offsetWidth;
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.left,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.left + dayWidth * 2,
+      clientY: rect.top + 90
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().width).to.equal(0);
+    expect(event.getBoundingClientRect().height).to.equal(0);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(events[0]).to.equal(event);
+    expect(events[1].getBoundingClientRect().top).to.equal(1106);
+    expect(events[1].getBoundingClientRect().height).to.equal(30);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.left + dayWidth * 2,
+      clientY: rect.top + 90
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].end)
+        .subtract(30, 'minutes')
+        .toDate(),
+      newEnd: fixture.componentInstance.events[0].end
+    });
   });
 });
