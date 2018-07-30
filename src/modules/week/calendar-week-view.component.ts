@@ -19,7 +19,9 @@ import {
   WeekView,
   ViewPeriod,
   WeekViewHourColumn,
-  DayViewEvent
+  DayViewEvent,
+  DayViewHourSegment,
+  DayViewHour
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
