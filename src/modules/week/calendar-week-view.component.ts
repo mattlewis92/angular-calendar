@@ -154,7 +154,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
         mwlDroppable
         (dragEnter)="eventDragEnter = eventDragEnter + 1"
         (dragLeave)="eventDragEnter = eventDragEnter - 1">
-        <div class="cal-time-label-column">
+        <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">
           <div
             *ngFor="let hour of view.hourColumns[0].hours; trackBy:trackByHour; let odd = odd"
             class="cal-hour"
