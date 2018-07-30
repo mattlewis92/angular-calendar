@@ -35,23 +35,18 @@ export class DemoComponent {
   events: CalendarEvent[] = [];
 
   selectedDays: any = [];
-  hexTimeArray: any = [];
 
   dayClicked(day: CalendarMonthViewDay): void {
     this.selectedMonthViewDay = day;
     const selectedDateTime = this.selectedMonthViewDay.date.getTime();
-    const dateIndex = this.hexTimeArray.indexOf(selectedDateTime);
-    if (
-      this.selectedDays.some(
-        selectedDay => selectedDay.date.getTime() === selectedDateTime
-      )
-    ) {
+    const dateIndex = this.selectedDays.findIndex(
+      selectedDay => selectedDay.date.getTime() === selectedDateTime
+    );
+    if (dateIndex > -1) {
       delete this.selectedMonthViewDay.cssClass;
       this.selectedDays.splice(dateIndex, 1);
-      this.hexTimeArray.splice(dateIndex, 1);
     } else {
       this.selectedDays.push(this.selectedMonthViewDay);
-      this.hexTimeArray.push(selectedDateTime);
       day.cssClass = 'cal-day-selected';
       this.selectedMonthViewDay = day;
     }
