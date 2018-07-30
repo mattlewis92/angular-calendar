@@ -1,6 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import startOfDay from 'date-fns/start_of_day';
+import { startOfDay } from 'date-fns';
 import { CalendarAngularDateFormatter } from './../src';
 
 describe('CalendarAngularDateFormatter provider', () => {

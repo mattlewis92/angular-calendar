@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import startOfToday from 'date-fns/start_of_today';
+import { startOfDay } from 'date-fns';
 import { CalendarModule } from '../src';
 
 @Component({
@@ -27,7 +27,9 @@ describe('mwlCalendarNextView directive', () => {
     fixture.detectChanges();
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
-    expect(fixture.componentInstance.viewDate).to.deep.equal(startOfToday());
+    expect(fixture.componentInstance.viewDate).to.deep.equal(
+      startOfDay(new Date())
+    );
     fixture.destroy();
   });
 });
