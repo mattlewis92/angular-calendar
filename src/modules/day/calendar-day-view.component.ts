@@ -17,7 +17,8 @@ import {
   DayViewHour,
   DayViewHourSegment,
   DayViewEvent,
-  ViewPeriod
+  ViewPeriod,
+  WeekViewAllDayEvent
 } from 'calendar-utils';
 import { Subject, Subscription } from 'rxjs';
 import { ResizeEvent } from 'angular-resizable-element';
