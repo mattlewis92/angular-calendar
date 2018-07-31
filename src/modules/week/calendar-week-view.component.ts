@@ -21,9 +21,7 @@ import {
   WeekViewHourColumn,
   DayViewEvent,
   DayViewHourSegment,
-  DayViewHour,
-  GetWeekViewHeaderArgs,
-  GetWeekViewArgs
+  DayViewHour
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
