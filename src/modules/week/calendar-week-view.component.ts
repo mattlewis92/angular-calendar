@@ -21,7 +21,9 @@ import {
   WeekViewHourColumn,
   DayViewEvent,
   DayViewHourSegment,
-  DayViewHour
+  DayViewHour,
+  GetWeekViewHeaderArgs,
+  GetWeekViewArgs
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
@@ -1059,7 +1061,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     return newEventDates;
   }
 
-  private adjustDaysInWeek(args: any) {
+  private adjustDaysInWeek(args: GetWeekViewHeaderArgs): GetWeekViewHeaderArgs;
+  private adjustDaysInWeek(args: GetWeekViewArgs): GetWeekViewArgs {
     if (this.daysInWeek) {
       args.viewStart = this.dateAdapter.startOfDay(args.viewDate);
       args.viewEnd = this.dateAdapter.endOfDay(
