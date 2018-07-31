@@ -1,20 +1,22 @@
 .cal-week-view {
   .cal-day-headers {
     display: flex;
-    margin-bottom: 3px;
     border: 1px solid #e1e1e1;
-    margin-left: 2px;
-    margin-right: 2px;
+    padding-left: 70px;
   }
 
   .cal-day-headers .cal-header {
     flex: 1;
     text-align: center;
     padding: 5px;
-  }
 
-  .cal-day-headers .cal-header:not(:last-child) {
-    border-right: 1px solid #e1e1e1;
+    &:not(:last-child) {
+      border-right: 1px solid #e1e1e1;
+    }
+
+    &:first-child {
+      border-left: 1px solid #e1e1e1;
+    }
   }
 
   .cal-day-headers .cal-header:hover,
@@ -27,46 +29,84 @@
     opacity: 0.5;
   }
 
-  .cal-events-row {
-    position: relative;
-    height: 33px;
-  }
-
-  .cal-event-container {
-    display: inline-block;
-    position: absolute;
-    cursor: pointer;
-
-    &.resize-active {
-      z-index: 1;
-      pointer-events: none;
-    }
+  .cal-day-column {
+    flex-grow: 1;
+    border-left: solid 1px #e1e1e1;
   }
 
   .cal-event {
-    padding: 0 10px;
     font-size: 12px;
-    margin-left: 2px;
-    margin-right: 2px;
-    height: 30px;
-    line-height: 30px;
     background-color: #d1e8ff;
     border: 1px solid #1e90ff;
     color: #1e90ff;
   }
 
+  .cal-time-label-column {
+    width: 70px;
+    height: 100%;
+  }
+
+  .cal-all-day-events {
+    border: solid 1px #e1e1e1;
+    border-top: 0;
+    border-bottom-width: 3px;
+    padding-top: 3px;
+    position: relative;
+
+    .cal-day-columns {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+
+    .cal-events-row {
+      position: relative;
+      height: 31px;
+      margin-left: 70px;
+    }
+
+    .cal-event-container {
+      display: inline-block;
+      position: absolute;
+      cursor: pointer;
+
+      &.resize-active {
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+
+    .cal-event {
+      padding: 0 5px;
+      margin-left: 2px;
+      margin-right: 2px;
+      height: 28px;
+      line-height: 28px;
+    }
+
+    .cal-starts-within-week .cal-event {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    .cal-ends-within-week .cal-event {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .cal-time-label-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+  }
+
   .cal-draggable {
     cursor: move;
-  }
-
-  .cal-starts-within-week .cal-event {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-  .cal-ends-within-week .cal-event {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
 
   .cal-header.cal-today {
@@ -85,10 +125,107 @@
   }
 
   .cal-drag-active {
+    pointer-events: none;
     z-index: 1;
 
     & * {
       pointer-events: none;
     }
+  }
+
+  .cal-time-events {
+    position: relative;
+    border: solid 1px #e1e1e1;
+    border-top: 0;
+    display: flex;
+
+    .cal-day-columns {
+      display: flex;
+      flex-grow: 1;
+
+      &:not(.cal-resize-active) {
+        .cal-hour-segment:hover {
+          background-color: #ededed;
+        }
+      }
+    }
+
+    .cal-day-column {
+      position: relative;
+    }
+
+    .cal-event-container {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .cal-event {
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      margin: 1px;
+      padding: 0 5px;
+      line-height: 25px;
+    }
+  }
+
+  .cal-hour-odd {
+    background-color: #fafafa;
+  }
+
+  .cal-hour-segment {
+    position: relative;
+
+    &::after {
+      content: '\00a0';
+    }
+  }
+
+  .cal-drag-over .cal-hour-segment {
+    background-color: #ededed;
+  }
+
+  .cal-resize-handle {
+    width: 100%;
+    height: 3px;
+    cursor: row-resize;
+    position: absolute;
+
+    &.cal-resize-handle-after-end {
+      margin-top: -3px;
+    }
+  }
+
+  /* stylelint-disable-next-line selector-type-no-unknown */
+  mwl-calendar-week-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
+  .cal-hour-segment {
+    display: block;
+  }
+
+  .cal-hour:not(:last-child) .cal-hour-segment,
+  .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+    border-bottom: thin dashed #e1e1e1;
+  }
+
+  .cal-time {
+    font-weight: bold;
+    padding-top: 5px;
+    width: 70px;
+    text-align: center;
+  }
+
+  .cal-hour-segment.cal-after-hour-start {
+    .cal-time {
+      display: none;
+    }
+  }
+
+  .cal-starts-within-day .cal-event {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .cal-ends-within-day .cal-event {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }

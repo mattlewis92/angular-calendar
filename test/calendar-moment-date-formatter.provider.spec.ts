@@ -73,6 +73,15 @@ describe('calendarMomentDateFormatter provider', () => {
     ).to.equal('Week 1 of 2016');
   });
 
+  it('weekViewHour', () => {
+    expect(
+      dateFormatter.weekViewHour({
+        date: startOfDay(new Date('2016-01-01')),
+        locale: 'en'
+      })
+    ).to.equal('12am');
+  });
+
   it('dayViewHour', () => {
     expect(
       dateFormatter.dayViewHour({

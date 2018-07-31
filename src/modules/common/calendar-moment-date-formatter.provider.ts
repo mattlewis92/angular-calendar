@@ -87,6 +87,15 @@ export class CalendarMomentDateFormatter
   }
 
   /**
+   * The time formatting down the left hand side of the week view
+   */
+  public weekViewHour({ date, locale }: DateFormatterParams): string {
+    return this.moment(date)
+      .locale(locale)
+      .format('ha');
+  }
+
+  /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {

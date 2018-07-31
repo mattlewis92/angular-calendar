@@ -57,17 +57,21 @@
     }
   }
 
-  .cal-event {
+  .cal-event,
+  .cal-all-day-event {
     padding: 5px;
     font-size: 12px;
+    background-color: #d1e8ff;
+    border: 1px solid #1e90ff;
+    color: #1e90ff;
+    box-sizing: border-box;
+  }
+
+  .cal-event {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     height: 100%;
-    box-sizing: border-box;
-    background-color: #d1e8ff;
-    border: 1px solid #1e90ff;
-    color: #1e90ff;
   }
 
   .cal-draggable {
@@ -85,8 +89,6 @@
   }
 
   .cal-all-day-event {
-    padding: 8px;
-    border: solid 1px;
     cursor: pointer;
   }
 

@@ -28,7 +28,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
           [ngClass]="day.cssClass"
           (mwlClick)="dayHeaderClicked.emit({day: day})"
           mwlDroppable
-          dragOVerClass="cal-drag-over"
+          dragOverClass="cal-drag-over"
           (drop)="eventDropped.emit({event: $event.dropData.event, newStart: day.date})">
           <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br>
           <span>{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span>

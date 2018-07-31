@@ -881,7 +881,7 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    expect(eventDropped).to.have.been.calledOnce;
+    expect(eventDropped).not.to.have.been.called;
     fixture.destroy();
   });
 

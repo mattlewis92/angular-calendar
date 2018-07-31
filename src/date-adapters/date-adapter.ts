@@ -90,4 +90,8 @@ export abstract class DateAdapter implements BaseDateAdapter {
     date: Date | string | number,
     options?: { weekStartsOn?: number }
   ): Date;
+
+  abstract getHours(date: Date | string | number): number;
+
+  abstract getMinutes(date: Date | string | number): number;
 }
