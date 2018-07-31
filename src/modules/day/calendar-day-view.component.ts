@@ -35,7 +35,8 @@ import {
   trackByHourSegment,
   getMinutesMoved,
   getDefaultEventEnd,
-  getMinimumEventHeightInMinutes
+  getMinimumEventHeightInMinutes,
+  trackByDayOrWeekEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
@@ -332,8 +333,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByDayEvent = (index: number, dayEvent: DayViewEvent) =>
-    dayEvent.event.id ? dayEvent.event.id : dayEvent.event;
+  trackByDayEvent = trackByDayOrWeekEvent;
 
   /**
    * @hidden

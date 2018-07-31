@@ -40,7 +40,8 @@ import {
   trackByHour,
   getMinutesMoved,
   getDefaultEventEnd,
-  getMinimumEventHeightInMinutes
+  getMinimumEventHeightInMinutes,
+  trackByDayOrWeekEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -107,7 +108,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           #eventRowContainer
           class="cal-events-row">
           <div
-            *ngFor="let allDayEvent of eventRow.row; trackBy:trackByEventId"
+            *ngFor="let allDayEvent of eventRow.row; trackBy:trackByDayOrWeekEvent"
             #event
             class="cal-event-container"
             [class.cal-draggable]="allDayEvent.event.draggable && allDayEventResizes.size === 0"
@@ -178,7 +179,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
             class="cal-day-column"
             *ngFor="let column of view.hourColumns; trackBy:trackByHourColumn">
             <div
-              *ngFor="let timeEvent of column.events; trackBy:trackByEventId"
+              *ngFor="let timeEvent of column.events; trackBy:trackByDayOrWeekEvent"
               #event
               class="cal-event-container"
               [class.cal-draggable]="timeEvent.event.draggable && timeEventResizes.size === 0"
@@ -500,16 +501,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
-    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+  trackByDayOrWeekEvent = trackByDayOrWeekEvent;
 
   /**
    * @hidden
    */
-  trackByEventId = (
-    index: number,
-    weekEvent: WeekViewAllDayEvent | DayViewEvent
-  ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
+  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
 
   /**
    * @hidden
