@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-const clickElements = new WeakSet<HTMLElement>();
+const clickElements = new Set<HTMLElement>();
 
 @Directive({
   selector: '[mwlClick]'

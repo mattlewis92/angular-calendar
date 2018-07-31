@@ -17,7 +17,8 @@ import {
   DayViewHour,
   DayViewHourSegment,
   DayViewEvent,
-  ViewPeriod
+  ViewPeriod,
+  WeekViewAllDayEvent
 } from 'calendar-utils';
 import { Subject, Subscription } from 'rxjs';
 import { ResizeEvent } from 'angular-resizable-element';
@@ -35,7 +36,8 @@ import {
   trackByHourSegment,
   getMinutesMoved,
   getDefaultEventEnd,
-  getMinimumEventHeightInMinutes
+  getMinimumEventHeightInMinutes,
+  trackByDayOrWeekEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
@@ -103,7 +105,7 @@ export interface DayViewEventResize {
             (resizeEnd)="resizeEnded(dayEvent)"
             mwlDraggable
             dragActiveClass="cal-drag-active"
-            [dropData]="{event: dayEvent.event, isInternal: true}"
+            [dropData]="{event: dayEvent.event}"
             [dragAxis]="{x: !snapDraggedEvents && dayEvent.event.draggable && currentResizes.size === 0, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize || hourSegmentHeight} : {}"
             [validateDrag]="snapDraggedEvents ? validateDrag : false"
@@ -332,8 +334,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByDayEvent = (index: number, dayEvent: DayViewEvent) =>
-    dayEvent.event.id ? dayEvent.event.id : dayEvent.event;
+  trackByDayEvent = trackByDayOrWeekEvent;
 
   /**
    * @hidden
@@ -401,13 +402,13 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   eventDropped(
-    dropEvent: { dropData?: { event?: CalendarEvent; isInternal?: boolean } },
+    dropEvent: { dropData?: { event?: CalendarEvent } },
     segment: DayViewHourSegment
   ): void {
     if (
       dropEvent.dropData &&
       dropEvent.dropData.event &&
-      !dropEvent.dropData.isInternal
+      this.events.indexOf(dropEvent.dropData.event) === -1
     ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,

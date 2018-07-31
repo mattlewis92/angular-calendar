@@ -43,7 +43,8 @@ import {
   getMinutesMoved,
   getDefaultEventEnd,
   getMinimumEventHeightInMinutes,
-  addDaysWithExclusions
+  addDaysWithExclusions,
+  trackByDayOrWeekEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -110,7 +111,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
           #eventRowContainer
           class="cal-events-row">
           <div
-            *ngFor="let allDayEvent of eventRow.row; trackBy:trackByEventId"
+            *ngFor="let allDayEvent of eventRow.row; trackBy:trackByDayOrWeekEvent"
             #event
             class="cal-event-container"
             [class.cal-draggable]="allDayEvent.event.draggable && allDayEventResizes.size === 0"
@@ -131,7 +132,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
             (resizeEnd)="allDayEventResizeEnded(allDayEvent)"
             mwlDraggable
             dragActiveClass="cal-drag-active"
-            [dropData]="{event: allDayEvent.event, isInternal: true}"
+            [dropData]="{event: allDayEvent.event}"
             [dragAxis]="{
               x: allDayEvent.event.draggable && allDayEventResizes.size === 0,
               y: !snapDraggedEvents && allDayEvent.event.draggable && allDayEventResizes.size === 0
@@ -181,7 +182,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
             class="cal-day-column"
             *ngFor="let column of view.hourColumns; trackBy:trackByHourColumn">
             <div
-              *ngFor="let timeEvent of column.events; trackBy:trackByEventId"
+              *ngFor="let timeEvent of column.events; trackBy:trackByDayOrWeekEvent"
               #event
               class="cal-event-container"
               [class.cal-draggable]="timeEvent.event.draggable && timeEventResizes.size === 0"
@@ -202,7 +203,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
               (resizeEnd)="timeEventResizeEnded(timeEvent)"
               mwlDraggable
               dragActiveClass="cal-drag-active"
-              [dropData]="{event: timeEvent.event, isInternal: true}"
+              [dropData]="{event: timeEvent.event}"
               [dragAxis]="{
                 x: timeEvent.event.draggable && timeEventResizes.size === 0,
                 y: timeEvent.event.draggable && timeEventResizes.size === 0
@@ -509,16 +510,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
-    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+  trackByDayOrWeekEvent = trackByDayOrWeekEvent;
 
   /**
    * @hidden
    */
-  trackByEventId = (
-    index: number,
-    weekEvent: WeekViewAllDayEvent | DayViewEvent
-  ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
+  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
 
   /**
    * @hidden
@@ -616,7 +614,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   timeEventResizing(timeEvent: DayViewEvent, resizeEvent: ResizeEvent) {
     this.timeEventResizes.set(timeEvent.event, resizeEvent);
-    const adjustedEvents = new WeakMap<CalendarEvent, CalendarEvent>();
+    const adjustedEvents = new Map<CalendarEvent, CalendarEvent>();
 
     const tempEvents = [...this.events];
 
@@ -741,14 +739,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   eventDropped(
-    dropEvent: DropEvent<{ event?: CalendarEvent; isInternal?: boolean }>,
+    dropEvent: DropEvent<{ event?: CalendarEvent }>,
     date: Date,
     allDay: boolean
   ): void {
     if (
       dropEvent.dropData &&
       dropEvent.dropData.event &&
-      (!dropEvent.dropData.isInternal ||
+      (this.events.indexOf(dropEvent.dropData.event) === -1 ||
         (dropEvent.dropData.event.allDay && !allDay) ||
         (!dropEvent.dropData.event.allDay && allDay))
     ) {
@@ -817,7 +815,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       });
       this.restoreOriginalEvents(
         tempEvents,
-        new WeakMap([[adjustedEvent, originalEvent]])
+        new Map([[adjustedEvent, originalEvent]])
       );
     }
   }
@@ -942,7 +940,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   private restoreOriginalEvents(
     tempEvents: CalendarEvent[],
-    adjustedEvents: WeakMap<CalendarEvent, CalendarEvent>
+    adjustedEvents: Map<CalendarEvent, CalendarEvent>
   ) {
     this.view = this.getWeekView(tempEvents);
     const adjustedEventsArray = tempEvents.filter(event =>
@@ -971,6 +969,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         }
       });
     });
+    adjustedEvents.clear();
   }
 
   private getTimeEventResizedDates(
@@ -1061,8 +1060,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     return newEventDates;
   }
 
-  private adjustDaysInWeek(args: GetWeekViewHeaderArgs): GetWeekViewHeaderArgs;
-  private adjustDaysInWeek(args: GetWeekViewArgs): GetWeekViewArgs {
+  private adjustDaysInWeek(args: any): any {
     if (this.daysInWeek) {
       args.viewStart = this.dateAdapter.startOfDay(args.viewDate);
       args.viewEnd = this.dateAdapter.endOfDay(

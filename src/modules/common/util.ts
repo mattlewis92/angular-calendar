@@ -1,9 +1,11 @@
 import {
   CalendarEvent,
+  DayViewEvent,
   DayViewHour,
   DayViewHourSegment,
   validateEvents as validateEventsWithoutLog,
-  WeekDay
+  WeekDay,
+  WeekViewAllDayEvent
 } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 
@@ -44,6 +46,11 @@ export const trackByHourSegment = (
 
 export const trackByHour = (index: number, hour: DayViewHour) =>
   hour.segments[0].date.toISOString();
+
+export const trackByDayOrWeekEvent = (
+  index: number,
+  weekEvent: WeekViewAllDayEvent | DayViewEvent
+) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
 
 const MINUTES_IN_HOUR = 60;
 

@@ -34,22 +34,32 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
+  selectedDays: any = [];
+
   dayClicked(day: CalendarMonthViewDay): void {
-    if (this.selectedMonthViewDay) {
-      delete this.selectedMonthViewDay.cssClass;
-    }
-    day.cssClass = 'cal-day-selected';
     this.selectedMonthViewDay = day;
+    const selectedDateTime = this.selectedMonthViewDay.date.getTime();
+    const dateIndex = this.selectedDays.findIndex(
+      selectedDay => selectedDay.date.getTime() === selectedDateTime
+    );
+    if (dateIndex > -1) {
+      delete this.selectedMonthViewDay.cssClass;
+      this.selectedDays.splice(dateIndex, 1);
+    } else {
+      this.selectedDays.push(this.selectedMonthViewDay);
+      day.cssClass = 'cal-day-selected';
+      this.selectedMonthViewDay = day;
+    }
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(day => {
       if (
-        this.selectedMonthViewDay &&
-        day.date.getTime() === this.selectedMonthViewDay.date.getTime()
+        this.selectedDays.some(
+          selectedDay => selectedDay.date.getTime() === day.date.getTime()
+        )
       ) {
         day.cssClass = 'cal-day-selected';
-        this.selectedMonthViewDay = day;
       }
     });
   }
