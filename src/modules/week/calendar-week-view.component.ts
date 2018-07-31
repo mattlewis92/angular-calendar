@@ -952,6 +952,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         }
       });
     });
+    adjustedEvents.clear();
   }
 
   private getTimeEventResizedDates(
