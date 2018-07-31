@@ -1577,4 +1577,161 @@ describe('calendarWeekView component', () => {
       newEnd: fixture.componentInstance.events[0].end
     });
   });
+
+  it('should drag time events to different days and columns while snapping to a grid', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(1, 'day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        draggable: true
+      },
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'days')
+          .toDate(),
+        title: 'bar',
+        draggable: true
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    const dayWidth: number = events[0].parentElement.offsetWidth;
+    const rect1: ClientRect = events[0].getBoundingClientRect();
+    const rect2: ClientRect = events[1].getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', events[1], {
+      clientX: rect2.right,
+      clientY: rect2.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', events[1], {
+      clientX: rect2.right + dayWidth - 5,
+      clientY: rect2.bottom + 95
+    });
+    fixture.detectChanges();
+    expect(events[0].getBoundingClientRect().height).to.equal(0);
+    expect(events[0].getBoundingClientRect().width).to.equal(0);
+    const updatedEvents = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    expect(updatedEvents[0]).to.equal(events[0]);
+    expect(updatedEvents[1].getBoundingClientRect().top).to.equal(
+      rect1.top + 90
+    );
+    expect(updatedEvents[1].getBoundingClientRect().height).to.equal(
+      rect1.height - 90
+    );
+    expect(updatedEvents[2].getBoundingClientRect().top).to.equal(rect2.top);
+    expect(updatedEvents[2].getBoundingClientRect().height).to.equal(
+      rect2.height + 90
+    );
+    triggerDomEvent('mouseup', events[1], {
+      clientX: rect2.right + dayWidth - 5,
+      clientY: rect2.bottom + 95
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drag',
+      allDay: false,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(1, 'day')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(1, 'day')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate()
+    });
+  });
+
+  it('should drag time events to different days and columns while not snapping to a grid', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(1, 'day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        draggable: true
+      }
+    ];
+    fixture.componentInstance.snapDraggedEvents = false;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    const dayWidth: number = events[0].parentElement.offsetWidth;
+    const rect: ClientRect = events[0].getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', events[0], {
+      clientX: rect.left,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    const timeEvents = fixture.nativeElement.querySelector('.cal-time-events');
+    triggerDomEvent('mousemove', timeEvents, {
+      clientX: rect.left + dayWidth - 5,
+      clientY: rect.top + 95
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', timeEvents, {
+      lientX: rect.left + dayWidth - 5,
+      clientY: rect.top + 95
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drag',
+      allDay: false,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(1, 'day')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(1, 'day')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate()
+    });
+  });
 });
