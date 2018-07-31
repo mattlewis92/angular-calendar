@@ -1156,6 +1156,39 @@ describe('calendarWeekView component', () => {
     expect(eventClicked).not.to.have.been.called;
   });
 
+  it('should make a 4 day week', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.daysInWeek = 4;
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2018-07-29'),
+        title: 'foo',
+        allDay: true
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({
+      daysInWeek: {},
+      events: {},
+      viewDate: {}
+    });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelectorAll('.cal-header').length
+    ).to.equal(4);
+    expect(
+      fixture.nativeElement.querySelectorAll(
+        '.cal-all-day-events .cal-day-column'
+      ).length
+    ).to.equal(4);
+    expect(
+      fixture.nativeElement.querySelectorAll('.cal-time-events .cal-day-column')
+        .length
+    ).to.equal(4);
+  });
+
   it('should resize a time event from the end to another day on the right', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent

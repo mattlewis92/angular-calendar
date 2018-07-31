@@ -166,7 +166,7 @@
   "dependencies": {
     "angular-draggable-droppable": "^4.0.0-beta.16",
     "angular-resizable-element": "^3.2.0",
-    "calendar-utils": "0.2.0-alpha.15",
+    "calendar-utils": "0.2.0-alpha.16",
     "positioning": "^1.4.0"
   },
   "sideEffects": [
