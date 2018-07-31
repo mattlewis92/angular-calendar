@@ -601,7 +601,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   timeEventResizing(timeEvent: DayViewEvent, resizeEvent: ResizeEvent) {
     this.timeEventResizes.set(timeEvent.event, resizeEvent);
-    const adjustedEvents = new WeakMap<CalendarEvent, CalendarEvent>();
+    const adjustedEvents = new Map<CalendarEvent, CalendarEvent>();
 
     const tempEvents = [...this.events];
 
@@ -802,7 +802,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       });
       this.restoreOriginalEvents(
         tempEvents,
-        new WeakMap([[adjustedEvent, originalEvent]])
+        new Map([[adjustedEvent, originalEvent]])
       );
     }
   }
@@ -923,7 +923,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   private restoreOriginalEvents(
     tempEvents: CalendarEvent[],
-    adjustedEvents: WeakMap<CalendarEvent, CalendarEvent>
+    adjustedEvents: Map<CalendarEvent, CalendarEvent>
   ) {
     this.view = this.getWeekView(tempEvents);
     const adjustedEventsArray = tempEvents.filter(event =>
