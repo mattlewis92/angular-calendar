@@ -128,7 +128,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
             (resizeEnd)="allDayEventResizeEnded(allDayEvent)"
             mwlDraggable
             dragActiveClass="cal-drag-active"
-            [dropData]="{event: allDayEvent.event, isInternal: true}"
+            [dropData]="{event: allDayEvent.event}"
             [dragAxis]="{
               x: allDayEvent.event.draggable && allDayEventResizes.size === 0,
               y: !snapDraggedEvents && allDayEvent.event.draggable && allDayEventResizes.size === 0
@@ -199,7 +199,7 @@ export interface CalendarWeekViewBeforeRenderEvent {
               (resizeEnd)="timeEventResizeEnded(timeEvent)"
               mwlDraggable
               dragActiveClass="cal-drag-active"
-              [dropData]="{event: timeEvent.event, isInternal: true}"
+              [dropData]="{event: timeEvent.event}"
               [dragAxis]="{
                 x: timeEvent.event.draggable && timeEventResizes.size === 0,
                 y: timeEvent.event.draggable && timeEventResizes.size === 0
@@ -726,14 +726,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   eventDropped(
-    dropEvent: DropEvent<{ event?: CalendarEvent; isInternal?: boolean }>,
+    dropEvent: DropEvent<{ event?: CalendarEvent }>,
     date: Date,
     allDay: boolean
   ): void {
     if (
       dropEvent.dropData &&
       dropEvent.dropData.event &&
-      (!dropEvent.dropData.isInternal ||
+      (this.events.indexOf(dropEvent.dropData.event) === -1 ||
         (dropEvent.dropData.event.allDay && !allDay) ||
         (!dropEvent.dropData.event.allDay && allDay))
     ) {
