@@ -37,7 +37,8 @@ import {
   getMinutesMoved,
   getDefaultEventEnd,
   getMinimumEventHeightInMinutes,
-  trackByDayOrWeekEvent
+  trackByDayOrWeekEvent,
+  isDraggedWithinPeriod
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
@@ -521,24 +522,28 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
     if (this.eventDragEnter > 0) {
-      const minutesMoved = getMinutesMoved(
+      let minutesMoved = getMinutesMoved(
         dragEndEvent.y,
         this.hourSegments,
         this.hourSegmentHeight,
         this.eventSnapSize
       );
-      const newStart: Date = this.dateAdapter.addMinutes(
+      let newStart: Date = this.dateAdapter.addMinutes(
         dayEvent.event.start,
         minutesMoved
       );
+      if (dragEndEvent.y < 0 && newStart < this.view.period.start) {
+        minutesMoved += this.dateAdapter.differenceInMinutes(
+          this.view.period.start,
+          newStart
+        );
+        newStart = this.view.period.start;
+      }
       let newEnd: Date;
       if (dayEvent.event.end) {
         newEnd = this.dateAdapter.addMinutes(dayEvent.event.end, minutesMoved);
       }
-      if (
-        newStart >= this.view.period.start &&
-        (newEnd || newStart) <= this.view.period.end
-      ) {
+      if (isDraggedWithinPeriod(newStart, newEnd, this.view.period)) {
         this.eventTimesChanged.emit({
           newStart,
           newEnd,

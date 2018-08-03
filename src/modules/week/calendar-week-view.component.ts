@@ -42,7 +42,8 @@ import {
   getDefaultEventEnd,
   getMinimumEventHeightInMinutes,
   addDaysWithExclusions,
-  trackByDayOrWeekEvent
+  trackByDayOrWeekEvent,
+  isDraggedWithinPeriod
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -862,8 +863,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     );
     if (
       this.eventDragEnter > 0 &&
-      start >= this.view.period.start &&
-      (end || start) <= this.view.period.end
+      isDraggedWithinPeriod(start, end, this.view.period)
     ) {
       this.eventTimesChanged.emit({
         newStart: start,

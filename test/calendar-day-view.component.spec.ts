@@ -881,7 +881,18 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    expect(eventDropped).not.to.have.been.called;
+    const { newStart, newEnd } = eventDropped.getCall(0).args[0];
+    expect(newStart).to.deep.equal(
+      moment('2016-06-27')
+        .startOf('day')
+        .toDate()
+    );
+    expect(newEnd).to.deep.equal(
+      moment('2016-06-27')
+        .startOf('day')
+        .add(2, 'hours')
+        .toDate()
+    );
     fixture.destroy();
   });
 

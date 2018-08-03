@@ -4,6 +4,7 @@ import {
   DayViewHour,
   DayViewHourSegment,
   validateEvents as validateEventsWithoutLog,
+  ViewPeriod,
   WeekDay,
   WeekViewAllDayEvent
 } from 'calendar-utils';
@@ -107,4 +108,16 @@ export function addDaysWithExclusions(
     daysCounter++;
   }
   return result;
+}
+
+export function isDraggedWithinPeriod(
+  newStart: Date,
+  newEnd: Date,
+  period: ViewPeriod
+): boolean {
+  const end = newEnd || newStart;
+  return (
+    (period.start <= newStart && newStart <= period.end) ||
+    (period.start <= end && end <= period.end)
+  );
 }
