@@ -31,11 +31,15 @@ import { DayViewHourSegment } from 'calendar-utils';
   `
 })
 export class CalendarDayViewHourSegmentComponent {
-  @Input() segment: DayViewHourSegment;
+  @Input()
+  segment: DayViewHourSegment;
 
-  @Input() segmentHeight: number;
+  @Input()
+  segmentHeight: number;
 
-  @Input() locale: string;
+  @Input()
+  locale: string;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 }

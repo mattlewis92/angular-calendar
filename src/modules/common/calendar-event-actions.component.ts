@@ -18,6 +18,7 @@ import { trackByIndex } from './util';
   `
 })
 export class CalendarEventActionsComponent {
-  @Input() event: CalendarEvent;
+  @Input()
+  event: CalendarEvent;
   trackByIndex = trackByIndex;
 }

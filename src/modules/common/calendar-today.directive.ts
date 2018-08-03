@@ -25,12 +25,14 @@ export class CalendarTodayDirective {
   /**
    * The current view date
    */
-  @Input() viewDate: Date;
+  @Input()
+  viewDate: Date;
 
   /**
    * Called when the view date is changed
    */
-  @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
+  @Output()
+  viewDateChange: EventEmitter<Date> = new EventEmitter();
 
   constructor(private dateAdapter: DateAdapter) {}
 

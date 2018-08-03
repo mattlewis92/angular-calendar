@@ -42,11 +42,14 @@ import { trackByWeekDayHeaderDate } from '../common/util';
   `
 })
 export class CalendarWeekViewHeaderComponent {
-  @Input() days: WeekDay[];
+  @Input()
+  days: WeekDay[];
 
-  @Input() locale: string;
+  @Input()
+  locale: string;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
   @Output()
   dayHeaderClicked: EventEmitter<{ day: WeekDay }> = new EventEmitter<{

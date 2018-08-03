@@ -33,13 +33,18 @@ import { WeekViewHourColumn } from 'calendar-utils';
   `
 })
 export class CalendarWeekViewHourSegmentComponent {
-  @Input() segment: WeekViewHourColumn;
+  @Input()
+  segment: WeekViewHourColumn;
 
-  @Input() segmentHeight: number;
+  @Input()
+  segmentHeight: number;
 
-  @Input() locale: string;
+  @Input()
+  locale: string;
 
-  @Input() isTimeLabel: boolean;
+  @Input()
+  isTimeLabel: boolean;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 }

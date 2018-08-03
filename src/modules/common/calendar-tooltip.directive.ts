@@ -42,28 +42,37 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarTooltipWindowComponent {
-  @Input() contents: string;
+  @Input()
+  contents: string;
 
-  @Input() placement: string;
+  @Input()
+  placement: string;
 
-  @Input() event: CalendarEvent;
+  @Input()
+  event: CalendarEvent;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 }
 
 @Directive({
   selector: '[mwlCalendarTooltip]'
 })
 export class CalendarTooltipDirective implements OnDestroy {
-  @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
+  @Input('mwlCalendarTooltip')
+  contents: string; // tslint:disable-line no-input-rename
 
-  @Input('tooltipPlacement') placement: PlacementArray = 'auto'; // tslint:disable-line no-input-rename
+  @Input('tooltipPlacement')
+  placement: PlacementArray = 'auto'; // tslint:disable-line no-input-rename
 
-  @Input('tooltipTemplate') customTemplate: TemplateRef<any>; // tslint:disable-line no-input-rename
+  @Input('tooltipTemplate')
+  customTemplate: TemplateRef<any>; // tslint:disable-line no-input-rename
 
-  @Input('tooltipEvent') event: CalendarEvent; // tslint:disable-line no-input-rename
+  @Input('tooltipEvent')
+  event: CalendarEvent; // tslint:disable-line no-input-rename
 
-  @Input('tooltipAppendToBody') appendToBody: boolean; // tslint:disable-line no-input-rename
+  @Input('tooltipAppendToBody')
+  appendToBody: boolean; // tslint:disable-line no-input-rename
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;

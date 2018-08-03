@@ -50,17 +50,24 @@ import { PlacementArray } from 'positioning';
   `
 })
 export class CalendarDayViewEventComponent {
-  @Input() dayEvent: DayViewEvent;
+  @Input()
+  dayEvent: DayViewEvent;
 
-  @Input() tooltipPlacement: PlacementArray;
+  @Input()
+  tooltipPlacement: PlacementArray;
 
-  @Input() tooltipAppendToBody: boolean;
+  @Input()
+  tooltipAppendToBody: boolean;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
-  @Input() eventTitleTemplate: TemplateRef<any>;
+  @Input()
+  eventTitleTemplate: TemplateRef<any>;
 
-  @Input() tooltipTemplate: TemplateRef<any>;
+  @Input()
+  tooltipTemplate: TemplateRef<any>;
 
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+  @Output()
+  eventClicked: EventEmitter<any> = new EventEmitter();
 }

@@ -52,19 +52,27 @@ import { PlacementArray } from 'positioning';
   `
 })
 export class CalendarWeekViewEventComponent {
-  @Input() weekEvent: WeekViewAllDayEvent | DayViewEvent;
+  @Input()
+  weekEvent: WeekViewAllDayEvent | DayViewEvent;
 
-  @Input() tooltipPlacement: PlacementArray;
+  @Input()
+  tooltipPlacement: PlacementArray;
 
-  @Input() tooltipAppendToBody: boolean;
+  @Input()
+  tooltipAppendToBody: boolean;
 
-  @Input() tooltipDisabled: boolean;
+  @Input()
+  tooltipDisabled: boolean;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
-  @Input() eventTitleTemplate: TemplateRef<any>;
+  @Input()
+  eventTitleTemplate: TemplateRef<any>;
 
-  @Input() tooltipTemplate: TemplateRef<any>;
+  @Input()
+  tooltipTemplate: TemplateRef<any>;
 
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+  @Output()
+  eventClicked: EventEmitter<any> = new EventEmitter();
 }

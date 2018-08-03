@@ -28,27 +28,32 @@ export class CalendarNextViewDirective {
   /**
    * The current view
    */
-  @Input() view: CalendarView;
+  @Input()
+  view: CalendarView;
 
   /**
    * The current view date
    */
-  @Input() viewDate: Date;
+  @Input()
+  viewDate: Date;
 
   /**
    * Days to skip when going forward by 1 day
    */
-  @Input() excludeDays: number[] = [];
+  @Input()
+  excludeDays: number[] = [];
 
   /**
    * The number of days in a week. If set will add this amount of days instead of 1 week
    */
-  @Input() daysInWeek: number;
+  @Input()
+  daysInWeek: number;
 
   /**
    * Called when the view date is changed
    */
-  @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
+  @Output()
+  viewDateChange: EventEmitter<Date> = new EventEmitter();
 
   constructor(private dateAdapter: DateAdapter) {}
 

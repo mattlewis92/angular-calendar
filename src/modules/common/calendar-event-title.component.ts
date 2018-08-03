@@ -23,9 +23,12 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarEventTitleComponent {
-  @Input() event: CalendarEvent;
+  @Input()
+  event: CalendarEvent;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
-  @Input() view: string;
+  @Input()
+  view: string;
 }

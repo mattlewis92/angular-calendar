@@ -38,11 +38,15 @@ import { CalendarEvent } from 'calendar-utils';
   `
 })
 export class CalendarAllDayEventComponent {
-  @Input() event: CalendarEvent;
+  @Input()
+  event: CalendarEvent;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
-  @Input() eventTitleTemplate: TemplateRef<any>;
+  @Input()
+  eventTitleTemplate: TemplateRef<any>;
 
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+  @Output()
+  eventClicked: EventEmitter<any> = new EventEmitter();
 }

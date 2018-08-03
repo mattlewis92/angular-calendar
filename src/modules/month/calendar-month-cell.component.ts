@@ -79,23 +79,32 @@ import { PlacementArray } from 'positioning';
   }
 })
 export class CalendarMonthCellComponent {
-  @Input() day: MonthViewDay;
+  @Input()
+  day: MonthViewDay;
 
-  @Input() openDay: MonthViewDay;
+  @Input()
+  openDay: MonthViewDay;
 
-  @Input() locale: string;
+  @Input()
+  locale: string;
 
-  @Input() tooltipPlacement: PlacementArray;
+  @Input()
+  tooltipPlacement: PlacementArray;
 
-  @Input() tooltipAppendToBody: boolean;
+  @Input()
+  tooltipAppendToBody: boolean;
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
-  @Input() tooltipTemplate: TemplateRef<any>;
+  @Input()
+  tooltipTemplate: TemplateRef<any>;
 
-  @Output() highlightDay: EventEmitter<any> = new EventEmitter();
+  @Output()
+  highlightDay: EventEmitter<any> = new EventEmitter();
 
-  @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
+  @Output()
+  unhighlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{

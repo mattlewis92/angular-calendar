@@ -71,13 +71,17 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
   animations: [collapseAnimation]
 })
 export class CalendarOpenDayEventsComponent {
-  @Input() isOpen: boolean = false;
+  @Input()
+  isOpen: boolean = false;
 
-  @Input() events: CalendarEvent[];
+  @Input()
+  events: CalendarEvent[];
 
-  @Input() customTemplate: TemplateRef<any>;
+  @Input()
+  customTemplate: TemplateRef<any>;
 
-  @Input() eventTitleTemplate: TemplateRef<any>;
+  @Input()
+  eventTitleTemplate: TemplateRef<any>;
 
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
