@@ -38,7 +38,8 @@ import {
   getDefaultEventEnd,
   getMinimumEventHeightInMinutes,
   trackByDayOrWeekEvent,
-  isDraggedWithinPeriod
+  isDraggedWithinPeriod,
+  shouldFireDroppedEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { DragEndEvent } from 'angular-draggable-droppable';
@@ -75,13 +76,24 @@ export interface DayViewEventResize {
   selector: 'mwl-calendar-day-view',
   template: `
     <div class="cal-day-view">
-      <mwl-calendar-all-day-event
-        *ngFor="let event of view.allDayEvents; trackBy:trackByEventId"
-        [event]="event"
-        [customTemplate]="allDayEventTemplate"
-        [eventTitleTemplate]="eventTitleTemplate"
-        (eventClicked)="eventClicked.emit({event: event})">
-      </mwl-calendar-all-day-event>
+      <div
+        class="cal-all-day-events"
+        mwlDroppable
+        dragOverClass="cal-drag-over"
+        dragActiveClass="cal-drag-active"
+        (drop)="eventDropped($event, view.period.start, true)">
+        <mwl-calendar-all-day-event
+          *ngFor="let event of view.allDayEvents; trackBy:trackByEventId"
+          [event]="event"
+          [customTemplate]="allDayEventTemplate"
+          [eventTitleTemplate]="eventTitleTemplate"
+          (eventClicked)="eventClicked.emit({event: event})"
+          mwlDraggable
+          dragActiveClass="cal-drag-active"
+          [dropData]="{event: event}"
+          [dragAxis]="{x: !snapDraggedEvents && event.draggable, y: !snapDraggedEvents && event.draggable}">
+        </mwl-calendar-all-day-event>
+      </div>
       <div
         class="cal-hour-rows"
         #dayEventsContainer
@@ -139,7 +151,7 @@ export interface DayViewEventResize {
             mwlDroppable
             dragOverClass="cal-drag-over"
             dragActiveClass="cal-drag-active"
-            (drop)="eventDropped($event, segment)">
+            (drop)="eventDropped($event, segment.date, false)">
           </mwl-calendar-day-view-hour-segment>
         </div>
       </div>
@@ -424,17 +436,15 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   eventDropped(
     dropEvent: { dropData?: { event?: CalendarEvent } },
-    segment: DayViewHourSegment
+    date: Date,
+    allDay: boolean
   ): void {
-    if (
-      dropEvent.dropData &&
-      dropEvent.dropData.event &&
-      this.events.indexOf(dropEvent.dropData.event) === -1
-    ) {
+    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.events)) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
-        newStart: segment.date
+        newStart: date,
+        allDay
       });
     }
   }

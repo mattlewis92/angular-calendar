@@ -1400,4 +1400,132 @@ describe('CalendarDayViewComponent component', () => {
     expect(events).to.deep.equal([fixture.componentInstance.events[0]]);
     expect(allDayEvents).to.deep.equal([fixture.componentInstance.events[1]]);
   });
+
+  it('should drag an all day event onto the time grid', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        draggable: true,
+        allDay: true
+      }
+    ];
+    fixture.componentInstance.snapDraggedEvents = false;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event = fixture.nativeElement.querySelector(
+      '.cal-all-day-events mwl-calendar-all-day-event'
+    );
+    const rect: ClientRect = event.getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', event, {
+      clientX: rect.left,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    const hourSegment = fixture.nativeElement.querySelectorAll(
+      'mwl-calendar-day-view-hour-segment'
+    )[3];
+    const hourSegmentPosition = hourSegment.getBoundingClientRect();
+    triggerDomEvent('mousemove', hourSegment, {
+      clientX: hourSegmentPosition.left,
+      clientY: hourSegmentPosition.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', hourSegment, {
+      clientX: hourSegmentPosition.left,
+      clientY: hourSegmentPosition.top
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drop',
+      allDay: false,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(new Date('2018-07-29'))
+        .startOf('day')
+        .add(90, 'minutes')
+        .toDate()
+    });
+  });
+
+  it('should drag a time event onto the all day events', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        draggable: true,
+        allDay: false
+      },
+      {
+        start: new Date('2018-07-29'),
+        allDay: true,
+        title: 'bar'
+      }
+    ];
+    fixture.componentInstance.snapDraggedEvents = false;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event = fixture.nativeElement.querySelector('.cal-event-container');
+    const rect: ClientRect = event.getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', event, {
+      clientX: rect.left,
+      clientY: rect.top
+    });
+    fixture.detectChanges();
+    const allDayEvents = fixture.nativeElement.querySelector(
+      '.cal-all-day-events'
+    );
+    const allDayEventsPosition = allDayEvents.getBoundingClientRect();
+    triggerDomEvent('mousemove', allDayEvents, {
+      clientX: allDayEventsPosition.left,
+      clientY: allDayEventsPosition.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', allDayEvents, {
+      clientX: allDayEventsPosition.left,
+      clientY: allDayEventsPosition.top
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drop',
+      allDay: true,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(new Date('2018-07-29'))
+        .startOf('day')
+        .toDate()
+    });
+  });
 });

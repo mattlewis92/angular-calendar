@@ -121,3 +121,18 @@ export function isDraggedWithinPeriod(
     (period.start <= end && end <= period.end)
   );
 }
+
+export function shouldFireDroppedEvent(
+  dropEvent: { dropData?: { event?: CalendarEvent } },
+  date: Date,
+  allDay: boolean,
+  events: CalendarEvent[]
+) {
+  return (
+    dropEvent.dropData &&
+    dropEvent.dropData.event &&
+    (events.indexOf(dropEvent.dropData.event) === -1 ||
+      (dropEvent.dropData.event.allDay && !allDay) ||
+      (!dropEvent.dropData.event.allDay && allDay))
+  );
+}

@@ -43,7 +43,8 @@ import {
   getMinimumEventHeightInMinutes,
   addDaysWithExclusions,
   trackByDayOrWeekEvent,
-  isDraggedWithinPeriod
+  isDraggedWithinPeriod,
+  shouldFireDroppedEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -766,13 +767,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     date: Date,
     allDay: boolean
   ): void {
-    if (
-      dropEvent.dropData &&
-      dropEvent.dropData.event &&
-      (this.events.indexOf(dropEvent.dropData.event) === -1 ||
-        (dropEvent.dropData.event.allDay && !allDay) ||
-        (!dropEvent.dropData.event.allDay && allDay))
-    ) {
+    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.events)) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
