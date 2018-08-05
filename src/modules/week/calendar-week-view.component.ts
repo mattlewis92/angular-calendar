@@ -59,9 +59,8 @@ export interface WeekViewAllDayEventResize {
   edge: string;
 }
 
-export interface CalendarWeekViewBeforeRenderEvent {
+export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
   header: WeekDay[];
-  period: ViewPeriod;
 }
 
 /**
@@ -901,7 +900,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.days && this.view) {
       this.beforeViewRender.emit({
         header: this.days,
-        period: this.view.period
+        ...this.view
       });
     }
   }

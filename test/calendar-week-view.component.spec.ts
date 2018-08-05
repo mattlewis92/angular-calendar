@@ -1109,16 +1109,12 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
-    expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.start
-    ).to.be.an.instanceOf(Date);
-    expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.end
-    ).to.be.an.instanceOf(Date);
-    expect(
-      Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
-    ).to.equal(true);
-    fixture.destroy();
+    const data = beforeViewRenderCalled.getCall(0).args[0];
+    expect(data.period.start).to.be.an.instanceOf(Date);
+    expect(data.period.end).to.be.an.instanceOf(Date);
+    expect(Array.isArray(data.period.events)).to.equal(true);
+    expect(Array.isArray(data.allDayEventRows)).to.be.true;
+    expect(Array.isArray(data.hourColumns)).to.be.true;
   });
 
   it('should add event actions to each event', () => {
