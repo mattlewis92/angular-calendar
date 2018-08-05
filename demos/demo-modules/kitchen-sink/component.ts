@@ -124,6 +124,7 @@ export class DemoComponent {
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
+      this.viewDate = date;
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
         events.length === 0
@@ -131,7 +132,6 @@ export class DemoComponent {
         this.activeDayIsOpen = false;
       } else {
         this.activeDayIsOpen = true;
-        this.viewDate = date;
       }
     }
   }
