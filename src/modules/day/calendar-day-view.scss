@@ -57,8 +57,7 @@
     }
   }
 
-  .cal-event,
-  .cal-all-day-event {
+  .cal-event {
     padding: 5px;
     font-size: 12px;
     background-color: #d1e8ff;
@@ -74,6 +73,10 @@
     height: 100%;
   }
 
+  .cal-all-day-events > * {
+    cursor: pointer;
+  }
+
   .cal-draggable {
     cursor: move;
   }
@@ -86,10 +89,6 @@
   .cal-ends-within-day .cal-event {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
-
-  .cal-all-day-event {
-    cursor: pointer;
   }
 
   .cal-drag-active {

@@ -1427,7 +1427,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event = fixture.nativeElement.querySelector(
-      '.cal-all-day-events mwl-calendar-all-day-event'
+      '.cal-all-day-events mwl-calendar-day-view-event'
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;

@@ -82,18 +82,22 @@ export interface DayViewEventResize {
         dragOverClass="cal-drag-over"
         dragActiveClass="cal-drag-active"
         (drop)="eventDropped($event, view.period.start, true)">
-        <mwl-calendar-all-day-event
+        <mwl-calendar-day-view-event
           *ngFor="let event of view.allDayEvents; trackBy:trackByEventId"
-          [event]="event"
-          [customTemplate]="allDayEventTemplate"
+          [dayEvent]="{event: event}"
+          [tooltipPlacement]="tooltipPlacement"
+          [tooltipTemplate]="tooltipTemplate"
+          [tooltipAppendToBody]="tooltipAppendToBody"
+          [customTemplate]="eventTemplate"
           [eventTitleTemplate]="eventTitleTemplate"
           [eventActionsTemplate]="eventActionsTemplate"
           (eventClicked)="eventClicked.emit({event: event})"
+          [class.cal-draggable]="!snapDraggedEvents && event.draggable"
           mwlDraggable
           dragActiveClass="cal-drag-active"
           [dropData]="{event: event}"
           [dragAxis]="{x: !snapDraggedEvents && event.draggable, y: !snapDraggedEvents && event.draggable}">
-        </mwl-calendar-all-day-event>
+        </mwl-calendar-day-view-event>
       </div>
       <div
         class="cal-hour-rows"
@@ -257,12 +261,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Input()
   hourSegmentTemplate: TemplateRef<any>;
-
-  /**
-   * A custom template to use for all day events
-   */
-  @Input()
-  allDayEventTemplate: TemplateRef<any>;
 
   /**
    * A custom template to use for day view events
