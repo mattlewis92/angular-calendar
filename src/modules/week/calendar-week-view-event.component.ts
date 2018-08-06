@@ -29,7 +29,10 @@ import { PlacementArray } from 'positioning';
         [tooltipTemplate]="tooltipTemplate"
         [tooltipAppendToBody]="tooltipAppendToBody"
         (mwlClick)="eventClicked.emit()">
-        <mwl-calendar-event-actions [event]="weekEvent.event"></mwl-calendar-event-actions>
+        <mwl-calendar-event-actions
+          [event]="weekEvent.event"
+          [customTemplate]="eventActionsTemplate">
+        </mwl-calendar-event-actions>
         &ngsp;
         <mwl-calendar-event-title
           [event]="weekEvent.event"
@@ -69,6 +72,9 @@ export class CalendarWeekViewEventComponent {
 
   @Input()
   eventTitleTemplate: TemplateRef<any>;
+
+  @Input()
+  eventActionsTemplate: TemplateRef<any>;
 
   @Input()
   tooltipTemplate: TemplateRef<any>;

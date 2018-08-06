@@ -19,7 +19,10 @@ import { CalendarEvent } from 'calendar-utils';
         [style.backgroundColor]="event.color?.secondary"
         [style.borderColor]="event.color?.primary"
         (mwlClick)="eventClicked.emit()">
-        <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
+        <mwl-calendar-event-actions
+          [event]="event"
+          [customTemplate]="eventActionsTemplate">
+        </mwl-calendar-event-actions>
         &ngsp;
         <mwl-calendar-event-title
           [event]="event"
@@ -46,6 +49,9 @@ export class CalendarAllDayEventComponent {
 
   @Input()
   eventTitleTemplate: TemplateRef<any>;
+
+  @Input()
+  eventActionsTemplate: TemplateRef<any>;
 
   @Output()
   eventClicked: EventEmitter<any> = new EventEmitter();

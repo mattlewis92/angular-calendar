@@ -87,6 +87,7 @@ export interface DayViewEventResize {
           [event]="event"
           [customTemplate]="allDayEventTemplate"
           [eventTitleTemplate]="eventTitleTemplate"
+          [eventActionsTemplate]="eventActionsTemplate"
           (eventClicked)="eventClicked.emit({event: event})"
           mwlDraggable
           dragActiveClass="cal-drag-active"
@@ -135,6 +136,7 @@ export interface DayViewEventResize {
               [tooltipAppendToBody]="tooltipAppendToBody"
               [customTemplate]="eventTemplate"
               [eventTitleTemplate]="eventTitleTemplate"
+              [eventActionsTemplate]="eventActionsTemplate"
               (eventClicked)="eventClicked.emit({event: dayEvent.event})">
             </mwl-calendar-day-view-event>
           </div>
@@ -273,6 +275,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Input()
   eventTitleTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for event actions
+   */
+  @Input()
+  eventActionsTemplate: TemplateRef<any>;
 
   /**
    * Whether to snap events to a grid when dragging

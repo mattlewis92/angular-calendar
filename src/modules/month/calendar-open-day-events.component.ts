@@ -55,7 +55,10 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             (mwlClick)="eventClicked.emit({event: event})">
           </mwl-calendar-event-title>
           &ngsp;
-          <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
+          <mwl-calendar-event-actions
+            [event]="event"
+            [customTemplate]="eventActionsTemplate">
+          </mwl-calendar-event-actions>
         </div>
       </div>
     </ng-template>
@@ -82,6 +85,9 @@ export class CalendarOpenDayEventsComponent {
 
   @Input()
   eventTitleTemplate: TemplateRef<any>;
+
+  @Input()
+  eventActionsTemplate: TemplateRef<any>;
 
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{

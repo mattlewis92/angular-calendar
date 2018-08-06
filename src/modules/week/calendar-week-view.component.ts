@@ -147,6 +147,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [tooltipAppendToBody]="tooltipAppendToBody"
               [customTemplate]="eventTemplate"
               [eventTitleTemplate]="eventTitleTemplate"
+              [eventActionsTemplate]="eventActionsTemplate"
               (eventClicked)="eventClicked.emit({event: allDayEvent.event})">
             </mwl-calendar-week-view-event>
           </div>
@@ -230,6 +231,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [tooltipDisabled]="dragActive || timeEventResizes.size > 0"
                 [customTemplate]="eventTemplate"
                 [eventTitleTemplate]="eventTitleTemplate"
+                [eventActionsTemplate]="eventActionsTemplate"
                 (eventClicked)="eventClicked.emit({event: timeEvent.event})">
               </mwl-calendar-week-view-event>
               <div
@@ -340,6 +342,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Input()
   eventTitleTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for event actions
+   */
+  @Input()
+  eventActionsTemplate: TemplateRef<any>;
 
   /**
    * The precision to display events.

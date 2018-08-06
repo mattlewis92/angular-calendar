@@ -87,6 +87,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             [events]="openDay?.events"
             [customTemplate]="openDayEventsTemplate"
             [eventTitleTemplate]="eventTitleTemplate"
+            [eventActionsTemplate]="eventActionsTemplate"
             (eventClicked)="eventClicked.emit({event: $event.event})"
             mwlDroppable
             dragOverClass="cal-drag-over"
@@ -183,6 +184,12 @@ export class CalendarMonthViewComponent
    */
   @Input()
   eventTitleTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for event actions
+   */
+  @Input()
+  eventActionsTemplate: TemplateRef<any>;
 
   /**
    * An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends
