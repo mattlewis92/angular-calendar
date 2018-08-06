@@ -115,7 +115,6 @@ export interface DayViewEventResize {
             [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
             [ngClass]="dayEvent.event.cssClass"
             mwlResizable
-            [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
             [resizeSnapGrid]="{top: eventSnapSize || hourSegmentHeight, bottom: eventSnapSize || hourSegmentHeight}"
             [validateResize]="validateResize"
             (resizeStart)="resizeStarted(dayEvent, $event, dayEventsContainer)"
@@ -133,6 +132,12 @@ export interface DayViewEventResize {
             [style.height.px]="dayEvent.height"
             [style.marginLeft.px]="dayEvent.left + 70"
             [style.width.px]="dayEvent.width - 1">
+            <div
+              class="cal-resize-handle cal-resize-handle-before-start"
+              *ngIf="dayEvent.event?.resizable?.beforeStart && !dayEvent.startsBeforeDay"
+              mwlResizeHandle
+              [resizeEdges]="{ top: true }">
+            </div>
             <mwl-calendar-day-view-event
               [dayEvent]="dayEvent"
               [tooltipPlacement]="tooltipPlacement"
@@ -143,6 +148,12 @@ export interface DayViewEventResize {
               [eventActionsTemplate]="eventActionsTemplate"
               (eventClicked)="eventClicked.emit({event: dayEvent.event})">
             </mwl-calendar-day-view-event>
+            <div
+              class="cal-resize-handle cal-resize-handle-after-end"
+              *ngIf="dayEvent.event?.resizable?.afterEnd && !dayEvent.endsAfterDay"
+              mwlResizeHandle
+              [resizeEdges]="{ bottom: true }">
+            </div>
           </div>
         </div>
         <div class="cal-hour" *ngFor="let hour of hours; trackBy:trackByHour" [style.minWidth.px]="view?.width + 70">

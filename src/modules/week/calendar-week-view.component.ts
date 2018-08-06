@@ -117,13 +117,9 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"
             [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"
             [ngClass]="allDayEvent.event?.cssClass"
-            [style.width]="((100 / days.length) * allDayEvent.span) + '%'"
-            [style.marginLeft]="((100 / days.length) * allDayEvent.offset) + '%'"
+            [style.width.%]="(100 / days.length) * allDayEvent.span"
+            [style.marginLeft.%]="(100 / days.length) * allDayEvent.offset"
             mwlResizable
-            [resizeEdges]="{
-              left: allDayEvent.event?.resizable?.beforeStart, 
-              right: allDayEvent.event?.resizable?.afterEnd
-            }"
             [resizeSnapGrid]="{left: dayColumnWidth, right: dayColumnWidth}"
             [validateResize]="validateResize"
             (resizeStart)="allDayEventResizeStarted(eventRowContainer, allDayEvent, $event)"
@@ -140,6 +136,12 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             [validateDrag]="snapDraggedEvents ? validateDrag : false"
             (dragPointerDown)="dragStarted(eventRowContainer, event)"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)">
+            <div
+              class="cal-resize-handle cal-resize-handle-before-start"
+              *ngIf="allDayEvent.event?.resizable?.beforeStart && !allDayEvent.startsBeforeWeek"
+              mwlResizeHandle
+              [resizeEdges]="{ left: true }">
+            </div>
             <mwl-calendar-week-view-event
               [weekEvent]="allDayEvent"
               [tooltipPlacement]="tooltipPlacement"
@@ -150,6 +152,12 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [eventActionsTemplate]="eventActionsTemplate"
               (eventClicked)="eventClicked.emit({event: allDayEvent.event})">
             </mwl-calendar-week-view-event>
+            <div
+              class="cal-resize-handle cal-resize-handle-after-end"
+              *ngIf="allDayEvent.event?.resizable?.afterEnd && !allDayEvent.endsAfterWeek"
+              mwlResizeHandle
+              [resizeEdges]="{ right: true }">
+            </div>
           </div>
         </div>
       </div>
