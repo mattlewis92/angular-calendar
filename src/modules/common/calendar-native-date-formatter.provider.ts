@@ -4,6 +4,8 @@ import {
 } from './calendar-date-formatter.interface';
 import { Injectable } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
+import { getWeekViewPeriod } from './util';
+import show = Mocha.reporters.Base.cursor.show;
 
 /**
  * This will use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to do all date formatting.
@@ -62,12 +64,32 @@ export class CalendarNativeDateFormatter
   /**
    * The week view title
    */
-  public weekViewTitle({ date, locale }: DateFormatterParams): string {
-    const year: string = new Intl.DateTimeFormat(locale, {
-      year: 'numeric'
-    }).format(date);
-    const weekNumber: number = this.dateAdapter.getISOWeek(date);
-    return `Week ${weekNumber} of ${year}`;
+  public weekViewTitle({
+    date,
+    locale,
+    weekStartsOn,
+    excludeDays,
+    daysInWeek
+  }: DateFormatterParams): string {
+    const { viewStart, viewEnd } = getWeekViewPeriod(
+      this.dateAdapter,
+      date,
+      weekStartsOn,
+      excludeDays,
+      daysInWeek
+    );
+
+    const format = (dateToFormat: Date, showYear: boolean) =>
+      new Intl.DateTimeFormat(locale, {
+        day: 'numeric',
+        month: 'short',
+        year: showYear ? 'numeric' : undefined
+      }).format(dateToFormat);
+
+    return `${format(
+      viewStart,
+      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear()
+    )} - ${format(viewEnd, true)}`;
   }
 
   /**

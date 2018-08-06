@@ -73,7 +73,7 @@ describe('calendarNativeDateFormatter provider', () => {
         date: new Date('2016-01-04'),
         locale: 'en'
       })
-    ).to.equal('Week 1 of 2016');
+    ).to.equal('Jan 3 - Jan 9, 2016');
   });
 
   it('weekViewHour', () => {

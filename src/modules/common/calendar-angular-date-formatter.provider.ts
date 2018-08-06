@@ -5,6 +5,7 @@ import {
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
+import { getWeekViewPeriod } from './util';
 
 /**
  * This will use the angular date pipe to do all date formatting. It is the default date formatter used by the calendar.
@@ -55,15 +56,31 @@ export class CalendarAngularDateFormatter
   /**
    * The week view title
    */
-  public weekViewTitle({ date, locale }: DateFormatterParams): string {
-    const year: string = new DatePipe(locale).transform(
+  public weekViewTitle({
+    date,
+    locale,
+    weekStartsOn,
+    excludeDays,
+    daysInWeek
+  }: DateFormatterParams): string {
+    const { viewStart, viewEnd } = getWeekViewPeriod(
+      this.dateAdapter,
       date,
-      'y',
-      null,
-      locale
+      weekStartsOn,
+      excludeDays,
+      daysInWeek
     );
-    const weekNumber: number = this.dateAdapter.getISOWeek(date);
-    return `Week ${weekNumber} of ${year}`;
+    const format = (dateToFormat: Date, showYear: boolean) =>
+      new DatePipe(locale).transform(
+        dateToFormat,
+        'MMM d' + (showYear ? ', yyyy' : ''),
+        null,
+        locale
+      );
+    return `${format(
+      viewStart,
+      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear()
+    )} - ${format(viewEnd, true)}`;
   }
 
   /**

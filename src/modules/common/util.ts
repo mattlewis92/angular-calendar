@@ -136,3 +136,36 @@ export function shouldFireDroppedEvent(
       (!dropEvent.dropData.event.allDay && allDay))
   );
 }
+
+export function getWeekViewPeriod(
+  dateAdapter: DateAdapter,
+  viewDate: Date,
+  weekStartsOn: number,
+  excluded: number[] = [],
+  daysInWeek?: number
+): { viewStart: Date; viewEnd: Date } {
+  let viewStart = daysInWeek
+    ? dateAdapter.startOfDay(viewDate)
+    : dateAdapter.startOfWeek(viewDate, { weekStartsOn });
+  if (excluded.indexOf(dateAdapter.getDay(viewStart)) > -1) {
+    viewStart = dateAdapter.subDays(
+      addDaysWithExclusions(dateAdapter, viewStart, 1, excluded),
+      1
+    );
+  }
+  if (daysInWeek) {
+    const viewEnd = dateAdapter.endOfDay(
+      addDaysWithExclusions(dateAdapter, viewStart, daysInWeek - 1, excluded)
+    );
+    return { viewStart, viewEnd };
+  } else {
+    let viewEnd = dateAdapter.endOfWeek(viewDate, { weekStartsOn });
+    if (excluded.indexOf(dateAdapter.getDay(viewEnd)) > -1) {
+      viewEnd = dateAdapter.addDays(
+        addDaysWithExclusions(dateAdapter, viewEnd, -1, excluded),
+        1
+      );
+    }
+    return { viewStart, viewEnd };
+  }
+}

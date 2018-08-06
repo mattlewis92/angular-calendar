@@ -3,6 +3,8 @@ import {
   CalendarDateFormatterInterface,
   DateFormatterParams
 } from './calendar-date-formatter.interface';
+import { getWeekViewPeriod } from './util';
+import { DateAdapter } from '../../date-adapters/date-adapter';
 
 export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 
@@ -27,7 +29,10 @@ export class CalendarMomentDateFormatter
   /**
    * @hidden
    */
-  constructor(@Inject(MOMENT) private moment: any) {}
+  constructor(
+    @Inject(MOMENT) private moment: any,
+    private dateAdapter: DateAdapter
+  ) {}
 
   /**
    * The month view header week day labels
@@ -80,10 +85,28 @@ export class CalendarMomentDateFormatter
   /**
    * The week view title
    */
-  public weekViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format('[Week] W [of] YYYY');
+  public weekViewTitle({
+    date,
+    locale,
+    weekStartsOn,
+    excludeDays,
+    daysInWeek
+  }: DateFormatterParams): string {
+    const { viewStart, viewEnd } = getWeekViewPeriod(
+      this.dateAdapter,
+      date,
+      weekStartsOn,
+      excludeDays,
+      daysInWeek
+    );
+    const format = (dateToFormat: Date, showYear: boolean) =>
+      this.moment(dateToFormat)
+        .locale(locale)
+        .format('MMM D' + (showYear ? ', YYYY' : ''));
+    return `${format(
+      viewStart,
+      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear()
+    )} - ${format(viewEnd, true)}`;
   }
 
   /**

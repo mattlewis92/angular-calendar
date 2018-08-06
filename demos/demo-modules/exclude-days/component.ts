@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
@@ -22,15 +22,19 @@ export class DemoComponent {
       start: new Date('2016-01-08'),
       end: new Date('2016-01-10'),
       title: 'One day excluded event',
-      color: colors.red
+      color: colors.red,
+      allDay: true
     },
     {
       start: new Date('2016-01-01'),
       end: new Date('2016-01-09'),
-      title: 'Multiple weeks event'
+      title: 'Multiple weeks event',
+      allDay: true
     }
   ];
 
   // exclude weekends
   excludeDays: number[] = [0, 6];
+
+  weekStartsOn = DAYS_OF_WEEK.SUNDAY;
 }

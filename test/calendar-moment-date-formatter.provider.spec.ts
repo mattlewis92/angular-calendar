@@ -2,14 +2,25 @@ import { inject, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import moment from 'moment';
 import { startOfDay } from 'date-fns';
-import { CalendarMomentDateFormatter, MOMENT } from '../src';
+import {
+  CalendarMomentDateFormatter,
+  MOMENT,
+  CalendarNativeDateFormatter,
+  DateAdapter
+} from '../src';
+import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('calendarMomentDateFormatter provider', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         CalendarMomentDateFormatter,
-        { provide: MOMENT, useValue: moment }
+        { provide: MOMENT, useValue: moment },
+        CalendarNativeDateFormatter,
+        {
+          provide: DateAdapter,
+          useFactory: adapterFactory
+        }
       ]
     });
   });
@@ -70,7 +81,7 @@ describe('calendarMomentDateFormatter provider', () => {
         date: new Date('2016-01-04'),
         locale: 'en'
       })
-    ).to.equal('Week 1 of 2016');
+    ).to.equal('Jan 3 - Jan 9, 2016');
   });
 
   it('weekViewHour', () => {

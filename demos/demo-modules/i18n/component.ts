@@ -1,21 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {
-  CalendarEvent,
-  CalendarDateFormatter,
-  DAYS_OF_WEEK
-} from 'angular-calendar';
-import { CustomDateFormatter } from './custom-date-formatter.provider';
+import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html',
-  providers: [
-    {
-      provide: CalendarDateFormatter,
-      useClass: CustomDateFormatter
-    }
-  ]
+  templateUrl: 'template.html'
 })
 export class DemoComponent {
   view: string = 'month';

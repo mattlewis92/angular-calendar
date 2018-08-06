@@ -17,7 +17,20 @@ export class CalendarDatePipe implements PipeTransform {
     @Inject(LOCALE_ID) private locale: string
   ) {}
 
-  transform(date: Date, method: string, locale: string = this.locale): string {
-    return this.dateFormatter[method]({ date, locale });
+  transform(
+    date: Date,
+    method: string,
+    locale: string = this.locale,
+    weekStartsOn: number = 0,
+    excludeDays: number[] = [],
+    daysInWeek?: number
+  ): string {
+    return this.dateFormatter[method]({
+      date,
+      locale,
+      weekStartsOn,
+      excludeDays,
+      daysInWeek
+    });
   }
 }

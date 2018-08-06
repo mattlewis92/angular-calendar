@@ -44,7 +44,8 @@ import {
   addDaysWithExclusions,
   trackByDayOrWeekEvent,
   isDraggedWithinPeriod,
-  shouldFireDroppedEvent
+  shouldFireDroppedEvent,
+  getWeekViewPeriod
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -886,14 +887,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHeader(): void {
-    this.days = this.utils.getWeekViewHeader(
-      this.adjustDaysInWeek({
-        viewDate: this.viewDate,
-        weekStartsOn: this.weekStartsOn,
-        excluded: this.excludeDays,
-        weekendDays: this.weekendDays
-      })
-    );
+    this.days = this.utils.getWeekViewHeader({
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays,
+      weekendDays: this.weekendDays,
+      ...getWeekViewPeriod(
+        this.dateAdapter,
+        this.viewDate,
+        this.weekStartsOn,
+        this.excludeDays,
+        this.daysInWeek
+      )
+    });
     this.emitBeforeViewRender();
   }
 
@@ -917,27 +923,32 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private getWeekView(events: CalendarEvent[]) {
-    return this.utils.getWeekView(
-      this.adjustDaysInWeek({
-        events,
-        viewDate: this.viewDate,
-        weekStartsOn: this.weekStartsOn,
-        excluded: this.excludeDays,
-        precision: this.precision,
-        absolutePositionedEvents: true,
-        hourSegments: this.hourSegments,
-        dayStart: {
-          hour: this.dayStartHour,
-          minute: this.dayStartMinute
-        },
-        dayEnd: {
-          hour: this.dayEndHour,
-          minute: this.dayEndMinute
-        },
-        segmentHeight: this.hourSegmentHeight,
-        weekendDays: this.weekendDays
-      })
-    );
+    return this.utils.getWeekView({
+      events,
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays,
+      precision: this.precision,
+      absolutePositionedEvents: true,
+      hourSegments: this.hourSegments,
+      dayStart: {
+        hour: this.dayStartHour,
+        minute: this.dayStartMinute
+      },
+      dayEnd: {
+        hour: this.dayEndHour,
+        minute: this.dayEndMinute
+      },
+      segmentHeight: this.hourSegmentHeight,
+      weekendDays: this.weekendDays,
+      ...getWeekViewPeriod(
+        this.dateAdapter,
+        this.viewDate,
+        this.weekStartsOn,
+        this.excludeDays,
+        this.daysInWeek
+      )
+    });
   }
 
   private getDragMovedEventTimes(
@@ -1091,20 +1102,5 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     return newEventDates;
-  }
-
-  private adjustDaysInWeek(args: any): any {
-    if (this.daysInWeek) {
-      args.viewStart = this.dateAdapter.startOfDay(args.viewDate);
-      args.viewEnd = this.dateAdapter.endOfDay(
-        addDaysWithExclusions(
-          this.dateAdapter,
-          args.viewStart,
-          this.daysInWeek - 1,
-          this.excludeDays
-        )
-      );
-    }
-    return args;
   }
 }

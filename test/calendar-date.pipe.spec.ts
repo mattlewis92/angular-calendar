@@ -13,14 +13,18 @@ import { adapterFactory } from '../src/date-adapters/date-fns';
 import { DateAdapter } from 'angular-calendar';
 
 @Component({
-  template: '{{ date | calendarDate:method:locale }}'
+  template:
+    '{{ date | calendarDate:method:locale:weekStartsOn:excludeDays:daysInWeek }}'
 })
 class TestComponent {
-  public date: Date;
-  public view: string;
-  public format: string;
-  public locale: string;
-  public method: string;
+  date: Date;
+  view: string;
+  format: string;
+  locale: string;
+  method: string;
+  daysInWeek: number;
+  excludeDays: number[];
+  weekStartsOn: number;
 }
 
 describe('calendarDate pipe', () => {
@@ -66,7 +70,10 @@ describe('calendarDate pipe', () => {
     expect(fixture.nativeElement.innerHTML).to.equal('Friday');
     expect(dateFormatter.monthViewColumnHeader).to.have.been.calledWith({
       date: fixture.componentInstance.date,
-      locale: defaultLocale
+      locale: defaultLocale,
+      daysInWeek: undefined,
+      excludeDays: [],
+      weekStartsOn: 0
     });
   });
 
@@ -82,7 +89,10 @@ describe('calendarDate pipe', () => {
     expect(fixture.nativeElement.innerHTML).to.equal('Freitag');
     expect(dateFormatter.monthViewColumnHeader).to.have.been.calledWith({
       date: fixture.componentInstance.date,
-      locale: 'de'
+      locale: 'de',
+      daysInWeek: undefined,
+      excludeDays: [],
+      weekStartsOn: 0
     });
   });
 });
