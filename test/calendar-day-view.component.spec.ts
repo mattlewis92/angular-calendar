@@ -1137,7 +1137,8 @@ describe('CalendarDayViewComponent component', () => {
       newStart: moment('2016-06-27')
         .startOf('day')
         .add(1, 'hours')
-        .toDate()
+        .toDate(),
+      allDay: false
     });
   });
 

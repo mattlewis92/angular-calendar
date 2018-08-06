@@ -1074,7 +1074,8 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.events = [
       { start: '2017-01-01', title: '', color: { primary: '', secondary: '' } }
     ] as any;
-    fixture.componentInstance.ngOnChanges({ events: {} });
+    fixture.componentInstance.viewDate = new Date('2017-01-01');
+    fixture.componentInstance.ngOnChanges({ events: {}, viewDate: {} });
     fixture.detectChanges();
     stub.restore();
     expect(stub).to.have.been.calledOnce; // tslint:disable-line
