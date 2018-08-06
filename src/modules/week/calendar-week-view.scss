@@ -71,7 +71,6 @@
     .cal-event-container {
       display: inline-block;
       position: absolute;
-      cursor: pointer;
 
       &.resize-active {
         z-index: 1;
@@ -103,10 +102,6 @@
       justify-content: center;
       font-size: 14px;
     }
-  }
-
-  .cal-draggable {
-    cursor: move;
   }
 
   .cal-header.cal-today {
@@ -178,6 +173,14 @@
     &::after {
       content: '\00a0';
     }
+  }
+
+  .cal-event-container:not(.cal-draggable) {
+    cursor: pointer;
+  }
+
+  .cal-draggable {
+    cursor: move;
   }
 
   .cal-drag-over .cal-hour-segment {
