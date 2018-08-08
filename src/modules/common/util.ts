@@ -123,15 +123,15 @@ export function isDraggedWithinPeriod(
 }
 
 export function shouldFireDroppedEvent(
-  dropEvent: { dropData?: { event?: CalendarEvent } },
+  dropEvent: { dropData?: { event?: CalendarEvent; calendarId?: symbol } },
   date: Date,
   allDay: boolean,
-  events: CalendarEvent[]
+  calendarId: symbol
 ) {
   return (
     dropEvent.dropData &&
     dropEvent.dropData.event &&
-    (events.indexOf(dropEvent.dropData.event) === -1 ||
+    (dropEvent.dropData.calendarId !== calendarId ||
       (dropEvent.dropData.event.allDay && !allDay) ||
       (!dropEvent.dropData.event.allDay && allDay))
   );

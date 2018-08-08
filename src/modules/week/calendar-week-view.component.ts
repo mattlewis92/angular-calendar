@@ -128,7 +128,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             (resizeEnd)="allDayEventResizeEnded(allDayEvent)"
             mwlDraggable
             dragActiveClass="cal-drag-active"
-            [dropData]="{event: allDayEvent.event}"
+            [dropData]="{event: allDayEvent.event, calendarId: calendarId}"
             [dragAxis]="{
               x: allDayEvent.event.draggable && allDayEventResizes.size === 0,
               y: !snapDraggedEvents && allDayEvent.event.draggable && allDayEventResizes.size === 0
@@ -212,7 +212,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               (resizeEnd)="timeEventResizeEnded(timeEvent)"
               mwlDraggable
               dragActiveClass="cal-drag-active"
-              [dropData]="{event: timeEvent.event}"
+              [dropData]="{event: timeEvent.event, calendarId: calendarId}"
               [dragAxis]="{
                 x: timeEvent.event.draggable && timeEventResizes.size === 0,
                 y: timeEvent.event.draggable && timeEventResizes.size === 0
@@ -531,6 +531,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  calendarId = Symbol('angular calendar week view id');
+
+  /**
+   * @hidden
+   */
   trackByIndex = trackByIndex;
 
   /**
@@ -780,11 +785,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   eventDropped(
-    dropEvent: DropEvent<{ event?: CalendarEvent }>,
+    dropEvent: DropEvent<{ event?: CalendarEvent; calendarId?: symbol }>,
     date: Date,
     allDay: boolean
   ): void {
-    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.events)) {
+    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId)) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,

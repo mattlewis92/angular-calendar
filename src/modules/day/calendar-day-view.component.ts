@@ -95,7 +95,7 @@ export interface DayViewEventResize {
           [class.cal-draggable]="!snapDraggedEvents && event.draggable"
           mwlDraggable
           dragActiveClass="cal-drag-active"
-          [dropData]="{event: event}"
+          [dropData]="{event: event, calendarId: calendarId}"
           [dragAxis]="{x: !snapDraggedEvents && event.draggable, y: !snapDraggedEvents && event.draggable}">
         </mwl-calendar-day-view-event>
       </div>
@@ -122,7 +122,7 @@ export interface DayViewEventResize {
             (resizeEnd)="resizeEnded(dayEvent)"
             mwlDraggable
             dragActiveClass="cal-drag-active"
-            [dropData]="{event: dayEvent.event}"
+            [dropData]="{event: dayEvent.event, calendarId: calendarId}"
             [dragAxis]="{x: !snapDraggedEvents && dayEvent.event.draggable && currentResizes.size === 0, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize || hourSegmentHeight} : {}"
             [validateDrag]="snapDraggedEvents ? validateDrag : false"
@@ -359,6 +359,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  calendarId = Symbol('angular calendar day view id');
+
+  /**
+   * @hidden
+   */
   validateDrag: (args: any) => boolean;
 
   /**
@@ -452,11 +457,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   eventDropped(
-    dropEvent: { dropData?: { event?: CalendarEvent } },
+    dropEvent: { dropData?: { event?: CalendarEvent; calendarId?: symbol } },
     date: Date,
     allDay: boolean
   ): void {
-    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.events)) {
+    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId)) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
