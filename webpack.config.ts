@@ -1,12 +1,12 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import { AngularCompilerPlugin } from '@ngtools/webpack';
 import * as OfflinePlugin from 'offline-plugin';
 import * as FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
+import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 export default (env = 'development') => {
   const { ifProduction, ifDevelopment } = getIfUtils(env);

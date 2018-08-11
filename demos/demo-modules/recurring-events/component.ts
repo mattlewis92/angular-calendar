@@ -16,10 +16,10 @@ interface RecurringEvent {
   title: string;
   color: any;
   rrule?: {
-    freq: RRule.Frequency;
+    freq: any;
     bymonth?: number;
     bymonthday?: number;
-    byweekday?: RRule.Weekday[];
+    byweekday?: any;
   };
 }
 
