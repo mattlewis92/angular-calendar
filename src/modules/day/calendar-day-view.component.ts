@@ -125,7 +125,7 @@ export interface DayViewEventResize {
             [dropData]="{event: dayEvent.event, calendarId: calendarId}"
             [dragAxis]="{x: !snapDraggedEvents && dayEvent.event.draggable && currentResizes.size === 0, y: dayEvent.event.draggable && currentResizes.size === 0}"
             [dragSnapGrid]="snapDraggedEvents ? {y: eventSnapSize || hourSegmentHeight} : {}"
-            [validateDrag]="snapDraggedEvents ? validateDrag : false"
+            [validateDrag]="validateDrag"
             (dragPointerDown)="dragStarted(event, dayEventsContainer)"
             (dragEnd)="dragEnded(dayEvent, $event)"
             [style.marginTop.px]="dayEvent.top"
@@ -547,7 +547,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       event
     );
     this.validateDrag = ({ x, y }) =>
-      this.currentResizes.size === 0 && dragHelper.validateDrag({ x, y });
+      this.currentResizes.size === 0 &&
+      dragHelper.validateDrag({
+        x,
+        y,
+        snapDraggedEvents: this.snapDraggedEvents
+      });
     this.eventDragEnter = 0;
     this.cdr.markForCheck();
   }

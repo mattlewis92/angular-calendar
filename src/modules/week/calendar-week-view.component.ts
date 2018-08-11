@@ -134,7 +134,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               y: !snapDraggedEvents && allDayEvent.event.draggable && allDayEventResizes.size === 0
             }"
             [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth} : {}"
-            [validateDrag]="snapDraggedEvents ? validateDrag : false"
+            [validateDrag]="validateDrag"
             (dragPointerDown)="dragStarted(eventRowContainer, event)"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)">
             <div
@@ -219,7 +219,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               }"
               [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight} : {}"
               [ghostDragEnabled]="!snapDraggedEvents"
-              [validateDrag]="snapDraggedEvents ? validateDrag : false"
+              [validateDrag]="validateDrag"
               (dragPointerDown)="dragStarted(dayColumns, event, timeEvent)"
               (dragging)="dragMove(timeEvent, $event)"
               (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)">
@@ -815,7 +815,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.validateDrag = ({ x, y }) =>
       this.allDayEventResizes.size === 0 &&
       this.timeEventResizes.size === 0 &&
-      dragHelper.validateDrag({ x, y });
+      dragHelper.validateDrag({
+        x,
+        y,
+        snapDraggedEvents: this.snapDraggedEvents
+      });
     this.dragActive = true;
     this.eventDragEnter = 0;
     if (!this.snapDraggedEvents && dayEvent) {

@@ -1,5 +1,7 @@
 import { isInside } from './util';
 
+const DRAG_THRESHOLD = 1;
+
 export class CalendarDragHelper {
   private readonly startPosition: ClientRect;
 
@@ -10,14 +12,32 @@ export class CalendarDragHelper {
     this.startPosition = draggableElement.getBoundingClientRect();
   }
 
-  validateDrag({ x, y }: { x: number; y: number }): boolean {
-    const newRect: ClientRect = Object.assign({}, this.startPosition, {
-      left: this.startPosition.left + x,
-      right: this.startPosition.right + x,
-      top: this.startPosition.top + y,
-      bottom: this.startPosition.bottom + y
-    });
+  validateDrag({
+    x,
+    y,
+    snapDraggedEvents
+  }: {
+    x: number;
+    y: number;
+    snapDraggedEvents: boolean;
+  }): boolean {
+    const isWithinThreshold =
+      Math.abs(x) > DRAG_THRESHOLD || Math.abs(y) > DRAG_THRESHOLD;
 
-    return isInside(this.dragContainerElement.getBoundingClientRect(), newRect);
+    if (snapDraggedEvents) {
+      const newRect: ClientRect = Object.assign({}, this.startPosition, {
+        left: this.startPosition.left + x,
+        right: this.startPosition.right + x,
+        top: this.startPosition.top + y,
+        bottom: this.startPosition.bottom + y
+      });
+
+      return (
+        isWithinThreshold &&
+        isInside(this.dragContainerElement.getBoundingClientRect(), newRect)
+      );
+    } else {
+      return isWithinThreshold;
+    }
   }
 }
