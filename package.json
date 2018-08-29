@@ -101,7 +101,6 @@
     "chai": "^4.1.2",
     "codecov": "^3.0.4",
     "commitizen": "^2.10.1",
-    "concurrently": "^4.0.1",
     "copyfiles": "^2.0.0",
     "core-js": "^2.5.7",
     "css-loader": "^1.0.0",
