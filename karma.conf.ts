@@ -24,6 +24,9 @@ export default config => {
     },
 
     webpack: {
+      output: {
+        filename: '[name]'
+      },
       mode: 'development',
       resolve: {
         extensions: ['.ts', '.js', '.json'],
