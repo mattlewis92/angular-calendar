@@ -4,7 +4,7 @@
     "module": "commonjs",
     "declaration": true,
     "stripInternal": true,
-    "outDir": "./dist/date-adapters",
+    "outDir": "./dist/angular-calendar/date-adapters",
     "types": [],
     "emitDecoratorMetadata": false,
     "baseUrl": "",
@@ -12,12 +12,7 @@
     "importHelpers": true
   },
   "files": [
-    "src/date-adapters/date-fns/index.ts",
-    "src/date-adapters/moment/index.ts"
-  ],
-  "exclude": [
-    "test",
-    "demos",
-    "src"
+    "projects/angular-calendar/src/date-adapters/date-fns/index.ts",
+    "projects/angular-calendar/src/date-adapters/moment/index.ts"
   ]
 }

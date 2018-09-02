@@ -1,5 +1,0 @@
-{
-  "name": "angular-calendar/date-adapters/moment",
-  "typings": "./index.d.ts",
-  "main": "./index.js"
-}

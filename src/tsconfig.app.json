@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": ["node"],
+    "module": "esnext"
+  },
+  "angularCompilerOptions": {
+    "trace": true,
+    "strictInjectionParameters": true,
+    "preserveWhitespaces": true,
+    "fullTemplateTypeCheck": true
+  }
+}

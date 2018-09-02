@@ -1,23 +1,27 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "",
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "paths": {
-      "angular-calendar": ["./src/index"],
-      "angular-calendar/date-adapters/date-fns": ["./src/date-adapters/date-fns/index"],
-      "angular-calendar/date-adapters/moment": ["./src/date-adapters/moment/index"]
+      "angular-calendar": ["./projects/angular-calendar/src/index"],
+      "angular-calendar/date-adapters/date-fns": ["./projects/angular-calendar/src/date-adapters/date-fns/index"],
+      "angular-calendar/date-adapters/moment": ["./projects/angular-calendar/src/date-adapters/moment/index"]
     },
-    "lib": ["es2017", "dom"]
-  },
-  "include": [
-    "src",
-    "test",
-    "demos"
-  ]
+    "allowSyntheticDefaultImports": true
+  }
 }
