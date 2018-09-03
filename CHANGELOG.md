@@ -62,7 +62,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
-* **week-view:** the format of the week view title has changed from `Week d of yyyy` to `MMM d - MMM d, yyyy`. You can override this by using a custom date formatter.
 * date-fns is now no longer a direct dependency of this library. To migrate:
 
 Install date-fns with npm:
@@ -93,9 +92,10 @@ export class MyModule {}
 For system.js users you will also need to add the following entries to your systemjs config:
 ```
 'calendar-utils': 'npm:calendar-utils/bundles/calendar-utils.umd.js',
-'calendar-utils/date-adapters/date-fns': 'npm:calendar-utils/date-adapters/date-fns.js',
-'angular-calendar/date-adapters/date-fns': 'npm:angular-calendar/date-adapters/date-fns.js'
+'calendar-utils/date-adapters/date-fns': 'npm:calendar-utils/date-adapters/date-fns/index.js',
+'angular-calendar/date-adapters/date-fns': 'npm:angular-calendar/date-adapters/date-fns/index.js'
 ```
+* **week-view:** the format of the week view title has changed from `Week d of yyyy` to `MMM d - MMM d, yyyy`. You can override this by using a custom date formatter.
 * **day-view:** the allDayEventTemplate option was removed from the day view. To migrate use the eventTemplate input and check if dayEvent.event.allDay is set in the template
 * Week view events will now appear on the bottom time grid. To restore the old behaviour you can set `allDay: true` on the event to make it appear at the top. 
 
