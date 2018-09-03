@@ -1,1 +1,0 @@
-The issue tracker is for bug reports and feature requests only, please do not submit a support request here, instead ask on https://stackoverflow.com/ with a clear description of the problem you are experiencing

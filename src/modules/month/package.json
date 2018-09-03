@@ -1,5 +1,0 @@
-{
-  "name": "angular-calendar/month",
-  "module": "./index.js",
-  "typings": "./index.d.ts"
-}
