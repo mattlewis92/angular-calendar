@@ -10,7 +10,7 @@
     "build:styles": "node-sass projects/angular-calendar/src/angular-calendar.scss | postcss --output dist/angular-calendar/css/angular-calendar.css",
     "build:clean": "rm -rf dist",
     "copyfiles": "copyfiles CHANGELOG.md dist/angular-calendar && cp projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/date-fns/package.json && cp projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/moment/package.json && copyfiles -u 3 projects/angular-calendar/src/**/*.scss dist/angular-calendar/scss",
-    "test": "TZ=UTC npm run lint && ng test angular-calendar --watch=false --code-coverage && npm run build:lib && npm run build:clean",
+    "test": "npm run lint && TZ=UTC ng test angular-calendar --watch=false --code-coverage && npm run build:lib && npm run build:clean",
     "test:watch": "TZ=UTC ng test angular-calendar",
     "lint": "ng lint && ng lint angular-calendar && stylelint \"{projects,src}/**/*.scss\" --fix",
     "commit": "git-cz",
