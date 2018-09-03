@@ -2,6 +2,133 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/mattlewis92/angular-calendar/compare/v0.25.2...v0.26.0) (2018-09-03)
+
+
+### Bug Fixes
+
+* allow events that end on different days to be dragged ([df339b9](https://github.com/mattlewis92/angular-calendar/commit/df339b9))
+* **week-view:** make sure currently resized events are always on top ([bb08ec1](https://github.com/mattlewis92/angular-calendar/commit/bb08ec1))
+* allow the mouse to be moved slightly when clicking events ([08661c4](https://github.com/mattlewis92/angular-calendar/commit/08661c4)), closes [#678](https://github.com/mattlewis92/angular-calendar/issues/678)
+* handle scrolling the page while dragging evwnts ([9fe2a0f](https://github.com/mattlewis92/angular-calendar/commit/9fe2a0f))
+* make sure events that are being resized are always on top ([ce8063d](https://github.com/mattlewis92/angular-calendar/commit/ce8063d))
+* **month-view:** stop events overflowing on ie11 ([10ff7d5](https://github.com/mattlewis92/angular-calendar/commit/10ff7d5)), closes [#501](https://github.com/mattlewis92/angular-calendar/issues/501)
+* mark package as having side effects ([b20f821](https://github.com/mattlewis92/angular-calendar/commit/b20f821)), closes [#529](https://github.com/mattlewis92/angular-calendar/issues/529)
+* **day-view:** allow events with no end date to be resized ([b00d57c](https://github.com/mattlewis92/angular-calendar/commit/b00d57c)), closes [#614](https://github.com/mattlewis92/angular-calendar/issues/614)
+* **day-view:** always default eventSnapSize to hour segment height ([8908759](https://github.com/mattlewis92/angular-calendar/commit/8908759)), closes [#514](https://github.com/mattlewis92/angular-calendar/issues/514)
+* **day-view:** disable pointer events whilst resizing ([56dc132](https://github.com/mattlewis92/angular-calendar/commit/56dc132))
+* **day-view:** dont remove events that start and end at the same time ([d2223d5](https://github.com/mattlewis92/angular-calendar/commit/d2223d5))
+* **day-view:** make sure segmentHeight is passed to a custom template ([79dd846](https://github.com/mattlewis92/angular-calendar/commit/79dd846)), closes [#514](https://github.com/mattlewis92/angular-calendar/issues/514)
+* **day-view:** prevent segment double hover when dragging ([1fd9089](https://github.com/mattlewis92/angular-calendar/commit/1fd9089))
+* **event-clicked:** clicking actual events now triggers eventClicked ([403e127](https://github.com/mattlewis92/angular-calendar/commit/403e127)), closes [#568](https://github.com/mattlewis92/angular-calendar/issues/568)
+* **moment:** change weekViewColumnSubHeader from `D MMM` to `MMM D` ([a2fff58](https://github.com/mattlewis92/angular-calendar/commit/a2fff58))
+* more robust way of telling if an event is dropped within a calendar ([46a650a](https://github.com/mattlewis92/angular-calendar/commit/46a650a)), closes [#637](https://github.com/mattlewis92/angular-calendar/issues/637)
+* prevent text getting selected in safari while dragging events ([36fb312](https://github.com/mattlewis92/angular-calendar/commit/36fb312))
+* **month-view:** prevent day clicked from firing when dragging events ([c505d38](https://github.com/mattlewis92/angular-calendar/commit/c505d38)), closes [#487](https://github.com/mattlewis92/angular-calendar/issues/487)
+* **resizable:** prevent resizing of elements when not on top stack ([4bfac45](https://github.com/mattlewis92/angular-calendar/commit/4bfac45)), closes [#662](https://github.com/mattlewis92/angular-calendar/issues/662)
+* **week-view:** allow resizing events with no end date ([ccffe05](https://github.com/mattlewis92/angular-calendar/commit/ccffe05)), closes [#614](https://github.com/mattlewis92/angular-calendar/issues/614)
+* **week-view:** fix cursor on draggable events ([66e9223](https://github.com/mattlewis92/angular-calendar/commit/66e9223))
+* **week-view:** use correct event left positioning ([fb4bbb7](https://github.com/mattlewis92/angular-calendar/commit/fb4bbb7)), closes [#675](https://github.com/mattlewis92/angular-calendar/issues/675)
+
+
+### Features
+
+* add a CalendarView enum to prevent typos in view names ([f634a86](https://github.com/mattlewis92/angular-calendar/commit/f634a86))
+* add time grid to the week view ([5cfbfc7](https://github.com/mattlewis92/angular-calendar/commit/5cfbfc7)), closes [#593](https://github.com/mattlewis92/angular-calendar/issues/593)
+* allow event actions template to be customised ([2c8a6db](https://github.com/mattlewis92/angular-calendar/commit/2c8a6db)), closes [#673](https://github.com/mattlewis92/angular-calendar/issues/673)
+* allow meta to be passed to the event times changed interface ([c27b2d8](https://github.com/mattlewis92/angular-calendar/commit/c27b2d8))
+* allow moment to be used as a replacement to date-fns ([1c5d32f](https://github.com/mattlewis92/angular-calendar/commit/1c5d32f))
+* expose the full week view on the beforeViewRender output ([1185d27](https://github.com/mattlewis92/angular-calendar/commit/1185d27)), closes [#632](https://github.com/mattlewis92/angular-calendar/issues/632)
+* remove deep module imports ([24eb394](https://github.com/mattlewis92/angular-calendar/commit/24eb394))
+* remove direct dependency on date-fns ([b3c9520](https://github.com/mattlewis92/angular-calendar/commit/b3c9520))
+* upgrade draggable library ([d9e76d4](https://github.com/mattlewis92/angular-calendar/commit/d9e76d4))
+* **day-view:** allow dragging and dropping all day events ([62c41b9](https://github.com/mattlewis92/angular-calendar/commit/62c41b9)), closes [#665](https://github.com/mattlewis92/angular-calendar/issues/665)
+* **day-view:** allow events to be dragged outside of the view ([6641319](https://github.com/mattlewis92/angular-calendar/commit/6641319)), closes [#532](https://github.com/mattlewis92/angular-calendar/issues/532)
+* **day-view:** expose events in beforeViewRender output ([44347e2](https://github.com/mattlewis92/angular-calendar/commit/44347e2)), closes [#573](https://github.com/mattlewis92/angular-calendar/issues/573)
+* **day-view:** make previous and next view helpers respect excludeDays ([50159cc](https://github.com/mattlewis92/angular-calendar/commit/50159cc))
+* **day-view:** remove the mwl-calendar-all-day-event component ([c6b095a](https://github.com/mattlewis92/angular-calendar/commit/c6b095a))
+* **event-times-changed:** expose type of event (resize, drag or drop) ([479c75a](https://github.com/mattlewis92/angular-calendar/commit/479c75a))
+* **event-title-formatter:** expose the pre-formatted title ([df62e7a](https://github.com/mattlewis92/angular-calendar/commit/df62e7a)), closes [#587](https://github.com/mattlewis92/angular-calendar/issues/587)
+* **month-view:** add class to day that's being highlighted ([13a688e](https://github.com/mattlewis92/angular-calendar/commit/13a688e)), closes [#630](https://github.com/mattlewis92/angular-calendar/issues/630)
+* **month-view:** allow events to be dropped on the open day events list ([2454892](https://github.com/mattlewis92/angular-calendar/commit/2454892)), closes [#523](https://github.com/mattlewis92/angular-calendar/issues/523)
+* **month-view:** allow the open day events animation to be overridden ([db0c880](https://github.com/mattlewis92/angular-calendar/commit/db0c880))
+* upgrade the drag and drop library ([ab764ec](https://github.com/mattlewis92/angular-calendar/commit/ab764ec))
+* **tooltip:** allow tooltip to be auto positioned ([d6d61c4](https://github.com/mattlewis92/angular-calendar/commit/d6d61c4)), closes [#617](https://github.com/mattlewis92/angular-calendar/issues/617)
+* **week-view:** allow events to be dragged outside of the view ([e2538a1](https://github.com/mattlewis92/angular-calendar/commit/e2538a1)), closes [#516](https://github.com/mattlewis92/angular-calendar/issues/516)
+* **week-view:** allow total days in the week to be customised ([0b4fcd5](https://github.com/mattlewis92/angular-calendar/commit/0b4fcd5))
+* **week-view:** make the week view title work with no config with i18n ([aa7edd9](https://github.com/mattlewis92/angular-calendar/commit/aa7edd9)), closes [#670](https://github.com/mattlewis92/angular-calendar/issues/670)
+
+
+### BREAKING CHANGES
+
+* **week-view:** the format of the week view title has changed from `Week d of yyyy` to `MMM d - MMM d, yyyy`. You can override this by using a custom date formatter.
+* date-fns is now no longer a direct dependency of this library. To migrate:
+
+Install date-fns with npm:
+```
+npm i date-fns
+```
+
+Add the date-fns calendar-utils adapter to the first argument of the CalendarModule.forRoot method:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+@NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
+  ]
+})
+export class MyModule {}
+```
+
+For system.js users you will also need to add the following entries to your systemjs config:
+```
+'calendar-utils': 'npm:calendar-utils/bundles/calendar-utils.umd.js',
+'calendar-utils/date-adapters/date-fns': 'npm:calendar-utils/date-adapters/date-fns.js',
+'angular-calendar/date-adapters/date-fns': 'npm:angular-calendar/date-adapters/date-fns.js'
+```
+* **day-view:** the allDayEventTemplate option was removed from the day view. To migrate use the eventTemplate input and check if dayEvent.event.allDay is set in the template
+* Week view events will now appear on the bottom time grid. To restore the old behaviour you can set `allDay: true` on the event to make it appear at the top. 
+
+People extending the `CalendarWeekViewComponent` will probably have to adjust their child component as the template and internal component api has changed significantly.
+* **month-view:** If using a custom `openDayEventsTemplate` for the month view you must now wrap your template with:
+```
+<div class="cal-open-day-events" [@collapse] *ngIf="isOpen"></div>
+```
+
+and then you must add the collapse animation to the component that contains the open day events `<ng-template>`:
+
+```
+import { collapseAnimation } from 'angular-calendar';
+
+// add this to your component metadata
+animations: [collapseAnimation]
+```
+* **tooltip:** all tooltips now default to auto positioning, you can use the tooltipPlacement input on all components to override this behaviour though
+* **event-clicked:** eventClicked now fires whenever the event container instead of the event title is clicked
+* **day-view:** previously events with no end date that were resized would emit an empty end time, now they will emit a sensible default new end date
+* **resizable:** only one event at a time can now be resized on the day or week views
+* **week-view:** if you were extending the week view component then the internal API has changed slightly and you may need to adjust your app
+* **month-view:** Custom template users will now need to add a "dragActiveClass='cal-drag-active'" anywhere they use an mwlDraggable directive
+
+If using the mwlDraggable directive anywhere else in your app you will need to apply `pointer-events: none` to the element yourself when it's being dragged. This can be done with the `dragActiveClass` option
+* **day-view:** if you were extending the day view component then the internal API has changed slightly and you may need to adjust your app
+* deep module imports angular-calendar/modules/{common,month,week,day} are no longer supported as the package is now treeshakable. To migrate, adjust your imports to be from angular-calendar directly
+* **moment:** the moment weekViewColumnSubHeader format has changed for consistency with the other date formatters
+* there were some minor breaking changes in the drag and drop library that might affect your app if you were using it outside of the calendar. See the changelog for more info: https://github.com/mattlewis92/angular-draggable-droppable/blob/master/CHANGELOG.md
+* **week-view:** events with no end date that are resized now assume to have the start date as the end date
+
+
+
 <a name="0.25.2"></a>
 ## [0.25.2](https://github.com/mattlewis92/angular-calendar/compare/v0.25.1...v0.25.2) (2018-05-12)
 
