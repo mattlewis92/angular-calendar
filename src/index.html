@@ -9,5 +9,14 @@
 </head>
 <body>
   <mwl-demo-app>Loading demo...</mwl-demo-app>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        registrations.forEach(function(registration) {
+          registration.unregister();
+        });
+      })
+    }
+  </script>
 </body>
 </html>
