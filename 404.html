@@ -9,5 +9,14 @@
 <link rel="stylesheet" href="styles.f01a4a8befc8cba53607.css"></head>
 <body>
   <mwl-demo-app>Loading demo...</mwl-demo-app>
-<script type="text/javascript" src="runtime.6b85fcd5b2f60f77593c.js"></script><script type="text/javascript" src="polyfills.c2c9a9560d6612b94254.js"></script><script type="text/javascript" src="main.1d190c6f81af3ab76c97.js"></script></body>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        registrations.forEach(function(registration) {
+          registration.unregister();
+        });
+      })
+    }
+  </script>
+<script type="text/javascript" src="runtime.6b85fcd5b2f60f77593c.js"></script><script type="text/javascript" src="polyfills.c2c9a9560d6612b94254.js"></script><script type="text/javascript" src="main.88476720cc88581058f9.js"></script></body>
 </html>

@@ -91,7 +91,6 @@
 </ul>
 <h3 id="breaking-changes">BREAKING CHANGES</h3>
 <ul>
-<li><strong>week-view:</strong> the format of the week view title has changed from <code>Week d of yyyy</code> to <code>MMM d - MMM d, yyyy</code>. You can override this by using a custom date formatter.</li>
 <li>date-fns is now no longer a direct dependency of this library. To migrate:</li>
 </ul>
 <p>Install date-fns with npm:</p>
@@ -112,8 +111,9 @@ import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;
 })
 export class MyModule {}</code></pre></div><p>For system.js users you will also need to add the following entries to your systemjs config:</p>
 <div><pre class="line-numbers"><code class="language-none">&#39;calendar-utils&#39;: &#39;npm:calendar-utils/bundles/calendar-utils.umd.js&#39;,
-&#39;calendar-utils/date-adapters/date-fns&#39;: &#39;npm:calendar-utils/date-adapters/date-fns.js&#39;,
-&#39;angular-calendar/date-adapters/date-fns&#39;: &#39;npm:angular-calendar/date-adapters/date-fns.js&#39;</code></pre></div><ul>
+&#39;calendar-utils/date-adapters/date-fns&#39;: &#39;npm:calendar-utils/date-adapters/date-fns/index.js&#39;,
+&#39;angular-calendar/date-adapters/date-fns&#39;: &#39;npm:angular-calendar/date-adapters/date-fns/index.js&#39;</code></pre></div><ul>
+<li><strong>week-view:</strong> the format of the week view title has changed from <code>Week d of yyyy</code> to <code>MMM d - MMM d, yyyy</code>. You can override this by using a custom date formatter.</li>
 <li><strong>day-view:</strong> the allDayEventTemplate option was removed from the day view. To migrate use the eventTemplate input and check if dayEvent.event.allDay is set in the template</li>
 <li>Week view events will now appear on the bottom time grid. To restore the old behaviour you can set <code>allDay: true</code> on the event to make it appear at the top. </li>
 </ul>
