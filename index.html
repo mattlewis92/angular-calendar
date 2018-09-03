@@ -8,7 +8,20 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="stylesheet" href="styles.f01a4a8befc8cba53607.css"></head>
 <body>
+
   <mwl-demo-app>Loading demo...</mwl-demo-app>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63367573-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-63367573-2');
+  </script>
+
+  <!-- Unregister legacy service worker so new docs load -->
   <script>
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.getRegistrations().then(function(registrations) {
@@ -18,5 +31,6 @@
       })
     }
   </script>
-<script type="text/javascript" src="runtime.6b85fcd5b2f60f77593c.js"></script><script type="text/javascript" src="polyfills.c2c9a9560d6612b94254.js"></script><script type="text/javascript" src="main.88476720cc88581058f9.js"></script></body>
+
+<script type="text/javascript" src="runtime.6b85fcd5b2f60f77593c.js"></script><script type="text/javascript" src="polyfills.c2c9a9560d6612b94254.js"></script><script type="text/javascript" src="main.cf86ea558f44124ef905.js"></script></body>
 </html>
