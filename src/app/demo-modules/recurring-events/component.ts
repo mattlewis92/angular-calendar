@@ -8,6 +8,8 @@ import {
   endOfWeek,
   endOfDay
 } from 'date-fns';
+// As an alternative to rrule there is also rSchedule
+// See https://github.com/mattlewis92/angular-calendar/issues/711#issuecomment-418537158 for more info
 import RRule from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
