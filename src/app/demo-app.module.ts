@@ -1,14 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG
+} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 
+declare var Hammer: any;
+export class MyHammerConfig extends HammerGestureConfig {
+  buildHammer(element: HTMLElement) {
+    return new Hammer(element, {
+      touchAction: 'auto'
+    });
+  }
+}
+
 @NgModule({
   declarations: [DemoAppComponent],
+  providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
