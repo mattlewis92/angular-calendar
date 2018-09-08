@@ -1,18 +1,21 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import {
-  getMonth,
-  startOfMonth,
-  startOfWeek,
-  startOfDay,
-  endOfMonth,
-  endOfWeek,
-  endOfDay
-} from 'date-fns';
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 // As an alternative to rrule there is also rSchedule
 // See https://github.com/mattlewis92/angular-calendar/issues/711#issuecomment-418537158 for more info
 import RRule from 'rrule';
-import { CalendarEvent } from 'angular-calendar';
+import moment from 'moment-timezone';
+import {
+  CalendarDayViewBeforeRenderEvent,
+  CalendarEvent,
+  CalendarMonthViewBeforeRenderEvent,
+  CalendarView,
+  CalendarWeekViewBeforeRenderEvent
+} from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
+import { ViewPeriod } from 'calendar-utils';
 
 interface RecurringEvent {
   title: string;
@@ -25,15 +28,19 @@ interface RecurringEvent {
   };
 }
 
+// we set the timezone to UTC to avoid issues with DST changes
+// see https://github.com/mattlewis92/angular-calendar/issues/717 for more info
+moment.tz.setDefault('Utc');
+
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html'
 })
-export class DemoComponent implements OnInit {
-  view: string = 'month';
+export class DemoComponent {
+  view = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  viewDate = moment().toDate();
 
   recurringEvents: RecurringEvent[] = [
     {
@@ -49,7 +56,7 @@ export class DemoComponent implements OnInit {
       color: colors.blue,
       rrule: {
         freq: RRule.YEARLY,
-        bymonth: getMonth(new Date()) + 1,
+        bymonth: moment().month() + 1,
         bymonthday: 10
       }
     },
@@ -65,40 +72,45 @@ export class DemoComponent implements OnInit {
 
   calendarEvents: CalendarEvent[] = [];
 
-  ngOnInit(): void {
-    this.updateCalendarEvents();
-  }
+  viewPeriod: ViewPeriod;
 
-  updateCalendarEvents(): void {
-    this.calendarEvents = [];
+  constructor(private cdr: ChangeDetectorRef) {}
 
-    const startOfPeriod: any = {
-      month: startOfMonth,
-      week: startOfWeek,
-      day: startOfDay
-    };
+  updateCalendarEvents(
+    viewRender:
+      | CalendarMonthViewBeforeRenderEvent
+      | CalendarWeekViewBeforeRenderEvent
+      | CalendarDayViewBeforeRenderEvent
+  ): void {
+    if (
+      !this.viewPeriod ||
+      !moment(this.viewPeriod.start).isSame(viewRender.period.start) ||
+      !moment(this.viewPeriod.end).isSame(viewRender.period.end)
+    ) {
+      this.viewPeriod = viewRender.period;
+      this.calendarEvents = [];
 
-    const endOfPeriod: any = {
-      month: endOfMonth,
-      week: endOfWeek,
-      day: endOfDay
-    };
+      this.recurringEvents.forEach(event => {
+        const rule: RRule = new RRule({
+          ...event.rrule,
+          dtstart: moment(viewRender.period.start)
+            .startOf('day')
+            .toDate(),
+          until: moment(viewRender.period.end)
+            .endOf('day')
+            .toDate()
+        });
+        const { title, color } = event;
 
-    this.recurringEvents.forEach(event => {
-      const rule: RRule = new RRule(
-        Object.assign({}, event.rrule, {
-          dtstart: startOfPeriod[this.view](this.viewDate),
-          until: endOfPeriod[this.view](this.viewDate)
-        })
-      );
-
-      rule.all().forEach(date => {
-        this.calendarEvents.push(
-          Object.assign({}, event, {
-            start: new Date(date)
-          })
-        );
+        rule.all().forEach(date => {
+          this.calendarEvents.push({
+            title,
+            color,
+            start: moment(date).toDate()
+          });
+        });
       });
-    });
+      this.cdr.detectChanges();
+    }
   }
 }
