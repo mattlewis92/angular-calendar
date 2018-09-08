@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{VZ3g:function(r,e,n){"use strict";n.d(e,"a",function(){return a});var a={red:{primary:"#ad2121",secondary:"#FAE3E3"},blue:{primary:"#1e90ff",secondary:"#D1E8FF"},yellow:{primary:"#e3bc08",secondary:"#FDF1BA"}}}}]);
