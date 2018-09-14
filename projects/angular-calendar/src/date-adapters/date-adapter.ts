@@ -5,6 +5,8 @@ export abstract class DateAdapter implements BaseDateAdapter {
 
   abstract addMonths(date: Date | string | number, amount: number): Date;
 
+  abstract subMinutes(date: Date | string | number, amount: number): Date;
+  
   abstract subDays(date: Date | string | number, amount: number): Date;
 
   abstract subWeeks(date: Date | string | number, amount: number): Date;
@@ -72,6 +74,11 @@ export abstract class DateAdapter implements BaseDateAdapter {
   abstract isSameSecond(
     dateLeft: Date | string | number,
     dateRight: Date | string | number
+  ): boolean;
+
+  abstract isBefore (
+    date: Date | string | number,
+    dateToCompare: Date | string | number
   ): boolean;
 
   abstract max(...dates: Array<Date | string | number>): Date;

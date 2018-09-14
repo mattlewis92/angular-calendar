@@ -1,6 +1,7 @@
 import { adapterFactory as baseAdapterFactory } from 'calendar-utils/date-adapters/date-fns';
 import * as addWeeks from 'date-fns/add_weeks/index';
 import * as addMonths from 'date-fns/add_months/index';
+import * as subMinutes from 'date-fns/sub_minutes/index';
 import * as subDays from 'date-fns/sub_days/index';
 import * as subWeeks from 'date-fns/sub_weeks/index';
 import * as subMonths from 'date-fns/sub_months/index';
@@ -10,6 +11,7 @@ import * as setMonth from 'date-fns/set_month/index';
 import * as setYear from 'date-fns/set_year/index';
 import * as getDate from 'date-fns/get_date/index';
 import * as getYear from 'date-fns/get_year/index';
+import * as isBefore from 'date-fns/is_before/index';
 import { DateAdapter } from '../date-adapter';
 
 export function adapterFactory(): DateAdapter {
@@ -17,6 +19,7 @@ export function adapterFactory(): DateAdapter {
     ...baseAdapterFactory(),
     addWeeks,
     addMonths,
+    subMinutes,
     subDays,
     subWeeks,
     subMonths,
@@ -25,6 +28,7 @@ export function adapterFactory(): DateAdapter {
     setMonth,
     setYear,
     getDate,
-    getYear
+    getYear,
+    isBefore
   };
 }
