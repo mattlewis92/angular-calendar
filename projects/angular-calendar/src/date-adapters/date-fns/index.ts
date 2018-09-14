@@ -11,6 +11,7 @@ import * as setMonth from 'date-fns/set_month/index';
 import * as setYear from 'date-fns/set_year/index';
 import * as getDate from 'date-fns/get_date/index';
 import * as getYear from 'date-fns/get_year/index';
+import * as isBefore from 'date-fns/is_before/index';
 import { DateAdapter } from '../date-adapter';
 
 export function adapterFactory(): DateAdapter {
@@ -27,6 +28,7 @@ export function adapterFactory(): DateAdapter {
     setMonth,
     setYear,
     getDate,
-    getYear
+    getYear,
+    isBefore
   };
 }
