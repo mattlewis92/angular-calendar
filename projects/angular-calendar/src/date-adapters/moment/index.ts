@@ -17,6 +17,12 @@ export function adapterFactory(moment): DateAdapter {
         .toDate();
     },
 
+    subMinutes(date: Date | string | number, amount: number): Date {
+      return moment(date)
+        .subtract(amount, 'minutes')
+        .toDate();
+    },
+
     subDays(date: Date | string | number, amount: number): Date {
       return moment(date)
         .subtract(amount, 'days')

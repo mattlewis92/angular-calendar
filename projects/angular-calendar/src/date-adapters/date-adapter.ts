@@ -5,6 +5,8 @@ export abstract class DateAdapter implements BaseDateAdapter {
 
   abstract addMonths(date: Date | string | number, amount: number): Date;
 
+  abstract subMinutes(date: Date | string | number, amount: number): Date;
+
   abstract subDays(date: Date | string | number, amount: number): Date;
 
   abstract subWeeks(date: Date | string | number, amount: number): Date;
