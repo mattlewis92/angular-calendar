@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.1"></a>
+## [0.26.1](https://github.com/mattlewis92/angular-calendar/compare/v0.26.0...v0.26.1) (2018-09-18)
+
+
+### Bug Fixes
+
+* include license and readme in npm package ([7fe03b1](https://github.com/mattlewis92/angular-calendar/commit/7fe03b1)), closes [#732](https://github.com/mattlewis92/angular-calendar/issues/732)
+
+
+
 <a name="0.26.0"></a>
 # [0.26.0](https://github.com/mattlewis92/angular-calendar/compare/v0.25.2...v0.26.0) (2018-09-03)
 
