@@ -23,7 +23,7 @@
     "release:npm": "npm run build:lib && npm publish dist/angular-calendar",
     "release": "npm run release:git && npm run release:npm",
     "postrelease": "npm run gh-pages",
-    "gh-pages": "npm run build:clean && npm run build:demos && npm run compodoc && ngh --dir=dist/demos && npm run build:clean"
+    "gh-pages": "npm run build:clean && npm run build:demos && npm run compodoc && ngh --dir=dist/demos --no-silent && npm run build:clean"
   },
   "config": {
     "commitizen": {
