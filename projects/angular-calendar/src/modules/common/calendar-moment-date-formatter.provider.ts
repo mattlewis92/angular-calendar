@@ -30,8 +30,8 @@ export class CalendarMomentDateFormatter
    * @hidden
    */
   constructor(
-    @Inject(MOMENT) private moment: any,
-    private dateAdapter: DateAdapter
+    @Inject(MOMENT) protected moment: any,
+    protected dateAdapter: DateAdapter
   ) {}
 
   /**

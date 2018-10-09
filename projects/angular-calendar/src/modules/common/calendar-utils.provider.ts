@@ -20,7 +20,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
 
 @Injectable()
 export class CalendarUtils {
-  constructor(private dateAdapter: DateAdapter) {}
+  constructor(protected dateAdapter: DateAdapter) {}
 
   getMonthView(args: GetMonthViewArgs): MonthView {
     return getMonthView(this.dateAdapter, args);
