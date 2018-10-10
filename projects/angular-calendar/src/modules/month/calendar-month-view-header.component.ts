@@ -42,9 +42,9 @@ export class CalendarMonthViewHeaderComponent {
   @Output()
   columnHeaderClicked: EventEmitter<number> = new EventEmitter<number>();
 
+  trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
+
   public handleCellClicked(event: WeekDay) {
     this.columnHeaderClicked.emit(event.date.getDay());
   }
-
-  trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 }
