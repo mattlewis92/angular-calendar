@@ -33,7 +33,7 @@ export class CalendarAngularDateFormatter
    * The month view title
    */
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
-    return formatDate(date, 'MMMM y', locale);
+    return formatDate(date, 'LLLL y', locale);
   }
 
   /**

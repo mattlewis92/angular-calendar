@@ -1,8 +1,12 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import { startOfDay } from 'date-fns';
+import localePl from '@angular/common/locales/pl';
 import { CalendarAngularDateFormatter, DateAdapter } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePl);
 
 describe('CalendarAngularDateFormatter provider', () => {
   beforeEach(() => {
@@ -47,6 +51,15 @@ describe('CalendarAngularDateFormatter provider', () => {
         locale: 'en'
       })
     ).to.equal('January 2016');
+  });
+
+  it('monthViewTitle in polish', () => {
+    expect(
+      dateFormatter.monthViewTitle({
+        date: new Date('2016-01-01'),
+        locale: 'pl'
+      })
+    ).to.equal('styczeń 2016');
   });
 
   it('weekViewColumnHeader', () => {
