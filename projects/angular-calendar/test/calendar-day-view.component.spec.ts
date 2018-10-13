@@ -185,6 +185,33 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
   });
 
+  it('should add a custom CSS class to all day events', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-06-01'),
+        cssClass: 'foo',
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: ''
+        },
+        allDay: true
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement
+        .querySelector('.cal-all-day-events mwl-calendar-day-view-event')
+        .classList.contains('foo')
+    ).to.equal(true);
+    fixture.destroy();
+  });
+
   it('should call the hour segment clicked callback', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
