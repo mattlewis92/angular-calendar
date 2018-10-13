@@ -267,6 +267,13 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
           }
         },
         {
+          path: 'day-view-scheduler',
+          loadChildren: './demo-modules/day-view-scheduler/module#DemoModule',
+          data: {
+            label: 'Day view scheduler'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }
