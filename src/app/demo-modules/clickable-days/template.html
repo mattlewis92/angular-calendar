@@ -6,6 +6,7 @@
 <div class="alert alert-info">
   Click on a day on the view.
   <strong *ngIf="clickedDate">You clicked on this day: {{ clickedDate | date:'medium' }}</strong>
+  <strong *ngIf="clickedColumn != null">You clicked on this column: {{ clickedColumn }}</strong>
 </div>
 
 <div [ngSwitch]="view">
@@ -13,6 +14,7 @@
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
+    (columnHeaderClicked)="clickedColumn = $event"
     (dayClicked)="clickedDate = $event.day.date">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
