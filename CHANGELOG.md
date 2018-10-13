@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.2"></a>
+## [0.26.2](https://github.com/mattlewis92/angular-calendar/compare/v0.26.1...v0.26.2) (2018-10-13)
+
+
+### Bug Fixes
+
+* make it easier to extend providers ([c753c22](https://github.com/mattlewis92/angular-calendar/commit/c753c22))
+* **day-view:** add custom cssClass to allDay events ([d2ac44c](https://github.com/mattlewis92/angular-calendar/commit/d2ac44c)), closes [#769](https://github.com/mattlewis92/angular-calendar/issues/769)
+* **month-view:** don't allow dropping events on the source day ([c96c87e](https://github.com/mattlewis92/angular-calendar/commit/c96c87e)), closes [#746](https://github.com/mattlewis92/angular-calendar/issues/746)
+* **month-view:** use correct inflection of month names on the title ([ba9f5ad](https://github.com/mattlewis92/angular-calendar/commit/ba9f5ad)), closes [#757](https://github.com/mattlewis92/angular-calendar/issues/757)
+
+
+
 <a name="0.26.1"></a>
 ## [0.26.1](https://github.com/mattlewis92/angular-calendar/compare/v0.26.0...v0.26.1) (2018-09-18)
 
