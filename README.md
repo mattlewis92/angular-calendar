@@ -86,17 +86,13 @@ Where possible this library will strictly adhere to [semver](http://semver.org/)
 
 Yes.
 
-### Does this library work with angular 2.x?
+### What major versions of angular does this library support?
 
-The last version of this library that supports 2.x is `0.9.1`.
-
-### Does this library work with angular 4.x?
-
-The last version of this library that supports 4.x is `0.22.3`.
-
-### Does this library work with angular 5.x?
-
-The last version of this library that supports 5.x is `0.24.1`.
+| Angular major | Last supported angular-calendar version |
+| ------------- | --------------------------------------- |
+| 5.x           | 0.24.1                                  |
+| 4.x           | 0.22.3                                  |
+| 2.x           | 0.9.1                                   |
 
 ### How do I use this with my favourite module bundler?
 
