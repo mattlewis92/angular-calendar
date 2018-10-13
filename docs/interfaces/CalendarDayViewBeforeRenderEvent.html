@@ -247,6 +247,7 @@ export interface DayViewEventResize {
         (drop)&#x3D;&quot;eventDropped($event, view.period.start, true)&quot;&gt;
         &lt;mwl-calendar-day-view-event
           *ngFor&#x3D;&quot;let event of view.allDayEvents; trackBy:trackByEventId&quot;
+          [ngClass]&#x3D;&quot;event.cssClass&quot;
           [dayEvent]&#x3D;&quot;{event: event}&quot;
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
