@@ -14,7 +14,7 @@ import { colors } from '../demo-utils/colors';
   // you should really include this CSS in your global stylesheet
   styles: [
     `
-      .my-custom-class a {
+      .my-custom-class span {
         color: #ff3d7f !important;
       }
     `
