@@ -274,6 +274,14 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
           }
         },
         {
+          path: 'drag-to-create-events',
+          loadChildren:
+            './demo-modules/drag-to-create-events/module#DemoModule',
+          data: {
+            label: 'Drag to create events'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }
