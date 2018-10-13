@@ -77,7 +77,7 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should emit on the columnHeaderClicked output', () => {
+  it('should emit on the columnHeaderClicked output', (done) => {
     const fixture: ComponentFixture<
       CalendarMonthViewComponent
     > = TestBed.createComponent(CalendarMonthViewComponent);
@@ -85,11 +85,11 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
     fixture.componentInstance.columnHeaderClicked.subscribe(val => {
-      expect(val).to.deep.equal({
-        day: fixture.componentInstance.columnHeaderClicked[0]
-      });
+      expect(val).to.equal(0);
+      done();
     });
-    fixture.nativeElement.querySelector('.cal-header').click();
+    fixture.nativeElement.querySelector('.cal-header .cal-cell').click();
+    fixture.detectChanges();
   });
 
   it('should generate the week view with default colors for events', () => {
