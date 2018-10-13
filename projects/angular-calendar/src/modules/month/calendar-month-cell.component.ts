@@ -43,7 +43,7 @@ import { PlacementArray } from 'positioning';
           mwlDraggable
           [class.cal-draggable]="event.draggable"
           dragActiveClass="cal-drag-active"
-          [dropData]="{event: event}"
+          [dropData]="{event: event, draggedFrom: day}"
           [dragAxis]="{x: event.draggable, y: event.draggable}"
           (mwlClick)="eventClicked.emit({ event: event })">
         </div>

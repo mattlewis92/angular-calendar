@@ -611,10 +611,6 @@ describe('calendarMonthView component', () => {
       {
         start: new Date('2017-02-01'),
         title: 'draggable event',
-        color: {
-          primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        },
         draggable: true
       }
     ];
@@ -655,6 +651,52 @@ describe('calendarMonthView component', () => {
     expect(dragEvent.event).to.equal(fixture.componentInstance.events[0]);
     expect(dragEvent.newStart).to.deep.equal(new Date('2017-01-31'));
     expect(dragEvent.newEnd).to.deep.equal(undefined);
+  });
+
+  it('should not fire drop events when dropping on the source date', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-10-13');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2018-10-13'),
+        end: new Date('2018-10-14'),
+        title: 'draggable event',
+        draggable: true
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    const dragSpy = sinon.spy();
+    fixture.componentInstance.eventTimesChanged.subscribe(e => dragSpy(e));
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const cells: HTMLElement[] = fixture.nativeElement.querySelectorAll(
+      '.cal-day-cell'
+    );
+    const events: HTMLElement = fixture.nativeElement.querySelectorAll(
+      '.cal-event'
+    );
+    const dragToCellPosition: ClientRect = cells[14].getBoundingClientRect();
+    const eventStartPosition: ClientRect = events[1].getBoundingClientRect();
+    triggerDomEvent('mousedown', events[1], {
+      clientX: eventStartPosition.left,
+      clientY: eventStartPosition.top
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: dragToCellPosition.left + 5,
+      clientY: dragToCellPosition.top + 5
+    });
+    fixture.detectChanges();
+    expect(cells[14].classList.contains('cal-drag-over')).to.equal(true);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: dragToCellPosition.left + 5,
+      clientY: dragToCellPosition.top + 5
+    });
+    fixture.detectChanges();
+    expect(cells[14].classList.contains('cal-drag-over')).to.equal(false);
+    expect(dragSpy).not.to.have.been.called;
   });
 
   it('should update the event title', () => {

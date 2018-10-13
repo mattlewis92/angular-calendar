@@ -78,7 +78,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
               dragOverClass="cal-drag-over"
-              (drop)="eventDropped(day, $event.dropData.event)"
+              (drop)="eventDropped(day, $event.dropData.event, $event.dropData.draggedFrom)"
               (eventClicked)="eventClicked.emit({event: $event.event})">
             </mwl-calendar-month-cell>
           </div>
@@ -91,7 +91,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             (eventClicked)="eventClicked.emit({event: $event.event})"
             mwlDroppable
             dragOverClass="cal-drag-over"
-            (drop)="eventDropped(openDay, $event.dropData.event)">
+            (drop)="eventDropped(openDay, $event.dropData.event, $event.dropData.draggedFrom)">
           </mwl-calendar-open-day-events>
         </div>
       </div>
@@ -344,32 +344,38 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  eventDropped(day: MonthViewDay, event: CalendarEvent): void {
-    const year: number = this.dateAdapter.getYear(day.date);
-    const month: number = this.dateAdapter.getMonth(day.date);
-    const date: number = this.dateAdapter.getDate(day.date);
-    const newStart: Date = this.dateAdapter.setDate(
-      this.dateAdapter.setMonth(
-        this.dateAdapter.setYear(event.start, year),
-        month
-      ),
-      date
-    );
-    let newEnd: Date;
-    if (event.end) {
-      const secondsDiff: number = this.dateAdapter.differenceInSeconds(
-        newStart,
-        event.start
+  eventDropped(
+    droppedOn: MonthViewDay,
+    event: CalendarEvent,
+    draggedFrom?: MonthViewDay
+  ): void {
+    if (droppedOn !== draggedFrom) {
+      const year: number = this.dateAdapter.getYear(droppedOn.date);
+      const month: number = this.dateAdapter.getMonth(droppedOn.date);
+      const date: number = this.dateAdapter.getDate(droppedOn.date);
+      const newStart: Date = this.dateAdapter.setDate(
+        this.dateAdapter.setMonth(
+          this.dateAdapter.setYear(event.start, year),
+          month
+        ),
+        date
       );
-      newEnd = this.dateAdapter.addSeconds(event.end, secondsDiff);
+      let newEnd: Date;
+      if (event.end) {
+        const secondsDiff: number = this.dateAdapter.differenceInSeconds(
+          newStart,
+          event.start
+        );
+        newEnd = this.dateAdapter.addSeconds(event.end, secondsDiff);
+      }
+      this.eventTimesChanged.emit({
+        event,
+        newStart,
+        newEnd,
+        day: droppedOn,
+        type: CalendarEventTimesChangedEventType.Drop
+      });
     }
-    this.eventTimesChanged.emit({
-      event,
-      newStart,
-      newEnd,
-      day,
-      type: CalendarEventTimesChangedEventType.Drop
-    });
   }
 
   private refreshHeader(): void {
