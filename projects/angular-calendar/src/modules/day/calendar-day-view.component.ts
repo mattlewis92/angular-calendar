@@ -586,7 +586,8 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
           newStart,
           newEnd,
           event: dayEvent.event,
-          type: CalendarEventTimesChangedEventType.Drag
+          type: CalendarEventTimesChangedEventType.Drag,
+          allDay: false
         });
       }
     }

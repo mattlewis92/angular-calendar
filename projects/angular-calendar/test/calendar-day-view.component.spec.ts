@@ -848,7 +848,8 @@ describe('CalendarDayViewComponent component', () => {
       newEnd: moment('2016-06-27')
         .add(6, 'hours')
         .add(30, 'minutes')
-        .toDate()
+        .toDate(),
+      allDay: false
     });
     expect(eventDropped).to.have.been.calledOnce;
   });
@@ -1062,7 +1063,8 @@ describe('CalendarDayViewComponent component', () => {
       newEnd: moment('2016-06-27')
         .add(6, 'hours')
         .subtract(30, 'minutes')
-        .toDate()
+        .toDate(),
+      allDay: false
     });
   });
 
@@ -1246,7 +1248,8 @@ describe('CalendarDayViewComponent component', () => {
       newEnd: moment('2016-06-27')
         .add(6, 'hours')
         .add(10, 'minutes')
-        .toDate()
+        .toDate(),
+      allDay: false
     });
   });
 
