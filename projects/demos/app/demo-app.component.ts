@@ -56,7 +56,7 @@ async function getSources(folder: string): Promise<Source[]> {
 const dependencyVersions: any = {
   angular: require('@angular/core/package.json').version,
   angularRouter: require('@angular/router/package.json').version,
-  angularCalendar: require('../../package.json').version,
+  angularCalendar: require('../../../package.json').version,
   calendarUtils: require('calendar-utils/package.json').version,
   angularResizableElement: require('angular-resizable-element/package.json')
     .version,

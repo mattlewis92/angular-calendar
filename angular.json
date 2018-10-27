@@ -5,7 +5,7 @@
   "projects": {
     "demos": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "projects/demos",
       "projectType": "application",
       "prefix": "mwl",
       "schematics": {
@@ -37,16 +37,16 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/demos",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "index": "projects/demos/index.html",
+            "main": "projects/demos/main.ts",
+            "polyfills": "projects/demos/polyfills.ts",
+            "tsConfig": "projects/demos/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/demos/favicon.ico",
+              "projects/demos/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/demos/styles.scss"
             ],
             "scripts": []
           },
@@ -54,8 +54,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/demos/environments/environment.ts",
+                  "with": "projects/demos/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -85,7 +85,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json"
+              "projects/demos/tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"
