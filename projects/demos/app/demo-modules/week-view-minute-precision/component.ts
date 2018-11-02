@@ -16,18 +16,21 @@ export class DemoComponent {
       start: addHours(startOfDay(new Date()), 5),
       end: addHours(startOfDay(new Date()), 17),
       title: 'Event 1',
-      color: colors.red
+      color: colors.red,
+      allDay: true
     },
     {
       start: addHours(startOfDay(addDays(new Date(), 1)), 2),
       end: addHours(startOfDay(addDays(new Date(), 1)), 18),
       title: 'Event 2',
-      color: colors.blue
+      color: colors.blue,
+      allDay: true
     },
     {
       start: addHours(startOfDay(new Date()), 8),
       title: 'Event 3',
-      color: colors.blue
+      color: colors.blue,
+      allDay: true
     }
   ];
 }
