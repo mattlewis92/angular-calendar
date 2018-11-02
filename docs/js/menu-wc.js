@@ -170,9 +170,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     <li class="link">
                         <a href="classes/CalendarEventTitleFormatter.html" data-type="entity-link">CalendarEventTitleFormatter</a>
                     </li>
-                    <li class="link">
-                        <a href="classes/CalendarMomentDateFormatter.html" data-type="entity-link">CalendarMomentDateFormatter</a>
-                    </li>
             </ul>
         </li>
                 <li class="chapter">
@@ -186,6 +183,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                             <li class="link">
                                 <a href="injectables/CalendarDateFormatter.html" data-type="entity-link">CalendarDateFormatter</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/CalendarMomentDateFormatter.html" data-type="entity-link">CalendarMomentDateFormatter</a>
                             </li>
                             <li class="link">
                                 <a href="injectables/CalendarNativeDateFormatter.html" data-type="entity-link">CalendarNativeDateFormatter</a>
