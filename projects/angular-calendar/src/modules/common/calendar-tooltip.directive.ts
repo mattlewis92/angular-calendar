@@ -74,8 +74,12 @@ export class CalendarTooltipDirective implements OnDestroy {
   @Input('tooltipAppendToBody')
   appendToBody: boolean; // tslint:disable-line no-input-rename
 
+  @Input('tooltipDelay')
+  delay: number | null = null; // tslint:disable-line no-input-rename
+
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
+  private showTooltipTimeoutId: number | null = null;
 
   constructor(
     private elementRef: ElementRef,
@@ -96,11 +100,22 @@ export class CalendarTooltipDirective implements OnDestroy {
 
   @HostListener('mouseenter')
   onMouseOver(): void {
-    this.show();
+    if (this.delay === null) {
+      this.show();
+    } else {
+      this.showTooltipTimeoutId = window.setTimeout(
+        () => this.show(),
+        this.delay
+      );
+    }
   }
 
   @HostListener('mouseleave')
   onMouseOut(): void {
+    if (this.showTooltipTimeoutId !== null) {
+      this.showTooltipTimeoutId = null;
+      clearTimeout(this.showTooltipTimeoutId);
+    }
     this.hide();
   }
 

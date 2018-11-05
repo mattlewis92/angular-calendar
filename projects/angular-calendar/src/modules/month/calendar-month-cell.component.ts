@@ -22,7 +22,8 @@ import { PlacementArray } from 'positioning';
       let-unhighlightDay="unhighlightDay"
       let-eventClicked="eventClicked"
       let-tooltipTemplate="tooltipTemplate"
-      let-tooltipAppendToBody="tooltipAppendToBody">
+      let-tooltipAppendToBody="tooltipAppendToBody"
+      let-tooltipDelay="tooltipDelay">
       <div class="cal-cell-top">
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
         <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
@@ -40,6 +41,7 @@ import { PlacementArray } from 'positioning';
           [tooltipEvent]="event"
           [tooltipTemplate]="tooltipTemplate"
           [tooltipAppendToBody]="tooltipAppendToBody"
+          [tooltipDelay]="tooltipDelay"
           mwlDraggable
           [class.cal-draggable]="event.draggable"
           dragActiveClass="cal-drag-active"
@@ -60,7 +62,8 @@ import { PlacementArray } from 'positioning';
         unhighlightDay: unhighlightDay,
         eventClicked: eventClicked,
         tooltipTemplate: tooltipTemplate,
-        tooltipAppendToBody: tooltipAppendToBody
+        tooltipAppendToBody: tooltipAppendToBody,
+        tooltipDelay: tooltipDelay
       }">
     </ng-template>
   `,
@@ -99,6 +102,9 @@ export class CalendarMonthCellComponent {
 
   @Input()
   tooltipTemplate: TemplateRef<any>;
+
+  @Input()
+  tooltipDelay: number | null;
 
   @Output()
   highlightDay: EventEmitter<any> = new EventEmitter();

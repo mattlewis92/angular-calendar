@@ -72,6 +72,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [tooltipPlacement]="tooltipPlacement"
               [tooltipAppendToBody]="tooltipAppendToBody"
               [tooltipTemplate]="tooltipTemplate"
+              [tooltipDelay]="tooltipDelay"
               [customTemplate]="cellTemplate"
               (mwlClick)="dayClicked.emit({ day: day })"
               (highlightDay)="toggleDayHighlight($event.event, true)"
@@ -154,6 +155,13 @@ export class CalendarMonthViewComponent
    */
   @Input()
   tooltipAppendToBody: boolean = true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input()
+  tooltipDelay: number | null = null;
 
   /**
    * The start number of the week
