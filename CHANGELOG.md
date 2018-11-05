@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.4"></a>
+## [0.26.4](https://github.com/mattlewis92/angular-calendar/compare/v0.26.3...v0.26.4) (2018-11-05)
+
+
+### Bug Fixes
+
+* **day-view:** set allDay to false when dragging events ([14f1e5a](https://github.com/mattlewis92/angular-calendar/commit/14f1e5a))
+* make sure moment date formatter is injectable ([bd6da5f](https://github.com/mattlewis92/angular-calendar/commit/bd6da5f))
+* **week-view:** use correct event width for hourly events ([2fd4163](https://github.com/mattlewis92/angular-calendar/commit/2fd4163)), closes [#784](https://github.com/mattlewis92/angular-calendar/issues/784)
+
+
+
 <a name="0.26.3"></a>
 ## [0.26.3](https://github.com/mattlewis92/angular-calendar/compare/v0.26.2...v0.26.3) (2018-10-14)
 
