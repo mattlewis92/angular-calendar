@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -35,6 +32,14 @@
 
 <h1 id="change-log">Change Log</h1>
 <p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<p><a name="0.26.4"></a></p>
+<h2 id="0-26-4-2018-11-05-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.3...v0.26.4">0.26.4</a> (2018-11-05)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>day-view:</strong> set allDay to false when dragging events (<a href="https://github.com/mattlewis92/angular-calendar/commit/14f1e5a">14f1e5a</a>)</li>
+<li>make sure moment date formatter is injectable (<a href="https://github.com/mattlewis92/angular-calendar/commit/bd6da5f">bd6da5f</a>)</li>
+<li><strong>week-view:</strong> use correct event width for hourly events (<a href="https://github.com/mattlewis92/angular-calendar/commit/2fd4163">2fd4163</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/784">#784</a></li>
+</ul>
 <p><a name="0.26.3"></a></p>
 <h2 id="0-26-3-2018-10-14-"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.2...v0.26.3">0.26.3</a> (2018-10-14)</h2>
 <h3 id="bug-fixes">Bug Fixes</h3>
@@ -1251,7 +1256,9 @@ After:</code></pre></div><p>node_modules/angular2-calendar/dist/umd/angular2-cal
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <script src="./js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 
