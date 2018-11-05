@@ -89,6 +89,7 @@ export interface DayViewEventResize {
           [tooltipPlacement]="tooltipPlacement"
           [tooltipTemplate]="tooltipTemplate"
           [tooltipAppendToBody]="tooltipAppendToBody"
+          [tooltipDelay]="tooltipDelay"
           [customTemplate]="eventTemplate"
           [eventTitleTemplate]="eventTitleTemplate"
           [eventActionsTemplate]="eventActionsTemplate"
@@ -144,6 +145,7 @@ export interface DayViewEventResize {
               [tooltipPlacement]="tooltipPlacement"
               [tooltipTemplate]="tooltipTemplate"
               [tooltipAppendToBody]="tooltipAppendToBody"
+              [tooltipDelay]="tooltipDelay"
               [customTemplate]="eventTemplate"
               [eventTitleTemplate]="eventTitleTemplate"
               [eventActionsTemplate]="eventActionsTemplate"
@@ -267,6 +269,13 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Input()
   tooltipAppendToBody: boolean = true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input()
+  tooltipDelay: number | null = null;
 
   /**
    * A custom template to use to replace the hour segment
