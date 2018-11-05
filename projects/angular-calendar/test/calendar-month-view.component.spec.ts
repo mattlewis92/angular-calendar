@@ -3,7 +3,8 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  flush
+  flush,
+  tick
 } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import moment from 'moment';
@@ -527,6 +528,47 @@ describe('calendarMonthView component', () => {
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
     flush();
+    const tooltip: HTMLElement = document.body.querySelector(
+      '.cal-tooltip'
+    ) as HTMLElement;
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
+      'title: foo <b>bar</b>'
+    );
+    expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
+    expect(!!tooltip.style.top).to.equal(true);
+    expect(!!tooltip.style.left).to.equal(true);
+    triggerDomEvent('mouseleave', event);
+    fixture.detectChanges();
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+  }));
+
+  it('should show a tooltip on mouseover of the event after a delay', fakeAsync(() => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    eventTitle.monthTooltip = (e: CalendarEvent) => {
+      return `title: ${e.title}`;
+    };
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo <b>bar</b>'
+      }
+    ];
+    fixture.componentInstance.tooltipDelay = 2000;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+    );
+    triggerDomEvent('mouseenter', event);
+    fixture.detectChanges();
+    tick(fixture.componentInstance.tooltipDelay - 1);
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    tick(1);
+    expect(!!document.body.querySelector('.cal-tooltip')).to.equal(true);
     const tooltip: HTMLElement = document.body.querySelector(
       '.cal-tooltip'
     ) as HTMLElement;
