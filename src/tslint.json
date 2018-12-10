@@ -1,8 +1,0 @@
-{
-  "extends": "../tslint.json",
-  "rules": {
-    "use-view-encapsulation": false,
-    "no-unused-css": false,
-    "trackBy-function": false
-  }
-}

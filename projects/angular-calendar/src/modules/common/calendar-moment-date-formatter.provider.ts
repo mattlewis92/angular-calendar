@@ -1,4 +1,4 @@
-import { InjectionToken, Inject } from '@angular/core';
+import { InjectionToken, Inject, Injectable } from '@angular/core';
 import {
   CalendarDateFormatterInterface,
   DateFormatterParams
@@ -24,6 +24,7 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
  *
  * ```
  */
+@Injectable()
 export class CalendarMomentDateFormatter
   implements CalendarDateFormatterInterface {
   /**
