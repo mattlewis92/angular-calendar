@@ -3,6 +3,7 @@
   "rules": {
     "use-host-property-decorator": false,
     "no-inferrable-types": false,
-    "max-inline-declarations": false
+    "max-inline-declarations": false,
+    "angular-whitespace": false
   }
 }
