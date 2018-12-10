@@ -45,8 +45,7 @@ const colors: any = {
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-  @ViewChild('modalContent')
-  modalContent: TemplateRef<any>;
+  @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 

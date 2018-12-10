@@ -22,20 +22,27 @@ import { PlacementArray } from 'positioning';
       let-unhighlightDay="unhighlightDay"
       let-eventClicked="eventClicked"
       let-tooltipTemplate="tooltipTemplate"
-      let-tooltipAppendToBody="tooltipAppendToBody">
+      let-tooltipAppendToBody="tooltipAppendToBody"
+    >
       <div class="cal-cell-top">
-        <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
-        <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+        <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
+          day.badgeTotal
+        }}</span>
+        <span class="cal-day-number">{{
+          day.date | calendarDate: 'monthViewDayNumber':locale
+        }}</span>
       </div>
       <div class="cal-events" *ngIf="day.events.length > 0">
         <div
           class="cal-event"
-          *ngFor="let event of day.events; trackBy:trackByEventId"
+          *ngFor="let event of day.events; trackBy: trackByEventId"
           [style.backgroundColor]="event.color?.primary"
           [ngClass]="event?.cssClass"
-          (mouseenter)="highlightDay.emit({event: event})"
-          (mouseleave)="unhighlightDay.emit({event: event})"
-          [mwlCalendarTooltip]="event.title | calendarEventTitle:'monthTooltip':event"
+          (mouseenter)="highlightDay.emit({ event: event })"
+          (mouseleave)="unhighlightDay.emit({ event: event })"
+          [mwlCalendarTooltip]="
+            event.title | calendarEventTitle: 'monthTooltip':event
+          "
           [tooltipPlacement]="tooltipPlacement"
           [tooltipEvent]="event"
           [tooltipTemplate]="tooltipTemplate"
@@ -43,10 +50,10 @@ import { PlacementArray } from 'positioning';
           mwlDraggable
           [class.cal-draggable]="event.draggable"
           dragActiveClass="cal-drag-active"
-          [dropData]="{event: event, draggedFrom: day}"
-          [dragAxis]="{x: event.draggable, y: event.draggable}"
-          (mwlClick)="eventClicked.emit({ event: event })">
-        </div>
+          [dropData]="{ event: event, draggedFrom: day }"
+          [dragAxis]="{ x: event.draggable, y: event.draggable }"
+          (mwlClick)="eventClicked.emit({ event: event })"
+        ></div>
       </div>
     </ng-template>
     <ng-template
@@ -61,7 +68,8 @@ import { PlacementArray } from 'positioning';
         eventClicked: eventClicked,
         tooltipTemplate: tooltipTemplate,
         tooltipAppendToBody: tooltipAppendToBody
-      }">
+      }"
+    >
     </ng-template>
   `,
   host: {
@@ -79,32 +87,23 @@ import { PlacementArray } from 'positioning';
   }
 })
 export class CalendarMonthCellComponent {
-  @Input()
-  day: MonthViewDay;
+  @Input() day: MonthViewDay;
 
-  @Input()
-  openDay: MonthViewDay;
+  @Input() openDay: MonthViewDay;
 
-  @Input()
-  locale: string;
+  @Input() locale: string;
 
-  @Input()
-  tooltipPlacement: PlacementArray;
+  @Input() tooltipPlacement: PlacementArray;
 
-  @Input()
-  tooltipAppendToBody: boolean;
+  @Input() tooltipAppendToBody: boolean;
 
-  @Input()
-  customTemplate: TemplateRef<any>;
+  @Input() customTemplate: TemplateRef<any>;
 
-  @Input()
-  tooltipTemplate: TemplateRef<any>;
+  @Input() tooltipTemplate: TemplateRef<any>;
 
-  @Output()
-  highlightDay: EventEmitter<any> = new EventEmitter();
+  @Output() highlightDay: EventEmitter<any> = new EventEmitter();
 
-  @Output()
-  unhighlightDay: EventEmitter<any> = new EventEmitter();
+  @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
