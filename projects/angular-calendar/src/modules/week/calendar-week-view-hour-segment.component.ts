@@ -9,15 +9,17 @@ import { WeekViewHourColumn } from 'calendar-utils';
       let-segment="segment"
       let-locale="locale"
       let-segmentHeight="segmentHeight"
-      let-isTimeLabel="isTimeLabel">
+      let-isTimeLabel="isTimeLabel"
+    >
       <div
         class="cal-hour-segment"
         [style.height.px]="segmentHeight"
         [class.cal-hour-start]="segment.isStart"
         [class.cal-after-hour-start]="!segment.isStart"
-        [ngClass]="segment.cssClass">
+        [ngClass]="segment.cssClass"
+      >
         <div class="cal-time" *ngIf="isTimeLabel">
-          {{ segment.date | calendarDate:'weekViewHour':locale }}
+          {{ segment.date | calendarDate: 'weekViewHour':locale }}
         </div>
       </div>
     </ng-template>
@@ -28,23 +30,19 @@ import { WeekViewHourColumn } from 'calendar-utils';
         locale: locale,
         segmentHeight: segmentHeight,
         isTimeLabel: isTimeLabel
-      }">
+      }"
+    >
     </ng-template>
   `
 })
 export class CalendarWeekViewHourSegmentComponent {
-  @Input()
-  segment: WeekViewHourColumn;
+  @Input() segment: WeekViewHourColumn;
 
-  @Input()
-  segmentHeight: number;
+  @Input() segmentHeight: number;
 
-  @Input()
-  locale: string;
+  @Input() locale: string;
 
-  @Input()
-  isTimeLabel: boolean;
+  @Input() isTimeLabel: boolean;
 
-  @Input()
-  customTemplate: TemplateRef<any>;
+  @Input() customTemplate: TemplateRef<any>;
 }

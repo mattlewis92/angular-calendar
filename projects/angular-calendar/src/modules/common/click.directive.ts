@@ -16,8 +16,7 @@ const clickElements = new Set<HTMLElement>();
   selector: '[mwlClick]'
 })
 export class ClickDirective implements OnInit, OnDestroy {
-  @Output('mwlClick')
-  click: EventEmitter<MouseEvent> = new EventEmitter(); // tslint:disable-line
+  @Output('mwlClick') click: EventEmitter<MouseEvent> = new EventEmitter(); // tslint:disable-line
 
   private removeListener: () => void;
 

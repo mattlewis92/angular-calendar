@@ -62,8 +62,7 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
 export class DayViewSchedulerComponent extends CalendarDayViewComponent {
   view: DayViewScheduler;
 
-  @Output()
-  userChanged = new EventEmitter();
+  @Output() userChanged = new EventEmitter();
 
   eventDragged(dayEvent: DayViewEvent, xPixels: number, yPixels: number): void {
     if (yPixels !== 0) {

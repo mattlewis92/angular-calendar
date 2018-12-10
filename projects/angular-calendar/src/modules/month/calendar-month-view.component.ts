@@ -58,13 +58,18 @@ export interface CalendarMonthViewEventTimesChangedEvent<
       <mwl-calendar-month-view-header
         [days]="columnHeaders"
         [locale]="locale"
-        [customTemplate]="headerTemplate">
+        [customTemplate]="headerTemplate"
+      >
       </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div *ngFor="let rowIndex of view.rowOffsets; trackByIndex">
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
-              *ngFor="let day of (view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)); trackBy:trackByDate"
+              *ngFor="
+                let day of (view.days
+                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek);
+                trackBy: trackByDate
+              "
               [ngClass]="day?.cssClass"
               [day]="day"
               [openDay]="openDay"
@@ -78,8 +83,15 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
               dragOverClass="cal-drag-over"
-              (drop)="eventDropped(day, $event.dropData.event, $event.dropData.draggedFrom)"
-              (eventClicked)="eventClicked.emit({event: $event.event})">
+              (drop)="
+                eventDropped(
+                  day,
+                  $event.dropData.event,
+                  $event.dropData.draggedFrom
+                )
+              "
+              (eventClicked)="eventClicked.emit({ event: $event.event })"
+            >
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
@@ -88,10 +100,17 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             [customTemplate]="openDayEventsTemplate"
             [eventTitleTemplate]="eventTitleTemplate"
             [eventActionsTemplate]="eventActionsTemplate"
-            (eventClicked)="eventClicked.emit({event: $event.event})"
+            (eventClicked)="eventClicked.emit({ event: $event.event })"
             mwlDroppable
             dragOverClass="cal-drag-over"
-            (drop)="eventDropped(openDay, $event.dropData.event, $event.dropData.draggedFrom)">
+            (drop)="
+              eventDropped(
+                openDay,
+                $event.dropData.event,
+                $event.dropData.draggedFrom
+              )
+            "
+          >
           </mwl-calendar-open-day-events>
         </div>
       </div>
@@ -103,99 +122,83 @@ export class CalendarMonthViewComponent
   /**
    * The current view date
    */
-  @Input()
-  viewDate: Date;
+  @Input() viewDate: Date;
 
   /**
    * An array of events to display on view.
    * The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63
    */
-  @Input()
-  events: CalendarEvent[] = [];
+  @Input() events: CalendarEvent[] = [];
 
   /**
    * An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view
    */
-  @Input()
-  excludeDays: number[] = [];
+  @Input() excludeDays: number[] = [];
 
   /**
    * Whether the events list for the day of the `viewDate` option is visible or not
    */
-  @Input()
-  activeDayIsOpen: boolean = false;
+  @Input() activeDayIsOpen: boolean = false;
 
   /**
    * An observable that when emitted on will re-render the current view
    */
-  @Input()
-  refresh: Subject<any>;
+  @Input() refresh: Subject<any>;
 
   /**
    * The locale used to format dates
    */
-  @Input()
-  locale: string;
+  @Input() locale: string;
 
   /**
    * The placement of the event tooltip
    */
-  @Input()
-  tooltipPlacement: PlacementArray = 'auto';
+  @Input() tooltipPlacement: PlacementArray = 'auto';
 
   /**
    * A custom template to use for the event tooltips
    */
-  @Input()
-  tooltipTemplate: TemplateRef<any>;
+  @Input() tooltipTemplate: TemplateRef<any>;
 
   /**
    * Whether to append tooltips to the body or next to the trigger element
    */
-  @Input()
-  tooltipAppendToBody: boolean = true;
+  @Input() tooltipAppendToBody: boolean = true;
 
   /**
    * The start number of the week
    */
-  @Input()
-  weekStartsOn: number;
+  @Input() weekStartsOn: number;
 
   /**
    * A custom template to use to replace the header
    */
-  @Input()
-  headerTemplate: TemplateRef<any>;
+  @Input() headerTemplate: TemplateRef<any>;
 
   /**
    * A custom template to use to replace the day cell
    */
-  @Input()
-  cellTemplate: TemplateRef<any>;
+  @Input() cellTemplate: TemplateRef<any>;
 
   /**
    * A custom template to use for the slide down box of events for the active day
    */
-  @Input()
-  openDayEventsTemplate: TemplateRef<any>;
+  @Input() openDayEventsTemplate: TemplateRef<any>;
 
   /**
    * A custom template to use for event titles
    */
-  @Input()
-  eventTitleTemplate: TemplateRef<any>;
+  @Input() eventTitleTemplate: TemplateRef<any>;
 
   /**
    * A custom template to use for event actions
    */
-  @Input()
-  eventActionsTemplate: TemplateRef<any>;
+  @Input() eventActionsTemplate: TemplateRef<any>;
 
   /**
    * An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends
    */
-  @Input()
-  weekendDays: number[];
+  @Input() weekendDays: number[];
 
   /**
    * An output that will be called before the view is rendered for the current month.

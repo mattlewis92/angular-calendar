@@ -1,7 +1,8 @@
 <mwl-demo-utils-calendar-header
   [(view)]="view"
   [(viewDate)]="viewDate"
-  [locale]="locale">
+  [locale]="locale"
+>
 </mwl-demo-utils-calendar-header>
 
 <div [ngSwitch]="view">
@@ -11,7 +12,8 @@
     [events]="events"
     [locale]="locale"
     [weekStartsOn]="weekStartsOn"
-    [weekendDays]="weekendDays">
+    [weekendDays]="weekendDays"
+  >
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
@@ -19,12 +21,14 @@
     [events]="events"
     [locale]="locale"
     [weekStartsOn]="weekStartsOn"
-    [weekendDays]="weekendDays">
+    [weekendDays]="weekendDays"
+  >
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
-    [locale]="locale">
+    [locale]="locale"
+  >
   </mwl-calendar-day-view>
 </div>

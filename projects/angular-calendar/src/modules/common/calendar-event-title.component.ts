@@ -4,13 +4,11 @@ import { CalendarEvent } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-event-title',
   template: `
-    <ng-template
-      #defaultTemplate
-      let-event="event"
-      let-view="view">
+    <ng-template #defaultTemplate let-event="event" let-view="view">
       <span
         class="cal-event-title"
-        [innerHTML]="event.title | calendarEventTitle:view:event">
+        [innerHTML]="event.title | calendarEventTitle: view:event"
+      >
       </span>
     </ng-template>
     <ng-template
@@ -18,17 +16,15 @@ import { CalendarEvent } from 'calendar-utils';
       [ngTemplateOutletContext]="{
         event: event,
         view: view
-      }">
+      }"
+    >
     </ng-template>
   `
 })
 export class CalendarEventTitleComponent {
-  @Input()
-  event: CalendarEvent;
+  @Input() event: CalendarEvent;
 
-  @Input()
-  customTemplate: TemplateRef<any>;
+  @Input() customTemplate: TemplateRef<any>;
 
-  @Input()
-  view: string;
+  @Input() view: string;
 }
