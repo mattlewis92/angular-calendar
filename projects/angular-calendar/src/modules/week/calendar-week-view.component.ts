@@ -684,17 +684,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   timeEventResizeEnded(timeEvent: DayViewEvent) {
     this.view = this.getWeekView(this.events);
     const lastResizeEvent = this.timeEventResizes.get(timeEvent.event);
-    this.timeEventResizes.delete(timeEvent.event);
-    const newEventDates = this.getTimeEventResizedDates(
-      timeEvent.event,
-      lastResizeEvent
-    );
-    this.eventTimesChanged.emit({
-      newStart: newEventDates.start,
-      newEnd: newEventDates.end,
-      event: timeEvent.event,
-      type: CalendarEventTimesChangedEventType.Resize
-    });
+    if (lastResizeEvent) {
+      this.timeEventResizes.delete(timeEvent.event);
+      const newEventDates = this.getTimeEventResizedDates(
+        timeEvent.event,
+        lastResizeEvent
+      );
+      this.eventTimesChanged.emit({
+        newStart: newEventDates.start,
+        newEnd: newEventDates.end,
+        event: timeEvent.event,
+        type: CalendarEventTimesChangedEventType.Resize
+      });
+    }
   }
 
   /**
