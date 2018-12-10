@@ -1868,7 +1868,7 @@ describe('calendarWeekView component', () => {
     });
   });
 
-  it.only('should handle time event objects changing when resizing', () => {
+  it('should handle time event objects changing when resizing', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
