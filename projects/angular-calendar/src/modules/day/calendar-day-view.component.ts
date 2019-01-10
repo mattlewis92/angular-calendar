@@ -145,6 +145,7 @@ export interface DayViewEventResize {
             "
             [validateDrag]="validateDrag"
             (dragPointerDown)="dragStarted(event, dayEventsContainer)"
+            (dragging)="dragMove()"
             (dragEnd)="dragEnded(dayEvent, $event)"
             [style.marginTop.px]="dayEvent.top"
             [style.height.px]="dayEvent.height"
@@ -374,6 +375,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  dragAlreadyMoved = false;
+
+  /**
+   * @hidden
+   */
   validateDrag: (args: any) => boolean;
 
   /**
@@ -561,10 +567,19 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       dragHelper.validateDrag({
         x,
         y,
-        snapDraggedEvents: this.snapDraggedEvents
+        snapDraggedEvents: this.snapDraggedEvents,
+        dragAlreadyMoved: this.dragAlreadyMoved
       });
     this.eventDragEnter = 0;
+    this.dragAlreadyMoved = false;
     this.cdr.markForCheck();
+  }
+
+  /**
+   * @hidden
+   */
+  dragMove() {
+    this.dragAlreadyMoved = true;
   }
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {

@@ -15,11 +15,13 @@ export class CalendarDragHelper {
   validateDrag({
     x,
     y,
-    snapDraggedEvents
+    snapDraggedEvents,
+    dragAlreadyMoved
   }: {
     x: number;
     y: number;
     snapDraggedEvents: boolean;
+    dragAlreadyMoved: boolean;
   }): boolean {
     const isWithinThreshold =
       Math.abs(x) > DRAG_THRESHOLD || Math.abs(y) > DRAG_THRESHOLD;
@@ -33,11 +35,11 @@ export class CalendarDragHelper {
       });
 
       return (
-        isWithinThreshold &&
+        (isWithinThreshold || dragAlreadyMoved) &&
         isInside(this.dragContainerElement.getBoundingClientRect(), newRect)
       );
     } else {
-      return isWithinThreshold;
+      return isWithinThreshold || dragAlreadyMoved;
     }
   }
 }
