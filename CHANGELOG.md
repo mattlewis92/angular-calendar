@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.5"></a>
+## [0.26.5](https://github.com/mattlewis92/angular-calendar/compare/v0.26.4...v0.26.5) (2019-02-03)
+
+
+### Bug Fixes
+
+* allow events to be dragged back to their original location ([cb07924](https://github.com/mattlewis92/angular-calendar/commit/cb07924)), closes [#847](https://github.com/mattlewis92/angular-calendar/issues/847)
+* **week-view:** handle event objects being changed when resizing ([754d427](https://github.com/mattlewis92/angular-calendar/commit/754d427))
+* **week-view:** workaround js error when resizing events ([94c51da](https://github.com/mattlewis92/angular-calendar/commit/94c51da))
+
+
+
 <a name="0.26.4"></a>
 ## [0.26.4](https://github.com/mattlewis92/angular-calendar/compare/v0.26.3...v0.26.4) (2018-11-05)
 
