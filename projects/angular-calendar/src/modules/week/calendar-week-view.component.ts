@@ -791,32 +791,34 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       allDayEvent
     );
 
-    const allDayEventResizingBeforeStart = currentResize.edge === 'left';
-    let daysDiff: number;
-    if (allDayEventResizingBeforeStart) {
-      daysDiff = allDayEvent.offset - currentResize.originalOffset;
-    } else {
-      daysDiff = allDayEvent.span - currentResize.originalSpan;
+    if (currentResize) {
+      const allDayEventResizingBeforeStart = currentResize.edge === 'left';
+      let daysDiff: number;
+      if (allDayEventResizingBeforeStart) {
+        daysDiff = allDayEvent.offset - currentResize.originalOffset;
+      } else {
+        daysDiff = allDayEvent.span - currentResize.originalSpan;
+      }
+
+      allDayEvent.offset = currentResize.originalOffset;
+      allDayEvent.span = currentResize.originalSpan;
+
+      let newStart: Date = allDayEvent.event.start;
+      let newEnd: Date = allDayEvent.event.end || allDayEvent.event.start;
+      if (allDayEventResizingBeforeStart) {
+        newStart = this.dateAdapter.addDays(newStart, daysDiff);
+      } else {
+        newEnd = this.dateAdapter.addDays(newEnd, daysDiff);
+      }
+
+      this.eventTimesChanged.emit({
+        newStart,
+        newEnd,
+        event: allDayEvent.event,
+        type: CalendarEventTimesChangedEventType.Resize
+      });
+      this.allDayEventResizes.delete(allDayEvent);
     }
-
-    allDayEvent.offset = currentResize.originalOffset;
-    allDayEvent.span = currentResize.originalSpan;
-
-    let newStart: Date = allDayEvent.event.start;
-    let newEnd: Date = allDayEvent.event.end || allDayEvent.event.start;
-    if (allDayEventResizingBeforeStart) {
-      newStart = this.dateAdapter.addDays(newStart, daysDiff);
-    } else {
-      newEnd = this.dateAdapter.addDays(newEnd, daysDiff);
-    }
-
-    this.eventTimesChanged.emit({
-      newStart,
-      newEnd,
-      event: allDayEvent.event,
-      type: CalendarEventTimesChangedEventType.Resize
-    });
-    this.allDayEventResizes.delete(allDayEvent);
   }
 
   /**
