@@ -153,6 +153,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
             [validateDrag]="validateDrag"
             (dragPointerDown)="dragStarted(eventRowContainer, event)"
+            (dragging)="allDayEventDragMove()"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"
           >
             <div
@@ -559,6 +560,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  dragAlreadyMoved = false;
+
+  /**
+   * @hidden
+   */
   validateDrag: (args: any) => boolean;
 
   /**
@@ -865,9 +871,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       dragHelper.validateDrag({
         x,
         y,
-        snapDraggedEvents: this.snapDraggedEvents
+        snapDraggedEvents: this.snapDraggedEvents,
+        dragAlreadyMoved: this.dragAlreadyMoved
       });
     this.dragActive = true;
+    this.dragAlreadyMoved = false;
     this.eventDragEnter = 0;
     if (!this.snapDraggedEvents && dayEvent) {
       this.view.hourColumns.forEach(column => {
@@ -909,6 +917,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         new Map([[adjustedEvent, originalEvent]])
       );
     }
+    this.dragAlreadyMoved = true;
+  }
+
+  /**
+   * @hidden
+   */
+  allDayEventDragMove() {
+    this.dragAlreadyMoved = true;
   }
 
   /**
