@@ -164,7 +164,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:56</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -222,7 +222,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:46</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -248,7 +248,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -271,7 +271,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:31</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -294,7 +294,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:36</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -318,7 +318,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:51</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -348,7 +348,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view.directive.ts:59</a></div>
                             </td>
                         </tr>
 
@@ -394,32 +394,27 @@ export class CalendarPreviousViewDirective {
   /**
    * The current view
    */
-  @Input()
-  view: CalendarView;
+  @Input() view: CalendarView;
 
   /**
    * The current view date
    */
-  @Input()
-  viewDate: Date;
+  @Input() viewDate: Date;
 
   /**
    * Days to skip when going back by 1 day
    */
-  @Input()
-  excludeDays: number[] &#x3D; [];
+  @Input() excludeDays: number[] &#x3D; [];
 
   /**
    * The number of days in a week. If set will subtract this amount of days instead of 1 week
    */
-  @Input()
-  daysInWeek: number;
+  @Input() daysInWeek: number;
 
   /**
    * Called when the view date is changed
    */
-  @Output()
-  viewDateChange: EventEmitter&lt;Date&gt; &#x3D; new EventEmitter();
+  @Output() viewDateChange: EventEmitter&lt;Date&gt; &#x3D; new EventEmitter();
 
   constructor(private dateAdapter: DateAdapter) {}
 

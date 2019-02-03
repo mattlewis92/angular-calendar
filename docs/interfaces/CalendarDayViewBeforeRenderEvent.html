@@ -241,23 +241,28 @@ export interface DayViewEventResize {
         mwlDroppable
         dragOverClass&#x3D;&quot;cal-drag-over&quot;
         dragActiveClass&#x3D;&quot;cal-drag-active&quot;
-        (drop)&#x3D;&quot;eventDropped($event, view.period.start, true)&quot;&gt;
+        (drop)&#x3D;&quot;eventDropped($event, view.period.start, true)&quot;
+      &gt;
         &lt;mwl-calendar-day-view-event
-          *ngFor&#x3D;&quot;let event of view.allDayEvents; trackBy:trackByEventId&quot;
+          *ngFor&#x3D;&quot;let event of view.allDayEvents; trackBy: trackByEventId&quot;
           [ngClass]&#x3D;&quot;event.cssClass&quot;
-          [dayEvent]&#x3D;&quot;{event: event}&quot;
+          [dayEvent]&#x3D;&quot;{ event: event }&quot;
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
           [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
           [customTemplate]&#x3D;&quot;eventTemplate&quot;
           [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
           [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-          (eventClicked)&#x3D;&quot;eventClicked.emit({event: event})&quot;
+          (eventClicked)&#x3D;&quot;eventClicked.emit({ event: event })&quot;
           [class.cal-draggable]&#x3D;&quot;!snapDraggedEvents &amp;&amp; event.draggable&quot;
           mwlDraggable
           dragActiveClass&#x3D;&quot;cal-drag-active&quot;
-          [dropData]&#x3D;&quot;{event: event, calendarId: calendarId}&quot;
-          [dragAxis]&#x3D;&quot;{x: !snapDraggedEvents &amp;&amp; event.draggable, y: !snapDraggedEvents &amp;&amp; event.draggable}&quot;&gt;
+          [dropData]&#x3D;&quot;{ event: event, calendarId: calendarId }&quot;
+          [dragAxis]&#x3D;&quot;{
+            x: !snapDraggedEvents &amp;&amp; event.draggable,
+            y: !snapDraggedEvents &amp;&amp; event.draggable
+          }&quot;
+        &gt;
         &lt;/mwl-calendar-day-view-event&gt;
       &lt;/div&gt;
       &lt;div
@@ -265,40 +270,57 @@ export interface DayViewEventResize {
         #dayEventsContainer
         mwlDroppable
         (dragEnter)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter + 1&quot;
-        (dragLeave)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter - 1&quot;&gt;
+        (dragLeave)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter - 1&quot;
+      &gt;
         &lt;div class&#x3D;&quot;cal-events&quot;&gt;
           &lt;div
             #event
-            *ngFor&#x3D;&quot;let dayEvent of view?.events; trackBy:trackByDayEvent&quot;
+            *ngFor&#x3D;&quot;let dayEvent of view?.events; trackBy: trackByDayEvent&quot;
             class&#x3D;&quot;cal-event-container&quot;
             [class.cal-draggable]&#x3D;&quot;dayEvent.event.draggable&quot;
             [class.cal-starts-within-day]&#x3D;&quot;!dayEvent.startsBeforeDay&quot;
             [class.cal-ends-within-day]&#x3D;&quot;!dayEvent.endsAfterDay&quot;
             [ngClass]&#x3D;&quot;dayEvent.event.cssClass&quot;
             mwlResizable
-            [resizeSnapGrid]&#x3D;&quot;{top: eventSnapSize || hourSegmentHeight, bottom: eventSnapSize || hourSegmentHeight}&quot;
+            [resizeSnapGrid]&#x3D;&quot;{
+              top: eventSnapSize || hourSegmentHeight,
+              bottom: eventSnapSize || hourSegmentHeight
+            }&quot;
             [validateResize]&#x3D;&quot;validateResize&quot;
             (resizeStart)&#x3D;&quot;resizeStarted(dayEvent, $event, dayEventsContainer)&quot;
             (resizing)&#x3D;&quot;resizing(dayEvent, $event)&quot;
             (resizeEnd)&#x3D;&quot;resizeEnded(dayEvent)&quot;
             mwlDraggable
             dragActiveClass&#x3D;&quot;cal-drag-active&quot;
-            [dropData]&#x3D;&quot;{event: dayEvent.event, calendarId: calendarId}&quot;
-            [dragAxis]&#x3D;&quot;{x: !snapDraggedEvents &amp;&amp; dayEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0, y: dayEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0}&quot;
-            [dragSnapGrid]&#x3D;&quot;snapDraggedEvents ? {y: eventSnapSize || hourSegmentHeight} : {}&quot;
+            [dropData]&#x3D;&quot;{ event: dayEvent.event, calendarId: calendarId }&quot;
+            [dragAxis]&#x3D;&quot;{
+              x:
+                !snapDraggedEvents &amp;&amp;
+                dayEvent.event.draggable &amp;&amp;
+                currentResizes.size &#x3D;&#x3D;&#x3D; 0,
+              y: dayEvent.event.draggable &amp;&amp; currentResizes.size &#x3D;&#x3D;&#x3D; 0
+            }&quot;
+            [dragSnapGrid]&#x3D;&quot;
+              snapDraggedEvents ? { y: eventSnapSize || hourSegmentHeight } : {}
+            &quot;
             [validateDrag]&#x3D;&quot;validateDrag&quot;
             (dragPointerDown)&#x3D;&quot;dragStarted(event, dayEventsContainer)&quot;
+            (dragging)&#x3D;&quot;dragMove()&quot;
             (dragEnd)&#x3D;&quot;dragEnded(dayEvent, $event)&quot;
             [style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;
             [style.height.px]&#x3D;&quot;dayEvent.height&quot;
             [style.marginLeft.px]&#x3D;&quot;dayEvent.left + 70&quot;
-            [style.width.px]&#x3D;&quot;dayEvent.width - 1&quot;&gt;
+            [style.width.px]&#x3D;&quot;dayEvent.width - 1&quot;
+          &gt;
             &lt;div
               class&#x3D;&quot;cal-resize-handle cal-resize-handle-before-start&quot;
-              *ngIf&#x3D;&quot;dayEvent.event?.resizable?.beforeStart &amp;&amp; !dayEvent.startsBeforeDay&quot;
+              *ngIf&#x3D;&quot;
+                dayEvent.event?.resizable?.beforeStart &amp;&amp;
+                !dayEvent.startsBeforeDay
+              &quot;
               mwlResizeHandle
-              [resizeEdges]&#x3D;&quot;{ top: true }&quot;&gt;
-            &lt;/div&gt;
+              [resizeEdges]&#x3D;&quot;{ top: true }&quot;
+            &gt;&lt;/div&gt;
             &lt;mwl-calendar-day-view-event
               [dayEvent]&#x3D;&quot;dayEvent&quot;
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
@@ -307,29 +329,37 @@ export interface DayViewEventResize {
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
               [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
               [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-              (eventClicked)&#x3D;&quot;eventClicked.emit({event: dayEvent.event})&quot;&gt;
+              (eventClicked)&#x3D;&quot;eventClicked.emit({ event: dayEvent.event })&quot;
+            &gt;
             &lt;/mwl-calendar-day-view-event&gt;
             &lt;div
               class&#x3D;&quot;cal-resize-handle cal-resize-handle-after-end&quot;
-              *ngIf&#x3D;&quot;dayEvent.event?.resizable?.afterEnd &amp;&amp; !dayEvent.endsAfterDay&quot;
+              *ngIf&#x3D;&quot;
+                dayEvent.event?.resizable?.afterEnd &amp;&amp; !dayEvent.endsAfterDay
+              &quot;
               mwlResizeHandle
-              [resizeEdges]&#x3D;&quot;{ bottom: true }&quot;&gt;
-            &lt;/div&gt;
+              [resizeEdges]&#x3D;&quot;{ bottom: true }&quot;
+            &gt;&lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;cal-hour&quot; *ngFor&#x3D;&quot;let hour of hours; trackBy:trackByHour&quot; [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;cal-hour&quot;
+          *ngFor&#x3D;&quot;let hour of hours; trackBy: trackByHour&quot;
+          [style.minWidth.px]&#x3D;&quot;view?.width + 70&quot;
+        &gt;
           &lt;mwl-calendar-day-view-hour-segment
-            *ngFor&#x3D;&quot;let segment of hour.segments; trackBy:trackByHourSegment&quot;
+            *ngFor&#x3D;&quot;let segment of hour.segments; trackBy: trackByHourSegment&quot;
             [style.height.px]&#x3D;&quot;hourSegmentHeight&quot;
             [segment]&#x3D;&quot;segment&quot;
             [segmentHeight]&#x3D;&quot;hourSegmentHeight&quot;
             [locale]&#x3D;&quot;locale&quot;
             [customTemplate]&#x3D;&quot;hourSegmentTemplate&quot;
-            (mwlClick)&#x3D;&quot;hourSegmentClicked.emit({date: segment.date})&quot;
+            (mwlClick)&#x3D;&quot;hourSegmentClicked.emit({ date: segment.date })&quot;
             mwlDroppable
             dragOverClass&#x3D;&quot;cal-drag-over&quot;
             dragActiveClass&#x3D;&quot;cal-drag-active&quot;
-            (drop)&#x3D;&quot;eventDropped($event, segment.date, false)&quot;&gt;
+            (drop)&#x3D;&quot;eventDropped($event, segment.date, false)&quot;
+          &gt;
           &lt;/mwl-calendar-day-view-hour-segment&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -340,123 +370,103 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The current view date
    */
-  @Input()
-  viewDate: Date;
+  @Input() viewDate: Date;
 
   /**
    * An array of events to display on view
    * The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63
    */
-  @Input()
-  events: CalendarEvent[] &#x3D; [];
+  @Input() events: CalendarEvent[] &#x3D; [];
 
   /**
    * The number of segments in an hour. Must be &lt;&#x3D; 6
    */
-  @Input()
-  hourSegments: number &#x3D; 2;
+  @Input() hourSegments: number &#x3D; 2;
 
   /**
    * The height in pixels of each hour segment
    */
-  @Input()
-  hourSegmentHeight: number &#x3D; 30;
+  @Input() hourSegmentHeight: number &#x3D; 30;
 
   /**
    * The day start hours in 24 hour time. Must be 0-23
    */
-  @Input()
-  dayStartHour: number &#x3D; 0;
+  @Input() dayStartHour: number &#x3D; 0;
 
   /**
    * The day start minutes. Must be 0-59
    */
-  @Input()
-  dayStartMinute: number &#x3D; 0;
+  @Input() dayStartMinute: number &#x3D; 0;
 
   /**
    * The day end hours in 24 hour time. Must be 0-23
    */
-  @Input()
-  dayEndHour: number &#x3D; 23;
+  @Input() dayEndHour: number &#x3D; 23;
 
   /**
    * The day end minutes. Must be 0-59
    */
-  @Input()
-  dayEndMinute: number &#x3D; 59;
+  @Input() dayEndMinute: number &#x3D; 59;
 
   /**
    * The width in pixels of each event on the view
    */
-  @Input()
-  eventWidth: number &#x3D; 150;
+  @Input() eventWidth: number &#x3D; 150;
 
   /**
    * An observable that when emitted on will re-render the current view
    */
-  @Input()
-  refresh: Subject&lt;any&gt;;
+  @Input() refresh: Subject&lt;any&gt;;
 
   /**
    * The locale used to format dates
    */
-  @Input()
-  locale: string;
+  @Input() locale: string;
 
   /**
    * The grid size to snap resizing and dragging of events to
    */
-  @Input()
-  eventSnapSize: number;
+  @Input() eventSnapSize: number;
 
   /**
    * The placement of the event tooltip
    */
-  @Input()
-  tooltipPlacement: PlacementArray &#x3D; &#x27;auto&#x27;;
+  @Input() tooltipPlacement: PlacementArray &#x3D; &#x27;auto&#x27;;
 
   /**
    * A custom template to use for the event tooltips
    */
-  @Input()
-  tooltipTemplate: TemplateRef&lt;any&gt;;
+  @Input() tooltipTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Whether to append tooltips to the body or next to the trigger element
    */
-  @Input()
-  tooltipAppendToBody: boolean &#x3D; true;
+  @Input() tooltipAppendToBody: boolean &#x3D; true;
 
   /**
    * A custom template to use to replace the hour segment
    */
-  @Input()
-  hourSegmentTemplate: TemplateRef&lt;any&gt;;
+  @Input() hourSegmentTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use for day view events
    */
-  @Input()
-  eventTemplate: TemplateRef&lt;any&gt;;
+  @Input() eventTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use for event titles
    */
-  @Input()
-  eventTitleTemplate: TemplateRef&lt;any&gt;;
+  @Input() eventTitleTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use for event actions
    */
-  @Input()
-  eventActionsTemplate: TemplateRef&lt;any&gt;;
+  @Input() eventActionsTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Whether to snap events to a grid when dragging
    */
-  @Input()
-  snapDraggedEvents: boolean &#x3D; true;
+  @Input() snapDraggedEvents: boolean &#x3D; true;
 
   /**
    * Called when an event title is clicked
@@ -521,6 +531,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   calendarId &#x3D; Symbol(&#x27;angular calendar day view id&#x27;);
+
+  /**
+   * @hidden
+   */
+  dragAlreadyMoved &#x3D; false;
 
   /**
    * @hidden
@@ -712,10 +727,19 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       dragHelper.validateDrag({
         x,
         y,
-        snapDraggedEvents: this.snapDraggedEvents
+        snapDraggedEvents: this.snapDraggedEvents,
+        dragAlreadyMoved: this.dragAlreadyMoved
       });
     this.eventDragEnter &#x3D; 0;
+    this.dragAlreadyMoved &#x3D; false;
     this.cdr.markForCheck();
+  }
+
+  /**
+   * @hidden
+   */
+  dragMove() {
+    this.dragAlreadyMoved &#x3D; true;
   }
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {

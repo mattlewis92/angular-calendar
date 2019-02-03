@@ -1,36 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Angular 6.0+ calendar</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.caaf6a29b77f2f35f039.css"></head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Angular 6.0+ calendar</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.27e449d6c216a5df1a18.css"></head>
+  <body>
+    <mwl-demo-app>Loading demo...</mwl-demo-app>
 
-  <mwl-demo-app>Loading demo...</mwl-demo-app>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-63367573-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63367573-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      gtag('config', 'UA-63367573-2');
+    </script>
 
-    gtag('config', 'UA-63367573-2');
-  </script>
-
-  <!-- Unregister legacy service worker so new docs load -->
-  <script>
-    if (typeof navigator.serviceWorker !== 'undefined') {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        registrations.forEach(function(registration) {
-          registration.unregister();
-        });
-      })
-    }
-  </script>
-
-<script type="text/javascript" src="runtime.ccd0fc25c2d7edadf8f3.js"></script><script type="text/javascript" src="polyfills.eb07eeb372497ef34d35.js"></script><script type="text/javascript" src="main.8e51ad6c24e9024db9c0.js"></script></body>
+    <!-- Unregister legacy service worker so new docs load -->
+    <script>
+      if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then(function(registrations) {
+            registrations.forEach(function(registration) {
+              registration.unregister();
+            });
+          });
+      }
+    </script>
+  <script type="text/javascript" src="runtime.3d8976e69faddf013553.js"></script><script type="text/javascript" src="polyfills.9425d1bfe06a8b6246a3.js"></script><script type="text/javascript" src="main.278b16497f658c69f5c3.js"></script></body>
 </html>

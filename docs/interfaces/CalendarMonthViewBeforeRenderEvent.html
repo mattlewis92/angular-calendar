@@ -250,13 +250,18 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
       &lt;mwl-calendar-month-view-header
         [days]&#x3D;&quot;columnHeaders&quot;
         [locale]&#x3D;&quot;locale&quot;
-        [customTemplate]&#x3D;&quot;headerTemplate&quot;&gt;
+        [customTemplate]&#x3D;&quot;headerTemplate&quot;
+      &gt;
       &lt;/mwl-calendar-month-view-header&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
         &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackByIndex&quot;&gt;
           &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
             &lt;mwl-calendar-month-cell
-              *ngFor&#x3D;&quot;let day of (view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)); trackBy:trackByDate&quot;
+              *ngFor&#x3D;&quot;
+                let day of (view.days
+                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek);
+                trackBy: trackByDate
+              &quot;
               [ngClass]&#x3D;&quot;day?.cssClass&quot;
               [day]&#x3D;&quot;day&quot;
               [openDay]&#x3D;&quot;openDay&quot;
@@ -270,8 +275,15 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
               (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
               mwlDroppable
               dragOverClass&#x3D;&quot;cal-drag-over&quot;
-              (drop)&#x3D;&quot;eventDropped(day, $event.dropData.event, $event.dropData.draggedFrom)&quot;
-              (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;&gt;
+              (drop)&#x3D;&quot;
+                eventDropped(
+                  day,
+                  $event.dropData.event,
+                  $event.dropData.draggedFrom
+                )
+              &quot;
+              (eventClicked)&#x3D;&quot;eventClicked.emit({ event: $event.event })&quot;
+            &gt;
             &lt;/mwl-calendar-month-cell&gt;
           &lt;/div&gt;
           &lt;mwl-calendar-open-day-events
@@ -280,10 +292,17 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
             [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
             [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
             [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-            (eventClicked)&#x3D;&quot;eventClicked.emit({event: $event.event})&quot;
+            (eventClicked)&#x3D;&quot;eventClicked.emit({ event: $event.event })&quot;
             mwlDroppable
             dragOverClass&#x3D;&quot;cal-drag-over&quot;
-            (drop)&#x3D;&quot;eventDropped(openDay, $event.dropData.event, $event.dropData.draggedFrom)&quot;&gt;
+            (drop)&#x3D;&quot;
+              eventDropped(
+                openDay,
+                $event.dropData.event,
+                $event.dropData.draggedFrom
+              )
+            &quot;
+          &gt;
           &lt;/mwl-calendar-open-day-events&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -295,99 +314,83 @@ export class CalendarMonthViewComponent
   /**
    * The current view date
    */
-  @Input()
-  viewDate: Date;
+  @Input() viewDate: Date;
 
   /**
    * An array of events to display on view.
    * The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63
    */
-  @Input()
-  events: CalendarEvent[] &#x3D; [];
+  @Input() events: CalendarEvent[] &#x3D; [];
 
   /**
    * An array of day indexes (0 &#x3D; sunday, 1 &#x3D; monday etc) that will be hidden on the view
    */
-  @Input()
-  excludeDays: number[] &#x3D; [];
+  @Input() excludeDays: number[] &#x3D; [];
 
   /**
    * Whether the events list for the day of the &#x60;viewDate&#x60; option is visible or not
    */
-  @Input()
-  activeDayIsOpen: boolean &#x3D; false;
+  @Input() activeDayIsOpen: boolean &#x3D; false;
 
   /**
    * An observable that when emitted on will re-render the current view
    */
-  @Input()
-  refresh: Subject&lt;any&gt;;
+  @Input() refresh: Subject&lt;any&gt;;
 
   /**
    * The locale used to format dates
    */
-  @Input()
-  locale: string;
+  @Input() locale: string;
 
   /**
    * The placement of the event tooltip
    */
-  @Input()
-  tooltipPlacement: PlacementArray &#x3D; &#x27;auto&#x27;;
+  @Input() tooltipPlacement: PlacementArray &#x3D; &#x27;auto&#x27;;
 
   /**
    * A custom template to use for the event tooltips
    */
-  @Input()
-  tooltipTemplate: TemplateRef&lt;any&gt;;
+  @Input() tooltipTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * Whether to append tooltips to the body or next to the trigger element
    */
-  @Input()
-  tooltipAppendToBody: boolean &#x3D; true;
+  @Input() tooltipAppendToBody: boolean &#x3D; true;
 
   /**
    * The start number of the week
    */
-  @Input()
-  weekStartsOn: number;
+  @Input() weekStartsOn: number;
 
   /**
    * A custom template to use to replace the header
    */
-  @Input()
-  headerTemplate: TemplateRef&lt;any&gt;;
+  @Input() headerTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use to replace the day cell
    */
-  @Input()
-  cellTemplate: TemplateRef&lt;any&gt;;
+  @Input() cellTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use for the slide down box of events for the active day
    */
-  @Input()
-  openDayEventsTemplate: TemplateRef&lt;any&gt;;
+  @Input() openDayEventsTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use for event titles
    */
-  @Input()
-  eventTitleTemplate: TemplateRef&lt;any&gt;;
+  @Input() eventTitleTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * A custom template to use for event actions
    */
-  @Input()
-  eventActionsTemplate: TemplateRef&lt;any&gt;;
+  @Input() eventActionsTemplate: TemplateRef&lt;any&gt;;
 
   /**
    * An array of day indexes (0 &#x3D; sunday, 1 &#x3D; monday etc) that indicate which days are weekends
    */
-  @Input()
-  weekendDays: number[];
+  @Input() weekendDays: number[];
 
   /**
    * An output that will be called before the view is rendered for the current month.
