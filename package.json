@@ -78,6 +78,7 @@
     "@types/sinon": "^7.0.5",
     "@types/sinon-chai": "^3.2.2",
     "angular-cli-ghpages": "^0.5.3",
+    "angulartics2": "^7.4.1",
     "angularx-flatpickr": "^6.1.0",
     "autoprefixer": "^9.4.7",
     "bootstrap-css-only": "^4.2.1",

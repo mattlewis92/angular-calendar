@@ -3,9 +3,12 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -289,7 +292,10 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
       {
         useHash: true
       }
-    )
+    ),
+    Angulartics2Module.forRoot({
+      developerMode: !environment.production
+    })
   ],
   bootstrap: [DemoAppComponent]
 })
