@@ -35,18 +35,5 @@
       ga('create', 'UA-63367573-2', 'auto');
     </script>
     <!-- End Google Analytics -->
-
-    <!-- Unregister legacy service worker so new docs load -->
-    <script>
-      if (typeof navigator.serviceWorker !== 'undefined') {
-        navigator.serviceWorker
-          .getRegistrations()
-          .then(function(registrations) {
-            registrations.forEach(function(registration) {
-              registration.unregister();
-            });
-          });
-      }
-    </script>
-  <script type="text/javascript" src="runtime.3d8976e69faddf013553.js"></script><script type="text/javascript" src="polyfills.9425d1bfe06a8b6246a3.js"></script><script type="text/javascript" src="main.76209473031d4c04937c.js"></script></body>
+  <script type="text/javascript" src="runtime.3d8976e69faddf013553.js"></script><script type="text/javascript" src="polyfills.9425d1bfe06a8b6246a3.js"></script><script type="text/javascript" src="main.e5d547bffc9df05e2625.js"></script></body>
 </html>
