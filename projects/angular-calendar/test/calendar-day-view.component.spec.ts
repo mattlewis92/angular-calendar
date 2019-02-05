@@ -527,6 +527,61 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
+  it.only('should resize back to the original edge', () => {
+    const fixture: ComponentFixture<
+      CalendarDayViewComponent
+    > = TestBed.createComponent(CalendarDayViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [
+      {
+        title: 'foo',
+        color: { primary: '', secondary: '' },
+        start: moment('2016-06-27')
+          .add(4, 'hours')
+          .toDate(),
+        end: moment('2016-06-27')
+          .add(6, 'hours')
+          .toDate(),
+        resizable: {
+          afterEnd: true
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const rect: ClientRect = event.getBoundingClientRect();
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    const handle = fixture.nativeElement.querySelector(
+      '.cal-resize-handle-after-end'
+    );
+    triggerDomEvent('mousedown', handle, {
+      clientY: rect.bottom,
+      clientX: rect.left + 10
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', handle, {
+      clientY: rect.bottom + 30,
+      clientX: rect.left + 10
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
+    expect(event.getBoundingClientRect().height).to.equal(150);
+    triggerDomEvent('mousemove', handle, {
+      clientY: rect.bottom,
+      clientX: rect.left + 10
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom);
+    expect(event.getBoundingClientRect().height).to.equal(120);
+  });
+
   it('should resize events with no end date', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
