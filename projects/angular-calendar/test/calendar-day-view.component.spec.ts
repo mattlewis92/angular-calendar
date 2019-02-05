@@ -527,7 +527,7 @@ describe('CalendarDayViewComponent component', () => {
     });
   });
 
-  it.only('should resize back to the original edge', () => {
+  it('should resize back to the original edge', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
