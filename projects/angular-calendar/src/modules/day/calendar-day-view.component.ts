@@ -507,10 +507,10 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
   resizing(event: DayViewEvent, resizeEvent: ResizeEvent): void {
     const currentResize: DayViewEventResize = this.currentResizes.get(event);
-    if (resizeEvent.edges.top) {
+    if (typeof resizeEvent.edges.top !== 'undefined') {
       event.top = currentResize.originalTop + +resizeEvent.edges.top;
       event.height = currentResize.originalHeight - +resizeEvent.edges.top;
-    } else if (resizeEvent.edges.bottom) {
+    } else if (typeof resizeEvent.edges.bottom !== 'undefined') {
       event.height = currentResize.originalHeight + +resizeEvent.edges.bottom;
     }
   }

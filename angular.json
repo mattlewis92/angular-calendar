@@ -43,6 +43,7 @@
             "tsConfig": "projects/demos/tsconfig.app.json",
             "assets": [
               "projects/demos/favicon.ico",
+              "projects/demos/sw.js",
               "projects/demos/assets"
             ],
             "styles": [

@@ -779,11 +779,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       allDayEvent
     );
 
-    if (resizeEvent.edges.left) {
+    if (typeof resizeEvent.edges.left !== 'undefined') {
       const diff: number = Math.round(+resizeEvent.edges.left / dayWidth);
       allDayEvent.offset = currentResize.originalOffset + diff;
       allDayEvent.span = currentResize.originalSpan - diff;
-    } else if (resizeEvent.edges.right) {
+    } else if (typeof resizeEvent.edges.right !== 'undefined') {
       const diff: number = Math.round(+resizeEvent.edges.right / dayWidth);
       allDayEvent.span = currentResize.originalSpan + diff;
     }
@@ -1117,7 +1117,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       )
     };
 
-    if (resizeEvent.edges.left) {
+    if (typeof resizeEvent.edges.left !== 'undefined') {
       const daysDiff = Math.round(
         +resizeEvent.edges.left / this.dayColumnWidth
       );
@@ -1127,7 +1127,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       } else {
         newEventDates.start = smallestResizes.start;
       }
-    } else if (resizeEvent.edges.right) {
+    } else if (typeof resizeEvent.edges.right !== 'undefined') {
       const daysDiff = Math.round(
         +resizeEvent.edges.right / this.dayColumnWidth
       );
@@ -1139,7 +1139,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       }
     }
 
-    if (resizeEvent.edges.top) {
+    if (typeof resizeEvent.edges.top !== 'undefined') {
       const minutesMoved = getMinutesMoved(
         resizeEvent.edges.top as number,
         this.hourSegments,
@@ -1155,7 +1155,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       } else {
         newEventDates.start = smallestResizes.start;
       }
-    } else if (resizeEvent.edges.bottom) {
+    } else if (typeof resizeEvent.edges.bottom !== 'undefined') {
       const minutesMoved = getMinutesMoved(
         resizeEvent.edges.bottom as number,
         this.hourSegments,

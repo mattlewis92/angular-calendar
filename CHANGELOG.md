@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.6"></a>
+## [0.26.6](https://github.com/mattlewis92/angular-calendar/compare/v0.26.5...v0.26.6) (2019-02-05)
+
+
+### Bug Fixes
+
+* allow resizing events back to their original positions ([0b478b8](https://github.com/mattlewis92/angular-calendar/commit/0b478b8))
+
+
+
 <a name="0.26.5"></a>
 ## [0.26.5](https://github.com/mattlewis92/angular-calendar/compare/v0.26.4...v0.26.5) (2019-02-03)
 
