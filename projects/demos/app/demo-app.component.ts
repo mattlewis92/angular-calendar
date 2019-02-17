@@ -201,10 +201,12 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/animations': dependencyVersions.angular,
           rxjs: dependencyVersions.rxjs,
           'zone.js': dependencyVersions.zoneJs,
-          'angular-draggable-droppable':
-            dependencyVersions.angularDraggableDroppable,
-          'angular-resizable-element':
-            dependencyVersions.angularResizableElement,
+          'angular-draggable-droppable': `^${
+            dependencyVersions.angularDraggableDroppable
+          }`,
+          'angular-resizable-element': `^${
+            dependencyVersions.angularResizableElement
+          }`,
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
