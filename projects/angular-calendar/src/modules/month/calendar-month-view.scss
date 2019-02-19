@@ -1,10 +1,10 @@
-@import '../common/variables';
+@import '../../variables';
 
-$cal-month-view-colors: () !default;
-$cal-month-view-colors: map-merge($cal-colors, $cal-month-view-colors);
+$cal-month-view-vars: () !default;
+$cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
 
 @mixin cal-month-view-theme($overrides) {
-  $theme: map-merge($cal-month-view-colors, $overrides);
+  $theme: map-merge($cal-month-view-vars, $overrides);
 
   .cal-month-view {
     background-color: map-get($theme, bg-primary);
@@ -202,4 +202,4 @@ $cal-month-view-colors: map-merge($cal-colors, $cal-month-view-colors);
   }
 }
 
-@include cal-month-view-theme($cal-month-view-colors);
+@include cal-month-view-theme($cal-month-view-vars);

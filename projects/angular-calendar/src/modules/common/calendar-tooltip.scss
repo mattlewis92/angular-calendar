@@ -1,10 +1,10 @@
-@import 'variables';
+@import '../../variables';
 
-$cal-tooltip-colors: () !default;
-$cal-tooltip-colors: map-merge($cal-colors, $cal-tooltip-colors);
+$cal-tooltip-vars: () !default;
+$cal-tooltip-vars: map-merge($cal-vars, $cal-tooltip-vars);
 
 @mixin cal-tooltip-theme($overrides) {
-  $theme: map-merge($cal-tooltip-colors, $overrides);
+  $theme: map-merge($cal-tooltip-vars, $overrides);
 
   .cal-tooltip.cal-tooltip-top .cal-tooltip-arrow {
     border-top-color: map-get($theme, black);
@@ -112,4 +112,4 @@ $cal-tooltip-colors: map-merge($cal-colors, $cal-tooltip-colors);
   border-style: solid;
 }
 
-@include cal-tooltip-theme($cal-tooltip-colors);
+@include cal-tooltip-theme($cal-tooltip-vars);

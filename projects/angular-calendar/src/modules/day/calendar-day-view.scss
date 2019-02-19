@@ -1,10 +1,10 @@
-@import '../common/variables';
+@import '../../variables';
 
-$cal-day-view-colors: () !default;
-$cal-day-view-colors: map-merge($cal-colors, $cal-day-view-colors);
+$cal-day-view-vars: () !default;
+$cal-day-view-vars: map-merge($cal-vars, $cal-day-view-vars);
 
 @mixin cal-day-view-theme($overrides) {
-  $theme: map-merge($cal-day-view-colors, $overrides);
+  $theme: map-merge($cal-day-view-vars, $overrides);
 
   .cal-day-view {
     background-color: map-get($theme, bg-primary);
@@ -136,4 +136,4 @@ $cal-day-view-colors: map-merge($cal-colors, $cal-day-view-colors);
   }
 }
 
-@include cal-day-view-theme($cal-day-view-colors);
+@include cal-day-view-theme($cal-day-view-vars);

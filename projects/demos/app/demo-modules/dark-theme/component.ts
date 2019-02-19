@@ -34,7 +34,9 @@ export class DemoComponent implements OnInit, OnDestroy {
   private darkThemeClass = 'dark-theme';
 
   // this is bad practise and only exists for the demo, don't do this in your app
-  private navbar = this.document.querySelector('.navbar');
+  private navbar =
+    this.document.querySelector('.navbar') ||
+    this.document.createElement('div');
 
   constructor(@Inject(DOCUMENT) private document) {}
 
