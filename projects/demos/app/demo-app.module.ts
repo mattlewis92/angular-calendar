@@ -285,6 +285,13 @@ import { environment } from '../environments/environment';
           }
         },
         {
+          path: 'dark-theme',
+          loadChildren: './demo-modules/dark-theme/module#DemoModule',
+          data: {
+            label: 'Dark theme'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }
