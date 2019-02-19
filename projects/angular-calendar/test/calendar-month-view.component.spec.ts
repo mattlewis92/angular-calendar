@@ -77,7 +77,7 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should emit on the columnHeaderClicked output', (done) => {
+  it('should emit on the columnHeaderClicked output', done => {
     const fixture: ComponentFixture<
       CalendarMonthViewComponent
     > = TestBed.createComponent(CalendarMonthViewComponent);
@@ -164,6 +164,41 @@ describe('calendarMonthView component', () => {
     expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
     expect(fixture.componentInstance.openDay).to.equal(undefined);
     fixture.componentInstance.viewDate = moment()
+      .startOf('month')
+      .startOf('week')
+      .add(8, 'days')
+      .toDate();
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      activeDayIsOpen: {}
+    });
+    expect(fixture.componentInstance.openRowIndex).to.equal(7);
+    expect(fixture.componentInstance.openDay).to.equal(
+      fixture.componentInstance.view.days[8]
+    );
+    fixture.componentInstance.activeDayIsOpen = false;
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      activeDayIsOpen: {}
+    });
+    expect(!!fixture.componentInstance.openRowIndex).to.equal(false);
+    expect(!!fixture.componentInstance.openDay).to.equal(false);
+    fixture.destroy();
+  });
+
+  it('should use the activeDay input instead of the viewDate to determine the active day', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
+    expect(fixture.componentInstance.openDay).to.equal(undefined);
+    fixture.componentInstance.viewDate = moment()
+      .startOf('month')
+      .startOf('week')
+      .add(14, 'days')
+      .toDate();
+    fixture.componentInstance.activeDay = moment()
       .startOf('month')
       .startOf('week')
       .add(8, 'days')

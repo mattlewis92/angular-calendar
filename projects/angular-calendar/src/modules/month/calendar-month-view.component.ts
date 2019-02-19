@@ -143,6 +143,11 @@ export class CalendarMonthViewComponent
   @Input() activeDayIsOpen: boolean = false;
 
   /**
+   * If set will be used to determine the day that should be open. If not set, the `viewDate` is used
+   */
+  @Input() activeDay: Date;
+
+  /**
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject<any>;
@@ -322,7 +327,8 @@ export class CalendarMonthViewComponent
       changes.activeDayIsOpen ||
       changes.viewDate ||
       changes.events ||
-      changes.excludeDays
+      changes.excludeDays ||
+      changes.activeDay
     ) {
       this.checkActiveDayIsOpen();
     }
@@ -411,8 +417,9 @@ export class CalendarMonthViewComponent
 
   private checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen === true) {
+      const activeDay = this.activeDay || this.viewDate;
       this.openDay = this.view.days.find(day =>
-        this.dateAdapter.isSameDay(day.date, this.viewDate)
+        this.dateAdapter.isSameDay(day.date, activeDay)
       );
       const index: number = this.view.days.indexOf(this.openDay);
       this.openRowIndex =
