@@ -18,11 +18,11 @@ export const sources = [
     contents: {
       raw: require('!!raw-loader!./styles.scss').replace(
         '../../../../angular-calendar/src/angular-calendar.scss',
-        'angular-calendar/scss/angular-calendar.scss'
+        '~angular-calendar/scss/angular-calendar.scss'
       ),
       highlighted: require('!!raw-loader!highlightjs-loader?lang=scss!./styles.scss').replace(
         '../../../../angular-calendar/src/angular-calendar.scss',
-        'angular-calendar/scss/angular-calendar.scss'
+        '~angular-calendar/scss/angular-calendar.scss'
       )
     }
   },
