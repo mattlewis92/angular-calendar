@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
 interface Source {
@@ -85,7 +86,9 @@ export class DemoAppComponent implements OnInit {
   isMenuVisible = false;
   firstDemoLoaded = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, analytics: Angulartics2GoogleAnalytics) {
+    analytics.startTracking();
+  }
 
   ngOnInit() {
     const defaultRoute = this.router.config.find(route => route.path === '**');
@@ -198,10 +201,12 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/animations': dependencyVersions.angular,
           rxjs: dependencyVersions.rxjs,
           'zone.js': dependencyVersions.zoneJs,
-          'angular-draggable-droppable':
-            dependencyVersions.angularDraggableDroppable,
-          'angular-resizable-element':
-            dependencyVersions.angularResizableElement,
+          'angular-draggable-droppable': `^${
+            dependencyVersions.angularDraggableDroppable
+          }`,
+          'angular-resizable-element': `^${
+            dependencyVersions.angularResizableElement
+          }`,
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,

@@ -2,13 +2,13 @@
   [(view)]="view"
   [(viewDate)]="viewDate"
   (viewDateChange)="fetchEvents()"
-  (viewChange)="fetchEvents()">
+  (viewChange)="fetchEvents()"
+>
 </mwl-demo-utils-calendar-header>
 
 <ng-template #loading>
   <div class="text-center">
-    <i class="fa fa-spin fa-spinner fa-5x"></i>
-    <br>
+    <i class="fa fa-spin fa-spinner fa-5x"></i> <br />
     Loading events...
   </div>
 </ng-template>
@@ -21,19 +21,22 @@
       [events]="events"
       [activeDayIsOpen]="activeDayIsOpen"
       (dayClicked)="dayClicked($event.day)"
-      (eventClicked)="eventClicked($event.event)">
+      (eventClicked)="eventClicked($event.event)"
+    >
     </mwl-calendar-month-view>
     <mwl-calendar-week-view
       *ngSwitchCase="'week'"
       [viewDate]="viewDate"
       [events]="events"
-      (eventClicked)="eventClicked($event.event)">
+      (eventClicked)="eventClicked($event.event)"
+    >
     </mwl-calendar-week-view>
     <mwl-calendar-day-view
       *ngSwitchCase="'day'"
       [viewDate]="viewDate"
       [events]="events"
-      (eventClicked)="eventClicked($event.event)">
+      (eventClicked)="eventClicked($event.event)"
+    >
     </mwl-calendar-day-view>
   </div>
 </div>

@@ -1,8 +1,87 @@
+@import '../../variables';
+
+$cal-week-view-vars: () !default;
+$cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
+
+@mixin cal-week-view-theme($overrides) {
+  $theme: map-merge($cal-week-view-vars, $overrides);
+
+  .cal-week-view {
+    background-color: map-get($theme, bg-primary);
+
+    .cal-day-headers {
+      border-color: map-get($theme, border-color);
+    }
+
+    .cal-day-headers .cal-header {
+      &:not(:last-child) {
+        border-right-color: map-get($theme, border-color);
+      }
+
+      &:first-child {
+        border-left-color: map-get($theme, border-color);
+      }
+    }
+
+    .cal-day-headers .cal-header:hover,
+    .cal-day-headers .cal-drag-over {
+      background-color: map-get($theme, bg-active);
+    }
+
+    .cal-day-column {
+      border-left-color: map-get($theme, border-color);
+    }
+
+    .cal-event {
+      background-color: map-get($theme, event-color-secondary);
+      border-color: map-get($theme, event-color-primary);
+      color: map-get($theme, event-color-primary);
+    }
+
+    .cal-all-day-events {
+      border-color: map-get($theme, border-color);
+    }
+
+    .cal-header.cal-today {
+      background-color: map-get($theme, today-bg);
+    }
+
+    .cal-header.cal-weekend span {
+      color: map-get($theme, weekend-color);
+    }
+
+    .cal-time-events {
+      border-color: map-get($theme, border-color);
+
+      .cal-day-columns {
+        &:not(.cal-resize-active) {
+          .cal-hour-segment:hover {
+            background-color: map-get($theme, bg-active);
+          }
+        }
+      }
+    }
+
+    .cal-hour-odd {
+      background-color: map-get($theme, bg-secondary);
+    }
+
+    .cal-drag-over .cal-hour-segment {
+      background-color: map-get($theme, bg-active);
+    }
+
+    .cal-hour:not(:last-child) .cal-hour-segment,
+    .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+      border-bottom-color: map-get($theme, border-color);
+    }
+  }
+}
+
 .cal-week-view {
   .cal-day-headers {
     display: flex;
-    border: 1px solid #e1e1e1;
     padding-left: 70px;
+    border: 1px solid;
   }
 
   .cal-day-headers .cal-header {
@@ -11,17 +90,12 @@
     padding: 5px;
 
     &:not(:last-child) {
-      border-right: 1px solid #e1e1e1;
+      border-right: 1px solid;
     }
 
     &:first-child {
-      border-left: 1px solid #e1e1e1;
+      border-left: 1px solid;
     }
-  }
-
-  .cal-day-headers .cal-header:hover,
-  .cal-day-headers .cal-drag-over {
-    background-color: #ededed;
   }
 
   .cal-day-headers span {
@@ -31,14 +105,12 @@
 
   .cal-day-column {
     flex-grow: 1;
-    border-left: solid 1px #e1e1e1;
+    border-left: solid 1px;
   }
 
   .cal-event {
     font-size: 12px;
-    background-color: #d1e8ff;
-    border: 1px solid #1e90ff;
-    color: #1e90ff;
+    border: 1px solid;
   }
 
   .cal-time-label-column {
@@ -47,7 +119,7 @@
   }
 
   .cal-all-day-events {
-    border: solid 1px #e1e1e1;
+    border: solid 1px;
     border-top: 0;
     border-bottom-width: 3px;
     padding-top: 3px;
@@ -116,14 +188,6 @@
     }
   }
 
-  .cal-header.cal-today {
-    background-color: #e8fde7;
-  }
-
-  .cal-header.cal-weekend span {
-    color: #8b0000;
-  }
-
   .cal-event,
   .cal-header {
     overflow: hidden;
@@ -142,19 +206,13 @@
 
   .cal-time-events {
     position: relative;
-    border: solid 1px #e1e1e1;
+    border: solid 1px;
     border-top: 0;
     display: flex;
 
     .cal-day-columns {
       display: flex;
       flex-grow: 1;
-
-      &:not(.cal-resize-active) {
-        .cal-hour-segment:hover {
-          background-color: #ededed;
-        }
-      }
     }
 
     .cal-day-column {
@@ -186,10 +244,6 @@
     }
   }
 
-  .cal-hour-odd {
-    background-color: #fafafa;
-  }
-
   .cal-hour-segment {
     position: relative;
 
@@ -206,10 +260,6 @@
     cursor: move;
   }
 
-  .cal-drag-over .cal-hour-segment {
-    background-color: #ededed;
-  }
-
   /* stylelint-disable-next-line selector-type-no-unknown */
   mwl-calendar-week-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
   .cal-hour-segment {
@@ -218,7 +268,7 @@
 
   .cal-hour:not(:last-child) .cal-hour-segment,
   .cal-hour:last-child :not(:last-child) .cal-hour-segment {
-    border-bottom: thin dashed #e1e1e1;
+    border-bottom: thin dashed;
   }
 
   .cal-time {
@@ -244,3 +294,5 @@
     border-bottom-right-radius: 5px;
   }
 }
+
+@include cal-week-view-theme($cal-week-view-vars);

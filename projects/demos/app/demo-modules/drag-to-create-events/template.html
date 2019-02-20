@@ -5,20 +5,23 @@
         class="btn btn-primary"
         mwlCalendarPreviousView
         [view]="'day'"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Previous
       </div>
       <div
         class="btn btn-outline-secondary"
         mwlCalendarToday
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Today
       </div>
       <div
         class="btn btn-primary"
         mwlCalendarNextView
         [view]="'day'"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Next
       </div>
     </div>
@@ -27,14 +30,15 @@
     <h3>{{ viewDate | calendarDate:('weekViewTitle') }}</h3>
   </div>
 </div>
-<br>
+<br />
 
 <ng-template
   #weekViewHourSegmentTemplate
   let-segment="segment"
   let-locale="locale"
   let-segmentHeight="segmentHeight"
-  let-isTimeLabel="isTimeLabel">
+  let-isTimeLabel="isTimeLabel"
+>
   <div
     #segmentElement
     class="cal-hour-segment"

@@ -1,13 +1,46 @@
+@import '../../variables';
+
+$cal-day-view-vars: () !default;
+$cal-day-view-vars: map-merge($cal-vars, $cal-day-view-vars);
+
+@mixin cal-day-view-theme($overrides) {
+  $theme: map-merge($cal-day-view-vars, $overrides);
+
+  .cal-day-view {
+    background-color: map-get($theme, bg-primary);
+
+    .cal-hour-rows {
+      border-color: map-get($theme, border-color);
+    }
+
+    .cal-hour:nth-child(odd) {
+      background-color: map-get($theme, bg-secondary);
+    }
+
+    .cal-hour:not(:last-child) .cal-hour-segment,
+    .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+      border-bottom-color: map-get($theme, border-color);
+    }
+
+    .cal-hour-segment:hover,
+    .cal-drag-over .cal-hour-segment {
+      background-color: map-get($theme, bg-active);
+    }
+
+    .cal-event {
+      background-color: map-get($theme, event-color-secondary);
+      border-color: map-get($theme, event-color-primary);
+      color: map-get($theme, event-color-primary);
+    }
+  }
+}
+
 .cal-day-view {
   .cal-hour-rows {
     width: 100%;
-    border: solid 1px #e1e1e1;
-    overflow-x: scroll;
+    border: solid 1px;
+    overflow-x: auto;
     position: relative;
-  }
-
-  .cal-hour:nth-child(odd) {
-    background-color: #fafafa;
   }
 
   /* stylelint-disable-next-line selector-type-no-unknown */
@@ -22,25 +55,22 @@
 
   .cal-hour:not(:last-child) .cal-hour-segment,
   .cal-hour:last-child :not(:last-child) .cal-hour-segment {
-    border-bottom: thin dashed #e1e1e1;
+    border-bottom: thin dashed;
   }
 
   .cal-time {
     font-weight: bold;
-    padding-top: 5px;
     width: 70px;
-    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .cal-hour-segment.cal-after-hour-start {
     .cal-time {
       display: none;
     }
-  }
-
-  .cal-hour-segment:hover,
-  .cal-drag-over .cal-hour-segment {
-    background-color: #ededed;
   }
 
   .cal-drag-active .cal-hour-segment {
@@ -60,9 +90,7 @@
   .cal-event {
     padding: 5px;
     font-size: 12px;
-    background-color: #d1e8ff;
-    border: 1px solid #1e90ff;
-    color: #1e90ff;
+    border: 1px solid;
     box-sizing: border-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -107,3 +135,5 @@
     }
   }
 }
+
+@include cal-day-view-theme($cal-day-view-vars);

@@ -78,6 +78,21 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
+  it('should emit on the columnHeaderClicked output', done => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    fixture.detectChanges();
+    fixture.componentInstance.columnHeaderClicked.subscribe(val => {
+      expect(val).to.equal(0);
+      done();
+    });
+    fixture.nativeElement.querySelector('.cal-header .cal-cell').click();
+    fixture.detectChanges();
+  });
+
   it('should generate the week view with default colors for events', () => {
     const fixture: ComponentFixture<
       CalendarMonthViewComponent
@@ -150,6 +165,41 @@ describe('calendarMonthView component', () => {
     expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
     expect(fixture.componentInstance.openDay).to.equal(undefined);
     fixture.componentInstance.viewDate = moment()
+      .startOf('month')
+      .startOf('week')
+      .add(8, 'days')
+      .toDate();
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      activeDayIsOpen: {}
+    });
+    expect(fixture.componentInstance.openRowIndex).to.equal(7);
+    expect(fixture.componentInstance.openDay).to.equal(
+      fixture.componentInstance.view.days[8]
+    );
+    fixture.componentInstance.activeDayIsOpen = false;
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      activeDayIsOpen: {}
+    });
+    expect(!!fixture.componentInstance.openRowIndex).to.equal(false);
+    expect(!!fixture.componentInstance.openDay).to.equal(false);
+    fixture.destroy();
+  });
+
+  it('should use the activeDay input instead of the viewDate to determine the active day', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
+    expect(fixture.componentInstance.openDay).to.equal(undefined);
+    fixture.componentInstance.viewDate = moment()
+      .startOf('month')
+      .startOf('week')
+      .add(14, 'days')
+      .toDate();
+    fixture.componentInstance.activeDay = moment()
       .startOf('month')
       .startOf('week')
       .add(8, 'days')

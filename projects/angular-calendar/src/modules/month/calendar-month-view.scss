@@ -1,11 +1,70 @@
+@import '../../variables';
+
+$cal-month-view-vars: () !default;
+$cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
+
+@mixin cal-month-view-theme($overrides) {
+  $theme: map-merge($cal-month-view-vars, $overrides);
+
+  .cal-month-view {
+    background-color: map-get($theme, bg-primary);
+
+    .cal-cell-row:hover {
+      background-color: map-get($theme, bg-secondary);
+    }
+
+    .cal-cell-row .cal-cell:hover,
+    .cal-cell.cal-has-events.cal-open {
+      background-color: map-get($theme, bg-active);
+    }
+
+    .cal-days {
+      border-color: map-get($theme, border-color);
+    }
+
+    .cal-day-cell:not(:last-child) {
+      border-right-color: map-get($theme, border-color);
+    }
+
+    .cal-days .cal-cell-row {
+      border-bottom-color: map-get($theme, border-color);
+    }
+
+    .cal-day-badge {
+      background-color: map-get($theme, badge-color);
+      color: map-get($theme, white);
+    }
+
+    .cal-event {
+      background-color: map-get($theme, event-color-primary);
+      border-color: map-get($theme, event-color-secondary);
+      color: map-get($theme, white);
+    }
+
+    .cal-day-cell.cal-weekend .cal-day-number {
+      color: map-get($theme, weekend-color);
+    }
+
+    .cal-day-cell.cal-today {
+      background-color: map-get($theme, today-bg);
+    }
+
+    .cal-day-cell.cal-drag-over {
+      background-color: darken(map-get($theme, bg-active), 5%) !important;
+    }
+
+    .cal-open-day-events {
+      color: map-get($theme, white);
+      background-color: map-get($theme, gray);
+      box-shadow: inset 0 0 15px 0 rgba(map-get($theme, black), 0.5);
+    }
+  }
+}
+
 .cal-month-view {
   .cal-header {
     text-align: center;
     font-weight: bolder;
-  }
-
-  .cal-cell-row:hover {
-    background-color: #fafafa;
   }
 
   .cal-header .cal-cell {
@@ -16,13 +75,8 @@
     white-space: nowrap;
   }
 
-  .cal-cell-row .cal-cell:hover,
-  .cal-cell.cal-has-events.cal-open {
-    background-color: #ededed;
-  }
-
   .cal-days {
-    border: 1px solid #e1e1e1;
+    border: 1px solid;
     border-bottom: 0;
   }
 
@@ -53,24 +107,22 @@
   }
 
   .cal-day-cell:not(:last-child) {
-    border-right: 1px solid #e1e1e1;
+    border-right: 1px solid;
   }
 
   .cal-days .cal-cell-row {
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid;
   }
 
   .cal-day-badge {
     margin-top: 18px;
     margin-left: 10px;
-    background-color: #b94a48;
     display: inline-block;
     min-width: 10px;
     padding: 3px 7px;
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
-    color: white;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -102,9 +154,6 @@
     border-radius: 50%;
     display: inline-block;
     margin: 2px;
-    background-color: #1e90ff;
-    border-color: #d1e8ff;
-    color: #fff;
   }
 
   .cal-day-cell.cal-in-month.cal-has-events {
@@ -116,27 +165,12 @@
     cursor: default;
   }
 
-  .cal-day-cell.cal-weekend .cal-day-number {
-    color: darkred;
-  }
-
-  .cal-day-cell.cal-today {
-    background-color: #e8fde7;
-  }
-
   .cal-day-cell.cal-today .cal-day-number {
     font-size: 1.9em;
   }
 
-  .cal-day-cell.cal-drag-over {
-    background-color: darken(#ededed, 5%) !important;
-  }
-
   .cal-open-day-events {
     padding: 15px;
-    color: white;
-    background-color: #555;
-    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
   }
 
   .cal-open-day-events .cal-event {
@@ -167,3 +201,5 @@
     }
   }
 }
+
+@include cal-month-view-theme($cal-month-view-vars);

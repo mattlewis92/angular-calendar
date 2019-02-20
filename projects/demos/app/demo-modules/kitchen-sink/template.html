@@ -16,7 +16,9 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
   </div>
 </ng-template>
 
@@ -28,13 +30,15 @@
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
-        (viewDateChange)="activeDayIsOpen = false">
+        (viewDateChange)="activeDayIsOpen = false"
+      >
         Previous
       </div>
       <div
         class="btn btn-outline-secondary"
         mwlCalendarToday
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Today
       </div>
       <div
@@ -42,7 +46,8 @@
         mwlCalendarNextView
         [view]="view"
         [(viewDate)]="viewDate"
-        (viewDateChange)="activeDayIsOpen = false">
+        (viewDateChange)="activeDayIsOpen = false"
+      >
         Next
       </div>
     </div>
@@ -55,25 +60,28 @@
       <div
         class="btn btn-primary"
         (click)="view = CalendarView.Month"
-        [class.active]="view === CalendarView.Month">
+        [class.active]="view === CalendarView.Month"
+      >
         Month
       </div>
       <div
         class="btn btn-primary"
         (click)="view = CalendarView.Week"
-        [class.active]="view === CalendarView.Week">
+        [class.active]="view === CalendarView.Week"
+      >
         Week
       </div>
       <div
         class="btn btn-primary"
         (click)="view = CalendarView.Day"
-        [class.active]="view === CalendarView.Day">
+        [class.active]="view === CalendarView.Day"
+      >
         Day
       </div>
     </div>
   </div>
 </div>
-<br>
+<br />
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
     *ngSwitchCase="CalendarView.Month"
@@ -83,7 +91,8 @@
     [activeDayIsOpen]="activeDayIsOpen"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)">
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="CalendarView.Week"
@@ -91,7 +100,8 @@
     [events]="events"
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)">
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="CalendarView.Day"
@@ -99,24 +109,22 @@
     [events]="events"
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)">
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
   </mwl-calendar-day-view>
 </div>
 
-<br><br><br>
+<br /><br /><br />
 
 <h3>
   Edit events
-  <button
-    class="btn btn-primary pull-right"
-    (click)="addEvent()">
+  <button class="btn btn-primary pull-right" (click)="addEvent()">
     Add new
   </button>
   <div class="clearfix"></div>
 </h3>
 
 <table class="table table-bordered">
-
   <thead>
     <tr>
       <th>Title</th>
@@ -135,19 +143,22 @@
           type="text"
           class="form-control"
           [(ngModel)]="event.title"
-          (keyup)="refresh.next()">
+          (keyup)="refresh.next()"
+        />
       </td>
       <td>
         <input
           type="color"
           [(ngModel)]="event.color.primary"
-          (change)="refresh.next()">
+          (change)="refresh.next()"
+        />
       </td>
       <td>
         <input
           type="color"
           [(ngModel)]="event.color.secondary"
-          (change)="refresh.next()">
+          (change)="refresh.next()"
+        />
       </td>
       <td>
         <input
@@ -161,7 +172,8 @@
           [enableTime]="true"
           dateFormat="Y-m-dTH:i"
           altFormat="F j, Y H:i"
-          placeholder="Not set">
+          placeholder="Not set"
+        />
       </td>
       <td>
         <input
@@ -175,16 +187,17 @@
           [enableTime]="true"
           dateFormat="Y-m-dTH:i"
           altFormat="F j, Y H:i"
-          placeholder="Not set">
+          placeholder="Not set"
+        />
       </td>
       <td>
         <button
           class="btn btn-danger"
-          (click)="events.splice(index, 1); refresh.next()">
+          (click)="events.splice(index, 1); refresh.next()"
+        >
           Delete
         </button>
       </td>
     </tr>
   </tbody>
-
 </table>

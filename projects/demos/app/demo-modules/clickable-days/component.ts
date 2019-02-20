@@ -14,4 +14,6 @@ export class DemoComponent {
   events: CalendarEvent[] = [];
 
   clickedDate: Date;
+
+  clickedColumn: number;
 }

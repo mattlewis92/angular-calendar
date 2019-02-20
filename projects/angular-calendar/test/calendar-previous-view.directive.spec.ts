@@ -5,7 +5,8 @@ import { CalendarModule, DateAdapter } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
 @Component({
-  template: `<button
+  template: `
+    <button
       mwlCalendarPreviousView
       [view]="view"
       [(viewDate)]="viewDate"

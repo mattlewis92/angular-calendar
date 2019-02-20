@@ -1,10 +1,10 @@
-<mwl-demo-utils-calendar-header
-  [(view)]="view"
-  [(viewDate)]="viewDate">
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
 </mwl-demo-utils-calendar-header>
 
 <div class="text-center">
-  <button class="btn btn-primary" (click)="refreshView()">Refresh + re-render the current view</button>
+  <button class="btn btn-primary" (click)="refreshView()">
+    Refresh + re-render the current view
+  </button>
 </div>
 
 <div [ngSwitch]="view">
@@ -13,18 +13,21 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
-    (beforeViewRender)="beforeMonthViewRender($event)">
+    (beforeViewRender)="beforeMonthViewRender($event)"
+  >
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
-    [refresh]="refresh">
+    [refresh]="refresh"
+  >
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
-    [refresh]="refresh">
+    [refresh]="refresh"
+  >
   </mwl-calendar-day-view>
 </div>

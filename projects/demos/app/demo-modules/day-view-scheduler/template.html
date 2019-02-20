@@ -5,20 +5,23 @@
         class="btn btn-primary"
         mwlCalendarPreviousView
         [view]="'day'"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Previous
       </div>
       <div
         class="btn btn-outline-secondary"
         mwlCalendarToday
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Today
       </div>
       <div
         class="btn btn-primary"
         mwlCalendarNextView
         [view]="'day'"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+      >
         Next
       </div>
     </div>
@@ -27,7 +30,7 @@
     <h3>{{ viewDate | calendarDate:('dayViewTitle') }}</h3>
   </div>
 </div>
-<br>
+<br />
 
 <mwl-day-view-scheduler
   [viewDate]="viewDate"

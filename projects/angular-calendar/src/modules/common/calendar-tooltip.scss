@@ -1,3 +1,33 @@
+@import '../../variables';
+
+$cal-tooltip-vars: () !default;
+$cal-tooltip-vars: map-merge($cal-vars, $cal-tooltip-vars);
+
+@mixin cal-tooltip-theme($overrides) {
+  $theme: map-merge($cal-tooltip-vars, $overrides);
+
+  .cal-tooltip.cal-tooltip-top .cal-tooltip-arrow {
+    border-top-color: map-get($theme, black);
+  }
+
+  .cal-tooltip.cal-tooltip-right .cal-tooltip-arrow {
+    border-right-color: map-get($theme, black);
+  }
+
+  .cal-tooltip.cal-tooltip-bottom .cal-tooltip-arrow {
+    border-bottom-color: map-get($theme, black);
+  }
+
+  .cal-tooltip.cal-tooltip-left .cal-tooltip-arrow {
+    border-left-color: map-get($theme, black);
+  }
+
+  .cal-tooltip-inner {
+    color: map-get($theme, white);
+    background-color: map-get($theme, black);
+  }
+}
+
 .cal-tooltip {
   position: absolute;
   z-index: 1070;
@@ -29,7 +59,6 @@
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #000;
 }
 
 .cal-tooltip.cal-tooltip-right {
@@ -42,7 +71,6 @@
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
-  border-right-color: #000;
 }
 
 .cal-tooltip.cal-tooltip-bottom {
@@ -55,7 +83,6 @@
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000;
 }
 
 .cal-tooltip.cal-tooltip-left {
@@ -68,15 +95,12 @@
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
-  border-left-color: #000;
 }
 
 .cal-tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
-  color: #fff;
   text-align: center;
-  background-color: #000;
   border-radius: 0.25rem;
 }
 
@@ -87,3 +111,5 @@
   border-color: transparent;
   border-style: solid;
 }
+
+@include cal-tooltip-theme($cal-tooltip-vars);
