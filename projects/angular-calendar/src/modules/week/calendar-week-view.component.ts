@@ -170,6 +170,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [tooltipPlacement]="tooltipPlacement"
               [tooltipTemplate]="tooltipTemplate"
               [tooltipAppendToBody]="tooltipAppendToBody"
+              [tooltipDelay]="tooltipDelay"
               [customTemplate]="eventTemplate"
               [eventTitleTemplate]="eventTitleTemplate"
               [eventActionsTemplate]="eventActionsTemplate"
@@ -293,6 +294,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [tooltipTemplate]="tooltipTemplate"
                 [tooltipAppendToBody]="tooltipAppendToBody"
                 [tooltipDisabled]="dragActive || timeEventResizes.size > 0"
+                [tooltipDelay]="tooltipDelay"
                 [customTemplate]="eventTemplate"
                 [eventTitleTemplate]="eventTitleTemplate"
                 [eventActionsTemplate]="eventActionsTemplate"
@@ -389,6 +391,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * Whether to append tooltips to the body or next to the trigger element
    */
   @Input() tooltipAppendToBody: boolean = true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input() tooltipDelay: number | null = null;
 
   /**
    * The start number of the week
