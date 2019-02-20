@@ -396,8 +396,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
    * will be displayed immediately.
    */
-  @Input()
-  tooltipDelay: number | null = null;
+  @Input() tooltipDelay: number | null = null;
 
   /**
    * The start number of the week

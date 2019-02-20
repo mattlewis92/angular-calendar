@@ -69,8 +69,7 @@ export class CalendarTooltipDirective implements OnDestroy {
 
   @Input('tooltipAppendToBody') appendToBody: boolean; // tslint:disable-line no-input-rename
 
-  @Input('tooltipDelay')
-  delay: number | null = null; // tslint:disable-line no-input-rename
+  @Input('tooltipDelay') delay: number | null = null; // tslint:disable-line no-input-rename
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
