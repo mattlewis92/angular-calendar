@@ -820,9 +820,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       let newStart: Date = allDayEvent.event.start;
       let newEnd: Date = allDayEvent.event.end || allDayEvent.event.start;
       if (allDayEventResizingBeforeStart) {
-        newStart = this.dateAdapter.addDays(newStart, daysDiff);
+        newStart = addDaysWithExclusions(
+          this.dateAdapter,
+          newStart,
+          daysDiff,
+          this.excludeDays
+        );
       } else {
-        newEnd = this.dateAdapter.addDays(newEnd, daysDiff);
+        newEnd = addDaysWithExclusions(
+          this.dateAdapter,
+          newEnd,
+          daysDiff,
+          this.excludeDays
+        );
       }
 
       this.eventTimesChanged.emit({
@@ -1048,13 +1058,23 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       : 0;
 
     const start = this.dateAdapter.addMinutes(
-      this.dateAdapter.addDays(weekEvent.event.start, daysDragged),
+      addDaysWithExclusions(
+        this.dateAdapter,
+        weekEvent.event.start,
+        daysDragged,
+        this.excludeDays
+      ),
       minutesMoved
     );
     let end: Date;
     if (weekEvent.event.end) {
       end = this.dateAdapter.addMinutes(
-        this.dateAdapter.addDays(weekEvent.event.end, daysDragged),
+        addDaysWithExclusions(
+          this.dateAdapter,
+          weekEvent.event.end,
+          daysDragged,
+          this.excludeDays
+        ),
         minutesMoved
       );
     }
@@ -1129,7 +1149,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff = Math.round(
         +resizeEvent.edges.left / this.dayColumnWidth
       );
-      const newStart = this.dateAdapter.addDays(newEventDates.start, daysDiff);
+      const newStart = addDaysWithExclusions(
+        this.dateAdapter,
+        newEventDates.start,
+        daysDiff,
+        this.excludeDays
+      );
       if (newStart < smallestResizes.start) {
         newEventDates.start = newStart;
       } else {
@@ -1139,7 +1164,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff = Math.round(
         +resizeEvent.edges.right / this.dayColumnWidth
       );
-      const newEnd = this.dateAdapter.addDays(newEventDates.end, daysDiff);
+      const newEnd = addDaysWithExclusions(
+        this.dateAdapter,
+        newEventDates.end,
+        daysDiff,
+        this.excludeDays
+      );
       if (newEnd > smallestResizes.end) {
         newEventDates.end = newEnd;
       } else {

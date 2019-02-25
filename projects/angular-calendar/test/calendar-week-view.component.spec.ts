@@ -2041,4 +2041,75 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.destroy();
   });
+
+  it('should drag time events to different days and columns while snapping to a grid and excluding weekends', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2019-03-01');
+    fixture.componentInstance.excludeDays = [0, 6];
+    fixture.componentInstance.daysInWeek = 4;
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2019-03-01'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2019-03-01'))
+          .startOf('day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        draggable: true
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      events: {},
+      excludeDays: {},
+      daysInWeek: {}
+    });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    const dayWidth: number = events[0].parentElement.offsetWidth;
+    const rect1: ClientRect = events[0].getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', events[0], {
+      clientX: rect1.right,
+      clientY: rect1.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', events[0], {
+      clientX: rect1.right + dayWidth - 5,
+      clientY: rect1.bottom + 95
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', events[0], {
+      clientX: rect1.right + dayWidth - 5,
+      clientY: rect1.bottom + 95
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drag',
+      allDay: false,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(3, 'days')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(3, 'days')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate()
+    });
+  });
 });
