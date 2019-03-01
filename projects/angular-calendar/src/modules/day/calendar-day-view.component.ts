@@ -452,14 +452,24 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (
+    const refreshHourGrid =
       changes.viewDate ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
       changes.dayEndHour ||
       changes.dayEndMinute ||
-      changes.hourSegments
-    ) {
+      changes.hourSegments;
+
+    const refreshView =
+      changes.viewDate ||
+      changes.events ||
+      changes.dayStartHour ||
+      changes.dayStartMinute ||
+      changes.dayEndHour ||
+      changes.dayEndMinute ||
+      changes.eventWidth;
+
+    if (refreshHourGrid) {
       this.refreshHourGrid();
     }
 
@@ -467,16 +477,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       validateEvents(this.events);
     }
 
-    if (
-      changes.viewDate ||
-      changes.events ||
-      changes.dayStartHour ||
-      changes.dayStartMinute ||
-      changes.dayEndHour ||
-      changes.dayEndMinute ||
-      changes.eventWidth
-    ) {
+    if (refreshView) {
       this.refreshView();
+    }
+
+    if (refreshHourGrid || refreshView) {
+      this.emitBeforeViewRender();
     }
   }
 
@@ -638,7 +644,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshView(): void {
@@ -657,12 +662,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       eventWidth: this.eventWidth,
       segmentHeight: this.hourSegmentHeight
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHourGrid();
     this.refreshView();
+    this.emitBeforeViewRender();
   }
 
   private emitBeforeViewRender(): void {

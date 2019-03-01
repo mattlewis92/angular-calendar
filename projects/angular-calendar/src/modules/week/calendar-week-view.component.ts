@@ -649,20 +649,13 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (
+    const refreshHeader =
       changes.viewDate ||
       changes.excludeDays ||
       changes.weekendDays ||
-      changes.daysInWeek
-    ) {
-      this.refreshHeader();
-    }
+      changes.daysInWeek;
 
-    if (changes.events) {
-      validateEvents(this.events);
-    }
-
-    if (
+    const refreshBody =
       changes.viewDate ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
@@ -674,9 +667,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.excludeDays ||
       changes.hourSegmentHeight ||
       changes.events ||
-      changes.daysInWeek
-    ) {
+      changes.daysInWeek;
+
+    if (refreshHeader) {
+      this.refreshHeader();
+    }
+
+    if (changes.events) {
+      validateEvents(this.events);
+    }
+
+    if (refreshBody) {
       this.refreshBody();
+    }
+
+    if (refreshHeader || refreshBody) {
+      this.emitBeforeViewRender();
     }
   }
 
@@ -990,17 +996,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.daysInWeek
       )
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
     this.view = this.getWeekView(this.events);
-    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
+    this.emitBeforeViewRender();
   }
 
   private emitBeforeViewRender(): void {

@@ -918,6 +918,25 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
+  it('should only call the beforeViewRender output once when changing the view date', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    const beforeViewRenderCalled = sinon.spy();
+    // use subscription to test that it was only called a max of one times
+    const subscription = fixture.componentInstance.beforeViewRender.subscribe(
+      beforeViewRenderCalled
+    );
+    fixture.componentInstance.viewDate = new Date('2016-06-28');
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(beforeViewRenderCalled).to.have.been.calledOnce;
+    subscription.unsubscribe();
+    fixture.destroy();
+  });
+
   it('should log on invalid events', () => {
     const stub = sinon.stub(console, 'warn');
     const fixture: ComponentFixture<

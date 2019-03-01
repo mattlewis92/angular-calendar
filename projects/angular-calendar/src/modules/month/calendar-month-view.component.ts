@@ -313,7 +313,15 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
+    const refreshHeader =
+      changes.viewDate || changes.excludeDays || changes.weekendDays;
+    const refreshBody =
+      changes.viewDate ||
+      changes.events ||
+      changes.excludeDays ||
+      changes.weekendDays;
+
+    if (refreshHeader) {
       this.refreshHeader();
     }
 
@@ -321,13 +329,12 @@ export class CalendarMonthViewComponent
       validateEvents(this.events);
     }
 
-    if (
-      changes.viewDate ||
-      changes.events ||
-      changes.excludeDays ||
-      changes.weekendDays
-    ) {
+    if (refreshBody) {
       this.refreshBody();
+    }
+
+    if (refreshHeader || refreshBody) {
+      this.emitBeforeViewRender();
     }
 
     if (
@@ -408,7 +415,6 @@ export class CalendarMonthViewComponent
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
@@ -419,7 +425,6 @@ export class CalendarMonthViewComponent
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    this.emitBeforeViewRender();
   }
 
   private checkActiveDayIsOpen(): void {
@@ -439,10 +444,9 @@ export class CalendarMonthViewComponent
   }
 
   private refreshAll(): void {
-    this.columnHeaders = null;
-    this.view = null;
     this.refreshHeader();
     this.refreshBody();
+    this.emitBeforeViewRender();
     this.checkActiveDayIsOpen();
   }
 
