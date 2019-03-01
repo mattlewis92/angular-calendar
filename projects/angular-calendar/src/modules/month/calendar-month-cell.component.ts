@@ -24,6 +24,7 @@ import { PlacementArray } from 'positioning';
       let-tooltipTemplate="tooltipTemplate"
       let-tooltipAppendToBody="tooltipAppendToBody"
       let-tooltipDelay="tooltipDelay"
+      let-trackByEventId="trackByEventId"
     >
       <div class="cal-cell-top">
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
@@ -70,7 +71,8 @@ import { PlacementArray } from 'positioning';
         eventClicked: eventClicked,
         tooltipTemplate: tooltipTemplate,
         tooltipAppendToBody: tooltipAppendToBody,
-        tooltipDelay: tooltipDelay
+        tooltipDelay: tooltipDelay,
+        trackByEventId: trackByEventId
       }"
     >
     </ng-template>

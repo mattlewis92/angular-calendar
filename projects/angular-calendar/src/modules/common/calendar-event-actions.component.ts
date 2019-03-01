@@ -4,7 +4,11 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-event-actions',
   template: `
-    <ng-template #defaultTemplate let-event="event">
+    <ng-template
+      #defaultTemplate
+      let-event="event"
+      let-trackByActionId="trackByActionId"
+    >
       <span *ngIf="event.actions" class="cal-event-actions">
         <a
           class="cal-event-action"
@@ -20,7 +24,8 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
-        event: event
+        event: event,
+        trackByActionId: trackByActionId
       }"
     >
     </ng-template>

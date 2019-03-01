@@ -17,6 +17,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
       let-locale="locale"
       let-dayHeaderClicked="dayHeaderClicked"
       let-eventDropped="eventDropped"
+      let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
     >
       <div class="cal-day-headers">
         <div
@@ -51,7 +52,8 @@ import { trackByWeekDayHeaderDate } from '../common/util';
         days: days,
         locale: locale,
         dayHeaderClicked: dayHeaderClicked,
-        eventDropped: eventDropped
+        eventDropped: eventDropped,
+        trackByWeekDayHeaderDate: trackByWeekDayHeaderDate
       }"
     >
     </ng-template>

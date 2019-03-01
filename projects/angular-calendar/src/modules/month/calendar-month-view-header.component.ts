@@ -11,7 +11,12 @@ import { trackByWeekDayHeaderDate } from '../common/util';
 @Component({
   selector: 'mwl-calendar-month-view-header',
   template: `
-    <ng-template #defaultTemplate let-days="days" let-locale="locale">
+    <ng-template
+      #defaultTemplate
+      let-days="days"
+      let-locale="locale"
+      let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
+    >
       <div class="cal-cell-row cal-header">
         <div
           class="cal-cell"
@@ -29,7 +34,11 @@ import { trackByWeekDayHeaderDate } from '../common/util';
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
-      [ngTemplateOutletContext]="{ days: days, locale: locale }"
+      [ngTemplateOutletContext]="{
+        days: days,
+        locale: locale,
+        trackByWeekDayHeaderDate: trackByWeekDayHeaderDate
+      }"
     >
     </ng-template>
   `
