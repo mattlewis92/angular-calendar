@@ -24,7 +24,7 @@ import {
   CalendarEventTimesChangedEventType
 } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
-import { validateEvents, trackByIndex } from '../common/util';
+import { validateEvents } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { PlacementArray } from 'positioning';
 
@@ -64,7 +64,9 @@ export interface CalendarMonthViewEventTimesChangedEvent<
         >
       </mwl-calendar-month-view-header>
       <div class="cal-days">
-        <div *ngFor="let rowIndex of view.rowOffsets; trackByIndex">
+        <div
+          *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"
+        >
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
               *ngFor="
@@ -278,7 +280,11 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  trackByIndex = trackByIndex;
+  trackByRowOffset = (index: number, offset: number) =>
+    this.view.days
+      .slice(offset, this.view.totalDaysVisibleInWeek)
+      .map(day => day.date.toISOString())
+      .join('-');
 
   /**
    * @hidden
