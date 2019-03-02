@@ -42,8 +42,9 @@ import {
   shouldFireDroppedEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
-import { DragEndEvent } from 'angular-draggable-droppable';
+import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
+import CalendarDayAutoScroll from './calendar-day-auto-scroll';
 
 export interface CalendarDayViewBeforeRenderEvent {
   body: {
@@ -146,7 +147,7 @@ export interface DayViewEventResize {
             "
             [validateDrag]="validateDrag"
             (dragPointerDown)="dragStarted(event, dayEventsContainer)"
-            (dragging)="dragMove()"
+            (dragging)="dragMove($event)"
             (dragEnd)="dragEnded(dayEvent, $event)"
             [style.marginTop.px]="dayEvent.top"
             [style.height.px]="dayEvent.height"
@@ -571,6 +572,8 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.currentResizes.delete(dayEvent);
   }
 
+  calendarDayAutoScroll = new CalendarDayAutoScroll();
+
   dragStarted(event: HTMLElement, dayEventsContainer: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
       dayEventsContainer,
@@ -587,13 +590,16 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.eventDragEnter = 0;
     this.dragAlreadyMoved = false;
     this.cdr.markForCheck();
+
+    this.calendarDayAutoScroll.dragStart(event);
   }
 
   /**
    * @hidden
    */
-  dragMove() {
+  dragMove(dragMoveEvent: DragMoveEvent) {
     this.dragAlreadyMoved = true;
+    this.calendarDayAutoScroll.dragMove(dragMoveEvent);
   }
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
