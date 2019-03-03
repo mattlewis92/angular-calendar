@@ -419,6 +419,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+
+  calendarDayAutoScroll = new CalendarDayAutoScroll();
+
+  /**
+   * @hidden
+   */
   constructor(
     private cdr: ChangeDetectorRef,
     private utils: CalendarUtils,
@@ -571,8 +577,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     });
     this.currentResizes.delete(dayEvent);
   }
-
-  calendarDayAutoScroll = new CalendarDayAutoScroll();
 
   dragStarted(event: HTMLElement, dayEventsContainer: HTMLElement): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
