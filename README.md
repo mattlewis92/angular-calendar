@@ -7,6 +7,10 @@
 [![GitHub stars](https://img.shields.io/github/stars/mattlewis92/angular-calendar.svg)](https://github.com/mattlewis92/angular-calendar/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mattlewis92/angular-calendar/master/LICENSE)
 
+<a href="https://www.patreon.com/mattlewis92">
+	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 For more things like this [follow me on twitter](https://twitter.com/mattlewis92_) 🐦, plus I am also [available for hire](https://mattlewis.me/?section=hire-me&utm_source=github&utm_medium=banner&utm_campaign=contracting) 👨‍💻
 
 ## Demo
