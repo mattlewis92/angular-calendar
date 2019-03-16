@@ -1,5 +1,5 @@
 ---
-name: Support question
+name: \U0001F4AC Support question
 about: Ask a question about the project
 title: Become a sponsor on Patreon to ask questions
 labels: ''
