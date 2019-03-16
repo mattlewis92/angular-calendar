@@ -49,6 +49,8 @@
 
 <nav
   class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
+  [class.navbar-dark]="activeDemo.darkTheme"
+  [class.bg-dark]="activeDemo.darkTheme"
   role="navigation"
 >
   <a class="navbar-brand" href="#">Angular 6.0+ calendar</a>

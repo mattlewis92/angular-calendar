@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 import { colors } from '../demo-utils/colors';
 import { DOCUMENT } from '@angular/common';
@@ -19,9 +19,9 @@ import { DOCUMENT } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class DemoComponent implements OnInit, OnDestroy {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   events: CalendarEvent[] = [
     {
@@ -31,22 +31,15 @@ export class DemoComponent implements OnInit, OnDestroy {
     }
   ];
 
-  private darkThemeClass = 'dark-theme';
-
-  // this is bad practise and only exists for the demo, don't do this in your app
-  private navbar =
-    this.document.querySelector('.navbar') ||
-    this.document.createElement('div');
+  private readonly darkThemeClass = 'dark-theme';
 
   constructor(@Inject(DOCUMENT) private document) {}
 
   ngOnInit(): void {
     this.document.body.classList.add(this.darkThemeClass);
-    this.navbar.classList.add('navbar-dark', 'bg-dark');
   }
 
   ngOnDestroy(): void {
     this.document.body.classList.remove(this.darkThemeClass);
-    this.navbar.classList.remove('navbar-dark', 'bg-dark');
   }
 }

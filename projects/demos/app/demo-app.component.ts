@@ -18,6 +18,7 @@ interface Demo {
   label: string;
   path: string;
   sources?: Source[];
+  darkTheme: boolean;
 }
 
 async function getSources(folder: string): Promise<Source[]> {
@@ -97,13 +98,16 @@ export class DemoAppComponent implements OnInit {
       .filter(route => route.path !== '**')
       .map(route => ({
         path: route.path,
-        label: route.data['label']
+        label: route.data.label,
+        darkTheme: route.data.darkTheme
       }));
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .pipe(take(1))
-      .subscribe(() => (this.firstDemoLoaded = true));
+      .subscribe(() => {
+        this.firstDemoLoaded = true;
+      });
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationStart))

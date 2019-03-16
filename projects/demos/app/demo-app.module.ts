@@ -288,7 +288,8 @@ import { environment } from '../environments/environment';
           path: 'dark-theme',
           loadChildren: './demo-modules/dark-theme/module#DemoModule',
           data: {
-            label: 'Dark theme'
+            label: 'Dark theme',
+            darkTheme: true
           }
         },
         {
