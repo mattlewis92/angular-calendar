@@ -1,7 +1,6 @@
 ---
 name: "\U0001F680Feature request"
-about: Suggest an idea for this project
-
+about: Suggest an idea for this project. If you would like your issue answered faster, please consider becoming a [bronze level sponsor](https://www.patreon.com/mattlewis92) on patreon.
 ---
 
 <!---
