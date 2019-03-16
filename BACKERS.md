@@ -1,0 +1,10 @@
+<h1 align="center">Backers</h1>
+
+Work on this calendar is funded entirely by donations through [Patreon](https://www.patreon.com/mattlewis92). If you'd like to support me and have your name appear here, then please consider backing me on Patreon!
+
+- [Back this project on Patreon](https://www.patreon.com/mattlewis92)
+- [One-time donation via PayPal](https://www.paypal.me/mattlewis92)
+
+<h2 align="center">Backers via Patreon</h2>
+
+- [_Your name here?_](https://www.patreon.com/mattlewis92)
