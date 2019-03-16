@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.7"></a>
+## [0.26.7](https://github.com/mattlewis92/angular-calendar/compare/v0.26.6...v0.26.7) (2019-03-16)
+
+
+### Bug Fixes
+
+* allow angular 8 peer dependency ([7230e94](https://github.com/mattlewis92/angular-calendar/commit/7230e94)), closes [#898](https://github.com/mattlewis92/angular-calendar/issues/898)
+
+
+
 <a name="0.26.6"></a>
 ## [0.26.6](https://github.com/mattlewis92/angular-calendar/compare/v0.26.5...v0.26.6) (2019-02-05)
 
