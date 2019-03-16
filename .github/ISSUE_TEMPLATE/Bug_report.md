@@ -1,6 +1,10 @@
 ---
 name: "\U0001F41BBug report"
 about: Please search Github for a similar issue or PR before submitting
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 <!---
