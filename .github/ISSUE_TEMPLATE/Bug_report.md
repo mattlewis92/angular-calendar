@@ -1,6 +1,6 @@
 ---
 name: "\U0001F41BBug report"
-about: Please search github for a similar issue or PR before submitting. If you would like your issue answered faster, please consider becoming a [bronze level sponsor](https://www.patreon.com/mattlewis92) on patreon.
+about: Please search github for a similar issue or PR before submitting. If you would like your issue answered faster, please consider becoming a bronze level sponsor on patreon: https://www.patreon.com/mattlewis92
 ---
 
 <!---
