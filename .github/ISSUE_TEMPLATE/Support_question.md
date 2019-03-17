@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-To gain access to the private issue tracker for this project where you can ask any questions you'd like about the calendar, you must become a silver sponsor on Patreon: https://www.patreon.com/mattlewis92
+To ask any questions you'd like about the calendar beyond bug and feature requests, you must become a silver sponsor or higher on Patreon: https://www.patreon.com/mattlewis92
