@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.10"></a>
+## [0.26.10](https://github.com/mattlewis92/angular-calendar/compare/v0.26.9...v0.26.10) (2019-03-17)
+
+
+### Bug Fixes
+
+* **week-view:** fix dragging on last column when view fills the screen ([79fcefc](https://github.com/mattlewis92/angular-calendar/commit/79fcefc)), closes [#871](https://github.com/mattlewis92/angular-calendar/issues/871)
+
+
+
 <a name="0.26.9"></a>
 ## [0.26.9](https://github.com/mattlewis92/angular-calendar/compare/v0.26.8...v0.26.9) (2019-03-17)
 
