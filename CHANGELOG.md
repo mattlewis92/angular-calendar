@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.8"></a>
+## [0.26.8](https://github.com/mattlewis92/angular-calendar/compare/v0.26.7...v0.26.8) (2019-03-17)
+
+
+### Bug Fixes
+
+* **week-view:** update header when week starts on changes ([bf3dd4d](https://github.com/mattlewis92/angular-calendar/commit/bf3dd4d)), closes [#868](https://github.com/mattlewis92/angular-calendar/issues/868)
+* throw better error message on invalid date formatter ([5f1fe72](https://github.com/mattlewis92/angular-calendar/commit/5f1fe72)), closes [#897](https://github.com/mattlewis92/angular-calendar/issues/897)
+
+
+
 <a name="0.26.7"></a>
 ## [0.26.7](https://github.com/mattlewis92/angular-calendar/compare/v0.26.6...v0.26.7) (2019-03-16)
 
