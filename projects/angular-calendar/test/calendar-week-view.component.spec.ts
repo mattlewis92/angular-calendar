@@ -17,7 +17,8 @@ import {
   CalendarEventTimesChangedEvent,
   DAYS_OF_WEEK,
   CalendarWeekViewComponent,
-  DateAdapter
+  DateAdapter,
+  CalendarWeekViewBeforeRenderEvent
 } from '../src';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs';
@@ -2045,5 +2046,61 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     fixture.destroy();
+  });
+
+  it('should preserve css classes on hour segments when dragging an event', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'days')
+          .toDate(),
+        title: 'bar',
+        draggable: true
+      }
+    ];
+    fixture.componentInstance.beforeViewRender.subscribe(
+      (view: CalendarWeekViewBeforeRenderEvent) => {
+        view.hourColumns.forEach(column => {
+          column.hours.forEach(hour => {
+            hour.segments.forEach(segment => {
+              segment.cssClass = 'disabled-cell';
+            });
+          });
+        });
+      }
+    );
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement
+        .querySelector('.cal-hour-segment')
+        .classList.contains('disabled-cell')
+    ).to.be.true;
+    document.body.appendChild(fixture.nativeElement);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    const dayWidth: number = events[0].parentElement.offsetWidth;
+    const rect: ClientRect = events[0].getBoundingClientRect();
+    triggerDomEvent('mousedown', events[0], {
+      clientX: rect.right,
+      clientY: rect.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', events[0], {
+      clientX: rect.right + dayWidth - 5,
+      clientY: rect.bottom + 95
+    });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement
+        .querySelector('.cal-hour-segment')
+        .classList.contains('disabled-cell')
+    ).to.be.true;
   });
 });

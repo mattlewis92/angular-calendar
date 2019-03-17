@@ -1059,11 +1059,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     tempEvents: CalendarEvent[],
     adjustedEvents: Map<CalendarEvent, CalendarEvent>
   ) {
+    const previousView = this.view;
     this.view = this.getWeekView(tempEvents);
     const adjustedEventsArray = tempEvents.filter(event =>
       adjustedEvents.has(event)
     );
-    this.view.hourColumns.forEach(column => {
+    this.view.hourColumns.forEach((column, columnIndex) => {
+      previousView.hourColumns[columnIndex].hours.forEach((hour, hourIndex) => {
+        hour.segments.forEach((segment, segmentIndex) => {
+          column.hours[hourIndex].segments[segmentIndex].cssClass =
+            segment.cssClass;
+        });
+      });
       adjustedEventsArray.forEach(adjustedEvent => {
         const originalEvent = adjustedEvents.get(adjustedEvent);
         const existingColumnEvent = column.events.find(
