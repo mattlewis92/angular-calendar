@@ -286,7 +286,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             }&quot;
             [dragSnapGrid]&#x3D;&quot;snapDraggedEvents ? { x: dayColumnWidth } : {}&quot;
             [validateDrag]&#x3D;&quot;validateDrag&quot;
-            (dragPointerDown)&#x3D;&quot;dragStarted(eventRowContainer, event)&quot;
+            (dragStart)&#x3D;&quot;dragStarted(eventRowContainer, event)&quot;
             (dragging)&#x3D;&quot;allDayEventDragMove()&quot;
             (dragEnd)&#x3D;&quot;dragEnded(allDayEvent, $event, dayColumnWidth)&quot;
           &gt;
@@ -405,7 +405,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               &quot;
               [ghostDragEnabled]&#x3D;&quot;!snapDraggedEvents&quot;
               [validateDrag]&#x3D;&quot;validateDrag&quot;
-              (dragPointerDown)&#x3D;&quot;dragStarted(dayColumns, event, timeEvent)&quot;
+              (dragStart)&#x3D;&quot;dragStarted(dayColumns, event, timeEvent)&quot;
               (dragging)&#x3D;&quot;dragMove(timeEvent, $event)&quot;
               (dragEnd)&#x3D;&quot;dragEnded(timeEvent, $event, dayColumnWidth, true)&quot;
             &gt;
@@ -1193,11 +1193,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     tempEvents: CalendarEvent[],
     adjustedEvents: Map&lt;CalendarEvent, CalendarEvent&gt;
   ) {
+    const previousView &#x3D; this.view;
     this.view &#x3D; this.getWeekView(tempEvents);
     const adjustedEventsArray &#x3D; tempEvents.filter(event &#x3D;&gt;
       adjustedEvents.has(event)
     );
-    this.view.hourColumns.forEach(column &#x3D;&gt; {
+    this.view.hourColumns.forEach((column, columnIndex) &#x3D;&gt; {
+      previousView.hourColumns[columnIndex].hours.forEach((hour, hourIndex) &#x3D;&gt; {
+        hour.segments.forEach((segment, segmentIndex) &#x3D;&gt; {
+          column.hours[hourIndex].segments[segmentIndex].cssClass &#x3D;
+            segment.cssClass;
+        });
+      });
       adjustedEventsArray.forEach(adjustedEvent &#x3D;&gt; {
         const originalEvent &#x3D; adjustedEvents.get(adjustedEvent);
         const existingColumnEvent &#x3D; column.events.find(

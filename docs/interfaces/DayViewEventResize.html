@@ -336,7 +336,7 @@ export interface DayViewEventResize {
               snapDraggedEvents ? { y: eventSnapSize || hourSegmentHeight } : {}
             &quot;
             [validateDrag]&#x3D;&quot;validateDrag&quot;
-            (dragPointerDown)&#x3D;&quot;dragStarted(event, dayEventsContainer)&quot;
+            (dragStart)&#x3D;&quot;dragStarted(event, dayEventsContainer)&quot;
             (dragging)&#x3D;&quot;dragMove()&quot;
             (dragEnd)&#x3D;&quot;dragEnded(dayEvent, $event)&quot;
             [style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;
