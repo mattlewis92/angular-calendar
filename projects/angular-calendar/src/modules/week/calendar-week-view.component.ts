@@ -645,7 +645,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.viewDate ||
       changes.excludeDays ||
       changes.weekendDays ||
-      changes.daysInWeek
+      changes.daysInWeek ||
+      changes.weekStartsOn
     ) {
       this.refreshHeader();
     }
