@@ -25,6 +25,16 @@ export class CalendarDatePipe implements PipeTransform {
     excludeDays: number[] = [],
     daysInWeek?: number
   ): string {
+    if (typeof this.dateFormatter[method] === 'undefined') {
+      const allowedMethods = Object.getOwnPropertyNames(
+        Object.getPrototypeOf(CalendarDateFormatter.prototype)
+      ).filter(iMethod => iMethod !== 'constructor');
+      throw new Error(
+        `${method} is not a valid date formatter. Can only be one of ${allowedMethods.join(
+          ', '
+        )}`
+      );
+    }
     return this.dateFormatter[method]({
       date,
       locale,

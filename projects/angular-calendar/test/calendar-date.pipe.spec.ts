@@ -95,4 +95,15 @@ describe('calendarDate pipe', () => {
       weekStartsOn: 0
     });
   });
+
+  it('should throw when an invalid method is passed', () => {
+    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
+      TestComponent
+    );
+    fixture.componentInstance.date = new Date('2016-01-01');
+    fixture.componentInstance.method = 'invalid';
+    expect(() => fixture.detectChanges()).to.throw(
+      /^invalid is not a valid date formatter. Can only be one of/
+    );
+  });
 });
