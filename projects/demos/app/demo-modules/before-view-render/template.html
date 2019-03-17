@@ -1,6 +1,11 @@
 <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
 </mwl-demo-utils-calendar-header>
 
+<div class="alert alert-info">
+  You can use each views beforeViewRender output to add a custom cssClass to
+  different cells to add styling for disabled time slots
+</div>
+
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
     *ngSwitchCase="'month'"
@@ -13,12 +18,14 @@
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
+    (beforeViewRender)="beforeWeekViewRender($event)"
   >
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
+    (beforeViewRender)="beforeDayViewRender($event)"
   >
   </mwl-calendar-day-view>
 </div>

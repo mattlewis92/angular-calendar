@@ -3,7 +3,12 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarMonthViewBeforeRenderEvent,
+  CalendarWeekViewBeforeRenderEvent,
+  CalendarDayViewBeforeRenderEvent
+} from 'angular-calendar';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -12,8 +17,8 @@ import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
   templateUrl: 'template.html',
   styles: [
     `
-      .odd-cell {
-        background-color: pink !important;
+      .bg-pink {
+        background-color: hotpink !important;
       }
     `
   ]
@@ -25,11 +30,38 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
-  beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
-    body.forEach(day => {
-      if (day.date.getDate() % 2 === 1 && day.inMonth) {
-        day.cssClass = 'odd-cell';
+  beforeMonthViewRender(renderEvent: CalendarMonthViewBeforeRenderEvent): void {
+    renderEvent.body.forEach(day => {
+      const dayOfMonth = day.date.getDate();
+      if (dayOfMonth > 5 && dayOfMonth < 10 && day.inMonth) {
+        day.cssClass = 'bg-pink';
       }
+    });
+  }
+
+  beforeWeekViewRender(renderEvent: CalendarWeekViewBeforeRenderEvent) {
+    renderEvent.hourColumns.forEach(hourColumn => {
+      hourColumn.hours.forEach(hour => {
+        hour.segments.forEach(segment => {
+          if (
+            segment.date.getHours() >= 2 &&
+            segment.date.getHours() <= 5 &&
+            segment.date.getDay() === 2
+          ) {
+            segment.cssClass = 'bg-pink';
+          }
+        });
+      });
+    });
+  }
+
+  beforeDayViewRender(renderEvent: CalendarDayViewBeforeRenderEvent) {
+    renderEvent.body.hourGrid.forEach(hour => {
+      hour.segments.forEach((segment, index) => {
+        if (segment.date.getHours() >= 2 && segment.date.getHours() <= 5) {
+          segment.cssClass = 'bg-pink';
+        }
+      });
     });
   }
 }
