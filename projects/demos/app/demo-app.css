@@ -4,7 +4,12 @@ h3 {
 
 .container-fluid {
   padding-top: 70px;
-  padding-bottom: 50px;
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    height: 100vh;
+  }
 }
 
 .spacer-top {
@@ -41,4 +46,12 @@ h3 {
 pre {
   background-color: #f5f5f5;
   padding: 15px;
+}
+
+.fill-height {
+  height: 100%;
+}
+
+.scroll-y {
+  overflow-y: auto;
 }

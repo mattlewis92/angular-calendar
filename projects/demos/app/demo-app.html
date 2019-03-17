@@ -122,8 +122,8 @@
 </ng-template>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-9">
+  <div class="row fill-height">
+    <div class="col-md-9 fill-height scroll-y" perfectScrollbar>
       <div class="card" *ngIf="firstDemoLoaded; else loading">
         <div class="card-header">
           <div class="row">
@@ -166,20 +166,18 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="sidebar-nav">
-        <h4>Demos</h4>
-        <ul class="list-unstyled">
-          <li *ngFor="let demo of demos">
-            <a
-              [routerLink]="[demo.path]"
-              [class.active]="activeDemo?.path === demo.path"
-            >
-              {{ demo.label }}
-            </a>
-          </li>
-        </ul>
-      </div>
+    <div class="col-md-3 fill-height sidebar-nav scroll-y" perfectScrollbar>
+      <h4>Demos</h4>
+      <ul class="list-unstyled">
+        <li *ngFor="let demo of demos">
+          <a
+            [routerLink]="[demo.path]"
+            [class.active]="activeDemo?.path === demo.path"
+          >
+            {{ demo.label }}
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
