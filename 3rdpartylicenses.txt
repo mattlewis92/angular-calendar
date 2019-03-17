@@ -409,7 +409,7 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-angular-resizable-element@3.2.2
+angular-resizable-element@3.2.4
 MIT
 The MIT License (MIT)
 
@@ -437,7 +437,7 @@ SOFTWARE.
 MIT
 MIT
 
-angular-draggable-droppable@4.0.2
+angular-draggable-droppable@4.2.0
 MIT
 The MIT License (MIT)
 
