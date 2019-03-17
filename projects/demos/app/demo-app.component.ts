@@ -18,6 +18,7 @@ interface Demo {
   label: string;
   path: string;
   sources?: Source[];
+  tags: string[];
 }
 
 async function getSources(folder: string): Promise<Source[]> {
@@ -82,9 +83,11 @@ const dependencyVersions: any = {
 })
 export class DemoAppComponent implements OnInit {
   demos: Demo[] = [];
+  filteredDemos: Demo[] = [];
   activeDemo: Demo;
   isMenuVisible = false;
   firstDemoLoaded = false;
+  searchText = '';
 
   constructor(private router: Router, analytics: Angulartics2GoogleAnalytics) {
     analytics.startTracking();
@@ -97,8 +100,10 @@ export class DemoAppComponent implements OnInit {
       .filter(route => route.path !== '**')
       .map(route => ({
         path: route.path,
-        label: route.data['label']
+        tags: route.data.tags || [],
+        label: route.data.label
       }));
+    this.updateFilteredDemos();
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -121,6 +126,16 @@ export class DemoAppComponent implements OnInit {
         );
         this.activeDemo.sources = await getSources(this.activeDemo.path);
       });
+  }
+
+  updateFilteredDemos() {
+    this.filteredDemos = this.demos.filter(
+      demo =>
+        !this.searchText ||
+        [demo.label.toLowerCase(), ...demo.tags].some(tag =>
+          tag.includes(this.searchText.toLowerCase())
+        )
+    );
   }
 
   editInStackblitz(demo: Demo): void {

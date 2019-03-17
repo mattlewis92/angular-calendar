@@ -16,6 +16,10 @@ h3 {
   margin-top: 15px;
 }
 
+.sidebar-nav {
+  padding-left: 5px;
+}
+
 .sidebar-nav h4 {
   margin-bottom: 20px;
 }

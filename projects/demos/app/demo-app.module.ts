@@ -13,12 +13,14 @@ import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-si
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 import { environment } from '../environments/environment';
 import { CustomHammerConfig } from './hammer-config';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DemoAppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     NgbTabsetModule,
     NgbCollapseModule,
     DefaultDemoModule,
@@ -130,7 +132,8 @@ import { CustomHammerConfig } from './hammer-config';
           path: 'before-view-render',
           loadChildren: './demo-modules/before-view-render/module#DemoModule',
           data: {
-            label: 'Before view render'
+            label: 'Before view render',
+            tags: ['disable']
           }
         },
         {
@@ -144,7 +147,8 @@ import { CustomHammerConfig } from './hammer-config';
           path: 'i18n',
           loadChildren: './demo-modules/i18n/module#DemoModule',
           data: {
-            label: 'Internationalisation'
+            label: 'Internationalisation',
+            tags: ['translation', 'i18n', 'translate', 'locale']
           }
         },
         {
@@ -232,7 +236,8 @@ import { CustomHammerConfig } from './hammer-config';
           path: 'context-menu',
           loadChildren: './demo-modules/context-menu/module#DemoModule',
           data: {
-            label: 'Context menu'
+            label: 'Context menu',
+            tags: ['right click']
           }
         },
         {

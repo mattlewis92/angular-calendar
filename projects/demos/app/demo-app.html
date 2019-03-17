@@ -123,7 +123,7 @@
 
 <div class="container-fluid">
   <div class="row fill-height">
-    <div class="col-md-9 fill-height scroll-y" perfectScrollbar>
+    <div class="col-md-9 col-xl-10 fill-height scroll-y" perfectScrollbar>
       <div class="card" *ngIf="firstDemoLoaded; else loading">
         <div class="card-header">
           <div class="row">
@@ -166,10 +166,19 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3 fill-height sidebar-nav scroll-y" perfectScrollbar>
-      <h4>Demos</h4>
-      <ul class="list-unstyled">
-        <li *ngFor="let demo of demos">
+    <div
+      class="col-md-3 col-xl-2 fill-height sidebar-nav scroll-y"
+      perfectScrollbar
+    >
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search demos..."
+        [(ngModel)]="searchText"
+        (ngModelChange)="updateFilteredDemos()"
+      />
+      <ul class="list-unstyled spacer-top">
+        <li *ngFor="let demo of filteredDemos">
           <a
             [routerLink]="[demo.path]"
             [class.active]="activeDemo?.path === demo.path"
@@ -178,6 +187,7 @@
           </a>
         </li>
       </ul>
+      <em *ngIf="filteredDemos.length === 0">No matching demos found</em>
     </div>
   </div>
 </div>
