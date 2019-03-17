@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.9"></a>
+## [0.26.9](https://github.com/mattlewis92/angular-calendar/compare/v0.26.8...v0.26.9) (2019-03-17)
+
+
+### Bug Fixes
+
+* allow scrolling on clickable elements on mobile ([b78b87d](https://github.com/mattlewis92/angular-calendar/commit/b78b87d)), closes [#867](https://github.com/mattlewis92/angular-calendar/issues/867)
+
+
+
 <a name="0.26.8"></a>
 ## [0.26.8](https://github.com/mattlewis92/angular-calendar/compare/v0.26.7...v0.26.8) (2019-03-17)
 
