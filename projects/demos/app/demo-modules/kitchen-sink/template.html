@@ -1,27 +1,3 @@
-<ng-template #modalContent let-close="close">
-  <div class="modal-header">
-    <h5 class="modal-title">Event action occurred</h5>
-    <button type="button" class="close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div>
-      Action:
-      <pre>{{ modalData?.action }}</pre>
-    </div>
-    <div>
-      Event:
-      <pre>{{ modalData?.event | json }}</pre>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="close()">
-      OK
-    </button>
-  </div>
-</ng-template>
-
 <div class="row text-center">
   <div class="col-md-4">
     <div class="btn-group">
@@ -30,7 +6,7 @@
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
-        (viewDateChange)="activeDayIsOpen = false"
+        (viewDateChange)="closeOpenMonthViewDay()"
       >
         Previous
       </div>
@@ -46,7 +22,7 @@
         mwlCalendarNextView
         [view]="view"
         [(viewDate)]="viewDate"
-        (viewDateChange)="activeDayIsOpen = false"
+        (viewDateChange)="closeOpenMonthViewDay()"
       >
         Next
       </div>
@@ -59,21 +35,21 @@
     <div class="btn-group">
       <div
         class="btn btn-primary"
-        (click)="view = CalendarView.Month"
+        (click)="setView(CalendarView.Month)"
         [class.active]="view === CalendarView.Month"
       >
         Month
       </div>
       <div
         class="btn btn-primary"
-        (click)="view = CalendarView.Week"
+        (click)="setView(CalendarView.Week)"
         [class.active]="view === CalendarView.Week"
       >
         Week
       </div>
       <div
         class="btn btn-primary"
-        (click)="view = CalendarView.Day"
+        (click)="setView(CalendarView.Day)"
         [class.active]="view === CalendarView.Day"
       >
         Day
@@ -114,6 +90,8 @@
   </mwl-calendar-day-view>
 </div>
 
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
 <br /><br /><br />
 
 <h3>
@@ -137,7 +115,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let event of events; let index = index">
+    <tr *ngFor="let event of events">
       <td>
         <input
           type="text"
@@ -191,13 +169,34 @@
         />
       </td>
       <td>
-        <button
-          class="btn btn-danger"
-          (click)="events.splice(index, 1); refresh.next()"
-        >
+        <button class="btn btn-danger" (click)="deleteEvent(event)">
           Delete
         </button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
+  </div>
+</ng-template>
