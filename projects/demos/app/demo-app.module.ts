@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  HAMMER_GESTURE_CONFIG
+} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 import { environment } from '../environments/environment';
+import { CustomHammerConfig } from './hammer-config';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -296,6 +299,12 @@ import { environment } from '../environments/environment';
     Angulartics2Module.forRoot({
       developerMode: !environment.production
     })
+  ],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: CustomHammerConfig
+    }
   ],
   bootstrap: [DemoAppComponent]
 })
