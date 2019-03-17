@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.11"></a>
+## [0.26.11](https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11) (2019-03-17)
+
+
+### Bug Fixes
+
+* **week-view:** dont disable tooltips until drag is started ([e1c321c](https://github.com/mattlewis92/angular-calendar/commit/e1c321c)), closes [#829](https://github.com/mattlewis92/angular-calendar/issues/829)
+* **week-view:** preserve css classes on segments when dragging events ([5fe384d](https://github.com/mattlewis92/angular-calendar/commit/5fe384d)), closes [#908](https://github.com/mattlewis92/angular-calendar/issues/908)
+
+
+
 <a name="0.26.10"></a>
 ## [0.26.10](https://github.com/mattlewis92/angular-calendar/compare/v0.26.9...v0.26.10) (2019-03-17)
 

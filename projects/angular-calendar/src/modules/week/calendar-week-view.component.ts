@@ -152,7 +152,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             }"
             [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
             [validateDrag]="validateDrag"
-            (dragPointerDown)="dragStarted(eventRowContainer, event)"
+            (dragStart)="dragStarted(eventRowContainer, event)"
             (dragging)="allDayEventDragMove()"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"
           >
@@ -272,7 +272,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               "
               [ghostDragEnabled]="!snapDraggedEvents"
               [validateDrag]="validateDrag"
-              (dragPointerDown)="dragStarted(dayColumns, event, timeEvent)"
+              (dragStart)="dragStarted(dayColumns, event, timeEvent)"
               (dragging)="dragMove(timeEvent, $event)"
               (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"
             >
@@ -1092,11 +1092,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     tempEvents: CalendarEvent[],
     adjustedEvents: Map<CalendarEvent, CalendarEvent>
   ) {
+    const previousView = this.view;
     this.view = this.getWeekView(tempEvents);
     const adjustedEventsArray = tempEvents.filter(event =>
       adjustedEvents.has(event)
     );
-    this.view.hourColumns.forEach(column => {
+    this.view.hourColumns.forEach((column, columnIndex) => {
+      previousView.hourColumns[columnIndex].hours.forEach((hour, hourIndex) => {
+        hour.segments.forEach((segment, segmentIndex) => {
+          column.hours[hourIndex].segments[segmentIndex].cssClass =
+            segment.cssClass;
+        });
+      });
       adjustedEventsArray.forEach(adjustedEvent => {
         const originalEvent = adjustedEvents.get(adjustedEvent);
         const existingColumnEvent = column.events.find(
