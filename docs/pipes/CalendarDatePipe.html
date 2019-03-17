@@ -270,6 +270,16 @@ export class CalendarDatePipe implements PipeTransform {
     excludeDays: number[] &#x3D; [],
     daysInWeek?: number
   ): string {
+    if (typeof this.dateFormatter[method] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) {
+      const allowedMethods &#x3D; Object.getOwnPropertyNames(
+        Object.getPrototypeOf(CalendarDateFormatter.prototype)
+      ).filter(iMethod &#x3D;&gt; iMethod !&#x3D;&#x3D; &#x27;constructor&#x27;);
+      throw new Error(
+        &#x60;${method} is not a valid date formatter. Can only be one of ${allowedMethods.join(
+          &#x27;, &#x27;
+        )}&#x60;
+      );
+    }
     return this.dateFormatter[method]({
       date,
       locale,
