@@ -16,7 +16,7 @@ const clickElements = new Set<HTMLElement>();
   selector: '[mwlClick]'
 })
 export class ClickDirective implements OnInit, OnDestroy {
-  @Output('mwlClick') click: EventEmitter<MouseEvent> = new EventEmitter(); // tslint:disable-line
+  @Output('mwlClick') click = new EventEmitter<MouseEvent>(); // tslint:disable-line
 
   private removeListener: () => void;
 
@@ -27,6 +27,11 @@ export class ClickDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.renderer.setAttribute(
+      this.elm.nativeElement,
+      'data-calendar-clickable',
+      'true'
+    );
     clickElements.add(this.elm.nativeElement);
     const eventName: string =
       typeof window !== 'undefined' && typeof window['Hammer'] !== 'undefined'

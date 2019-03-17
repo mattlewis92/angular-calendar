@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  HAMMER_GESTURE_CONFIG
+} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 import { environment } from '../environments/environment';
+import { CustomHammerConfig } from './hammer-config';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DemoAppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     NgbTabsetModule,
     NgbCollapseModule,
     DefaultDemoModule,
@@ -126,7 +132,8 @@ import { environment } from '../environments/environment';
           path: 'before-view-render',
           loadChildren: './demo-modules/before-view-render/module#DemoModule',
           data: {
-            label: 'Before view render'
+            label: 'Before view render',
+            tags: ['disable']
           }
         },
         {
@@ -140,7 +147,8 @@ import { environment } from '../environments/environment';
           path: 'i18n',
           loadChildren: './demo-modules/i18n/module#DemoModule',
           data: {
-            label: 'Internationalisation'
+            label: 'Internationalisation',
+            tags: ['translation', 'i18n', 'translate', 'locale']
           }
         },
         {
@@ -228,7 +236,8 @@ import { environment } from '../environments/environment';
           path: 'context-menu',
           loadChildren: './demo-modules/context-menu/module#DemoModule',
           data: {
-            label: 'Context menu'
+            label: 'Context menu',
+            tags: ['right click']
           }
         },
         {
@@ -303,7 +312,14 @@ import { environment } from '../environments/environment';
     ),
     Angulartics2Module.forRoot({
       developerMode: !environment.production
-    })
+    }),
+    PerfectScrollbarModule
+  ],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: CustomHammerConfig
+    }
   ],
   bootstrap: [DemoAppComponent]
 })

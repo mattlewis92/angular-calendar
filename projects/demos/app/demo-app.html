@@ -49,8 +49,8 @@
 
 <nav
   class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
-  [class.navbar-dark]="activeDemo.darkTheme"
-  [class.bg-dark]="activeDemo.darkTheme"
+  [class.navbar-dark]="activeDemo?.darkTheme"
+  [class.bg-dark]="activeDemo?.darkTheme"
   role="navigation"
 >
   <a class="navbar-brand" href="#">Angular 6.0+ calendar</a>
@@ -124,8 +124,8 @@
 </ng-template>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-9">
+  <div class="row fill-height">
+    <div class="col-md-9 col-xl-10 fill-height scroll-y" perfectScrollbar>
       <div class="card" *ngIf="firstDemoLoaded; else loading">
         <div class="card-header">
           <div class="row">
@@ -168,20 +168,28 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="sidebar-nav">
-        <h4>Demos</h4>
-        <ul class="list-unstyled">
-          <li *ngFor="let demo of demos">
-            <a
-              [routerLink]="[demo.path]"
-              [class.active]="activeDemo?.path === demo.path"
-            >
-              {{ demo.label }}
-            </a>
-          </li>
-        </ul>
-      </div>
+    <div
+      class="col-md-3 col-xl-2 fill-height sidebar-nav scroll-y"
+      perfectScrollbar
+    >
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search demos..."
+        [(ngModel)]="searchText"
+        (ngModelChange)="updateFilteredDemos()"
+      />
+      <ul class="list-unstyled spacer-top">
+        <li *ngFor="let demo of filteredDemos">
+          <a
+            [routerLink]="[demo.path]"
+            [class.active]="activeDemo?.path === demo.path"
+          >
+            {{ demo.label }}
+          </a>
+        </li>
+      </ul>
+      <em *ngIf="filteredDemos.length === 0">No matching demos found</em>
     </div>
   </div>
 </div>

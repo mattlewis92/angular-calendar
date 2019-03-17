@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
+import { CalendarEvent, CalendarView, DAYS_OF_WEEK } from 'angular-calendar';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -7,9 +7,9 @@ import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   events: CalendarEvent[] = [];
 
@@ -18,4 +18,10 @@ export class DemoComponent {
   weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
 
   weekendDays: number[] = [DAYS_OF_WEEK.FRIDAY, DAYS_OF_WEEK.SATURDAY];
+
+  CalendarView = CalendarView;
+
+  setView(view: CalendarView) {
+    this.view = view;
+  }
 }

@@ -140,10 +140,17 @@ export class DemoComponent {
     newStart,
     newEnd
   }: CalendarEventTimesChangedEvent): void {
-    event.start = newStart;
-    event.end = newEnd;
+    this.events = this.events.map(iEvent => {
+      if (iEvent === event) {
+        return {
+          ...event,
+          start: newStart,
+          end: newEnd
+        };
+      }
+      return iEvent;
+    });
     this.handleEvent('Dropped or resized', event);
-    this.refresh.next();
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
@@ -152,17 +159,31 @@ export class DemoComponent {
   }
 
   addEvent(): void {
-    this.events.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
+    this.events = [
+      ...this.events,
+      {
+        title: 'New event',
+        start: startOfDay(new Date()),
+        end: endOfDay(new Date()),
+        color: colors.red,
+        draggable: true,
+        resizable: {
+          beforeStart: true,
+          afterEnd: true
+        }
       }
-    });
-    this.refresh.next();
+    ];
+  }
+
+  deleteEvent(eventToDelete: CalendarEvent) {
+    this.events = this.events.filter(event => event !== eventToDelete);
+  }
+
+  setView(view: CalendarView) {
+    this.view = view;
+  }
+
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
   }
 }
