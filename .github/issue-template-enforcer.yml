@@ -7,6 +7,8 @@ closeComment: >
 
 skipAuthors:
   - mattlewis92
+  
+lockOnClose: true
 
 matchComment: >
   Thanks so much for opening an issue! If you'd like me to give priority to answering your issue or would just like to support this project, then please consider [supporting me on Patreon](https://www.patreon.com/mattlewis92)
