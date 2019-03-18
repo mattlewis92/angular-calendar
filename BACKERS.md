@@ -7,4 +7,5 @@ Work on this calendar is funded entirely by donations through [Patreon](https://
 
 <h2 align="center">Backers and Sponsors via Patreon</h2>
 
+- [John Allan Canning](https://github.com/jcanning)
 - [_Your name here?_](https://www.patreon.com/mattlewis92)
