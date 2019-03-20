@@ -16,6 +16,8 @@ export class DemoComponent {
 
   viewDate: Date = new Date();
 
+  scrollContainer: HTMLElement | Window = window.document.querySelector("html");
+
   events: CalendarEvent[] = [
     {
       title: 'Draggable event',

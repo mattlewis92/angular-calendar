@@ -318,6 +318,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() snapDraggedEvents: boolean = true;
 
   /**
+   * Optional. On this element the "scroll(x, y)" method gets called, when 
+   * an event is dragged to the top or bottom of the viewport.
+   */  
+  @Input() scrollContainer: HTMLElement = null;  
+
+  /**
    * Called when an event title is clicked
    */
   @Output()
@@ -420,7 +426,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
 
-  calendarDayAutoScroll = new CalendarDayAutoScroll();
+  calendarDayAutoScroll: CalendarDayAutoScroll;
 
   /**
    * @hidden
@@ -444,6 +450,8 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         this.cdr.markForCheck();
       });
     }
+
+    this.calendarDayAutoScroll = new CalendarDayAutoScroll(this.scrollContainer)    
   }
 
   /**

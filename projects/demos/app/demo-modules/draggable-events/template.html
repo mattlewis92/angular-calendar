@@ -21,6 +21,7 @@
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
+    [scrollContainer]="scrollContainer"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
