@@ -2193,4 +2193,68 @@ describe('calendarWeekView component', () => {
         .classList.contains('disabled-cell')
     ).to.be.true;
   });
+
+  it('should resize a time event to the minimum height', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(5, 'hours')
+          .toDate(),
+        title: 'foo',
+        resizable: {
+          afterEnd: true
+        }
+      }
+    ];
+    fixture.componentInstance.hourSegmentHeight = 20;
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      events: {},
+      hourSegmentHeight: {}
+    });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event: HTMLElement = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    )[0];
+    const rect: ClientRect = event.getBoundingClientRect();
+    const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
+    let resizeEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+      resizeEvent = e;
+    });
+    triggerDomEvent('mousedown', resizeHandle, {
+      clientX: rect.right,
+      clientY: rect.bottom
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: rect.right,
+      clientY: rect.bottom - 200
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().height).to.equal(20);
+    triggerDomEvent('mouseup', document.body, {
+      clientX: rect.right,
+      clientY: rect.bottom - 200
+    });
+    fixture.detectChanges();
+    expect(resizeEvent).to.deep.equal({
+      type: 'resize',
+      event: fixture.componentInstance.events[0],
+      newStart: fixture.componentInstance.events[0].start,
+      newEnd: moment(fixture.componentInstance.events[0].start)
+        .add(30, 'minutes')
+        .toDate()
+    });
+  });
 });
