@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.0"></a>
+# [0.27.0](https://github.com/mattlewis92/angular-calendar/compare/v0.26.11...v0.27.0) (2019-03-22)
+
+
+### Bug Fixes
+
+* **week-view:** respect hourSegmentHeight when resizing events ([241f7c3](https://github.com/mattlewis92/angular-calendar/commit/241f7c3)), closes [#929](https://github.com/mattlewis92/angular-calendar/issues/929)
+* allow events to be dragged back to their original location ([0f69010](https://github.com/mattlewis92/angular-calendar/commit/0f69010)), closes [#847](https://github.com/mattlewis92/angular-calendar/issues/847)
+* expose all track by fns to custom templates ([d6fb3de](https://github.com/mattlewis92/angular-calendar/commit/d6fb3de))
+* sanitise invalid hours and minutes on day and week view ranges ([f54a5f5](https://github.com/mattlewis92/angular-calendar/commit/f54a5f5)), closes [#907](https://github.com/mattlewis92/angular-calendar/issues/907)
+* **day-view:** set allDay to false when dragging events ([c4c8bd5](https://github.com/mattlewis92/angular-calendar/commit/c4c8bd5))
+* **week-view:** handle dragging and resizing across excluded days ([5d1c69a](https://github.com/mattlewis92/angular-calendar/commit/5d1c69a))
+
+
+### Features
+
+* **tooltip:** add a configurable tooltip delay ([#891](https://github.com/mattlewis92/angular-calendar/issues/891)) ([07aec13](https://github.com/mattlewis92/angular-calendar/commit/07aec13)), closes [#790](https://github.com/mattlewis92/angular-calendar/issues/790)
+* add sass mixins for easier theming ([447aea9](https://github.com/mattlewis92/angular-calendar/commit/447aea9)), closes [#858](https://github.com/mattlewis92/angular-calendar/issues/858)
+* **month-view:** add activeDay input to override the active day ([864462b](https://github.com/mattlewis92/angular-calendar/commit/864462b)), closes [#885](https://github.com/mattlewis92/angular-calendar/issues/885)
+* **month-view:** add columnHeaderClicked output ([2bd5e2b](https://github.com/mattlewis92/angular-calendar/commit/2bd5e2b)), closes [#722](https://github.com/mattlewis92/angular-calendar/issues/722)
+* **week-view:** track by a unique row id instead of the index ([481eb02](https://github.com/mattlewis92/angular-calendar/commit/481eb02))
+
+
+### Performance Improvements
+
+* only call beforeViewRender output once when changing view date ([ec7021a](https://github.com/mattlewis92/angular-calendar/commit/ec7021a))
+* use correct track by on month rows and event actions ([302170e](https://github.com/mattlewis92/angular-calendar/commit/302170e))
+
+
+
 <a name="0.26.11"></a>
 ## [0.26.11](https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11) (2019-03-17)
 
