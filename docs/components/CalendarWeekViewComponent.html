@@ -63,11 +63,13 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given week. Example usage:</p>
-<div><pre class="line-numbers"><code class="language-typescript"> * &lt;mwl-calendar-week-view
+<p><code>typescript
+ * &lt;mwl-calendar-week-view
  *  [viewDate]=&quot;viewDate&quot;
  *  [events]=&quot;events&quot;&gt;
  * &lt;/mwl-calendar-week-view&gt;
- *</code></pre></div>
+ *</code></p>
+
     </p>
 
 
@@ -75,9 +77,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -138,7 +140,7 @@
       &gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div
-      *ngFor&#x3D;&quot;let eventRow of view.allDayEventRows; trackBy: trackByIndex&quot;
+      *ngFor&#x3D;&quot;let eventRow of view.allDayEventRows; trackBy: trackById&quot;
       #eventRowContainer
       class&#x3D;&quot;cal-events-row&quot;
     &gt;
@@ -197,6 +199,7 @@
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
           [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+          [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
           [customTemplate]&#x3D;&quot;eventTemplate&quot;
           [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
           [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -320,6 +323,7 @@
             [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
             [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
             [tooltipDisabled]&#x3D;&quot;dragActive || timeEventResizes.size &gt; 0&quot;
+            [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
             [customTemplate]&#x3D;&quot;eventTemplate&quot;
             [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
             [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -466,6 +470,9 @@
                                 <a href="#tooltipAppendToBody">tooltipAppendToBody</a>
                             </li>
                             <li>
+                                <a href="#tooltipDelay">tooltipDelay</a>
+                            </li>
+                            <li>
                                 <a href="#tooltipPlacement">tooltipPlacement</a>
                             </li>
                             <li>
@@ -523,638 +530,799 @@
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="allDayEventsLabelTemplate"></a>
-                        <code>allDayEventsLabelTemplate</code>
+                        <b>allDayEventsLabelTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for the all day events label text</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="477" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:477</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="485" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:485</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for the all day events label text</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayEndHour"></a>
-                        <code>dayEndHour</code>
+                        <b>dayEndHour</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day end hours in 24 hour time. Must be 0-23</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>23</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>23</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="457" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:457</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="465" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:465</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day end hours in 24 hour time. Must be 0-23</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayEndMinute"></a>
-                        <code>dayEndMinute</code>
+                        <b>dayEndMinute</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day end minutes. Must be 0-59</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>59</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>59</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="462" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:462</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="470" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:470</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day end minutes. Must be 0-59</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="daysInWeek"></a>
-                        <code>daysInWeek</code>
+                        <b>daysInWeek</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The number of days in a week. Can be used to create a shorter or longer week view.
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="491" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:491</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The number of days in a week. Can be used to create a shorter or longer week view.
 The first day of the week will always be the <code>viewDate</code></p>
 </div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                            </p>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="483" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:483</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayStartHour"></a>
-                        <code>dayStartHour</code>
+                        <b>dayStartHour</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day start hours in 24 hour time. Must be 0-23</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>0</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="447" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:447</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="455" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:455</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day start hours in 24 hour time. Must be 0-23</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayStartMinute"></a>
-                        <code>dayStartMinute</code>
+                        <b>dayStartMinute</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day start minutes. Must be 0-59</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>0</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="452" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:452</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="460" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:460</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day start minutes. Must be 0-59</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventActionsTemplate"></a>
-                        <code>eventActionsTemplate</code>
+                        <b>eventActionsTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for event actions</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="416" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:416</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="424" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:424</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for event actions</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="events"></a>
-                        <code>events</code>
+                        <b>events</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An array of events to display on view
-The schema is available here: <a href="https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63">https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</a></p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>CalendarEvent[]</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CalendarEvent[]</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>[]</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="361" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:361</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="363" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:363</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of events to display on view
+The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventSnapSize"></a>
-                        <code>eventSnapSize</code>
+                        <b>eventSnapSize</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The grid size to snap resizing and dragging of hourly events to</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="472" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:472</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="480" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:480</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The grid size to snap resizing and dragging of hourly events to</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventTemplate"></a>
-                        <code>eventTemplate</code>
+                        <b>eventTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for week view events</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="406" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:406</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:414</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for week view events</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventTitleTemplate"></a>
-                        <code>eventTitleTemplate</code>
+                        <b>eventTitleTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for event titles</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:411</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="419" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:419</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for event titles</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="excludeDays"></a>
-                        <code>excludeDays</code>
+                        <b>excludeDays</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>number[]</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>[]</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="366" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:366</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="368" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:368</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="headerTemplate"></a>
-                        <code>headerTemplate</code>
+                        <b>headerTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use to replace the header</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="401" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:401</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="409" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:409</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use to replace the header</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="hourSegmentHeight"></a>
-                        <code>hourSegmentHeight</code>
+                        <b>hourSegmentHeight</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The height in pixels of each hour segment</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>30</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>30</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="442" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:442</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="450" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:450</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The height in pixels of each hour segment</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="hourSegments"></a>
-                        <code>hourSegments</code>
+                        <b>hourSegments</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The number of segments in an hour. Must be &lt;= 6</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>2</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="437" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:437</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="445" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:445</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The number of segments in an hour. Must be &lt;= 6</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="hourSegmentTemplate"></a>
-                        <code>hourSegmentTemplate</code>
+                        <b>hourSegmentTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use to replace the hour segment</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="467" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:467</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="475" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:475</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use to replace the hour segment</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="locale"></a>
-                        <code>locale</code>
+                        <b>locale</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The locale used to format dates</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="376" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:376</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="378" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:378</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The locale used to format dates</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="precision"></a>
-                        <code>precision</code>
+                        <b>precision</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The precision to display events.
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;days&quot; | &quot;minutes&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;days&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="430" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:430</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The precision to display events.
 <code>days</code> will round event start and end dates to the nearest day and <code>minutes</code> will not do this rounding</p>
 </div>
-                            <p>
-                            <em>Type :</em>    <code>&quot;days&quot; | &quot;minutes&quot;</code>
-
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>&#x27;days&#x27;</code>
-                        </p>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="422" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:422</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="refresh"></a>
-                        <code>refresh</code>
+                        <b>refresh</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An observable that when emitted on will re-render the current view</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>Subject&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="371" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:371</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:373</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An observable that when emitted on will re-render the current view</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="snapDraggedEvents"></a>
-                        <code>snapDraggedEvents</code>
+                        <b>snapDraggedEvents</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Whether to snap events to a grid when dragging</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>true</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="432" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:432</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="440" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:440</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether to snap events to a grid when dragging</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="tooltipAppendToBody"></a>
-                        <code>tooltipAppendToBody</code>
+                        <b>tooltipAppendToBody</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Whether to append tooltips to the body or next to the trigger element</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>true</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="391" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:391</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="393" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:393</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether to append tooltips to the body or next to the trigger element</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
+                        <a name="tooltipDelay"></a>
+                        <b>tooltipDelay</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="399" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:399</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+will be displayed immediately.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="tooltipPlacement"></a>
-                        <code>tooltipPlacement</code>
+                        <b>tooltipPlacement</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The placement of the event tooltip</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>PlacementArray</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>PlacementArray</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>&#x27;auto&#x27;</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auto&#x27;</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="381" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:381</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="383" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:383</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The placement of the event tooltip</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="tooltipTemplate"></a>
-                        <code>tooltipTemplate</code>
+                        <b>tooltipTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for the event tooltips</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="386" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:386</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:388</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for the event tooltips</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="viewDate"></a>
-                        <code>viewDate</code>
+                        <b>viewDate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The current view date</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="355" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:355</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="357" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:357</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current view date</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="weekendDays"></a>
-                        <code>weekendDays</code>
+                        <b>weekendDays</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>number[]</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="427" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:427</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="435" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:435</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="weekStartsOn"></a>
-                        <code>weekStartsOn</code>
+                        <b>weekStartsOn</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The start number of the week</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="396" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:396</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="404" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:404</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The start number of the week</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -1163,57 +1331,42 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="beforeViewRender"></a>
-                        <code>beforeViewRender</code>
+                        <b>beforeViewRender</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An output that will be called before the view is rendered for the current week.
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="520" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:520</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An output that will be called before the view is rendered for the current week.
 If you add the <code>cssClass</code> property to a day in the header it will add that class to the cell element in the template</p>
 </div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="512" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:512</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayHeaderClicked"></a>
-                        <code>dayHeaderClicked</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when a header week day is clicked. Adding a <code>cssClass</code> property on <code>$event.day</code> will add that class to the header element</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
+                        <b>dayHeaderClicked</b>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="489" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:489</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="eventClicked"></a>
-                        <code>eventClicked</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when the event title is clicked</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                     </td>
                 </tr>
@@ -1222,19 +1375,25 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                                     <div class="io-line">Defined in <a href="" data-line="497" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:497</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when a header week day is clicked. Adding a <code>cssClass</code> property on <code>$event.day</code> will add that class to the header element</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="eventTimesChanged"></a>
-                        <code>eventTimesChanged</code>
+                    <td class="col-md-4">
+                        <a name="eventClicked"></a>
+                        <b>eventClicked</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Called when an event is resized or dragged and dropped</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                     </td>
                 </tr>
@@ -1243,27 +1402,66 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                                     <div class="io-line">Defined in <a href="" data-line="505" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:505</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when the event title is clicked</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="hourSegmentClicked"></a>
-                        <code>hourSegmentClicked</code>
+                    <td class="col-md-4">
+                        <a name="eventTimesChanged"></a>
+                        <b>eventTimesChanged</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Called when an hour segment is clicked</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="518" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:518</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="513" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:513</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when an event is resized or dragged and dropped</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hourSegmentClicked"></a>
+                        <b>hourSegmentClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="526" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:526</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when an hour segment is clicked</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -1298,7 +1496,8 @@ import {
   WeekViewHourColumn,
   DayViewEvent,
   DayViewHourSegment,
-  DayViewHour
+  DayViewHour,
+  WeekViewAllDayEventRow
 } from &#x27;calendar-utils&#x27;;
 import { ResizeEvent } from &#x27;angular-resizable-element&#x27;;
 import { CalendarDragHelper } from &#x27;../common/calendar-drag-helper.provider&#x27;;
@@ -1310,7 +1509,6 @@ import {
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
 import {
   validateEvents,
-  trackByIndex,
   roundToNearest,
   trackByWeekDayHeaderDate,
   trackByHourSegment,
@@ -1388,7 +1586,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           &gt;&lt;/div&gt;
         &lt;/div&gt;
         &lt;div
-          *ngFor&#x3D;&quot;let eventRow of view.allDayEventRows; trackBy: trackByIndex&quot;
+          *ngFor&#x3D;&quot;let eventRow of view.allDayEventRows; trackBy: trackById&quot;
           #eventRowContainer
           class&#x3D;&quot;cal-events-row&quot;
         &gt;
@@ -1447,6 +1645,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
               [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
               [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
               [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -1570,6 +1769,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
                 [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
                 [tooltipDisabled]&#x3D;&quot;dragActive || timeEventResizes.size &gt; 0&quot;
+                [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
                 [customTemplate]&#x3D;&quot;eventTemplate&quot;
                 [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
                 [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -1666,6 +1866,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * Whether to append tooltips to the body or next to the trigger element
    */
   @Input() tooltipAppendToBody: boolean &#x3D; true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input() tooltipDelay: number | null &#x3D; null;
 
   /**
    * The start number of the week
@@ -1862,11 +2068,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByIndex &#x3D; trackByIndex;
-
-  /**
-   * @hidden
-   */
   trackByWeekDayHeaderDate &#x3D; trackByWeekDayHeaderDate;
 
   /**
@@ -1889,6 +2090,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   trackByHourColumn &#x3D; (index: number, column: WeekViewHourColumn) &#x3D;&gt;
     column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+
+  /**
+   * @hidden
+   */
+  trackById &#x3D; (index: number, row: WeekViewAllDayEventRow) &#x3D;&gt; row.id;
 
   /**
    * @hidden
@@ -1918,21 +2124,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (
+    const refreshHeader &#x3D;
       changes.viewDate ||
       changes.excludeDays ||
       changes.weekendDays ||
       changes.daysInWeek ||
-      changes.weekStartsOn
-    ) {
-      this.refreshHeader();
-    }
+      changes.weekStartsOn;
 
-    if (changes.events) {
-      validateEvents(this.events);
-    }
-
-    if (
+    const refreshBody &#x3D;
       changes.viewDate ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
@@ -1944,9 +2143,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.excludeDays ||
       changes.hourSegmentHeight ||
       changes.events ||
-      changes.daysInWeek
-    ) {
+      changes.daysInWeek;
+
+    if (refreshHeader) {
+      this.refreshHeader();
+    }
+
+    if (changes.events) {
+      validateEvents(this.events);
+    }
+
+    if (refreshBody) {
       this.refreshBody();
+    }
+
+    if (refreshHeader || refreshBody) {
+      this.emitBeforeViewRender();
     }
   }
 
@@ -2090,9 +2302,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       let newStart: Date &#x3D; allDayEvent.event.start;
       let newEnd: Date &#x3D; allDayEvent.event.end || allDayEvent.event.start;
       if (allDayEventResizingBeforeStart) {
-        newStart &#x3D; this.dateAdapter.addDays(newStart, daysDiff);
+        newStart &#x3D; addDaysWithExclusions(
+          this.dateAdapter,
+          newStart,
+          daysDiff,
+          this.excludeDays
+        );
       } else {
-        newEnd &#x3D; this.dateAdapter.addDays(newEnd, daysDiff);
+        newEnd &#x3D; addDaysWithExclusions(
+          this.dateAdapter,
+          newEnd,
+          daysDiff,
+          this.excludeDays
+        );
       }
 
       this.eventTimesChanged.emit({
@@ -2250,17 +2472,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.daysInWeek
       )
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
     this.view &#x3D; this.getWeekView(this.events);
-    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
+    this.emitBeforeViewRender();
   }
 
   private emitBeforeViewRender(): void {
@@ -2318,13 +2539,23 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       : 0;
 
     const start &#x3D; this.dateAdapter.addMinutes(
-      this.dateAdapter.addDays(weekEvent.event.start, daysDragged),
+      addDaysWithExclusions(
+        this.dateAdapter,
+        weekEvent.event.start,
+        daysDragged,
+        this.excludeDays
+      ),
       minutesMoved
     );
     let end: Date;
     if (weekEvent.event.end) {
       end &#x3D; this.dateAdapter.addMinutes(
-        this.dateAdapter.addDays(weekEvent.event.end, daysDragged),
+        addDaysWithExclusions(
+          this.dateAdapter,
+          weekEvent.event.end,
+          daysDragged,
+          this.excludeDays
+        ),
         minutesMoved
       );
     }
@@ -2406,7 +2637,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff &#x3D; Math.round(
         +resizeEvent.edges.left / this.dayColumnWidth
       );
-      const newStart &#x3D; this.dateAdapter.addDays(newEventDates.start, daysDiff);
+      const newStart &#x3D; addDaysWithExclusions(
+        this.dateAdapter,
+        newEventDates.start,
+        daysDiff,
+        this.excludeDays
+      );
       if (newStart &lt; smallestResizes.start) {
         newEventDates.start &#x3D; newStart;
       } else {
@@ -2416,7 +2652,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff &#x3D; Math.round(
         +resizeEvent.edges.right / this.dayColumnWidth
       );
-      const newEnd &#x3D; this.dateAdapter.addDays(newEventDates.end, daysDiff);
+      const newEnd &#x3D; addDaysWithExclusions(
+        this.dateAdapter,
+        newEventDates.end,
+        daysDiff,
+        this.excludeDays
+      );
       if (newEnd &gt; smallestResizes.end) {
         newEventDates.end &#x3D; newEnd;
       } else {
@@ -2491,7 +2732,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view">  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayHeaderClicked)="dayHeaderClicked.emit($event)"    (eventDropped)="      eventDropped({ dropData: $event }, $event.newStart, true)    "  >  </mwl-calendar-week-view-header>  <div    class="cal-all-day-events"    #allDayEventsContainer    *ngIf="view.allDayEventRows.length > 0"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-day-columns">      <div        class="cal-time-label-column"        [ngTemplateOutlet]="allDayEventsLabelTemplate"      ></div>      <div        class="cal-day-column"        *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="eventDropped($event, day.date, true)"      ></div>    </div>    <div      *ngFor="let eventRow of view.allDayEventRows; trackBy: trackByIndex"      #eventRowContainer      class="cal-events-row"    >      <div        *ngFor="          let allDayEvent of eventRow.row;          trackBy: trackByDayOrWeekEvent        "        #event        class="cal-event-container"        [class.cal-draggable]="          allDayEvent.event.draggable && allDayEventResizes.size === 0        "        [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"        [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"        [ngClass]="allDayEvent.event?.cssClass"        [style.width.%]="(100 / days.length) * allDayEvent.span"        [style.marginLeft.%]="(100 / days.length) * allDayEvent.offset"        mwlResizable        [resizeSnapGrid]="{ left: dayColumnWidth, right: dayColumnWidth }"        [validateResize]="validateResize"        (resizeStart)="          allDayEventResizeStarted(eventRowContainer, allDayEvent, $event)        "        (resizing)="          allDayEventResizing(allDayEvent, $event, dayColumnWidth)        "        (resizeEnd)="allDayEventResizeEnded(allDayEvent)"        mwlDraggable        dragActiveClass="cal-drag-active"        [dropData]="{ event: allDayEvent.event, calendarId: calendarId }"        [dragAxis]="{          x: allDayEvent.event.draggable && allDayEventResizes.size === 0,          y:            !snapDraggedEvents &&            allDayEvent.event.draggable &&            allDayEventResizes.size === 0        }"        [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"        [validateDrag]="validateDrag"        (dragStart)="dragStarted(eventRowContainer, event)"        (dragging)="allDayEventDragMove()"        (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"      >        <div          class="cal-resize-handle cal-resize-handle-before-start"          *ngIf="            allDayEvent.event?.resizable?.beforeStart &&            !allDayEvent.startsBeforeWeek          "          mwlResizeHandle          [resizeEdges]="{ left: true }"        ></div>        <mwl-calendar-week-view-event          [weekEvent]="allDayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="eventClicked.emit({ event: allDayEvent.event })"        >        </mwl-calendar-week-view-event>        <div          class="cal-resize-handle cal-resize-handle-after-end"          *ngIf="            allDayEvent.event?.resizable?.afterEnd &&            !allDayEvent.endsAfterWeek          "          mwlResizeHandle          [resizeEdges]="{ right: true }"        ></div>      </div>    </div>  </div>  <div    class="cal-time-events"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">      <div        *ngFor="          let hour of view.hourColumns[0].hours;          trackBy: trackByHour;          let odd = odd        "        class="cal-hour"        [class.cal-hour-odd]="odd"      >        <mwl-calendar-week-view-hour-segment          *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"          [style.height.px]="hourSegmentHeight"          [segment]="segment"          [segmentHeight]="hourSegmentHeight"          [locale]="locale"          [customTemplate]="hourSegmentTemplate"          [isTimeLabel]="true"        >        </mwl-calendar-week-view-hour-segment>      </div>    </div>    <div      class="cal-day-columns"      [class.cal-resize-active]="timeEventResizes.size > 0"      #dayColumns    >      <div        class="cal-day-column"        *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"      >        <div          *ngFor="            let timeEvent of column.events;            trackBy: trackByDayOrWeekEvent          "          #event          class="cal-event-container"          [class.cal-draggable]="            timeEvent.event.draggable && timeEventResizes.size === 0          "          [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"          [class.cal-ends-within-day]="!timeEvent.endsAfterDay"          [ngClass]="timeEvent.event.cssClass"          [hidden]="timeEvent.height === 0 && timeEvent.width === 0"          [style.top.px]="timeEvent.top"          [style.height.px]="timeEvent.height"          [style.left.%]="timeEvent.left"          [style.width.%]="timeEvent.width"          mwlResizable          [resizeSnapGrid]="{            left: dayColumnWidth,            right: dayColumnWidth,            top: eventSnapSize || hourSegmentHeight,            bottom: eventSnapSize || hourSegmentHeight          }"          [validateResize]="validateResize"          [allowNegativeResizes]="true"          (resizeStart)="            timeEventResizeStarted(dayColumns, timeEvent, $event)          "          (resizing)="timeEventResizing(timeEvent, $event)"          (resizeEnd)="timeEventResizeEnded(timeEvent)"          mwlDraggable          dragActiveClass="cal-drag-active"          [dropData]="{ event: timeEvent.event, calendarId: calendarId }"          [dragAxis]="{            x: timeEvent.event.draggable && timeEventResizes.size === 0,            y: timeEvent.event.draggable && timeEventResizes.size === 0          }"          [dragSnapGrid]="            snapDraggedEvents              ? { x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight }              : {}          "          [ghostDragEnabled]="!snapDraggedEvents"          [validateDrag]="validateDrag"          (dragStart)="dragStarted(dayColumns, event, timeEvent)"          (dragging)="dragMove(timeEvent, $event)"          (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"        >          <div            class="cal-resize-handle cal-resize-handle-before-start"            *ngIf="              timeEvent.event?.resizable?.beforeStart &&              !timeEvent.startsBeforeDay            "            mwlResizeHandle            [resizeEdges]="{              left: true,              top: true            }"          ></div>          <mwl-calendar-week-view-event            [weekEvent]="timeEvent"            [tooltipPlacement]="tooltipPlacement"            [tooltipTemplate]="tooltipTemplate"            [tooltipAppendToBody]="tooltipAppendToBody"            [tooltipDisabled]="dragActive || timeEventResizes.size > 0"            [customTemplate]="eventTemplate"            [eventTitleTemplate]="eventTitleTemplate"            [eventActionsTemplate]="eventActionsTemplate"            (eventClicked)="eventClicked.emit({ event: timeEvent.event })"          >          </mwl-calendar-week-view-event>          <div            class="cal-resize-handle cal-resize-handle-after-end"            *ngIf="              timeEvent.event?.resizable?.afterEnd &&              !timeEvent.endsAfterDay            "            mwlResizeHandle            [resizeEdges]="{              right: true,              bottom: true            }"          ></div>        </div>        <div          *ngFor="            let hour of column.hours;            trackBy: trackByHour;            let odd = odd          "          class="cal-hour"          [class.cal-hour-odd]="odd"        >          <mwl-calendar-week-view-hour-segment            *ngFor="              let segment of hour.segments;              trackBy: trackByHourSegment            "            [style.height.px]="hourSegmentHeight"            [segment]="segment"            [segmentHeight]="hourSegmentHeight"            [locale]="locale"            [customTemplate]="hourSegmentTemplate"            (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"            mwlDroppable            [dragOverClass]="              !dragActive || !snapDraggedEvents ? \'cal-drag-over\' : null            "            dragActiveClass="cal-drag-active"            (drop)="eventDropped($event, segment.date, false)"          >          </mwl-calendar-week-view-hour-segment>        </div>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view">  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayHeaderClicked)="dayHeaderClicked.emit($event)"    (eventDropped)="      eventDropped({ dropData: $event }, $event.newStart, true)    "  >  </mwl-calendar-week-view-header>  <div    class="cal-all-day-events"    #allDayEventsContainer    *ngIf="view.allDayEventRows.length > 0"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-day-columns">      <div        class="cal-time-label-column"        [ngTemplateOutlet]="allDayEventsLabelTemplate"      ></div>      <div        class="cal-day-column"        *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="eventDropped($event, day.date, true)"      ></div>    </div>    <div      *ngFor="let eventRow of view.allDayEventRows; trackBy: trackById"      #eventRowContainer      class="cal-events-row"    >      <div        *ngFor="          let allDayEvent of eventRow.row;          trackBy: trackByDayOrWeekEvent        "        #event        class="cal-event-container"        [class.cal-draggable]="          allDayEvent.event.draggable && allDayEventResizes.size === 0        "        [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"        [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"        [ngClass]="allDayEvent.event?.cssClass"        [style.width.%]="(100 / days.length) * allDayEvent.span"        [style.marginLeft.%]="(100 / days.length) * allDayEvent.offset"        mwlResizable        [resizeSnapGrid]="{ left: dayColumnWidth, right: dayColumnWidth }"        [validateResize]="validateResize"        (resizeStart)="          allDayEventResizeStarted(eventRowContainer, allDayEvent, $event)        "        (resizing)="          allDayEventResizing(allDayEvent, $event, dayColumnWidth)        "        (resizeEnd)="allDayEventResizeEnded(allDayEvent)"        mwlDraggable        dragActiveClass="cal-drag-active"        [dropData]="{ event: allDayEvent.event, calendarId: calendarId }"        [dragAxis]="{          x: allDayEvent.event.draggable && allDayEventResizes.size === 0,          y:            !snapDraggedEvents &&            allDayEvent.event.draggable &&            allDayEventResizes.size === 0        }"        [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"        [validateDrag]="validateDrag"        (dragStart)="dragStarted(eventRowContainer, event)"        (dragging)="allDayEventDragMove()"        (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"      >        <div          class="cal-resize-handle cal-resize-handle-before-start"          *ngIf="            allDayEvent.event?.resizable?.beforeStart &&            !allDayEvent.startsBeforeWeek          "          mwlResizeHandle          [resizeEdges]="{ left: true }"        ></div>        <mwl-calendar-week-view-event          [weekEvent]="allDayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipDelay]="tooltipDelay"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="eventClicked.emit({ event: allDayEvent.event })"        >        </mwl-calendar-week-view-event>        <div          class="cal-resize-handle cal-resize-handle-after-end"          *ngIf="            allDayEvent.event?.resizable?.afterEnd &&            !allDayEvent.endsAfterWeek          "          mwlResizeHandle          [resizeEdges]="{ right: true }"        ></div>      </div>    </div>  </div>  <div    class="cal-time-events"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">      <div        *ngFor="          let hour of view.hourColumns[0].hours;          trackBy: trackByHour;          let odd = odd        "        class="cal-hour"        [class.cal-hour-odd]="odd"      >        <mwl-calendar-week-view-hour-segment          *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"          [style.height.px]="hourSegmentHeight"          [segment]="segment"          [segmentHeight]="hourSegmentHeight"          [locale]="locale"          [customTemplate]="hourSegmentTemplate"          [isTimeLabel]="true"        >        </mwl-calendar-week-view-hour-segment>      </div>    </div>    <div      class="cal-day-columns"      [class.cal-resize-active]="timeEventResizes.size > 0"      #dayColumns    >      <div        class="cal-day-column"        *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"      >        <div          *ngFor="            let timeEvent of column.events;            trackBy: trackByDayOrWeekEvent          "          #event          class="cal-event-container"          [class.cal-draggable]="            timeEvent.event.draggable && timeEventResizes.size === 0          "          [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"          [class.cal-ends-within-day]="!timeEvent.endsAfterDay"          [ngClass]="timeEvent.event.cssClass"          [hidden]="timeEvent.height === 0 && timeEvent.width === 0"          [style.top.px]="timeEvent.top"          [style.height.px]="timeEvent.height"          [style.left.%]="timeEvent.left"          [style.width.%]="timeEvent.width"          mwlResizable          [resizeSnapGrid]="{            left: dayColumnWidth,            right: dayColumnWidth,            top: eventSnapSize || hourSegmentHeight,            bottom: eventSnapSize || hourSegmentHeight          }"          [validateResize]="validateResize"          [allowNegativeResizes]="true"          (resizeStart)="            timeEventResizeStarted(dayColumns, timeEvent, $event)          "          (resizing)="timeEventResizing(timeEvent, $event)"          (resizeEnd)="timeEventResizeEnded(timeEvent)"          mwlDraggable          dragActiveClass="cal-drag-active"          [dropData]="{ event: timeEvent.event, calendarId: calendarId }"          [dragAxis]="{            x: timeEvent.event.draggable && timeEventResizes.size === 0,            y: timeEvent.event.draggable && timeEventResizes.size === 0          }"          [dragSnapGrid]="            snapDraggedEvents              ? { x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight }              : {}          "          [ghostDragEnabled]="!snapDraggedEvents"          [validateDrag]="validateDrag"          (dragStart)="dragStarted(dayColumns, event, timeEvent)"          (dragging)="dragMove(timeEvent, $event)"          (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"        >          <div            class="cal-resize-handle cal-resize-handle-before-start"            *ngIf="              timeEvent.event?.resizable?.beforeStart &&              !timeEvent.startsBeforeDay            "            mwlResizeHandle            [resizeEdges]="{              left: true,              top: true            }"          ></div>          <mwl-calendar-week-view-event            [weekEvent]="timeEvent"            [tooltipPlacement]="tooltipPlacement"            [tooltipTemplate]="tooltipTemplate"            [tooltipAppendToBody]="tooltipAppendToBody"            [tooltipDisabled]="dragActive || timeEventResizes.size > 0"            [tooltipDelay]="tooltipDelay"            [customTemplate]="eventTemplate"            [eventTitleTemplate]="eventTitleTemplate"            [eventActionsTemplate]="eventActionsTemplate"            (eventClicked)="eventClicked.emit({ event: timeEvent.event })"          >          </mwl-calendar-week-view-event>          <div            class="cal-resize-handle cal-resize-handle-after-end"            *ngIf="              timeEvent.event?.resizable?.afterEnd &&              !timeEvent.endsAfterDay            "            mwlResizeHandle            [resizeEdges]="{              right: true,              bottom: true            }"          ></div>        </div>        <div          *ngFor="            let hour of column.hours;            trackBy: trackByHour;            let odd = odd          "          class="cal-hour"          [class.cal-hour-odd]="odd"        >          <mwl-calendar-week-view-hour-segment            *ngFor="              let segment of hour.segments;              trackBy: trackByHourSegment            "            [style.height.px]="hourSegmentHeight"            [segment]="segment"            [segmentHeight]="hourSegmentHeight"            [locale]="locale"            [customTemplate]="hourSegmentTemplate"            (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"            mwlDroppable            [dragOverClass]="              !dragActive || !snapDraggedEvents ? \'cal-drag-over\' : null            "            dragActiveClass="cal-drag-active"            (drop)="eventDropped($event, segment.date, false)"          >          </mwl-calendar-week-view-hour-segment>        </div>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarWeekViewComponent'};

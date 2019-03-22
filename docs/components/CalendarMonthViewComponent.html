@@ -63,11 +63,13 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given month. Example usage:</p>
-<div><pre class="line-numbers"><code class="language-typescript"> * &lt;mwl-calendar-month-view
+<p><code>typescript
+ * &lt;mwl-calendar-month-view
  *  [viewDate]=&quot;viewDate&quot;
  *  [events]=&quot;events&quot;&gt;
  * &lt;/mwl-calendar-month-view&gt;
- *</code></pre></div>
+ *</code></p>
+
     </p>
 
 
@@ -75,9 +77,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -109,11 +111,15 @@
   &lt;mwl-calendar-month-view-header
     [days]&#x3D;&quot;columnHeaders&quot;
     [locale]&#x3D;&quot;locale&quot;
+    (columnHeaderClicked)&#x3D;&quot;columnHeaderClicked.emit($event)&quot;
     [customTemplate]&#x3D;&quot;headerTemplate&quot;
   &gt;
+    &gt;
   &lt;/mwl-calendar-month-view-header&gt;
   &lt;div class&#x3D;&quot;cal-days&quot;&gt;
-    &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackByIndex&quot;&gt;
+    &lt;div
+      *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackBy: trackByRowOffset&quot;
+    &gt;
       &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
         &lt;mwl-calendar-month-cell
           *ngFor&#x3D;&quot;
@@ -128,6 +134,7 @@
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
           [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+          [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
           [customTemplate]&#x3D;&quot;cellTemplate&quot;
           (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day })&quot;
           (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
@@ -196,6 +203,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#activeDay">activeDay</a>
+                            </li>
+                            <li>
                                 <a href="#activeDayIsOpen">activeDayIsOpen</a>
                             </li>
                             <li>
@@ -229,6 +239,9 @@
                                 <a href="#tooltipAppendToBody">tooltipAppendToBody</a>
                             </li>
                             <li>
+                                <a href="#tooltipDelay">tooltipDelay</a>
+                            </li>
+                            <li>
                                 <a href="#tooltipPlacement">tooltipPlacement</a>
                             </li>
                             <li>
@@ -259,6 +272,9 @@
                                 <a href="#beforeViewRender">beforeViewRender</a>
                             </li>
                             <li>
+                                <a href="#columnHeaderClicked">columnHeaderClicked</a>
+                            </li>
+                            <li>
                                 <a href="#dayClicked">dayClicked</a>
                             </li>
                             <li>
@@ -283,188 +299,15 @@
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="activeDayIsOpen"></a>
-                        <code>activeDayIsOpen</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Whether the events list for the day of the <code>viewDate</code> option is visible or not</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>false</code>
-                        </p>
+                    <td class="col-md-4">
+                        <a name="activeDay"></a>
+                        <b>activeDay</b>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:141</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="cellTemplate"></a>
-                        <code>cellTemplate</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use to replace the day cell</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
-                            </p>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:181</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="eventActionsTemplate"></a>
-                        <code>eventActionsTemplate</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for event actions</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
-
-                            </p>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:196</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="events"></a>
-                        <code>events</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>An array of events to display on view.
-The schema is available here: <a href="https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63">https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</a></p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>CalendarEvent[]</code>
-
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>[]</code>
-                        </p>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:131</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="eventTitleTemplate"></a>
-                        <code>eventTitleTemplate</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for event titles</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
-
-                            </p>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:191</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="excludeDays"></a>
-                        <code>excludeDays</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>number[]</code>
-
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>[]</code>
-                        </p>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:136</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="headerTemplate"></a>
-                        <code>headerTemplate</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use to replace the header</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
-
-                            </p>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:176</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="locale"></a>
-                        <code>locale</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>The locale used to format dates</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                            </p>
                     </td>
                 </tr>
                         <tr>
@@ -472,45 +315,31 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                     <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:151</a></div>
                             </td>
                         </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="openDayEventsTemplate"></a>
-                        <code>openDayEventsTemplate</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for the slide down box of events for the active day</p>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If set will be used to determine the day that should be open. If not set, the <code>viewDate</code> is used</p>
 </div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
-
-                            </p>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:186</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="refresh"></a>
-                        <code>refresh</code>
+                    <td class="col-md-4">
+                        <a name="activeDayIsOpen"></a>
+                        <b>activeDayIsOpen</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An observable that when emitted on will re-render the current view</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>Subject&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                            </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                         <tr>
@@ -518,74 +347,199 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                     <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:146</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether the events list for the day of the <code>viewDate</code> option is visible or not</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="tooltipAppendToBody"></a>
-                        <code>tooltipAppendToBody</code>
+                    <td class="col-md-4">
+                        <a name="cellTemplate"></a>
+                        <b>cellTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Whether to append tooltips to the body or next to the trigger element</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>true</code>
-                        </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:197</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use to replace the day cell</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="tooltipPlacement"></a>
-                        <code>tooltipPlacement</code>
+                    <td class="col-md-4">
+                        <a name="eventActionsTemplate"></a>
+                        <b>eventActionsTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The placement of the event tooltip</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>PlacementArray</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>&#x27;auto&#x27;</code>
-                        </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:156</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:212</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for event actions</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="tooltipTemplate"></a>
-                        <code>tooltipTemplate</code>
+                    <td class="col-md-4">
+                        <a name="events"></a>
+                        <b>events</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for the event tooltips</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CalendarEvent[]</code>
 
-                            </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:136</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of events to display on view.
+The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventTitleTemplate"></a>
+                        <b>eventTitleTemplate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="207" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:207</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for event titles</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="excludeDays"></a>
+                        <b>excludeDays</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:141</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of day indexes (0 = sunday, 1 = monday etc) that will be hidden on the view</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="headerTemplate"></a>
+                        <b>headerTemplate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:192</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use to replace the header</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="locale"></a>
+                        <b>locale</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
                     </td>
                 </tr>
                         <tr>
@@ -593,68 +547,177 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                     <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:161</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The locale used to format dates</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="viewDate"></a>
-                        <code>viewDate</code>
+                    <td class="col-md-4">
+                        <a name="openDayEventsTemplate"></a>
+                        <b>openDayEventsTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The current view date</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="202" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:202</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for the slide down box of events for the active day</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="weekendDays"></a>
-                        <code>weekendDays</code>
+                    <td class="col-md-4">
+                        <a name="refresh"></a>
+                        <b>refresh</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>number[]</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:156</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An observable that when emitted on will re-render the current view</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="weekStartsOn"></a>
-                        <code>weekStartsOn</code>
+                    <td class="col-md-4">
+                        <a name="tooltipAppendToBody"></a>
+                        <b>tooltipAppendToBody</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The start number of the week</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                            </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:176</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether to append tooltips to the body or next to the trigger element</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tooltipDelay"></a>
+                        <b>tooltipDelay</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:182</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+will be displayed immediately.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tooltipPlacement"></a>
+                        <b>tooltipPlacement</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>PlacementArray</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auto&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:166</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The placement of the event tooltip</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tooltipTemplate"></a>
+                        <b>tooltipTemplate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
                     </td>
                 </tr>
                         <tr>
@@ -662,6 +725,93 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                                     <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:171</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for the event tooltips</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewDate"></a>
+                        <b>viewDate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:130</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current view date</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="weekendDays"></a>
+                        <b>weekendDays</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:217</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of day indexes (0 = sunday, 1 = monday etc) that indicate which days are weekends</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="weekStartsOn"></a>
+                        <b>weekStartsOn</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:187</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The start number of the week</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -670,78 +820,69 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="beforeViewRender"></a>
-                        <code>beforeViewRender</code>
+                        <b>beforeViewRender</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An output that will be called before the view is rendered for the current month.
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:224</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An output that will be called before the view is rendered for the current month.
 If you add the <code>cssClass</code> property to a day in the body it will add that class to the cell element in the template</p>
 </div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:208</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
+                        <a name="columnHeaderClicked"></a>
+                        <b>columnHeaderClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:245</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when a header week day is clicked. Returns ISO day number.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="dayClicked"></a>
-                        <code>dayClicked</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when the day cell is clicked</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
+                        <b>dayClicked</b>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:214</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="eventClicked"></a>
-                        <code>eventClicked</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when the event title is clicked</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:222</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="eventTimesChanged"></a>
-                        <code>eventTimesChanged</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when an event is dragged and dropped</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                     </td>
                 </tr>
@@ -750,6 +891,66 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                                     <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:230</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when the day cell is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventClicked"></a>
+                        <b>eventClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="238" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:238</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when the event title is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventTimesChanged"></a>
+                        <b>eventTimesChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:251</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when an event is dragged and dropped</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -787,7 +988,7 @@ import {
   CalendarEventTimesChangedEventType
 } from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
-import { validateEvents, trackByIndex } from &#x27;../common/util&#x27;;
+import { validateEvents } from &#x27;../common/util&#x27;;
 import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
 import { PlacementArray } from &#x27;positioning&#x27;;
 
@@ -821,11 +1022,15 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
       &lt;mwl-calendar-month-view-header
         [days]&#x3D;&quot;columnHeaders&quot;
         [locale]&#x3D;&quot;locale&quot;
+        (columnHeaderClicked)&#x3D;&quot;columnHeaderClicked.emit($event)&quot;
         [customTemplate]&#x3D;&quot;headerTemplate&quot;
       &gt;
+        &gt;
       &lt;/mwl-calendar-month-view-header&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
-        &lt;div *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackByIndex&quot;&gt;
+        &lt;div
+          *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackBy: trackByRowOffset&quot;
+        &gt;
           &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
             &lt;mwl-calendar-month-cell
               *ngFor&#x3D;&quot;
@@ -840,6 +1045,7 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
               [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
               [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
               [customTemplate]&#x3D;&quot;cellTemplate&quot;
               (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day })&quot;
               (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
@@ -904,6 +1110,11 @@ export class CalendarMonthViewComponent
   @Input() activeDayIsOpen: boolean &#x3D; false;
 
   /**
+   * If set will be used to determine the day that should be open. If not set, the &#x60;viewDate&#x60; is used
+   */
+  @Input() activeDay: Date;
+
+  /**
    * An observable that when emitted on will re-render the current view
    */
   @Input() refresh: Subject&lt;any&gt;;
@@ -927,6 +1138,12 @@ export class CalendarMonthViewComponent
    * Whether to append tooltips to the body or next to the trigger element
    */
   @Input() tooltipAppendToBody: boolean &#x3D; true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input() tooltipDelay: number | null &#x3D; null;
 
   /**
    * The start number of the week
@@ -987,6 +1204,11 @@ export class CalendarMonthViewComponent
   }&gt;();
 
   /**
+   * Called when a header week day is clicked. Returns ISO day number.
+   */
+  @Output() columnHeaderClicked &#x3D; new EventEmitter&lt;number&gt;();
+
+  /**
    * Called when an event is dragged and dropped
    */
   @Output()
@@ -1022,7 +1244,11 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  trackByIndex &#x3D; trackByIndex;
+  trackByRowOffset &#x3D; (index: number, offset: number) &#x3D;&gt;
+    this.view.days
+      .slice(offset, this.view.totalDaysVisibleInWeek)
+      .map(day &#x3D;&gt; day.date.toISOString())
+      .join(&#x27;-&#x27;);
 
   /**
    * @hidden
@@ -1057,7 +1283,15 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (changes.viewDate || changes.excludeDays || changes.weekendDays) {
+    const refreshHeader &#x3D;
+      changes.viewDate || changes.excludeDays || changes.weekendDays;
+    const refreshBody &#x3D;
+      changes.viewDate ||
+      changes.events ||
+      changes.excludeDays ||
+      changes.weekendDays;
+
+    if (refreshHeader) {
       this.refreshHeader();
     }
 
@@ -1065,20 +1299,20 @@ export class CalendarMonthViewComponent
       validateEvents(this.events);
     }
 
-    if (
-      changes.viewDate ||
-      changes.events ||
-      changes.excludeDays ||
-      changes.weekendDays
-    ) {
+    if (refreshBody) {
       this.refreshBody();
+    }
+
+    if (refreshHeader || refreshBody) {
+      this.emitBeforeViewRender();
     }
 
     if (
       changes.activeDayIsOpen ||
       changes.viewDate ||
       changes.events ||
-      changes.excludeDays
+      changes.excludeDays ||
+      changes.activeDay
     ) {
       this.checkActiveDayIsOpen();
     }
@@ -1151,7 +1385,6 @@ export class CalendarMonthViewComponent
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
@@ -1162,13 +1395,13 @@ export class CalendarMonthViewComponent
       excluded: this.excludeDays,
       weekendDays: this.weekendDays
     });
-    this.emitBeforeViewRender();
   }
 
   private checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen &#x3D;&#x3D;&#x3D; true) {
+      const activeDay &#x3D; this.activeDay || this.viewDate;
       this.openDay &#x3D; this.view.days.find(day &#x3D;&gt;
-        this.dateAdapter.isSameDay(day.date, this.viewDate)
+        this.dateAdapter.isSameDay(day.date, activeDay)
       );
       const index: number &#x3D; this.view.days.indexOf(this.openDay);
       this.openRowIndex &#x3D;
@@ -1181,10 +1414,9 @@ export class CalendarMonthViewComponent
   }
 
   private refreshAll(): void {
-    this.columnHeaders &#x3D; null;
-    this.view &#x3D; null;
     this.refreshHeader();
     this.refreshBody();
+    this.emitBeforeViewRender();
     this.checkActiveDayIsOpen();
   }
 
@@ -1228,7 +1460,7 @@ export class CalendarMonthViewComponent
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    [customTemplate]="headerTemplate"  >  </mwl-calendar-month-view-header>  <div class="cal-days">    <div *ngFor="let rowIndex of view.rowOffsets; trackByIndex">      <div class="cal-cell-row">        <mwl-calendar-month-cell          *ngFor="            let day of (view.days              | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek);            trackBy: trackByDate          "          [ngClass]="day?.cssClass"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipTemplate]="tooltipTemplate"          [customTemplate]="cellTemplate"          (mwlClick)="dayClicked.emit({ day: day })"          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          dragOverClass="cal-drag-over"          (drop)="            eventDropped(              day,              $event.dropData.event,              $event.dropData.draggedFrom            )          "          (eventClicked)="eventClicked.emit({ event: $event.event })"        >        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [customTemplate]="openDayEventsTemplate"        [eventTitleTemplate]="eventTitleTemplate"        [eventActionsTemplate]="eventActionsTemplate"        (eventClicked)="eventClicked.emit({ event: $event.event })"        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="          eventDropped(            openDay,            $event.dropData.event,            $event.dropData.draggedFrom          )        "      >      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    (columnHeaderClicked)="columnHeaderClicked.emit($event)"    [customTemplate]="headerTemplate"  >    >  </mwl-calendar-month-view-header>  <div class="cal-days">    <div      *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"    >      <div class="cal-cell-row">        <mwl-calendar-month-cell          *ngFor="            let day of (view.days              | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek);            trackBy: trackByDate          "          [ngClass]="day?.cssClass"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipTemplate]="tooltipTemplate"          [tooltipDelay]="tooltipDelay"          [customTemplate]="cellTemplate"          (mwlClick)="dayClicked.emit({ day: day })"          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          dragOverClass="cal-drag-over"          (drop)="            eventDropped(              day,              $event.dropData.event,              $event.dropData.draggedFrom            )          "          (eventClicked)="eventClicked.emit({ event: $event.event })"        >        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [customTemplate]="openDayEventsTemplate"        [eventTitleTemplate]="eventTitleTemplate"        [eventActionsTemplate]="eventActionsTemplate"        (eventClicked)="eventClicked.emit({ event: $event.event })"        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="          eventDropped(            openDay,            $event.dropData.event,            $event.dropData.draggedFrom          )        "      >      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarMonthViewComponent'};

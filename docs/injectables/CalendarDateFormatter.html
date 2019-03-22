@@ -65,8 +65,9 @@
             <p class="comment">
                 <p>This class is responsible for all formatting of dates. There are 3 implementations available, the <code>CalendarAngularDateFormatter</code> (default) which uses the angular date pipe to format dates, the <code>CalendarNativeDateFormatter</code> which will use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to format dates, or there is the <code>CalendarMomentDateFormatter</code> which uses <a href="http://momentjs.com/" target="_blank">moment</a>.</p>
 <p>If you wish, you may override any of the defaults via angulars DI. For example:</p>
-<div><pre class="line-numbers"><code class="language-typescript"> * import { CalendarDateFormatter, DateFormatterParams } from &#39;angular-calendar&#39;;
- * import { formatDate } from &#39;&#64;angular/common&#39;;
+<p><code>typescript
+ * import { CalendarDateFormatter, DateFormatterParams } from &#39;angular-calendar&#39;;
+ * import { formatDate } from &#39;@angular/common&#39;;
  *
  * class CustomDateFormatter extends CalendarDateFormatter {
  *
@@ -81,7 +82,15 @@
  *   provide: CalendarDateFormatter,
  *   useClass: CustomDateFormatter
  * }]
- *</code></pre></div>
+ *</code></p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>CalendarAngularDateFormatter</code>
             </p>
 
 

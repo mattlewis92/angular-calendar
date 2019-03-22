@@ -63,11 +63,13 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given day. Example usage:</p>
-<div><pre class="line-numbers"><code class="language-typescript"> * &lt;mwl-calendar-day-view
+<p><code>typescript
+ * &lt;mwl-calendar-day-view
  *  [viewDate]=&quot;viewDate&quot;
  *  [events]=&quot;events&quot;&gt;
  * &lt;/mwl-calendar-day-view&gt;
- *</code></pre></div>
+ *</code></p>
+
     </p>
 
 
@@ -75,9 +77,9 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -120,6 +122,7 @@
       [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
       [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
       [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+      [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
       [customTemplate]&#x3D;&quot;eventTemplate&quot;
       [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
       [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -196,6 +199,7 @@
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
           [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+          [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
           [customTemplate]&#x3D;&quot;eventTemplate&quot;
           [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
           [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -344,6 +348,9 @@
                                 <a href="#tooltipAppendToBody">tooltipAppendToBody</a>
                             </li>
                             <li>
+                                <a href="#tooltipDelay">tooltipDelay</a>
+                            </li>
+                            <li>
                                 <a href="#tooltipPlacement">tooltipPlacement</a>
                             </li>
                             <li>
@@ -392,495 +399,630 @@
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayEndHour"></a>
-                        <code>dayEndHour</code>
+                        <b>dayEndHour</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day end hours in 24 hour time. Must be 0-23</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>23</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>23</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:244</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:246</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day end hours in 24 hour time. Must be 0-23</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayEndMinute"></a>
-                        <code>dayEndMinute</code>
+                        <b>dayEndMinute</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day end minutes. Must be 0-59</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>59</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>59</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:249</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:251</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day end minutes. Must be 0-59</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayStartHour"></a>
-                        <code>dayStartHour</code>
+                        <b>dayStartHour</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day start hours in 24 hour time. Must be 0-23</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>0</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="234" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:234</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:236</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day start hours in 24 hour time. Must be 0-23</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="dayStartMinute"></a>
-                        <code>dayStartMinute</code>
+                        <b>dayStartMinute</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The day start minutes. Must be 0-59</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>0</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:239</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:241</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The day start minutes. Must be 0-59</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventActionsTemplate"></a>
-                        <code>eventActionsTemplate</code>
+                        <b>eventActionsTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for event actions</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="304" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:304</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="312" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:312</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for event actions</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="events"></a>
-                        <code>events</code>
+                        <b>events</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An array of events to display on view
-The schema is available here: <a href="https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63">https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</a></p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>CalendarEvent[]</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CalendarEvent[]</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>[]</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:219</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:221</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An array of events to display on view
+The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventSnapSize"></a>
-                        <code>eventSnapSize</code>
+                        <b>eventSnapSize</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The grid size to snap resizing and dragging of events to</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="269" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:269</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:271</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The grid size to snap resizing and dragging of events to</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventTemplate"></a>
-                        <code>eventTemplate</code>
+                        <b>eventTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for day view events</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:294</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:302</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for day view events</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventTitleTemplate"></a>
-                        <code>eventTitleTemplate</code>
+                        <b>eventTitleTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for event titles</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="299" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:299</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:307</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for event titles</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventWidth"></a>
-                        <code>eventWidth</code>
+                        <b>eventWidth</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The width in pixels of each event on the view</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>150</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>150</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:254</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:256</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The width in pixels of each event on the view</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="hourSegmentHeight"></a>
-                        <code>hourSegmentHeight</code>
+                        <b>hourSegmentHeight</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The height in pixels of each hour segment</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>30</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>30</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:229</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:231</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The height in pixels of each hour segment</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="hourSegments"></a>
-                        <code>hourSegments</code>
+                        <b>hourSegments</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The number of segments in an hour. Must be &lt;= 6</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>2</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:224</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:226</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The number of segments in an hour. Must be &lt;= 6</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="hourSegmentTemplate"></a>
-                        <code>hourSegmentTemplate</code>
+                        <b>hourSegmentTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use to replace the hour segment</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="289" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:289</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="297" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:297</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use to replace the hour segment</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="locale"></a>
-                        <code>locale</code>
+                        <b>locale</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The locale used to format dates</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:264</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:266</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The locale used to format dates</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="refresh"></a>
-                        <code>refresh</code>
+                        <b>refresh</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An observable that when emitted on will re-render the current view</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>Subject&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:259</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:261</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An observable that when emitted on will re-render the current view</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="snapDraggedEvents"></a>
-                        <code>snapDraggedEvents</code>
+                        <b>snapDraggedEvents</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Whether to snap events to a grid when dragging</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>true</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="309" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:309</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="317" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:317</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether to snap events to a grid when dragging</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="tooltipAppendToBody"></a>
-                        <code>tooltipAppendToBody</code>
+                        <b>tooltipAppendToBody</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>Whether to append tooltips to the body or next to the trigger element</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>true</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:284</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="286" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:286</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether to append tooltips to the body or next to the trigger element</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
+                        <a name="tooltipDelay"></a>
+                        <b>tooltipDelay</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:292</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+will be displayed immediately.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="tooltipPlacement"></a>
-                        <code>tooltipPlacement</code>
+                        <b>tooltipPlacement</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The placement of the event tooltip</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>PlacementArray</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>PlacementArray</code>
 
-                            </p>
-                        <p>
-                            <em>Default value : </em><code>&#x27;auto&#x27;</code>
-                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auto&#x27;</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:274</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="276" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:276</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The placement of the event tooltip</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="tooltipTemplate"></a>
-                        <code>tooltipTemplate</code>
+                        <b>tooltipTemplate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>A custom template to use for the event tooltips</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code>TemplateRef&lt;any&gt;</code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="279" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:279</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:281</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A custom template to use for the event tooltips</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="viewDate"></a>
-                        <code>viewDate</code>
+                        <b>viewDate</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>The current view date</p>
-</div>
-                            <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
-                            </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:213</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:215</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current view date</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -889,78 +1031,42 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="beforeViewRender"></a>
-                        <code>beforeViewRender</code>
+                        <b>beforeViewRender</b>
                     </td>
-                    <td class="col-md-10">
-                        <div><p>An output that will be called before the view is rendered for the current day.
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="346" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:346</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An output that will be called before the view is rendered for the current day.
 If you add the <code>cssClass</code> property to an hour grid segment it will add that class to the hour segment in the template</p>
 </div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="338" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:338</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
-                    <td class="col-md-2">
+                    <td class="col-md-4">
                         <a name="eventClicked"></a>
-                        <code>eventClicked</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when an event title is clicked</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
+                        <b>eventClicked</b>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="315" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:315</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
-                    <td class="col-md-2">
-                        <a name="eventTimesChanged"></a>
-                        <code>eventTimesChanged</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when an event is resized or dragged and dropped</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="331" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:331</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="hourSegmentClicked"></a>
-                        <code>hourSegmentClicked</code>
-                    </td>
-                    <td class="col-md-10">
-                        <div><p>Called when an hour segment is clicked</p>
-</div>
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                     </td>
                 </tr>
@@ -969,6 +1075,66 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
                                     <div class="io-line">Defined in <a href="" data-line="323" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:323</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when an event title is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventTimesChanged"></a>
+                        <b>eventTimesChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="339" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:339</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when an event is resized or dragged and dropped</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hourSegmentClicked"></a>
+                        <b>hourSegmentClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="331" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:331</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Called when an hour segment is clicked</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -976,509 +1142,514 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
 
     <section>
     
-        <h3 id="methods">
-            Methods
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="dragEnded"></a>
-                        <span class="name">
-                            <b>
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dragEnded"></a>
+                    <span class="name">
+                        <b>
                             dragEnded
-                            </b>
-                            <a href="#dragEnded"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#dragEnded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="585" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:585</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="599"
+                            class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:599</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>dayEvent</td>
-                                                        <td>
-                                                                    <code>DayViewEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dayEvent</td>
+                                    <td>
+                                            <code>DayViewEvent</code>
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>dragEndEvent</td>
-                                                        <td>
-                                                                    <code>DragEndEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="dragStarted"></a>
-                        <span class="name">
-                            <b>
+                                </tr>
+                                <tr>
+                                    <td>dragEndEvent</td>
+                                    <td>
+                                            <code>DragEndEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dragStarted"></a>
+                    <span class="name">
+                        <b>
                             dragStarted
-                            </b>
-                            <a href="#dragStarted"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#dragStarted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>dragStarted(event: HTMLElement, dayEventsContainer: HTMLElement)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="560" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:560</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="574"
+                            class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:574</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>event</td>
-                                                        <td>
-                                                                    <code>HTMLElement</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>HTMLElement</code>
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>dayEventsContainer</td>
-                                                        <td>
-                                                                    <code>HTMLElement</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="eventDropped"></a>
-                        <span class="name">
-                            <b>
+                                </tr>
+                                <tr>
+                                    <td>dayEventsContainer</td>
+                                    <td>
+                                            <code>HTMLElement</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eventDropped"></a>
+                    <span class="name">
+                        <b>
                             eventDropped
-                            </b>
-                            <a href="#eventDropped"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#eventDropped"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>eventDropped(dropEvent: literal type, date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>, allDay: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="475" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:475</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="489"
+                            class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:489</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>dropEvent</td>
-                                                        <td>
-                                                                    <code>literal type</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dropEvent</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>date</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>allDay</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                </tr>
+                                <tr>
+                                    <td>date</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="resizeEnded"></a>
-                        <span class="name">
-                            <b>
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>allDay</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizeEnded"></a>
+                    <span class="name">
+                        <b>
                             resizeEnded
-                            </b>
-                            <a href="#resizeEnded"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#resizeEnded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>resizeEnded(dayEvent: DayViewEvent)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="518" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:518</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="532"
+                            class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:532</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>dayEvent</td>
-                                                        <td>
-                                                                    <code>DayViewEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dayEvent</td>
+                                    <td>
+                                            <code>DayViewEvent</code>
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    <td>
+                                        No
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="resizeStarted"></a>
-                        <span class="name">
-                            <b>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizeStarted"></a>
+                    <span class="name">
+                        <b>
                             resizeStarted
-                            </b>
-                            <a href="#resizeStarted"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#resizeStarted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>resizeStarted(event: DayViewEvent, resizeEvent: ResizeEvent, dayEventsContainer: HTMLElement)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="490" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:490</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="504"
+                            class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:504</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>event</td>
-                                                        <td>
-                                                                    <code>DayViewEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>DayViewEvent</code>
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>resizeEvent</td>
-                                                        <td>
-                                                                    <code>ResizeEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>dayEventsContainer</td>
-                                                        <td>
-                                                                    <code>HTMLElement</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                </tr>
+                                <tr>
+                                    <td>resizeEvent</td>
+                                    <td>
+                                            <code>ResizeEvent</code>
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="resizing"></a>
-                        <span class="name">
-                            <b>
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>dayEventsContainer</td>
+                                    <td>
+                                            <code>HTMLElement</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizing"></a>
+                    <span class="name">
+                        <b>
                             resizing
-                            </b>
-                            <a href="#resizing"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#resizing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>resizing(event: DayViewEvent, resizeEvent: ResizeEvent)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="508" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:508</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="522"
+                            class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view.component.ts:522</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>event</td>
-                                                        <td>
-                                                                    <code>DayViewEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>DayViewEvent</code>
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>resizeEvent</td>
-                                                        <td>
-                                                                    <code>ResizeEvent</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                </tr>
+                                <tr>
+                                    <td>resizeEvent</td>
+                                    <td>
+                                            <code>ResizeEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
-
 
 </div>
 
@@ -1576,6 +1747,7 @@ export interface DayViewEventResize {
           [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
           [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
           [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+          [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
           [customTemplate]&#x3D;&quot;eventTemplate&quot;
           [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
           [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -1652,6 +1824,7 @@ export interface DayViewEventResize {
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
               [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
               [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
               [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -1768,6 +1941,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * Whether to append tooltips to the body or next to the trigger element
    */
   @Input() tooltipAppendToBody: boolean &#x3D; true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input() tooltipDelay: number | null &#x3D; null;
 
   /**
    * A custom template to use to replace the hour segment
@@ -1930,14 +2109,24 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (
+    const refreshHourGrid &#x3D;
       changes.viewDate ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
       changes.dayEndHour ||
       changes.dayEndMinute ||
-      changes.hourSegments
-    ) {
+      changes.hourSegments;
+
+    const refreshView &#x3D;
+      changes.viewDate ||
+      changes.events ||
+      changes.dayStartHour ||
+      changes.dayStartMinute ||
+      changes.dayEndHour ||
+      changes.dayEndMinute ||
+      changes.eventWidth;
+
+    if (refreshHourGrid) {
       this.refreshHourGrid();
     }
 
@@ -1945,16 +2134,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       validateEvents(this.events);
     }
 
-    if (
-      changes.viewDate ||
-      changes.events ||
-      changes.dayStartHour ||
-      changes.dayStartMinute ||
-      changes.dayEndHour ||
-      changes.dayEndMinute ||
-      changes.eventWidth
-    ) {
+    if (refreshView) {
       this.refreshView();
+    }
+
+    if (refreshHourGrid || refreshView) {
+      this.emitBeforeViewRender();
     }
   }
 
@@ -2116,7 +2301,6 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute
       }
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshView(): void {
@@ -2135,12 +2319,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       eventWidth: this.eventWidth,
       segmentHeight: this.hourSegmentHeight
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHourGrid();
     this.refreshView();
+    this.emitBeforeViewRender();
   }
 
   private emitBeforeViewRender(): void {
@@ -2185,7 +2369,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-day-view">  <div    class="cal-all-day-events"    mwlDroppable    dragOverClass="cal-drag-over"    dragActiveClass="cal-drag-active"    (drop)="eventDropped($event, view.period.start, true)"  >    <mwl-calendar-day-view-event      *ngFor="let event of view.allDayEvents; trackBy: trackByEventId"      [ngClass]="event.cssClass"      [dayEvent]="{ event: event }"      [tooltipPlacement]="tooltipPlacement"      [tooltipTemplate]="tooltipTemplate"      [tooltipAppendToBody]="tooltipAppendToBody"      [customTemplate]="eventTemplate"      [eventTitleTemplate]="eventTitleTemplate"      [eventActionsTemplate]="eventActionsTemplate"      (eventClicked)="eventClicked.emit({ event: event })"      [class.cal-draggable]="!snapDraggedEvents && event.draggable"      mwlDraggable      dragActiveClass="cal-drag-active"      [dropData]="{ event: event, calendarId: calendarId }"      [dragAxis]="{        x: !snapDraggedEvents && event.draggable,        y: !snapDraggedEvents && event.draggable      }"    >    </mwl-calendar-day-view-event>  </div>  <div    class="cal-hour-rows"    #dayEventsContainer    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-events">      <div        #event        *ngFor="let dayEvent of view?.events; trackBy: trackByDayEvent"        class="cal-event-container"        [class.cal-draggable]="dayEvent.event.draggable"        [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"        [class.cal-ends-within-day]="!dayEvent.endsAfterDay"        [ngClass]="dayEvent.event.cssClass"        mwlResizable        [resizeSnapGrid]="{          top: eventSnapSize || hourSegmentHeight,          bottom: eventSnapSize || hourSegmentHeight        }"        [validateResize]="validateResize"        (resizeStart)="resizeStarted(dayEvent, $event, dayEventsContainer)"        (resizing)="resizing(dayEvent, $event)"        (resizeEnd)="resizeEnded(dayEvent)"        mwlDraggable        dragActiveClass="cal-drag-active"        [dropData]="{ event: dayEvent.event, calendarId: calendarId }"        [dragAxis]="{          x:            !snapDraggedEvents &&            dayEvent.event.draggable &&            currentResizes.size === 0,          y: dayEvent.event.draggable && currentResizes.size === 0        }"        [dragSnapGrid]="          snapDraggedEvents ? { y: eventSnapSize || hourSegmentHeight } : {}        "        [validateDrag]="validateDrag"        (dragStart)="dragStarted(event, dayEventsContainer)"        (dragging)="dragMove()"        (dragEnd)="dragEnded(dayEvent, $event)"        [style.marginTop.px]="dayEvent.top"        [style.height.px]="dayEvent.height"        [style.marginLeft.px]="dayEvent.left + 70"        [style.width.px]="dayEvent.width - 1"      >        <div          class="cal-resize-handle cal-resize-handle-before-start"          *ngIf="            dayEvent.event?.resizable?.beforeStart &&            !dayEvent.startsBeforeDay          "          mwlResizeHandle          [resizeEdges]="{ top: true }"        ></div>        <mwl-calendar-day-view-event          [dayEvent]="dayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="eventClicked.emit({ event: dayEvent.event })"        >        </mwl-calendar-day-view-event>        <div          class="cal-resize-handle cal-resize-handle-after-end"          *ngIf="            dayEvent.event?.resizable?.afterEnd && !dayEvent.endsAfterDay          "          mwlResizeHandle          [resizeEdges]="{ bottom: true }"        ></div>      </div>    </div>    <div      class="cal-hour"      *ngFor="let hour of hours; trackBy: trackByHour"      [style.minWidth.px]="view?.width + 70"    >      <mwl-calendar-day-view-hour-segment        *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"        [style.height.px]="hourSegmentHeight"        [segment]="segment"        [segmentHeight]="hourSegmentHeight"        [locale]="locale"        [customTemplate]="hourSegmentTemplate"        (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"        mwlDroppable        dragOverClass="cal-drag-over"        dragActiveClass="cal-drag-active"        (drop)="eventDropped($event, segment.date, false)"      >      </mwl-calendar-day-view-hour-segment>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-day-view">  <div    class="cal-all-day-events"    mwlDroppable    dragOverClass="cal-drag-over"    dragActiveClass="cal-drag-active"    (drop)="eventDropped($event, view.period.start, true)"  >    <mwl-calendar-day-view-event      *ngFor="let event of view.allDayEvents; trackBy: trackByEventId"      [ngClass]="event.cssClass"      [dayEvent]="{ event: event }"      [tooltipPlacement]="tooltipPlacement"      [tooltipTemplate]="tooltipTemplate"      [tooltipAppendToBody]="tooltipAppendToBody"      [tooltipDelay]="tooltipDelay"      [customTemplate]="eventTemplate"      [eventTitleTemplate]="eventTitleTemplate"      [eventActionsTemplate]="eventActionsTemplate"      (eventClicked)="eventClicked.emit({ event: event })"      [class.cal-draggable]="!snapDraggedEvents && event.draggable"      mwlDraggable      dragActiveClass="cal-drag-active"      [dropData]="{ event: event, calendarId: calendarId }"      [dragAxis]="{        x: !snapDraggedEvents && event.draggable,        y: !snapDraggedEvents && event.draggable      }"    >    </mwl-calendar-day-view-event>  </div>  <div    class="cal-hour-rows"    #dayEventsContainer    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-events">      <div        #event        *ngFor="let dayEvent of view?.events; trackBy: trackByDayEvent"        class="cal-event-container"        [class.cal-draggable]="dayEvent.event.draggable"        [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"        [class.cal-ends-within-day]="!dayEvent.endsAfterDay"        [ngClass]="dayEvent.event.cssClass"        mwlResizable        [resizeSnapGrid]="{          top: eventSnapSize || hourSegmentHeight,          bottom: eventSnapSize || hourSegmentHeight        }"        [validateResize]="validateResize"        (resizeStart)="resizeStarted(dayEvent, $event, dayEventsContainer)"        (resizing)="resizing(dayEvent, $event)"        (resizeEnd)="resizeEnded(dayEvent)"        mwlDraggable        dragActiveClass="cal-drag-active"        [dropData]="{ event: dayEvent.event, calendarId: calendarId }"        [dragAxis]="{          x:            !snapDraggedEvents &&            dayEvent.event.draggable &&            currentResizes.size === 0,          y: dayEvent.event.draggable && currentResizes.size === 0        }"        [dragSnapGrid]="          snapDraggedEvents ? { y: eventSnapSize || hourSegmentHeight } : {}        "        [validateDrag]="validateDrag"        (dragStart)="dragStarted(event, dayEventsContainer)"        (dragging)="dragMove()"        (dragEnd)="dragEnded(dayEvent, $event)"        [style.marginTop.px]="dayEvent.top"        [style.height.px]="dayEvent.height"        [style.marginLeft.px]="dayEvent.left + 70"        [style.width.px]="dayEvent.width - 1"      >        <div          class="cal-resize-handle cal-resize-handle-before-start"          *ngIf="            dayEvent.event?.resizable?.beforeStart &&            !dayEvent.startsBeforeDay          "          mwlResizeHandle          [resizeEdges]="{ top: true }"        ></div>        <mwl-calendar-day-view-event          [dayEvent]="dayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipDelay]="tooltipDelay"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="eventClicked.emit({ event: dayEvent.event })"        >        </mwl-calendar-day-view-event>        <div          class="cal-resize-handle cal-resize-handle-after-end"          *ngIf="            dayEvent.event?.resizable?.afterEnd && !dayEvent.endsAfterDay          "          mwlResizeHandle          [resizeEdges]="{ bottom: true }"        ></div>      </div>    </div>    <div      class="cal-hour"      *ngFor="let hour of hours; trackBy: trackByHour"      [style.minWidth.px]="view?.width + 70"    >      <mwl-calendar-day-view-hour-segment        *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"        [style.height.px]="hourSegmentHeight"        [segment]="segment"        [segmentHeight]="hourSegmentHeight"        [locale]="locale"        [customTemplate]="hourSegmentTemplate"        (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"        mwlDroppable        dragOverClass="cal-drag-over"        dragActiveClass="cal-drag-active"        (drop)="eventDropped($event, segment.date, false)"      >      </mwl-calendar-day-view-hour-segment>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarDayViewComponent'};

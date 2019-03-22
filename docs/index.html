@@ -30,7 +30,7 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="angular-6-0-calendar">angular 6.0+ calendar</h1>
+<h1 id="angular-60-calendar">angular 6.0+ calendar</h1>
 <p><a href="https://travis-ci.org/mattlewis92/angular-calendar"><img src="https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master" alt="Build Status" class="img-responsive"></a>
 <a href="https://codecov.io/gh/mattlewis92/angular-calendar"><img src="https://codecov.io/gh/mattlewis92/angular-calendar/branch/master/graph/badge.svg" alt="codecov" class="img-responsive"></a>
 <a href="http://badge.fury.io/js/angular-calendar"><img src="https://badge.fury.io/js/angular-calendar.svg" alt="npm version" class="img-responsive"></a>
@@ -40,7 +40,7 @@
 </a>
 
 <h2 id="demo">Demo</h2>
-<p><a href="https://mattlewis92.github.io/angular-calendar/">https://mattlewis92.github.io/angular-calendar/</a></p>
+<p>https://mattlewis92.github.io/angular-calendar/</p>
 <h2 id="table-of-contents">Table of contents</h2>
 <ul>
 <li><a href="#about">About</a></li>
@@ -56,15 +56,18 @@
 <p>A calendar component for Angular 6.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>First install through npm:</p>
-<div><pre class="line-numbers"><code class="language-bash">npm install --save angular-calendar date-fns</code></pre></div><p>Next include the CSS file in the global (not component scoped) styles of your app:</p>
-<div><pre class="line-numbers"><code class="language-none">/* angular-cli file: src/styles.css */
-&#64;import &quot;../node_modules/angular-calendar/css/angular-calendar.css&quot;;</code></pre></div><p>Finally import the calendar module into your apps module:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
-import { BrowserAnimationsModule } from &#39;&#64;angular/platform-browser/animations&#39;;
+<p><code>bash
+npm install --save angular-calendar date-fns</code></p>
+<p>Next include the CSS file in the global (not component scoped) styles of your app:</p>
+<p><code>/* angular-cli file: src/styles.css */
+@import &quot;../node_modules/angular-calendar/css/angular-calendar.css&quot;;</code></p>
+<p>Finally import the calendar module into your apps module:</p>
+<p>```typescript
+import { NgModule } from &#39;@angular/core&#39;;
+import { BrowserAnimationsModule } from &#39;@angular/platform-browser/animations&#39;;
 import { CalendarModule, DateAdapter } from &#39;angular-calendar&#39;;
-import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;;
-
-&#64;NgModule({
+import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;;</p>
+<p>@NgModule({
   imports: [
     BrowserAnimationsModule,
     CalendarModule.forRoot({
@@ -73,7 +76,9 @@ import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;
     })
   ]
 })
-export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
+export class MyModule {}
+```</p>
+<p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
 <p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
 <p>If you would like a one on one consulation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on <a href="https://www.patreon.com/mattlewis92">Patreon</a>.</p>
 <h3 id="module-bundlers">Module bundlers</h3>
@@ -83,48 +88,28 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <h2 id="breaking-changes">Breaking changes</h2>
 <p>Where possible this library will strictly adhere to <a href="http://semver.org/">semver</a> and only introduce API breaking changes in 0.x releases or new major versions post 1.0. The only exception to this is if you are using custom templates or extending the base components to add additional functionality, whereby critical bug fixes may introduce breakages as the internal API changes.</p>
 <h2 id="faq">FAQ</h2>
-<h3 id="is-this-library-aot-and-universal-compatible-">Is this library AoT and universal compatible?</h3>
+<h3 id="is-this-library-aot-and-universal-compatible">Is this library AoT and universal compatible?</h3>
 <p>Yes.</p>
-<h3 id="what-major-versions-of-angular-does-this-library-support-">What major versions of angular does this library support?</h3>
-<table class="table table-bordered compodoc-table">
-<thead>
-<tr>
-<th>Angular major</th>
-<th>Last supported angular-calendar version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6.x and higher</td>
-<td>latest version</td>
-</tr>
-<tr>
-<td>5.x</td>
-<td>0.24.1</td>
-</tr>
-<tr>
-<td>4.x</td>
-<td>0.22.3</td>
-</tr>
-<tr>
-<td>2.x</td>
-<td>0.9.1</td>
-</tr>
-</tbody>
-</table>
-<h3 id="how-do-i-use-this-with-my-favourite-module-bundler-">How do I use this with my favourite module bundler?</h3>
+<h3 id="what-major-versions-of-angular-does-this-library-support">What major versions of angular does this library support?</h3>
+<p>| Angular major  | Last supported angular-calendar version                                |
+| -------------- | ---------------------------------------                                |
+| 6.x and higher | latest version                                                         |
+| 5.x            | <a href="https://github.com/mattlewis92/angular-calendar/tree/v0.24.1">0.24.1</a> |
+| 4.x            | <a href="https://github.com/mattlewis92/angular-calendar/tree/v0.22.3">0.22.3</a> |
+| 2.x            | <a href="https://github.com/mattlewis92/angular-calendar/tree/v0.9.1">0.9.1</a>   |</p>
+<h3 id="how-do-i-use-this-with-my-favourite-module-bundler">How do I use this with my favourite module bundler?</h3>
 <p>See the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">examples list</a>.</p>
-<h3 id="no-styles-are-appearing-">No styles are appearing?</h3>
+<h3 id="no-styles-are-appearing">No styles are appearing?</h3>
 <p>No component styles are included with each component to make it easier to override them (otherwise you’d have to use <code>!important</code> on every rule that you customised). Thus you need to import the CSS file separately from <code>node_modules/angular-calendar/css/angular-calendar.css</code>.</p>
-<h3 id="how-come-there-are-so-many-dependencies-">How come there are so many dependencies?</h3>
+<h3 id="how-come-there-are-so-many-dependencies">How come there are so many dependencies?</h3>
 <p>When building the calendar some parts were found to be reusable so they were split out into their own modules. Only the bare minimum that is required is included with the calendar, there is no extra code than if there were no dependencies. <code>date-fns</code> especially only imports directly the functions it needs and not the entire library.</p>
-<h3 id="the-month-week-or-day-view-doesn-t-meet-my-project-requirements-but-the-other-views-do-">The month, week or day view doesn’t meet my project requirements, but the other views do.</h3>
+<h3 id="the-month-week-or-day-view-doesnt-meet-my-project-requirements-but-the-other-views-do">The month, week or day view doesn’t meet my project requirements, but the other views do.</h3>
 <p>Build your own component to replace that view, and use it in place of the one this library provides. It’s impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.</p>
-<h3 id="how-come-there-s-no-year-view-like-the-ng1-version-">How come there’s no year view like the ng1 version?</h3>
+<h3 id="how-come-theres-no-year-view-like-the-ng1-version">How come there’s no year view like the ng1 version?</h3>
 <p>As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like <code>angular-calendar-year-view</code> though ;)</p>
-<h3 id="does-this-calendar-work-with-mobile-">Does this calendar work with mobile?</h3>
+<h3 id="does-this-calendar-work-with-mobile">Does this calendar work with mobile?</h3>
 <p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens, <a href="http://hammerjs.github.io/">including hammerjs</a> and using a <a href="https://github.com/mattlewis92/angular-calendar/blob/master/projects/demos/app/hammer-config.ts">custom hammerjs config</a> to allow scrolling on clickable elements.</p>
-<h3 id="how-do-i-use-a-custom-template-">How do I use a custom template?</h3>
+<h3 id="how-do-i-use-a-custom-template">How do I use a custom template?</h3>
 <p>All parts of this calendar can be customised via the use of an <code>ng-template</code>. The recipe for applying one is as follows:</p>
 <ul>
 <li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
@@ -133,10 +118,10 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <li>Finally pass the template to the components input: <code>&lt;mwl-calendar-month-view [cellTemplate]=&quot;cellTemplateId&quot; /&gt;</code></li>
 <li>You can see an e2e working example of this <a href="https://mattlewis92.github.io/angular-calendar/#/custom-templates">here</a></li>
 </ul>
-<h3 id="what-is-the-browser-compatibility-">What is the browser compatibility?</h3>
+<h3 id="what-is-the-browser-compatibility">What is the browser compatibility?</h3>
 <p>All browsers supported by angular, apart from IE9 as it doesn&#39;t support flexbox.</p>
 <h2 id="angular-1-version">Angular 1 version</h2>
-<p><a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
+<p>https://github.com/mattlewis92/angular-bootstrap-calendar</p>
 <h2 id="development">Development</h2>
 <h3 id="prepare-your-environment">Prepare your environment</h3>
 <ul>
@@ -151,7 +136,9 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <ul>
 <li>Bump the version in package.json (once the module hits 1.0 this will become automatic)</li>
 </ul>
-<div><pre class="line-numbers"><code class="language-bash">npm run release</code></pre></div><h2 id="license">License</h2>
+<p><code>bash
+npm run release</code></p>
+<h2 id="license">License</h2>
 <p>MIT</p>
 
 

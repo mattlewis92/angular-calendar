@@ -108,7 +108,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>edge:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>edge:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -116,7 +116,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -137,7 +137,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>originalOffset:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>originalOffset:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -145,7 +145,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                                         </td>
                                     </tr>
@@ -166,7 +166,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>originalSpan:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>originalSpan:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -174,7 +174,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                                         </td>
                                     </tr>
@@ -213,7 +213,8 @@ import {
   WeekViewHourColumn,
   DayViewEvent,
   DayViewHourSegment,
-  DayViewHour
+  DayViewHour,
+  WeekViewAllDayEventRow
 } from &#x27;calendar-utils&#x27;;
 import { ResizeEvent } from &#x27;angular-resizable-element&#x27;;
 import { CalendarDragHelper } from &#x27;../common/calendar-drag-helper.provider&#x27;;
@@ -225,7 +226,6 @@ import {
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
 import {
   validateEvents,
-  trackByIndex,
   roundToNearest,
   trackByWeekDayHeaderDate,
   trackByHourSegment,
@@ -303,7 +303,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           &gt;&lt;/div&gt;
         &lt;/div&gt;
         &lt;div
-          *ngFor&#x3D;&quot;let eventRow of view.allDayEventRows; trackBy: trackByIndex&quot;
+          *ngFor&#x3D;&quot;let eventRow of view.allDayEventRows; trackBy: trackById&quot;
           #eventRowContainer
           class&#x3D;&quot;cal-events-row&quot;
         &gt;
@@ -362,6 +362,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
               [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
               [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
               [customTemplate]&#x3D;&quot;eventTemplate&quot;
               [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
               [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -485,6 +486,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
                 [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
                 [tooltipDisabled]&#x3D;&quot;dragActive || timeEventResizes.size &gt; 0&quot;
+                [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
                 [customTemplate]&#x3D;&quot;eventTemplate&quot;
                 [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
                 [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
@@ -581,6 +583,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * Whether to append tooltips to the body or next to the trigger element
    */
   @Input() tooltipAppendToBody: boolean &#x3D; true;
+
+  /**
+   * The delay in milliseconds before the tooltip should be displayed. If not provided the tooltip
+   * will be displayed immediately.
+   */
+  @Input() tooltipDelay: number | null &#x3D; null;
 
   /**
    * The start number of the week
@@ -777,11 +785,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByIndex &#x3D; trackByIndex;
-
-  /**
-   * @hidden
-   */
   trackByWeekDayHeaderDate &#x3D; trackByWeekDayHeaderDate;
 
   /**
@@ -804,6 +807,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   trackByHourColumn &#x3D; (index: number, column: WeekViewHourColumn) &#x3D;&gt;
     column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+
+  /**
+   * @hidden
+   */
+  trackById &#x3D; (index: number, row: WeekViewAllDayEventRow) &#x3D;&gt; row.id;
 
   /**
    * @hidden
@@ -833,21 +841,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   ngOnChanges(changes: any): void {
-    if (
+    const refreshHeader &#x3D;
       changes.viewDate ||
       changes.excludeDays ||
       changes.weekendDays ||
       changes.daysInWeek ||
-      changes.weekStartsOn
-    ) {
-      this.refreshHeader();
-    }
+      changes.weekStartsOn;
 
-    if (changes.events) {
-      validateEvents(this.events);
-    }
-
-    if (
+    const refreshBody &#x3D;
       changes.viewDate ||
       changes.dayStartHour ||
       changes.dayStartMinute ||
@@ -859,9 +860,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.excludeDays ||
       changes.hourSegmentHeight ||
       changes.events ||
-      changes.daysInWeek
-    ) {
+      changes.daysInWeek;
+
+    if (refreshHeader) {
+      this.refreshHeader();
+    }
+
+    if (changes.events) {
+      validateEvents(this.events);
+    }
+
+    if (refreshBody) {
       this.refreshBody();
+    }
+
+    if (refreshHeader || refreshBody) {
+      this.emitBeforeViewRender();
     }
   }
 
@@ -1005,9 +1019,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       let newStart: Date &#x3D; allDayEvent.event.start;
       let newEnd: Date &#x3D; allDayEvent.event.end || allDayEvent.event.start;
       if (allDayEventResizingBeforeStart) {
-        newStart &#x3D; this.dateAdapter.addDays(newStart, daysDiff);
+        newStart &#x3D; addDaysWithExclusions(
+          this.dateAdapter,
+          newStart,
+          daysDiff,
+          this.excludeDays
+        );
       } else {
-        newEnd &#x3D; this.dateAdapter.addDays(newEnd, daysDiff);
+        newEnd &#x3D; addDaysWithExclusions(
+          this.dateAdapter,
+          newEnd,
+          daysDiff,
+          this.excludeDays
+        );
       }
 
       this.eventTimesChanged.emit({
@@ -1165,17 +1189,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.daysInWeek
       )
     });
-    this.emitBeforeViewRender();
   }
 
   private refreshBody(): void {
     this.view &#x3D; this.getWeekView(this.events);
-    this.emitBeforeViewRender();
   }
 
   private refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
+    this.emitBeforeViewRender();
   }
 
   private emitBeforeViewRender(): void {
@@ -1233,13 +1256,23 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       : 0;
 
     const start &#x3D; this.dateAdapter.addMinutes(
-      this.dateAdapter.addDays(weekEvent.event.start, daysDragged),
+      addDaysWithExclusions(
+        this.dateAdapter,
+        weekEvent.event.start,
+        daysDragged,
+        this.excludeDays
+      ),
       minutesMoved
     );
     let end: Date;
     if (weekEvent.event.end) {
       end &#x3D; this.dateAdapter.addMinutes(
-        this.dateAdapter.addDays(weekEvent.event.end, daysDragged),
+        addDaysWithExclusions(
+          this.dateAdapter,
+          weekEvent.event.end,
+          daysDragged,
+          this.excludeDays
+        ),
         minutesMoved
       );
     }
@@ -1321,7 +1354,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff &#x3D; Math.round(
         +resizeEvent.edges.left / this.dayColumnWidth
       );
-      const newStart &#x3D; this.dateAdapter.addDays(newEventDates.start, daysDiff);
+      const newStart &#x3D; addDaysWithExclusions(
+        this.dateAdapter,
+        newEventDates.start,
+        daysDiff,
+        this.excludeDays
+      );
       if (newStart &lt; smallestResizes.start) {
         newEventDates.start &#x3D; newStart;
       } else {
@@ -1331,7 +1369,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       const daysDiff &#x3D; Math.round(
         +resizeEvent.edges.right / this.dayColumnWidth
       );
-      const newEnd &#x3D; this.dateAdapter.addDays(newEventDates.end, daysDiff);
+      const newEnd &#x3D; addDaysWithExclusions(
+        this.dateAdapter,
+        newEventDates.end,
+        daysDiff,
+        this.excludeDays
+      );
       if (newEnd &gt; smallestResizes.end) {
         newEventDates.end &#x3D; newEnd;
       } else {
