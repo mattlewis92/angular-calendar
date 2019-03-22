@@ -30,7 +30,24 @@ All notable changes to this project will be documented in this file. See [standa
 * only call beforeViewRender output once when changing view date ([ec7021a](https://github.com/mattlewis92/angular-calendar/commit/ec7021a))
 * use correct track by on month rows and event actions ([302170e](https://github.com/mattlewis92/angular-calendar/commit/302170e))
 
+### BREAKING CHANGES
 
+* all 3 views now have a default white background set. If you were relying on it being transparent before you will need to override with css. To migrate you can add this to your global CSS:
+
+```
+.cal-month-view, .cal-week-view, .cal-day-view {
+  background-color: initial;
+}
+```
+
+* If overriding the main week view template, replace 
+```
+*ngFor="let eventRow of view.allDayEventRows; trackBy:trackByIndex"
+```
+with 
+```
+*ngFor="let eventRow of view.allDayEventRows; trackBy:trackById"
+```
 
 <a name="0.26.11"></a>
 ## [0.26.11](https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11) (2019-03-17)
