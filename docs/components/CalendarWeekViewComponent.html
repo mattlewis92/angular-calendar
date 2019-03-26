@@ -640,7 +640,7 @@
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>The number of days in a week. Can be used to create a shorter or longer week view.
-The first day of the week will always be the <code>viewDate</code></p>
+The first day of the week will always be the <code>viewDate</code> and <code>weekStartsOn</code> if set will be ignored</p>
 </div>
                     </td>
                 </tr>
@@ -1319,7 +1319,7 @@ will be displayed immediately.</p>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The start number of the week</p>
+                        <div class="io-description"><p>The start number of the week. This is ignored when the <code>daysInWeek</code> input is also set as the <code>viewDate</code> will be used as the start of the week instead</p>
 </div>
                     </td>
                 </tr>
@@ -1874,7 +1874,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() tooltipDelay: number | null &#x3D; null;
 
   /**
-   * The start number of the week
+   * The start number of the week. This is ignored when the &#x60;daysInWeek&#x60; input is also set as the &#x60;viewDate&#x60; will be used as the start of the week instead
    */
   @Input() weekStartsOn: number;
 
@@ -1961,7 +1961,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   /**
    * The number of days in a week. Can be used to create a shorter or longer week view.
-   * The first day of the week will always be the &#x60;viewDate&#x60;
+   * The first day of the week will always be the &#x60;viewDate&#x60; and &#x60;weekStartsOn&#x60; if set will be ignored
    */
   @Input() daysInWeek: number;
 

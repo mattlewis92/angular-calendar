@@ -56,6 +56,21 @@
 <li>only call beforeViewRender output once when changing view date (<a href="https://github.com/mattlewis92/angular-calendar/commit/ec7021a">ec7021a</a>)</li>
 <li>use correct track by on month rows and event actions (<a href="https://github.com/mattlewis92/angular-calendar/commit/302170e">302170e</a>)</li>
 </ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>all 3 views now have a default white background set. If you were relying on it being transparent before you will need to override with css. To migrate you can add this to your global CSS:</li>
+</ul>
+<p><code>.cal-month-view, .cal-week-view, .cal-day-view {
+  background-color: initial;
+}</code></p>
+<ul>
+<li>If overriding the main week view template, replace 
+```</li>
+<li>ngFor=&quot;let eventRow of view.allDayEventRows; trackBy:trackByIndex&quot;
+<code>with</code></li>
+<li>ngFor=&quot;let eventRow of view.allDayEventRows; trackBy:trackById&quot;
+```</li>
+</ul>
 <p><a name="0.26.11"></a></p>
 <h2 id="02611-2019-03-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11">0.26.11</a> (2019-03-17)</h2>
 <h3 id="bug-fixes-1">Bug Fixes</h3>
@@ -185,7 +200,7 @@
 <li><strong>week-view:</strong> allow total days in the week to be customised (<a href="https://github.com/mattlewis92/angular-calendar/commit/0b4fcd5">0b4fcd5</a>)</li>
 <li><strong>week-view:</strong> make the week view title work with no config with i18n (<a href="https://github.com/mattlewis92/angular-calendar/commit/aa7edd9">aa7edd9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/670">#670</a></li>
 </ul>
-<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-1">BREAKING CHANGES</h3>
 <ul>
 <li>date-fns is now no longer a direct dependency of this library. To migrate:</li>
 </ul>
@@ -257,7 +272,7 @@ animations: [collapseAnimation]
 <ul>
 <li>upgrade to angular 6 (<a href="https://github.com/mattlewis92/angular-calendar/commit/71091ab">71091ab</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/512">#512</a></li>
 </ul>
-<h3 id="breaking-changes-1">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-2">BREAKING CHANGES</h3>
 <ul>
 <li>angular 6 or higher is now required to use this package</li>
 </ul>
@@ -338,7 +353,7 @@ animations: [collapseAnimation]
 <li><strong>month-view:</strong> call beforeViewRender with the view period (<a href="https://github.com/mattlewis92/angular-calendar/commit/a9ab6d9">a9ab6d9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/418">#418</a></li>
 <li><strong>week-view:</strong> expose the view period on beforeViewRender (<a href="https://github.com/mattlewis92/angular-calendar/commit/cb73eff">cb73eff</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/418">#418</a></li>
 </ul>
-<h3 id="breaking-changes-2">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-3">BREAKING CHANGES</h3>
 <ul>
 <li>angular 5 or higher is now required to use this package</li>
 <li>if using a locale other than english you will need to import the appropriate locale data somewhere in your app:
@@ -391,7 +406,7 @@ import localeFr from &#39;@angular/common/locales/fr&#39;; // to register french
 <li><strong>styles:</strong> move css files into the css root directory (<a href="https://github.com/mattlewis92/angular-calendar/commit/72ae546">72ae546</a>)</li>
 <li>move umd bundle up and out of the dist directory (<a href="https://github.com/mattlewis92/angular-calendar/commit/59d0049">59d0049</a>)</li>
 </ul>
-<h3 id="breaking-changes-3">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-4">BREAKING CHANGES</h3>
 <ul>
 <li><p><strong>styles:</strong> css styles have moved from:
 <code>node_modules/angular-calendar/dist/css/angular-calendar.css</code>
@@ -446,7 +461,7 @@ to
 <li><strong>monthView:</strong> only call beforeViewRender once when refreshing the view (<a href="https://github.com/mattlewis92/angular-calendar/commit/3dd3118">3dd3118</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/293">#293</a></li>
 <li><strong>weekView:</strong> custom event <code>cssClass</code>&#39;s are now added to the event container instead of the event i (<a href="https://github.com/mattlewis92/angular-calendar/commit/712ded8">712ded8</a>)</li>
 </ul>
-<h3 id="breaking-changes-4">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-5">BREAKING CHANGES</h3>
 <ul>
 <li><strong>weekView:</strong> you may need to adjust your CSS slightly to account for this change. See the day
 view breaking change for how to migrate.</li>
@@ -498,7 +513,7 @@ than the event itself. You may need to update your CSS.</li>
 <li>upgrade calendar-utils (<a href="https://github.com/mattlewis92/angular-calendar/commit/0dd602b">0dd602b</a>)</li>
 <li><strong>weekView:</strong> introduce the <code>dayHeaderClicked</code> output (<a href="https://github.com/mattlewis92/angular-calendar/commit/2f11094">2f11094</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/222">#222</a></li>
 </ul>
-<h3 id="breaking-changes-5">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-6">BREAKING CHANGES</h3>
 <ul>
 <li><strong>monthView:</strong> the <code>dayModifier</code> input has been replaced with a more powerful <code>beforeViewRender</code>
 output. See <a href="https://mattlewis92.github.io/angular-calendar/#/before-view-render">the demo</a> for an example of how to migrate your code.</li>
@@ -550,7 +565,7 @@ output. See <a href="https://mattlewis92.github.io/angular-calendar/#/before-vie
 <li><strong>meta:</strong> make the event meta property generic so it can be strongly typed (<a href="https://github.com/mattlewis92/angular-calendar/commit/d74c8e8">d74c8e8</a>)</li>
 <li><strong>weekView:</strong> show event actions (<a href="https://github.com/mattlewis92/angular-calendar/commit/7e7af92">7e7af92</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/219">#219</a></li>
 </ul>
-<h3 id="breaking-changes-6">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-7">BREAKING CHANGES</h3>
 <ul>
 <li>Typescript 2.3 or higher is now required to use this library</li>
 </ul>
@@ -598,7 +613,7 @@ output. See <a href="https://mattlewis92.github.io/angular-calendar/#/before-vie
 <li>allow calendar-utils functions to be overridden (<a href="https://github.com/mattlewis92/angular-calendar/commit/35ae95a">35ae95a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/199">#199</a></li>
 <li>allow overriding of providers via the calendar modules forRoot method (<a href="https://github.com/mattlewis92/angular-calendar/commit/847212e">847212e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/205">#205</a></li>
 </ul>
-<h3 id="breaking-changes-7">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-8">BREAKING CHANGES</h3>
 <ul>
 <li>if not using <code>CalendarModule.forRoot()</code> you must explicitly add the <code>CalendarUtils</code>
 provider to your module declaration</li>
@@ -677,7 +692,7 @@ provider to your module declaration</li>
 <ul>
 <li><strong>ng4:</strong> upgrade to angular 4 to remove the <code>&lt;template&gt;</code> tag deprecation warning (<a href="https://github.com/mattlewis92/angular-calendar/commit/68a8f39">68a8f39</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/163">#163</a></li>
 </ul>
-<h3 id="breaking-changes-8">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-9">BREAKING CHANGES</h3>
 <ul>
 <li><strong>ng4:</strong> angular 4.0 or higher is now required to use this library. The
 <a href="http://angularjs.blogspot.co.uk/2017/03/angular-400-now-available.html">upgrade</a> should be seamless
@@ -759,7 +774,7 @@ for most users.</li>
 <ul>
 <li><strong>draggable:</strong> allow external draggable events (<a href="https://github.com/mattlewis92/angular-calendar/commit/8ba068c">8ba068c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/106">#106</a></li>
 </ul>
-<h3 id="breaking-changes-9">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-10">BREAKING CHANGES</h3>
 <ul>
 <li>draggable: if not using CalendarModule.forRoot() and manually adding providers you must now also include the DraggableHelper from the angular-draggable-droppable module</li>
 </ul>
@@ -801,7 +816,7 @@ providers: [
 <li>remove change detection strategy from all components (<a href="https://github.com/mattlewis92/angular-calendar/issues/101" title="[36458ab](https://github.com/mattlewis92/angular-calendar/commit/36458ab">#101</a>)), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/94">#94</a></li>
 <li>rename <code>CalendarEventTitle</code> service to <code>CalendarEventTitleFormatter</code> (<a href="https://github.com/mattlewis92/angular-calendar/commit/45c0142">45c0142</a>)</li>
 </ul>
-<h3 id="breaking-changes-10">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-11">BREAKING CHANGES</h3>
 <ul>
 <li>the <code>CalendarEventTitle</code> service has been renamed to <code>CalendarEventTitleFormatter</code></li>
 <li>A dependency on the <code>angular-draggable-droppable</code> library has been added. System.js users will need to add this to their config:</li>
@@ -844,7 +859,7 @@ providers: [
 <li><strong>weekView:</strong> support resizing of events (<a href="https://github.com/mattlewis92/angular-calendar/commit/c034a9d">c034a9d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/9">#9</a></li>
 <li>rename module from angular2-calendar to angular-calendar (<a href="https://github.com/mattlewis92/angular-calendar/commit/fa1ef98">fa1ef98</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/69">#69</a></li>
 </ul>
-<h3 id="breaking-changes-11">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-12">BREAKING CHANGES</h3>
 <ul>
 <li>The module has now been renamed from angular2-calendar to angular-calendar</li>
 </ul>
@@ -902,7 +917,7 @@ providers: [
 <ul>
 <li>add CalendarModule.forRoot so providers dont need to be specified (<a href="https://github.com/mattlewis92/angular2-calendar/commit/ee54b8f">ee54b8f</a>)</li>
 </ul>
-<h3 id="breaking-changes-12">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-13">BREAKING CHANGES</h3>
 <ul>
 <li>no RC versions of angular are supported. This was probably introduced in 0.2.x of this module, but clarifying here as a distinct breaking change</li>
 </ul>
@@ -957,7 +972,7 @@ providers: [
 <li><strong>build:</strong> support offline template compilation (<a href="https://github.com/mattlewis92/angular2-calendar/commit/dc12621">dc12621</a>)</li>
 <li>replace the moment dependency with the date-fns library (<a href="https://github.com/mattlewis92/angular2-calendar/commit/c147827">c147827</a>), closes <a href="https://github.com/mattlewis92/angular2-calendar/issues/48">#48</a></li>
 </ul>
-<h3 id="breaking-changes-13">BREAKING CHANGES</h3>
+<h3 id="breaking-changes-14">BREAKING CHANGES</h3>
 <ul>
 <li>1/ The <code>dayClicked</code>, <code>dayModifier</code> and <code>hourSegmentModifier</code> output objects now return pure date objects instead of moments</li>
 </ul>
