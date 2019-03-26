@@ -37,5 +37,5 @@ export class CalendarEventActionsComponent {
   @Input() customTemplate: TemplateRef<any>;
 
   trackByActionId = (index: number, action: EventAction) =>
-    action.id ? action.id : event;
+    action.id ? action.id : action;
 }
