@@ -399,7 +399,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() tooltipDelay: number | null = null;
 
   /**
-   * The start number of the week
+   * The start number of the week. This is ignored when the `daysInWeek` input is also set as the `viewDate` will be used as the start of the week instead
    */
   @Input() weekStartsOn: number;
 
@@ -486,7 +486,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
   /**
    * The number of days in a week. Can be used to create a shorter or longer week view.
-   * The first day of the week will always be the `viewDate`
+   * The first day of the week will always be the `viewDate` and `weekStartsOn` if set will be ignored
    */
   @Input() daysInWeek: number;
 
