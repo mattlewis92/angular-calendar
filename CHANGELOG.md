@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.1"></a>
+## [0.27.1](https://github.com/mattlewis92/angular-calendar/compare/v0.27.0...v0.27.1) (2019-03-26)
+
+
+### Bug Fixes
+
+* **actions:** fix event is not defined error ([2a2822f](https://github.com/mattlewis92/angular-calendar/commit/2a2822f))
+
+
+
 <a name="0.27.0"></a>
 # [0.27.0](https://github.com/mattlewis92/angular-calendar/compare/v0.26.11...v0.27.0) (2019-03-22)
 
