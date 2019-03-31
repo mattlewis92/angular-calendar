@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div class="row text-center">
       <div class="col-md-4">
-        <div class="btn-group">
+        <div class="btn-group" >
           <div
             class="btn btn-primary"
             mwlCalendarPreviousView
@@ -33,6 +33,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             Next
           </div>
         </div>
+        <a class="nav-link" style="color:#007bff; cursor: pointer; display:inline" (click)="calendarIntoScrollableElement()" >into container</a>
       </div>
       <div class="col-md-4">
         <h3>{{ viewDate | calendarDate: view + 'ViewTitle':locale }}</h3>
@@ -76,4 +77,13 @@ export class CalendarHeaderComponent {
   @Output() viewChange: EventEmitter<string> = new EventEmitter();
 
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
+
+  calendarIntoScrollableElement() {
+
+    document.querySelector("html").style.position = "fixed";
+    const cardBody = document.querySelector<HTMLElement>("div.card-body");
+    cardBody.parentElement.style.height = "500px";
+    cardBody.style.overflow = "auto";
+    
+  }  
 }
