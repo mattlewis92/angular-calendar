@@ -38,7 +38,7 @@ import { PlacementArray } from 'positioning';
         <div
           class="cal-event"
           *ngFor="let event of day.events; trackBy: trackByEventId"
-          [style.backgroundColor]="event.color?.primary"
+          [ngStyle]="{ backgroundColor: event.color?.primary }"
           [ngClass]="event?.cssClass"
           (mouseenter)="highlightDay.emit({ event: event })"
           (mouseleave)="unhighlightDay.emit({ event: event })"
@@ -87,8 +87,7 @@ import { PlacementArray } from 'positioning';
     '[class.cal-out-month]': '!day.inMonth',
     '[class.cal-has-events]': 'day.events.length > 0',
     '[class.cal-open]': 'day === openDay',
-    '[class.cal-event-highlight]': '!!day.backgroundColor',
-    '[style.backgroundColor]': 'day.backgroundColor'
+    '[class.cal-event-highlight]': '!!day.backgroundColor'
   }
 })
 export class CalendarMonthCellComponent {

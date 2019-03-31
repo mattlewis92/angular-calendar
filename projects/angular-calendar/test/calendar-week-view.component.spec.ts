@@ -2257,4 +2257,45 @@ describe('calendarWeekView component', () => {
         .toDate()
     });
   });
+
+  it('should allow css variables for colors', () => {
+    const style = document.createElement('style');
+    style.setAttribute('type', 'text/css');
+    style.innerText = `
+    :root {
+        --white: #fff;
+        --black: #000;
+      }
+    `;
+    document.head.appendChild(style);
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.ngOnInit();
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo',
+        color: {
+          primary: 'var(--white)',
+          secondary: 'var(--black)'
+        }
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+
+    const computedStyles: CSSStyleDeclaration = window.getComputedStyle(
+      fixture.nativeElement.querySelector('.cal-event')
+    );
+    expect(computedStyles.getPropertyValue('background-color')).to.equal(
+      'rgb(0, 0, 0)'
+    );
+    expect(computedStyles.getPropertyValue('border-color')).to.equal(
+      'rgb(255, 255, 255)'
+    );
+    document.head.appendChild(style);
+  });
 });

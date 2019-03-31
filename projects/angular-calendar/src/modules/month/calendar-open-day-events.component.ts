@@ -48,7 +48,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         >
           <span
             class="cal-event"
-            [style.backgroundColor]="event.color?.primary"
+            [ngStyle]="{ backgroundColor: event.color?.primary }"
           >
           </span>
           &ngsp;

@@ -83,6 +83,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [tooltipTemplate]="tooltipTemplate"
               [tooltipDelay]="tooltipDelay"
               [customTemplate]="cellTemplate"
+              [ngStyle]="{ backgroundColor: day.backgroundColor }"
               (mwlClick)="dayClicked.emit({ day: day })"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"

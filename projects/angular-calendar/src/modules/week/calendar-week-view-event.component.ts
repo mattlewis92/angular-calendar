@@ -23,8 +23,10 @@ import { PlacementArray } from 'positioning';
     >
       <div
         class="cal-event"
-        [style.backgroundColor]="weekEvent.event.color?.secondary"
-        [style.borderColor]="weekEvent.event.color?.primary"
+        [ngStyle]="{
+          backgroundColor: weekEvent.event.color?.secondary,
+          borderColor: weekEvent.event.color?.primary
+        }"
         [mwlCalendarTooltip]="
           !tooltipDisabled
             ? (weekEvent.event.title
