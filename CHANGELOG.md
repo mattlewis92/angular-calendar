@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.2"></a>
+## [0.27.2](https://github.com/mattlewis92/angular-calendar/compare/v0.27.1...v0.27.2) (2019-04-01)
+
+
+### Bug Fixes
+
+* allow setting css variables as event colors ([1fa72b3](https://github.com/mattlewis92/angular-calendar/commit/1fa72b3)), closes [#845](https://github.com/mattlewis92/angular-calendar/issues/845)
+
+
+
 <a name="0.27.1"></a>
 ## [0.27.1](https://github.com/mattlewis92/angular-calendar/compare/v0.27.0...v0.27.1) (2019-03-26)
 
