@@ -1,0 +1,23 @@
+{
+  "name": "angular-calendar",
+  "description": "A calendar component for angular 6.0+ that can display events on a month, week or day view",
+  "main": "",
+  "authors": [
+    "Matt Lewis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular6",
+    "calendar"
+  ],
+  "homepage": "https://github.com/mattlewis92/angular-calendar",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
