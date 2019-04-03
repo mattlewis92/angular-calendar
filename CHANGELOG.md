@@ -69,6 +69,8 @@ with
 *ngFor="let eventRow of view.allDayEventRows; trackBy:trackById"
 ```
 
+* If extending the `CalendarMonthViewComponent` you must add `[ngStyle]="{ backgroundColor: day.backgroundColor }"` to the `mwl-calendar-month-cell` component.
+
 <a name="0.26.11"></a>
 ## [0.26.11](https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11) (2019-03-17)
 
