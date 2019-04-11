@@ -76,12 +76,17 @@
   background-color: initial;
 }</code></p>
 <ul>
-<li>If overriding the main week view template, replace 
-```</li>
-<li>ngFor=&quot;let eventRow of view.allDayEventRows; trackBy:trackByIndex&quot;
-<code>with</code></li>
-<li>ngFor=&quot;let eventRow of view.allDayEventRows; trackBy:trackById&quot;
-```</li>
+<li><p>If overriding the main week view template, replace 
+```</p>
+</li>
+<li><p>ngFor=&quot;let eventRow of view.allDayEventRows; trackBy:trackByIndex&quot;
+<code>with</code></p>
+</li>
+<li><p>ngFor=&quot;let eventRow of view.allDayEventRows; trackBy:trackById&quot;
+```</p>
+</li>
+<li><p>If extending the <code>CalendarMonthViewComponent</code> you must add <code>[ngStyle]=&quot;{ backgroundColor: day.backgroundColor }&quot;</code> to the <code>mwl-calendar-month-cell</code> component.</p>
+</li>
 </ul>
 <p><a name="0.26.11"></a></p>
 <h2 id="02611-2019-03-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11">0.26.11</a> (2019-03-17)</h2>
