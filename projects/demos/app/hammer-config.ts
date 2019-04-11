@@ -1,7 +1,9 @@
 import { HammerGestureConfig } from '@angular/platform-browser';
+import { Injectable } from '@angular/core';
 
 declare const Hammer: any;
 
+@Injectable()
 export class CustomHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let options = {};
