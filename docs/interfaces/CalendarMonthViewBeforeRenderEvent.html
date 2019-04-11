@@ -277,6 +277,7 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
               [customTemplate]&#x3D;&quot;cellTemplate&quot;
               [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
               (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day })&quot;
+              [clickListenerDisabled]&#x3D;&quot;dayClicked.observers.length &#x3D;&#x3D;&#x3D; 0&quot;
               (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
               (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
               mwlDroppable
