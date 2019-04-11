@@ -23,12 +23,17 @@ import * as sinon from 'sinon';
 use(sinonChai);
 
 let rafStub: sinon.SinonStub;
+let requestIdleCallbackStub: sinon.SinonStub;
 beforeEach(() => {
   rafStub = sinon.stub(window, 'requestAnimationFrame').callsArg(0);
+  requestIdleCallbackStub = sinon
+    .stub(window, 'requestIdleCallback' as any)
+    .callsArg(0);
 });
 
 afterEach(() => {
   rafStub.restore();
+  requestIdleCallbackStub.restore();
 });
 
 // First, initialize the Angular testing environment.

@@ -9,8 +9,16 @@ import {
   Inject
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Observable, Subject } from 'rxjs';
+import { requestIdleCallbackObservable } from './request-idle-callback';
+import { switchMapTo, takeUntil } from 'rxjs/operators';
 
 const clickElements = new Set<HTMLElement>();
+
+const eventName: string =
+  typeof window !== 'undefined' && typeof window['Hammer'] !== 'undefined'
+    ? 'tap'
+    : 'click';
 
 @Directive({
   selector: '[mwlClick]'
@@ -18,7 +26,7 @@ const clickElements = new Set<HTMLElement>();
 export class ClickDirective implements OnInit, OnDestroy {
   @Output('mwlClick') click = new EventEmitter<MouseEvent>(); // tslint:disable-line
 
-  private removeListener: () => void;
+  private destroy$ = new Subject();
 
   constructor(
     private renderer: Renderer2,
@@ -33,16 +41,16 @@ export class ClickDirective implements OnInit, OnDestroy {
       'true'
     );
     clickElements.add(this.elm.nativeElement);
-    const eventName: string =
-      typeof window !== 'undefined' && typeof window['Hammer'] !== 'undefined'
-        ? 'tap'
-        : 'click';
-    this.removeListener = this.renderer.listen(
-      this.elm.nativeElement,
-      eventName,
-      event => {
+
+    // issue #942 - lazily initialise all click handlers after initial render as hammerjs is slow
+    requestIdleCallbackObservable()
+      .pipe(
+        switchMapTo(this.listen()),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(event => {
         // prevent child click events from firing on parent elements that also have click events
-        let nearestClickableParent: HTMLElement = event.target;
+        let nearestClickableParent = event.target as HTMLElement;
         while (
           !clickElements.has(nearestClickableParent) &&
           nearestClickableParent !== this.document.body
@@ -54,12 +62,19 @@ export class ClickDirective implements OnInit, OnDestroy {
         if (isThisClickableElement) {
           this.click.next(event);
         }
-      }
-    );
+      });
   }
 
   ngOnDestroy(): void {
-    this.removeListener();
+    this.destroy$.next();
     clickElements.delete(this.elm.nativeElement);
+  }
+
+  private listen() {
+    return new Observable<MouseEvent>(observer => {
+      return this.renderer.listen(this.elm.nativeElement, eventName, event => {
+        observer.next(event);
+      });
+    });
   }
 }
