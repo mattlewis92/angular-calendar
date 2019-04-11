@@ -15,7 +15,13 @@ module.exports = config => {
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../../coverage'),
       reports: ['text-summary', 'html', 'lcovonly'],
-      fixWebpackSourcePaths: true
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        statements: 100,
+        lines: 100,
+        branches: 86,
+        functions: 100
+      }
     },
     reporters: ['mocha', 'coverage-istanbul'],
     logLevel: config.LOG_INFO,
