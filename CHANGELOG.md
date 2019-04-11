@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.3"></a>
+## [0.27.3](https://github.com/mattlewis92/angular-calendar/compare/v0.27.2...v0.27.3) (2019-04-11)
+
+
+### Performance Improvements
+
+* **click:** disable click listeners unless required ([5b315a5](https://github.com/mattlewis92/angular-calendar/commit/5b315a5)), closes [#942](https://github.com/mattlewis92/angular-calendar/issues/942)
+* **click:** lazily initialise all click handlers ([823ee4d](https://github.com/mattlewis92/angular-calendar/commit/823ee4d)), closes [#942](https://github.com/mattlewis92/angular-calendar/issues/942)
+
+
+
 <a name="0.27.2"></a>
 ## [0.27.2](https://github.com/mattlewis92/angular-calendar/compare/v0.27.1...v0.27.2) (2019-04-01)
 
