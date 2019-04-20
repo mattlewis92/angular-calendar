@@ -78,6 +78,10 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
 }
 
 .cal-week-view {
+  * {
+    box-sizing: border-box;
+  }
+
   .cal-day-headers {
     display: flex;
     padding-left: 70px;
