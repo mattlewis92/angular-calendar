@@ -70,8 +70,8 @@ export interface CalendarMonthViewEventTimesChangedEvent<
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
               *ngFor="
-                let day of (view.days
-                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek);
+                let day of view.days
+                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek;
                 trackBy: trackByDate
               "
               [ngClass]="day?.cssClass"
