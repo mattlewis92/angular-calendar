@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.4"></a>
+## [0.27.4](https://github.com/mattlewis92/angular-calendar/compare/v0.27.3...v0.27.4) (2019-04-20)
+
+
+### Bug Fixes
+
+* styling fixes for day and week view when not using bootstrap ([8c0fbf7](https://github.com/mattlewis92/angular-calendar/commit/8c0fbf7)), closes [#951](https://github.com/mattlewis92/angular-calendar/issues/951)
+* **day-view:** fix dashed line separators when not using bootstrap ([f626dce](https://github.com/mattlewis92/angular-calendar/commit/f626dce)), closes [#952](https://github.com/mattlewis92/angular-calendar/issues/952)
+
+
+
 <a name="0.27.3"></a>
 ## [0.27.3](https://github.com/mattlewis92/angular-calendar/compare/v0.27.2...v0.27.3) (2019-04-11)
 
