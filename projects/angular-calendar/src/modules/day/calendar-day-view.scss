@@ -47,6 +47,7 @@ $cal-day-view-vars: map-merge($cal-vars, $cal-day-view-vars);
   mwl-calendar-day-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
   .cal-hour-segment {
     display: block;
+    box-sizing: border-box;
   }
 
   .cal-hour-segment::after {
