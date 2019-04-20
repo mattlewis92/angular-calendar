@@ -90,7 +90,7 @@ Yes.
 ### What major versions of angular does this library support?
 
 | Angular major  | Last supported angular-calendar version                                |
-| -------------- | ---------------------------------------                                |
+| -------------- | ---------------------------------------------------------------------- |
 | 6.x and higher | latest version                                                         |
 | 5.x            | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1) |
 | 4.x            | [0.22.3](https://github.com/mattlewis92/angular-calendar/tree/v0.22.3) |
@@ -133,6 +133,10 @@ All parts of this calendar can be customised via the use of an `ng-template`. Th
 ### What is the browser compatibility?
 
 All browsers supported by angular, apart from IE9 as it doesn't support flexbox.
+
+### Does this library require bootstrap?
+
+No! While the demo site uses bootstrap, it isn't a requirement of this library. The styling is designed to adapt to whatever global styling your app has.
 
 ## Angular 1 version
 
