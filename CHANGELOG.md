@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.5"></a>
+## [0.27.5](https://github.com/mattlewis92/angular-calendar/compare/v0.27.4...v0.27.5) (2019-04-21)
+
+
+### Bug Fixes
+
+* **draggable:** support scrolling when dragging events ([99c7aa3](https://github.com/mattlewis92/angular-calendar/commit/99c7aa3)), closes [#838](https://github.com/mattlewis92/angular-calendar/issues/838) [#909](https://github.com/mattlewis92/angular-calendar/issues/909)
+* **week-view:** have time grid events fill available space ([8571528](https://github.com/mattlewis92/angular-calendar/commit/8571528)), closes [#833](https://github.com/mattlewis92/angular-calendar/issues/833)
+
+
+
 <a name="0.27.4"></a>
 ## [0.27.4](https://github.com/mattlewis92/angular-calendar/compare/v0.27.3...v0.27.4) (2019-04-20)
 
