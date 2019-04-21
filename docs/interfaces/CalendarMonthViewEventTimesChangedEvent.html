@@ -204,8 +204,8 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
           &lt;div class&#x3D;&quot;cal-cell-row&quot;&gt;
             &lt;mwl-calendar-month-cell
               *ngFor&#x3D;&quot;
-                let day of (view.days
-                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek);
+                let day of view.days
+                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek;
                 trackBy: trackByDate
               &quot;
               [ngClass]&#x3D;&quot;day?.cssClass&quot;
