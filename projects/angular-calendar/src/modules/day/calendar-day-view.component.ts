@@ -42,7 +42,7 @@ import {
   shouldFireDroppedEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
-import { DragEndEvent } from 'angular-draggable-droppable';
+import { DragEndEvent, ValidateDrag } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
 export interface CalendarDayViewBeforeRenderEvent {
@@ -389,7 +389,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  validateDrag: (args: any) => boolean;
+  validateDrag: ValidateDrag;
 
   /**
    * @hidden
@@ -577,13 +577,14 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       dayEventsContainer,
       event
     );
-    this.validateDrag = ({ x, y }) =>
+    this.validateDrag = ({ x, y, transform }) =>
       this.currentResizes.size === 0 &&
       dragHelper.validateDrag({
         x,
         y,
         snapDraggedEvents: this.snapDraggedEvents,
-        dragAlreadyMoved: this.dragAlreadyMoved
+        dragAlreadyMoved: this.dragAlreadyMoved,
+        transform
       });
     this.eventDragEnter = 0;
     this.dragAlreadyMoved = false;

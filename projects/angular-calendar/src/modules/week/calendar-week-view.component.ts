@@ -51,7 +51,8 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
   DragEndEvent,
   DropEvent,
-  DragMoveEvent
+  DragMoveEvent,
+  ValidateDrag
 } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
@@ -576,7 +577,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  validateDrag: (args: any) => boolean;
+  validateDrag: ValidateDrag;
 
   /**
    * @hidden
@@ -893,14 +894,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       eventsContainer,
       event
     );
-    this.validateDrag = ({ x, y }) =>
+    this.validateDrag = ({ x, y, transform }) =>
       this.allDayEventResizes.size === 0 &&
       this.timeEventResizes.size === 0 &&
       dragHelper.validateDrag({
         x,
         y,
         snapDraggedEvents: this.snapDraggedEvents,
-        dragAlreadyMoved: this.dragAlreadyMoved
+        dragAlreadyMoved: this.dragAlreadyMoved,
+        transform
       });
     this.dragActive = true;
     this.dragAlreadyMoved = false;
