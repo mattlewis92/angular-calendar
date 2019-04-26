@@ -1,9 +1,8 @@
 {
   "extends": "tslint-config-mwl",
   "rules": {
-    "use-host-property-decorator": false,
+    "no-host-metadata-property": false,
     "no-inferrable-types": false,
-    "max-inline-declarations": false,
-    "angular-whitespace": false
+    "component-max-inline-declarations": false
   }
 }
