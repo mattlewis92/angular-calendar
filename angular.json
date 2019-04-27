@@ -40,6 +40,7 @@
             "index": "projects/demos/index.html",
             "main": "projects/demos/main.ts",
             "polyfills": "projects/demos/polyfills.ts",
+            "es5BrowserSupport": true,
             "tsConfig": "projects/demos/tsconfig.app.json",
             "assets": [
               "projects/demos/favicon.ico",
