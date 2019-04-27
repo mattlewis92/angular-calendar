@@ -880,11 +880,8 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    const ghostElement = event.nextSibling as HTMLElement;
-    expect(ghostElement.getBoundingClientRect().top).to.equal(
-      eventPosition.top + 30
-    );
-    expect(ghostElement.getBoundingClientRect().bottom).to.equal(
+    expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 30);
+    expect(event.getBoundingClientRect().bottom).to.equal(
       eventPosition.bottom + 30
     );
     triggerDomEvent('mouseup', document.body, {
@@ -950,11 +947,8 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    const ghostElement = event.nextSibling as HTMLElement;
-    expect(ghostElement.getBoundingClientRect().top).to.equal(
-      calendarPosition.top
-    );
-    expect(ghostElement.getBoundingClientRect().bottom).to.equal(
+    expect(event.getBoundingClientRect().top).to.equal(calendarPosition.top);
+    expect(event.getBoundingClientRect().bottom).to.equal(
       calendarPosition.top + eventPosition.height
     );
     triggerDomEvent('mousemove', document.body, {
@@ -962,10 +956,8 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    expect(ghostElement.getBoundingClientRect().top).to.equal(
-      calendarPosition.top
-    );
-    expect(ghostElement.getBoundingClientRect().bottom).to.equal(
+    expect(event.getBoundingClientRect().top).to.equal(calendarPosition.top);
+    expect(event.getBoundingClientRect().bottom).to.equal(
       calendarPosition.top + eventPosition.height
     );
     triggerDomEvent('mouseup', document.body, {
@@ -1280,11 +1272,8 @@ describe('CalendarDayViewComponent component', () => {
       clientX: eventPosition.left + 10
     });
     fixture.detectChanges();
-    const ghostElement = event.nextSibling as HTMLElement;
-    expect(ghostElement.getBoundingClientRect().top).to.equal(
-      eventPosition.top + 10
-    );
-    expect(ghostElement.getBoundingClientRect().bottom).to.equal(
+    expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 10);
+    expect(event.getBoundingClientRect().bottom).to.equal(
       eventPosition.bottom + 10
     );
     triggerDomEvent('mouseup', document.body, {

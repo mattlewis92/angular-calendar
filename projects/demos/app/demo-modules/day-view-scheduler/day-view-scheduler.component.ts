@@ -65,9 +65,7 @@ export class DayViewSchedulerComponent extends CalendarDayViewComponent {
   @Output() userChanged = new EventEmitter();
 
   eventDragged(dayEvent: DayViewEvent, xPixels: number, yPixels: number): void {
-    if (yPixels !== 0) {
-      super.dragEnded(dayEvent, { y: yPixels, x: 0 } as any); // original behaviour
-    }
+    super.dragEnded(dayEvent, { y: yPixels, x: 0 } as any); // original behaviour
     if (xPixels !== 0) {
       const columnsMoved = xPixels / EVENT_WIDTH;
       const currentColumnIndex = this.view.users.findIndex(

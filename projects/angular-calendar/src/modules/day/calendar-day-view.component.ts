@@ -42,7 +42,11 @@ import {
   shouldFireDroppedEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
-import { DragEndEvent, ValidateDrag } from 'angular-draggable-droppable';
+import {
+  DragEndEvent,
+  DragMoveEvent,
+  ValidateDrag
+} from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
 export interface CalendarDayViewBeforeRenderEvent {
@@ -145,8 +149,9 @@ export interface DayViewEventResize {
               snapDraggedEvents ? { y: eventSnapSize || hourSegmentHeight } : {}
             "
             [validateDrag]="validateDrag"
-            (dragStart)="dragStarted(event, dayEventsContainer)"
-            (dragging)="dragMove()"
+            [ghostDragEnabled]="!snapDraggedEvents"
+            (dragStart)="dragStarted(event, dayEventsContainer, dayEvent)"
+            (dragging)="dragMove($event)"
             (dragEnd)="dragEnded(dayEvent, $event)"
             [style.marginTop.px]="dayEvent.top"
             [style.height.px]="dayEvent.height"
@@ -389,6 +394,15 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  currentDrag?: {
+    dayEvent: DayViewEvent;
+    originalTop: number;
+    originalLeft: number;
+  };
+
+  /**
+   * @hidden
+   */
   validateDrag: ValidateDrag;
 
   /**
@@ -572,7 +586,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.currentResizes.delete(dayEvent);
   }
 
-  dragStarted(event: HTMLElement, dayEventsContainer: HTMLElement): void {
+  dragStarted(
+    event: HTMLElement,
+    dayEventsContainer: HTMLElement,
+    dayEvent: DayViewEvent
+  ): void {
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
       dayEventsContainer,
       event
@@ -588,17 +606,29 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       });
     this.eventDragEnter = 0;
     this.dragAlreadyMoved = false;
+    this.currentDrag = {
+      dayEvent,
+      originalTop: dayEvent.top,
+      originalLeft: dayEvent.left
+    };
     this.cdr.markForCheck();
   }
 
   /**
    * @hidden
    */
-  dragMove() {
+  dragMove(coords: DragMoveEvent) {
     this.dragAlreadyMoved = true;
+    if (this.snapDraggedEvents) {
+      this.currentDrag.dayEvent.top = this.currentDrag.originalTop + coords.y;
+      this.currentDrag.dayEvent.left = this.currentDrag.originalLeft + coords.x;
+    }
   }
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
+    this.currentDrag.dayEvent.top = this.currentDrag.originalTop;
+    this.currentDrag.dayEvent.left = this.currentDrag.originalLeft;
+    this.currentDrag = null;
     if (this.eventDragEnter > 0) {
       let minutesMoved = getMinutesMoved(
         dragEndEvent.y,

@@ -38,8 +38,9 @@
           x: eventWidth
         }"
         [validateDrag]="validateDrag"
-        (dragStart)="dragStarted(event, dayViewContainer)"
-        (dragging)="dragMove()"
+        [ghostDragEnabled]="!snapDraggedEvents"
+        (dragStart)="dragStarted(event, dayViewContainer, dayEvent)"
+        (dragging)="dragMove($event)"
         (dragEnd)="eventDragged(dayEvent, $event.x, $event.y)"
         [style.marginTop.px]="dayEvent.top"
         [style.height.px]="dayEvent.height"
