@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.6"></a>
+## [0.27.6](https://github.com/mattlewis92/angular-calendar/compare/v0.27.5...v0.27.6) (2019-04-27)
+
+
+### Bug Fixes
+
+* **click:** ensure click event always runs inside angular zone ([de0d435](https://github.com/mattlewis92/angular-calendar/commit/de0d435)), closes [#961](https://github.com/mattlewis92/angular-calendar/issues/961) [#959](https://github.com/mattlewis92/angular-calendar/issues/959)
+
+
+
 <a name="0.27.5"></a>
 ## [0.27.5](https://github.com/mattlewis92/angular-calendar/compare/v0.27.4...v0.27.5) (2019-04-21)
 
