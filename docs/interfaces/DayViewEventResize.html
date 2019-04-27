@@ -234,7 +234,11 @@ import {
   shouldFireDroppedEvent
 } from &#x27;../common/util&#x27;;
 import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
-import { DragEndEvent, ValidateDrag } from &#x27;angular-draggable-droppable&#x27;;
+import {
+  DragEndEvent,
+  DragMoveEvent,
+  ValidateDrag
+} from &#x27;angular-draggable-droppable&#x27;;
 import { PlacementArray } from &#x27;positioning&#x27;;
 
 export interface CalendarDayViewBeforeRenderEvent {
@@ -337,8 +341,9 @@ export interface DayViewEventResize {
               snapDraggedEvents ? { y: eventSnapSize || hourSegmentHeight } : {}
             &quot;
             [validateDrag]&#x3D;&quot;validateDrag&quot;
-            (dragStart)&#x3D;&quot;dragStarted(event, dayEventsContainer)&quot;
-            (dragging)&#x3D;&quot;dragMove()&quot;
+            [ghostDragEnabled]&#x3D;&quot;!snapDraggedEvents&quot;
+            (dragStart)&#x3D;&quot;dragStarted(event, dayEventsContainer, dayEvent)&quot;
+            (dragging)&#x3D;&quot;dragMove($event)&quot;
             (dragEnd)&#x3D;&quot;dragEnded(dayEvent, $event)&quot;
             [style.marginTop.px]&#x3D;&quot;dayEvent.top&quot;
             [style.height.px]&#x3D;&quot;dayEvent.height&quot;
@@ -581,6 +586,15 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  currentDrag?: {
+    dayEvent: DayViewEvent;
+    originalTop: number;
+    originalLeft: number;
+  };
+
+  /**
+   * @hidden
+   */
   validateDrag: ValidateDrag;
 
   /**
@@ -764,7 +778,11 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     this.currentResizes.delete(dayEvent);
   }
 
-  dragStarted(event: HTMLElement, dayEventsContainer: HTMLElement): void {
+  dragStarted(
+    event: HTMLElement,
+    dayEventsContainer: HTMLElement,
+    dayEvent: DayViewEvent
+  ): void {
     const dragHelper: CalendarDragHelper &#x3D; new CalendarDragHelper(
       dayEventsContainer,
       event
@@ -780,17 +798,29 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       });
     this.eventDragEnter &#x3D; 0;
     this.dragAlreadyMoved &#x3D; false;
+    this.currentDrag &#x3D; {
+      dayEvent,
+      originalTop: dayEvent.top,
+      originalLeft: dayEvent.left
+    };
     this.cdr.markForCheck();
   }
 
   /**
    * @hidden
    */
-  dragMove() {
+  dragMove(coords: DragMoveEvent) {
     this.dragAlreadyMoved &#x3D; true;
+    if (this.snapDraggedEvents) {
+      this.currentDrag.dayEvent.top &#x3D; this.currentDrag.originalTop + coords.y;
+      this.currentDrag.dayEvent.left &#x3D; this.currentDrag.originalLeft + coords.x;
+    }
   }
 
   dragEnded(dayEvent: DayViewEvent, dragEndEvent: DragEndEvent): void {
+    this.currentDrag.dayEvent.top &#x3D; this.currentDrag.originalTop;
+    this.currentDrag.dayEvent.left &#x3D; this.currentDrag.originalLeft;
+    this.currentDrag &#x3D; null;
     if (this.eventDragEnter &gt; 0) {
       let minutesMoved &#x3D; getMinutesMoved(
         dragEndEvent.y,
