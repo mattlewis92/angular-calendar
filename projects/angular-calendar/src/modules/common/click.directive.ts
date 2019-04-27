@@ -7,7 +7,8 @@ import {
   Output,
   EventEmitter,
   Inject,
-  Input
+  Input,
+  NgZone
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
@@ -34,7 +35,8 @@ export class ClickDirective implements OnInit, OnDestroy {
   constructor(
     private renderer: Renderer2,
     private elm: ElementRef<HTMLElement>,
-    @Inject(DOCUMENT) private document
+    @Inject(DOCUMENT) private document,
+    private zone: NgZone
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +66,9 @@ export class ClickDirective implements OnInit, OnDestroy {
           const isThisClickableElement =
             this.elm.nativeElement === nearestClickableParent;
           if (isThisClickableElement) {
-            this.click.next(event);
+            this.zone.run(() => {
+              this.click.next(event);
+            });
           }
         });
     }
