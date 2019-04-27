@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.7"></a>
+## [0.27.7](https://github.com/mattlewis92/angular-calendar/compare/v0.27.6...v0.27.7) (2019-04-27)
+
+
+### Bug Fixes
+
+* **day-view:** stop events being dragged outside the view when scrolled ([e506885](https://github.com/mattlewis92/angular-calendar/commit/e506885)), closes [#958](https://github.com/mattlewis92/angular-calendar/issues/958)
+
+
+
 <a name="0.27.6"></a>
 ## [0.27.6](https://github.com/mattlewis92/angular-calendar/compare/v0.27.5...v0.27.6) (2019-04-27)
 
