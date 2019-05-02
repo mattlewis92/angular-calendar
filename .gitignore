@@ -16,6 +16,7 @@
 *.launch
 .settings/
 *.sublime-workspace
+angular-calendar.iml
 
 # IDE - VSCode
 .vscode/*
