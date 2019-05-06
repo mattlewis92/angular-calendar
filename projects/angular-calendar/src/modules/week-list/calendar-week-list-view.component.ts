@@ -72,7 +72,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
   selector: 'mwl-calendar-week-list-view',
   template: `
     <div class="cal-week-list-view" [ngClass]="{ fillHeight: fillHeight }">
-      <mwl-calendar-week-view-header
+      <mwl-calendar-week-list-view-header
         [days]="days"
         [locale]="locale"
         [customTemplate]="headerTemplate"
@@ -81,7 +81,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           eventDropped({ dropData: $event }, $event.newStart, true)
         "
       >
-      </mwl-calendar-week-view-header>
+      </mwl-calendar-week-list-view-header>
       <div
         class="cal-time-events"
         mwlDroppable

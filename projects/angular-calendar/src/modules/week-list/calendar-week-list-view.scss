@@ -153,7 +153,7 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
 
     .cal-day-columns {
       display: flex;
-      flex-grow: 1;
+      width: 100%;
     }
 
     .cal-day-column {
