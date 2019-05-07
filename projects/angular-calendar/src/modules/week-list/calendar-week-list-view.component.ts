@@ -91,7 +91,15 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         <div class="cal-day-columns" #dayColumns>
           <div
             class="cal-day-column"
+            #dayColumn
             *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
+            [style.padding-bottom]="
+              column.date >= today && bottomPadding > 0
+                ? bottomPadding + 'px'
+                : null
+            "
+            (mouseenter)="onMouseEnter(column.date, dayColumn)"
+            (mouseleave)="onMouseLeave(column.date, dayColumn)"
           >
             <div
               *ngFor="
@@ -118,13 +126,6 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               (dragging)="dragMove(timeEvent, $event)"
               (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"
             >
-              <div
-                class="cal-resize-handle cal-resize-handle-before-start"
-                *ngIf="
-                  timeEvent.event?.resizable?.beforeStart &&
-                  !timeEvent.startsBeforeDay
-                "
-              ></div>
               <mwl-calendar-week-view-event
                 [weekEvent]="timeEvent"
                 [tooltipPlacement]="tooltipPlacement"
@@ -138,13 +139,6 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
               >
               </mwl-calendar-week-view-event>
-              <div
-                class="cal-resize-handle cal-resize-handle-after-end"
-                *ngIf="
-                  timeEvent.event?.resizable?.afterEnd &&
-                  !timeEvent.endsAfterDay
-                "
-              ></div>
             </div>
           </div>
         </div>
@@ -299,6 +293,11 @@ export class CalendarWeekListViewComponent
   @Input() fillHeight: boolean = true;
 
   /**
+   * bottom padding for the future days in pixels
+   */
+  @Input() bottomPadding: number;
+
+  /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
    */
   @Output()
@@ -334,6 +333,18 @@ export class CalendarWeekListViewComponent
   hourSegmentClicked = new EventEmitter<{
     date: Date;
   }>();
+
+  /**
+   * Called when the mouse enters a day
+   */
+  @Output()
+  mouseEnter = new EventEmitter<{ day: WeekDay; element: HTMLElement }>();
+
+  /**
+   * Called when the mouse leaves a day
+   */
+  @Output()
+  mouseLeave = new EventEmitter<{ day: WeekDay; element: HTMLElement }>();
 
   /**
    * @hidden
@@ -392,6 +403,11 @@ export class CalendarWeekListViewComponent
    * @hidden
    */
   calendarId = Symbol('angular calendar week view id');
+
+  /**
+   * @hidden
+   */
+  today: Date;
 
   /**
    * @hidden
@@ -628,6 +644,38 @@ export class CalendarWeekListViewComponent
     }
   }
 
+  /**
+   * @hidden
+   */
+  onMouseEnter(date: Date, element: HTMLElement) {
+    const day: WeekDay = {
+      date: date,
+      day: date.getDay(),
+      isPast: date < this.today,
+      isToday: date.valueOf() == this.today.valueOf(),
+      isFuture: date > this.today,
+      isWeekend:
+        this.weekendDays && this.weekendDays.indexOf(date.getDay()) >= 0
+    };
+    this.mouseEnter.emit({ day, element });
+  }
+
+  /**
+   * @hidden
+   */
+  onMouseLeave(date: Date, element: HTMLElement) {
+    const day: WeekDay = {
+      date: date,
+      day: date.getDay(),
+      isPast: date < this.today,
+      isToday: date.valueOf() == this.today.valueOf(),
+      isFuture: date > this.today,
+      isWeekend:
+        this.weekendDays && this.weekendDays.indexOf(date.getDay()) >= 0
+    };
+    this.mouseLeave.emit({ day, element });
+  }
+
   private refreshHeader(): void {
     this.days = this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
@@ -646,6 +694,8 @@ export class CalendarWeekListViewComponent
 
   private refreshBody(): void {
     this.view = this.getWeekView(this.events);
+    this.today = new Date();
+    this.today.setHours(0, 0, 0, 0);
   }
 
   private refreshAll(): void {
