@@ -157,8 +157,6 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
     }
 
     .cal-day-column {
-      display: flex;
-      flex-direction: column;
       flex: 1;
       overflow-x: hidden;
     }
@@ -231,6 +229,12 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
   .cal-ends-within-day .cal-event {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+  }
+
+  .cal-day {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }
 

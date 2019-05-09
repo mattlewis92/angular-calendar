@@ -92,10 +92,15 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           <div
             class="cal-day-column"
             #dayColumn
-            *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
+            *ngFor="
+              let column of view.hourColumns;
+              let i = index;
+              trackBy: trackByHourColumn
+            "
           >
-            <mwl-calendar-week-day-view-event
+            <mwl-calendar-week-list-view-day
               [column]="column"
+              [day]="days ? days[i] : null"
               [eventTemplate]="eventTemplate"
               [dragActive]="dragActive"
               [customTemplate]="dayTemplate"
@@ -112,7 +117,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               (dragMove)="dragMove($event.timeEvent, $event.event)"
               (dragEnded)="dragEnded($event.timeEvent, $event.event)"
             >
-            </mwl-calendar-week-day-view-event>
+            </mwl-calendar-week-list-view-day>
           </div>
         </div>
       </div>
