@@ -431,10 +431,10 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   constructor(
-    private cdr: ChangeDetectorRef,
-    private utils: CalendarUtils,
+    protected cdr: ChangeDetectorRef,
+    protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    private dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter
   ) {
     this.locale &#x3D; locale;
   }
@@ -550,7 +550,7 @@ export class CalendarMonthViewComponent
     }
   }
 
-  private refreshHeader(): void {
+  protected refreshHeader(): void {
     this.columnHeaders &#x3D; this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
@@ -559,7 +559,7 @@ export class CalendarMonthViewComponent
     });
   }
 
-  private refreshBody(): void {
+  protected refreshBody(): void {
     this.view &#x3D; this.utils.getMonthView({
       events: this.events,
       viewDate: this.viewDate,
@@ -569,7 +569,7 @@ export class CalendarMonthViewComponent
     });
   }
 
-  private checkActiveDayIsOpen(): void {
+  protected checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen &#x3D;&#x3D;&#x3D; true) {
       const activeDay &#x3D; this.activeDay || this.viewDate;
       this.openDay &#x3D; this.view.days.find(day &#x3D;&gt;
@@ -585,14 +585,14 @@ export class CalendarMonthViewComponent
     }
   }
 
-  private refreshAll(): void {
+  protected refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
     this.emitBeforeViewRender();
     this.checkActiveDayIsOpen();
   }
 
-  private emitBeforeViewRender(): void {
+  protected emitBeforeViewRender(): void {
     if (this.columnHeaders &amp;&amp; this.view) {
       this.beforeViewRender.emit({
         header: this.columnHeaders,

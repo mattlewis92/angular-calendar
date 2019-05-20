@@ -821,10 +821,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   constructor(
-    private cdr: ChangeDetectorRef,
-    private utils: CalendarUtils,
+    protected cdr: ChangeDetectorRef,
+    protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    private dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter
   ) {
     this.locale &#x3D; locale;
   }
@@ -892,7 +892,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
+  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
     this.dayColumnWidth &#x3D; this.getDayColumnWidth(eventsContainer);
     const resizeHelper: CalendarResizeHelper &#x3D; new CalendarResizeHelper(
       eventsContainer,
@@ -1180,7 +1180,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private refreshHeader(): void {
+  protected refreshHeader(): void {
     this.days &#x3D; this.utils.getWeekViewHeader({
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
@@ -1196,17 +1196,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  private refreshBody(): void {
+  protected refreshBody(): void {
     this.view &#x3D; this.getWeekView(this.events);
   }
 
-  private refreshAll(): void {
+  protected refreshAll(): void {
     this.refreshHeader();
     this.refreshBody();
     this.emitBeforeViewRender();
   }
 
-  private emitBeforeViewRender(): void {
+  protected emitBeforeViewRender(): void {
     if (this.days &amp;&amp; this.view) {
       this.beforeViewRender.emit({
         header: this.days,
@@ -1215,7 +1215,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private getWeekView(events: CalendarEvent[]) {
+  protected getWeekView(events: CalendarEvent[]) {
     return this.utils.getWeekView({
       events,
       viewDate: this.viewDate,
@@ -1244,7 +1244,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  private getDragMovedEventTimes(
+  protected getDragMovedEventTimes(
     weekEvent: WeekViewAllDayEvent | DayViewEvent,
     dragEndEvent: DragEndEvent | DragMoveEvent,
     dayWidth: number,
@@ -1285,7 +1285,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     return { start, end };
   }
 
-  private restoreOriginalEvents(
+  protected restoreOriginalEvents(
     tempEvents: CalendarEvent[],
     adjustedEvents: Map&lt;CalendarEvent, CalendarEvent&gt;
   ) {
@@ -1326,7 +1326,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     adjustedEvents.clear();
   }
 
-  private getTimeEventResizedDates(
+  protected getTimeEventResizedDates(
     calendarEvent: CalendarEvent,
     resizeEvent: ResizeEvent
   ) {
