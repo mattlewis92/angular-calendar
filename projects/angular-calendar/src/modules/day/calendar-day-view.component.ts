@@ -434,10 +434,10 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   constructor(
-    private cdr: ChangeDetectorRef,
-    private utils: CalendarUtils,
+    protected cdr: ChangeDetectorRef,
+    protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    private dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter
   ) {
     this.locale = locale;
   }
@@ -663,7 +663,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private refreshHourGrid(): void {
+  protected refreshHourGrid(): void {
     this.hours = this.utils.getDayViewHourGrid({
       viewDate: this.viewDate,
       hourSegments: this.hourSegments,
@@ -678,7 +678,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  private refreshView(): void {
+  protected refreshView(): void {
     this.view = this.utils.getDayView({
       events: this.events,
       viewDate: this.viewDate,
@@ -696,13 +696,13 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  private refreshAll(): void {
+  protected refreshAll(): void {
     this.refreshHourGrid();
     this.refreshView();
     this.emitBeforeViewRender();
   }
 
-  private emitBeforeViewRender(): void {
+  protected emitBeforeViewRender(): void {
     if (this.hours && this.view) {
       this.beforeViewRender.emit({
         body: {
