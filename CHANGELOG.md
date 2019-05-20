@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.8"></a>
+## [0.27.8](https://github.com/mattlewis92/angular-calendar/compare/v0.27.7...v0.27.8) (2019-05-20)
+
+
+### Bug Fixes
+
+* make internal methods callable from sub classes ([8c926ed](https://github.com/mattlewis92/angular-calendar/commit/8c926ed))
+
+
+
 <a name="0.27.7"></a>
 ## [0.27.7](https://github.com/mattlewis92/angular-calendar/compare/v0.27.6...v0.27.7) (2019-04-27)
 
