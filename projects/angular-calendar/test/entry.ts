@@ -1,7 +1,7 @@
 /// <reference types="mocha" />
 
 import '!!style-loader!css-loader!sass-loader!../src/angular-calendar.scss';
-import 'core-js/es7/reflect';
+import 'core-js/es/reflect';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/long-stack-trace-zone';
 import 'zone.js/dist/proxy';

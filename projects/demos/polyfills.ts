@@ -18,7 +18,6 @@
  * BROWSER POLYFILLS
  */
 
-import 'core-js/es7/reflect';
-import 'core-js/es7/object';
+import 'core-js/es/object';
 import 'hammerjs';
 import 'zone.js/dist/zone';
