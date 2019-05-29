@@ -3,9 +3,9 @@ language: node_js
 node_js:
   - '12'
 
-script:
-  - npx @angular/cli analytics off
-  - npm test
+before_install: npx @angular/cli analytics off
+
+script: npm test
 
 notifications:
   email: false
