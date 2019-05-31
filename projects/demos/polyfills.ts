@@ -18,6 +18,6 @@
  * BROWSER POLYFILLS
  */
 
-import 'core-js/es/object';
+import 'core-js/modules/es.object.entries';
 import 'hammerjs';
 import 'zone.js/dist/zone';
