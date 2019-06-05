@@ -1,6 +1,26 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.27.9](https://github.com/mattlewis92/angular-calendar/compare/v0.27.8...v0.27.9) (2019-06-05)
+
+
+### Bug Fixes
+
+* restore compatibility with universal ([52ff58e](https://github.com/mattlewis92/angular-calendar/commit/52ff58e)), closes [#997](https://github.com/mattlewis92/angular-calendar/issues/997)
+
+
+### Build System
+
+* only include object.entries polyfill ([650242d](https://github.com/mattlewis92/angular-calendar/commit/650242d))
+* upgrade commitlint ([9a743ed](https://github.com/mattlewis92/angular-calendar/commit/9a743ed))
+* upgrade dependencies ([c2562f1](https://github.com/mattlewis92/angular-calendar/commit/c2562f1))
+* **deps:** bump fstream from 1.0.11 to 1.0.12 in /build-tool-examples/angular-cli ([#996](https://github.com/mattlewis92/angular-calendar/issues/996)) ([ff61c03](https://github.com/mattlewis92/angular-calendar/commit/ff61c03))
+* upgrade dependencies ([02a3b4b](https://github.com/mattlewis92/angular-calendar/commit/02a3b4b))
+* upgrade dependencies ([da42f3d](https://github.com/mattlewis92/angular-calendar/commit/da42f3d))
+* upgrade to angular 8 ✨ ([f3d99f7](https://github.com/mattlewis92/angular-calendar/commit/f3d99f7))
+
+
 
 <a name="0.27.8"></a>
 ## [0.27.8](https://github.com/mattlewis92/angular-calendar/compare/v0.27.7...v0.27.8) (2019-05-20)
