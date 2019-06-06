@@ -132,7 +132,7 @@ import { FormsModule } from '@angular/forms';
               m => m.DemoModule
             ),
           data: {
-            label: 'Clickable days'
+            label: 'Clickable times'
           }
         },
         {

@@ -2,9 +2,9 @@
 </mwl-demo-utils-calendar-header>
 
 <div class="alert alert-info">
-  Click on a day on the view.
+  Click on a day or time slot on the view.
   <strong *ngIf="clickedDate"
-    >You clicked on this day: {{ clickedDate | date:'medium' }}</strong
+    >You clicked on this time: {{ clickedDate | date:'medium' }}</strong
   >
   <strong *ngIf="clickedColumn != null"
     >You clicked on this column: {{ clickedColumn }}</strong
@@ -25,12 +25,14 @@
     [viewDate]="viewDate"
     [events]="events"
     (dayHeaderClicked)="clickedDate = $event.day.date"
+    (hourSegmentClicked)="clickedDate = $event.date"
   >
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
+    (hourSegmentClicked)="clickedDate = $event.date"
   >
   </mwl-calendar-day-view>
 </div>
