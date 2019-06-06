@@ -104,7 +104,7 @@
     "moment-timezone": "^0.5.25",
     "ng-packagr": "^5.2.0",
     "ngx-contextmenu": "^5.2.0",
-    "ngx-perfect-scrollbar": "^7.2.1",
+    "ngx-scrollbar": "^4.2.0",
     "node-sass": "^4.12.0",
     "postcss-cli": "^6.1.2",
     "postcss-flexibility": "^2.0.0",
