@@ -103,6 +103,7 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
     "ng-packagr": "^5.2.0",
+    "ngx-clipboard": "^12.1.0",
     "ngx-contextmenu": "^5.2.0",
     "ngx-scrollbar": "^4.2.0",
     "node-sass": "^4.12.0",

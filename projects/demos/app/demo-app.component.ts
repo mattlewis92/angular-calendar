@@ -4,6 +4,7 @@ import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
+import { Subject } from 'rxjs';
 
 interface Source {
   filename: string;
@@ -89,6 +90,7 @@ export class DemoAppComponent implements OnInit {
   isMenuVisible = false;
   firstDemoLoaded = false;
   searchText = '';
+  copied$ = new Subject<boolean>();
 
   constructor(private router: Router, analytics: Angulartics2GoogleAnalytics) {
     analytics.startTracking();
@@ -239,5 +241,12 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
         openFile: 'demo/component.ts'
       }
     );
+  }
+
+  copied() {
+    this.copied$.next(true);
+    setTimeout(() => {
+      this.copied$.next(false);
+    }, 1000);
   }
 }

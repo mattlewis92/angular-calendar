@@ -5,7 +5,11 @@ import {
   HAMMER_GESTURE_CONFIG
 } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbTabsetModule,
+  NgbCollapseModule,
+  NgbTooltipModule
+} from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
@@ -15,6 +19,8 @@ import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/mod
 import { environment } from '../environments/environment';
 import { CustomHammerConfig } from './hammer-config';
 import { FormsModule } from '@angular/forms';
+import { ClipboardModule } from 'ngx-clipboard';
+
 @NgModule({
   declarations: [DemoAppComponent],
   imports: [
@@ -23,7 +29,13 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     NgbTabsetModule,
     NgbCollapseModule,
+    NgbTooltipModule,
     DragAndDropModule,
+    Angulartics2Module.forRoot({
+      developerMode: !environment.production
+    }),
+    NgScrollbarModule,
+    ClipboardModule,
     DefaultDemoModule,
     RouterModule.forRoot(
       [
@@ -400,11 +412,7 @@ import { FormsModule } from '@angular/forms';
       {
         useHash: true
       }
-    ),
-    Angulartics2Module.forRoot({
-      developerMode: !environment.production
-    }),
-    NgScrollbarModule
+    )
   ],
   providers: [
     {

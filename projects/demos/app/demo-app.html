@@ -165,7 +165,22 @@
                 {{ source.filename }}
               </ng-template>
               <ng-template ngbTabContent>
-                <pre><code [innerHTML]="source.contents.highlighted"></code></pre>
+                <div class="code-container">
+                  <button
+                    class="btn btn-outline-primary copy-code"
+                    (click)="copied()"
+                    ngxClipboard
+                    [cbContent]="source.contents.raw"
+                    [ngbTooltip]="'Copy source'"
+                    [placement]="'top-right'"
+                  >
+                    <i
+                      class="fa"
+                      [ngClass]="{'fa-copy': !(copied$ | async), 'fa-check': (copied$ | async) }"
+                    ></i>
+                  </button>
+                  <pre><code [innerHTML]="source.contents.highlighted"></code></pre>
+                </div>
               </ng-template>
             </ngb-tab>
           </ngb-tabset>
