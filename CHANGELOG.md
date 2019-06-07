@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.11](https://github.com/mattlewis92/angular-calendar/compare/v0.27.10...v0.27.11) (2019-06-07)
+
+
+### Bug Fixes
+
+* **tooltip:** allow tooltip text to be updated while shown ([c079805](https://github.com/mattlewis92/angular-calendar/commit/c079805)), closes [#1002](https://github.com/mattlewis92/angular-calendar/issues/1002)
+
+
+### Build System
+
+* migrate autoprefixer options ([4d1026c](https://github.com/mattlewis92/angular-calendar/commit/4d1026c))
+* upgrade dependencies ([29ed6a2](https://github.com/mattlewis92/angular-calendar/commit/29ed6a2))
+
+
+
 ### [0.27.10](https://github.com/mattlewis92/angular-calendar/compare/v0.27.9...v0.27.10) (2019-06-07)
 
 
