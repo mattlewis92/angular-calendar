@@ -149,18 +149,10 @@ export class DemoAppComponent implements OnInit {
       [path: string]: string;
     } = {
       'index.html': `
-<link href="https://unpkg.com/bootstrap-css-only@${
-        dependencyVersions.bootstrap
-      }/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://unpkg.com/font-awesome@${
-        dependencyVersions.fontAwesome
-      }/css/font-awesome.css" rel="stylesheet">
-<link href="https://unpkg.com/angular-calendar@${
-        dependencyVersions.angularCalendar
-      }/css/angular-calendar.css" rel="stylesheet">
-<link href="https://unpkg.com/flatpickr@${
-        dependencyVersions.flatpickr
-      }/dist/flatpickr.css" rel="stylesheet">
+<link href="https://unpkg.com/bootstrap-css-only@${dependencyVersions.bootstrap}/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/font-awesome@${dependencyVersions.fontAwesome}/css/font-awesome.css" rel="stylesheet">
+<link href="https://unpkg.com/angular-calendar@${dependencyVersions.angularCalendar}/css/angular-calendar.css" rel="stylesheet">
+<link href="https://unpkg.com/flatpickr@${dependencyVersions.flatpickr}/dist/flatpickr.css" rel="stylesheet">
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
       'main.ts': `
@@ -222,12 +214,8 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/animations': dependencyVersions.angular,
           rxjs: dependencyVersions.rxjs,
           'zone.js': dependencyVersions.zoneJs,
-          'angular-draggable-droppable': `^${
-            dependencyVersions.angularDraggableDroppable
-          }`,
-          'angular-resizable-element': `^${
-            dependencyVersions.angularResizableElement
-          }`,
+          'angular-draggable-droppable': `^${dependencyVersions.angularDraggableDroppable}`,
+          'angular-resizable-element': `^${dependencyVersions.angularResizableElement}`,
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
           '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
