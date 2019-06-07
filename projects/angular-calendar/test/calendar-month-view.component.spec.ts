@@ -1012,4 +1012,38 @@ describe('calendarMonthView component', () => {
     );
     document.head.removeChild(style);
   });
+
+  it('should allow the tooltip text to be updated dynamically', fakeAsync(() => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo'
+      }
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+    );
+    triggerDomEvent('mouseenter', event);
+    fixture.detectChanges();
+    flush();
+    const tooltip = document.body.querySelector('.cal-tooltip');
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
+      'foo'
+    );
+    fixture.componentInstance.events[0].title = 'bar';
+    fixture.detectChanges();
+    expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
+      'bar'
+    );
+    triggerDomEvent('mouseleave', event);
+    fixture.detectChanges();
+    fixture.destroy();
+  }));
 });
