@@ -11,7 +11,7 @@ import {
   NgbTooltipModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { NgScrollbarModule } from 'ngx-scrollbar';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
@@ -34,7 +34,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     Angulartics2Module.forRoot({
       developerMode: !environment.production
     }),
-    NgScrollbarModule,
+    PerfectScrollbarModule,
     ClipboardModule,
     DefaultDemoModule,
     RouterModule.forRoot(

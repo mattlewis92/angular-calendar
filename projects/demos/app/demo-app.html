@@ -125,9 +125,9 @@
 
 <div class="container-fluid">
   <div class="row fill-height">
-    <ng-scrollbar
-      [shown]="'hover'"
+    <div
       class="col-md-9 col-xl-10 fill-height scroll-y"
+      perfectScrollbar
       mwlDraggableScrollContainer
     >
       <div class="card" *ngIf="firstDemoLoaded; else loading">
@@ -186,10 +186,10 @@
           </ngb-tabset>
         </div>
       </div>
-    </ng-scrollbar>
-    <ng-scrollbar
-      [shown]="'hover'"
+    </div>
+    <div
       class="col-md-3 col-xl-2 fill-height sidebar-nav scroll-y"
+      perfectScrollbar
     >
       <input
         type="search"
@@ -209,6 +209,6 @@
         </li>
       </ul>
       <em *ngIf="filteredDemos.length === 0">No matching demos found</em>
-    </ng-scrollbar>
+    </div>
   </div>
 </div>
