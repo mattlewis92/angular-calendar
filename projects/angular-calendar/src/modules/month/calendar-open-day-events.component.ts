@@ -8,6 +8,7 @@ import {
 import {
   trigger,
   style,
+  state,
   transition,
   animate,
   AnimationTriggerMetadata
@@ -16,14 +17,26 @@ import { CalendarEvent } from 'calendar-utils';
 import { trackByEventId } from '../common/util';
 
 export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
-  transition('void => *', [
-    style({ height: 0, overflow: 'hidden' }),
-    animate('150ms', style({ height: '*' }))
-  ]),
-  transition('* => void', [
-    style({ height: '*', overflow: 'hidden' }),
-    animate('150ms', style({ height: 0 }))
-  ])
+  state(
+    'void',
+    style({
+      height: 0,
+      overflow: 'hidden',
+      'padding-top': 0,
+      'padding-bottom': 0
+    })
+  ),
+  state(
+    '*',
+    style({
+      height: '*',
+      overflow: 'hidden',
+      'padding-top': '*',
+      'padding-bottom': '*'
+    })
+  ),
+  transition('* => void', animate('150ms ease-out')),
+  transition('void => *', animate('150ms ease-in'))
 ]);
 
 @Component({
