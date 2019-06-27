@@ -169,3 +169,8 @@ export function getWeekViewPeriod(
     return { viewStart, viewEnd };
   }
 }
+
+export function isWithinThreshold({ x, y }: { x: number; y: number }) {
+  const DRAG_THRESHOLD = 1;
+  return Math.abs(x) > DRAG_THRESHOLD || Math.abs(y) > DRAG_THRESHOLD;
+}

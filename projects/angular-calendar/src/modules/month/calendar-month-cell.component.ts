@@ -6,7 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
-import { trackByEventId } from '../common/util';
+import { isWithinThreshold, trackByEventId } from '../common/util';
 import { PlacementArray } from 'positioning';
 
 @Component({
@@ -25,6 +25,7 @@ import { PlacementArray } from 'positioning';
       let-tooltipAppendToBody="tooltipAppendToBody"
       let-tooltipDelay="tooltipDelay"
       let-trackByEventId="trackByEventId"
+      let-validateDrag="validateDrag"
     >
       <div class="cal-cell-top">
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
@@ -55,6 +56,7 @@ import { PlacementArray } from 'positioning';
           dragActiveClass="cal-drag-active"
           [dropData]="{ event: event, draggedFrom: day }"
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
+          [validateDrag]="validateDrag"
           (mwlClick)="eventClicked.emit({ event: event })"
         ></div>
       </div>
@@ -72,7 +74,8 @@ import { PlacementArray } from 'positioning';
         tooltipTemplate: tooltipTemplate,
         tooltipAppendToBody: tooltipAppendToBody,
         tooltipDelay: tooltipDelay,
-        trackByEventId: trackByEventId
+        trackByEventId: trackByEventId,
+        validateDrag: validateDrag
       }"
     >
     </ng-template>
@@ -117,4 +120,6 @@ export class CalendarMonthCellComponent {
   }>();
 
   trackByEventId = trackByEventId;
+
+  validateDrag = isWithinThreshold;
 }
