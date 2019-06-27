@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.12](https://github.com/mattlewis92/angular-calendar/compare/v0.27.11...v0.27.12) (2019-06-27)
+
+
+### Bug Fixes
+
+* **month-view:** add 1px drag sensitivity ([4a0e581](https://github.com/mattlewis92/angular-calendar/commit/4a0e581)), closes [#1012](https://github.com/mattlewis92/angular-calendar/issues/1012)
+* **month-view:** make slide animation smoother ([8ef9fe8](https://github.com/mattlewis92/angular-calendar/commit/8ef9fe8)), closes [#1017](https://github.com/mattlewis92/angular-calendar/issues/1017)
+
+
+### Build System
+
+* upgrade dependencies ([6e05313](https://github.com/mattlewis92/angular-calendar/commit/6e05313))
+
+
+
 ### [0.27.11](https://github.com/mattlewis92/angular-calendar/compare/v0.27.10...v0.27.11) (2019-06-07)
 
 
