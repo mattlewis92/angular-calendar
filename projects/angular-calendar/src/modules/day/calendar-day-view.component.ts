@@ -482,7 +482,8 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.dayStartMinute ||
       changes.dayEndHour ||
       changes.dayEndMinute ||
-      changes.eventWidth;
+      changes.eventWidth  ||
+      changes.hourSegments;
 
     if (refreshHourGrid) {
       this.refreshHourGrid();
