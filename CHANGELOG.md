@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.13](https://github.com/mattlewis92/angular-calendar/compare/v0.27.12...v0.27.13) (2019-07-13)
+
+
+### Bug Fixes
+
+* **day-view:** refresh the view when hourSegments changes ([deb6dcf](https://github.com/mattlewis92/angular-calendar/commit/deb6dcf)), closes [#1032](https://github.com/mattlewis92/angular-calendar/issues/1032)
+
+
+### Build System
+
+* fix paths ([e6c68f2](https://github.com/mattlewis92/angular-calendar/commit/e6c68f2))
+* upgrade dependencies ([8763ece](https://github.com/mattlewis92/angular-calendar/commit/8763ece))
+
+
+
 ### [0.27.12](https://github.com/mattlewis92/angular-calendar/compare/v0.27.11...v0.27.12) (2019-06-27)
 
 
