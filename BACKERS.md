@@ -9,4 +9,5 @@ Work on this calendar is funded entirely by donations through [Patreon](https://
 
 - [Sylvain Lafaye](https://github.com/sylvain-fr)
 - [John Allan Canning](https://github.com/jcanning)
+- [Hassan Khan](https://github.com/Khanbhai1990)
 - [_Your name here?_](https://www.patreon.com/mattlewis92)
