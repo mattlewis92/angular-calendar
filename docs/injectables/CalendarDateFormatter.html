@@ -65,24 +65,26 @@
             <p class="comment">
                 <p>This class is responsible for all formatting of dates. There are 3 implementations available, the <code>CalendarAngularDateFormatter</code> (default) which uses the angular date pipe to format dates, the <code>CalendarNativeDateFormatter</code> which will use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> API to format dates, or there is the <code>CalendarMomentDateFormatter</code> which uses <a href="http://momentjs.com/" target="_blank">moment</a>.</p>
 <p>If you wish, you may override any of the defaults via angulars DI. For example:</p>
-<p><code>typescript
- * import { CalendarDateFormatter, DateFormatterParams } from &#39;angular-calendar&#39;;
- * import { formatDate } from &#39;@angular/common&#39;;
- *
- * class CustomDateFormatter extends CalendarDateFormatter {
- *
- *   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
- *     return formatDate(date, &#39;EEE&#39;, locale); // use short week days
- *   }
- *
- * }
- *
- * // in your component that uses the calendar
- * providers: [{
- *   provide: CalendarDateFormatter,
- *   useClass: CustomDateFormatter
- * }]
- *</code></p>
+<p>```typescript</p>
+<ul>
+<li>import { CalendarDateFormatter, DateFormatterParams } from &#39;angular-calendar&#39;;</li>
+<li>import { formatDate } from &#39;@angular/common&#39;;</li>
+<li></li>
+<li>class CustomDateFormatter extends CalendarDateFormatter {</li>
+<li></li>
+<li>public monthViewColumnHeader({date, locale}: DateFormatterParams): string {</li>
+<li>return formatDate(date, &#39;EEE&#39;, locale); // use short week days</li>
+<li>}</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>// in your component that uses the calendar</li>
+<li>providers: [{</li>
+<li>provide: CalendarDateFormatter,</li>
+<li>useClass: CustomDateFormatter</li>
+<li>}]</li>
+<li>```</li>
+</ul>
 
             </p>
 
@@ -142,6 +144,7 @@ export class CalendarDateFormatter extends CalendarAngularDateFormatter {}
 
 
 
+                   
 
 
 

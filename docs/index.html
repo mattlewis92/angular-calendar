@@ -40,7 +40,7 @@
 </a>
 
 <h2 id="demo">Demo</h2>
-<p>https://mattlewis92.github.io/angular-calendar/</p>
+<p><a href="https://mattlewis92.github.io/angular-calendar/">https://mattlewis92.github.io/angular-calendar/</a></p>
 <h2 id="table-of-contents">Table of contents</h2>
 <ul>
 <li><a href="#about">About</a></li>
@@ -56,18 +56,15 @@
 <p>A calendar component for Angular 6.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>First install through npm:</p>
-<p><code>bash
-npm install --save angular-calendar date-fns</code></p>
-<p>Next include the CSS file in the global (not component scoped) styles of your app:</p>
-<p><code>/* angular-cli file: src/styles.css */
-@import &quot;../node_modules/angular-calendar/css/angular-calendar.css&quot;;</code></p>
-<p>Finally import the calendar module into your apps module:</p>
-<p>```typescript
-import { NgModule } from &#39;@angular/core&#39;;
-import { BrowserAnimationsModule } from &#39;@angular/platform-browser/animations&#39;;
+<div><pre class="line-numbers"><code class="language-bash">npm install --save angular-calendar date-fns</code></pre></div><p>Next include the CSS file in the global (not component scoped) styles of your app:</p>
+<div><pre class="line-numbers"><code class="language-none">/* angular-cli file: src/styles.css */
+&#64;import &quot;../node_modules/angular-calendar/css/angular-calendar.css&quot;;</code></pre></div><p>Finally import the calendar module into your apps module:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
+import { BrowserAnimationsModule } from &#39;&#64;angular/platform-browser/animations&#39;;
 import { CalendarModule, DateAdapter } from &#39;angular-calendar&#39;;
-import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;;</p>
-<p>@NgModule({
+import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;;
+
+&#64;NgModule({
   imports: [
     BrowserAnimationsModule,
     CalendarModule.forRoot({
@@ -76,9 +73,7 @@ import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;
     })
   ]
 })
-export class MyModule {}
-```</p>
-<p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
+export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
 <p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
 <p>If you would like a one on one consulation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on <a href="https://www.patreon.com/mattlewis92">Patreon</a>.</p>
 <h3 id="module-bundlers">Module bundlers</h3>
@@ -91,12 +86,32 @@ export class MyModule {}
 <h3 id="is-this-library-aot-and-universal-compatible">Is this library AoT and universal compatible?</h3>
 <p>Yes.</p>
 <h3 id="what-major-versions-of-angular-does-this-library-support">What major versions of angular does this library support?</h3>
-<p>| Angular major  | Last supported angular-calendar version                                |
-| -------------- | ---------------------------------------------------------------------- |
-| 6.x and higher | latest version                                                         |
-| 5.x            | <a href="https://github.com/mattlewis92/angular-calendar/tree/v0.24.1">0.24.1</a> |
-| 4.x            | <a href="https://github.com/mattlewis92/angular-calendar/tree/v0.22.3">0.22.3</a> |
-| 2.x            | <a href="https://github.com/mattlewis92/angular-calendar/tree/v0.9.1">0.9.1</a>   |</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Angular major</th>
+<th>Last supported angular-calendar version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.x and higher</td>
+<td>latest version</td>
+</tr>
+<tr>
+<td>5.x</td>
+<td><a href="https://github.com/mattlewis92/angular-calendar/tree/v0.24.1">0.24.1</a></td>
+</tr>
+<tr>
+<td>4.x</td>
+<td><a href="https://github.com/mattlewis92/angular-calendar/tree/v0.22.3">0.22.3</a></td>
+</tr>
+<tr>
+<td>2.x</td>
+<td><a href="https://github.com/mattlewis92/angular-calendar/tree/v0.9.1">0.9.1</a></td>
+</tr>
+</tbody>
+</table>
 <h3 id="how-do-i-use-this-with-my-favourite-module-bundler">How do I use this with my favourite module bundler?</h3>
 <p>See the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">examples list</a>.</p>
 <h3 id="no-styles-are-appearing">No styles are appearing?</h3>
@@ -123,7 +138,7 @@ export class MyModule {}
 <h3 id="does-this-library-require-bootstrap">Does this library require bootstrap?</h3>
 <p>No! While the demo site uses bootstrap, it isn&#39;t a requirement of this library. The styling is designed to adapt to whatever global styling your app has.</p>
 <h2 id="angular-1-version">Angular 1 version</h2>
-<p>https://github.com/mattlewis92/angular-bootstrap-calendar</p>
+<p><a href="https://github.com/mattlewis92/angular-bootstrap-calendar">https://github.com/mattlewis92/angular-bootstrap-calendar</a></p>
 <h2 id="development">Development</h2>
 <h3 id="prepare-your-environment">Prepare your environment</h3>
 <ul>
@@ -138,9 +153,7 @@ export class MyModule {}
 <ul>
 <li>Bump the version in package.json (once the module hits 1.0 this will become automatic)</li>
 </ul>
-<p><code>bash
-npm run release</code></p>
-<h2 id="license">License</h2>
+<div><pre class="line-numbers"><code class="language-bash">npm run release</code></pre></div><h2 id="license">License</h2>
 <p>MIT</p>
 
 
@@ -156,6 +169,7 @@ npm run release</code></p>
 
 
 
+                   
 
 
 

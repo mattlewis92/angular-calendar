@@ -68,23 +68,25 @@
             </p>
             <p class="comment">
                 <p>This class is responsible for displaying all event titles within the calendar. You may override any of its methods via angulars DI to suit your requirements. For example:</p>
-<p><code>typescript
- * import { CalendarEventTitleFormatter, CalendarEvent } from &#39;angular-calendar&#39;;
- *
- * class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
- *
- *   month(event: CalendarEvent): string {
- *     return `Custom prefix: ${event.title}`;
- *   }
- *
- * }
- *
- * // in your component
- * providers: [{
- *  provide: CalendarEventTitleFormatter,
- *  useClass: CustomEventTitleFormatter
- * }]
- *</code></p>
+<p>```typescript</p>
+<ul>
+<li>import { CalendarEventTitleFormatter, CalendarEvent } from &#39;angular-calendar&#39;;</li>
+<li></li>
+<li>class CustomEventTitleFormatter extends CalendarEventTitleFormatter {</li>
+<li></li>
+<li>month(event: CalendarEvent): string {</li>
+<li>return <code>Custom prefix: ${event.title}</code>;</li>
+<li>}</li>
+<li></li>
+<li>}</li>
+<li></li>
+<li>// in your component</li>
+<li>providers: [{</li>
+<li>provide: CalendarEventTitleFormatter,</li>
+<li>useClass: CustomEventTitleFormatter</li>
+<li>}]</li>
+<li>```</li>
+</ul>
 
             </p>
 
@@ -727,6 +729,7 @@ export class CalendarEventTitleFormatter {
 
 
 
+                   
 
 
 

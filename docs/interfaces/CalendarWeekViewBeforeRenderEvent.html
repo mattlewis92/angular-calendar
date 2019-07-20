@@ -433,6 +433,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [customTemplate]&#x3D;&quot;eventTemplate&quot;
                 [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
                 [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
+                [column]&#x3D;&quot;column&quot;
                 (eventClicked)&#x3D;&quot;eventClicked.emit({ event: timeEvent.event })&quot;
               &gt;
               &lt;/mwl-calendar-week-view-event&gt;
@@ -1371,6 +1372,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 </div>
 
 
+                   
 
 
 

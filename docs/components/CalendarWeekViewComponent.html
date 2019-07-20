@@ -63,12 +63,14 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given week. Example usage:</p>
-<p><code>typescript
- * &lt;mwl-calendar-week-view
- *  [viewDate]=&quot;viewDate&quot;
- *  [events]=&quot;events&quot;&gt;
- * &lt;/mwl-calendar-week-view&gt;
- *</code></p>
+<p>```typescript</p>
+<ul>
+<li>&lt;mwl-calendar-week-view</li>
+<li>[viewDate]=&quot;viewDate&quot;</li>
+<li>[events]=&quot;events&quot;&gt;</li>
+<li></mwl-calendar-week-view></li>
+<li>```</li>
+</ul>
 
     </p>
 
@@ -327,6 +329,7 @@
             [customTemplate]&#x3D;&quot;eventTemplate&quot;
             [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
             [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
+            [column]&#x3D;&quot;column&quot;
             (eventClicked)&#x3D;&quot;eventClicked.emit({ event: timeEvent.event })&quot;
           &gt;
           &lt;/mwl-calendar-week-view-event&gt;
@@ -546,7 +549,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="489" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:489</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="490" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:490</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -578,7 +581,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="469" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:469</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="470" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:470</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -610,7 +613,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="474" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:474</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="475" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:475</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -637,7 +640,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="495" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:495</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="496" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:496</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -670,7 +673,7 @@ The first day of the week will always be the <code>viewDate</code> and <code>wee
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="459" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:459</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="460" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:460</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -702,7 +705,7 @@ The first day of the week will always be the <code>viewDate</code> and <code>wee
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="464" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:464</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="465" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:465</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -729,7 +732,7 @@ The first day of the week will always be the <code>viewDate</code> and <code>wee
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="428" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:428</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="429" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:429</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -761,13 +764,13 @@ The first day of the week will always be the <code>viewDate</code> and <code>wee
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="367" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:367</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="368" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:368</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>An array of events to display on view
-The schema is available here: https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</p>
+The schema is available here: <a href="https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63">https://github.com/mattlewis92/calendar-utils/blob/c51689985f59a271940e30bc4e2c4e1fee3fcb5c/src/calendarUtils.ts#L49-L63</a></p>
 </div>
                     </td>
                 </tr>
@@ -789,7 +792,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="484" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:484</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="485" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:485</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -816,7 +819,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="418" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:418</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="419" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:419</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -843,7 +846,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="423" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:423</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="424" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:424</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -875,7 +878,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="372" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:372</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:373</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -902,7 +905,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="413" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:413</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:414</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -934,7 +937,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="454" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:454</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="455" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:455</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -966,7 +969,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="449" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:449</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="450" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:450</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -993,7 +996,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="479" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:479</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="480" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:480</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1020,7 +1023,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="382" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:382</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="383" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:383</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1052,7 +1055,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="434" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:434</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="435" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:435</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1080,7 +1083,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="377" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:377</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="378" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:378</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1112,7 +1115,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="444" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:444</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="445" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:445</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1144,7 +1147,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="397" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:397</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="398" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:398</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1176,7 +1179,7 @@ The schema is available here: https://github.com/mattlewis92/calendar-utils/blob
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="403" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:403</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="404" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:404</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1209,7 +1212,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="387" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:387</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:388</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1236,7 +1239,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="392" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:392</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="393" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:393</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1263,7 +1266,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="361" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:361</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="362" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:362</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1290,7 +1293,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="439" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:439</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="440" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:440</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1317,7 +1320,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="408" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:408</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="409" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:409</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1347,7 +1350,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="524" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:524</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="525" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:525</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1375,7 +1378,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="501" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:501</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="502" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:502</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1402,7 +1405,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="509" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:509</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="510" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:510</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1429,7 +1432,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="517" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:517</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="518" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:518</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1456,7 +1459,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="530" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:530</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="531" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:531</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1777,6 +1780,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [customTemplate]&#x3D;&quot;eventTemplate&quot;
                 [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
                 [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
+                [column]&#x3D;&quot;column&quot;
                 (eventClicked)&#x3D;&quot;eventClicked.emit({ event: timeEvent.event })&quot;
               &gt;
               &lt;/mwl-calendar-week-view-event&gt;
@@ -2740,7 +2744,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view">  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayHeaderClicked)="dayHeaderClicked.emit($event)"    (eventDropped)="      eventDropped({ dropData: $event }, $event.newStart, true)    "  >  </mwl-calendar-week-view-header>  <div    class="cal-all-day-events"    #allDayEventsContainer    *ngIf="view.allDayEventRows.length > 0"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-day-columns">      <div        class="cal-time-label-column"        [ngTemplateOutlet]="allDayEventsLabelTemplate"      ></div>      <div        class="cal-day-column"        *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="eventDropped($event, day.date, true)"      ></div>    </div>    <div      *ngFor="let eventRow of view.allDayEventRows; trackBy: trackById"      #eventRowContainer      class="cal-events-row"    >      <div        *ngFor="          let allDayEvent of eventRow.row;          trackBy: trackByDayOrWeekEvent        "        #event        class="cal-event-container"        [class.cal-draggable]="          allDayEvent.event.draggable && allDayEventResizes.size === 0        "        [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"        [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"        [ngClass]="allDayEvent.event?.cssClass"        [style.width.%]="(100 / days.length) * allDayEvent.span"        [style.marginLeft.%]="(100 / days.length) * allDayEvent.offset"        mwlResizable        [resizeSnapGrid]="{ left: dayColumnWidth, right: dayColumnWidth }"        [validateResize]="validateResize"        (resizeStart)="          allDayEventResizeStarted(eventRowContainer, allDayEvent, $event)        "        (resizing)="          allDayEventResizing(allDayEvent, $event, dayColumnWidth)        "        (resizeEnd)="allDayEventResizeEnded(allDayEvent)"        mwlDraggable        dragActiveClass="cal-drag-active"        [dropData]="{ event: allDayEvent.event, calendarId: calendarId }"        [dragAxis]="{          x: allDayEvent.event.draggable && allDayEventResizes.size === 0,          y:            !snapDraggedEvents &&            allDayEvent.event.draggable &&            allDayEventResizes.size === 0        }"        [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"        [validateDrag]="validateDrag"        (dragStart)="dragStarted(eventRowContainer, event)"        (dragging)="allDayEventDragMove()"        (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"      >        <div          class="cal-resize-handle cal-resize-handle-before-start"          *ngIf="            allDayEvent.event?.resizable?.beforeStart &&            !allDayEvent.startsBeforeWeek          "          mwlResizeHandle          [resizeEdges]="{ left: true }"        ></div>        <mwl-calendar-week-view-event          [weekEvent]="allDayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipDelay]="tooltipDelay"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="eventClicked.emit({ event: allDayEvent.event })"        >        </mwl-calendar-week-view-event>        <div          class="cal-resize-handle cal-resize-handle-after-end"          *ngIf="            allDayEvent.event?.resizable?.afterEnd &&            !allDayEvent.endsAfterWeek          "          mwlResizeHandle          [resizeEdges]="{ right: true }"        ></div>      </div>    </div>  </div>  <div    class="cal-time-events"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">      <div        *ngFor="          let hour of view.hourColumns[0].hours;          trackBy: trackByHour;          let odd = odd        "        class="cal-hour"        [class.cal-hour-odd]="odd"      >        <mwl-calendar-week-view-hour-segment          *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"          [style.height.px]="hourSegmentHeight"          [segment]="segment"          [segmentHeight]="hourSegmentHeight"          [locale]="locale"          [customTemplate]="hourSegmentTemplate"          [isTimeLabel]="true"        >        </mwl-calendar-week-view-hour-segment>      </div>    </div>    <div      class="cal-day-columns"      [class.cal-resize-active]="timeEventResizes.size > 0"      #dayColumns    >      <div        class="cal-day-column"        *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"      >        <div          *ngFor="            let timeEvent of column.events;            trackBy: trackByDayOrWeekEvent          "          #event          class="cal-event-container"          [class.cal-draggable]="            timeEvent.event.draggable && timeEventResizes.size === 0          "          [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"          [class.cal-ends-within-day]="!timeEvent.endsAfterDay"          [ngClass]="timeEvent.event.cssClass"          [hidden]="timeEvent.height === 0 && timeEvent.width === 0"          [style.top.px]="timeEvent.top"          [style.height.px]="timeEvent.height"          [style.left.%]="timeEvent.left"          [style.width.%]="timeEvent.width"          mwlResizable          [resizeSnapGrid]="{            left: dayColumnWidth,            right: dayColumnWidth,            top: eventSnapSize || hourSegmentHeight,            bottom: eventSnapSize || hourSegmentHeight          }"          [validateResize]="validateResize"          [allowNegativeResizes]="true"          (resizeStart)="            timeEventResizeStarted(dayColumns, timeEvent, $event)          "          (resizing)="timeEventResizing(timeEvent, $event)"          (resizeEnd)="timeEventResizeEnded(timeEvent)"          mwlDraggable          dragActiveClass="cal-drag-active"          [dropData]="{ event: timeEvent.event, calendarId: calendarId }"          [dragAxis]="{            x: timeEvent.event.draggable && timeEventResizes.size === 0,            y: timeEvent.event.draggable && timeEventResizes.size === 0          }"          [dragSnapGrid]="            snapDraggedEvents              ? { x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight }              : {}          "          [ghostDragEnabled]="!snapDraggedEvents"          [validateDrag]="validateDrag"          (dragStart)="dragStarted(dayColumns, event, timeEvent)"          (dragging)="dragMove(timeEvent, $event)"          (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"        >          <div            class="cal-resize-handle cal-resize-handle-before-start"            *ngIf="              timeEvent.event?.resizable?.beforeStart &&              !timeEvent.startsBeforeDay            "            mwlResizeHandle            [resizeEdges]="{              left: true,              top: true            }"          ></div>          <mwl-calendar-week-view-event            [weekEvent]="timeEvent"            [tooltipPlacement]="tooltipPlacement"            [tooltipTemplate]="tooltipTemplate"            [tooltipAppendToBody]="tooltipAppendToBody"            [tooltipDisabled]="dragActive || timeEventResizes.size > 0"            [tooltipDelay]="tooltipDelay"            [customTemplate]="eventTemplate"            [eventTitleTemplate]="eventTitleTemplate"            [eventActionsTemplate]="eventActionsTemplate"            (eventClicked)="eventClicked.emit({ event: timeEvent.event })"          >          </mwl-calendar-week-view-event>          <div            class="cal-resize-handle cal-resize-handle-after-end"            *ngIf="              timeEvent.event?.resizable?.afterEnd &&              !timeEvent.endsAfterDay            "            mwlResizeHandle            [resizeEdges]="{              right: true,              bottom: true            }"          ></div>        </div>        <div          *ngFor="            let hour of column.hours;            trackBy: trackByHour;            let odd = odd          "          class="cal-hour"          [class.cal-hour-odd]="odd"        >          <mwl-calendar-week-view-hour-segment            *ngFor="              let segment of hour.segments;              trackBy: trackByHourSegment            "            [style.height.px]="hourSegmentHeight"            [segment]="segment"            [segmentHeight]="hourSegmentHeight"            [locale]="locale"            [customTemplate]="hourSegmentTemplate"            (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"            [clickListenerDisabled]="              hourSegmentClicked.observers.length === 0            "            mwlDroppable            [dragOverClass]="              !dragActive || !snapDraggedEvents ? \'cal-drag-over\' : null            "            dragActiveClass="cal-drag-active"            (drop)="eventDropped($event, segment.date, false)"          >          </mwl-calendar-week-view-hour-segment>        </div>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-week-view">  <mwl-calendar-week-view-header    [days]="days"    [locale]="locale"    [customTemplate]="headerTemplate"    (dayHeaderClicked)="dayHeaderClicked.emit($event)"    (eventDropped)="      eventDropped({ dropData: $event }, $event.newStart, true)    "  >  </mwl-calendar-week-view-header>  <div    class="cal-all-day-events"    #allDayEventsContainer    *ngIf="view.allDayEventRows.length > 0"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-day-columns">      <div        class="cal-time-label-column"        [ngTemplateOutlet]="allDayEventsLabelTemplate"      ></div>      <div        class="cal-day-column"        *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="eventDropped($event, day.date, true)"      ></div>    </div>    <div      *ngFor="let eventRow of view.allDayEventRows; trackBy: trackById"      #eventRowContainer      class="cal-events-row"    >      <div        *ngFor="          let allDayEvent of eventRow.row;          trackBy: trackByDayOrWeekEvent        "        #event        class="cal-event-container"        [class.cal-draggable]="          allDayEvent.event.draggable && allDayEventResizes.size === 0        "        [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"        [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"        [ngClass]="allDayEvent.event?.cssClass"        [style.width.%]="(100 / days.length) * allDayEvent.span"        [style.marginLeft.%]="(100 / days.length) * allDayEvent.offset"        mwlResizable        [resizeSnapGrid]="{ left: dayColumnWidth, right: dayColumnWidth }"        [validateResize]="validateResize"        (resizeStart)="          allDayEventResizeStarted(eventRowContainer, allDayEvent, $event)        "        (resizing)="          allDayEventResizing(allDayEvent, $event, dayColumnWidth)        "        (resizeEnd)="allDayEventResizeEnded(allDayEvent)"        mwlDraggable        dragActiveClass="cal-drag-active"        [dropData]="{ event: allDayEvent.event, calendarId: calendarId }"        [dragAxis]="{          x: allDayEvent.event.draggable && allDayEventResizes.size === 0,          y:            !snapDraggedEvents &&            allDayEvent.event.draggable &&            allDayEventResizes.size === 0        }"        [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"        [validateDrag]="validateDrag"        (dragStart)="dragStarted(eventRowContainer, event)"        (dragging)="allDayEventDragMove()"        (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"      >        <div          class="cal-resize-handle cal-resize-handle-before-start"          *ngIf="            allDayEvent.event?.resizable?.beforeStart &&            !allDayEvent.startsBeforeWeek          "          mwlResizeHandle          [resizeEdges]="{ left: true }"        ></div>        <mwl-calendar-week-view-event          [weekEvent]="allDayEvent"          [tooltipPlacement]="tooltipPlacement"          [tooltipTemplate]="tooltipTemplate"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipDelay]="tooltipDelay"          [customTemplate]="eventTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="eventClicked.emit({ event: allDayEvent.event })"        >        </mwl-calendar-week-view-event>        <div          class="cal-resize-handle cal-resize-handle-after-end"          *ngIf="            allDayEvent.event?.resizable?.afterEnd &&            !allDayEvent.endsAfterWeek          "          mwlResizeHandle          [resizeEdges]="{ right: true }"        ></div>      </div>    </div>  </div>  <div    class="cal-time-events"    mwlDroppable    (dragEnter)="eventDragEnter = eventDragEnter + 1"    (dragLeave)="eventDragEnter = eventDragEnter - 1"  >    <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">      <div        *ngFor="          let hour of view.hourColumns[0].hours;          trackBy: trackByHour;          let odd = odd        "        class="cal-hour"        [class.cal-hour-odd]="odd"      >        <mwl-calendar-week-view-hour-segment          *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"          [style.height.px]="hourSegmentHeight"          [segment]="segment"          [segmentHeight]="hourSegmentHeight"          [locale]="locale"          [customTemplate]="hourSegmentTemplate"          [isTimeLabel]="true"        >        </mwl-calendar-week-view-hour-segment>      </div>    </div>    <div      class="cal-day-columns"      [class.cal-resize-active]="timeEventResizes.size > 0"      #dayColumns    >      <div        class="cal-day-column"        *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"      >        <div          *ngFor="            let timeEvent of column.events;            trackBy: trackByDayOrWeekEvent          "          #event          class="cal-event-container"          [class.cal-draggable]="            timeEvent.event.draggable && timeEventResizes.size === 0          "          [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"          [class.cal-ends-within-day]="!timeEvent.endsAfterDay"          [ngClass]="timeEvent.event.cssClass"          [hidden]="timeEvent.height === 0 && timeEvent.width === 0"          [style.top.px]="timeEvent.top"          [style.height.px]="timeEvent.height"          [style.left.%]="timeEvent.left"          [style.width.%]="timeEvent.width"          mwlResizable          [resizeSnapGrid]="{            left: dayColumnWidth,            right: dayColumnWidth,            top: eventSnapSize || hourSegmentHeight,            bottom: eventSnapSize || hourSegmentHeight          }"          [validateResize]="validateResize"          [allowNegativeResizes]="true"          (resizeStart)="            timeEventResizeStarted(dayColumns, timeEvent, $event)          "          (resizing)="timeEventResizing(timeEvent, $event)"          (resizeEnd)="timeEventResizeEnded(timeEvent)"          mwlDraggable          dragActiveClass="cal-drag-active"          [dropData]="{ event: timeEvent.event, calendarId: calendarId }"          [dragAxis]="{            x: timeEvent.event.draggable && timeEventResizes.size === 0,            y: timeEvent.event.draggable && timeEventResizes.size === 0          }"          [dragSnapGrid]="            snapDraggedEvents              ? { x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight }              : {}          "          [ghostDragEnabled]="!snapDraggedEvents"          [validateDrag]="validateDrag"          (dragStart)="dragStarted(dayColumns, event, timeEvent)"          (dragging)="dragMove(timeEvent, $event)"          (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"        >          <div            class="cal-resize-handle cal-resize-handle-before-start"            *ngIf="              timeEvent.event?.resizable?.beforeStart &&              !timeEvent.startsBeforeDay            "            mwlResizeHandle            [resizeEdges]="{              left: true,              top: true            }"          ></div>          <mwl-calendar-week-view-event            [weekEvent]="timeEvent"            [tooltipPlacement]="tooltipPlacement"            [tooltipTemplate]="tooltipTemplate"            [tooltipAppendToBody]="tooltipAppendToBody"            [tooltipDisabled]="dragActive || timeEventResizes.size > 0"            [tooltipDelay]="tooltipDelay"            [customTemplate]="eventTemplate"            [eventTitleTemplate]="eventTitleTemplate"            [eventActionsTemplate]="eventActionsTemplate"            [column]="column"            (eventClicked)="eventClicked.emit({ event: timeEvent.event })"          >          </mwl-calendar-week-view-event>          <div            class="cal-resize-handle cal-resize-handle-after-end"            *ngIf="              timeEvent.event?.resizable?.afterEnd &&              !timeEvent.endsAfterDay            "            mwlResizeHandle            [resizeEdges]="{              right: true,              bottom: true            }"          ></div>        </div>        <div          *ngFor="            let hour of column.hours;            trackBy: trackByHour;            let odd = odd          "          class="cal-hour"          [class.cal-hour-odd]="odd"        >          <mwl-calendar-week-view-hour-segment            *ngFor="              let segment of hour.segments;              trackBy: trackByHourSegment            "            [style.height.px]="hourSegmentHeight"            [segment]="segment"            [segmentHeight]="hourSegmentHeight"            [locale]="locale"            [customTemplate]="hourSegmentTemplate"            (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"            [clickListenerDisabled]="              hourSegmentClicked.observers.length === 0            "            mwlDroppable            [dragOverClass]="              !dragActive || !snapDraggedEvents ? \'cal-drag-over\' : null            "            dragActiveClass="cal-drag-active"            (drop)="eventDropped($event, segment.date, false)"          >          </mwl-calendar-week-view-hour-segment>        </div>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarWeekViewComponent'};
@@ -2756,6 +2760,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
 
 
 
+                   
 
 
 

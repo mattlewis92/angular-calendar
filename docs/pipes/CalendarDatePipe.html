@@ -67,11 +67,13 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This pipe is primarily for rendering the current view title. Example usage:
-<code>typescript
- * // where `viewDate` is a `Date` and view is `&#39;month&#39; | &#39;week&#39; | &#39;day&#39;`
- * {{ viewDate | calendarDate:(view + &#39;ViewTitle&#39;):&#39;en&#39; }}
- *</code></p>
+                <p>This pipe is primarily for rendering the current view title. Example usage:</p>
+<p>```typescript</p>
+<ul>
+<li>// where <code>viewDate</code> is a <code>Date</code> and view is <code>&#39;month&#39; | &#39;week&#39; | &#39;day&#39;</code></li>
+<li>{{ viewDate | calendarDate:(view + &#39;ViewTitle&#39;):&#39;en&#39; }}</li>
+<li>```</li>
+</ul>
 
             </p>
 
@@ -299,6 +301,7 @@ export class CalendarDatePipe implements PipeTransform {
 
 
 
+                   
 
 
 

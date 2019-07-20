@@ -64,18 +64,20 @@
             </p>
             <p class="comment">
                 <p>This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:</p>
-<p><code>typescript
- * import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from &#39;angular-calendar&#39;;
- * import moment from &#39;moment&#39;;
- *
- * // in your component
- * provide: [{
- *   provide: MOMENT, useValue: moment
- * }, {
- *   provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
- * }]
- *
- *</code></p>
+<p>```typescript</p>
+<ul>
+<li>import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from &#39;angular-calendar&#39;;</li>
+<li>import moment from &#39;moment&#39;;</li>
+<li></li>
+<li>// in your component</li>
+<li>provide: [{</li>
+<li>provide: MOMENT, useValue: moment</li>
+<li>}, {</li>
+<li>provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter</li>
+<li>}]</li>
+<li></li>
+<li>```</li>
+</ul>
 
             </p>
 
@@ -961,6 +963,7 @@ export class CalendarMomentDateFormatter
 
 
 
+                   
 
 
 
