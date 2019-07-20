@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.14](https://github.com/mattlewis92/angular-calendar/compare/v0.27.13...v0.27.14) (2019-07-20)
+
+
+### Bug Fixes
+
+* **week-view:** expose the week column to custom event template ([cb719af](https://github.com/mattlewis92/angular-calendar/commit/cb719af)), closes [#1039](https://github.com/mattlewis92/angular-calendar/issues/1039)
+
+
+### Build System
+
+* upgrade dependencies ([530afd0](https://github.com/mattlewis92/angular-calendar/commit/530afd0))
+
+
+
 ### [0.27.13](https://github.com/mattlewis92/angular-calendar/compare/v0.27.12...v0.27.13) (2019-07-13)
 
 
