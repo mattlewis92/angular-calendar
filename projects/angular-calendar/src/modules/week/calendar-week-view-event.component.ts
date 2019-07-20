@@ -5,7 +5,11 @@ import {
   EventEmitter,
   TemplateRef
 } from '@angular/core';
-import { WeekViewAllDayEvent, DayViewEvent } from 'calendar-utils';
+import {
+  WeekViewAllDayEvent,
+  DayViewEvent,
+  WeekViewHourColumn
+} from 'calendar-utils';
 import { PlacementArray } from 'positioning';
 
 @Component({
@@ -20,6 +24,7 @@ import { PlacementArray } from 'positioning';
       let-tooltipAppendToBody="tooltipAppendToBody"
       let-tooltipDisabled="tooltipDisabled"
       let-tooltipDelay="tooltipDelay"
+      let-column="column"
     >
       <div
         class="cal-event"
@@ -63,7 +68,8 @@ import { PlacementArray } from 'positioning';
         tooltipTemplate: tooltipTemplate,
         tooltipAppendToBody: tooltipAppendToBody,
         tooltipDisabled: tooltipDisabled,
-        tooltipDelay: tooltipDelay
+        tooltipDelay: tooltipDelay,
+        column: column
       }"
     >
     </ng-template>
@@ -87,6 +93,8 @@ export class CalendarWeekViewEventComponent {
   @Input() eventActionsTemplate: TemplateRef<any>;
 
   @Input() tooltipTemplate: TemplateRef<any>;
+
+  @Input() column: WeekViewHourColumn;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
 }

@@ -299,6 +299,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [customTemplate]="eventTemplate"
                 [eventTitleTemplate]="eventTitleTemplate"
                 [eventActionsTemplate]="eventActionsTemplate"
+                [column]="column"
                 (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
               >
               </mwl-calendar-week-view-event>
