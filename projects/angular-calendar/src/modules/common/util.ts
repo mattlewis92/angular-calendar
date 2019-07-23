@@ -142,27 +142,29 @@ export function getWeekViewPeriod(
   viewDate: Date,
   weekStartsOn: number,
   excluded: number[] = [],
-  daysInWeek?: number
+  daysInWeek?: number,
+  timezone?: string
 ): { viewStart: Date; viewEnd: Date } {
+  const tzDateAdapter = dateAdapter.withTimezone(timezone);
   let viewStart = daysInWeek
-    ? dateAdapter.startOfDay(viewDate)
-    : dateAdapter.startOfWeek(viewDate, { weekStartsOn });
-  if (excluded.indexOf(dateAdapter.getDay(viewStart)) > -1) {
-    viewStart = dateAdapter.subDays(
-      addDaysWithExclusions(dateAdapter, viewStart, 1, excluded),
+    ? tzDateAdapter.startOfDay(viewDate)
+    : tzDateAdapter.startOfWeek(viewDate, { weekStartsOn });
+  if (excluded.indexOf(tzDateAdapter.getDay(viewStart)) > -1) {
+    viewStart = tzDateAdapter.subDays(
+      addDaysWithExclusions(tzDateAdapter, viewStart, 1, excluded),
       1
     );
   }
   if (daysInWeek) {
-    const viewEnd = dateAdapter.endOfDay(
-      addDaysWithExclusions(dateAdapter, viewStart, daysInWeek - 1, excluded)
+    const viewEnd = tzDateAdapter.endOfDay(
+      addDaysWithExclusions(tzDateAdapter, viewStart, daysInWeek - 1, excluded)
     );
     return { viewStart, viewEnd };
   } else {
-    let viewEnd = dateAdapter.endOfWeek(viewDate, { weekStartsOn });
-    if (excluded.indexOf(dateAdapter.getDay(viewEnd)) > -1) {
-      viewEnd = dateAdapter.addDays(
-        addDaysWithExclusions(dateAdapter, viewEnd, -1, excluded),
+    let viewEnd = tzDateAdapter.endOfWeek(viewDate, { weekStartsOn });
+    if (excluded.indexOf(tzDateAdapter.getDay(viewEnd)) > -1) {
+      viewEnd = tzDateAdapter.addDays(
+        addDaysWithExclusions(tzDateAdapter, viewEnd, -1, excluded),
         1
       );
     }

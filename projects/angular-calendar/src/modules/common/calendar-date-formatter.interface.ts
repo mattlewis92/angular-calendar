@@ -27,6 +27,11 @@ export interface DateFormatterParams {
    * The first day of the week will always be the `viewDate`
    */
   daysInWeek?: number;
+
+  /**
+   * The date timezone
+   */
+  timezone?: string;
 }
 
 /**

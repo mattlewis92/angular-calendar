@@ -323,6 +323,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() snapDraggedEvents: boolean = true;
 
   /**
+   * The current timezone
+   */
+  @Input()
+  timezone: string;
+
+  /**
    * Called when an event title is clicked
    */
   @Output()
@@ -664,36 +670,42 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHourGrid(): void {
-    this.hours = this.utils.getDayViewHourGrid({
-      viewDate: this.viewDate,
-      hourSegments: this.hourSegments,
-      dayStart: {
-        hour: this.dayStartHour,
-        minute: this.dayStartMinute
+    this.hours = this.utils.getDayViewHourGrid(
+      {
+        viewDate: this.viewDate,
+        hourSegments: this.hourSegments,
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        }
       },
-      dayEnd: {
-        hour: this.dayEndHour,
-        minute: this.dayEndMinute
-      }
-    });
+      this.timezone
+    );
   }
 
   private refreshView(): void {
-    this.view = this.utils.getDayView({
-      events: this.events,
-      viewDate: this.viewDate,
-      hourSegments: this.hourSegments,
-      dayStart: {
-        hour: this.dayStartHour,
-        minute: this.dayStartMinute
+    this.view = this.utils.getDayView(
+      {
+        events: this.events,
+        viewDate: this.viewDate,
+        hourSegments: this.hourSegments,
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        },
+        eventWidth: this.eventWidth,
+        segmentHeight: this.hourSegmentHeight
       },
-      dayEnd: {
-        hour: this.dayEndHour,
-        minute: this.dayEndMinute
-      },
-      eventWidth: this.eventWidth,
-      segmentHeight: this.hourSegmentHeight
-    });
+      this.timezone
+    );
   }
 
   private refreshAll(): void {

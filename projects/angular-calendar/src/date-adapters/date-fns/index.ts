@@ -25,6 +25,9 @@ export function adapterFactory(): DateAdapter {
     setMonth,
     setYear,
     getDate,
-    getYear
+    getYear,
+    withTimezone(timezone: string): DateAdapter {
+      return this;
+    }
   };
 }

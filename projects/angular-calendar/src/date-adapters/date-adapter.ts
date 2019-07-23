@@ -94,4 +94,6 @@ export abstract class DateAdapter implements BaseDateAdapter {
   abstract getHours(date: Date | string | number): number;
 
   abstract getMinutes(date: Date | string | number): number;
+
+  abstract withTimezone(timezone: string): DateAdapter;
 }

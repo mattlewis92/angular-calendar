@@ -495,6 +495,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() daysInWeek: number;
 
   /**
+   * The current timezone
+   */
+  @Input()
+  timezone: string;
+
+  /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
    */
   @Output()
@@ -989,19 +995,23 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private refreshHeader(): void {
-    this.days = this.utils.getWeekViewHeader({
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      weekendDays: this.weekendDays,
-      ...getWeekViewPeriod(
-        this.dateAdapter,
-        this.viewDate,
-        this.weekStartsOn,
-        this.excludeDays,
-        this.daysInWeek
-      )
-    });
+    this.days = this.utils.getWeekViewHeader(
+      {
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays,
+        ...getWeekViewPeriod(
+          this.dateAdapter,
+          this.viewDate,
+          this.weekStartsOn,
+          this.excludeDays,
+          this.daysInWeek,
+          this.timezone
+        )
+      },
+      this.timezone
+    );
   }
 
   private refreshBody(): void {
@@ -1024,32 +1034,36 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private getWeekView(events: CalendarEvent[]) {
-    return this.utils.getWeekView({
-      events,
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      precision: this.precision,
-      absolutePositionedEvents: true,
-      hourSegments: this.hourSegments,
-      dayStart: {
-        hour: this.dayStartHour,
-        minute: this.dayStartMinute
+    return this.utils.getWeekView(
+      {
+        events,
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        precision: this.precision,
+        absolutePositionedEvents: true,
+        hourSegments: this.hourSegments,
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        },
+        segmentHeight: this.hourSegmentHeight,
+        weekendDays: this.weekendDays,
+        ...getWeekViewPeriod(
+          this.dateAdapter,
+          this.viewDate,
+          this.weekStartsOn,
+          this.excludeDays,
+          this.daysInWeek,
+          this.timezone
+        )
       },
-      dayEnd: {
-        hour: this.dayEndHour,
-        minute: this.dayEndMinute
-      },
-      segmentHeight: this.hourSegmentHeight,
-      weekendDays: this.weekendDays,
-      ...getWeekViewPeriod(
-        this.dateAdapter,
-        this.viewDate,
-        this.weekStartsOn,
-        this.excludeDays,
-        this.daysInWeek
-      )
-    });
+      this.timezone
+    );
   }
 
   private getDragMovedEventTimes(

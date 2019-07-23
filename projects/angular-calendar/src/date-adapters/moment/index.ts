@@ -63,6 +63,10 @@ export function adapterFactory(moment): DateAdapter {
 
     getYear(date: Date | string | number): number {
       return moment(date).year();
+    },
+
+    withTimezone(timezone: string): DateAdapter {
+      return this;
     }
   };
 }

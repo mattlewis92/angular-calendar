@@ -116,6 +116,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               "
               (dragMove)="dragMove($event.timeEvent, $event.event)"
               (dragEnded)="dragEnded($event.timeEvent, $event.event)"
+              mwlDroppable
+              (drop)="eventDropped($event, days ? days[i].date : null, false)"
             >
             </mwl-calendar-week-list-view-day>
           </div>
@@ -280,6 +282,12 @@ export class CalendarWeekListViewComponent
    */
   @Input()
   dayTemplate: TemplateRef<any>;
+
+  /**
+   * The current timezone
+   */
+  @Input()
+  timezone: string;
 
   /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
@@ -622,19 +630,23 @@ export class CalendarWeekListViewComponent
   }
 
   private refreshHeader(): void {
-    this.days = this.utils.getWeekViewHeader({
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      weekendDays: this.weekendDays,
-      ...getWeekViewPeriod(
-        this.dateAdapter,
-        this.viewDate,
-        this.weekStartsOn,
-        this.excludeDays,
-        this.daysInWeek
-      )
-    });
+    this.days = this.utils.getWeekViewHeader(
+      {
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays,
+        ...getWeekViewPeriod(
+          this.dateAdapter,
+          this.viewDate,
+          this.weekStartsOn,
+          this.excludeDays,
+          this.daysInWeek,
+          this.timezone
+        )
+      },
+      this.timezone
+    );
   }
 
   private refreshBody(): void {
@@ -657,32 +669,36 @@ export class CalendarWeekListViewComponent
   }
 
   private getWeekView(events: CalendarEvent[]) {
-    return this.utils.getWeekView({
-      events,
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      precision: this.precision,
-      absolutePositionedEvents: true,
-      hourSegments: this.hourSegments,
-      dayStart: {
-        hour: this.dayStartHour,
-        minute: this.dayStartMinute
+    return this.utils.getWeekView(
+      {
+        events,
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        precision: this.precision,
+        absolutePositionedEvents: true,
+        hourSegments: this.hourSegments,
+        dayStart: {
+          hour: this.dayStartHour,
+          minute: this.dayStartMinute
+        },
+        dayEnd: {
+          hour: this.dayEndHour,
+          minute: this.dayEndMinute
+        },
+        segmentHeight: this.hourSegmentHeight,
+        weekendDays: this.weekendDays,
+        ...getWeekViewPeriod(
+          this.dateAdapter,
+          this.viewDate,
+          this.weekStartsOn,
+          this.excludeDays,
+          this.daysInWeek,
+          this.timezone
+        )
       },
-      dayEnd: {
-        hour: this.dayEndHour,
-        minute: this.dayEndMinute
-      },
-      segmentHeight: this.hourSegmentHeight,
-      weekendDays: this.weekendDays,
-      ...getWeekViewPeriod(
-        this.dateAdapter,
-        this.viewDate,
-        this.weekStartsOn,
-        this.excludeDays,
-        this.daysInWeek
-      )
-    });
+      this.timezone
+    );
   }
 
   private getDragMovedEventTimes(

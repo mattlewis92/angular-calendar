@@ -22,23 +22,26 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
 export class CalendarUtils {
   constructor(protected dateAdapter: DateAdapter) {}
 
-  getMonthView(args: GetMonthViewArgs): MonthView {
-    return getMonthView(this.dateAdapter, args);
+  getMonthView(args: GetMonthViewArgs, timezone?: string): MonthView {
+    return getMonthView(this.dateAdapter.withTimezone(timezone), args);
   }
 
-  getWeekViewHeader(args: GetWeekViewHeaderArgs): WeekDay[] {
-    return getWeekViewHeader(this.dateAdapter, args);
+  getWeekViewHeader(args: GetWeekViewHeaderArgs, timezone?: string): WeekDay[] {
+    return getWeekViewHeader(this.dateAdapter.withTimezone(timezone), args);
   }
 
-  getWeekView(args: GetWeekViewArgs): WeekView {
-    return getWeekView(this.dateAdapter, args);
+  getWeekView(args: GetWeekViewArgs, timezone?: string): WeekView {
+    return getWeekView(this.dateAdapter.withTimezone(timezone), args);
   }
 
-  getDayView(args: GetDayViewArgs): DayView {
-    return getDayView(this.dateAdapter, args);
+  getDayView(args: GetDayViewArgs, timezone?: string): DayView {
+    return getDayView(this.dateAdapter.withTimezone(timezone), args);
   }
 
-  getDayViewHourGrid(args: GetDayViewHourGridArgs): DayViewHour[] {
-    return getDayViewHourGrid(this.dateAdapter, args);
+  getDayViewHourGrid(
+    args: GetDayViewHourGridArgs,
+    timezone?: string
+  ): DayViewHour[] {
+    return getDayViewHourGrid(this.dateAdapter.withTimezone(timezone), args);
   }
 }

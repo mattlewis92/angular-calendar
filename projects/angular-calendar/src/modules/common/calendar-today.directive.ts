@@ -28,6 +28,11 @@ export class CalendarTodayDirective {
   @Input() viewDate: Date;
 
   /**
+   * The timezone of the date
+   */
+  @Input() timezone: string;
+
+  /**
    * Called when the view date is changed
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
@@ -39,6 +44,8 @@ export class CalendarTodayDirective {
    */
   @HostListener('click')
   onClick(): void {
-    this.viewDateChange.emit(this.dateAdapter.startOfDay(new Date()));
+    this.viewDateChange.emit(
+      this.dateAdapter.withTimezone(this.timezone).startOfDay(new Date())
+    );
   }
 }

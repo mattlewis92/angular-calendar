@@ -219,6 +219,12 @@ export class CalendarMonthViewComponent
   @Input() weekendDays: number[];
 
   /**
+   * The current timezone
+   */
+  @Input()
+  timezone: string;
+
+  /**
    * An output that will be called before the view is rendered for the current month.
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
@@ -417,22 +423,28 @@ export class CalendarMonthViewComponent
   }
 
   private refreshHeader(): void {
-    this.columnHeaders = this.utils.getWeekViewHeader({
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      weekendDays: this.weekendDays
-    });
+    this.columnHeaders = this.utils.getWeekViewHeader(
+      {
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays
+      },
+      this.timezone
+    );
   }
 
   private refreshBody(): void {
-    this.view = this.utils.getMonthView({
-      events: this.events,
-      viewDate: this.viewDate,
-      weekStartsOn: this.weekStartsOn,
-      excluded: this.excludeDays,
-      weekendDays: this.weekendDays
-    });
+    this.view = this.utils.getMonthView(
+      {
+        events: this.events,
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays
+      },
+      this.timezone
+    );
   }
 
   private checkActiveDayIsOpen(): void {
