@@ -2,7 +2,6 @@ import { LOCALE_ID, Inject } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { pluralize } from './util';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 /**
  * This class is responsible for adding accessibility to the calendar.
@@ -12,18 +11,12 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
  * ```typescript
  * import { Injectable, Inject, LOCALE_ID } from '@angular/core';
  * import { CalendarA11y } from 'angular-calendar';
- * import { LiveAnnouncer } from '@angular/cdk/a11y';
  *
  * export class CalendarA11yService extends CalendarA11y {
  *   locale: string;
- *   liveAnnouncer: LiveAnnouncer;
- *   constructor(
- *     @Inject(LOCALE_ID) locale: string,
- *     liveAnnouncer: LiveAnnouncer
- *   ) {
- *     super(locale, liveAnnouncer);
+ *   constructor(@Inject(LOCALE_ID) locale: string) {
+ *     super(locale);
  *     this.locale = locale;
- *     this.liveAnnouncer = liveAnnouncer;
  *   }
  *
  *   // overriding a function
@@ -42,8 +35,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
  */
 export class CalendarA11y {
   constructor(
-    @Inject(LOCALE_ID) public locale: string,
-    public liveAnnouncer: LiveAnnouncer
+    @Inject(LOCALE_ID) public locale: string
   ) {}
 
   /**
