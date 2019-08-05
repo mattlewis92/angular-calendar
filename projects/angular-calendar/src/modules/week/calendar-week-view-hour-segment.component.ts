@@ -12,6 +12,7 @@ import { WeekViewHourColumn } from 'calendar-utils';
       let-isTimeLabel="isTimeLabel"
     >
       <div
+        aria-hidden="a11y.hideWeekHourSeg()"
         class="cal-hour-segment"
         [style.height.px]="segmentHeight"
         [class.cal-hour-start]="segment.isStart"

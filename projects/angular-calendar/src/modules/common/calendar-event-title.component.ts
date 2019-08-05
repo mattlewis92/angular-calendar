@@ -1,5 +1,6 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
+import { CalendarA11y } from './calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-event-title',
@@ -8,6 +9,7 @@ import { CalendarEvent } from 'calendar-utils';
       <span
         class="cal-event-title"
         [innerHTML]="event.title | calendarEventTitle: view:event"
+        aria-hidden="a11y.hideEventTitle()"
       >
       </span>
     </ng-template>
@@ -27,4 +29,6 @@ export class CalendarEventTitleComponent {
   @Input() customTemplate: TemplateRef<any>;
 
   @Input() view: string;
+
+  constructor(public a11y: CalendarA11y) {}
 }

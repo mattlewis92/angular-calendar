@@ -15,6 +15,7 @@ import {
 } from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
+import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
   state(
@@ -50,7 +51,22 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       let-trackByEventId="trackByEventId"
       let-validateDrag="validateDrag"
     >
-      <div class="cal-open-day-events" [@collapse] *ngIf="isOpen">
+      <div
+        class="cal-open-day-events"
+        [@collapse]
+        *ngIf="isOpen"
+        role="application"
+      >
+        <span
+          tabindex="-1"
+          role="alert"
+          attr.aria-label="{{ a11y.openDayEventsAlert(date) }}"
+        ></span>
+        <span
+          tabindex="0"
+          role="landmark"
+          attr.aria-label="{{ a11y.openDayEventsLM(date) }}"
+        ></span>
         <div
           *ngFor="let event of events; trackBy: trackByEventId"
           [ngClass]="event?.cssClass"
@@ -72,6 +88,9 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             [customTemplate]="eventTitleTemplate"
             view="month"
             (mwlClick)="eventClicked.emit({ event: event })"
+            (mwlKeydown)="eventClicked.emit({ event: event })"
+            tabindex="0"
+            attr.aria-label="{{ a11y.eventDescription(event) }}"
           >
           </mwl-calendar-event-title>
           &ngsp;
@@ -108,6 +127,8 @@ export class CalendarOpenDayEventsComponent {
 
   @Input() eventActionsTemplate: TemplateRef<any>;
 
+  @Input() date: Date;
+
   @Output()
   eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
     event: CalendarEvent;
@@ -116,4 +137,6 @@ export class CalendarOpenDayEventsComponent {
   trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
+
+  constructor(public a11y: CalendarA11y) {}
 }

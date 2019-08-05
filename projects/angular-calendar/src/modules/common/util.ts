@@ -174,3 +174,52 @@ export function isWithinThreshold({ x, y }: { x: number; y: number }) {
   const DRAG_THRESHOLD = 1;
   return Math.abs(x) > DRAG_THRESHOLD || Math.abs(y) > DRAG_THRESHOLD;
 }
+
+/**
+ * Determines if a string ends with any of the items in the list of endings
+ * @param pStr string to evaluate
+ * @param setOfEndings list of endings to check
+ * @return does it end with any of the given endings?
+ */
+export function endsWith(pStr: string, setOfEndings: string[]): boolean {
+  for (const end of setOfEndings) {
+    if (pStr.endsWith(end)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Takes a string and determines if it needs to pluralize it based on a given number.
+ * If it does need to pluralize, it does so correctly following English rules
+ *
+ * @example
+ *   'volunteer' => 'volunteers'  // Simply append an 's'
+ *   'puppy' => 'puppies'         // Replace 'y' with 'ies'
+ *   'boy' => 'boys'              // Append an 's' b/c 'o' is vowel
+ *   'catch' => 'catches'         // Append 'es' since ends w/ 'ch'
+ * @param str the non-plural string
+ * @param count the number to determine pluralization
+ * @param includeCount (optional) should the result include the number in the beginning? (default: false)
+ * @return the final pluralized *(if needed)* string
+ */
+export function pluralize(
+  str: string,
+  count: number,
+  includeCount: boolean = false
+): string {
+  const countStr = includeCount ? count.toString() + ' ' : '';
+  if (count === 1) {
+    // No need to pluralize
+    return countStr + str;
+  }
+  if (endsWith(str, ['s', 'x', 'z', 'ch', 'sh'])) {
+    return countStr + str + 'es';
+  }
+  if (str.endsWith('y') && !endsWith(str, ['ay', 'ey', 'iy', 'oy', 'uy'])) {
+    // Ends with y and doesn't have a vowel preceeding the y
+    return countStr + str.replace(/.$/, 'ies');
+  }
+  return countStr + str + 's';
+}
