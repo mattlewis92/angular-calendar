@@ -27,7 +27,6 @@ import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { PlacementArray } from 'positioning';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -55,13 +54,14 @@ export interface CalendarMonthViewEventTimesChangedEvent<
 @Component({
   selector: 'mwl-calendar-month-view',
   template: `
-    <div class="cal-month-view" role="grid">
+    <div class="cal-month-view">
       <mwl-calendar-month-view-header
         [days]="columnHeaders"
         [locale]="locale"
         (columnHeaderClicked)="columnHeaderClicked.emit($event)"
         [customTemplate]="headerTemplate"
       >
+        >
       </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div
@@ -86,8 +86,6 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [ngStyle]="{ backgroundColor: day.backgroundColor }"
               (mwlClick)="dayClicked.emit({ day: day })"
               [clickListenerDisabled]="dayClicked.observers.length === 0"
-              (mwlKeydown)="dayClicked.emit({ day: day })"
-              [keydownListenerDisabled]="dayClicked.observers.length === 0"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -100,14 +98,12 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                 )
               "
               (eventClicked)="eventClicked.emit({ event: $event.event })"
-              tabindex="0"
             >
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
-            [date]="openDay?.date"
             [customTemplate]="openDayEventsTemplate"
             [eventTitleTemplate]="eventTitleTemplate"
             [eventActionsTemplate]="eventActionsTemplate"
@@ -304,8 +300,7 @@ export class CalendarMonthViewComponent
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-    public a11y: CalendarA11y
+    protected dateAdapter: DateAdapter
   ) {
     this.locale = locale;
   }

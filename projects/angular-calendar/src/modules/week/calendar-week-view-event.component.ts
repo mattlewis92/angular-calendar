@@ -11,7 +11,6 @@ import {
   WeekViewHourColumn
 } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-week-view-event',
@@ -45,10 +44,6 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
         [tooltipAppendToBody]="tooltipAppendToBody"
         [tooltipDelay]="tooltipDelay"
         (mwlClick)="eventClicked.emit()"
-        (mwlKeydown)="eventClicked.emit()"
-        tabindex="0"
-        role="application"
-        attr.aria-label="{{ a11y.eventDescription(weekEvent.event) }}"
       >
         <mwl-calendar-event-actions
           [event]="weekEvent.event"
@@ -102,6 +97,4 @@ export class CalendarWeekViewEventComponent {
   @Input() column: WeekViewHourColumn;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
-
-  constructor(public a11y: CalendarA11y) {}
 }

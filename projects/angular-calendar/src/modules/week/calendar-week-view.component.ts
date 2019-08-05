@@ -79,7 +79,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
-    <div class="cal-week-view" role="grid">
+    <div class="cal-week-view">
       <mwl-calendar-week-view-header
         [days]="days"
         [locale]="locale"

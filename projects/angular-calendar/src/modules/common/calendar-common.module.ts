@@ -12,17 +12,14 @@ import { CalendarTodayDirective } from './calendar-today.directive';
 import { CalendarDatePipe } from './calendar-date.pipe';
 import { CalendarEventTitlePipe } from './calendar-event-title.pipe';
 import { ClickDirective } from './click.directive';
-import { KeydownDirective } from './keydown.directive';
 import { CalendarEventTitleFormatter } from './calendar-event-title-formatter.provider';
 import { CalendarDateFormatter } from './calendar-date-formatter.provider';
 import { CalendarUtils } from './calendar-utils.provider';
-import { CalendarA11y } from './calendar-a11y.provider';
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
   utils?: Provider;
-  a11y?: Provider;
 }
 
 export * from './calendar-event-title-formatter.provider';
@@ -70,8 +67,7 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    ClickDirective,
-    KeydownDirective
+    ClickDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -84,8 +80,7 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    ClickDirective,
-    KeydownDirective
+    ClickDirective
   ],
   entryComponents: [CalendarTooltipWindowComponent]
 })
@@ -100,8 +95,7 @@ export class CalendarCommonModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils,
-        config.a11y || CalendarA11y
+        config.utils || CalendarUtils
       ]
     };
   }

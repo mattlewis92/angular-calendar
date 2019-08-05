@@ -8,7 +8,6 @@ import {
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
 import { PlacementArray } from 'positioning';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -28,15 +27,13 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
       let-trackByEventId="trackByEventId"
       let-validateDrag="validateDrag"
     >
-      <div class="cal-cell-top" attr.aria-label="{{ a11y.monthCell(day) }}">
-        <span aria-hidden="true">
-          <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
-            day.badgeTotal
-          }}</span>
-          <span class="cal-day-number">{{
-            day.date | calendarDate: 'monthViewDayNumber':locale
-          }}</span>
-        </span>
+      <div class="cal-cell-top">
+        <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
+          day.badgeTotal
+        }}</span>
+        <span class="cal-day-number">{{
+          day.date | calendarDate: 'monthViewDayNumber':locale
+        }}</span>
       </div>
       <div class="cal-events" *ngIf="day.events.length > 0">
         <div
@@ -61,7 +58,6 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
           (mwlClick)="eventClicked.emit({ event: event })"
-          aria-hidden="a11y.hideMonthCellEvents()"
         ></div>
       </div>
     </ng-template>
@@ -126,6 +122,4 @@ export class CalendarMonthCellComponent {
   trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
-
-  constructor(public a11y: CalendarA11y) {}
 }

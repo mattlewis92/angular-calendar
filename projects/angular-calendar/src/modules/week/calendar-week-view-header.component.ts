@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
 import { trackByWeekDayHeaderDate } from '../common/util';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-week-view-header',
@@ -20,7 +19,7 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
       let-eventDropped="eventDropped"
       let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
     >
-      <div class="cal-day-headers" role="row">
+      <div class="cal-day-headers">
         <div
           class="cal-header"
           *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
@@ -38,8 +37,6 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
               newStart: day.date
             })
           "
-          tabindex="0"
-          role="columnheader"
         >
           <b>{{ day.date | calendarDate: 'weekViewColumnHeader':locale }}</b
           ><br />
@@ -81,6 +78,4 @@ export class CalendarWeekViewHeaderComponent {
   }> = new EventEmitter<{ event: CalendarEvent; newStart: Date }>();
 
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
-
-  constructor(public a11y: CalendarA11y) {}
 }

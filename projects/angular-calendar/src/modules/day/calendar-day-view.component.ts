@@ -207,7 +207,6 @@ export interface DayViewEventResize {
             dragOverClass="cal-drag-over"
             dragActiveClass="cal-drag-active"
             (drop)="eventDropped($event, segment.date, false)"
-            aria-hidden="a11y.hideDayHourSeg()"
           >
           </mwl-calendar-day-view-hour-segment>
         </div>
@@ -483,7 +482,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.dayStartMinute ||
       changes.dayEndHour ||
       changes.dayEndMinute ||
-      changes.eventWidth ||
+      changes.eventWidth  ||
       changes.hourSegments;
 
     if (refreshHourGrid) {
