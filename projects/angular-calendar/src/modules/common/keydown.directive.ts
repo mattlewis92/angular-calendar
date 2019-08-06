@@ -54,9 +54,9 @@ export class KeydownDirective implements OnInit, OnDestroy {
         .subscribe(event => {
           // prevent default override of the enter key
           if (
-            event.keyCode == 13 ||
-            event.which == 13 ||
-            event.key == 'Enter'
+            event.keyCode === 13 ||
+            event.which === 13 ||
+            event.key === 'Enter'
           ) {
             event.preventDefault();
           }
@@ -73,9 +73,9 @@ export class KeydownDirective implements OnInit, OnDestroy {
           if (isThisClickableElement) {
             this.zone.run(() => {
               if (
-                event.keyCode == 13 ||
-                event.which == 13 ||
-                event.key == 'Enter'
+                event.keyCode === 13 ||
+                event.which === 13 ||
+                event.key === 'Enter'
               ) {
                 this.keydown.next(event);
               }

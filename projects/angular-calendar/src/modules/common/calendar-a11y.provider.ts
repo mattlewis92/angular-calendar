@@ -34,9 +34,7 @@ import { pluralize } from './util';
  * ```
  */
 export class CalendarA11y {
-  constructor(
-    @Inject(LOCALE_ID) public locale: string
-  ) {}
+  constructor(@Inject(LOCALE_ID) public locale: string) {}
 
   /**
    * Aria label for the badges/date of a cell
@@ -83,11 +81,11 @@ export class CalendarA11y {
    * @example: `Saturday October 19th, Scott's Pizza Party, from 11:00am to 5:00pm`
    */
   eventDescription(event: CalendarEvent): string {
-    if (event.allDay == true) {
+    if (event.allDay === true) {
       return this.allDayEventDescription(event);
     }
 
-    let aria = `
+    const aria = `
       ${formatDate(event.start, 'EEEE MMMM dd', this.locale)},
       ${event.title}, from ${formatDate(event.start, 'hh:mm a', this.locale)}
     `;
@@ -103,7 +101,7 @@ export class CalendarA11y {
    * `Scott's Party, event spans multiple days: start time October 19 5:00pm, no stop time`
    */
   allDayEventDescription(event: CalendarEvent): string {
-    let aria = `
+    const aria = `
       ${event.title}, event spans multiple days:
       start time ${formatDate(event.start, 'MMMM dd hh:mm a', this.locale)}
     `;
