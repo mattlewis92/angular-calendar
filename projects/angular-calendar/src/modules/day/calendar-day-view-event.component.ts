@@ -39,7 +39,9 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
         (mwlKeydown)="eventClicked.emit()"
         tabindex="0"
         role="application"
-        attr.aria-label="{{ a11y.eventDescription(dayEvent.event) }}"
+        attr.aria-label="{{
+          { event: dayEvent.event } | calendarA11y: 'eventDescription'
+        }}"
       >
         <mwl-calendar-event-actions
           [event]="dayEvent.event"

@@ -28,7 +28,12 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
       let-trackByEventId="trackByEventId"
       let-validateDrag="validateDrag"
     >
-      <div class="cal-cell-top" attr.aria-label="{{ a11y.monthCell(day) }}">
+      <div
+        class="cal-cell-top"
+        attr.aria-label="{{
+          { day: day, locale: locale } | calendarA11y: 'monthCell'
+        }}"
+      >
         <span aria-hidden="true">
           <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
             day.badgeTotal

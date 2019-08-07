@@ -60,12 +60,16 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         <span
           tabindex="-1"
           role="alert"
-          attr.aria-label="{{ a11y.openDayEventsAlert(date) }}"
+          attr.aria-label="{{
+            { date: date } | calendarA11y: 'openDayEventsAlert'
+          }}"
         ></span>
         <span
           tabindex="0"
           role="landmark"
-          attr.aria-label="{{ a11y.openDayEventsLM(date) }}"
+          attr.aria-label="{{
+            { date: date } | calendarA11y: 'openDayEventsLM'
+          }}"
         ></span>
         <div
           *ngFor="let event of events; trackBy: trackByEventId"
@@ -90,7 +94,9 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             (mwlClick)="eventClicked.emit({ event: event })"
             (mwlKeydown)="eventClicked.emit({ event: event })"
             tabindex="0"
-            attr.aria-label="{{ a11y.eventDescription(event) }}"
+            attr.aria-label="{{
+              { event: event } | calendarA11y: 'eventDescription'
+            }}"
           >
           </mwl-calendar-event-title>
           &ngsp;

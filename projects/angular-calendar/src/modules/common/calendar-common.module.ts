@@ -17,6 +17,7 @@ import { CalendarEventTitleFormatter } from './calendar-event-title-formatter.pr
 import { CalendarDateFormatter } from './calendar-date-formatter.provider';
 import { CalendarUtils } from './calendar-utils.provider';
 import { CalendarA11y } from './calendar-a11y.provider';
+import { CalendarA11yPipe } from './calendar-a11y.pipe';
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
@@ -31,6 +32,8 @@ export * from './calendar-native-date-formatter.provider';
 export * from './calendar-angular-date-formatter.provider';
 export * from './calendar-date-formatter.provider';
 export * from './calendar-utils.provider';
+export * from './calendar-a11y.provider';
+export * from './calendar-a11y.interface';
 export * from './calendar-date-formatter.interface';
 export * from './calendar-event-times-changed-event.interface';
 export * from '../../date-adapters/date-adapter';
@@ -70,6 +73,7 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
+    CalendarA11yPipe,
     ClickDirective,
     KeydownDirective
   ],
@@ -84,6 +88,7 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
+    CalendarA11yPipe,
     ClickDirective,
     KeydownDirective
   ],

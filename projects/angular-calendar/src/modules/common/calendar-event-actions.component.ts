@@ -21,7 +21,9 @@ import { CalendarA11y } from './calendar-a11y.provider';
           [innerHtml]="action.label"
           tabindex="0"
           role="button"
-          attr.aria-label="{{ a11y.actionButtonLabel(action.label) }}"
+          attr.aria-label="{{
+            { label: action.label } | calendarA11y: 'actionButtonLabel'
+          }}"
         >
         </a>
       </span>

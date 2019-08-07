@@ -1,6 +1,6 @@
-import { LOCALE_ID, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { MonthViewDay, CalendarEvent } from 'calendar-utils';
+import { A11yParams, CalendarA11yInterface } from './calendar-a11y.interface';
 import { pluralize } from './util';
 
 /**
@@ -9,46 +9,49 @@ import { pluralize } from './util';
  * For example:
  *
  * ```typescript
- * import { Injectable, Inject, LOCALE_ID } from '@angular/core';
- * import { CalendarA11y } from 'angular-calendar';
+ * import { A11yParams, CalendarA11y } from 'angular-calendar';
+ * import { formatDate } from '@angular/common';
  *
- * export class CalendarA11yService extends CalendarA11y {
- *   locale: string;
- *   constructor(@Inject(LOCALE_ID) locale: string) {
- *     super(locale);
- *     this.locale = locale;
- *   }
- *
- *   // overriding a function
- *   hideMonthCellEvents(): boolean {
- *     return false;
- *   }
- *
+ * // adding your own a11y params
+ * export interface CustomA11yParams extends A11yParams {
+ *   isDrSuess?: boolean;
  * }
  *
- * // in your component
+ * export class CustomCalendarA11y extends CalendarA11y {
+ *   // overriding a function
+ *   public openDayEventsLM({ date, locale, isDrSuess }: CustomA11yParams): string {
+ *     if (isDrSuess) {
+ *       return `
+ *         ${formatDate(date, 'EEEE MMMM d', locale)}
+ *          Today you are you! That is truer than true! There is no one alive
+ *          who is you-er than you!
+ *       `;
+ *     }
+ *   }
+ * }
+ *
+ * // in your component that uses the calendar
  * providers: [{
  *  provide: CalendarA11y,
  *  useClass: CustomCalendarA11y
  * }]
  * ```
  */
-export class CalendarA11y {
-  constructor(@Inject(LOCALE_ID) public locale: string) {}
-
+@Injectable()
+export class CalendarA11y implements CalendarA11yInterface {
   /**
    * Aria label for the badges/date of a cell
    * @example: `Saturday October 19 1 event`
    */
-  monthCell(day: MonthViewDay): string {
+  public monthCell({ day, locale }: A11yParams): string {
     if (day.badgeTotal > 0) {
       return `
-        ${formatDate(day.date, 'EEEE MMMM d', this.locale)}
+        ${formatDate(day.date, 'EEEE MMMM d', locale)}
          ${pluralize('event', day.badgeTotal, true)},
          click to expand
       `;
     } else {
-      return `${formatDate(day.date, 'EEEE MMMM d', this.locale)}`;
+      return `${formatDate(day.date, 'EEEE MMMM d', locale)}`;
     }
   }
 
@@ -56,13 +59,9 @@ export class CalendarA11y {
    * Aria label for the open day events start landmark
    * @example: `Saturday October 19 expanded view`
    */
-  openDayEventsLM(date: Date): string {
+  public openDayEventsLM({ date, locale }: A11yParams): string {
     return `
-      Beginning of expanded view for ${formatDate(
-        date,
-        'EEEE MMMM dd',
-        this.locale
-      )}
+      Beginning of expanded view for ${formatDate(date, 'EEEE MMMM dd', locale)}
     `;
   }
 
@@ -70,27 +69,25 @@ export class CalendarA11y {
    * Aria label for alert that a day in the month view was expanded
    * @example: `Saturday October 19 expanded`
    */
-  openDayEventsAlert(date: Date): string {
-    return `
-      ${formatDate(date, 'EEEE MMMM dd', this.locale)} expanded
-    `;
+  public openDayEventsAlert({ date, locale }: A11yParams): string {
+    return `${formatDate(date, 'EEEE MMMM dd', locale)} expanded`;
   }
 
   /**
    * Descriptive aria label for an event
    * @example: `Saturday October 19th, Scott's Pizza Party, from 11:00am to 5:00pm`
    */
-  eventDescription(event: CalendarEvent): string {
+  public eventDescription({ event, locale }: A11yParams): string {
     if (event.allDay === true) {
-      return this.allDayEventDescription(event);
+      return this.allDayEventDescription({ event, locale });
     }
 
     const aria = `
-      ${formatDate(event.start, 'EEEE MMMM dd', this.locale)},
-      ${event.title}, from ${formatDate(event.start, 'hh:mm a', this.locale)}
+      ${formatDate(event.start, 'EEEE MMMM dd', locale)},
+      ${event.title}, from ${formatDate(event.start, 'hh:mm a', locale)}
     `;
     if (event.end) {
-      return aria + ` to ${formatDate(event.end, 'hh:mm a', this.locale)}`;
+      return aria + ` to ${formatDate(event.end, 'hh:mm a', locale)}`;
     }
     return aria;
   }
@@ -100,15 +97,14 @@ export class CalendarA11y {
    * @example:
    * `Scott's Party, event spans multiple days: start time October 19 5:00pm, no stop time`
    */
-  allDayEventDescription(event: CalendarEvent): string {
+  public allDayEventDescription({ event, locale }: A11yParams): string {
     const aria = `
       ${event.title}, event spans multiple days:
-      start time ${formatDate(event.start, 'MMMM dd hh:mm a', this.locale)}
+      start time ${formatDate(event.start, 'MMMM dd hh:mm a', locale)}
     `;
     if (event.end) {
       return (
-        aria +
-        `, stop time ${formatDate(event.end, 'MMMM d hh:mm a', this.locale)}`
+        aria + `, stop time ${formatDate(event.end, 'MMMM d hh:mm a', locale)}`
       );
     }
     return aria + `, no stop time`;
@@ -118,7 +114,7 @@ export class CalendarA11y {
    * Aria label for the calendar event actions icons
    * @returns 'Edit' for fa-pencil icons, and 'Delete' for fa-times icons
    */
-  actionButtonLabel(label: string): string {
+  public actionButtonLabel({ label }: A11yParams): string {
     if (label.includes(`pencil`)) {
       return `Edit`;
     }
@@ -131,28 +127,28 @@ export class CalendarA11y {
   /**
    * @returns true if the events inside the month cell should be aria-hidden
    */
-  hideMonthCellEvents(): boolean {
+  public hideMonthCellEvents(): boolean {
     return true;
   }
 
   /**
    * @returns true if event titles should be aria-hidden (global)
    */
-  hideEventTitle(): boolean {
+  public hideEventTitle(): boolean {
     return true;
   }
 
   /**
    * @returns true if hour segments in the week view should be aria-hidden
    */
-  hideWeekHourSeg(): boolean {
+  public hideWeekHourSeg(): boolean {
     return true;
   }
 
   /**
    * @returns true if hour segments in the day view should be aria-hidden
    */
-  hideDayHourSeg(): boolean {
+  public hideDayHourSeg(): boolean {
     return true;
   }
 }
