@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
 import { trackByWeekDayHeaderDate } from '../common/util';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-week-view-header',
@@ -81,6 +80,4 @@ export class CalendarWeekViewHeaderComponent {
   }> = new EventEmitter<{ event: CalendarEvent; newStart: Date }>();
 
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
-
-  constructor(public a11y: CalendarA11y) {}
 }

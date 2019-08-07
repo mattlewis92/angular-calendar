@@ -49,7 +49,8 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
         tabindex="0"
         role="application"
         attr.aria-label="{{
-          { event: weekEvent.event } | calendarA11y: 'eventDescription'
+          { event: weekEvent.event, locale: locale }
+            | calendarA11y: 'eventDescription'
         }}"
       >
         <mwl-calendar-event-actions
@@ -83,6 +84,8 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
   `
 })
 export class CalendarWeekViewEventComponent {
+  @Input() locale: string;
+
   @Input() weekEvent: WeekViewAllDayEvent | DayViewEvent;
 
   @Input() tooltipPlacement: PlacementArray;

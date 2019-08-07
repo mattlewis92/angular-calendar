@@ -89,6 +89,7 @@ export interface DayViewEventResize {
       >
         <mwl-calendar-day-view-event
           *ngFor="let event of view.allDayEvents; trackBy: trackByEventId"
+          [locale]="locale"
           [ngClass]="event.cssClass"
           [dayEvent]="{ event: event }"
           [tooltipPlacement]="tooltipPlacement"

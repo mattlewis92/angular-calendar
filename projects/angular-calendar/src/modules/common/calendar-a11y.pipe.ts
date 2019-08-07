@@ -19,7 +19,10 @@ export class CalendarA11yPipe implements PipeTransform {
   ) {}
 
   transform(a11yParams: A11yParams, method: string): string {
+    console.log('-----------------');
+    console.log(a11yParams.locale);
     a11yParams.locale = a11yParams.locale || this.locale;
+    console.log(a11yParams.locale);
     if (typeof this.calendarA11y[method] === 'undefined') {
       const allowedMethods = Object.getOwnPropertyNames(
         Object.getPrototypeOf(CalendarA11y.prototype)

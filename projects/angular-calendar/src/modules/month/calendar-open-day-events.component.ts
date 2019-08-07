@@ -61,14 +61,14 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
           tabindex="-1"
           role="alert"
           attr.aria-label="{{
-            { date: date } | calendarA11y: 'openDayEventsAlert'
+            { date: date, locale: locale } | calendarA11y: 'openDayEventsAlert'
           }}"
         ></span>
         <span
           tabindex="0"
           role="landmark"
           attr.aria-label="{{
-            { date: date } | calendarA11y: 'openDayEventsLM'
+            { date: date, locale: locale } | calendarA11y: 'openDayEventsLM'
           }}"
         ></span>
         <div
@@ -95,7 +95,8 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             (mwlKeydown)="eventClicked.emit({ event: event })"
             tabindex="0"
             attr.aria-label="{{
-              { event: event } | calendarA11y: 'eventDescription'
+              { event: event, locale: locale }
+                | calendarA11y: 'eventDescription'
             }}"
           >
           </mwl-calendar-event-title>
@@ -123,6 +124,8 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
   animations: [collapseAnimation]
 })
 export class CalendarOpenDayEventsComponent {
+  @Input() locale: string;
+
   @Input() isOpen: boolean = false;
 
   @Input() events: CalendarEvent[];

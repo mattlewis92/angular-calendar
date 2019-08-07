@@ -27,7 +27,6 @@ import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { PlacementArray } from 'positioning';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -105,6 +104,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
+            [locale]="locale"
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
             [date]="openDay?.date"
@@ -304,8 +304,7 @@ export class CalendarMonthViewComponent
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-    public a11y: CalendarA11y
+    protected dateAdapter: DateAdapter
   ) {
     this.locale = locale;
   }

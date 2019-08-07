@@ -3,13 +3,13 @@ import {
   CalendarCommonModule,
   CalendarModuleConfig,
   CalendarEventTitleFormatter,
-  CalendarDateFormatter
+  CalendarDateFormatter,
+  CalendarA11y
 } from './common/calendar-common.module';
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';
 import { CalendarDayModule } from './day/calendar-day.module';
 import { CalendarUtils } from './common/calendar-utils.provider';
-import { CalendarA11y } from './common/calendar-a11y.provider';
 
 export * from './common/calendar-common.module';
 export * from './month/calendar-month.module';
