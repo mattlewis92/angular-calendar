@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.15](https://github.com/mattlewis92/angular-calendar/compare/v0.27.14...v0.27.15) (2019-08-12)
+
+
+### Bug Fixes
+
+* **week-view:** prevent duplicate drag and drop events ([a2fb2e2](https://github.com/mattlewis92/angular-calendar/commit/a2fb2e2))
+
 ### [0.27.14](https://github.com/mattlewis92/angular-calendar/compare/v0.27.13...v0.27.14) (2019-07-20)
 
 
