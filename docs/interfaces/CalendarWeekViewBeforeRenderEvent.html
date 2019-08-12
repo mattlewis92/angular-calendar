@@ -229,8 +229,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         #allDayEventsContainer
         *ngIf&#x3D;&quot;view.allDayEventRows.length &gt; 0&quot;
         mwlDroppable
-        (dragEnter)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter + 1&quot;
-        (dragLeave)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter - 1&quot;
+        (dragEnter)&#x3D;&quot;dragEnter(&#x27;allDay&#x27;)&quot;
+        (dragLeave)&#x3D;&quot;dragLeave(&#x27;allDay&#x27;)&quot;
       &gt;
         &lt;div class&#x3D;&quot;cal-day-columns&quot;&gt;
           &lt;div
@@ -327,8 +327,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
       &lt;div
         class&#x3D;&quot;cal-time-events&quot;
         mwlDroppable
-        (dragEnter)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter + 1&quot;
-        (dragLeave)&#x3D;&quot;eventDragEnter &#x3D; eventDragEnter - 1&quot;
+        (dragEnter)&#x3D;&quot;dragEnter(&#x27;time&#x27;)&quot;
+        (dragLeave)&#x3D;&quot;dragLeave(&#x27;time&#x27;)&quot;
       &gt;
         &lt;div class&#x3D;&quot;cal-time-label-column&quot; *ngIf&#x3D;&quot;view.hourColumns.length &gt; 0&quot;&gt;
           &lt;div
@@ -697,7 +697,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  eventDragEnter &#x3D; 0;
+  eventDragEnterByType &#x3D; {
+    allDay: 0,
+    time: 0
+  };
 
   /**
    * @hidden
@@ -1019,6 +1022,20 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  dragEnter(type: &#x27;allDay&#x27; | &#x27;time&#x27;) {
+    this.eventDragEnterByType[type]++;
+  }
+
+  /**
+   * @hidden
+   */
+  dragLeave(type: &#x27;allDay&#x27; | &#x27;time&#x27;) {
+    this.eventDragEnterByType[type]--;
+  }
+
+  /**
+   * @hidden
+   */
   dragStarted(
     eventsContainer: HTMLElement,
     event: HTMLElement,
@@ -1041,7 +1058,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       });
     this.dragActive &#x3D; true;
     this.dragAlreadyMoved &#x3D; false;
-    this.eventDragEnter &#x3D; 0;
+    this.eventDragEnterByType &#x3D; {
+      allDay: 0,
+      time: 0
+    };
     if (!this.snapDraggedEvents &amp;&amp; dayEvent) {
       this.view.hourColumns.forEach(column &#x3D;&gt; {
         const linkedEvent &#x3D; column.events.find(
@@ -1110,7 +1130,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       useY
     );
     if (
-      this.eventDragEnter &gt; 0 &amp;&amp;
+      this.eventDragEnterByType[useY ? &#x27;time&#x27; : &#x27;allDay&#x27;] &gt; 0 &amp;&amp;
       isDraggedWithinPeriod(start, end, this.view.period)
     ) {
       this.eventTimesChanged.emit({
