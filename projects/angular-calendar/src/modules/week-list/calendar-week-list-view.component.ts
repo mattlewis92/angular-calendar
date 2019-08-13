@@ -517,7 +517,7 @@ export class CalendarWeekListViewComponent
     date: Date,
     allDay: boolean
   ): void {
-    let startDate = dropEvent.dropData.event.start;
+    const startDate = dropEvent.dropData.event.start;
     if (date !== startDate) {
       const year: number = this.dateAdapter.getYear(date);
       const month: number = this.dateAdapter.getMonth(date);
@@ -533,7 +533,7 @@ export class CalendarWeekListViewComponent
         this.eventTimesChanged.emit({
           type: CalendarEventTimesChangedEventType.Drop,
           event: dropEvent.dropData.event,
-          newStart: newStart,
+          newStart,
           allDay
         });
       }

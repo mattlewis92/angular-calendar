@@ -5,7 +5,7 @@ import {
   EventEmitter,
   TemplateRef
 } from '@angular/core';
-import { WeekDay, WeekViewHourColumn } from 'calendar-utils';
+import { DayViewEvent, WeekDay, WeekViewHourColumn } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
 import { ValidateDrag } from 'angular-draggable-droppable';
 
@@ -22,7 +22,7 @@ import { ValidateDrag } from 'angular-draggable-droppable';
     >
       <div class="cal-day">
         <div
-          *ngFor="let timeEvent of column.events"
+          *ngFor="let timeEvent of column.events; trackBy: trackByTimeEvent"
           #event
           class="cal-event-container"
           [class.cal-draggable]="timeEvent.event.draggable"
@@ -110,4 +110,10 @@ export class CalendarWeekListViewDayComponent {
    * @hidden
    */
   calendarId = Symbol('angular calendar week list view id');
+
+  /**
+   * @hidden
+   */
+  trackByTimeEvent = (index: number, dayEvent: DayViewEvent) =>
+    dayEvent.event.start.toISOString();
 }
