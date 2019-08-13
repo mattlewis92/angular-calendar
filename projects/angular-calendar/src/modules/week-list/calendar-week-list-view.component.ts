@@ -524,7 +524,7 @@ export class CalendarWeekListViewComponent
       const day: number = this.dateAdapter.getDate(date);
       const newStart: Date = this.dateAdapter.setDate(
         this.dateAdapter.setMonth(
-          this.dateAdapter.setYear(dropEvent.dropData.event.start, year),
+          this.dateAdapter.setYear(startDate, year),
           month
         ),
         day
