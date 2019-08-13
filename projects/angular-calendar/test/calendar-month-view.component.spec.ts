@@ -29,6 +29,10 @@ import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
 import { take } from 'rxjs/operators';
 import { adapterFactory } from '../src/date-adapters/date-fns';
+import localeDe from '@angular/common/locales/de';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeDe);
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
