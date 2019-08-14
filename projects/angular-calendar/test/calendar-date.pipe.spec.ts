@@ -73,6 +73,7 @@ describe('calendarDate pipe', () => {
       locale: defaultLocale,
       daysInWeek: undefined,
       excludeDays: [],
+      timezone: undefined,
       weekStartsOn: 0
     });
   });
@@ -92,6 +93,7 @@ describe('calendarDate pipe', () => {
       locale: 'de',
       daysInWeek: undefined,
       excludeDays: [],
+      timezone: undefined,
       weekStartsOn: 0
     });
   });
