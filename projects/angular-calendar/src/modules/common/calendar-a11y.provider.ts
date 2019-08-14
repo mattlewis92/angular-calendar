@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { formatDate } from '@angular/common';
-import { A11yParams, CalendarA11yInterface } from './calendar-a11y.interface';
-import { pluralize } from './util';
+import { formatDate, I18nPluralPipe } from '@angular/common';
+import { A11yParams } from './calendar-a11y.interface';
 
 /**
  * This class is responsible for adding accessibility to the calendar.
@@ -18,8 +17,12 @@ import { pluralize } from './util';
  * }
  *
  * export class CustomCalendarA11y extends CalendarA11y {
+ *     constructor(public i18nPlural: I18nPluralPipe) {
+ *       super(i18nPlural);
+ *     }
+ *
  *   // overriding a function
- *   public openDayEventsLM({ date, locale, isDrSuess }: CustomA11yParams): string {
+ *   public openDayEventsLandmark({ date, locale, isDrSuess }: CustomA11yParams): string {
  *     if (isDrSuess) {
  *       return `
  *         ${formatDate(date, 'EEEE MMMM d', locale)}
@@ -38,16 +41,27 @@ import { pluralize } from './util';
  * ```
  */
 @Injectable()
-export class CalendarA11y implements CalendarA11yInterface {
+export class CalendarA11y {
+  /**
+   * Pluralization for events
+   */
+  eventPluralMap: { [k: string]: string } = {
+    '=0': 'No events',
+    '=1': 'One event',
+    other: '# events'
+  };
+
+  constructor(public i18nPlural: I18nPluralPipe) {}
+
   /**
    * Aria label for the badges/date of a cell
-   * @example: `Saturday October 19 1 event`
+   * @example: `Saturday October 19 1 event click to expand`
    */
   public monthCell({ day, locale }: A11yParams): string {
     if (day.badgeTotal > 0) {
       return `
-        ${formatDate(day.date, 'EEEE MMMM d', locale)}
-         ${pluralize('event', day.badgeTotal, true)},
+        ${formatDate(day.date, 'EEEE MMMM d', locale)},
+        ${this.i18nPlural.transform(day.badgeTotal, this.eventPluralMap)},
          click to expand
       `;
     } else {
@@ -59,7 +73,7 @@ export class CalendarA11y implements CalendarA11yInterface {
    * Aria label for the open day events start landmark
    * @example: `Saturday October 19 expanded view`
    */
-  public openDayEventsLM({ date, locale }: A11yParams): string {
+  public openDayEventsLandmark({ date, locale }: A11yParams): string {
     return `
       Beginning of expanded view for ${formatDate(date, 'EEEE MMMM dd', locale)}
     `;
@@ -114,14 +128,8 @@ export class CalendarA11y implements CalendarA11yInterface {
    * Aria label for the calendar event actions icons
    * @returns 'Edit' for fa-pencil icons, and 'Delete' for fa-times icons
    */
-  public actionButtonLabel({ label }: A11yParams): string {
-    if (label.includes(`pencil`)) {
-      return `Edit`;
-    }
-    if (label.includes(`times`)) {
-      return `Delete`;
-    }
-    return '';
+  public actionButtonLabel({ a11yLabel }: A11yParams): string {
+    return a11yLabel;
   }
 
   /**
@@ -141,14 +149,14 @@ export class CalendarA11y implements CalendarA11yInterface {
   /**
    * @returns true if hour segments in the week view should be aria-hidden
    */
-  public hideWeekHourSeg(): boolean {
+  public hideWeekHourSegment(): boolean {
     return true;
   }
 
   /**
    * @returns true if hour segments in the day view should be aria-hidden
    */
-  public hideDayHourSeg(): boolean {
+  public hideDayHourSegment(): boolean {
     return true;
   }
 }

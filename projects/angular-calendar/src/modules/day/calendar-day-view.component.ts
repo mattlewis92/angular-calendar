@@ -208,7 +208,7 @@ export interface DayViewEventResize {
             dragOverClass="cal-drag-over"
             dragActiveClass="cal-drag-active"
             (drop)="eventDropped($event, segment.date, false)"
-            aria-hidden="a11y.hideDayHourSeg()"
+            [attr.aria-hidden]="{} | calendarA11y: 'hideDayHourSegment'"
           >
           </mwl-calendar-day-view-hour-segment>
         </div>

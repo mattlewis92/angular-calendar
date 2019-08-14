@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { DayViewEvent } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-day-view-event',
@@ -39,10 +38,10 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
         (mwlKeydown)="eventClicked.emit()"
         tabindex="0"
         role="application"
-        attr.aria-label="{{
+        [attr.aria-label]="
           { event: dayEvent.event, locale: locale }
             | calendarA11y: 'eventDescription'
-        }}"
+        "
       >
         <mwl-calendar-event-actions
           [event]="dayEvent.event"
@@ -92,6 +91,4 @@ export class CalendarDayViewEventComponent {
   @Input() tooltipDelay: number | null;
 
   @Output() eventClicked: EventEmitter<any> = new EventEmitter();
-
-  constructor(public a11y: CalendarA11y) {}
 }

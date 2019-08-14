@@ -1,6 +1,5 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { CalendarEvent, EventAction } from 'calendar-utils';
-import { CalendarA11y } from './calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-event-actions',
@@ -21,9 +20,9 @@ import { CalendarA11y } from './calendar-a11y.provider';
           [innerHtml]="action.label"
           tabindex="0"
           role="button"
-          attr.aria-label="{{
-            { label: action.label } | calendarA11y: 'actionButtonLabel'
-          }}"
+          [attr.aria-label]="
+            { a11yLabel: action.a11yLabel } | calendarA11y: 'actionButtonLabel'
+          "
         >
         </a>
       </span>
@@ -42,8 +41,6 @@ export class CalendarEventActionsComponent {
   @Input() event: CalendarEvent;
 
   @Input() customTemplate: TemplateRef<any>;
-
-  constructor(public a11y: CalendarA11y) {}
 
   trackByActionId = (index: number, action: EventAction) =>
     action.id ? action.id : action;

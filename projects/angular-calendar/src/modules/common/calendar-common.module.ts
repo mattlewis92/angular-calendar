@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, I18nPluralPipe } from '@angular/common';
 import { CalendarEventActionsComponent } from './calendar-event-actions.component';
 import { CalendarEventTitleComponent } from './calendar-event-title.component';
 import {
@@ -20,6 +20,7 @@ import { CalendarA11y } from './calendar-a11y.provider';
 import { CalendarA11yPipe } from './calendar-a11y.pipe';
 
 export interface CalendarModuleConfig {
+  I18nPluralPipe?: Provider;
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
   utils?: Provider;
@@ -92,6 +93,7 @@ export {
     ClickDirective,
     KeydownDirective
   ],
+  providers: [I18nPluralPipe],
   entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarCommonModule {

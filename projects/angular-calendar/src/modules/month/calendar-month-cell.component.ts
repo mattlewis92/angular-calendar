@@ -8,7 +8,6 @@ import {
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
 import { PlacementArray } from 'positioning';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -30,9 +29,9 @@ import { CalendarA11y } from '../common/calendar-a11y.provider';
     >
       <div
         class="cal-cell-top"
-        attr.aria-label="{{
+        [attr.aria-label]="
           { day: day, locale: locale } | calendarA11y: 'monthCell'
-        }}"
+        "
       >
         <span aria-hidden="true">
           <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
@@ -131,6 +130,4 @@ export class CalendarMonthCellComponent {
   trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
-
-  constructor(public a11y: CalendarA11y) {}
 }

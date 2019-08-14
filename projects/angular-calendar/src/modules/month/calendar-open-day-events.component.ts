@@ -15,7 +15,6 @@ import {
 } from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
-import { CalendarA11y } from '../common/calendar-a11y.provider';
 
 export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
   state(
@@ -60,16 +59,17 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         <span
           tabindex="-1"
           role="alert"
-          attr.aria-label="{{
+          [attr.aria-label]="
             { date: date, locale: locale } | calendarA11y: 'openDayEventsAlert'
-          }}"
+          "
         ></span>
         <span
           tabindex="0"
           role="landmark"
-          attr.aria-label="{{
-            { date: date, locale: locale } | calendarA11y: 'openDayEventsLM'
-          }}"
+          [attr.aria-label]="
+            { date: date, locale: locale }
+              | calendarA11y: 'openDayEventsLandmark'
+          "
         ></span>
         <div
           *ngFor="let event of events; trackBy: trackByEventId"
@@ -94,10 +94,10 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             (mwlClick)="eventClicked.emit({ event: event })"
             (mwlKeydown)="eventClicked.emit({ event: event })"
             tabindex="0"
-            attr.aria-label="{{
+            [attr.aria-label]="
               { event: event, locale: locale }
                 | calendarA11y: 'eventDescription'
-            }}"
+            "
           >
           </mwl-calendar-event-title>
           &ngsp;
@@ -146,6 +146,4 @@ export class CalendarOpenDayEventsComponent {
   trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
-
-  constructor(public a11y: CalendarA11y) {}
 }
