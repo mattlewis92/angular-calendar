@@ -17,7 +17,7 @@ import { A11yParams } from './calendar-a11y.interface';
  * }
  *
  * export class CustomCalendarA11y extends CalendarA11y {
- *     constructor(public i18nPlural: I18nPluralPipe) {
+ *     constructor(protected i18nPlural: I18nPluralPipe) {
  *       super(i18nPlural);
  *     }
  *
