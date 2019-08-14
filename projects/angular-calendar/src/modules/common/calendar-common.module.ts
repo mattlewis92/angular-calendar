@@ -20,7 +20,6 @@ import { CalendarA11y } from './calendar-a11y.provider';
 import { CalendarA11yPipe } from './calendar-a11y.pipe';
 
 export interface CalendarModuleConfig {
-  I18nPluralPipe?: Provider;
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
   utils?: Provider;
