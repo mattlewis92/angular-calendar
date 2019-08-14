@@ -517,13 +517,26 @@ export class CalendarWeekListViewComponent
     date: Date,
     allDay: boolean
   ): void {
-    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId)) {
-      this.eventTimesChanged.emit({
-        type: CalendarEventTimesChangedEventType.Drop,
-        event: dropEvent.dropData.event,
-        newStart: date,
-        allDay
-      });
+    const startDate = dropEvent.dropData.event.start;
+    if (date !== startDate) {
+      const year: number = this.dateAdapter.getYear(date);
+      const month: number = this.dateAdapter.getMonth(date);
+      const day: number = this.dateAdapter.getDate(date);
+      const newStart: Date = this.dateAdapter.setDate(
+        this.dateAdapter.setMonth(
+          this.dateAdapter.setYear(startDate, year),
+          month
+        ),
+        day
+      );
+      if (shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId)) {
+        this.eventTimesChanged.emit({
+          type: CalendarEventTimesChangedEventType.Drop,
+          event: dropEvent.dropData.event,
+          newStart,
+          allDay
+        });
+      }
     }
   }
 
@@ -724,7 +737,6 @@ export class CalendarWeekListViewComponent
         this.excludeDays
       );
     }
-
     return { start, end };
   }
 
