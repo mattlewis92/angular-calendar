@@ -45,7 +45,6 @@ export class KeydownDirective implements OnInit, OnDestroy {
       );
       keydownElements.add(this.elm.nativeElement);
 
-      // issue #942 - lazily initialise all click handlers after initial render as hammerjs is slow
       requestIdleCallbackObservable()
         .pipe(
           switchMapTo(this.listen()),
