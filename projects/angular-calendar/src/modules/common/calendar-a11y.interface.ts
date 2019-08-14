@@ -1,4 +1,4 @@
-import { MonthViewDay, CalendarEvent } from 'calendar-utils';
+import { MonthViewDay, CalendarEvent, EventAction } from 'calendar-utils';
 
 /**
  * The parameters passed to the a11y methods.
@@ -22,7 +22,7 @@ export interface A11yParams {
   /**
    * Action button label e.g. 'Edit'
    */
-  a11yLabel?: string;
+  action?: EventAction;
 
   /**
    * Users preferred locale

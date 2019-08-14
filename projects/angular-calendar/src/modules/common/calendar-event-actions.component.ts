@@ -21,7 +21,7 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
           tabindex="0"
           role="button"
           [attr.aria-label]="
-            { a11yLabel: action.a11yLabel } | calendarA11y: 'actionButtonLabel'
+            { action: action } | calendarA11y: 'actionButtonLabel'
           "
         >
         </a>

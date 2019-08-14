@@ -42,16 +42,7 @@ import { A11yParams } from './calendar-a11y.interface';
  */
 @Injectable()
 export class CalendarA11y {
-  /**
-   * Pluralization for events
-   */
-  eventPluralMap: { [k: string]: string } = {
-    '=0': 'No events',
-    '=1': 'One event',
-    other: '# events'
-  };
-
-  constructor(public i18nPlural: I18nPluralPipe) {}
+  constructor(protected i18nPlural: I18nPluralPipe) {}
 
   /**
    * Aria label for the badges/date of a cell
@@ -61,7 +52,11 @@ export class CalendarA11y {
     if (day.badgeTotal > 0) {
       return `
         ${formatDate(day.date, 'EEEE MMMM d', locale)},
-        ${this.i18nPlural.transform(day.badgeTotal, this.eventPluralMap)},
+        ${this.i18nPlural.transform(day.badgeTotal, {
+          '=0': 'No events',
+          '=1': 'One event',
+          other: '# events'
+        })},
          click to expand
       `;
     } else {
@@ -128,8 +123,8 @@ export class CalendarA11y {
    * Aria label for the calendar event actions icons
    * @returns 'Edit' for fa-pencil icons, and 'Delete' for fa-times icons
    */
-  public actionButtonLabel({ a11yLabel }: A11yParams): string {
-    return a11yLabel;
+  public actionButtonLabel({ action }: A11yParams): string {
+    return action.a11yLabel;
   }
 
   /**
