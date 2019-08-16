@@ -85,8 +85,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [ngStyle]="{ backgroundColor: day.backgroundColor }"
               (mwlClick)="dayClicked.emit({ day: day })"
               [clickListenerDisabled]="dayClicked.observers.length === 0"
-              (mwlKeydown)="dayClicked.emit({ day: day })"
-              [keydownListenerDisabled]="dayClicked.observers.length === 0"
+              (mwlKeydownEnter)="dayClicked.emit({ day: day })"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable

@@ -92,7 +92,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             [customTemplate]="eventTitleTemplate"
             view="month"
             (mwlClick)="eventClicked.emit({ event: event })"
-            (mwlKeydown)="eventClicked.emit({ event: event })"
+            (mwlKeydownEnter)="eventClicked.emit({ event: event })"
             tabindex="0"
             [attr.aria-label]="
               { event: event, locale: locale }

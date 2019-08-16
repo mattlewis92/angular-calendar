@@ -12,7 +12,7 @@ import { CalendarTodayDirective } from './calendar-today.directive';
 import { CalendarDatePipe } from './calendar-date.pipe';
 import { CalendarEventTitlePipe } from './calendar-event-title.pipe';
 import { ClickDirective } from './click.directive';
-import { KeydownDirective } from './keydown.directive';
+import { KeydownEnterDirective } from './keydown-enter.directive';
 import { CalendarEventTitleFormatter } from './calendar-event-title-formatter.provider';
 import { CalendarDateFormatter } from './calendar-date-formatter.provider';
 import { CalendarUtils } from './calendar-utils.provider';
@@ -75,7 +75,7 @@ export {
     CalendarEventTitlePipe,
     CalendarA11yPipe,
     ClickDirective,
-    KeydownDirective
+    KeydownEnterDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -90,7 +90,7 @@ export {
     CalendarEventTitlePipe,
     CalendarA11yPipe,
     ClickDirective,
-    KeydownDirective
+    KeydownEnterDirective
   ],
   providers: [I18nPluralPipe],
   entryComponents: [CalendarTooltipWindowComponent]

@@ -35,7 +35,7 @@ import { PlacementArray } from 'positioning';
         [tooltipAppendToBody]="tooltipAppendToBody"
         [tooltipDelay]="tooltipDelay"
         (mwlClick)="eventClicked.emit()"
-        (mwlKeydown)="eventClicked.emit()"
+        (mwlKeydownEnter)="eventClicked.emit()"
         tabindex="0"
         role="application"
         [attr.aria-label]="
