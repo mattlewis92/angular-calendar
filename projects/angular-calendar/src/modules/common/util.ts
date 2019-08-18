@@ -147,11 +147,12 @@ export function getWeekViewPeriod(
   let viewStart = daysInWeek
     ? dateAdapter.startOfDay(viewDate)
     : dateAdapter.startOfWeek(viewDate, { weekStartsOn });
-  if (excluded.indexOf(dateAdapter.getDay(viewStart)) > -1) {
-    viewStart = dateAdapter.subDays(
-      addDaysWithExclusions(dateAdapter, viewStart, 1, excluded),
-      1
-    );
+  const endOfWeek = dateAdapter.endOfWeek(viewDate, { weekStartsOn });
+  while (
+    excluded.indexOf(dateAdapter.getDay(viewStart)) > -1 &&
+    viewStart < endOfWeek
+  ) {
+    viewStart = dateAdapter.addDays(viewStart, 1);
   }
   if (daysInWeek) {
     const viewEnd = dateAdapter.endOfDay(
@@ -159,12 +160,12 @@ export function getWeekViewPeriod(
     );
     return { viewStart, viewEnd };
   } else {
-    let viewEnd = dateAdapter.endOfWeek(viewDate, { weekStartsOn });
-    if (excluded.indexOf(dateAdapter.getDay(viewEnd)) > -1) {
-      viewEnd = dateAdapter.addDays(
-        addDaysWithExclusions(dateAdapter, viewEnd, -1, excluded),
-        1
-      );
+    let viewEnd = endOfWeek;
+    while (
+      excluded.indexOf(dateAdapter.getDay(viewEnd)) > -1 &&
+      viewEnd > viewStart
+    ) {
+      viewEnd = dateAdapter.subDays(viewEnd, 1);
     }
     return { viewStart, viewEnd };
   }
