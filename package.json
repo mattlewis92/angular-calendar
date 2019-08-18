@@ -147,7 +147,7 @@
     "angular-draggable-droppable": "^4.3.2",
     "angular-resizable-element": "^3.2.4",
     "calendar-utils": "^0.3.1",
-    "positioning": "^1.5.0"
+    "positioning": "^2.0.0"
   },
   "sideEffects": [
     "*.css",
