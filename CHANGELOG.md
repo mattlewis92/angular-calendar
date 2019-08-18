@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.16](https://github.com/mattlewis92/angular-calendar/compare/v0.27.15...v0.27.16) (2019-08-18)
+
+
+### Bug Fixes
+
+* **tooltip:** prevent infinite loop error when positioning tooltip ([cd2cd5a](https://github.com/mattlewis92/angular-calendar/commit/cd2cd5a)), closes [#1046](https://github.com/mattlewis92/angular-calendar/issues/1046)
+
 ### [0.27.15](https://github.com/mattlewis92/angular-calendar/compare/v0.27.14...v0.27.15) (2019-08-12)
 
 
