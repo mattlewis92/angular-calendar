@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.18](https://github.com/mattlewis92/angular-calendar/compare/v0.27.17...v0.27.18) (2019-08-18)
+
+
+### Bug Fixes
+
+* display times properly on days where DST changes ([6e139f4](https://github.com/mattlewis92/angular-calendar/commit/6e139f4)), closes [#964](https://github.com/mattlewis92/angular-calendar/issues/964) [#477](https://github.com/mattlewis92/angular-calendar/issues/477)
+* upgrade positioning library ([8480e72](https://github.com/mattlewis92/angular-calendar/commit/8480e72))
+
 ### [0.27.17](https://github.com/mattlewis92/angular-calendar/compare/v0.27.16...v0.27.17) (2019-08-18)
 
 
