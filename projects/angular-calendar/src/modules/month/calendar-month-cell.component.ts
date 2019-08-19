@@ -65,7 +65,7 @@ import { PlacementArray } from 'positioning';
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
           (mwlClick)="eventClicked.emit({ event: event })"
-          aria-hidden="a11y.hideMonthCellEvents()"
+          [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
         ></div>
       </div>
     </ng-template>
