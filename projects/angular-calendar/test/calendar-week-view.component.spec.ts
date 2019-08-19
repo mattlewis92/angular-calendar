@@ -99,6 +99,28 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
+  it('should support excluding non consecutive days', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.excludeDays = [4, 6];
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(fixture.componentInstance.days.length).to.equal(5);
+    fixture.destroy();
+  });
+
+  it('should support excluding all but 1 day', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.excludeDays = [0, 1, 2, 3, 4, 5];
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(fixture.componentInstance.days.length).to.equal(1);
+    fixture.destroy();
+  });
+
   it('should generate the week view with default colors for events', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent

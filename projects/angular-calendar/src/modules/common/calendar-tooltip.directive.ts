@@ -150,7 +150,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
     this.cancelTooltipDelay$.next();
   }
 
-  private positionTooltip(previousPosition?: string): void {
+  private positionTooltip(previousPositions: string[] = []): void {
     if (this.tooltipRef) {
       this.tooltipRef.changeDetectorRef.detectChanges();
       this.tooltipRef.instance.placement = positionElements(
@@ -160,8 +160,13 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
         this.appendToBody
       );
       // keep re-positioning the tooltip until the arrow position doesn't make a difference
-      if (previousPosition !== this.tooltipRef.instance.placement) {
-        this.positionTooltip(this.tooltipRef.instance.placement);
+      if (
+        previousPositions.indexOf(this.tooltipRef.instance.placement) === -1
+      ) {
+        this.positionTooltip([
+          ...previousPositions,
+          this.tooltipRef.instance.placement
+        ]);
       }
     }
   }

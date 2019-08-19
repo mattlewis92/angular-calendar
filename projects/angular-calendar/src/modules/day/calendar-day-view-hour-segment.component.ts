@@ -18,7 +18,7 @@ import { DayViewHourSegment } from 'calendar-utils';
         [ngClass]="segment.cssClass"
       >
         <div class="cal-time">
-          {{ segment.date | calendarDate: 'dayViewHour':locale }}
+          {{ segment.displayDate | calendarDate: 'dayViewHour':locale }}
         </div>
       </div>
     </ng-template>

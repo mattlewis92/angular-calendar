@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.18](https://github.com/mattlewis92/angular-calendar/compare/v0.27.17...v0.27.18) (2019-08-18)
+
+
+### Bug Fixes
+
+* display times properly on days where DST changes ([6e139f4](https://github.com/mattlewis92/angular-calendar/commit/6e139f4)), closes [#964](https://github.com/mattlewis92/angular-calendar/issues/964) [#477](https://github.com/mattlewis92/angular-calendar/issues/477)
+* upgrade positioning library ([8480e72](https://github.com/mattlewis92/angular-calendar/commit/8480e72))
+
+### [0.27.17](https://github.com/mattlewis92/angular-calendar/compare/v0.27.16...v0.27.17) (2019-08-18)
+
+
+### Bug Fixes
+
+* **week-view:** handle excluding non consecutive days ([5ca90c9](https://github.com/mattlewis92/angular-calendar/commit/5ca90c9)), closes [#973](https://github.com/mattlewis92/angular-calendar/issues/973)
+* upgrade positioning library ([ad0a521](https://github.com/mattlewis92/angular-calendar/commit/ad0a521)), closes [#956](https://github.com/mattlewis92/angular-calendar/issues/956)
+
+### [0.27.16](https://github.com/mattlewis92/angular-calendar/compare/v0.27.15...v0.27.16) (2019-08-18)
+
+
+### Bug Fixes
+
+* **tooltip:** prevent infinite loop error when positioning tooltip ([cd2cd5a](https://github.com/mattlewis92/angular-calendar/commit/cd2cd5a)), closes [#1046](https://github.com/mattlewis92/angular-calendar/issues/1046)
+
 ### [0.27.15](https://github.com/mattlewis92/angular-calendar/compare/v0.27.14...v0.27.15) (2019-08-12)
 
 
