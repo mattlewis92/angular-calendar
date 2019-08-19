@@ -25,7 +25,7 @@ describe('calendarA11y pipe', () => {
     });
   });
 
-  it('~~~~~~~~~~~~~~~~ should throw when an invalid method is passed ~~~~~~~~~~~~~~~~', () => {
+  it('should throw when an invalid method is passed', () => {
     const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
       TestComponent
     );
