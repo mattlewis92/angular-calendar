@@ -35,6 +35,13 @@ import { PlacementArray } from 'positioning';
         [tooltipAppendToBody]="tooltipAppendToBody"
         [tooltipDelay]="tooltipDelay"
         (mwlClick)="eventClicked.emit()"
+        (mwlKeydownEnter)="eventClicked.emit()"
+        tabindex="0"
+        role="application"
+        [attr.aria-label]="
+          { event: dayEvent.event, locale: locale }
+            | calendarA11y: 'eventDescription'
+        "
       >
         <mwl-calendar-event-actions
           [event]="dayEvent.event"
@@ -65,6 +72,8 @@ import { PlacementArray } from 'positioning';
   `
 })
 export class CalendarDayViewEventComponent {
+  @Input() locale: string;
+
   @Input() dayEvent: DayViewEvent;
 
   @Input() tooltipPlacement: PlacementArray;

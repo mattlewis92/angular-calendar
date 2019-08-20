@@ -19,7 +19,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
       let-eventDropped="eventDropped"
       let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
     >
-      <div class="cal-day-headers">
+      <div class="cal-day-headers" role="row">
         <div
           class="cal-header"
           *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
@@ -37,6 +37,8 @@ import { trackByWeekDayHeaderDate } from '../common/util';
               newStart: day.date
             })
           "
+          tabindex="0"
+          role="columnheader"
         >
           <b>{{ day.date | calendarDate: 'weekViewColumnHeader':locale }}</b
           ><br />

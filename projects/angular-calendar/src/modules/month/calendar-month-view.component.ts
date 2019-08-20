@@ -54,14 +54,13 @@ export interface CalendarMonthViewEventTimesChangedEvent<
 @Component({
   selector: 'mwl-calendar-month-view',
   template: `
-    <div class="cal-month-view">
+    <div class="cal-month-view" role="grid">
       <mwl-calendar-month-view-header
         [days]="columnHeaders"
         [locale]="locale"
         (columnHeaderClicked)="columnHeaderClicked.emit($event)"
         [customTemplate]="headerTemplate"
       >
-        >
       </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div
@@ -86,6 +85,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [ngStyle]="{ backgroundColor: day.backgroundColor }"
               (mwlClick)="dayClicked.emit({ day: day })"
               [clickListenerDisabled]="dayClicked.observers.length === 0"
+              (mwlKeydownEnter)="dayClicked.emit({ day: day })"
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -98,12 +98,15 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                 )
               "
               (eventClicked)="eventClicked.emit({ event: $event.event })"
+              [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
             >
             </mwl-calendar-month-cell>
           </div>
           <mwl-calendar-open-day-events
+            [locale]="locale"
             [isOpen]="openRowIndex === rowIndex"
             [events]="openDay?.events"
+            [date]="openDay?.date"
             [customTemplate]="openDayEventsTemplate"
             [eventTitleTemplate]="eventTitleTemplate"
             [eventActionsTemplate]="eventActionsTemplate"
