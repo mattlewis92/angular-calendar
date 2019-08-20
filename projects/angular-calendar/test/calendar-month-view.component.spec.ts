@@ -29,6 +29,10 @@ import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
 import { take } from 'rxjs/operators';
 import { adapterFactory } from '../src/date-adapters/date-fns';
+import localeDe from '@angular/common/locales/de';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeDe);
 
 describe('calendarMonthView component', () => {
   beforeEach(() => {
@@ -386,6 +390,43 @@ describe('calendarMonthView component', () => {
     ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
   });
 
+  it('should add event actions to the active day events on enter keypress', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: 'foo',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        },
+        actions: [
+          {
+            label: '<i class="fa fa-fw fa-times"></i>',
+            onClick: spy(),
+            cssClass: 'foo'
+          }
+        ]
+      }
+    ];
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    const action: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-open-day-events .cal-event-action'
+    );
+    expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
+    expect(action.classList.contains('foo')).to.equal(true);
+    triggerDomEvent('keydown', action, { keyCode: 13 });
+    expect(
+      fixture.componentInstance.events[0].actions[0].onClick
+    ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+  });
+
   it('should call the event clicked callback', () => {
     const fixture: ComponentFixture<
       CalendarMonthViewComponent
@@ -413,6 +454,35 @@ describe('calendarMonthView component', () => {
       expect(val).to.deep.equal({ event: fixture.componentInstance.events[0] });
     });
     title.click();
+  });
+
+  it('should call the event clicked callback on enter keypress', () => {
+    const fixture: ComponentFixture<
+      CalendarMonthViewComponent
+    > = TestBed.createComponent(CalendarMonthViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-06-26'),
+        end: new Date('2016-06-28'),
+        title: '<span>foo</span>',
+        color: {
+          primary: 'blue',
+          secondary: 'rgb(238, 238, 238)'
+        }
+      }
+    ];
+    fixture.componentInstance.activeDayIsOpen = true;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    const title: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-open-day-events .cal-event-title'
+    );
+    expect(title.innerHTML).to.equal('<span>foo</span>');
+    fixture.componentInstance.eventClicked.subscribe(val => {
+      expect(val).to.deep.equal({ event: fixture.componentInstance.events[0] });
+    });
+    triggerDomEvent('keydown', title, { keyCode: 13 });
   });
 
   it('should refresh the view when the refresh observable is emitted on', () => {

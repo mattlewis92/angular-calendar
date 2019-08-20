@@ -17,7 +17,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
       let-locale="locale"
       let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
     >
-      <div class="cal-cell-row cal-header">
+      <div class="cal-cell-row cal-header" role="row">
         <div
           class="cal-cell"
           *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
@@ -27,6 +27,8 @@ import { trackByWeekDayHeaderDate } from '../common/util';
           [class.cal-weekend]="day.isWeekend"
           (click)="columnHeaderClicked.emit(day.day)"
           [ngClass]="day.cssClass"
+          tabindex="0"
+          role="columnheader"
         >
           {{ day.date | calendarDate: 'monthViewColumnHeader':locale }}
         </div>

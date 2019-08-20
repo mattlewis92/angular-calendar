@@ -79,7 +79,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
-    <div class="cal-week-view">
+    <div class="cal-week-view" role="grid">
       <mwl-calendar-week-view-header
         [days]="days"
         [locale]="locale"
@@ -167,6 +167,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [resizeEdges]="{ left: true }"
             ></div>
             <mwl-calendar-week-view-event
+              [locale]="locale"
               [weekEvent]="allDayEvent"
               [tooltipPlacement]="tooltipPlacement"
               [tooltipTemplate]="tooltipTemplate"
@@ -290,6 +291,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 }"
               ></div>
               <mwl-calendar-week-view-event
+                [locale]="locale"
                 [weekEvent]="timeEvent"
                 [tooltipPlacement]="tooltipPlacement"
                 [tooltipTemplate]="tooltipTemplate"
