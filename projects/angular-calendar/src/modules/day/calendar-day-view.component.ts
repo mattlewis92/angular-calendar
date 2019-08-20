@@ -89,6 +89,7 @@ export interface DayViewEventResize {
       >
         <mwl-calendar-day-view-event
           *ngFor="let event of view.allDayEvents; trackBy: trackByEventId"
+          [locale]="locale"
           [ngClass]="event.cssClass"
           [dayEvent]="{ event: event }"
           [tooltipPlacement]="tooltipPlacement"
@@ -207,6 +208,7 @@ export interface DayViewEventResize {
             dragOverClass="cal-drag-over"
             dragActiveClass="cal-drag-active"
             (drop)="eventDropped($event, segment.date, false)"
+            [attr.aria-hidden]="{} | calendarA11y: 'hideDayHourSegment'"
           >
           </mwl-calendar-day-view-hour-segment>
         </div>
@@ -482,7 +484,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.dayStartMinute ||
       changes.dayEndHour ||
       changes.dayEndMinute ||
-      changes.eventWidth  ||
+      changes.eventWidth ||
       changes.hourSegments;
 
     if (refreshHourGrid) {
