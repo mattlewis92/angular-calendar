@@ -1,97 +1,97 @@
 import { DateAdapter as BaseDateAdapter } from 'calendar-utils/date-adapters/date-adapter';
 
 export abstract class DateAdapter implements BaseDateAdapter {
-  abstract addWeeks(date: Date | string | number, amount: number): Date;
+  abstract addWeeks(date: Date | number, amount: number): Date;
 
-  abstract addMonths(date: Date | string | number, amount: number): Date;
+  abstract addMonths(date: Date | number, amount: number): Date;
 
-  abstract subDays(date: Date | string | number, amount: number): Date;
+  abstract subDays(date: Date | number, amount: number): Date;
 
-  abstract subWeeks(date: Date | string | number, amount: number): Date;
+  abstract subWeeks(date: Date | number, amount: number): Date;
 
-  abstract subMonths(date: Date | string | number, amount: number): Date;
+  abstract subMonths(date: Date | number, amount: number): Date;
 
-  abstract getISOWeek(date: Date | string | number): number;
+  abstract getISOWeek(date: Date | number): number;
 
-  abstract setDate(date: Date | string | number, dayOfMonth: number): Date;
+  abstract setDate(date: Date | number, dayOfMonth: number): Date;
 
-  abstract setMonth(date: Date | string | number, month: number): Date;
+  abstract setMonth(date: Date | number, month: number): Date;
 
-  abstract setYear(date: Date | string | number, year: number): Date;
+  abstract setYear(date: Date | number, year: number): Date;
 
-  abstract getDate(date: Date | string | number): number;
+  abstract getDate(date: Date | number): number;
 
-  abstract getMonth(date: Date | string | number): number;
+  abstract getMonth(date: Date | number): number;
 
-  abstract getYear(date: Date | string | number): number;
+  abstract getYear(date: Date | number): number;
 
-  abstract addDays(date: Date | string | number, amount: number): Date;
+  abstract addDays(date: Date | number, amount: number): Date;
 
-  abstract addHours(date: Date | string | number, amount: number): Date;
+  abstract addHours(date: Date | number, amount: number): Date;
 
-  abstract addMinutes(date: Date | string | number, amount: number): Date;
+  abstract addMinutes(date: Date | number, amount: number): Date;
 
-  abstract addSeconds(date: Date | string | number, amount: number): Date;
+  abstract addSeconds(date: Date | number, amount: number): Date;
 
   abstract differenceInDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number;
 
   abstract differenceInMinutes(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number;
 
   abstract differenceInSeconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number;
 
-  abstract endOfDay(date: Date | string | number): Date;
+  abstract endOfDay(date: Date | number): Date;
 
-  abstract endOfMonth(date: Date | string | number): Date;
+  abstract endOfMonth(date: Date | number): Date;
 
   abstract endOfWeek(
-    date: Date | string | number,
+    date: Date | number,
     options?: { weekStartsOn?: number }
   ): Date;
 
-  abstract getDay(date: Date | string | number): number;
+  abstract getDay(date: Date | number): number;
 
   abstract isSameDay(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean;
 
   abstract isSameMonth(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean;
 
   abstract isSameSecond(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean;
 
-  abstract max(...dates: Array<Date | string | number>): Date;
+  abstract max(dates: Array<Date | number>): Date;
 
-  abstract setHours(date: Date | string | number, hours: number): Date;
+  abstract setHours(date: Date | number, hours: number): Date;
 
-  abstract setMinutes(date: Date | string | number, minutes: number): Date;
+  abstract setMinutes(date: Date | number, minutes: number): Date;
 
-  abstract startOfDay(date: Date | string | number): Date;
+  abstract startOfDay(date: Date | number): Date;
 
-  abstract startOfMinute(date: Date | string | number): Date;
+  abstract startOfMinute(date: Date | number): Date;
 
-  abstract startOfMonth(date: Date | string | number): Date;
+  abstract startOfMonth(date: Date | number): Date;
 
   abstract startOfWeek(
-    date: Date | string | number,
+    date: Date | number,
     options?: { weekStartsOn?: number }
   ): Date;
 
-  abstract getHours(date: Date | string | number): number;
+  abstract getHours(date: Date | number): number;
 
-  abstract getMinutes(date: Date | string | number): number;
+  abstract getMinutes(date: Date | number): number;
 }
