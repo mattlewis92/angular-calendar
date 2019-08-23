@@ -101,7 +101,7 @@
     "cp-cli": "^2.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
-    "date-fns": "1.29.0",
+    "date-fns": "^2.0.0",
     "del-cli": "^2.0.0",
     "flatpickr": "^4.6.2",
     "font-awesome": "^4.7.0",
@@ -150,7 +150,7 @@
   "dependencies": {
     "angular-draggable-droppable": "^4.3.2",
     "angular-resizable-element": "^3.2.4",
-    "calendar-utils": "^0.3.3",
+    "calendar-utils": "^0.5.0",
     "positioning": "^2.0.0"
   },
   "sideEffects": [

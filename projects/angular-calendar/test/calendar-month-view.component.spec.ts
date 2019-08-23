@@ -1014,7 +1014,7 @@ describe('calendarMonthView component', () => {
     > = TestBed.createComponent(CalendarMonthViewComponent);
     fixture.componentInstance.viewDate = new Date('2017-01-01');
     fixture.componentInstance.events = [
-      { start: '2017-01-01', title: '', color: { primary: '', secondary: '' } }
+      { start: 1234, title: '', color: { primary: '', secondary: '' } }
     ] as any;
     fixture.componentInstance.ngOnChanges({ events: {}, viewDate: {} });
     fixture.detectChanges();
