@@ -135,7 +135,6 @@
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
     "ts-node": "^8.3.0",
-    "tsickle": "^0.36.0",
     "tslib": "^1.10.0",
     "tslint": "^5.18.0",
     "tslint-config-mwl": "^0.6.0",
