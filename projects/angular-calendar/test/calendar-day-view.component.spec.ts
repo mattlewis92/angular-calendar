@@ -1303,7 +1303,7 @@ describe('CalendarDayViewComponent component', () => {
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.events = [
-      { start: '2017-01-01', title: '', color: { primary: '', secondary: '' } }
+      { start: 1234, title: '', color: { primary: '', secondary: '' } }
     ] as any;
     fixture.componentInstance.ngOnChanges({ events: {} });
     fixture.detectChanges();
