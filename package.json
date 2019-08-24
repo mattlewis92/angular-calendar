@@ -149,7 +149,7 @@
   "dependencies": {
     "angular-draggable-droppable": "^4.3.2",
     "angular-resizable-element": "^3.2.4",
-    "calendar-utils": "^0.6.0",
+    "calendar-utils": "^0.7.0",
     "positioning": "^2.0.0"
   },
   "sideEffects": [

@@ -125,7 +125,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     fixture.componentInstance.eventClicked.subscribe(val => {
       expect(val).to.deep.equal({
-        event: fixture.componentInstance.events[0]
+        event: fixture.componentInstance.events[0],
+        sourceEvent: window['event']
       });
     });
     fixture.nativeElement.querySelector('.cal-event-title').click();
@@ -151,7 +152,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     fixture.componentInstance.eventClicked.subscribe(val => {
       expect(val).to.deep.equal({
-        event: fixture.componentInstance.events[0]
+        event: fixture.componentInstance.events[0],
+        sourceEvent: window['event']
       });
     });
     fixture.nativeElement.querySelector('.cal-event-title').click();
@@ -289,9 +291,13 @@ describe('CalendarDayViewComponent component', () => {
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
     action.querySelector('i').click();
-    expect(
-      fixture.componentInstance.events[0].actions[0].onClick
-    ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+    const actionSpy = fixture.componentInstance.events[0].actions[0]
+      .onClick as sinon.SinonSpy;
+    expect(actionSpy.getCall(0).args[0].event).to.equal(
+      fixture.componentInstance.events[0]
+    );
+    expect(actionSpy.getCall(0).args[0].sourceEvent instanceof MouseEvent).to.be
+      .true;
     expect(eventClicked).not.to.have.been.called;
   });
 

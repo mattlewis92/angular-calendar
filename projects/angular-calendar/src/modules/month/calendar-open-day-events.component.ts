@@ -91,8 +91,12 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             [event]="event"
             [customTemplate]="eventTitleTemplate"
             view="month"
-            (mwlClick)="eventClicked.emit({ event: event })"
-            (mwlKeydownEnter)="eventClicked.emit({ event: event })"
+            (mwlClick)="
+              eventClicked.emit({ event: event, sourceEvent: $event })
+            "
+            (mwlKeydownEnter)="
+              eventClicked.emit({ event: event, sourceEvent: $event })
+            "
             tabindex="0"
             [attr.aria-label]="
               { event: event, locale: locale }
@@ -139,8 +143,9 @@ export class CalendarOpenDayEventsComponent {
   @Input() date: Date;
 
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }>();
 
   trackByEventId = trackByEventId;

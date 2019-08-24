@@ -177,7 +177,12 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [eventTitleTemplate]="eventTitleTemplate"
               [eventActionsTemplate]="eventActionsTemplate"
               [daysInWeek]="daysInWeek"
-              (eventClicked)="eventClicked.emit({ event: allDayEvent.event })"
+              (eventClicked)="
+                eventClicked.emit({
+                  event: allDayEvent.event,
+                  sourceEvent: $event.sourceEvent
+                })
+              "
             >
             </mwl-calendar-week-view-event>
             <div
@@ -305,7 +310,12 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [eventActionsTemplate]="eventActionsTemplate"
                 [column]="column"
                 [daysInWeek]="daysInWeek"
-                (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
+                (eventClicked)="
+                  eventClicked.emit({
+                    event: timeEvent.event,
+                    sourceEvent: $event.sourceEvent
+                  })
+                "
               >
               </mwl-calendar-week-view-event>
               <div
@@ -342,7 +352,12 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [locale]="locale"
                 [customTemplate]="hourSegmentTemplate"
                 [daysInWeek]="daysInWeek"
-                (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"
+                (mwlClick)="
+                  hourSegmentClicked.emit({
+                    date: segment.date,
+                    sourceEvent: $event
+                  })
+                "
                 [clickListenerDisabled]="
                   hourSegmentClicked.observers.length === 0
                 "
@@ -509,6 +524,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output()
   dayHeaderClicked = new EventEmitter<{
     day: WeekDay;
+    sourceEvent: MouseEvent;
   }>();
 
   /**
@@ -517,6 +533,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output()
   eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }>();
 
   /**
@@ -538,6 +555,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output()
   hourSegmentClicked = new EventEmitter<{
     date: Date;
+    sourceEvent: MouseEvent;
   }>();
 
   /**

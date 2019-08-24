@@ -46,8 +46,8 @@ import { PlacementArray } from 'positioning';
         [tooltipTemplate]="tooltipTemplate"
         [tooltipAppendToBody]="tooltipAppendToBody"
         [tooltipDelay]="tooltipDelay"
-        (mwlClick)="eventClicked.emit()"
-        (mwlKeydownEnter)="eventClicked.emit()"
+        (mwlClick)="eventClicked.emit({ sourceEvent: $event })"
+        (mwlKeydownEnter)="eventClicked.emit({ sourceEvent: $event })"
         tabindex="0"
         role="application"
         [attr.aria-label]="
@@ -111,5 +111,7 @@ export class CalendarWeekViewEventComponent {
 
   @Input() daysInWeek: number;
 
-  @Output() eventClicked: EventEmitter<void> = new EventEmitter();
+  @Output() eventClicked = new EventEmitter<{
+    sourceEvent: MouseEvent | KeyboardEvent;
+  }>();
 }
