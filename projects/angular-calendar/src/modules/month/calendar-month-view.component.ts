@@ -83,9 +83,11 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [tooltipDelay]="tooltipDelay"
               [customTemplate]="cellTemplate"
               [ngStyle]="{ backgroundColor: day.backgroundColor }"
-              (mwlClick)="dayClicked.emit({ day: day })"
+              (mwlClick)="dayClicked.emit({ day: day, sourceEvent: $event })"
               [clickListenerDisabled]="dayClicked.observers.length === 0"
-              (mwlKeydownEnter)="dayClicked.emit({ day: day })"
+              (mwlKeydownEnter)="
+                dayClicked.emit({ day: day, sourceEvent: $event })
+              "
               (highlightDay)="toggleDayHighlight($event.event, true)"
               (unhighlightDay)="toggleDayHighlight($event.event, false)"
               mwlDroppable
@@ -97,7 +99,12 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                   $event.dropData.draggedFrom
                 )
               "
-              (eventClicked)="eventClicked.emit({ event: $event.event })"
+              (eventClicked)="
+                eventClicked.emit({
+                  event: $event.event,
+                  sourceEvent: $event.sourceEvent
+                })
+              "
               [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
             >
             </mwl-calendar-month-cell>
@@ -110,7 +117,12 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             [customTemplate]="openDayEventsTemplate"
             [eventTitleTemplate]="eventTitleTemplate"
             [eventActionsTemplate]="eventActionsTemplate"
-            (eventClicked)="eventClicked.emit({ event: $event.event })"
+            (eventClicked)="
+              eventClicked.emit({
+                event: $event.event,
+                sourceEvent: $event.sourceEvent
+              })
+            "
             mwlDroppable
             dragOverClass="cal-drag-over"
             (drop)="
@@ -234,6 +246,7 @@ export class CalendarMonthViewComponent
   @Output()
   dayClicked = new EventEmitter<{
     day: MonthViewDay;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }>();
 
   /**
@@ -242,12 +255,16 @@ export class CalendarMonthViewComponent
   @Output()
   eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }>();
 
   /**
    * Called when a header week day is clicked. Returns ISO day number.
    */
-  @Output() columnHeaderClicked = new EventEmitter<number>();
+  @Output() columnHeaderClicked = new EventEmitter<{
+    isoDayNumber: number;
+    sourceEvent: MouseEvent | KeyboardEvent;
+  }>();
 
   /**
    * Called when an event is dragged and dropped

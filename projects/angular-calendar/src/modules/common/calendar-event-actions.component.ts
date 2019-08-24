@@ -14,8 +14,10 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
           class="cal-event-action"
           href="javascript:;"
           *ngFor="let action of event.actions; trackBy: trackByActionId"
-          (mwlClick)="action.onClick({ event: event })"
-          (mwlKeydownEnter)="action.onClick({ event: event })"
+          (mwlClick)="action.onClick({ event: event, sourceEvent: $event })"
+          (mwlKeydownEnter)="
+            action.onClick({ event: event, sourceEvent: $event })
+          "
           [ngClass]="action.cssClass"
           [innerHtml]="action.label"
           tabindex="0"

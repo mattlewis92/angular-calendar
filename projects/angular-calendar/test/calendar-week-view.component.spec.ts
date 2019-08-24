@@ -152,7 +152,7 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
-  it('should emit on the dayHeaderClicked output', () => {
+  it('should emit on the dayHeaderClicked output', done => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -161,8 +161,10 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     fixture.componentInstance.dayHeaderClicked.subscribe(val => {
       expect(val).to.deep.equal({
-        day: fixture.componentInstance.days[0]
+        day: fixture.componentInstance.days[0],
+        sourceEvent: window['event']
       });
+      done();
     });
     fixture.nativeElement.querySelector('.cal-header').click();
   });
@@ -194,7 +196,7 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
-  it('should call the event clicked callback', () => {
+  it('should call the event clicked callback', done => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
     > = TestBed.createComponent(CalendarWeekViewComponent);
@@ -217,7 +219,11 @@ describe('calendarWeekView component', () => {
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
     fixture.componentInstance.eventClicked.subscribe(val => {
-      expect(val).to.deep.equal({ event: fixture.componentInstance.events[0] });
+      expect(val).to.deep.equal({
+        event: fixture.componentInstance.events[0],
+        sourceEvent: window['event']
+      });
+      done();
     });
     title.click();
   });
@@ -1102,9 +1108,13 @@ describe('calendarWeekView component', () => {
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
     action.querySelector('i').click();
-    expect(
-      fixture.componentInstance.events[0].actions[0].onClick
-    ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+    const actionSpy = fixture.componentInstance.events[0].actions[0]
+      .onClick as sinon.SinonSpy;
+    expect(actionSpy.getCall(0).args[0].event).to.equal(
+      fixture.componentInstance.events[0]
+    );
+    expect(actionSpy.getCall(0).args[0].sourceEvent instanceof MouseEvent).to.be
+      .true;
     expect(eventClicked).not.to.have.been.called;
   });
 

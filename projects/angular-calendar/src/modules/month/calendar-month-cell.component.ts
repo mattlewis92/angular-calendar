@@ -64,7 +64,7 @@ import { PlacementArray } from 'positioning';
           [dropData]="{ event: event, draggedFrom: day }"
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
-          (mwlClick)="eventClicked.emit({ event: event })"
+          (mwlClick)="eventClicked.emit({ event: event, sourceEvent: $event })"
           [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
         ></div>
       </div>
@@ -123,8 +123,9 @@ export class CalendarMonthCellComponent {
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent;
   }>();
 
   trackByEventId = trackByEventId;
