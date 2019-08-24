@@ -90,7 +90,8 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
     fixture.componentInstance.columnHeaderClicked.subscribe(val => {
-      expect(val).to.equal(0);
+      expect(val.isoDayNumber).to.equal(0);
+      expect(val.sourceEvent instanceof MouseEvent).to.be.true;
       done();
     });
     fixture.nativeElement.querySelector('.cal-header .cal-cell').click();
@@ -385,9 +386,13 @@ describe('calendarMonthView component', () => {
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
     action.click();
-    expect(
-      fixture.componentInstance.events[0].actions[0].onClick
-    ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+    const actionSpy = fixture.componentInstance.events[0].actions[0]
+      .onClick as sinon.SinonSpy;
+    expect(actionSpy.getCall(0).args[0].event).to.equal(
+      fixture.componentInstance.events[0]
+    );
+    expect(actionSpy.getCall(0).args[0].sourceEvent instanceof MouseEvent).to.be
+      .true;
   });
 
   it('should add event actions to the active day events on enter keypress', () => {
@@ -421,10 +426,13 @@ describe('calendarMonthView component', () => {
     );
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
-    triggerDomEvent('keydown', action, { keyCode: 13 });
+    const sourceEvent = triggerDomEvent('keydown', action, { keyCode: 13 });
     expect(
       fixture.componentInstance.events[0].actions[0].onClick
-    ).to.have.been.calledWith({ event: fixture.componentInstance.events[0] });
+    ).to.have.been.calledWith({
+      event: fixture.componentInstance.events[0],
+      sourceEvent
+    });
   });
 
   it('should call the event clicked callback', () => {
@@ -451,7 +459,10 @@ describe('calendarMonthView component', () => {
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
     fixture.componentInstance.eventClicked.subscribe(val => {
-      expect(val).to.deep.equal({ event: fixture.componentInstance.events[0] });
+      expect(val).to.deep.equal({
+        event: fixture.componentInstance.events[0],
+        sourceEvent: window['event']
+      });
     });
     title.click();
   });
@@ -480,7 +491,10 @@ describe('calendarMonthView component', () => {
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
     fixture.componentInstance.eventClicked.subscribe(val => {
-      expect(val).to.deep.equal({ event: fixture.componentInstance.events[0] });
+      expect(val).to.deep.equal({
+        event: fixture.componentInstance.events[0],
+        sourceEvent: window['event']
+      });
     });
     triggerDomEvent('keydown', title, { keyCode: 13 });
   });
@@ -920,10 +934,10 @@ describe('calendarMonthView component', () => {
       '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
     );
     event.click();
-    fixture.destroy();
-    expect(eventClickedEvent).to.deep.equal({
-      event: fixture.componentInstance.events[0]
-    });
+    expect(eventClickedEvent.event).to.equal(
+      fixture.componentInstance.events[0]
+    );
+    expect(eventClickedEvent.sourceEvent instanceof MouseEvent).to.be.true;
     expect(dayClickedFired).to.equal(false);
   });
 

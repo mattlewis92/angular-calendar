@@ -10,6 +10,7 @@ export function triggerDomEvent(
   Object.assign(event, eventData);
   event.initEvent(eventType, true, true);
   target.dispatchEvent(event);
+  return event;
 }
 
 @Component({

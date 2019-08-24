@@ -28,7 +28,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
           [ngClass]="day.cssClass"
-          (mwlClick)="dayHeaderClicked.emit({ day: day })"
+          (mwlClick)="dayHeaderClicked.emit({ day: day, sourceEvent: $event })"
           mwlDroppable
           dragOverClass="cal-drag-over"
           (drop)="
@@ -69,8 +69,9 @@ export class CalendarWeekViewHeaderComponent {
   @Input() customTemplate: TemplateRef<any>;
 
   @Output()
-  dayHeaderClicked: EventEmitter<{ day: WeekDay }> = new EventEmitter<{
+  dayHeaderClicked = new EventEmitter<{
     day: WeekDay;
+    sourceEvent: MouseEvent;
   }>();
 
   @Output()
