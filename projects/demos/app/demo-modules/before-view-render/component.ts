@@ -56,11 +56,13 @@ export class DemoComponent {
   }
 
   beforeDayViewRender(renderEvent: CalendarDayViewBeforeRenderEvent) {
-    renderEvent.body.hourGrid.forEach(hour => {
-      hour.segments.forEach((segment, index) => {
-        if (segment.date.getHours() >= 2 && segment.date.getHours() <= 5) {
-          segment.cssClass = 'bg-pink';
-        }
+    renderEvent.hourColumns.forEach(hourColumn => {
+      hourColumn.hours.forEach(hour => {
+        hour.segments.forEach(segment => {
+          if (segment.date.getHours() >= 2 && segment.date.getHours() <= 5) {
+            segment.cssClass = 'bg-pink';
+          }
+        });
       });
     });
   }

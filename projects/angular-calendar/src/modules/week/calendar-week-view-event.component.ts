@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {
   WeekViewAllDayEvent,
-  DayViewEvent,
+  WeekViewTimeEvent,
   WeekViewHourColumn
 } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
@@ -25,6 +25,7 @@ import { PlacementArray } from 'positioning';
       let-tooltipDisabled="tooltipDisabled"
       let-tooltipDelay="tooltipDelay"
       let-column="column"
+      let-daysInWeek="daysInWeek"
     >
       <div
         class="cal-event"
@@ -35,7 +36,9 @@ import { PlacementArray } from 'positioning';
         [mwlCalendarTooltip]="
           !tooltipDisabled
             ? (weekEvent.event.title
-              | calendarEventTitle: 'weekTooltip':weekEvent.event)
+              | calendarEventTitle
+                : (daysInWeek === 1 ? 'dayTooltip' : 'weekTooltip')
+                : weekEvent.event)
             : ''
         "
         [tooltipPlacement]="tooltipPlacement"
@@ -61,7 +64,7 @@ import { PlacementArray } from 'positioning';
         <mwl-calendar-event-title
           [event]="weekEvent.event"
           [customTemplate]="eventTitleTemplate"
-          view="week"
+          [view]="daysInWeek === 1 ? 'day' : 'week'"
         >
         </mwl-calendar-event-title>
       </div>
@@ -76,7 +79,8 @@ import { PlacementArray } from 'positioning';
         tooltipAppendToBody: tooltipAppendToBody,
         tooltipDisabled: tooltipDisabled,
         tooltipDelay: tooltipDelay,
-        column: column
+        column: column,
+        daysInWeek: daysInWeek
       }"
     >
     </ng-template>
@@ -85,7 +89,7 @@ import { PlacementArray } from 'positioning';
 export class CalendarWeekViewEventComponent {
   @Input() locale: string;
 
-  @Input() weekEvent: WeekViewAllDayEvent | DayViewEvent;
+  @Input() weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent;
 
   @Input() tooltipPlacement: PlacementArray;
 
@@ -105,5 +109,7 @@ export class CalendarWeekViewEventComponent {
 
   @Input() column: WeekViewHourColumn;
 
-  @Output() eventClicked: EventEmitter<any> = new EventEmitter();
+  @Input() daysInWeek: number;
+
+  @Output() eventClicked: EventEmitter<void> = new EventEmitter();
 }

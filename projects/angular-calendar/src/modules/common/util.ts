@@ -1,8 +1,8 @@
 import {
   CalendarEvent,
-  DayViewEvent,
-  DayViewHour,
-  DayViewHourSegment,
+  WeekViewTimeEvent,
+  WeekViewHour,
+  WeekViewHourSegment,
   validateEvents as validateEventsWithoutLog,
   ViewPeriod,
   WeekDay,
@@ -40,15 +40,15 @@ export const trackByWeekDayHeaderDate = (index: number, day: WeekDay) =>
 
 export const trackByHourSegment = (
   index: number,
-  segment: DayViewHourSegment
+  segment: WeekViewHourSegment
 ) => segment.date.toISOString();
 
-export const trackByHour = (index: number, hour: DayViewHour) =>
+export const trackByHour = (index: number, hour: WeekViewHour) =>
   hour.segments[0].date.toISOString();
 
 export const trackByDayOrWeekEvent = (
   index: number,
-  weekEvent: WeekViewAllDayEvent | DayViewEvent
+  weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent
 ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
 
 const MINUTES_IN_HOUR = 60;
