@@ -69,11 +69,11 @@ export class DemoComponent implements OnInit {
     const params = new HttpParams()
       .set(
         'primary_release_date.gte',
-        format(getStart(this.viewDate), 'YYYY-MM-DD')
+        format(getStart(this.viewDate), 'yyyy-MM-dd')
       )
       .set(
         'primary_release_date.lte',
-        format(getEnd(this.viewDate), 'YYYY-MM-DD')
+        format(getEnd(this.viewDate), 'yyyy-MM-dd')
       )
       .set('api_key', '0ec33936a68018857d727958dca1424f');
 
