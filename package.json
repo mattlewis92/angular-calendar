@@ -101,7 +101,7 @@
     "cp-cli": "^2.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
-    "date-fns": "^2.0.0",
+    "date-fns": "^2.0.1",
     "del-cli": "^2.0.0",
     "flatpickr": "^4.6.2",
     "font-awesome": "^4.7.0",
