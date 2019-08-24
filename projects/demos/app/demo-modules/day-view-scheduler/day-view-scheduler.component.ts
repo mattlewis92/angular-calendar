@@ -1,11 +1,6 @@
 import { Component, EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarUtils, CalendarWeekViewComponent } from 'angular-calendar';
-import {
-  WeekView,
-  GetWeekViewArgs,
-  DayViewEvent,
-  WeekViewAllDayEvent
-} from 'calendar-utils';
+import { WeekView, GetWeekViewArgs, WeekViewTimeEvent } from 'calendar-utils';
 import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
 
 const EVENT_WIDTH = 150;
@@ -59,6 +54,9 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
       .cal-time-events {
         border-top: solid 1px #e1e1e1;
       }
+      .cal-week-view {
+        border-top: 0;
+      }
     `
   ],
   providers: [
@@ -83,13 +81,13 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent {
   dragStarted(
     eventsContainer: HTMLElement,
     event: HTMLElement,
-    dayEvent?: DayViewEvent
+    dayEvent?: WeekViewTimeEvent
   ) {
     this.originalLeft = dayEvent.left;
     super.dragStarted(eventsContainer, event, dayEvent);
   }
 
-  dragMove(dayEvent: DayViewEvent, dragEvent: DragMoveEvent) {
+  dragMove(dayEvent: WeekViewTimeEvent, dragEvent: DragMoveEvent) {
     const originalX = dragEvent.x;
     dragEvent.x = 0;
     super.dragMove(dayEvent, dragEvent);
@@ -104,7 +102,7 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent {
   }
 
   dragEnded(
-    weekEvent: DayViewEvent,
+    weekEvent: WeekViewTimeEvent,
     dragEndEvent: DragEndEvent,
     dayWidth: number,
     useY = false
@@ -116,7 +114,7 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent {
     }
   }
 
-  private getDraggedUserColumn(dayEvent: DayViewEvent, xPixels: number) {
+  private getDraggedUserColumn(dayEvent: WeekViewTimeEvent, xPixels: number) {
     const columnsMoved = xPixels / EVENT_WIDTH;
     const currentColumnIndex = this.view.users.findIndex(
       user => user === dayEvent.event.meta.user

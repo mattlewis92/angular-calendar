@@ -6,6 +6,5 @@
 @mixin cal-theme($overrides) {
   @include cal-month-view-theme($overrides);
   @include cal-week-view-theme($overrides);
-  @include cal-day-view-theme($overrides);
   @include cal-tooltip-theme($overrides);
 }
