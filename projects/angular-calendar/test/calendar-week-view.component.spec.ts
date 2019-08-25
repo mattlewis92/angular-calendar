@@ -26,6 +26,24 @@ import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from './util';
 import { take } from 'rxjs/operators';
 import { adapterFactory } from '../src/date-adapters/date-fns';
+import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
+
+@Component({
+  template: `
+    <mwl-calendar-week-view
+      [viewDate]="viewDate"
+      [events]="events"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    ></mwl-calendar-week-view>
+    <mwl-external-event></mwl-external-event>
+  `
+})
+class TestComponent {
+  viewDate: Date;
+  events: CalendarEvent[];
+  eventTimesChanged = sinon.spy();
+}
 
 describe('calendarWeekView component', () => {
   beforeEach(() => {
@@ -45,7 +63,7 @@ describe('calendarWeekView component', () => {
         ),
         DragAndDropModule
       ],
-      declarations: [ExternalEventComponent],
+      declarations: [ExternalEventComponent, TestComponent],
       providers: [{ provide: MOMENT, useValue: moment }]
     });
   });
@@ -912,20 +930,14 @@ describe('calendarWeekView component', () => {
   });
 
   it('should allow external events to be dropped on the week view headers', () => {
-    const fixture: ComponentFixture<
-      CalendarWeekViewComponent
-    > = TestBed.createComponent(CalendarWeekViewComponent);
+    const fixture = TestBed.createComponent(TestComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [];
-    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
-
-    const externalEventFixture: ComponentFixture<
-      ExternalEventComponent
-    > = TestBed.createComponent(ExternalEventComponent);
-    externalEventFixture.detectChanges();
-    document.body.appendChild(externalEventFixture.nativeElement);
+    const externalEventFixture = fixture.debugElement.query(
+      By.directive(ExternalEventComponent)
+    );
 
     const event: HTMLElement = externalEventFixture.nativeElement.querySelector(
       '.external-event'
@@ -938,8 +950,7 @@ describe('calendarWeekView component', () => {
     const header: HTMLElement = headers[2];
     const headerPosition: ClientRect = header.getBoundingClientRect();
 
-    const eventDropped: sinon.SinonSpy = sinon.spy();
-    fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
+    const eventDropped = fixture.componentInstance.eventTimesChanged;
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top,
       clientX: eventPosition.left
@@ -955,8 +966,6 @@ describe('calendarWeekView component', () => {
       clientX: headerPosition.left
     });
     fixture.detectChanges();
-    fixture.destroy();
-    externalEventFixture.destroy();
     expect(eventDropped).to.have.been.calledWith({
       type: 'drop',
       event: externalEventFixture.componentInstance.event,
@@ -966,6 +975,7 @@ describe('calendarWeekView component', () => {
         .toDate(),
       allDay: true
     });
+    expect(eventDropped).to.have.been.calledOnce;
   });
 
   it('should allow the weekend days to be customised', () => {
@@ -2335,5 +2345,57 @@ describe('calendarWeekView component', () => {
       'rgb(255, 255, 255)'
     );
     document.head.appendChild(style);
+  });
+
+  it('should allow external events to be dropped on the hour segments', () => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-27');
+    fixture.componentInstance.events = [];
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const externalEventFixture = fixture.debugElement.query(
+      By.directive(ExternalEventComponent)
+    );
+
+    const event: HTMLElement = externalEventFixture.nativeElement.querySelector(
+      '.external-event'
+    );
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+
+    const segments: HTMLElement[] = Array.from(
+      fixture.nativeElement.querySelectorAll(
+        '.cal-day-columns .cal-hour-segment'
+      )
+    );
+    const segment = segments[1];
+    const segmentPosition: ClientRect = segment.getBoundingClientRect();
+
+    const eventDropped = fixture.componentInstance.eventTimesChanged;
+
+    triggerDomEvent('mousedown', event, {
+      clientY: eventPosition.top,
+      clientX: eventPosition.left
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientY: segmentPosition.top,
+      clientX: segmentPosition.left
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', document.body, {
+      clientY: segmentPosition.top,
+      clientX: segmentPosition.left
+    });
+    fixture.detectChanges();
+    expect(eventDropped).to.have.been.calledWith({
+      type: 'drop',
+      event: externalEventFixture.componentInstance.event,
+      newStart: moment('2016-06-27')
+        .startOf('week')
+        .add(30, 'minutes')
+        .toDate(),
+      allDay: false
+    });
+    expect(eventDropped).to.have.been.calledOnce;
   });
 });
