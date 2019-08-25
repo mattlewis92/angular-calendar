@@ -88,6 +88,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         (eventDropped)="
           eventDropped({ dropData: $event }, $event.newStart, true)
         "
+        (dragEnter)="dateDragEnter($event.date)"
       >
       </mwl-calendar-week-view-header>
       <div
@@ -109,6 +110,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             mwlDroppable
             dragOverClass="cal-drag-over"
             (drop)="eventDropped($event, day.date, true)"
+            (dragEnter)="dateDragEnter(day.date)"
           ></div>
         </div>
         <div
@@ -367,6 +369,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 "
                 dragActiveClass="cal-drag-active"
                 (drop)="eventDropped($event, segment.date, false)"
+                (dragEnter)="dateDragEnter(segment.date)"
               >
               </mwl-calendar-week-view-hour-segment>
             </div>
@@ -647,6 +650,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  private lastDragEnterDate: Date;
+
+  /**
+   * @hidden
+   */
   trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
     column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
 
@@ -896,12 +904,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  dateDragEnter(date: Date) {
+    this.lastDragEnterDate = date;
+  }
+
+  /**
+   * @hidden
+   */
   eventDropped(
     dropEvent: DropEvent<{ event?: CalendarEvent; calendarId?: symbol }>,
     date: Date,
     allDay: boolean
   ): void {
-    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId)) {
+    if (
+      shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId) &&
+      this.lastDragEnterDate.getTime() === date.getTime()
+    ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,

@@ -14,6 +14,7 @@ export function triggerDomEvent(
 }
 
 @Component({
+  selector: 'mwl-external-event',
   template:
     '<div class="external-event" mwlDraggable [dropData]="{event: event}">{{ event.title }}</div>',
   styles: [
