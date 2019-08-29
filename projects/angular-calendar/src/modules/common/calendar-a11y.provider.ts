@@ -128,6 +128,13 @@ export class CalendarA11y {
   }
 
   /**
+   * @returns {number} Tab index to be given to month cells
+   */
+  public monthCellTabIndex(): number {
+    return 0;
+  }
+
+  /**
    * @returns true if the events inside the month cell should be aria-hidden
    */
   public hideMonthCellEvents(): boolean {

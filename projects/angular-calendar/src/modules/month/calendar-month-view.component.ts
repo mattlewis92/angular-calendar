@@ -105,7 +105,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                   sourceEvent: $event.sourceEvent
                 })
               "
-              tabindex="0"
+              [tabindex]="{} | a11y: 'monthCellTabIndex"
             >
             </mwl-calendar-month-cell>
           </div>
