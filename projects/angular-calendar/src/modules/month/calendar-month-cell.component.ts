@@ -27,13 +27,20 @@ import { PlacementArray } from 'positioning';
       let-trackByEventId="trackByEventId"
       let-validateDrag="validateDrag"
     >
-      <div class="cal-cell-top">
-        <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
-          day.badgeTotal
-        }}</span>
-        <span class="cal-day-number">{{
-          day.date | calendarDate: 'monthViewDayNumber':locale
-        }}</span>
+      <div
+        class="cal-cell-top"
+        [attr.aria-label]="
+          { day: day, locale: locale } | calendarA11y: 'monthCell'
+        "
+      >
+        <span aria-hidden="true">
+          <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
+            day.badgeTotal
+          }}</span>
+          <span class="cal-day-number">{{
+            day.date | calendarDate: 'monthViewDayNumber':locale
+          }}</span>
+        </span>
       </div>
       <div class="cal-events" *ngIf="day.events.length > 0">
         <div
@@ -57,7 +64,8 @@ import { PlacementArray } from 'positioning';
           [dropData]="{ event: event, draggedFrom: day }"
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
-          (mwlClick)="eventClicked.emit({ event: event })"
+          (mwlClick)="eventClicked.emit({ event: event, sourceEvent: $event })"
+          [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
         ></div>
       </div>
     </ng-template>
@@ -115,8 +123,9 @@ export class CalendarMonthCellComponent {
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
   @Output()
-  eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
+  eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent;
   }>();
 
   trackByEventId = trackByEventId;

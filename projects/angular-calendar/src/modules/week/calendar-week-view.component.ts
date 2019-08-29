@@ -19,9 +19,9 @@ import {
   WeekView,
   ViewPeriod,
   WeekViewHourColumn,
-  DayViewEvent,
-  DayViewHourSegment,
-  DayViewHour,
+  WeekViewTimeEvent,
+  WeekViewHourSegment,
+  WeekViewHour,
   WeekViewAllDayEventRow
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
@@ -79,7 +79,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
 @Component({
   selector: 'mwl-calendar-week-view',
   template: `
-    <div class="cal-week-view">
+    <div class="cal-week-view" role="grid">
       <mwl-calendar-week-view-header
         [days]="days"
         [locale]="locale"
@@ -88,6 +88,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         (eventDropped)="
           eventDropped({ dropData: $event }, $event.newStart, true)
         "
+        (dragEnter)="dateDragEnter($event.date)"
       >
       </mwl-calendar-week-view-header>
       <div
@@ -109,6 +110,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             mwlDroppable
             dragOverClass="cal-drag-over"
             (drop)="eventDropped($event, day.date, true)"
+            (dragEnter)="dateDragEnter(day.date)"
           ></div>
         </div>
         <div
@@ -167,6 +169,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [resizeEdges]="{ left: true }"
             ></div>
             <mwl-calendar-week-view-event
+              [locale]="locale"
               [weekEvent]="allDayEvent"
               [tooltipPlacement]="tooltipPlacement"
               [tooltipTemplate]="tooltipTemplate"
@@ -175,7 +178,13 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [customTemplate]="eventTemplate"
               [eventTitleTemplate]="eventTitleTemplate"
               [eventActionsTemplate]="eventActionsTemplate"
-              (eventClicked)="eventClicked.emit({ event: allDayEvent.event })"
+              [daysInWeek]="daysInWeek"
+              (eventClicked)="
+                eventClicked.emit({
+                  event: allDayEvent.event,
+                  sourceEvent: $event.sourceEvent
+                })
+              "
             >
             </mwl-calendar-week-view-event>
             <div
@@ -214,6 +223,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [locale]="locale"
               [customTemplate]="hourSegmentTemplate"
               [isTimeLabel]="true"
+              [daysInWeek]="daysInWeek"
             >
             </mwl-calendar-week-view-hour-segment>
           </div>
@@ -290,6 +300,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 }"
               ></div>
               <mwl-calendar-week-view-event
+                [locale]="locale"
                 [weekEvent]="timeEvent"
                 [tooltipPlacement]="tooltipPlacement"
                 [tooltipTemplate]="tooltipTemplate"
@@ -300,7 +311,13 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [eventTitleTemplate]="eventTitleTemplate"
                 [eventActionsTemplate]="eventActionsTemplate"
                 [column]="column"
-                (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
+                [daysInWeek]="daysInWeek"
+                (eventClicked)="
+                  eventClicked.emit({
+                    event: timeEvent.event,
+                    sourceEvent: $event.sourceEvent
+                  })
+                "
               >
               </mwl-calendar-week-view-event>
               <div
@@ -336,7 +353,13 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [segmentHeight]="hourSegmentHeight"
                 [locale]="locale"
                 [customTemplate]="hourSegmentTemplate"
-                (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"
+                [daysInWeek]="daysInWeek"
+                (mwlClick)="
+                  hourSegmentClicked.emit({
+                    date: segment.date,
+                    sourceEvent: $event
+                  })
+                "
                 [clickListenerDisabled]="
                   hourSegmentClicked.observers.length === 0
                 "
@@ -346,6 +369,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 "
                 dragActiveClass="cal-drag-active"
                 (drop)="eventDropped($event, segment.date, false)"
+                (dragEnter)="dateDragEnter(segment.date)"
               >
               </mwl-calendar-week-view-hour-segment>
             </div>
@@ -503,6 +527,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output()
   dayHeaderClicked = new EventEmitter<{
     day: WeekDay;
+    sourceEvent: MouseEvent;
   }>();
 
   /**
@@ -511,6 +536,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output()
   eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }>();
 
   /**
@@ -532,6 +558,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Output()
   hourSegmentClicked = new EventEmitter<{
     date: Date;
+    sourceEvent: MouseEvent;
   }>();
 
   /**
@@ -619,6 +646,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   trackByDayOrWeekEvent = trackByDayOrWeekEvent;
+
+  /**
+   * @hidden
+   */
+  private lastDragEnterDate: Date;
 
   /**
    * @hidden
@@ -722,7 +754,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   timeEventResizeStarted(
     eventsContainer: HTMLElement,
-    timeEvent: DayViewEvent,
+    timeEvent: WeekViewTimeEvent,
     resizeEvent: ResizeEvent
   ): void {
     this.timeEventResizes.set(timeEvent.event, resizeEvent);
@@ -732,7 +764,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  timeEventResizing(timeEvent: DayViewEvent, resizeEvent: ResizeEvent) {
+  timeEventResizing(timeEvent: WeekViewTimeEvent, resizeEvent: ResizeEvent) {
     this.timeEventResizes.set(timeEvent.event, resizeEvent);
     const adjustedEvents = new Map<CalendarEvent, CalendarEvent>();
 
@@ -755,7 +787,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  timeEventResizeEnded(timeEvent: DayViewEvent) {
+  timeEventResizeEnded(timeEvent: WeekViewTimeEvent) {
     this.view = this.getWeekView(this.events);
     const lastResizeEvent = this.timeEventResizes.get(timeEvent.event);
     if (lastResizeEvent) {
@@ -872,12 +904,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  dateDragEnter(date: Date) {
+    this.lastDragEnterDate = date;
+  }
+
+  /**
+   * @hidden
+   */
   eventDropped(
     dropEvent: DropEvent<{ event?: CalendarEvent; calendarId?: symbol }>,
     date: Date,
     allDay: boolean
   ): void {
-    if (shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId)) {
+    if (
+      shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId) &&
+      this.lastDragEnterDate.getTime() === date.getTime()
+    ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
@@ -907,7 +949,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   dragStarted(
     eventsContainer: HTMLElement,
     event: HTMLElement,
-    dayEvent?: DayViewEvent
+    dayEvent?: WeekViewTimeEvent
   ): void {
     this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
@@ -949,7 +991,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  dragMove(dayEvent: DayViewEvent, dragEvent: DragMoveEvent) {
+  dragMove(dayEvent: WeekViewTimeEvent, dragEvent: DragMoveEvent) {
     if (this.snapDraggedEvents) {
       const newEventTimes = this.getDragMovedEventTimes(
         dayEvent,
@@ -984,7 +1026,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   dragEnded(
-    weekEvent: WeekViewAllDayEvent | DayViewEvent,
+    weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent,
     dragEndEvent: DragEndEvent,
     dayWidth: number,
     useY = false
@@ -1076,7 +1118,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   protected getDragMovedEventTimes(
-    weekEvent: WeekViewAllDayEvent | DayViewEvent,
+    weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent,
     dragEndEvent: DragEndEvent | DragMoveEvent,
     dayWidth: number,
     useY: boolean

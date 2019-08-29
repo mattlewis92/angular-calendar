@@ -9,7 +9,7 @@ import {
   CalendarEventTitleFormatter,
   CalendarView
 } from 'angular-calendar';
-import { DayViewHourSegment } from 'calendar-utils';
+import { WeekViewHourSegment } from 'calendar-utils';
 import { fromEvent } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { addDays, addMinutes, endOfWeek } from 'date-fns';
@@ -66,7 +66,7 @@ export class DemoComponent {
   constructor(private cdr: ChangeDetectorRef) {}
 
   startDragToCreate(
-    segment: DayViewHourSegment,
+    segment: WeekViewHourSegment,
     mouseDownEvent: MouseEvent,
     segmentElement: HTMLElement
   ) {

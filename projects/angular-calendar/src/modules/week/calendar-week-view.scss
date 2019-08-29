@@ -8,9 +8,11 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
 
   .cal-week-view {
     background-color: map-get($theme, bg-primary);
+    border-top: solid 1px map-get($theme, border-color);
 
     .cal-day-headers {
       border-color: map-get($theme, border-color);
+      border-top: 0;
     }
 
     .cal-day-headers .cal-header {

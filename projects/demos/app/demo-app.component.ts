@@ -36,13 +36,13 @@ async function getSources(folder: string): Promise<Source[]> {
     return {
       filename,
       contents: {
-        raw: contents.raw
+        raw: contents.raw.default
           .replace(
             ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
             ''
           )
           .replace("\nimport { RouterModule } from '@angular/router';", ''),
-        highlighted: contents.highlighted // TODO - move this into a regexp replace for both
+        highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
           .replace(
             ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
             ''
@@ -189,7 +189,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
     };
 
     demoUtilsSources.forEach(source => {
-      files[`demo-utils/${source.filename}`] = source.contents.raw;
+      files[`demo-utils/${source.filename}`] = source.contents.raw.default;
     });
 
     demo.sources.forEach(source => {
