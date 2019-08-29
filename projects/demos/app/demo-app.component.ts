@@ -218,7 +218,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'angular-resizable-element': `^${dependencyVersions.angularResizableElement}`,
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
-          '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
+          '@ng-bootstrap/ng-bootstrap': '5.0.0', // pinned due to issue with stackblitz generation
           rrule: dependencyVersions.rrule,
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,

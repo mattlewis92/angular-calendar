@@ -99,6 +99,28 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
+  it('should support excluding non consecutive days', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.excludeDays = [4, 6];
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(fixture.componentInstance.days.length).to.equal(5);
+    fixture.destroy();
+  });
+
+  it('should support excluding all but 1 day', () => {
+    const fixture: ComponentFixture<
+      CalendarWeekViewComponent
+    > = TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2016-06-29');
+    fixture.componentInstance.excludeDays = [0, 1, 2, 3, 4, 5];
+    fixture.componentInstance.ngOnChanges({ viewDate: {} });
+    expect(fixture.componentInstance.days.length).to.equal(1);
+    fixture.destroy();
+  });
+
   it('should generate the week view with default colors for events', () => {
     const fixture: ComponentFixture<
       CalendarWeekViewComponent
@@ -375,7 +397,7 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
@@ -444,7 +466,7 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -512,7 +534,7 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -586,7 +608,9 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const eventPosition: ClientRect = event.getBoundingClientRect();
     const eventDropped = sinon.spy();
-    fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
+    fixture.componentInstance.eventTimesChanged
+      .pipe(take(1))
+      .subscribe(eventDropped);
     triggerDomEvent('mousedown', event, {
       clientX: eventPosition.left,
       clientY: eventPosition.top
@@ -660,7 +684,9 @@ describe('calendarWeekView component', () => {
     const eventPosition: ClientRect = event.getBoundingClientRect();
     const calendarPosition: ClientRect = fixture.nativeElement.getBoundingClientRect();
     const eventDropped = sinon.spy();
-    fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
+    fixture.componentInstance.eventTimesChanged
+      .pipe(take(1))
+      .subscribe(eventDropped);
     triggerDomEvent('mousedown', event, {
       clientX: eventPosition.left,
       clientY: eventPosition.top
@@ -722,7 +748,9 @@ describe('calendarWeekView component', () => {
     );
     const eventPosition: ClientRect = event.getBoundingClientRect();
     const eventDropped = sinon.spy();
-    fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
+    fixture.componentInstance.eventTimesChanged
+      .pipe(take(1))
+      .subscribe(eventDropped);
     triggerDomEvent('mousedown', event, {
       clientX: eventPosition.left,
       clientY: eventPosition.top
@@ -1144,7 +1172,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -1217,7 +1245,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -1288,7 +1316,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -1356,7 +1384,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -1427,7 +1455,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -1498,7 +1526,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-before-start');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -1573,7 +1601,7 @@ describe('calendarWeekView component', () => {
     const rect1: ClientRect = events[0].getBoundingClientRect();
     const rect2: ClientRect = events[1].getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', events[1], {
@@ -1649,7 +1677,7 @@ describe('calendarWeekView component', () => {
     const event = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
@@ -1707,7 +1735,7 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
@@ -1781,7 +1809,7 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect: ClientRect = events[0].getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', events[0], {
@@ -1843,7 +1871,7 @@ describe('calendarWeekView component', () => {
     const event = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
@@ -1901,7 +1929,7 @@ describe('calendarWeekView component', () => {
     const event = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
@@ -1914,13 +1942,13 @@ describe('calendarWeekView component', () => {
     )[3];
     const hourSegmentPosition = hourSegment.getBoundingClientRect();
     triggerDomEvent('mousemove', hourSegment, {
-      clientX: hourSegmentPosition.left,
-      clientY: hourSegmentPosition.top
+      clientX: hourSegmentPosition.left + 1,
+      clientY: hourSegmentPosition.top + 1
     });
     fixture.detectChanges();
     triggerDomEvent('mouseup', hourSegment, {
-      clientX: hourSegmentPosition.left,
-      clientY: hourSegmentPosition.top
+      clientX: hourSegmentPosition.left + 1,
+      clientY: hourSegmentPosition.top + 1
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1973,7 +2001,7 @@ describe('calendarWeekView component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
@@ -1986,13 +2014,13 @@ describe('calendarWeekView component', () => {
     )[2];
     const dayColumnPosition = dayColumn.getBoundingClientRect();
     triggerDomEvent('mousemove', dayColumn, {
-      clientX: dayColumnPosition.left,
-      clientY: dayColumnPosition.top
+      clientX: dayColumnPosition.left + 1,
+      clientY: dayColumnPosition.top + 1
     });
     fixture.detectChanges();
     triggerDomEvent('mouseup', dayColumn, {
-      clientX: dayColumnPosition.left,
-      clientY: dayColumnPosition.top
+      clientX: dayColumnPosition.left + 1,
+      clientY: dayColumnPosition.top + 1
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -2039,7 +2067,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {
@@ -2102,7 +2130,7 @@ describe('calendarWeekView component', () => {
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect1: ClientRect = events[0].getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', events[0], {
@@ -2229,7 +2257,7 @@ describe('calendarWeekView component', () => {
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe(e => {
       resizeEvent = e;
     });
     triggerDomEvent('mousedown', resizeHandle, {

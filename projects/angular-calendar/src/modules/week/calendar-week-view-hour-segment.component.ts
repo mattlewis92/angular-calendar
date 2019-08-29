@@ -19,7 +19,7 @@ import { WeekViewHourColumn } from 'calendar-utils';
         [ngClass]="segment.cssClass"
       >
         <div class="cal-time" *ngIf="isTimeLabel">
-          {{ segment.date | calendarDate: 'weekViewHour':locale }}
+          {{ segment.displayDate | calendarDate: 'weekViewHour':locale }}
         </div>
       </div>
     </ng-template>
