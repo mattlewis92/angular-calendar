@@ -49,6 +49,7 @@ export type CalendarDayViewBeforeRenderEvent = CalendarWeekViewBeforeRenderEvent
       [eventTitleTemplate]="eventTitleTemplate"
       [eventActionsTemplate]="eventActionsTemplate"
       [snapDraggedEvents]="snapDraggedEvents"
+      [allDayEventsLabelTemplate]="allDayEventsLabelTemplate"
       (eventClicked)="eventClicked.emit($event)"
       (hourSegmentClicked)="hourSegmentClicked.emit($event)"
       (eventTimesChanged)="eventTimesChanged.emit($event)"
@@ -158,6 +159,11 @@ export class CalendarDayViewComponent {
    * Whether to snap events to a grid when dragging
    */
   @Input() snapDraggedEvents: boolean = true;
+
+  /**
+   * A custom template to use for the all day events label text
+   */
+  @Input() allDayEventsLabelTemplate: TemplateRef<any>;
 
   /**
    * Called when an event title is clicked
