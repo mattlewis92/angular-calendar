@@ -225,6 +225,10 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
       position: relative;
     }
 
+    .cal-events-container {
+      position: relative;
+    }
+
     .cal-event-container {
       position: absolute;
       z-index: 1;
