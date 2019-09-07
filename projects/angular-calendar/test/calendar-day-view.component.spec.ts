@@ -219,16 +219,18 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-01');
 
     fixture.detectChanges();
-    fixture.componentInstance.hourSegmentClicked.subscribe(val => {
-      expect(val).to.deep.equal({
-        date: moment('2016-06-01')
-          .startOf('day')
-          .add(1, 'hour')
-          .add(30, 'minutes')
-          .toDate()
-      });
-    });
+    const spy = sinon.spy();
+    fixture.componentInstance.hourSegmentClicked.subscribe(spy);
     fixture.nativeElement.querySelectorAll('.cal-hour-segment')[3].click();
+    const args = spy.getCall(0).args[0];
+    expect(args.date).to.deep.equal(
+      moment('2016-06-01')
+        .startOf('day')
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate()
+    );
+    expect(args.sourceEvent instanceof MouseEvent).to.be.true;
   });
 
   it('should allow the event title to be customised by the calendarConfig provider', () => {
