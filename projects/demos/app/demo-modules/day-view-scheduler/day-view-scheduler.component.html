@@ -42,10 +42,7 @@
         *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
       >
         <div
-          *ngFor="
-            let timeEvent of column.events;
-            trackBy: trackByDayOrWeekEvent
-          "
+          *ngFor="let timeEvent of column.events; trackBy: trackByWeekTimeEvent"
           #event
           class="cal-event-container"
           [class.cal-draggable]="
@@ -113,7 +110,12 @@
             [eventTitleTemplate]="eventTitleTemplate"
             [eventActionsTemplate]="eventActionsTemplate"
             [column]="column"
-            (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
+            (eventClicked)="
+              eventClicked.emit({
+                event: timeEvent.event,
+                sourceEvent: $event.sourceEvent
+              })
+            "
           >
           </mwl-calendar-week-view-event>
           <div
@@ -141,7 +143,12 @@
             [segmentHeight]="hourSegmentHeight"
             [locale]="locale"
             [customTemplate]="hourSegmentTemplate"
-            (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"
+            (mwlClick)="
+              hourSegmentClicked.emit({
+                date: segment.date,
+                sourceEvent: $event
+              })
+            "
             [clickListenerDisabled]="hourSegmentClicked.observers.length === 0"
             mwlDroppable
             [dragOverClass]="

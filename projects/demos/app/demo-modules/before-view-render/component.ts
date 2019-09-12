@@ -7,7 +7,8 @@ import {
   CalendarEvent,
   CalendarMonthViewBeforeRenderEvent,
   CalendarWeekViewBeforeRenderEvent,
-  CalendarDayViewBeforeRenderEvent
+  CalendarDayViewBeforeRenderEvent,
+  CalendarView
 } from 'angular-calendar';
 
 @Component({
@@ -24,7 +25,7 @@ import {
   ]
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 

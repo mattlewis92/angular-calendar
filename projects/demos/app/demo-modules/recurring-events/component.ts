@@ -38,7 +38,7 @@ moment.tz.setDefault('Utc');
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-  view = CalendarView.Month;
+  view: CalendarView = CalendarView.Month;
 
   viewDate = moment().toDate();
 
