@@ -142,7 +142,11 @@
     "typescript": "~3.5.3",
     "zone.js": "~0.9.1"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "@angular/animations": ">=6.0.0 <9.0.0",
+    "@angular/common": ">=6.0.0 <9.0.0",
+    "@angular/core": ">=6.0.0 <9.0.0"
+  },
   "dependencies": {
     "angular-draggable-droppable": "^4.3.2",
     "angular-resizable-element": "^3.2.4",
