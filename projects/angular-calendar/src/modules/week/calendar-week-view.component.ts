@@ -42,10 +42,11 @@ import {
   getDefaultEventEnd,
   getMinimumEventHeightInMinutes,
   addDaysWithExclusions,
-  trackByDayOrWeekEvent,
   isDraggedWithinPeriod,
   shouldFireDroppedEvent,
-  getWeekViewPeriod
+  getWeekViewPeriod,
+  trackByWeekAllDayEvent,
+  trackByWeekTimeEvent
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
@@ -121,7 +122,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           <div
             *ngFor="
               let allDayEvent of eventRow.row;
-              trackBy: trackByDayOrWeekEvent
+              trackBy: trackByWeekAllDayEvent
             "
             #event
             class="cal-event-container"
@@ -244,7 +245,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               <div
                 *ngFor="
                   let timeEvent of column.events;
-                  trackBy: trackByDayOrWeekEvent
+                  trackBy: trackByWeekTimeEvent
                 "
                 #event
                 class="cal-event-container"
@@ -654,7 +655,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByDayOrWeekEvent = trackByDayOrWeekEvent;
+  trackByWeekAllDayEvent = trackByWeekAllDayEvent;
+
+  /**
+   * @hidden
+   */
+  trackByWeekTimeEvent = trackByWeekTimeEvent;
 
   /**
    * @hidden

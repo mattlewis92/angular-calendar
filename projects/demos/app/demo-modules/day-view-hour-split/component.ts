@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -7,7 +7,7 @@ import { CalendarEvent } from 'angular-calendar';
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-  view: string = 'day';
+  view: CalendarView = CalendarView.Day;
 
   viewDate: Date = new Date();
 

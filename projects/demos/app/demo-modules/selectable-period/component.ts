@@ -3,7 +3,11 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarMonthViewDay,
+  CalendarView
+} from 'angular-calendar';
 import { WeekViewHour } from 'calendar-utils';
 
 @Component({
@@ -22,7 +26,7 @@ import { WeekViewHour } from 'calendar-utils';
   encapsulation: ViewEncapsulation.None
 })
 export class DemoComponent {
-  view = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 

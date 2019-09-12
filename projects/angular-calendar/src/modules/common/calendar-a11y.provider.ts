@@ -10,12 +10,14 @@ import { A11yParams } from './calendar-a11y.interface';
  * ```typescript
  * import { A11yParams, CalendarA11y } from 'angular-calendar';
  * import { formatDate, I18nPluralPipe } from '@angular/common';
+ * import { Injectable } from '@angular/core';
  *
  * // adding your own a11y params
  * export interface CustomA11yParams extends A11yParams {
  *   isDrSuess?: boolean;
  * }
  *
+ * @Injectable()
  * export class CustomCalendarA11y extends CalendarA11y {
  *   constructor(protected i18nPlural: I18nPluralPipe) {
  *     super(i18nPlural);

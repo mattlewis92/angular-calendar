@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
+import { CalendarEvent, CalendarView, DAYS_OF_WEEK } from 'angular-calendar';
 import moment from 'moment';
 
 // weekStartsOn option is ignored when using moment, as it needs to be configured globally for the moment locale
@@ -16,7 +16,7 @@ moment.updateLocale('en', {
   templateUrl: 'template.html'
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 

@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Injectable } from '@angular/core';
 import { CalendarEvent, CalendarUtils } from 'angular-calendar';
 import { subWeeks, startOfMonth, endOfMonth, addWeeks } from 'date-fns';
 import { GetMonthViewArgs, MonthView } from 'calendar-utils';
 
+@Injectable()
 export class MyCalendarUtils extends CalendarUtils {
   getMonthView(args: GetMonthViewArgs): MonthView {
     args.viewStart = subWeeks(startOfMonth(args.viewDate), 1);

@@ -3,7 +3,11 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarMonthViewDay,
+  CalendarView
+} from 'angular-calendar';
 import { Subject } from 'rxjs';
 
 const RED_CELL: 'red-cell' = 'red-cell';
@@ -26,7 +30,7 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
   ]
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 

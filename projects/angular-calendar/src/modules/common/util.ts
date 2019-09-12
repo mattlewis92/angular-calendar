@@ -46,9 +46,14 @@ export const trackByHourSegment = (
 export const trackByHour = (index: number, hour: WeekViewHour) =>
   hour.segments[0].date.toISOString();
 
-export const trackByDayOrWeekEvent = (
+export const trackByWeekAllDayEvent = (
   index: number,
-  weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent
+  weekEvent: WeekViewAllDayEvent
+) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
+
+export const trackByWeekTimeEvent = (
+  index: number,
+  weekEvent: WeekViewTimeEvent
 ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
 
 const MINUTES_IN_HOUR = 60;
