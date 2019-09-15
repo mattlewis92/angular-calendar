@@ -9,11 +9,13 @@
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json",
     "build:styles": "node-sass projects/angular-calendar/src/angular-calendar.scss | postcss --output dist/angular-calendar/css/angular-calendar.css",
     "build:clean": "del-cli dist",
-    "build:copyfiles": "copyfiles CHANGELOG.md README.md LICENSE dist/angular-calendar & cp-cli projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/date-fns/package.json & cp-cli projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/moment/package.json & copyfiles -u 3 projects/angular-calendar/src/**/*.scss dist/angular-calendar/scss",
-    "build": "run-s build:copy-package-json build:lib build:date-adapters build:styles build:copyfiles",
+    "build:schematics": "tsc projects/angular-calendar/schematics/ng-add/index.ts",
+    "build:copyfiles": "copyfiles CHANGELOG.md README.md LICENSE dist/angular-calendar & cp-cli projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/date-fns/package.json & cp-cli projects/angular-calendar/util/date-adapter-package.json dist/angular-calendar/date-adapters/moment/package.json & copyfiles -u 3 projects/angular-calendar/src/**/*.scss dist/angular-calendar/scss & npx copyfiles -u 2 \"projects/angular-calendar/schematics/**/*.{json,js}\" dist/angular-calendar",
+    "build": "run-s build:copy-package-json build:lib build:date-adapters build:styles build:schematics build:copyfiles",
     "test:single": "cross-env TZ=UTC ng test angular-calendar --watch=false --code-coverage",
     "test:watch": "cross-env TZ=UTC ng test angular-calendar",
-    "test": "run-s lint test:single build build:clean",
+    "test:schematics": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha --require ts-node/register projects/angular-calendar/schematics/**/*.spec.ts",
+    "test": "run-s lint test:single test:schematics build build:clean",
     "lint:styles": "stylelint \"{projects,src}/**/*.scss\" --fix",
     "lint:ts": "ng lint",
     "lint": "run-s lint:ts lint:styles",
@@ -34,6 +36,7 @@
     "gh-pages:deploy": "ngh --dir=dist/demos --no-silent",
     "gh-pages": "run-s build:clean gh-pages:demos gh-pages:compodoc gh-pages:deploy build:clean"
   },
+  "schematics": "./schematics/collection.json",
   "config": {
     "commitizen": {
       "path": "@commitlint/prompt"
@@ -52,7 +55,8 @@
     "angular",
     "angular2",
     "angular6",
-    "calendar"
+    "calendar",
+    "schematics"
   ],
   "author": "Matt Lewis",
   "license": "MIT",
