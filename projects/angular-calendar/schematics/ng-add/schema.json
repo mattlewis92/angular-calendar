@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "angular-calendar-schematic-ng-add",
+  "title": "angular-calendar ng-add schematic",
+  "type": "object",
+  "properties": {
+    "dateAdapter": {
+      "description": "Which date adapter to use",
+      "type": "string",
+      "default": "date-fns",
+      "x-prompt": {
+        "message": "What date adapter would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "date-fns",       "label": "date-fns        [ https://date-fns.org/ ]" },
+          { "value": "moment",         "label": "moment          [ https://momentjs.com/ ]" }
+        ]
+      }
+    },
+    "module": {
+      "type": "string",
+      "description": "Where to add the module import",
+      "x-prompt": "Please enter a path to the NgModule that will use the calendar"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}
