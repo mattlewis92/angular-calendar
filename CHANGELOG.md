@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.19](https://github.com/mattlewis92/angular-calendar/compare/v0.27.18...v0.27.19) (2019-09-25)
+
+
+### Bug Fixes
+
+* restore peer dependencies ([1c0f6eb](https://github.com/mattlewis92/angular-calendar/commit/1c0f6eb))
+
 ### [0.27.18](https://github.com/mattlewis92/angular-calendar/compare/v0.27.17...v0.27.18) (2019-08-18)
 
 
