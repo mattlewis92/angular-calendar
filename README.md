@@ -33,7 +33,7 @@ A calendar component for Angular 6.0+ that can display events on a month, week o
 First install through npm:
 
 ```bash
-npm install --save angular-calendar date-fns
+npm install --save angular-calendar date-fns@1.30.1
 ```
 
 Next include the CSS file in the global (not component scoped) styles of your app:
