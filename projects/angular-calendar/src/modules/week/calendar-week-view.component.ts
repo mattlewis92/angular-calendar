@@ -241,6 +241,16 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             class="cal-day-column"
             *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
           >
+            <mwl-calendar-week-view-current-time-marker
+              [columnDate]="column.date"
+              [dayStartHour]="dayStartHour"
+              [dayStartMinute]="dayStartMinute"
+              [dayEndHour]="dayEndHour"
+              [dayEndMinute]="dayEndMinute"
+              [hourSegments]="hourSegments"
+              [hourSegmentHeight]="hourSegmentHeight"
+              [customTemplate]="currentTimeMarkerTemplate"
+            ></mwl-calendar-week-view-current-time-marker>
             <div class="cal-events-container">
               <div
                 *ngFor="
@@ -530,6 +540,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * The first day of the week will always be the `viewDate` and `weekStartsOn` if set will be ignored
    */
   @Input() daysInWeek: number;
+
+  /**
+   * A custom template to use for the current time marker
+   */
+  @Input() currentTimeMarkerTemplate: TemplateRef<any>;
 
   /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element

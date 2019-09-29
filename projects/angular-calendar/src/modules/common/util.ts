@@ -58,6 +58,13 @@ export const trackByWeekTimeEvent = (
 
 const MINUTES_IN_HOUR = 60;
 
+function getPixelAmountInMinutes(
+  hourSegments: number,
+  hourSegmentHeight: number
+) {
+  return MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+}
+
 export function getMinutesMoved(
   movedY: number,
   hourSegments: number,
@@ -68,8 +75,10 @@ export function getMinutesMoved(
     movedY,
     eventSnapSize || hourSegmentHeight
   );
-  const pixelAmountInMinutes =
-    MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+  const pixelAmountInMinutes = getPixelAmountInMinutes(
+    hourSegments,
+    hourSegmentHeight
+  );
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
 }
 
@@ -78,7 +87,7 @@ export function getMinimumEventHeightInMinutes(
   hourSegmentHeight: number
 ) {
   return (
-    (MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight)) * hourSegmentHeight
+    getPixelAmountInMinutes(hourSegments, hourSegmentHeight) * hourSegmentHeight
   );
 }
 

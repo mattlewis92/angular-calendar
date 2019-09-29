@@ -106,7 +106,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.destroy();
   });
 
-  it('should call the event clicked callback', async(() => {
+  it('should call the event clicked callback', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
@@ -123,16 +123,15 @@ describe('CalendarDayViewComponent component', () => {
     ];
 
     fixture.detectChanges();
-    fixture.componentInstance.eventClicked.subscribe(val => {
-      expect(val).to.deep.equal({
-        event: fixture.componentInstance.events[0],
-        sourceEvent: window['event']
-      });
-    });
+    const spy = sinon.spy();
+    fixture.componentInstance.eventClicked.subscribe(spy);
     fixture.nativeElement.querySelector('.cal-event-title').click();
-  }));
+    const call = spy.getCall(0).args[0];
+    expect(call.event).to.equal(fixture.componentInstance.events[0]);
+    expect(call.sourceEvent).to.be.an.instanceOf(MouseEvent);
+  });
 
-  it('should call the event clicked callback on all day events', async(() => {
+  it('should call the event clicked callback on all day events', () => {
     const fixture: ComponentFixture<
       CalendarDayViewComponent
     > = TestBed.createComponent(CalendarDayViewComponent);
@@ -150,14 +149,13 @@ describe('CalendarDayViewComponent component', () => {
     ];
 
     fixture.detectChanges();
-    fixture.componentInstance.eventClicked.subscribe(val => {
-      expect(val).to.deep.equal({
-        event: fixture.componentInstance.events[0],
-        sourceEvent: window['event']
-      });
-    });
+    const spy = sinon.spy();
+    fixture.componentInstance.eventClicked.subscribe(spy);
     fixture.nativeElement.querySelector('.cal-event-title').click();
-  }));
+    const call = spy.getCall(0).args[0];
+    expect(call.event).to.equal(fixture.componentInstance.events[0]);
+    expect(call.sourceEvent).to.be.an.instanceOf(MouseEvent);
+  });
 
   it('should add a custom CSS class to events', () => {
     const fixture: ComponentFixture<
@@ -743,6 +741,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();
     expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    fixture.destroy();
   }));
 
   it('should disable the tooltip', fakeAsync(() => {
@@ -771,6 +770,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     flush();
     expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    fixture.destroy();
   }));
 
   it('should allow events to be dragged and dropped', () => {

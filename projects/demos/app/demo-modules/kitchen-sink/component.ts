@@ -107,7 +107,7 @@ export class DemoComponent {
     },
     {
       start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
+      end: addHours(new Date(), 2),
       title: 'A draggable and resizable event',
       color: colors.yellow,
       actions: this.actions,

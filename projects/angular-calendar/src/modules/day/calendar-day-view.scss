@@ -11,4 +11,9 @@
   .cal-day-column {
     border-left: 0;
   }
+
+  .cal-current-time-marker {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
 }

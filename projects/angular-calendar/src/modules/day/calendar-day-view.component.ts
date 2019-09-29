@@ -50,6 +50,7 @@ export type CalendarDayViewBeforeRenderEvent = CalendarWeekViewBeforeRenderEvent
       [eventActionsTemplate]="eventActionsTemplate"
       [snapDraggedEvents]="snapDraggedEvents"
       [allDayEventsLabelTemplate]="allDayEventsLabelTemplate"
+      [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"
       (eventClicked)="eventClicked.emit($event)"
       (hourSegmentClicked)="hourSegmentClicked.emit($event)"
       (eventTimesChanged)="eventTimesChanged.emit($event)"
@@ -164,6 +165,11 @@ export class CalendarDayViewComponent {
    * A custom template to use for the all day events label text
    */
   @Input() allDayEventsLabelTemplate: TemplateRef<any>;
+
+  /**
+   * A custom template to use for the current time marker
+   */
+  @Input() currentTimeMarkerTemplate: TemplateRef<any>;
 
   /**
    * Called when an event title is clicked

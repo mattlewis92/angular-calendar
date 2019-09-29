@@ -28,6 +28,7 @@ import { take } from 'rxjs/operators';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import * as lolex from 'lolex';
 
 @Component({
   template: `
@@ -347,6 +348,7 @@ describe('calendarWeekView component', () => {
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();
     expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    fixture.destroy();
   }));
 
   it('should disable the tooltip', fakeAsync(() => {
@@ -375,6 +377,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     flush();
     expect(!!document.body.querySelector('.cal-tooltip')).to.equal(false);
+    fixture.destroy();
   }));
 
   it('should allow the start of the week to be changed', () => {
@@ -2397,5 +2400,88 @@ describe('calendarWeekView component', () => {
       allDay: false
     });
     expect(eventDropped).to.have.been.calledOnce;
+  });
+
+  describe('current time marker', () => {
+    let clock: any;
+    beforeEach(() => {
+      clock = lolex.install({
+        now: new Date('2019-09-30T11:30:25.288Z').getTime(),
+        toFake: ['Date']
+      });
+    });
+
+    afterEach(() => {
+      clock.uninstall();
+    });
+
+    it('should show a current time marker', () => {
+      const fixture: ComponentFixture<
+        CalendarWeekViewComponent
+      > = TestBed.createComponent(CalendarWeekViewComponent);
+      fixture.componentInstance.viewDate = new Date();
+      fixture.componentInstance.ngOnChanges({
+        viewDate: {},
+        hourSegmentHeight: {}
+      });
+      fixture.detectChanges();
+      const marker = fixture.nativeElement.querySelector(
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+      );
+      expect(marker.style.top).to.equal('690px');
+    });
+
+    it('should respect the start time', () => {
+      const fixture: ComponentFixture<
+        CalendarWeekViewComponent
+      > = TestBed.createComponent(CalendarWeekViewComponent);
+      fixture.componentInstance.viewDate = new Date();
+      fixture.componentInstance.dayStartHour = 3;
+      fixture.componentInstance.dayStartMinute = 30;
+      fixture.componentInstance.ngOnChanges({
+        viewDate: {},
+        hourSegmentHeight: {}
+      });
+      fixture.detectChanges();
+      const marker = fixture.nativeElement.querySelector(
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+      );
+      expect(marker.style.top).to.equal('480px');
+    });
+
+    it('should respect the end time', () => {
+      const fixture: ComponentFixture<
+        CalendarWeekViewComponent
+      > = TestBed.createComponent(CalendarWeekViewComponent);
+      fixture.componentInstance.viewDate = new Date();
+      fixture.componentInstance.dayEndHour = 3;
+      fixture.componentInstance.ngOnChanges({
+        viewDate: {},
+        hourSegmentHeight: {}
+      });
+      fixture.detectChanges();
+      const marker = fixture.nativeElement.querySelector(
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+      );
+      expect(marker).to.equal(null);
+    });
+
+    it('should respect the hour segment count and height', () => {
+      const fixture: ComponentFixture<
+        CalendarWeekViewComponent
+      > = TestBed.createComponent(CalendarWeekViewComponent);
+      fixture.componentInstance.viewDate = new Date();
+      fixture.componentInstance.hourSegments = 4;
+      fixture.componentInstance.hourSegmentHeight = 60;
+      fixture.componentInstance.ngOnChanges({
+        viewDate: {},
+        hourSegmentHeight: {}
+      });
+      fixture.detectChanges();
+      const marker = fixture.nativeElement.querySelector(
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+      );
+      expect(marker.style.top).to.equal('2760px');
+    });
   });
 });
