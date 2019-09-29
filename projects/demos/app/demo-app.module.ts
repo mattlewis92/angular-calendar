@@ -415,6 +415,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           }
         },
         {
+          path: 'week-view-event-margin',
+          loadChildren: () =>
+            import('./demo-modules/week-view-event-margin/module').then(
+              m => m.DemoModule
+            ),
+          data: {
+            label: 'Week view event margin'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }
