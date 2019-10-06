@@ -16,7 +16,7 @@ export const sources = [
   {
     filename: 'styles.scss',
     contents: {
-      raw: require('!!raw-loader!./template.html'),
+      raw: require('!!raw-loader!./styles.scss'),
       highlighted: require('!!raw-loader!highlightjs-loader?lang=xml!./styles.scss')
     }
   },
