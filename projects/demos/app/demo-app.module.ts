@@ -396,13 +396,13 @@ import { ClipboardModule } from 'ngx-clipboard';
           }
         },
         {
-          path: 'week-view-responsive',
+          path: 'responsive-week-view',
           loadChildren: () =>
-            import('./demo-modules/week-view-responsive/module').then(
+            import('./demo-modules/responsive-week-view/module').then(
               m => m.DemoModule
             ),
           data: {
-            label: 'Week view responsive'
+            label: 'Responsive week view'
           }
         },
         {
