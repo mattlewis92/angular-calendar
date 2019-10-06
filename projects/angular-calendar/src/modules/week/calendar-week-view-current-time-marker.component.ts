@@ -19,11 +19,13 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
       let-dayStartMinute="dayStartMinute"
       let-dayEndHour="dayEndHour"
       let-dayEndMinute="dayEndMinute"
+      let-isVisible="isVisible"
+      let-topPx="topPx"
     >
       <div
         class="cal-current-time-marker"
-        *ngIf="(marker$ | async)?.isVisible"
-        [style.top.px]="(marker$ | async)?.top"
+        *ngIf="isVisible"
+        [style.top.px]="topPx"
       ></div>
     </ng-template>
     <ng-template
@@ -33,7 +35,9 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
         dayStartHour: dayStartHour,
         dayStartMinute: dayStartMinute,
         dayEndHour: dayEndHour,
-        dayEndMinute: dayEndMinute
+        dayEndMinute: dayEndMinute,
+        isVisible: (marker$ | async)?.isVisible,
+        topPx: (marker$ | async)?.top
       }"
     >
     </ng-template>

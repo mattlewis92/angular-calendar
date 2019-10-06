@@ -425,6 +425,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           }
         },
         {
+          path: 'customise-current-time-marker',
+          loadChildren: () =>
+            import('./demo-modules/customise-current-time-marker/module').then(
+              m => m.DemoModule
+            ),
+          data: {
+            label: 'Customise current time marker'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }
