@@ -1,13 +1,10 @@
 # angular 6.0+ calendar
 
+[![Sponsorship](https://img.shields.io/badge/funding-github-%23EA4AAA)](https://github.com/users/mattlewis92/sponsorship)
 [![Build Status](https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-calendar)
 [![codecov](https://codecov.io/gh/mattlewis92/angular-calendar/branch/master/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-calendar)
 [![npm version](https://badge.fury.io/js/angular-calendar.svg)](http://badge.fury.io/js/angular-calendar)
 [![Twitter Follow](https://img.shields.io/twitter/follow/mattlewis92_.svg)](https://twitter.com/mattlewis92_)
-
-<a href="https://www.patreon.com/mattlewis92">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
 
 ## Demo
 
@@ -67,7 +64,7 @@ In order to allow the most flexibility for all users there is a substantial amou
 
 Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: [`mwl-calendar-month-view`](https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html), [`mwl-calendar-week-view`](https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html) and [`mwl-calendar-day-view`](https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html).
 
-If you would like a one on one consulation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on [Patreon](https://www.patreon.com/mattlewis92).
+If you would like a one on one consulation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on [GitHub](https://github.com/users/mattlewis92/sponsorship).
 
 ### Module bundlers
 
