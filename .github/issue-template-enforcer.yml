@@ -1,7 +1,7 @@
 closeComment: >
   This issue has been closed automatically as it did not follow the issue template, please **open a new issue** that follows the bug report or feature request template.<br><br>
 
-  If you would like to submit a support issue or get a faster reply, please consider [supporting me on Patreon](https://www.patreon.com/mattlewis92).<br><br>
+  If you would like to submit a support issue or get a faster reply, please consider [sponsoring me](https://github.com/users/mattlewis92/sponsorship).<br><br>
   
   Thank you! ✌️
 
@@ -11,4 +11,4 @@ skipAuthors:
 lockOnClose: true
 
 matchComment: >
-  Thanks so much for opening an issue! If you'd like me to give priority to answering your issue or would just like to support this project, then please consider [supporting me on Patreon](https://www.patreon.com/mattlewis92)
+  Thanks so much for opening an issue! If you'd like me to give priority to answering your issue or would just like to support this project, then please consider [sponsoring me](https://github.com/users/mattlewis92/sponsorship)
