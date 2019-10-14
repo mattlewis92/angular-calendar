@@ -14,12 +14,13 @@ import {
   NodeDependency,
   NodeDependencyType
 } from '@schematics/angular/utility/dependencies';
+
 import {
-  getProjectFromWorkspace,
-  getProjectMainFile,
+  addModuleImportToRootModule,
   getSourceFile,
-  addModuleImportToRootModule
-} from '@angular/cdk/schematics';
+  getProjectMainFile,
+  getProjectFromWorkspace
+} from '../utils';
 
 import { Schema } from './schema';
 
