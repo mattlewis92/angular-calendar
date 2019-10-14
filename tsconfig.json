@@ -22,6 +22,7 @@
       "angular-calendar/date-adapters/date-fns": ["./projects/angular-calendar/src/date-adapters/date-fns"],
       "angular-calendar/date-adapters/moment": ["./projects/angular-calendar/src/date-adapters/moment"]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
   }
 }

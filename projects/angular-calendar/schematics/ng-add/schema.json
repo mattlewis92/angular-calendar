@@ -8,6 +8,10 @@
       "description": "Which date adapter to use",
       "type": "string",
       "default": "date-fns",
+      "enum": [
+        "moment",
+        "date-fns"
+      ],
       "x-prompt": {
         "message": "What date adapter would you like to use?",
         "type": "list",
