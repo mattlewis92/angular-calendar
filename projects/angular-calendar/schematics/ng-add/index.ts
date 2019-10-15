@@ -17,6 +17,7 @@ import {
 
 import {
   addModuleImportToRootModule,
+  addStyle,
   getSourceFile,
   getProjectMainFile,
   getProjectFromWorkspace
@@ -28,7 +29,8 @@ export default function(options: Schema): Rule {
   return chain([
     addPackageJsonDependencies(options),
     installPackageJsonDependencies(),
-    addModuleToImports(options)
+    addModuleToImports(options),
+    addAngularCalendarStyle()
   ]);
 }
 
@@ -48,12 +50,12 @@ function addPackageJsonDependencies(options: Schema): Rule {
       'date-fns': '1.30.1'
     };
 
-    const angularCalendarDependency: NodeDependency = _nodeDependencyFactory(
+    const angularCalendarDependency: NodeDependency = nodeDependencyFactory(
       'angular-calendar',
       '0.27.19'
     );
     const dateAdapterLibrary = options.dateAdapter;
-    const dateAdapterLibraryDependency: NodeDependency = _nodeDependencyFactory(
+    const dateAdapterLibraryDependency: NodeDependency = nodeDependencyFactory(
       dateAdapterLibrary,
       dateAdapters[dateAdapterLibrary]
     );
@@ -74,7 +76,7 @@ function addPackageJsonDependencies(options: Schema): Rule {
   };
 }
 
-function _nodeDependencyFactory(
+function nodeDependencyFactory(
   packageName: string,
   version: string
 ): NodeDependency {
@@ -107,7 +109,7 @@ function addModuleToImports(options: Schema): Rule {
     const moduleSource = getSourceFile(host, appModulePath);
     const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })`;
     const moduleCalendarSrc = 'angular-calendar';
-    const PEER_DEPENDENCIES = ['DateAdapter', 'adapteFactory'];
+    const PEER_DEPENDENCIES = ['DateAdapter', 'adapterFactory'];
 
     addModuleImportToRootModule(host, moduleName, moduleCalendarSrc, project);
 
@@ -131,6 +133,15 @@ function addModuleToImports(options: Schema): Rule {
     recorder.insertLeft(peerDependencyChange2.pos, peerDependencyChange2.toAdd);
     host.commitUpdate(recorder);
 
+    return host;
+  };
+}
+
+function addAngularCalendarStyle(): Rule {
+  return (host: Tree) => {
+    const libStylePath =
+      'node_modules/angular-calendar/css/angular-calendar.css';
+    addStyle(host, libStylePath);
     return host;
   };
 }
