@@ -1,3 +1,4 @@
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
   Rule,
   SchematicContext,
@@ -90,10 +91,7 @@ function nodeDependencyFactory(
 
 function addModuleToImports(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
-    context.logger.log(
-      'info',
-      `add modules imports options...${JSON.stringify(options)}`
-    );
+    context.logger.log('info', `Add modules imports options...`);
 
     const workspace = getWorkspace(host);
     const project = getProjectFromWorkspace(
@@ -114,17 +112,17 @@ function addModuleToImports(options: Schema): Rule {
     addModuleImportToRootModule(host, moduleName, moduleCalendarSrc, project);
 
     const peerDependencyChange1 = insertImport(
-      moduleSource as any,
+      moduleSource as ts.SourceFile,
       appModulePath,
       PEER_DEPENDENCIES[0],
       moduleCalendarSrc
     ) as InsertChange;
 
     const peerDependencyChange2 = insertImport(
-      moduleSource as any,
+      moduleSource as ts.SourceFile,
       appModulePath,
       PEER_DEPENDENCIES[1],
-      `${moduleCalendarSrc}/date-adapters/date-fns`
+      `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`
     ) as InsertChange;
 
     const recorder = host.beginUpdate(appModulePath);
