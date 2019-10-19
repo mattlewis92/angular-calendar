@@ -5,6 +5,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
+    NgbPopoverModule,
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }])
   ],

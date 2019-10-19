@@ -303,13 +303,13 @@ import { ClipboardModule } from 'ngx-clipboard';
           }
         },
         {
-          path: 'group-month-view-events',
+          path: 'group-similar-events',
           loadChildren: () =>
-            import('./demo-modules/group-month-view-events/module').then(
+            import('./demo-modules/group-similar-events/module').then(
               m => m.DemoModule
             ),
           data: {
-            label: 'Group month view events'
+            label: 'Group similar events'
           }
         },
         {
