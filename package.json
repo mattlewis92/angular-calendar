@@ -105,7 +105,6 @@
     "del-cli": "^2.0.0",
     "flatpickr": "^4.6.2",
     "font-awesome": "^4.7.0",
-    "hammerjs": "^2.0.8",
     "highlightjs-loader": "^0.2.3",
     "husky": "^3.0.4",
     "karma": "^4.2.0",
