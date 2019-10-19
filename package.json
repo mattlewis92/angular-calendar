@@ -1,6 +1,6 @@
 {
   "name": "angular-calendar",
-  "version": "0.27.19",
+  "version": "0.27.20",
   "description": "A calendar component for angular 6.0+ that can display events on a month, week or day view",
   "scripts": {
     "start": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open",
@@ -105,7 +105,6 @@
     "del-cli": "^3.0.0",
     "flatpickr": "^4.6.3",
     "font-awesome": "^4.7.0",
-    "hammerjs": "^2.0.8",
     "highlightjs-loader": "^0.2.3",
     "husky": "^3.0.7",
     "karma": "^4.3.0",
@@ -147,8 +146,8 @@
     "@angular/core": ">=6.0.0 <10.0.0"
   },
   "dependencies": {
-    "angular-draggable-droppable": "^4.3.2",
-    "angular-resizable-element": "^3.2.4",
+    "angular-draggable-droppable": "^4.3.8",
+    "angular-resizable-element": "^3.2.6",
     "calendar-utils": "^0.7.0",
     "positioning": "^2.0.0"
   },

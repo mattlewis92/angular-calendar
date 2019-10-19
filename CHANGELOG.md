@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.20](https://github.com/mattlewis92/angular-calendar/compare/v0.27.19...v0.27.20) (2019-10-19)
+
+
+### Bug Fixes
+
+* always use native click event rather than hammerjs's tap event ([ca189c3](https://github.com/mattlewis92/angular-calendar/commit/ca189c3)), closes [#1113](https://github.com/mattlewis92/angular-calendar/issues/1113)
+
 ### [0.27.19](https://github.com/mattlewis92/angular-calendar/compare/v0.27.18...v0.27.19) (2019-09-25)
 
 
