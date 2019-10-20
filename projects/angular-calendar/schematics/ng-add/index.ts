@@ -53,7 +53,7 @@ function addPackageJsonDependencies(options: Schema): Rule {
 
     const angularCalendarDependency: NodeDependency = nodeDependencyFactory(
       'angular-calendar',
-      '0.27.19'
+      '0.27.20'
     );
     const dateAdapterLibrary = options.dateAdapter;
     const dateAdapterLibraryDependency: NodeDependency = nodeDependencyFactory(
