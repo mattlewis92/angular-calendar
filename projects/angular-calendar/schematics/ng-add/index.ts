@@ -25,6 +25,11 @@ import {
 } from '../utils';
 
 import { Schema } from './schema';
+import {
+  dateFnsVersion,
+  momentVersion,
+  angularCalendarVersion
+} from './version-names';
 
 export default function(options: Schema): Rule {
   return chain([
@@ -47,13 +52,13 @@ function installPackageJsonDependencies(): Rule {
 function addPackageJsonDependencies(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const dateAdapters: { [key: string]: string } = {
-      moment: '2.24.0',
-      'date-fns': '1.30.1'
+      moment: momentVersion,
+      'date-fns': dateFnsVersion
     };
 
     const angularCalendarDependency: NodeDependency = nodeDependencyFactory(
       'angular-calendar',
-      '0.27.20'
+      angularCalendarVersion
     );
     const dateAdapterLibrary = options.dateAdapter;
     const dateAdapterLibraryDependency: NodeDependency = nodeDependencyFactory(
