@@ -24,12 +24,12 @@
     "module": {
       "type": "string",
       "description": "Where to add the module import",
-      "x-prompt": "Please enter a path to the NgModule that will use the calendar"
+      "x-prompt": "Please enter a path to the NgModule that will use the calendar (relative to the root project directory, for example src/app/app.module.ts)"
     },
     "projectName": {
       "type": "string",
-      "description": "Which project should contains angular calendar settings",
-      "x-prompt": "Please enter the name of the project that will use the calendar"
+      "description": "Which project should the styles be added to",
+      "x-prompt": "Please enter the name of the project that will use the calendar (optional, will use the default project if not specified)"
     }
   },
   "required": [],
