@@ -1,4 +1,5 @@
 export interface Schema {
   dateAdapter: 'date-fns' | 'moment';
-  module: string;
+  module?: string;
+  projectName?: string;
 }

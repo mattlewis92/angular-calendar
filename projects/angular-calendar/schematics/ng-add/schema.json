@@ -8,6 +8,10 @@
       "description": "Which date adapter to use",
       "type": "string",
       "default": "date-fns",
+      "enum": [
+        "moment",
+        "date-fns"
+      ],
       "x-prompt": {
         "message": "What date adapter would you like to use?",
         "type": "list",
@@ -20,7 +24,12 @@
     "module": {
       "type": "string",
       "description": "Where to add the module import",
-      "x-prompt": "Please enter a path to the NgModule that will use the calendar"
+      "x-prompt": "Please enter a path to the NgModule that will use the calendar (relative to the root project directory, for example src/app/app.module.ts)"
+    },
+    "projectName": {
+      "type": "string",
+      "description": "Which project should the styles be added to",
+      "x-prompt": "Please enter the name of the project that will use the calendar (optional, will use the default project if not specified)"
     }
   },
   "required": [],
