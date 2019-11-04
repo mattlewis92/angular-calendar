@@ -1,31 +1,41 @@
 import { Tree, SchematicsException } from '@angular-devkit/schematics';
+import { getWorkspace } from '@schematics/angular/utility/config';
+import {
+  WorkspaceProject,
+  WorkspaceSchema
+} from '@schematics/angular/utility/workspace-models';
 
-const CONFIG_PATH = 'angular.json';
+import { getProjectFromWorkspace } from '.';
 
-export function addStyle(host: Tree, stylePath: string): void {
-  const config = readConfig(host);
-  const appConfig = getAngularAppConfig(config);
+const ANGULAR_CONFIG_PATH = 'angular.json';
+
+export function addStyle(
+  host: Tree,
+  stylePath: string,
+  projectName?: string
+): void {
+  const workspace = getWorkspace(host);
+  const appConfig = getAngularAppConfig(workspace, projectName);
 
   if (appConfig) {
     appConfig.architect.build.options.styles.unshift(stylePath);
     appConfig.architect.test.options.styles.unshift(stylePath);
 
-    writeConfig(host, config);
+    writeConfig(host, workspace);
   } else {
-    throw new SchematicsException(`app configuration could not be found`);
+    throw new SchematicsException(`project configuration could not be found`);
   }
 }
 
-function readConfig(host: Tree): JSON {
-  const sourceText = host.read(CONFIG_PATH)!.toString('utf-8');
-  return JSON.parse(sourceText);
+function writeConfig(host: Tree, config: WorkspaceSchema): void {
+  const DEFAULT_ANGULAR_INDENTION = 2;
+  host.overwrite(
+    ANGULAR_CONFIG_PATH,
+    JSON.stringify(config, null, DEFAULT_ANGULAR_INDENTION)
+  );
 }
 
-function writeConfig(host: Tree, config: JSON): void {
-  host.overwrite(CONFIG_PATH, JSON.stringify(config, null, 2));
-}
-
-function isAngularBrowserProject(projectConfig: any) {
+function isAngularBrowserProject(projectConfig: any): boolean {
   if (projectConfig.projectType === 'application') {
     const buildConfig = projectConfig.architect.build;
     return buildConfig.builder === '@angular-devkit/build-angular:browser';
@@ -34,16 +44,14 @@ function isAngularBrowserProject(projectConfig: any) {
   return false;
 }
 
-function getAngularAppConfig(config: any): any | null {
-  const projects = config.projects;
-  const projectNames = Object.keys(projects);
+function getAngularAppConfig(
+  workspace: WorkspaceSchema,
+  projectName: string
+): WorkspaceProject | null {
+  const projectConfig = getProjectFromWorkspace(
+    workspace,
+    projectName ? projectName : workspace.defaultProject
+  );
 
-  for (const projectName of projectNames) {
-    const projectConfig = projects[projectName];
-    if (isAngularBrowserProject(projectConfig)) {
-      return projectConfig;
-    }
-  }
-
-  return null;
+  return isAngularBrowserProject(projectConfig) ? projectConfig : null;
 }

@@ -36,7 +36,7 @@ export default function(options: Schema): Rule {
     addPackageJsonDependencies(options),
     installPackageJsonDependencies(),
     addModuleToImports(options),
-    addAngularCalendarStyle()
+    addAngularCalendarStyle(options)
   ]);
 }
 
@@ -140,11 +140,11 @@ function addModuleToImports(options: Schema): Rule {
   };
 }
 
-function addAngularCalendarStyle(): Rule {
+function addAngularCalendarStyle(options: Schema): Rule {
   return (host: Tree) => {
     const libStylePath =
       'node_modules/angular-calendar/css/angular-calendar.css';
-    addStyle(host, libStylePath);
+    addStyle(host, libStylePath, options.projectName);
     return host;
   };
 }

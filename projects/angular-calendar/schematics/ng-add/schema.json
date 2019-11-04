@@ -25,6 +25,11 @@
       "type": "string",
       "description": "Where to add the module import",
       "x-prompt": "Please enter a path to the NgModule that will use the calendar"
+    },
+    "projectName": {
+      "type": "string",
+      "description": "Which project should contains angular calendar settings",
+      "x-prompt": "Please enter the name of the project that will use the calendar"
     }
   },
   "required": [],
