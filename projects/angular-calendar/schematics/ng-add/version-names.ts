@@ -1,3 +1,5 @@
-export const angularCalendarVersion = '0.27.19';
-export const momentVersion = '2.24.0';
-export const dateFnsVersion = '1.30.1';
+const packageJson = require('../../package.json'); // tslint:disable-line no-var-requires
+
+export const angularCalendarVersion = `^${packageJson.version}`;
+export const momentVersion = packageJson.devDependencies.moment;
+export const dateFnsVersion = packageJson.devDependencies['date-fns'];

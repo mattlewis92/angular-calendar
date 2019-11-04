@@ -20,7 +20,7 @@ export interface PackageJson {
 }
 
 export interface DependencyMap {
-  [dependenyName: string]: string;
+  [dependencyName: string]: string;
 }
 
 const defaultAngularCalendarStylePath =
@@ -97,9 +97,7 @@ describe('angular-calendar schematics', () => {
     const styles = getProjectTargetOptions(project, 'build').styles;
     const stylesTest = getProjectTargetOptions(project, 'test').styles;
 
-    expect(styles[1]).to.contains({ input: defaultAngularCalendarStylePath });
-    expect(stylesTest[1]).to.contains({
-      input: defaultAngularCalendarStylePath
-    });
+    expect(styles[0]).to.contains(defaultAngularCalendarStylePath);
+    expect(stylesTest[0]).to.contains(defaultAngularCalendarStylePath);
   });
 });

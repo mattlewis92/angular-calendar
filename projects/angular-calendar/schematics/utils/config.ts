@@ -7,12 +7,8 @@ export function addStyle(host: Tree, stylePath: string): void {
   const appConfig = getAngularAppConfig(config);
 
   if (appConfig) {
-    appConfig.architect.build.options.styles.push({
-      input: stylePath
-    });
-    appConfig.architect.test.options.styles.push({
-      input: stylePath
-    });
+    appConfig.architect.build.options.styles.unshift(stylePath);
+    appConfig.architect.test.options.styles.unshift(stylePath);
 
     writeConfig(host, config);
   } else {
