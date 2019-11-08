@@ -61,6 +61,8 @@ export class DemoComponent {
 
   dragToCreateActive = false;
 
+  weekStartsOn: 0 = 0;
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   startDragToCreate(
@@ -79,7 +81,9 @@ export class DemoComponent {
     this.events = [...this.events, dragToSelectEvent];
     const segmentPosition = segmentElement.getBoundingClientRect();
     this.dragToCreateActive = true;
-    const endOfView = endOfWeek(this.viewDate);
+    const endOfView = endOfWeek(this.viewDate, {
+      weekStartsOn: this.weekStartsOn
+    });
 
     fromEvent(document, 'mousemove')
       .pipe(
