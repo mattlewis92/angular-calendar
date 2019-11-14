@@ -55,22 +55,15 @@ The date adapters no longer accept strings as input arguments.
 * **day-view:** expand hour segments across the full calendar width ([61aef47](https://github.com/mattlewis92/angular-calendar/commit/61aef47)), closes [#1083](https://github.com/mattlewis92/angular-calendar/issues/1083)
 * **week-view:** prevent dropping external events on adjacent time slots ([494adb5](https://github.com/mattlewis92/angular-calendar/commit/494adb5)), closes [#1062](https://github.com/mattlewis92/angular-calendar/issues/1062)
 
-
-### build
-
-* remove annotateForClosureCompiler option ([c23f54c](https://github.com/mattlewis92/angular-calendar/commit/c23f54c))
-
-
 ### Features
 
+* upgrade date-fns to v2 ([d4d3873](https://github.com/mattlewis92/angular-calendar/commit/d4d3873)), closes [#1064](https://github.com/mattlewis92/angular-calendar/issues/1064)
+* add accessibility support ([05c9a9a](https://github.com/mattlewis92/angular-calendar/commit/05c9a9a)), closes [#941](https://github.com/mattlewis92/angular-calendar/issues/941)
 * **schematics:** support ng add schematics ([2dc2f47](https://github.com/mattlewis92/angular-calendar/commit/2dc2f47)), closes [#888](https://github.com/mattlewis92/angular-calendar/issues/888)
-* add schematics - wip ([00deb58](https://github.com/mattlewis92/angular-calendar/commit/00deb58))
-* **day-view:** expose `allDayEventsLabelTemplate` input ([224848c](https://github.com/mattlewis92/angular-calendar/commit/224848c))
 * **week-view:** add current time marker ([d3872b1](https://github.com/mattlewis92/angular-calendar/commit/d3872b1)), closes [#1102](https://github.com/mattlewis92/angular-calendar/issues/1102)
 * expose the click or keyboard event that triggers click handlers ([d1a2b78](https://github.com/mattlewis92/angular-calendar/commit/d1a2b78)), closes [#962](https://github.com/mattlewis92/angular-calendar/issues/962)
 * **day-view:** merge the week and day view components ([2e92b25](https://github.com/mattlewis92/angular-calendar/commit/2e92b25)), closes [#889](https://github.com/mattlewis92/angular-calendar/issues/889)
-* add accessibility support ([05c9a9a](https://github.com/mattlewis92/angular-calendar/commit/05c9a9a)), closes [#941](https://github.com/mattlewis92/angular-calendar/issues/941)
-* upgrade date-fns to v2 ([d4d3873](https://github.com/mattlewis92/angular-calendar/commit/d4d3873)), closes [#1064](https://github.com/mattlewis92/angular-calendar/issues/1064)
+* **day-view:** expose `allDayEventsLabelTemplate` input ([224848c](https://github.com/mattlewis92/angular-calendar/commit/224848c))
 
 ### [0.27.21](https://github.com/mattlewis92/angular-calendar/compare/v0.27.20...v0.27.21) (2019-11-14)
 
