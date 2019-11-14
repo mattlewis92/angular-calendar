@@ -7,12 +7,19 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* If extending the week view component the trackBy function `trackByDayOrWeekEvent` was split into `trackByWeekAllDayEvent` and `trackByWeekTimeEvent`
-* **day-view:** If extending the root week view component to override the template you must make the following changes:
+* date-fns v2 or higher is now required as a peer dependency
+
+If implementing a custom adapter, the `max` function signature has changed to accept an array of dates, instead of an infinite argument list.
+
+The date adapters no longer accept strings as input arguments.
+
+* **week-view:** If extending the root week view component to override the template you must make the following changes:
 
 * Wrap the time events with `<div "class='cal-events-container'">`
 * Change `<div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">` to `<div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0 && daysInWeek !== 1">`
 * Add `[isTimeLabel]="daysInWeek === 1"` to the bottom `<mwl-calendar-week-view-hour-segment>` elements
+* The trackBy function `trackByDayOrWeekEvent` was split into `trackByWeekAllDayEvent` and `trackByWeekTimeEvent`
+
 * **week-view:** if using a custom `headerTemplate` on the week view, then you must now add `let-dragEnter="dragEnter"` to the templates variables and `(dragEnter)="dragEnter.emit({ date: day.date })"` onto the `mwlDroppable` element.
 * the `columnHeaderClicked` output on the month view now exposes an object instead of just the ISO day number
 
@@ -43,11 +50,6 @@ The day view scheduler demo is now based off the week view instead, please check
 
 If using a custom template for the `hourSegmentTemplate`, you must pass `let-isTimeLabel="isTimeLabel"` as a local variable and then change `<div class="cal-time">` to `<div class="cal-time" *ngIf="isTimeLabel">`
 * the dist files are no longer annotated for usage with closure compiler.
-* date-fns v2 or higher is now required as a peer dependency
-
-If implementing a custom adapter, the `max` function signature has changed to accept an array of dates, instead of an infinite argument list.
-
-The date adapters no longer accept strings as input arguments.
 
 ### Bug Fixes
 
