@@ -62,9 +62,9 @@ describe('calendarMonthView component', () => {
   }));
 
   it('should generate the month view', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     expect(fixture.componentInstance.view.rowOffsets).to.deep.equal([
@@ -83,9 +83,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should emit on the columnHeaderClicked output', done => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
@@ -99,9 +99,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should generate the week view with default colors for events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
@@ -130,9 +130,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should generate the month view without from week excluded days', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-01-10');
     fixture.componentInstance.excludeDays = [0, 6];
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
@@ -152,9 +152,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should update the month view when excluded days changed', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-01-10');
     fixture.componentInstance.excludeDays = [0, 1, 2];
     fixture.componentInstance.ngOnChanges({ excludeDays: {} });
@@ -164,9 +164,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should open and close the active day events list', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
     expect(fixture.componentInstance.openDay).to.equal(undefined);
     fixture.componentInstance.viewDate = moment()
@@ -194,9 +194,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should use the activeDay input instead of the viewDate to determine the active day', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     expect(fixture.componentInstance.openRowIndex).to.equal(undefined);
     expect(fixture.componentInstance.openDay).to.equal(undefined);
     fixture.componentInstance.viewDate = moment()
@@ -229,9 +229,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add a custom CSS class to events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -255,9 +255,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add a custom CSS class to days via the beforeViewRender output', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -275,9 +275,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add a custom CSS class to headers via the beforeViewRender output', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -295,9 +295,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should not remove other classes when removing the cssClass', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     let firstDay: CalendarMonthViewDay;
     fixture.componentInstance.beforeViewRender
@@ -321,9 +321,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add the highlight class to events on mouse over', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -355,9 +355,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add event actions to the active day events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -396,9 +396,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add event actions to the active day events on enter keypress', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -436,9 +436,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should call the event clicked callback', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -468,9 +468,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should call the event clicked callback on enter keypress', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -500,9 +500,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should refresh the view when the refresh observable is emitted on', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
@@ -525,9 +525,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should allow the event title to be customised by the calendarConfig provider', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     eventTitle.month = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
@@ -553,9 +553,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should allow the locale to be changed', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.locale = 'de';
     fixture.componentInstance.viewDate = new Date();
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -568,9 +568,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should allow the badge total to be customised', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -586,9 +586,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should show a tooltip on mouseover of the event', fakeAsync(() => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     eventTitle.monthTooltip = (e: CalendarEvent) => {
       return `title: ${e.title}`;
     };
@@ -627,9 +627,9 @@ describe('calendarMonthView component', () => {
   }));
 
   it('should show a tooltip on mouseover of the event after a delay', fakeAsync(() => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     eventTitle.monthTooltip = (e: CalendarEvent) => {
       return `title: ${e.title}`;
     };
@@ -668,9 +668,9 @@ describe('calendarMonthView component', () => {
   }));
 
   it('should disable the tooltip', fakeAsync(() => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     eventTitle.monthTooltip = () => '';
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
@@ -696,9 +696,9 @@ describe('calendarMonthView component', () => {
   }));
 
   it('should allow the start of the week to be changed', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.weekStartsOn = 1;
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
@@ -710,9 +710,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should allow events to be dragged and dropped', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-12-05');
     fixture.componentInstance.events = [
       {
@@ -779,9 +779,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should apply the year, month and date changes in the correct order when dragging and dropping events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2017-02-05');
     fixture.componentInstance.events = [
       {
@@ -830,9 +830,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should not fire drop events when dropping on the source date', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2018-10-13');
     fixture.componentInstance.events = [
       {
@@ -876,9 +876,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should update the event title', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
       {
@@ -905,9 +905,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should handle the click event on month cell events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -942,9 +942,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should add helper classes to the header cells', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
@@ -961,9 +961,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should allow the weekend days to be customised', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2017-06-25');
     fixture.componentInstance.weekendDays = [
       DAYS_OF_WEEK.FRIDAY,
@@ -984,9 +984,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should only call the beforeViewRender output once when refreshing the view', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
@@ -1003,9 +1003,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should only call the beforeViewRender output once when changing the view date', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
@@ -1023,9 +1023,9 @@ describe('calendarMonthView component', () => {
 
   it('should log on invalid events', () => {
     const stub = sinon.stub(console, 'warn');
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2017-01-01');
     fixture.componentInstance.events = [
       { start: 1234, title: '', color: { primary: '', secondary: '' } }
@@ -1037,9 +1037,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should expose the view period on the beforeViewRender output', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     const beforeViewRenderCalled = sinon.spy();
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -1069,9 +1069,9 @@ describe('calendarMonthView component', () => {
       }
     `;
     document.head.appendChild(style);
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
@@ -1098,9 +1098,9 @@ describe('calendarMonthView component', () => {
   });
 
   it('should allow the tooltip text to be updated dynamically', fakeAsync(() => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
-    > = TestBed.createComponent(CalendarMonthViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {

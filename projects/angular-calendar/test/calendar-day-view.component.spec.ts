@@ -55,9 +55,9 @@ describe('CalendarDayViewComponent component', () => {
   }));
 
   it('should generate the week view with one day visible', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [
       {
@@ -76,9 +76,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should generate the day view with default colors for events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
 
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
@@ -107,9 +107,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should call the event clicked callback', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [
       {
@@ -132,9 +132,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should call the event clicked callback on all day events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.events = [
       {
@@ -158,9 +158,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should add a custom CSS class to events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
       {
@@ -184,9 +184,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should add a custom CSS class to all day events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
       {
@@ -211,9 +211,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should call the hour segment clicked callback', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-01');
 
     fixture.detectChanges();
@@ -232,9 +232,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should allow the event title to be customised by the calendarConfig provider', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     eventTitle.day = (event: CalendarEvent) => {
       return `foo ${event.title}`;
     };
@@ -259,9 +259,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should add event actions to each event', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     const eventClicked = sinon.spy();
     fixture.componentInstance.eventClicked.subscribe(eventClicked);
@@ -302,9 +302,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should add a custom CSS class to days via the beforeViewRender output', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -328,9 +328,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should resize the event by dragging from the top edge', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -393,9 +393,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should resize the event by dragging from the bottom edge', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -458,9 +458,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should resize back to the original edge', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -513,9 +513,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should resize events with no end date', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -574,9 +574,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should resize events with no end date with a custom amount of segments', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.hourSegments = 4;
     fixture.componentInstance.events = [
@@ -637,9 +637,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should resize the event and respect the event snap size', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -703,9 +703,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should show a tooltip on mouseover of the event', fakeAsync(() => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     eventTitle.dayTooltip = (e: CalendarEvent) => {
       return `title: ${e.title}`;
     };
@@ -745,9 +745,9 @@ describe('CalendarDayViewComponent component', () => {
   }));
 
   it('should disable the tooltip', fakeAsync(() => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     eventTitle.dayTooltip = () => '';
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
@@ -774,9 +774,9 @@ describe('CalendarDayViewComponent component', () => {
   }));
 
   it('should allow events to be dragged and dropped', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -839,9 +839,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should allow events to be dragged outside of the calendar', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -913,9 +913,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should round event drag sizes to the event snap size when dragging and dropping non snapped events', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -974,9 +974,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should not allow events to be resized outside of the container', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -1031,9 +1031,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should respect the event snap size when dragging and dropping', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.events = [
       {
@@ -1099,9 +1099,9 @@ describe('CalendarDayViewComponent component', () => {
 
   it('should log on invalid events', () => {
     const stub = sinon.stub(console, 'warn');
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.events = [
       { start: 1234, title: '', color: { primary: '', secondary: '' } }
     ] as any;
@@ -1112,9 +1112,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should allow the hour segment height to be customised', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.hourSegmentHeight = 45;
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.detectChanges();
@@ -1128,9 +1128,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should only call the beforeViewRender output once when refreshing the view', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.refresh = new Subject();
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.detectChanges();
@@ -1146,9 +1146,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should only call the beforeViewRender output once when changing the view date', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.detectChanges();
     const beforeViewRenderCalled = sinon.spy();
@@ -1164,9 +1164,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should expose the view period on the beforeViewRender output', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     const beforeViewRenderCalled = sinon.spy();
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -1183,9 +1183,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should expose the events on the beforeViewRender output', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     const beforeViewRenderCalled = sinon.spy();
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
@@ -1223,9 +1223,9 @@ describe('CalendarDayViewComponent component', () => {
   });
 
   it('should drag an all day event onto the time grid', () => {
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
     fixture.componentInstance.viewDate = new Date('2018-07-29');
     fixture.componentInstance.events = [
       {
@@ -1293,9 +1293,9 @@ describe('CalendarDayViewComponent component', () => {
       }
     `;
     document.head.appendChild(style);
-    const fixture: ComponentFixture<
+    const fixture: ComponentFixture<CalendarDayViewComponent> = TestBed.createComponent(
       CalendarDayViewComponent
-    > = TestBed.createComponent(CalendarDayViewComponent);
+    );
 
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.componentInstance.events = [
