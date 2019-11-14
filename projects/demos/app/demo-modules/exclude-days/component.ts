@@ -37,4 +37,6 @@ export class DemoComponent {
   excludeDays: number[] = [0, 6];
 
   weekStartsOn = DAYS_OF_WEEK.SUNDAY;
+
+  CalendarView = CalendarView;
 }
