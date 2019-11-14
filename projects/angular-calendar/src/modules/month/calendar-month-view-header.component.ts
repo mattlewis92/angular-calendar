@@ -17,7 +17,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
       let-locale="locale"
       let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
     >
-      <div class="cal-cell-row cal-header">
+      <div class="cal-cell-row cal-header" role="row">
         <div
           class="cal-cell"
           *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
@@ -25,8 +25,15 @@ import { trackByWeekDayHeaderDate } from '../common/util';
           [class.cal-today]="day.isToday"
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
-          (click)="columnHeaderClicked.emit(day.day)"
+          (click)="
+            columnHeaderClicked.emit({
+              isoDayNumber: day.day,
+              sourceEvent: $event
+            })
+          "
           [ngClass]="day.cssClass"
+          tabindex="0"
+          role="columnheader"
         >
           {{ day.date | calendarDate: 'monthViewColumnHeader':locale }}
         </div>
@@ -50,7 +57,10 @@ export class CalendarMonthViewHeaderComponent {
 
   @Input() customTemplate: TemplateRef<any>;
 
-  @Output() columnHeaderClicked = new EventEmitter<number>();
+  @Output() columnHeaderClicked = new EventEmitter<{
+    isoDayNumber: number;
+    sourceEvent: MouseEvent;
+  }>();
 
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 }

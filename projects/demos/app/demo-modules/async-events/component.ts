@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 import {
   isSameMonth,
   isSameDay,
@@ -39,7 +39,7 @@ function getTimezoneOffsetString(date: Date): string {
   templateUrl: 'template.html'
 })
 export class DemoComponent implements OnInit {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 
@@ -69,11 +69,11 @@ export class DemoComponent implements OnInit {
     const params = new HttpParams()
       .set(
         'primary_release_date.gte',
-        format(getStart(this.viewDate), 'YYYY-MM-DD')
+        format(getStart(this.viewDate), 'yyyy-MM-dd')
       )
       .set(
         'primary_release_date.lte',
-        format(getEnd(this.viewDate), 'YYYY-MM-DD')
+        format(getEnd(this.viewDate), 'yyyy-MM-dd')
       )
       .set('api_key', '0ec33936a68018857d727958dca1424f');
 

@@ -411,6 +411,26 @@ import { ClipboardModule } from 'ngx-clipboard';
           }
         },
         {
+          path: 'week-view-event-margin',
+          loadChildren: () =>
+            import('./demo-modules/week-view-event-margin/module').then(
+              m => m.DemoModule
+            ),
+          data: {
+            label: 'Week view event margin'
+          }
+        },
+        {
+          path: 'customise-current-time-marker',
+          loadChildren: () =>
+            import('./demo-modules/customise-current-time-marker/module').then(
+              m => m.DemoModule
+            ),
+          data: {
+            label: 'Customise current time marker'
+          }
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink'
         }

@@ -10,9 +10,11 @@ export function triggerDomEvent(
   Object.assign(event, eventData);
   event.initEvent(eventType, true, true);
   target.dispatchEvent(event);
+  return event;
 }
 
 @Component({
+  selector: 'mwl-external-event',
   template:
     '<div class="external-event" mwlDraggable [dropData]="{event: event}">{{ event.title }}</div>',
   styles: [

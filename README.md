@@ -27,10 +27,18 @@ A calendar component for Angular 6.0+ that can display events on a month, week o
 
 ## Getting started
 
+### ng add (recommended)
+
+```sh
+ng add angular-calendar
+```
+
+### Manual setup (ng add will do this all for you)
+
 First install through npm:
 
 ```bash
-npm install --save angular-calendar date-fns@1.30.1
+npm install --save angular-calendar date-fns
 ```
 
 Next include the CSS file in the global (not component scoped) styles of your app:
@@ -64,7 +72,7 @@ In order to allow the most flexibility for all users there is a substantial amou
 
 Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: [`mwl-calendar-month-view`](https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html), [`mwl-calendar-week-view`](https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html) and [`mwl-calendar-day-view`](https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html).
 
-If you would like a one on one consulation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on [GitHub](https://github.com/users/mattlewis92/sponsorship).
+If you would like a one on one consultation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on [GitHub](https://github.com/users/mattlewis92/sponsorship).
 
 ### Module bundlers
 

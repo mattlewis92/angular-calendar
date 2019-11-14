@@ -3,7 +3,8 @@ import {
   CalendarCommonModule,
   CalendarModuleConfig,
   CalendarEventTitleFormatter,
-  CalendarDateFormatter
+  CalendarDateFormatter,
+  CalendarA11y
 } from './common/calendar-common.module';
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';
@@ -55,7 +56,8 @@ export class CalendarModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils
+        config.utils || CalendarUtils,
+        config.a11y || CalendarA11y
       ]
     };
   }

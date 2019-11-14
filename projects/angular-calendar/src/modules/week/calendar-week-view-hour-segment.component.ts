@@ -1,5 +1,5 @@
 import { Component, Input, TemplateRef } from '@angular/core';
-import { WeekViewHourColumn } from 'calendar-utils';
+import { WeekViewHourSegment } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-week-view-hour-segment',
@@ -10,8 +10,16 @@ import { WeekViewHourColumn } from 'calendar-utils';
       let-locale="locale"
       let-segmentHeight="segmentHeight"
       let-isTimeLabel="isTimeLabel"
+      let-daysInWeek="daysInWeek"
     >
       <div
+        [attr.aria-hidden]="
+          {}
+            | calendarA11y
+              : (daysInWeek === 1
+                  ? 'hideDayHourSegment'
+                  : 'hideWeekHourSegment')
+        "
         class="cal-hour-segment"
         [style.height.px]="segmentHeight"
         [class.cal-hour-start]="segment.isStart"
@@ -19,7 +27,12 @@ import { WeekViewHourColumn } from 'calendar-utils';
         [ngClass]="segment.cssClass"
       >
         <div class="cal-time" *ngIf="isTimeLabel">
-          {{ segment.displayDate | calendarDate: 'weekViewHour':locale }}
+          {{
+            segment.displayDate
+              | calendarDate
+                : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
+                : locale
+          }}
         </div>
       </div>
     </ng-template>
@@ -29,20 +42,23 @@ import { WeekViewHourColumn } from 'calendar-utils';
         segment: segment,
         locale: locale,
         segmentHeight: segmentHeight,
-        isTimeLabel: isTimeLabel
+        isTimeLabel: isTimeLabel,
+        daysInWeek: daysInWeek
       }"
     >
     </ng-template>
   `
 })
 export class CalendarWeekViewHourSegmentComponent {
-  @Input() segment: WeekViewHourColumn;
+  @Input() segment: WeekViewHourSegment;
 
   @Input() segmentHeight: number;
 
   @Input() locale: string;
 
   @Input() isTimeLabel: boolean;
+
+  @Input() daysInWeek: number;
 
   @Input() customTemplate: TemplateRef<any>;
 }

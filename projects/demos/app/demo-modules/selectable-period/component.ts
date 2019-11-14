@@ -3,8 +3,12 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
-import { DayViewHour } from 'calendar-utils';
+import {
+  CalendarEvent,
+  CalendarMonthViewDay,
+  CalendarView
+} from 'angular-calendar';
+import { WeekViewHour } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -22,7 +26,7 @@ import { DayViewHour } from 'calendar-utils';
   encapsulation: ViewEncapsulation.None
 })
 export class DemoComponent {
-  view = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 
@@ -30,7 +34,7 @@ export class DemoComponent {
 
   selectedDayViewDate: Date;
 
-  dayView: DayViewHour[];
+  dayView: WeekViewHour[];
 
   events: CalendarEvent[] = [];
 
@@ -69,7 +73,7 @@ export class DemoComponent {
     this.addSelectedDayViewClass();
   }
 
-  beforeDayViewRender(dayView: DayViewHour[]) {
+  beforeDayViewRender(dayView: WeekViewHour[]) {
     this.dayView = dayView;
     this.addSelectedDayViewClass();
   }

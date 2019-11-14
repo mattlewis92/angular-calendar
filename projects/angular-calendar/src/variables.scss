@@ -7,6 +7,7 @@ $cal-bg-active: #ededed !default;
 $cal-today-bg: #e8fde7 !default;
 $cal-weekend-color: #8b0000 !default;
 $cal-badge-color: #b94a48 !default;
+$cal-current-time-marker-color: #ea4334 !default;
 $cal-white: #fff !default;
 $cal-gray: #555 !default;
 $cal-black: #000 !default;
@@ -41,6 +42,9 @@ $cal-vars: map-merge(
 
     // the badge background color on the month view
     badge-color: $cal-badge-color,
+
+    // the current time marker color on the week and day view
+    current-time-marker-color: $cal-current-time-marker-color,
 
     // a standard white color used for tooltip text and month view event titles
     white: $cal-white,
