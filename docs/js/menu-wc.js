@@ -65,13 +65,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarCommonModule.html" data-type="entity-link">CalendarCommonModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' : 'data-target="#xs-directives-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' }>
+                                        'data-target="#directives-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' : 'data-target="#xs-directives-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' :
-                                        'id="xs-directives-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' :
+                                        'id="xs-directives-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' }>
                                         <li class="link">
                                             <a href="directives/CalendarNextViewDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">CalendarNextViewDirective</a>
@@ -88,13 +88,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' : 'data-target="#xs-pipes-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' }>
+                                            'data-target="#pipes-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' : 'data-target="#xs-pipes-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' :
-                                            'id="xs-pipes-links-module-CalendarCommonModule-a0bb19444476f79efd9e0b5b5807a3bf"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' :
+                                            'id="xs-pipes-links-module-CalendarCommonModule-1a58e19f5481c78c3ba4efe144591a63"' }>
                                             <li class="link">
                                                 <a href="pipes/CalendarDatePipe.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">CalendarDatePipe</a>
@@ -106,13 +106,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarDayModule.html" data-type="entity-link">CalendarDayModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarDayModule-38fd74308a8f03dd8505ce4731be040f"' : 'data-target="#xs-components-links-module-CalendarDayModule-38fd74308a8f03dd8505ce4731be040f"' }>
+                                            'data-target="#components-links-module-CalendarDayModule-37c1f2ba162059b9ea40a1e07d1792e7"' : 'data-target="#xs-components-links-module-CalendarDayModule-37c1f2ba162059b9ea40a1e07d1792e7"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarDayModule-38fd74308a8f03dd8505ce4731be040f"' :
-                                            'id="xs-components-links-module-CalendarDayModule-38fd74308a8f03dd8505ce4731be040f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarDayModule-37c1f2ba162059b9ea40a1e07d1792e7"' :
+                                            'id="xs-components-links-module-CalendarDayModule-37c1f2ba162059b9ea40a1e07d1792e7"' }>
                                             <li class="link">
                                                 <a href="components/CalendarDayViewComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">CalendarDayViewComponent</a>
@@ -145,13 +145,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarWeekModule.html" data-type="entity-link">CalendarWeekModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarWeekModule-ee35e7251eafdf8e96abdc08b1c64628"' : 'data-target="#xs-components-links-module-CalendarWeekModule-ee35e7251eafdf8e96abdc08b1c64628"' }>
+                                            'data-target="#components-links-module-CalendarWeekModule-1f5b827708064d1ee8d9da58f489eb30"' : 'data-target="#xs-components-links-module-CalendarWeekModule-1f5b827708064d1ee8d9da58f489eb30"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarWeekModule-ee35e7251eafdf8e96abdc08b1c64628"' :
-                                            'id="xs-components-links-module-CalendarWeekModule-ee35e7251eafdf8e96abdc08b1c64628"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarWeekModule-1f5b827708064d1ee8d9da58f489eb30"' :
+                                            'id="xs-components-links-module-CalendarWeekModule-1f5b827708064d1ee8d9da58f489eb30"' }>
                                             <li class="link">
                                                 <a href="components/CalendarWeekViewComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">CalendarWeekViewComponent</a>
@@ -205,9 +205,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/CalendarDateFormatterInterface.html" data-type="entity-link">CalendarDateFormatterInterface</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/CalendarDayViewBeforeRenderEvent.html" data-type="entity-link">CalendarDayViewBeforeRenderEvent</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/CalendarEventTimesChangedEvent.html" data-type="entity-link">CalendarEventTimesChangedEvent</a>
                             </li>
                             <li class="link">
@@ -226,9 +223,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/DateFormatterParams.html" data-type="entity-link">DateFormatterParams</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/DayViewEventResize.html" data-type="entity-link">DayViewEventResize</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/WeekViewAllDayEventResize.html" data-type="entity-link">WeekViewAllDayEventResize</a>
                             </li>
                         </ul>
@@ -243,6 +237,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
                             <li class="link">
                                 <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                            </li>
+                            <li class="link">
+                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>

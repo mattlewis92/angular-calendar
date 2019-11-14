@@ -188,14 +188,13 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
 @Component({
   selector: &#x27;mwl-calendar-month-view&#x27;,
   template: &#x60;
-    &lt;div class&#x3D;&quot;cal-month-view&quot;&gt;
+    &lt;div class&#x3D;&quot;cal-month-view&quot; role&#x3D;&quot;grid&quot;&gt;
       &lt;mwl-calendar-month-view-header
         [days]&#x3D;&quot;columnHeaders&quot;
         [locale]&#x3D;&quot;locale&quot;
         (columnHeaderClicked)&#x3D;&quot;columnHeaderClicked.emit($event)&quot;
         [customTemplate]&#x3D;&quot;headerTemplate&quot;
       &gt;
-        &gt;
       &lt;/mwl-calendar-month-view-header&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
         &lt;div
@@ -218,8 +217,11 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
               [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
               [customTemplate]&#x3D;&quot;cellTemplate&quot;
               [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
-              (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day })&quot;
+              (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day, sourceEvent: $event })&quot;
               [clickListenerDisabled]&#x3D;&quot;dayClicked.observers.length &#x3D;&#x3D;&#x3D; 0&quot;
+              (mwlKeydownEnter)&#x3D;&quot;
+                dayClicked.emit({ day: day, sourceEvent: $event })
+              &quot;
               (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
               (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
               mwlDroppable
@@ -231,17 +233,30 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
                   $event.dropData.draggedFrom
                 )
               &quot;
-              (eventClicked)&#x3D;&quot;eventClicked.emit({ event: $event.event })&quot;
+              (eventClicked)&#x3D;&quot;
+                eventClicked.emit({
+                  event: $event.event,
+                  sourceEvent: $event.sourceEvent
+                })
+              &quot;
+              [attr.tabindex]&#x3D;&quot;{} | calendarA11y: &#x27;monthCellTabIndex&#x27;&quot;
             &gt;
             &lt;/mwl-calendar-month-cell&gt;
           &lt;/div&gt;
           &lt;mwl-calendar-open-day-events
+            [locale]&#x3D;&quot;locale&quot;
             [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
             [events]&#x3D;&quot;openDay?.events&quot;
+            [date]&#x3D;&quot;openDay?.date&quot;
             [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
             [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
             [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-            (eventClicked)&#x3D;&quot;eventClicked.emit({ event: $event.event })&quot;
+            (eventClicked)&#x3D;&quot;
+              eventClicked.emit({
+                event: $event.event,
+                sourceEvent: $event.sourceEvent
+              })
+            &quot;
             mwlDroppable
             dragOverClass&#x3D;&quot;cal-drag-over&quot;
             (drop)&#x3D;&quot;
@@ -365,6 +380,7 @@ export class CalendarMonthViewComponent
   @Output()
   dayClicked &#x3D; new EventEmitter&lt;{
     day: MonthViewDay;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -373,12 +389,16 @@ export class CalendarMonthViewComponent
   @Output()
   eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
    * Called when a header week day is clicked. Returns ISO day number.
    */
-  @Output() columnHeaderClicked &#x3D; new EventEmitter&lt;number&gt;();
+  @Output() columnHeaderClicked &#x3D; new EventEmitter&lt;{
+    isoDayNumber: number;
+    sourceEvent: MouseEvent | KeyboardEvent;
+  }&gt;();
 
   /**
    * Called when an event is dragged and dropped
@@ -630,6 +650,7 @@ export class CalendarMonthViewComponent
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarMonthViewEventTimesChangedEvent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -70,8 +70,10 @@
                 <p>This class is responsible for displaying all event titles within the calendar. You may override any of its methods via angulars DI to suit your requirements. For example:</p>
 <p>```typescript</p>
 <ul>
+<li>import { Injectable } from &#39;@angular/core&#39;;</li>
 <li>import { CalendarEventTitleFormatter, CalendarEvent } from &#39;angular-calendar&#39;;</li>
 <li></li>
+<li>@Injectable()</li>
 <li>class CustomEventTitleFormatter extends CalendarEventTitleFormatter {</li>
 <li></li>
 <li>month(event: CalendarEvent): string {</li>
@@ -165,8 +167,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:58</a></div>
                 </td>
             </tr>
 
@@ -249,8 +251,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:65</a></div>
                 </td>
             </tr>
 
@@ -333,8 +335,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:30</a></div>
                 </td>
             </tr>
 
@@ -417,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:37</a></div>
                 </td>
             </tr>
 
@@ -501,8 +503,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:44</a></div>
                 </td>
             </tr>
 
@@ -585,8 +587,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts:51</a></div>
                 </td>
             </tr>
 
@@ -663,8 +665,10 @@
  * This class is responsible for displaying all event titles within the calendar. You may override any of its methods via angulars DI to suit your requirements. For example:
  *
  * &#x60;&#x60;&#x60;typescript
+ * import { Injectable } from &#x27;@angular/core&#x27;;
  * import { CalendarEventTitleFormatter, CalendarEvent } from &#x27;angular-calendar&#x27;;
  *
+ * @Injectable()
  * class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
  *
  *   month(event: CalendarEvent): string {
@@ -752,6 +756,7 @@ export class CalendarEventTitleFormatter {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarEventTitleFormatter.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -78,6 +78,9 @@
                         <li class="list-group-item">
                             <a href="../modules/CalendarCommonModule.html">CalendarCommonModule</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="../modules/CalendarWeekModule.html">CalendarWeekModule</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -99,12 +102,9 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
-import { ResizableModule } from &#x27;angular-resizable-element&#x27;;
-import { DragAndDropModule } from &#x27;angular-draggable-droppable&#x27;;
 import { CalendarDayViewComponent } from &#x27;./calendar-day-view.component&#x27;;
-import { CalendarDayViewHourSegmentComponent } from &#x27;./calendar-day-view-hour-segment.component&#x27;;
-import { CalendarDayViewEventComponent } from &#x27;./calendar-day-view-event.component&#x27;;
 import { CalendarCommonModule } from &#x27;../common/calendar-common.module&#x27;;
+import { CalendarWeekModule } from &#x27;../week/calendar-week.module&#x27;;
 
 export {
   CalendarDayViewComponent,
@@ -112,24 +112,9 @@ export {
 } from &#x27;./calendar-day-view.component&#x27;;
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ResizableModule,
-    DragAndDropModule,
-    CalendarCommonModule
-  ],
-  declarations: [
-    CalendarDayViewComponent,
-    CalendarDayViewHourSegmentComponent,
-    CalendarDayViewEventComponent
-  ],
-  exports: [
-    ResizableModule,
-    DragAndDropModule,
-    CalendarDayViewComponent,
-    CalendarDayViewHourSegmentComponent,
-    CalendarDayViewEventComponent
-  ]
+  imports: [CommonModule, CalendarCommonModule, CalendarWeekModule],
+  declarations: [CalendarDayViewComponent],
+  exports: [CalendarDayViewComponent]
 })
 export class CalendarDayModule {}
 </code></pre>
@@ -168,6 +153,7 @@ export class CalendarDayModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarDayModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

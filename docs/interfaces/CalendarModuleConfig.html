@@ -80,6 +80,10 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#a11y">a11y</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#dateFormatter">dateFormatter</a>
                                 </li>
                                 <li>
@@ -101,6 +105,40 @@
 
             <section>
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="a11y"></a>
+                                        <span class="name"><b>a11y</b><a href="#a11y"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>a11y:         <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -209,7 +247,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ModuleWithProviders, NgModule, Provider } from &#x27;@angular/core&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
+import { CommonModule, I18nPluralPipe } from &#x27;@angular/common&#x27;;
 import { CalendarEventActionsComponent } from &#x27;./calendar-event-actions.component&#x27;;
 import { CalendarEventTitleComponent } from &#x27;./calendar-event-title.component&#x27;;
 import {
@@ -222,14 +260,18 @@ import { CalendarTodayDirective } from &#x27;./calendar-today.directive&#x27;;
 import { CalendarDatePipe } from &#x27;./calendar-date.pipe&#x27;;
 import { CalendarEventTitlePipe } from &#x27;./calendar-event-title.pipe&#x27;;
 import { ClickDirective } from &#x27;./click.directive&#x27;;
+import { KeydownEnterDirective } from &#x27;./keydown-enter.directive&#x27;;
 import { CalendarEventTitleFormatter } from &#x27;./calendar-event-title-formatter.provider&#x27;;
 import { CalendarDateFormatter } from &#x27;./calendar-date-formatter.provider&#x27;;
 import { CalendarUtils } from &#x27;./calendar-utils.provider&#x27;;
+import { CalendarA11y } from &#x27;./calendar-a11y.provider&#x27;;
+import { CalendarA11yPipe } from &#x27;./calendar-a11y.pipe&#x27;;
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
   utils?: Provider;
+  a11y?: Provider;
 }
 
 export * from &#x27;./calendar-event-title-formatter.provider&#x27;;
@@ -238,6 +280,8 @@ export * from &#x27;./calendar-native-date-formatter.provider&#x27;;
 export * from &#x27;./calendar-angular-date-formatter.provider&#x27;;
 export * from &#x27;./calendar-date-formatter.provider&#x27;;
 export * from &#x27;./calendar-utils.provider&#x27;;
+export * from &#x27;./calendar-a11y.provider&#x27;;
+export * from &#x27;./calendar-a11y.interface&#x27;;
 export * from &#x27;./calendar-date-formatter.interface&#x27;;
 export * from &#x27;./calendar-event-times-changed-event.interface&#x27;;
 export * from &#x27;../../date-adapters/date-adapter&#x27;;
@@ -277,7 +321,9 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    ClickDirective
+    CalendarA11yPipe,
+    ClickDirective,
+    KeydownEnterDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -290,8 +336,11 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    ClickDirective
+    CalendarA11yPipe,
+    ClickDirective,
+    KeydownEnterDirective
   ],
+  providers: [I18nPluralPipe],
   entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarCommonModule {
@@ -305,7 +354,8 @@ export class CalendarCommonModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils
+        config.utils || CalendarUtils,
+        config.a11y || CalendarA11y
       ]
     };
   }
@@ -338,6 +388,7 @@ export class CalendarCommonModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarModuleConfig.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

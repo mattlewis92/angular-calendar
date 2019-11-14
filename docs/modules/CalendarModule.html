@@ -149,8 +149,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">projects/angular-calendar/src/modules/calendar.module.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">projects/angular-calendar/src/modules/calendar.module.ts:49</a></div>
                 </td>
             </tr>
 
@@ -225,7 +225,8 @@ import {
   CalendarCommonModule,
   CalendarModuleConfig,
   CalendarEventTitleFormatter,
-  CalendarDateFormatter
+  CalendarDateFormatter,
+  CalendarA11y
 } from &#x27;./common/calendar-common.module&#x27;;
 import { CalendarMonthModule } from &#x27;./month/calendar-month.module&#x27;;
 import { CalendarWeekModule } from &#x27;./week/calendar-week.module&#x27;;
@@ -277,7 +278,8 @@ export class CalendarModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils
+        config.utils || CalendarUtils,
+        config.a11y || CalendarA11y
       ]
     };
   }
@@ -318,6 +320,7 @@ export class CalendarModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

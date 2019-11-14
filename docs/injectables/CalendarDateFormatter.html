@@ -69,7 +69,9 @@
 <ul>
 <li>import { CalendarDateFormatter, DateFormatterParams } from &#39;angular-calendar&#39;;</li>
 <li>import { formatDate } from &#39;@angular/common&#39;;</li>
+<li>import { Injectable } from &#39;@angular/core&#39;;</li>
 <li></li>
+<li>@Injectable()</li>
 <li>class CustomDateFormatter extends CalendarDateFormatter {</li>
 <li></li>
 <li>public monthViewColumnHeader({date, locale}: DateFormatterParams): string {</li>
@@ -115,7 +117,9 @@ import { Injectable } from &#x27;@angular/core&#x27;;
  * &#x60;&#x60;&#x60;typescript
  * import { CalendarDateFormatter, DateFormatterParams } from &#x27;angular-calendar&#x27;;
  * import { formatDate } from &#x27;@angular/common&#x27;;
+ * import { Injectable } from &#x27;@angular/core&#x27;;
  *
+ * @Injectable()
  * class CustomDateFormatter extends CalendarDateFormatter {
  *
  *   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
@@ -167,6 +171,7 @@ export class CalendarDateFormatter extends CalendarAngularDateFormatter {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarDateFormatter.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

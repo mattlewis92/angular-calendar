@@ -159,8 +159,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-common.module.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-common.module.ts:99</a></div>
                 </td>
             </tr>
 
@@ -231,7 +231,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ModuleWithProviders, NgModule, Provider } from &#x27;@angular/core&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
+import { CommonModule, I18nPluralPipe } from &#x27;@angular/common&#x27;;
 import { CalendarEventActionsComponent } from &#x27;./calendar-event-actions.component&#x27;;
 import { CalendarEventTitleComponent } from &#x27;./calendar-event-title.component&#x27;;
 import {
@@ -244,14 +244,18 @@ import { CalendarTodayDirective } from &#x27;./calendar-today.directive&#x27;;
 import { CalendarDatePipe } from &#x27;./calendar-date.pipe&#x27;;
 import { CalendarEventTitlePipe } from &#x27;./calendar-event-title.pipe&#x27;;
 import { ClickDirective } from &#x27;./click.directive&#x27;;
+import { KeydownEnterDirective } from &#x27;./keydown-enter.directive&#x27;;
 import { CalendarEventTitleFormatter } from &#x27;./calendar-event-title-formatter.provider&#x27;;
 import { CalendarDateFormatter } from &#x27;./calendar-date-formatter.provider&#x27;;
 import { CalendarUtils } from &#x27;./calendar-utils.provider&#x27;;
+import { CalendarA11y } from &#x27;./calendar-a11y.provider&#x27;;
+import { CalendarA11yPipe } from &#x27;./calendar-a11y.pipe&#x27;;
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
   dateFormatter?: Provider;
   utils?: Provider;
+  a11y?: Provider;
 }
 
 export * from &#x27;./calendar-event-title-formatter.provider&#x27;;
@@ -260,6 +264,8 @@ export * from &#x27;./calendar-native-date-formatter.provider&#x27;;
 export * from &#x27;./calendar-angular-date-formatter.provider&#x27;;
 export * from &#x27;./calendar-date-formatter.provider&#x27;;
 export * from &#x27;./calendar-utils.provider&#x27;;
+export * from &#x27;./calendar-a11y.provider&#x27;;
+export * from &#x27;./calendar-a11y.interface&#x27;;
 export * from &#x27;./calendar-date-formatter.interface&#x27;;
 export * from &#x27;./calendar-event-times-changed-event.interface&#x27;;
 export * from &#x27;../../date-adapters/date-adapter&#x27;;
@@ -299,7 +305,9 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    ClickDirective
+    CalendarA11yPipe,
+    ClickDirective,
+    KeydownEnterDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -312,8 +320,11 @@ export {
     CalendarTodayDirective,
     CalendarDatePipe,
     CalendarEventTitlePipe,
-    ClickDirective
+    CalendarA11yPipe,
+    ClickDirective,
+    KeydownEnterDirective
   ],
+  providers: [I18nPluralPipe],
   entryComponents: [CalendarTooltipWindowComponent]
 })
 export class CalendarCommonModule {
@@ -327,7 +338,8 @@ export class CalendarCommonModule {
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils
+        config.utils || CalendarUtils,
+        config.a11y || CalendarA11y
       ]
     };
   }
@@ -368,6 +380,7 @@ export class CalendarCommonModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarCommonModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

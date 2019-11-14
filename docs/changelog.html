@@ -32,41 +32,97 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
-<h3 id="02721-2019-11-14"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.20...v0.27.21">0.27.21</a> (2019-11-14)</h3>
-<h3 id="02720-2019-10-19"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.19...v0.27.20">0.27.20</a> (2019-10-19)</h3>
+<h2 id="0280-2019-11-14"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.21...v0.28.0">0.28.0</a> (2019-11-14)</h2>
+<h3 id="⚠-breaking-changes">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><p>If extending the week view component the trackBy function <code>trackByDayOrWeekEvent</code> was split into <code>trackByWeekAllDayEvent</code> and <code>trackByWeekTimeEvent</code></p>
+</li>
+<li><p><strong>day-view:</strong> If extending the root week view component to override the template you must make the following changes:</p>
+</li>
+<li><p>Wrap the time events with <code>&lt;div &quot;class=&#39;cal-events-container&#39;&quot;&gt;</code></p>
+</li>
+<li><p>Change <code>&lt;div class=&quot;cal-time-label-column&quot; *ngIf=&quot;view.hourColumns.length &gt; 0&quot;&gt;</code> to <code>&lt;div class=&quot;cal-time-label-column&quot; *ngIf=&quot;view.hourColumns.length &gt; 0 &amp;&amp; daysInWeek !== 1&quot;&gt;</code></p>
+</li>
+<li><p>Add <code>[isTimeLabel]=&quot;daysInWeek === 1&quot;</code> to the bottom <code>&lt;mwl-calendar-week-view-hour-segment&gt;</code> elements</p>
+</li>
+<li><p><strong>week-view:</strong> if using a custom <code>headerTemplate</code> on the week view, then you must now add <code>let-dragEnter=&quot;dragEnter&quot;</code> to the templates variables and <code>(dragEnter)=&quot;dragEnter.emit({ date: day.date })&quot;</code> onto the <code>mwlDroppable</code> element.</p>
+</li>
+<li><p>the <code>columnHeaderClicked</code> output on the month view now exposes an object instead of just the ISO day number</p>
+</li>
+</ul>
+<p>Before:</p>
+<div><pre class="line-numbers"><code class="language-none">columnHeaderClicked=&quot;columnHeaderClicked($event)&quot;</code></pre></div><p>After:</p>
+<div><pre class="line-numbers"><code class="language-none">columnHeaderClicked=&quot;columnHeaderClicked($event.isoDayNumber)&quot;</code></pre></div><ul>
+<li><strong>day-view:</strong> The day and week view have now merged. For most users this should be a seamless migration, however there are some edge cases that you may need to take account for:</li>
+</ul>
+<p>Any custom styles you used for the day view will need to be adjusted. The <code>cal-day-view-theme</code> sass mixin is now gone as all the styles are shared between the week and day view.</p>
+<p>The <code>eventWidth</code> option is removed, events now fill the available width.</p>
+<p>If using <code>[daysInWeek]=&quot;1&quot;</code> on the week view, the date and title formatters for the day view will be used instead.</p>
+<p>The week view now has a border top applied to the top of the component container, rather than the top of the day headers container.</p>
+<p>The <code>getDayView</code> and <code>getDayViewHourGrid</code> functions have been removed from the <code>CalendarUtils</code> service.</p>
+<p>The following interfaces from <code>calendar-utils</code> were renamed: <code>DayViewHourSegment</code> -&gt; <code>WeekViewHourSegment</code>, <code>DayViewHour</code> -&gt; <code>WeekViewHour</code>, <code>DayViewEvent</code> -&gt; <code>WeekViewTimeEvent</code></p>
+<p>The day view scheduler demo is now based off the week view instead, please check the updated demo code for how to migrate: <a href="https://mattlewis92.github.io/angular-calendar/#/day-view-scheduler">https://mattlewis92.github.io/angular-calendar/#/day-view-scheduler</a></p>
+<p>If using a custom template for the <code>hourSegmentTemplate</code>, you must pass <code>let-isTimeLabel=&quot;isTimeLabel&quot;</code> as a local variable and then change <code>&lt;div class=&quot;cal-time&quot;&gt;</code> to <code>&lt;div class=&quot;cal-time&quot; *ngIf=&quot;isTimeLabel&quot;&gt;</code></p>
+<ul>
+<li>the dist files are no longer annotated for usage with closure compiler.</li>
+<li>date-fns v2 or higher is now required as a peer dependency</li>
+</ul>
+<p>If implementing a custom adapter, the <code>max</code> function signature has changed to accept an array of dates, instead of an infinite argument list.</p>
+<p>The date adapters no longer accept strings as input arguments.</p>
 <h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>ensure compatibility with angular 9 and ivy (<a href="https://github.com/mattlewis92/angular-calendar/commit/d4fdfb3">d4fdfb3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1086">#1086</a></li>
+<li><strong>day-view:</strong> expand hour segments across the full calendar width (<a href="https://github.com/mattlewis92/angular-calendar/commit/61aef47">61aef47</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1083">#1083</a></li>
+<li><strong>week-view:</strong> prevent dropping external events on adjacent time slots (<a href="https://github.com/mattlewis92/angular-calendar/commit/494adb5">494adb5</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1062">#1062</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li>upgrade date-fns to v2 (<a href="https://github.com/mattlewis92/angular-calendar/commit/d4d3873">d4d3873</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1064">#1064</a></li>
+<li>add accessibility support (<a href="https://github.com/mattlewis92/angular-calendar/commit/05c9a9a">05c9a9a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/941">#941</a></li>
+<li><strong>schematics:</strong> support ng add schematics (<a href="https://github.com/mattlewis92/angular-calendar/commit/2dc2f47">2dc2f47</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/888">#888</a></li>
+<li><strong>week-view:</strong> add current time marker (<a href="https://github.com/mattlewis92/angular-calendar/commit/d3872b1">d3872b1</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1102">#1102</a></li>
+<li>expose the click or keyboard event that triggers click handlers (<a href="https://github.com/mattlewis92/angular-calendar/commit/d1a2b78">d1a2b78</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/962">#962</a></li>
+<li><strong>day-view:</strong> merge the week and day view components (<a href="https://github.com/mattlewis92/angular-calendar/commit/2e92b25">2e92b25</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/889">#889</a></li>
+<li><strong>day-view:</strong> expose <code>allDayEventsLabelTemplate</code> input (<a href="https://github.com/mattlewis92/angular-calendar/commit/224848c">224848c</a>)</li>
+</ul>
+<h3 id="02721-2019-11-14"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.20...v0.27.21">0.27.21</a> (2019-11-14)</h3>
+<ul>
+<li>add npm funding link</li>
+</ul>
+<h3 id="02720-2019-10-19"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.19...v0.27.20">0.27.20</a> (2019-10-19)</h3>
+<h3 id="bug-fixes-1">Bug Fixes</h3>
 <ul>
 <li>always use native click event rather than hammerjs&#39;s tap event (<a href="https://github.com/mattlewis92/angular-calendar/commit/ca189c3">ca189c3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1113">#1113</a></li>
 </ul>
 <h3 id="02719-2019-09-25"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.18...v0.27.19">0.27.19</a> (2019-09-25)</h3>
-<h3 id="bug-fixes-1">Bug Fixes</h3>
+<h3 id="bug-fixes-2">Bug Fixes</h3>
 <ul>
 <li>restore peer dependencies (<a href="https://github.com/mattlewis92/angular-calendar/commit/1c0f6eb">1c0f6eb</a>)</li>
 </ul>
 <h3 id="02718-2019-08-18"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.17...v0.27.18">0.27.18</a> (2019-08-18)</h3>
-<h3 id="bug-fixes-2">Bug Fixes</h3>
+<h3 id="bug-fixes-3">Bug Fixes</h3>
 <ul>
 <li>display times properly on days where DST changes (<a href="https://github.com/mattlewis92/angular-calendar/commit/6e139f4">6e139f4</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/964">#964</a> <a href="https://github.com/mattlewis92/angular-calendar/issues/477">#477</a></li>
 <li>upgrade positioning library (<a href="https://github.com/mattlewis92/angular-calendar/commit/8480e72">8480e72</a>)</li>
 </ul>
 <h3 id="02717-2019-08-18"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.16...v0.27.17">0.27.17</a> (2019-08-18)</h3>
-<h3 id="bug-fixes-3">Bug Fixes</h3>
+<h3 id="bug-fixes-4">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> handle excluding non consecutive days (<a href="https://github.com/mattlewis92/angular-calendar/commit/5ca90c9">5ca90c9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/973">#973</a></li>
 <li>upgrade positioning library (<a href="https://github.com/mattlewis92/angular-calendar/commit/ad0a521">ad0a521</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/956">#956</a></li>
 </ul>
 <h3 id="02716-2019-08-18"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.15...v0.27.16">0.27.16</a> (2019-08-18)</h3>
-<h3 id="bug-fixes-4">Bug Fixes</h3>
+<h3 id="bug-fixes-5">Bug Fixes</h3>
 <ul>
 <li><strong>tooltip:</strong> prevent infinite loop error when positioning tooltip (<a href="https://github.com/mattlewis92/angular-calendar/commit/cd2cd5a">cd2cd5a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1046">#1046</a></li>
 </ul>
 <h3 id="02715-2019-08-12"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.14...v0.27.15">0.27.15</a> (2019-08-12)</h3>
-<h3 id="bug-fixes-5">Bug Fixes</h3>
+<h3 id="bug-fixes-6">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> prevent duplicate drag and drop events (<a href="https://github.com/mattlewis92/angular-calendar/commit/a2fb2e2">a2fb2e2</a>)</li>
 </ul>
 <h3 id="02714-2019-07-20"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.13...v0.27.14">0.27.14</a> (2019-07-20)</h3>
-<h3 id="bug-fixes-6">Bug Fixes</h3>
+<h3 id="bug-fixes-7">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> expose the week column to custom event template (<a href="https://github.com/mattlewis92/angular-calendar/commit/cb719af">cb719af</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1039">#1039</a></li>
 </ul>
@@ -75,7 +131,7 @@
 <li>upgrade dependencies (<a href="https://github.com/mattlewis92/angular-calendar/commit/530afd0">530afd0</a>)</li>
 </ul>
 <h3 id="02713-2019-07-13"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.12...v0.27.13">0.27.13</a> (2019-07-13)</h3>
-<h3 id="bug-fixes-7">Bug Fixes</h3>
+<h3 id="bug-fixes-8">Bug Fixes</h3>
 <ul>
 <li><strong>day-view:</strong> refresh the view when hourSegments changes (<a href="https://github.com/mattlewis92/angular-calendar/commit/deb6dcf">deb6dcf</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1032">#1032</a></li>
 </ul>
@@ -85,7 +141,7 @@
 <li>upgrade dependencies (<a href="https://github.com/mattlewis92/angular-calendar/commit/8763ece">8763ece</a>)</li>
 </ul>
 <h3 id="02712-2019-06-27"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.11...v0.27.12">0.27.12</a> (2019-06-27)</h3>
-<h3 id="bug-fixes-8">Bug Fixes</h3>
+<h3 id="bug-fixes-9">Bug Fixes</h3>
 <ul>
 <li><strong>month-view:</strong> add 1px drag sensitivity (<a href="https://github.com/mattlewis92/angular-calendar/commit/4a0e581">4a0e581</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1012">#1012</a></li>
 <li><strong>month-view:</strong> make slide animation smoother (<a href="https://github.com/mattlewis92/angular-calendar/commit/8ef9fe8">8ef9fe8</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1017">#1017</a></li>
@@ -95,7 +151,7 @@
 <li>upgrade dependencies (<a href="https://github.com/mattlewis92/angular-calendar/commit/6e05313">6e05313</a>)</li>
 </ul>
 <h3 id="02711-2019-06-07"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.10...v0.27.11">0.27.11</a> (2019-06-07)</h3>
-<h3 id="bug-fixes-9">Bug Fixes</h3>
+<h3 id="bug-fixes-10">Bug Fixes</h3>
 <ul>
 <li><strong>tooltip:</strong> allow tooltip text to be updated while shown (<a href="https://github.com/mattlewis92/angular-calendar/commit/c079805">c079805</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1002">#1002</a></li>
 </ul>
@@ -105,7 +161,7 @@
 <li>upgrade dependencies (<a href="https://github.com/mattlewis92/angular-calendar/commit/29ed6a2">29ed6a2</a>)</li>
 </ul>
 <h3 id="02710-2019-06-07"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.9...v0.27.10">0.27.10</a> (2019-06-07)</h3>
-<h3 id="bug-fixes-10">Bug Fixes</h3>
+<h3 id="bug-fixes-11">Bug Fixes</h3>
 <ul>
 <li>ensure date adapters are compiled to es5 (<a href="https://github.com/mattlewis92/angular-calendar/commit/5fef3be">5fef3be</a>)</li>
 </ul>
@@ -114,7 +170,7 @@
 <li>upgrade dependencies (<a href="https://github.com/mattlewis92/angular-calendar/commit/50eacf8">50eacf8</a>)</li>
 </ul>
 <h3 id="0279-2019-06-05"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.8...v0.27.9">0.27.9</a> (2019-06-05)</h3>
-<h3 id="bug-fixes-11">Bug Fixes</h3>
+<h3 id="bug-fixes-12">Bug Fixes</h3>
 <ul>
 <li>restore compatibility with universal (<a href="https://github.com/mattlewis92/angular-calendar/commit/52ff58e">52ff58e</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/997">#997</a></li>
 </ul>
@@ -130,32 +186,32 @@
 </ul>
 <p><a name="0.27.8"></a></p>
 <h2 id="0278-2019-05-20"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.7...v0.27.8">0.27.8</a> (2019-05-20)</h2>
-<h3 id="bug-fixes-12">Bug Fixes</h3>
+<h3 id="bug-fixes-13">Bug Fixes</h3>
 <ul>
 <li>make internal methods callable from sub classes (<a href="https://github.com/mattlewis92/angular-calendar/commit/8c926ed">8c926ed</a>)</li>
 </ul>
 <p><a name="0.27.7"></a></p>
 <h2 id="0277-2019-04-27"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.6...v0.27.7">0.27.7</a> (2019-04-27)</h2>
-<h3 id="bug-fixes-13">Bug Fixes</h3>
+<h3 id="bug-fixes-14">Bug Fixes</h3>
 <ul>
 <li><strong>day-view:</strong> stop events being dragged outside the view when scrolled (<a href="https://github.com/mattlewis92/angular-calendar/commit/e506885">e506885</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/958">#958</a></li>
 </ul>
 <p><a name="0.27.6"></a></p>
 <h2 id="0276-2019-04-27"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.5...v0.27.6">0.27.6</a> (2019-04-27)</h2>
-<h3 id="bug-fixes-14">Bug Fixes</h3>
+<h3 id="bug-fixes-15">Bug Fixes</h3>
 <ul>
 <li><strong>click:</strong> ensure click event always runs inside angular zone (<a href="https://github.com/mattlewis92/angular-calendar/commit/de0d435">de0d435</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/961">#961</a> <a href="https://github.com/mattlewis92/angular-calendar/issues/959">#959</a></li>
 </ul>
 <p><a name="0.27.5"></a></p>
 <h2 id="0275-2019-04-21"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.4...v0.27.5">0.27.5</a> (2019-04-21)</h2>
-<h3 id="bug-fixes-15">Bug Fixes</h3>
+<h3 id="bug-fixes-16">Bug Fixes</h3>
 <ul>
 <li><strong>draggable:</strong> support scrolling when dragging events (<a href="https://github.com/mattlewis92/angular-calendar/commit/99c7aa3">99c7aa3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/838">#838</a> <a href="https://github.com/mattlewis92/angular-calendar/issues/909">#909</a></li>
 <li><strong>week-view:</strong> have time grid events fill available space (<a href="https://github.com/mattlewis92/angular-calendar/commit/8571528">8571528</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/833">#833</a></li>
 </ul>
 <p><a name="0.27.4"></a></p>
 <h2 id="0274-2019-04-20"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.3...v0.27.4">0.27.4</a> (2019-04-20)</h2>
-<h3 id="bug-fixes-16">Bug Fixes</h3>
+<h3 id="bug-fixes-17">Bug Fixes</h3>
 <ul>
 <li>styling fixes for day and week view when not using bootstrap (<a href="https://github.com/mattlewis92/angular-calendar/commit/8c0fbf7">8c0fbf7</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/951">#951</a></li>
 <li><strong>day-view:</strong> fix dashed line separators when not using bootstrap (<a href="https://github.com/mattlewis92/angular-calendar/commit/f626dce">f626dce</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/952">#952</a></li>
@@ -169,19 +225,19 @@
 </ul>
 <p><a name="0.27.2"></a></p>
 <h2 id="0272-2019-04-01"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.1...v0.27.2">0.27.2</a> (2019-04-01)</h2>
-<h3 id="bug-fixes-17">Bug Fixes</h3>
+<h3 id="bug-fixes-18">Bug Fixes</h3>
 <ul>
 <li>allow setting css variables as event colors (<a href="https://github.com/mattlewis92/angular-calendar/commit/1fa72b3">1fa72b3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/845">#845</a></li>
 </ul>
 <p><a name="0.27.1"></a></p>
 <h2 id="0271-2019-03-26"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.0...v0.27.1">0.27.1</a> (2019-03-26)</h2>
-<h3 id="bug-fixes-18">Bug Fixes</h3>
+<h3 id="bug-fixes-19">Bug Fixes</h3>
 <ul>
 <li><strong>actions:</strong> fix event is not defined error (<a href="https://github.com/mattlewis92/angular-calendar/commit/2a2822f">2a2822f</a>)</li>
 </ul>
 <p><a name="0.27.0"></a></p>
 <h1 id="0270-2019-03-22"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.11...v0.27.0">0.27.0</a> (2019-03-22)</h1>
-<h3 id="bug-fixes-19">Bug Fixes</h3>
+<h3 id="bug-fixes-20">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> respect hourSegmentHeight when resizing events (<a href="https://github.com/mattlewis92/angular-calendar/commit/241f7c3">241f7c3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/929">#929</a></li>
 <li>allow events to be dragged back to their original location (<a href="https://github.com/mattlewis92/angular-calendar/commit/0f69010">0f69010</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/847">#847</a></li>
@@ -190,7 +246,7 @@
 <li><strong>day-view:</strong> set allDay to false when dragging events (<a href="https://github.com/mattlewis92/angular-calendar/commit/c4c8bd5">c4c8bd5</a>)</li>
 <li><strong>week-view:</strong> handle dragging and resizing across excluded days (<a href="https://github.com/mattlewis92/angular-calendar/commit/5d1c69a">5d1c69a</a>)</li>
 </ul>
-<h3 id="features">Features</h3>
+<h3 id="features-1">Features</h3>
 <ul>
 <li><strong>tooltip:</strong> add a configurable tooltip delay (<a href="https://github.com/mattlewis92/angular-calendar/issues/891">#891</a>) (<a href="https://github.com/mattlewis92/angular-calendar/commit/07aec13">07aec13</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/790">#790</a></li>
 <li>add sass mixins for easier theming (<a href="https://github.com/mattlewis92/angular-calendar/commit/447aea9">447aea9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/858">#858</a></li>
@@ -222,45 +278,45 @@
 </ul>
 <p><a name="0.26.11"></a></p>
 <h2 id="02611-2019-03-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.10...v0.26.11">0.26.11</a> (2019-03-17)</h2>
-<h3 id="bug-fixes-20">Bug Fixes</h3>
+<h3 id="bug-fixes-21">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> dont disable tooltips until drag is started (<a href="https://github.com/mattlewis92/angular-calendar/commit/e1c321c">e1c321c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/829">#829</a></li>
 <li><strong>week-view:</strong> preserve css classes on segments when dragging events (<a href="https://github.com/mattlewis92/angular-calendar/commit/5fe384d">5fe384d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/908">#908</a></li>
 </ul>
 <p><a name="0.26.10"></a></p>
 <h2 id="02610-2019-03-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.9...v0.26.10">0.26.10</a> (2019-03-17)</h2>
-<h3 id="bug-fixes-21">Bug Fixes</h3>
+<h3 id="bug-fixes-22">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> fix dragging on last column when view fills the screen (<a href="https://github.com/mattlewis92/angular-calendar/commit/79fcefc">79fcefc</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/871">#871</a></li>
 </ul>
 <p><a name="0.26.9"></a></p>
 <h2 id="0269-2019-03-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.8...v0.26.9">0.26.9</a> (2019-03-17)</h2>
-<h3 id="bug-fixes-22">Bug Fixes</h3>
+<h3 id="bug-fixes-23">Bug Fixes</h3>
 <ul>
 <li>allow scrolling on clickable elements on mobile (<a href="https://github.com/mattlewis92/angular-calendar/commit/b78b87d">b78b87d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/867">#867</a></li>
 </ul>
 <p><a name="0.26.8"></a></p>
 <h2 id="0268-2019-03-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.7...v0.26.8">0.26.8</a> (2019-03-17)</h2>
-<h3 id="bug-fixes-23">Bug Fixes</h3>
+<h3 id="bug-fixes-24">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> update header when week starts on changes (<a href="https://github.com/mattlewis92/angular-calendar/commit/bf3dd4d">bf3dd4d</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/868">#868</a></li>
 <li>throw better error message on invalid date formatter (<a href="https://github.com/mattlewis92/angular-calendar/commit/5f1fe72">5f1fe72</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/897">#897</a></li>
 </ul>
 <p><a name="0.26.7"></a></p>
 <h2 id="0267-2019-03-16"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.6...v0.26.7">0.26.7</a> (2019-03-16)</h2>
-<h3 id="bug-fixes-24">Bug Fixes</h3>
+<h3 id="bug-fixes-25">Bug Fixes</h3>
 <ul>
 <li>allow angular 8 peer dependency (<a href="https://github.com/mattlewis92/angular-calendar/commit/7230e94">7230e94</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/898">#898</a></li>
 </ul>
 <p><a name="0.26.6"></a></p>
 <h2 id="0266-2019-02-05"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.5...v0.26.6">0.26.6</a> (2019-02-05)</h2>
-<h3 id="bug-fixes-25">Bug Fixes</h3>
+<h3 id="bug-fixes-26">Bug Fixes</h3>
 <ul>
 <li>allow resizing events back to their original positions (<a href="https://github.com/mattlewis92/angular-calendar/commit/0b478b8">0b478b8</a>)</li>
 </ul>
 <p><a name="0.26.5"></a></p>
 <h2 id="0265-2019-02-03"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.4...v0.26.5">0.26.5</a> (2019-02-03)</h2>
-<h3 id="bug-fixes-26">Bug Fixes</h3>
+<h3 id="bug-fixes-27">Bug Fixes</h3>
 <ul>
 <li>allow events to be dragged back to their original location (<a href="https://github.com/mattlewis92/angular-calendar/commit/cb07924">cb07924</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/847">#847</a></li>
 <li><strong>week-view:</strong> handle event objects being changed when resizing (<a href="https://github.com/mattlewis92/angular-calendar/commit/754d427">754d427</a>)</li>
@@ -268,7 +324,7 @@
 </ul>
 <p><a name="0.26.4"></a></p>
 <h2 id="0264-2018-11-05"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.3...v0.26.4">0.26.4</a> (2018-11-05)</h2>
-<h3 id="bug-fixes-27">Bug Fixes</h3>
+<h3 id="bug-fixes-28">Bug Fixes</h3>
 <ul>
 <li><strong>day-view:</strong> set allDay to false when dragging events (<a href="https://github.com/mattlewis92/angular-calendar/commit/14f1e5a">14f1e5a</a>)</li>
 <li>make sure moment date formatter is injectable (<a href="https://github.com/mattlewis92/angular-calendar/commit/bd6da5f">bd6da5f</a>)</li>
@@ -276,13 +332,13 @@
 </ul>
 <p><a name="0.26.3"></a></p>
 <h2 id="0263-2018-10-14"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.2...v0.26.3">0.26.3</a> (2018-10-14)</h2>
-<h3 id="bug-fixes-28">Bug Fixes</h3>
+<h3 id="bug-fixes-29">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> use correct width on overlapping events (<a href="https://github.com/mattlewis92/angular-calendar/commit/8e32a48">8e32a48</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/763">#763</a></li>
 </ul>
 <p><a name="0.26.2"></a></p>
 <h2 id="0262-2018-10-13"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.1...v0.26.2">0.26.2</a> (2018-10-13)</h2>
-<h3 id="bug-fixes-29">Bug Fixes</h3>
+<h3 id="bug-fixes-30">Bug Fixes</h3>
 <ul>
 <li>make it easier to extend providers (<a href="https://github.com/mattlewis92/angular-calendar/commit/c753c22">c753c22</a>)</li>
 <li><strong>day-view:</strong> add custom cssClass to allDay events (<a href="https://github.com/mattlewis92/angular-calendar/commit/d2ac44c">d2ac44c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/769">#769</a></li>
@@ -291,13 +347,13 @@
 </ul>
 <p><a name="0.26.1"></a></p>
 <h2 id="0261-2018-09-18"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.26.0...v0.26.1">0.26.1</a> (2018-09-18)</h2>
-<h3 id="bug-fixes-30">Bug Fixes</h3>
+<h3 id="bug-fixes-31">Bug Fixes</h3>
 <ul>
 <li>include license and readme in npm package (<a href="https://github.com/mattlewis92/angular-calendar/commit/7fe03b1">7fe03b1</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/732">#732</a></li>
 </ul>
 <p><a name="0.26.0"></a></p>
 <h1 id="0260-2018-09-03"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.25.2...v0.26.0">0.26.0</a> (2018-09-03)</h1>
-<h3 id="bug-fixes-31">Bug Fixes</h3>
+<h3 id="bug-fixes-32">Bug Fixes</h3>
 <ul>
 <li>allow events that end on different days to be dragged (<a href="https://github.com/mattlewis92/angular-calendar/commit/df339b9">df339b9</a>)</li>
 <li><strong>week-view:</strong> make sure currently resized events are always on top (<a href="https://github.com/mattlewis92/angular-calendar/commit/bb08ec1">bb08ec1</a>)</li>
@@ -322,7 +378,7 @@
 <li><strong>week-view:</strong> fix cursor on draggable events (<a href="https://github.com/mattlewis92/angular-calendar/commit/66e9223">66e9223</a>)</li>
 <li><strong>week-view:</strong> use correct event left positioning (<a href="https://github.com/mattlewis92/angular-calendar/commit/fb4bbb7">fb4bbb7</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/675">#675</a></li>
 </ul>
-<h3 id="features-1">Features</h3>
+<h3 id="features-2">Features</h3>
 <ul>
 <li>add a CalendarView enum to prevent typos in view names (<a href="https://github.com/mattlewis92/angular-calendar/commit/f634a86">f634a86</a>)</li>
 <li>add time grid to the week view (<a href="https://github.com/mattlewis92/angular-calendar/commit/5cfbfc7">5cfbfc7</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/593">#593</a></li>
@@ -403,19 +459,19 @@ animations: [collapseAnimation]</code></pre></div><ul>
 </ul>
 <p><a name="0.25.2"></a></p>
 <h2 id="0252-2018-05-12"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.25.1...v0.25.2">0.25.2</a> (2018-05-12)</h2>
-<h3 id="bug-fixes-32">Bug Fixes</h3>
+<h3 id="bug-fixes-33">Bug Fixes</h3>
 <ul>
 <li>properly mark styles as having side effects (<a href="https://github.com/mattlewis92/angular-calendar/commit/625e586">625e586</a>)</li>
 </ul>
 <p><a name="0.25.1"></a></p>
 <h2 id="0251-2018-05-11"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.25.0...v0.25.1">0.25.1</a> (2018-05-11)</h2>
-<h3 id="bug-fixes-33">Bug Fixes</h3>
+<h3 id="bug-fixes-34">Bug Fixes</h3>
 <ul>
 <li>mark styles as having side effects (<a href="https://github.com/mattlewis92/angular-calendar/commit/2667433">2667433</a>)</li>
 </ul>
 <p><a name="0.25.0"></a></p>
 <h1 id="0250-2018-05-11"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.24.1...v0.25.0">0.25.0</a> (2018-05-11)</h1>
-<h3 id="features-2">Features</h3>
+<h3 id="features-3">Features</h3>
 <ul>
 <li>upgrade to angular 6 (<a href="https://github.com/mattlewis92/angular-calendar/commit/71091ab">71091ab</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/512">#512</a></li>
 </ul>
@@ -425,41 +481,41 @@ animations: [collapseAnimation]</code></pre></div><ul>
 </ul>
 <p><a name="0.24.1"></a></p>
 <h2 id="0241-2018-05-09"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.24.0...v0.24.1">0.24.1</a> (2018-05-09)</h2>
-<h3 id="bug-fixes-34">Bug Fixes</h3>
+<h3 id="bug-fixes-35">Bug Fixes</h3>
 <ul>
 <li><strong>day-view:</strong> prevent selection when dragging cal-event (<a href="https://github.com/mattlewis92/angular-calendar/issues/521">#521</a>) (<a href="https://github.com/mattlewis92/angular-calendar/commit/f799bf5">f799bf5</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/522">#522</a></li>
 </ul>
 <p><a name="0.24.0"></a></p>
 <h1 id="0240-2018-04-17"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.7...v0.24.0">0.24.0</a> (2018-04-17)</h1>
-<h3 id="bug-fixes-35">Bug Fixes</h3>
+<h3 id="bug-fixes-36">Bug Fixes</h3>
 <ul>
 <li>use the browsers timezone in the angular date formatter (<a href="https://github.com/mattlewis92/angular-calendar/commit/41fa40b">41fa40b</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/502">#502</a></li>
 </ul>
-<h3 id="features-3">Features</h3>
+<h3 id="features-4">Features</h3>
 <ul>
 <li>make event colors optional (<a href="https://github.com/mattlewis92/angular-calendar/commit/4f9ed24">4f9ed24</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/468">#468</a></li>
 </ul>
 <p><a name="0.23.7"></a></p>
 <h2 id="0237-2018-03-15"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.6...v0.23.7">0.23.7</a> (2018-03-15)</h2>
-<h3 id="bug-fixes-36">Bug Fixes</h3>
+<h3 id="bug-fixes-37">Bug Fixes</h3>
 <ul>
 <li><strong>day-view:</strong> refresh the view when hourSegments changes (<a href="https://github.com/mattlewis92/angular-calendar/commit/f99a07b">f99a07b</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/470">#470</a></li>
 </ul>
 <p><a name="0.23.6"></a></p>
 <h2 id="0236-2018-02-12"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.5...v0.23.6">0.23.6</a> (2018-02-12)</h2>
-<h3 id="bug-fixes-37">Bug Fixes</h3>
+<h3 id="bug-fixes-38">Bug Fixes</h3>
 <ul>
 <li>fix partial module imports (<a href="https://github.com/mattlewis92/angular-calendar/commit/8540a28">8540a28</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/461">#461</a></li>
 </ul>
 <p><a name="0.23.5"></a></p>
 <h2 id="0235-2018-02-11"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.4...v0.23.5">0.23.5</a> (2018-02-11)</h2>
-<h3 id="bug-fixes-38">Bug Fixes</h3>
+<h3 id="bug-fixes-39">Bug Fixes</h3>
 <ul>
 <li><strong>month-view:</strong> expose the day the event was dropped on (<a href="https://github.com/mattlewis92/angular-calendar/commit/6aeb550">6aeb550</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/443">#443</a></li>
 </ul>
 <p><a name="0.23.4"></a></p>
 <h2 id="0234-2018-02-11"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.3...v0.23.4">0.23.4</a> (2018-02-11)</h2>
-<h3 id="bug-fixes-39">Bug Fixes</h3>
+<h3 id="bug-fixes-40">Bug Fixes</h3>
 <ul>
 <li><strong>day-view:</strong> fix scrolling on an ipad (<a href="https://github.com/mattlewis92/angular-calendar/commit/b5955ae">b5955ae</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/458">#458</a></li>
 </ul>
@@ -471,23 +527,23 @@ animations: [collapseAnimation]</code></pre></div><ul>
 </ul>
 <p><a name="0.23.2"></a></p>
 <h2 id="0232-2018-01-10"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.1...v0.23.2">0.23.2</a> (2018-01-10)</h2>
-<h3 id="bug-fixes-40">Bug Fixes</h3>
+<h3 id="bug-fixes-41">Bug Fixes</h3>
 <ul>
 <li><strong>week-view:</strong> ensure event span is correct in some edge cases (<a href="https://github.com/mattlewis92/angular-calendar/commit/8b8adef">8b8adef</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/432">#432</a></li>
 </ul>
 <p><a name="0.23.1"></a></p>
 <h2 id="0231-2018-01-02"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.23.0...v0.23.1">0.23.1</a> (2018-01-02)</h2>
-<h3 id="bug-fixes-41">Bug Fixes</h3>
+<h3 id="bug-fixes-42">Bug Fixes</h3>
 <ul>
 <li>restore compatibility with system.js (<a href="https://github.com/mattlewis92/angular-calendar/commit/1b3c27a">1b3c27a</a>)</li>
 </ul>
 <p><a name="0.23.0"></a></p>
 <h1 id="0230-2018-01-02"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.22.3...v0.23.0">0.23.0</a> (2018-01-02)</h1>
-<h3 id="bug-fixes-42">Bug Fixes</h3>
+<h3 id="bug-fixes-43">Bug Fixes</h3>
 <ul>
 <li><strong>universal:</strong> make the calendar work with universal (again) (<a href="https://github.com/mattlewis92/angular-calendar/commit/8ae8419">8ae8419</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/408">#408</a></li>
 </ul>
-<h3 id="features-4">Features</h3>
+<h3 id="features-5">Features</h3>
 <ul>
 <li><strong>date-formatter:</strong> use the angular date formatter by default (<a href="https://github.com/mattlewis92/angular-calendar/commit/bd68045">bd68045</a>)</li>
 <li>export drag+drop and resizable modules for use in custom templates (<a href="https://github.com/mattlewis92/angular-calendar/commit/579a51a">579a51a</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/419">#419</a></li>
@@ -1501,6 +1557,7 @@ _Initial release_</code></pre></div>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
             var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="./js/libs/custom-elements.min.js"></script>

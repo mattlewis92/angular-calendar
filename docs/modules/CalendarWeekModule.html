@@ -106,6 +106,7 @@ import { CalendarWeekViewHeaderComponent } from &#x27;./calendar-week-view-heade
 import { CalendarWeekViewEventComponent } from &#x27;./calendar-week-view-event.component&#x27;;
 import { CalendarCommonModule } from &#x27;../common/calendar-common.module&#x27;;
 import { CalendarWeekViewHourSegmentComponent } from &#x27;./calendar-week-view-hour-segment.component&#x27;;
+import { CalendarWeekViewCurrentTimeMarkerComponent } from &#x27;./calendar-week-view-current-time-marker.component&#x27;;
 
 export {
   CalendarWeekViewComponent,
@@ -129,7 +130,8 @@ export { getWeekViewPeriod } from &#x27;../common/util&#x27;;
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,
-    CalendarWeekViewHourSegmentComponent
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent
   ],
   exports: [
     ResizableModule,
@@ -137,7 +139,8 @@ export { getWeekViewPeriod } from &#x27;../common/util&#x27;;
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,
-    CalendarWeekViewHourSegmentComponent
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent
   ]
 })
 export class CalendarWeekModule {}
@@ -177,6 +180,7 @@ export class CalendarWeekModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarWeekModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
