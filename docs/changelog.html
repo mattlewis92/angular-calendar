@@ -35,15 +35,20 @@
 <h2 id="0280-2019-11-14"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.27.21...v0.28.0">0.28.0</a> (2019-11-14)</h2>
 <h3 id="⚠-breaking-changes">⚠ BREAKING CHANGES</h3>
 <ul>
-<li><p>If extending the week view component the trackBy function <code>trackByDayOrWeekEvent</code> was split into <code>trackByWeekAllDayEvent</code> and <code>trackByWeekTimeEvent</code></p>
-</li>
-<li><p><strong>day-view:</strong> If extending the root week view component to override the template you must make the following changes:</p>
+<li>date-fns v2 or higher is now required as a peer dependency</li>
+</ul>
+<p>If implementing a custom adapter, the <code>max</code> function signature has changed to accept an array of dates, instead of an infinite argument list.</p>
+<p>The date adapters no longer accept strings as input arguments.</p>
+<ul>
+<li><p><strong>week-view:</strong> If extending the root week view component to override the template you must make the following changes:</p>
 </li>
 <li><p>Wrap the time events with <code>&lt;div &quot;class=&#39;cal-events-container&#39;&quot;&gt;</code></p>
 </li>
 <li><p>Change <code>&lt;div class=&quot;cal-time-label-column&quot; *ngIf=&quot;view.hourColumns.length &gt; 0&quot;&gt;</code> to <code>&lt;div class=&quot;cal-time-label-column&quot; *ngIf=&quot;view.hourColumns.length &gt; 0 &amp;&amp; daysInWeek !== 1&quot;&gt;</code></p>
 </li>
 <li><p>Add <code>[isTimeLabel]=&quot;daysInWeek === 1&quot;</code> to the bottom <code>&lt;mwl-calendar-week-view-hour-segment&gt;</code> elements</p>
+</li>
+<li><p>The trackBy function <code>trackByDayOrWeekEvent</code> was split into <code>trackByWeekAllDayEvent</code> and <code>trackByWeekTimeEvent</code></p>
 </li>
 <li><p><strong>week-view:</strong> if using a custom <code>headerTemplate</code> on the week view, then you must now add <code>let-dragEnter=&quot;dragEnter&quot;</code> to the templates variables and <code>(dragEnter)=&quot;dragEnter.emit({ date: day.date })&quot;</code> onto the <code>mwlDroppable</code> element.</p>
 </li>
@@ -65,10 +70,7 @@
 <p>If using a custom template for the <code>hourSegmentTemplate</code>, you must pass <code>let-isTimeLabel=&quot;isTimeLabel&quot;</code> as a local variable and then change <code>&lt;div class=&quot;cal-time&quot;&gt;</code> to <code>&lt;div class=&quot;cal-time&quot; *ngIf=&quot;isTimeLabel&quot;&gt;</code></p>
 <ul>
 <li>the dist files are no longer annotated for usage with closure compiler.</li>
-<li>date-fns v2 or higher is now required as a peer dependency</li>
 </ul>
-<p>If implementing a custom adapter, the <code>max</code> function signature has changed to accept an array of dates, instead of an infinite argument list.</p>
-<p>The date adapters no longer accept strings as input arguments.</p>
 <h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
 <li>ensure compatibility with angular 9 and ivy (<a href="https://github.com/mattlewis92/angular-calendar/commit/d4fdfb3">d4fdfb3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1086">#1086</a></li>
