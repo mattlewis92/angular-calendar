@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.1](https://github.com/mattlewis92/angular-calendar/compare/v0.28.0...v0.28.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* **schematics:** use correct date adapter when using moment ([2068e83](https://github.com/mattlewis92/angular-calendar/commit/2068e838c9ee80b0be85a476d268f3d1240cd0cc)), closes [#1133](https://github.com/mattlewis92/angular-calendar/issues/1133)
+
 ## [0.28.0](https://github.com/mattlewis92/angular-calendar/compare/v0.27.21...v0.28.0) (2019-11-14)
 
 
