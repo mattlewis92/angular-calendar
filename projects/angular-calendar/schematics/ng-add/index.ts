@@ -21,7 +21,9 @@ import {
   addStyle,
   getSourceFile,
   getProjectMainFile,
-  getProjectFromWorkspace
+  getProjectFromWorkspace,
+  insertWildcardImport,
+  insertAfterImports
 } from '../utils';
 
 import { Schema } from './schema';
@@ -109,31 +111,56 @@ function addModuleToImports(options: Schema): Rule {
     const appModulePath = options.module
       ? options.module
       : getAppModulePath(host, mainPath);
-    const moduleSource = getSourceFile(host, appModulePath);
-    const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })`;
+    const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: ${
+      options.dateAdapter === 'moment'
+        ? 'momentAdapterFactory'
+        : 'adapterFactory'
+    } })`;
     const moduleCalendarSrc = 'angular-calendar';
-    const PEER_DEPENDENCIES = ['DateAdapter', 'adapterFactory'];
 
     addModuleImportToRootModule(host, moduleName, moduleCalendarSrc, project);
 
-    const peerDependencyChange1 = insertImport(
-      moduleSource as ts.SourceFile,
-      appModulePath,
-      PEER_DEPENDENCIES[0],
-      moduleCalendarSrc
-    ) as InsertChange;
+    const moduleSource = getSourceFile(host, appModulePath);
 
-    const peerDependencyChange2 = insertImport(
-      moduleSource as ts.SourceFile,
-      appModulePath,
-      PEER_DEPENDENCIES[1],
-      `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`
-    ) as InsertChange;
+    const updates: InsertChange[] = [
+      insertImport(
+        moduleSource as ts.SourceFile,
+        appModulePath,
+        'DateAdapter',
+        moduleCalendarSrc
+      ) as InsertChange,
+      insertImport(
+        moduleSource as ts.SourceFile,
+        appModulePath,
+        'adapterFactory',
+        `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`
+      ) as InsertChange
+    ];
+
+    if (options.dateAdapter === 'moment') {
+      updates.push(
+        insertWildcardImport(
+          moduleSource as ts.SourceFile,
+          appModulePath,
+          'moment',
+          'moment'
+        ) as InsertChange
+      );
+      updates.push(
+        insertAfterImports(
+          moduleSource as ts.SourceFile,
+          appModulePath,
+          `;\n\nexport function momentAdapterFactory() {
+  return adapterFactory(moment);
+}`
+        ) as InsertChange
+      );
+    }
 
     const recorder = host.beginUpdate(appModulePath);
-
-    recorder.insertLeft(peerDependencyChange1.pos, peerDependencyChange1.toAdd);
-    recorder.insertLeft(peerDependencyChange2.pos, peerDependencyChange2.toAdd);
+    updates.forEach(update => {
+      recorder.insertLeft(update.pos, update.toAdd);
+    });
     host.commitUpdate(recorder);
 
     return host;

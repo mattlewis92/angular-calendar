@@ -15,7 +15,7 @@
     "build": "run-s build:copy-package-json build:lib build:date-adapters build:styles build:schematics build:copyfiles",
     "test:single": "cross-env TZ=UTC ng test angular-calendar --watch=false --code-coverage",
     "test:watch": "cross-env TZ=UTC ng test angular-calendar",
-    "test:schematics": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha --require ts-node/register projects/angular-calendar/schematics/**/*.spec.ts",
+    "test:schematics": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} TS_NODE_PREFER_TS_EXTS=true mocha --require ts-node/register projects/angular-calendar/schematics/**/*.spec.ts",
     "test": "run-s lint test:single test:schematics build build:clean",
     "lint:styles": "stylelint \"{projects,src}/**/*.scss\" --fix",
     "lint:ts": "ng lint",

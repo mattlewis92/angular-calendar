@@ -1,8 +1,13 @@
 import { Tree, SchematicsException } from '@angular-devkit/schematics';
 import { InsertChange, Change } from '@schematics/angular/utility/change';
-import { addImportToModule } from '@schematics/angular/utility/ast-utils';
+import {
+  addImportToModule,
+  findNodes,
+  insertAfterLastOccurrence
+} from '@schematics/angular/utility/ast-utils';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';
+import * as ts from 'typescript';
 
 import { getSourceFile } from './file';
 
@@ -63,4 +68,33 @@ function addModuleImportToModule(
     .forEach((change: any) => recorder.insertLeft(change.pos, change.toAdd));
 
   host.commitUpdate(recorder);
+}
+
+export function insertAfterImports(
+  source: ts.SourceFile,
+  fileToEdit: string,
+  toInsert: string
+): Change {
+  const allImports = findNodes(source, ts.SyntaxKind.ImportDeclaration);
+
+  return insertAfterLastOccurrence(
+    allImports,
+    toInsert,
+    fileToEdit,
+    0,
+    ts.SyntaxKind.StringLiteral
+  );
+}
+
+export function insertWildcardImport(
+  source: ts.SourceFile,
+  fileToEdit: string,
+  symbolName: string,
+  fileName: string
+): Change {
+  return insertAfterImports(
+    source,
+    fileToEdit,
+    `;\nimport * as ${symbolName} from '${fileName}'`
+  );
 }

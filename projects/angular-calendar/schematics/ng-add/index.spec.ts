@@ -83,7 +83,7 @@ describe('angular-calendar schematics', () => {
 
     const rootModule = tree.readContent(rootModulePath);
 
-    const calendarModuleImport = `import { CalendarModule } from 'angular-calendar'`;
+    const calendarModuleImport = `import { CalendarModule, DateAdapter } from 'angular-calendar';`;
     expect(rootModule).contain(calendarModuleImport);
   });
 
@@ -99,5 +99,31 @@ describe('angular-calendar schematics', () => {
 
     expect(styles[0]).to.contains(defaultAngularCalendarStylePath);
     expect(stylesTest[0]).to.contains(defaultAngularCalendarStylePath);
+  });
+
+  it('should add the momentAdapterFactory when using moment', async () => {
+    const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
+    tree = await runner
+      .runSchematicAsync(
+        'ng-add',
+        {
+          ...defaultOptions,
+          dateAdapter: 'moment'
+        },
+        appTree
+      )
+      .toPromise();
+    expect(tree.files).contain(rootModulePath);
+
+    const rootModule = tree.readContent(rootModulePath);
+
+    expect(rootModule).contain(
+      `import { adapterFactory } from 'angular-calendar/date-adapters/moment';`
+    );
+    expect(rootModule).contain(`import * as moment from 'moment';`);
+    expect(rootModule).contain(`export function momentAdapterFactory() {
+  return adapterFactory(moment);
+}`);
+    expect(rootModule).contain(`useFactory: momentAdapterFactory`);
   });
 });
