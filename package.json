@@ -2,7 +2,9 @@
   "name": "angular-calendar",
   "version": "0.28.1",
   "description": "A calendar component for angular 6.0+ that can display events on a month, week or day view",
-  "funding": "https://github.com/sponsors/mattlewis92",
+  "funding": {
+    "url": "https://github.com/sponsors/mattlewis92"
+  },
   "scripts": {
     "start": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open",
     "build:copy-package-json": "copyfiles package.json projects/angular-calendar",
