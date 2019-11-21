@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.2](https://github.com/mattlewis92/angular-calendar/compare/v0.28.1...v0.28.2) (2019-11-21)
+
+
+### Bug Fixes
+
+* fix npm funding link ([5fc574a](https://github.com/mattlewis92/angular-calendar/commit/5fc574acc45eb8127c47344fb22430cf4fcd4e2b))
+
 ### [0.28.1](https://github.com/mattlewis92/angular-calendar/compare/v0.28.0...v0.28.1) (2019-11-21)
 
 
