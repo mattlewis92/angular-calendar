@@ -35,6 +35,7 @@ import { CalendarUtils } from '../common/calendar-utils.provider';
 import {
   validateEvents,
   roundToNearest,
+  roundToNearestForDragEnded,
   trackByWeekDayHeaderDate,
   trackByHourSegment,
   trackByHour,
@@ -1153,7 +1154,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     dayWidth: number,
     useY: boolean
   ) {
-    const daysDragged = roundToNearest(dragEndEvent.x, dayWidth) / dayWidth;
+    const daysDragged = roundToNearestForDragEnded(dragEndEvent.x, dayWidth) / dayWidth;
     const minutesMoved = useY
       ? getMinutesMoved(
           dragEndEvent.y,

@@ -32,6 +32,14 @@ export function roundToNearest(amount: number, precision: number) {
   return Math.round(amount / precision) * precision;
 }
 
+export function roundToNearestForDragEnded(amount: number, precision: number) {
+  if (precision > amount) {
+    return 0;
+} else {
+    return Math.round(amount / precision) * precision;
+}
+}
+
 export const trackByEventId = (index: number, event: CalendarEvent) =>
   event.id ? event.id : event;
 
