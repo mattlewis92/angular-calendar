@@ -113,7 +113,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         </div>
       </div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         events: events,
@@ -123,7 +123,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         validateDrag: validateDrag
       }"
     >
-    </ng-template>
+    </ng-container>
   `,
   animations: [collapseAnimation]
 })

@@ -28,7 +28,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
         [style.top.px]="topPx"
       ></div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         columnDate: columnDate,
@@ -40,7 +40,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
         topPx: (marker$ | async)?.top
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {

@@ -29,14 +29,14 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
         </a>
       </span>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         event: event,
         trackByActionId: trackByActionId
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarEventActionsComponent {

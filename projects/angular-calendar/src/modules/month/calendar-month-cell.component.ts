@@ -69,7 +69,7 @@ import { PlacementArray } from 'positioning';
         ></div>
       </div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         day: day,
@@ -86,7 +86,7 @@ import { PlacementArray } from 'positioning';
         validateDrag: validateDrag
       }"
     >
-    </ng-template>
+    </ng-container>
   `,
   host: {
     class: 'cal-cell cal-day-cell',

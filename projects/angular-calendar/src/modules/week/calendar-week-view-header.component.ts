@@ -50,7 +50,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
         </div>
       </div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         days: days,
@@ -61,7 +61,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
         trackByWeekDayHeaderDate: trackByWeekDayHeaderDate
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarWeekViewHeaderComponent {

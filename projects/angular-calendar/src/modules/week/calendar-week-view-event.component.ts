@@ -69,7 +69,7 @@ import { PlacementArray } from 'positioning';
         </mwl-calendar-event-title>
       </div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         weekEvent: weekEvent,
@@ -83,7 +83,7 @@ import { PlacementArray } from 'positioning';
         daysInWeek: daysInWeek
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarWeekViewEventComponent {

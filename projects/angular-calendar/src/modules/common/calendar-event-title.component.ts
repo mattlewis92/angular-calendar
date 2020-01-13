@@ -12,14 +12,14 @@ import { CalendarEvent } from 'calendar-utils';
       >
       </span>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         event: event,
         view: view
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarEventTitleComponent {

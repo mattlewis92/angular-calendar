@@ -36,7 +36,7 @@ import { takeUntil } from 'rxjs/operators';
         <div class="cal-tooltip-inner" [innerHtml]="contents"></div>
       </div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         contents: contents,
@@ -44,7 +44,7 @@ import { takeUntil } from 'rxjs/operators';
         event: event
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarTooltipWindowComponent {

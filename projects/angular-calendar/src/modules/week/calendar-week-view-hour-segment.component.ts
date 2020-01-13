@@ -36,7 +36,7 @@ import { WeekViewHourSegment } from 'calendar-utils';
         </div>
       </div>
     </ng-template>
-    <ng-template
+    <ng-container
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         segment: segment,
@@ -46,7 +46,7 @@ import { WeekViewHourSegment } from 'calendar-utils';
         daysInWeek: daysInWeek
       }"
     >
-    </ng-template>
+    </ng-container>
   `
 })
 export class CalendarWeekViewHourSegmentComponent {
