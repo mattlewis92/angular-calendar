@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.3](https://github.com/mattlewis92/angular-calendar/compare/v0.28.2...v0.28.3) (2020-02-29)
+
+
+### Bug Fixes
+
+* upgrade positioning to fix ssr ([4e4179e](https://github.com/mattlewis92/angular-calendar/commit/4e4179e5d6ee3429c661fa5be9f81863482efe32)), closes [#1177](https://github.com/mattlewis92/angular-calendar/issues/1177)
+
 ### [0.28.2](https://github.com/mattlewis92/angular-calendar/compare/v0.28.1...v0.28.2) (2019-11-21)
 
 
