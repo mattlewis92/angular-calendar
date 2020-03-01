@@ -3,7 +3,7 @@ import {
   Rule,
   SchematicContext,
   Tree,
-  chain,
+  chain
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getWorkspace } from '@schematics/angular/utility/config';
@@ -102,12 +102,7 @@ function addModuleToImports(options: Schema): Rule {
     context.logger.log('info', `Add modules imports options...`);
 
     const workspace = getWorkspace(host);
-    const project = getProjectFromWorkspace(
-      workspace,
-      options.projectName
-        ? options.projectName
-        : Object.keys(workspace['projects'])[0]
-    );
+    const project = getProjectFromWorkspace(workspace, options.projectName);
     const mainPath = getProjectMainFile(project);
     const appModulePath = options.module
       ? normalize(project.root + '/' + options.module)
