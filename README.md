@@ -10,6 +10,12 @@
 
 https://mattlewis92.github.io/angular-calendar/
 
+## Sponsors
+
+<a href="https://github.com/sponsors/mattlewis92">Become a gold or platinum sponsor<a> and get your logo on this README on Github with a link to your site.
+
+<a href="https://runbox.com/" target="_blank"><img src="https://raw.githubusercontent.com/runbox/runbox7/master/src/assets/runbox7_blue_dark.png" width="288"></a>
+
 ## Table of contents
 
 - [About](#about)
