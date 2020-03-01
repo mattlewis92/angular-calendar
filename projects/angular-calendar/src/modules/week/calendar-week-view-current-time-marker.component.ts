@@ -1,12 +1,13 @@
 import {
   Component,
   Input,
+  NgZone,
   OnChanges,
   SimpleChanges,
   TemplateRef
 } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
-import { switchMapTo, startWith, map } from 'rxjs/operators';
+import { switchMapTo, startWith, map, switchMap } from 'rxjs/operators';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 
 @Component({
@@ -62,9 +63,11 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
 
   private columnDate$ = new BehaviorSubject<Date>(this.columnDate);
 
-  marker$: Observable<{ isVisible: boolean; top: number }> = interval(
-    60 * 1000
-  ).pipe(
+  marker$: Observable<{
+    isVisible: boolean;
+    top: number;
+  }> = this.zone.onStable.pipe(
+    switchMap(() => interval(60 * 1000)),
     startWith(0),
     switchMapTo(this.columnDate$),
     map(columnDate => {
@@ -91,7 +94,7 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
     })
   );
 
-  constructor(private dateAdapter: DateAdapter) {}
+  constructor(private dateAdapter: DateAdapter, private zone: NgZone) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.columnDate) {
