@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.4](https://github.com/mattlewis92/angular-calendar/compare/v0.28.3...v0.28.4) (2020-03-01)
+
+
+### Bug Fixes
+
+* **schematics:** fix setting custom module to add the calendar imports to ([24125e5](https://github.com/mattlewis92/angular-calendar/commit/24125e5a3bcab212996a7d66186df5fff87cb1d3))
+* **schematics:** use default project instead of first project if not set ([ff477a5](https://github.com/mattlewis92/angular-calendar/commit/ff477a5f57176295bab2560ea3e88fd75fc4d09d))
+* fix infinite load on universal with day and week view ([266e159](https://github.com/mattlewis92/angular-calendar/commit/266e159b24ac8c78051e280eb39a4a22b81a7776)), closes [#1177](https://github.com/mattlewis92/angular-calendar/issues/1177)
+
 ### [0.28.3](https://github.com/mattlewis92/angular-calendar/compare/v0.28.2...v0.28.3) (2020-02-29)
 
 
