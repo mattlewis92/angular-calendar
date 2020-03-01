@@ -28,7 +28,7 @@ import { take } from 'rxjs/operators';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import * as lolex from 'lolex';
+import * as fakeTimers from '@sinonjs/fake-timers';
 
 @Component({
   template: `
@@ -2458,7 +2458,7 @@ describe('calendarWeekView component', () => {
   describe('current time marker', () => {
     let clock: any;
     beforeEach(() => {
-      clock = lolex.install({
+      clock = fakeTimers.install({
         now: new Date('2019-09-30T11:30:25.288Z').getTime(),
         toFake: ['Date']
       });
