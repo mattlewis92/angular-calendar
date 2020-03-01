@@ -1,3 +1,5 @@
+_extends: probot-settings
+
 closeComment: >
   This issue has been closed automatically as it did not follow the issue template, please **open a new issue** that follows the bug report or feature request template.<br><br>
 
@@ -5,10 +7,7 @@ closeComment: >
   
   Thank you! ✌️
 
-skipAuthors:
-  - mattlewis92
-  
-lockOnClose: true
-
 matchComment: >
   Thanks so much for opening an issue! If you'd like me to give priority to answering your issue or would just like to support this project, then please consider [sponsoring me](https://github.com/users/mattlewis92/sponsorship)
+
+allowNoTemplates: false
