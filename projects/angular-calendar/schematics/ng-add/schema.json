@@ -24,7 +24,7 @@
     "module": {
       "type": "string",
       "description": "Where to add the module import",
-      "x-prompt": "Please enter a path to the NgModule that will use the calendar (relative to the root project directory, for example src/app/app.module.ts)"
+      "x-prompt": "Please enter a path to the NgModule that will use the calendar. It should be relative to the root project directory, for example src/app/app.module.ts (optional, will use the root app module if not specified)"
     },
     "projectName": {
       "type": "string",

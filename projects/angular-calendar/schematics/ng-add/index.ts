@@ -3,7 +3,7 @@ import {
   Rule,
   SchematicContext,
   Tree,
-  chain
+  chain,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getWorkspace } from '@schematics/angular/utility/config';
@@ -15,6 +15,7 @@ import {
   NodeDependency,
   NodeDependencyType
 } from '@schematics/angular/utility/dependencies';
+import { normalize } from '@angular-devkit/core';
 
 import {
   addModuleImportToRootModule,
@@ -109,8 +110,9 @@ function addModuleToImports(options: Schema): Rule {
     );
     const mainPath = getProjectMainFile(project);
     const appModulePath = options.module
-      ? options.module
+      ? normalize(project.root + '/' + options.module)
       : getAppModulePath(host, mainPath);
+
     const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: ${
       options.dateAdapter === 'moment'
         ? 'momentAdapterFactory'
