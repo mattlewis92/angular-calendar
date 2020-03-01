@@ -363,7 +363,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.top,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -375,7 +376,8 @@ describe('CalendarDayViewComponent component', () => {
     expect(event.getBoundingClientRect().height).to.equal(rect.height + 30);
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top - 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -428,7 +430,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -440,7 +443,8 @@ describe('CalendarDayViewComponent component', () => {
     expect(event.getBoundingClientRect().height).to.equal(150);
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -493,7 +497,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -545,7 +550,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -557,7 +563,8 @@ describe('CalendarDayViewComponent component', () => {
     expect(event.getBoundingClientRect().height).to.equal(60);
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -607,7 +614,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -619,7 +627,8 @@ describe('CalendarDayViewComponent component', () => {
     expect(event.getBoundingClientRect().height).to.equal(60);
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -673,7 +682,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.top,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -685,7 +695,8 @@ describe('CalendarDayViewComponent component', () => {
     expect(event.getBoundingClientRect().height).to.equal(rect.height + 10);
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top - 10,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -804,7 +815,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top + 5,
-      clientX: eventPosition.left + 10
+      clientX: eventPosition.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
@@ -818,7 +830,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mouseup', document.body, {
       clientY: eventPosition.top + 30,
-      clientX: eventPosition.left + 10
+      clientX: eventPosition.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -871,7 +884,8 @@ describe('CalendarDayViewComponent component', () => {
     const calendarPosition: ClientRect = fixture.nativeElement.getBoundingClientRect();
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top,
-      clientX: eventPosition.left
+      clientX: eventPosition.left,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
@@ -905,7 +919,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mouseup', document.body, {
       clientY: calendarPosition.top - 60,
-      clientX: eventPosition.left - 10
+      clientX: eventPosition.left - 10,
+      button: 0
     });
     fixture.detectChanges();
     expect(eventDropped).not.to.have.been.called;
@@ -944,7 +959,8 @@ describe('CalendarDayViewComponent component', () => {
     const eventPosition: ClientRect = event.getBoundingClientRect();
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top,
-      clientX: eventPosition.left
+      clientX: eventPosition.left,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
@@ -954,7 +970,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     triggerDomEvent('mouseup', document.body, {
       clientY: eventPosition.top - 20,
-      clientX: eventPosition.left
+      clientX: eventPosition.left,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1005,7 +1022,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousedown', handle, {
       clientY: rect.top,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
@@ -1024,7 +1042,8 @@ describe('CalendarDayViewComponent component', () => {
     expect(event.getBoundingClientRect().height).to.equal(rect.height + 60);
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top - 60,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1064,7 +1083,8 @@ describe('CalendarDayViewComponent component', () => {
     });
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top + 5,
-      clientX: eventPosition.left + 10
+      clientX: eventPosition.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
@@ -1078,7 +1098,8 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mouseup', document.body, {
       clientY: eventPosition.top + 10,
-      clientX: eventPosition.left + 10
+      clientX: eventPosition.left + 10,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1254,7 +1275,8 @@ describe('CalendarDayViewComponent component', () => {
     });
     triggerDomEvent('mousedown', event, {
       clientX: rect.left,
-      clientY: rect.top
+      clientY: rect.top,
+      button: 0
     });
     fixture.detectChanges();
     const hourSegment = fixture.nativeElement.querySelectorAll(
@@ -1268,7 +1290,8 @@ describe('CalendarDayViewComponent component', () => {
     fixture.detectChanges();
     triggerDomEvent('mouseup', hourSegment, {
       clientX: hourSegmentPosition.left,
-      clientY: hourSegmentPosition.top
+      clientY: hourSegmentPosition.top,
+      button: 0
     });
     fixture.detectChanges();
     fixture.destroy();
