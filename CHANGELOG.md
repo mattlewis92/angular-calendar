@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.5](https://github.com/mattlewis92/angular-calendar/compare/v0.28.4...v0.28.5) (2020-03-01)
+
+
+### Bug Fixes
+
+* prevent drag and drop on right click ([18702b1](https://github.com/mattlewis92/angular-calendar/commit/18702b10d80a8a1f5a41726b1d7958fcca778216)), closes [#1171](https://github.com/mattlewis92/angular-calendar/issues/1171)
+
 ### [0.28.4](https://github.com/mattlewis92/angular-calendar/compare/v0.28.3...v0.28.4) (2020-03-01)
 
 
