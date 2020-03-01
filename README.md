@@ -90,7 +90,12 @@ Where possible this library will strictly adhere to [semver](http://semver.org/)
 
 ### Is this library AoT and universal compatible?
 
-Yes.
+Yes. For universal to work though, you will need to add this near the top of your `server.ts` file:
+
+```ts
+global['window'] = {};
+global['KeyboardEvent'] = null;
+```
 
 ### What major versions of angular does this library support?
 
