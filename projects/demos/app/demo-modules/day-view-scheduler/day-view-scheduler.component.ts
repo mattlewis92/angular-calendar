@@ -83,8 +83,6 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
 
   daysInWeek = 1;
 
-  private originalLeft: number;
-
   constructor(
     protected cdr: ChangeDetectorRef,
     protected utils: DayViewSchedulerCalendarUtils,
@@ -106,29 +104,33 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
     return Math.floor(eventRowContainer.offsetWidth / this.users.length);
   }
 
-  dragStarted(
-    eventsContainer: HTMLElement,
-    event: HTMLElement,
-    dayEvent?: WeekViewTimeEvent
-  ) {
-    this.originalLeft = dayEvent.left;
-    super.dragStarted(eventsContainer, event, dayEvent);
-  }
-
   dragMove(dayEvent: WeekViewTimeEvent, dragEvent: DragMoveEvent) {
-    const originalX = dragEvent.x;
-    const originalWidth = dayEvent.width;
-    dragEvent.x = 0;
-    super.dragMove(dayEvent, dragEvent);
-    this.view.hourColumns.forEach(column => {
-      column.events.forEach(iDayEvent => {
-        if (iDayEvent.event === dayEvent.event && iDayEvent.width > 0) {
-          const columnsMoved = Math.round(originalX / this.dayColumnWidth);
-          iDayEvent.left = this.originalLeft + 100 * columnsMoved;
-          iDayEvent.width = this.originalLeft === 0 ? 100 : originalWidth;
+    if (this.snapDraggedEvents) {
+      const newUser = this.getDraggedUserColumn(dayEvent, dragEvent.x);
+      const newEventTimes = this.getDragMovedEventTimes(
+        dayEvent,
+        { ...dragEvent, x: 0 },
+        this.dayColumnWidth,
+        true
+      );
+      const originalEvent = dayEvent.event;
+      const adjustedEvent = {
+        ...originalEvent,
+        ...newEventTimes,
+        meta: { ...originalEvent.meta, user: newUser }
+      };
+      const tempEvents = this.events.map(event => {
+        if (event === originalEvent) {
+          return adjustedEvent;
         }
+        return event;
       });
-    });
+      this.restoreOriginalEvents(
+        tempEvents,
+        new Map([[adjustedEvent, originalEvent]])
+      );
+    }
+    this.dragAlreadyMoved = true;
   }
 
   dragEnded(
