@@ -117,13 +117,15 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
 
   dragMove(dayEvent: WeekViewTimeEvent, dragEvent: DragMoveEvent) {
     const originalX = dragEvent.x;
+    const originalWidth = dayEvent.width;
     dragEvent.x = 0;
     super.dragMove(dayEvent, dragEvent);
     this.view.hourColumns.forEach(column => {
       column.events.forEach(iDayEvent => {
-        if (iDayEvent.event === dayEvent.event) {
+        if (iDayEvent.event === dayEvent.event && iDayEvent.width > 0) {
           const columnsMoved = Math.round(originalX / this.dayColumnWidth);
           iDayEvent.left = this.originalLeft + 100 * columnsMoved;
+          iDayEvent.width = this.originalLeft === 0 ? 100 : originalWidth;
         }
       });
     });
