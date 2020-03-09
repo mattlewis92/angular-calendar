@@ -1,7 +1,12 @@
 <div class="cal-week-view" role="grid">
-  <div class="day-view-column-headers">
-    <div class="day-view-column-header" *ngFor="let user of view?.users">
-      {{ user.name }}
+  <div class="cal-day-headers" role="row">
+    <div
+      class="cal-header"
+      *ngFor="let user of users; trackBy: trackById"
+      tabindex="0"
+      role="columnheader"
+    >
+      <b>{{ user.name }}</b>
     </div>
   </div>
   <div
@@ -54,8 +59,8 @@
           [hidden]="timeEvent.height === 0 && timeEvent.width === 0"
           [style.top.px]="timeEvent.top"
           [style.height.px]="timeEvent.height"
-          [style.left.px]="timeEvent.left"
-          [style.width.px]="timeEvent.width"
+          [style.left.%]="timeEvent.left"
+          [style.width.%]="timeEvent.width"
           mwlResizable
           [resizeSnapGrid]="{
             left: dayColumnWidth,
@@ -77,7 +82,7 @@
           }"
           [dragSnapGrid]="
             snapDraggedEvents
-              ? { x: eventWidth, y: eventSnapSize || hourSegmentHeight }
+              ? { x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight }
               : {}
           "
           [ghostDragEnabled]="!snapDraggedEvents"

@@ -1,38 +1,68 @@
-import { Component, EventEmitter, Injectable, Output } from '@angular/core';
-import { CalendarUtils, CalendarWeekViewComponent } from 'angular-calendar';
-import { WeekView, GetWeekViewArgs, WeekViewTimeEvent } from 'calendar-utils';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Inject,
+  Injectable,
+  Input,
+  LOCALE_ID,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
+import {
+  CalendarUtils,
+  CalendarWeekViewComponent,
+  DateAdapter,
+  getWeekViewPeriod
+} from 'angular-calendar';
+import {
+  WeekView,
+  GetWeekViewArgs,
+  WeekViewTimeEvent,
+  EventColor,
+  CalendarEvent
+} from 'calendar-utils';
 import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
 
 const EVENT_WIDTH = 150;
 
+export interface User {
+  id: number;
+  name: string;
+  color: EventColor;
+}
+
 interface DayViewScheduler extends WeekView {
-  users: any[];
+  users: User[];
+}
+
+interface GetWeekViewArgsWithUsers extends GetWeekViewArgs {
+  users: User[];
 }
 
 @Injectable()
 export class DayViewSchedulerCalendarUtils extends CalendarUtils {
-  getWeekView(args: GetWeekViewArgs): DayViewScheduler {
+  getWeekView(args: GetWeekViewArgsWithUsers): DayViewScheduler {
+    const { period } = super.getWeekView(args);
     const view: DayViewScheduler = {
-      ...super.getWeekView(args),
-      users: []
+      period,
+      allDayEventRows: [],
+      hourColumns: [],
+      users: [...args.users]
     };
-    view.hourColumns[0].events.forEach(({ event }) => {
-      // assumes user objects are the same references,
-      // if 2 users have the same structure but different object references this will fail
-      if (!view.users.includes(event.meta.user)) {
-        view.users.push(event.meta.user);
-      }
+
+    view.users.forEach(user => {
+      const events = args.events.filter(
+        event => event.meta.user.id === user.id
+      );
+      const columnView = super.getWeekView({
+        ...args,
+        events
+      });
+      view.hourColumns.push(columnView.hourColumns[0]);
     });
-    // sort the users by their names
-    view.users.sort((user1, user2) => user1.name.localeCompare(user2.name));
-    view.hourColumns[0].events = view.hourColumns[0].events.map(
-      dayViewEvent => {
-        const index = view.users.indexOf(dayViewEvent.event.meta.user);
-        dayViewEvent.left = index * EVENT_WIDTH; // change the column of the event
-        dayViewEvent.width = EVENT_WIDTH;
-        return dayViewEvent;
-      }
-    );
+
     return view;
   }
 }
@@ -40,43 +70,41 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
 @Component({
   // tslint:disable-line max-classes-per-file
   selector: 'mwl-day-view-scheduler',
-  styles: [
-    `
-      .day-view-column-headers {
-        display: flex;
-        margin-left: 70px;
-      }
-      .day-view-column-header {
-        width: 150px;
-        border: solid 1px black;
-        text-align: center;
-      }
-      .cal-time-events {
-        border-top: solid 1px #e1e1e1;
-      }
-      .cal-week-view {
-        border-top: 0;
-      }
-    `
-  ],
-  providers: [
-    {
-      provide: CalendarUtils,
-      useClass: DayViewSchedulerCalendarUtils
-    }
-  ],
-  templateUrl: 'day-view-scheduler.component.html'
+  templateUrl: 'day-view-scheduler.component.html',
+  providers: [DayViewSchedulerCalendarUtils]
 })
-export class DayViewSchedulerComponent extends CalendarWeekViewComponent {
+export class DayViewSchedulerComponent extends CalendarWeekViewComponent
+  implements OnChanges {
+  @Input() users: User[] = [];
+
   @Output() userChanged = new EventEmitter();
 
   view: DayViewScheduler;
 
   daysInWeek = 1;
 
-  eventWidth = EVENT_WIDTH;
-
   private originalLeft: number;
+
+  constructor(
+    protected cdr: ChangeDetectorRef,
+    protected utils: DayViewSchedulerCalendarUtils,
+    @Inject(LOCALE_ID) locale: string,
+    protected dateAdapter: DateAdapter
+  ) {
+    super(cdr, utils, locale, dateAdapter);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    super.ngOnChanges(changes);
+
+    if (changes.users) {
+      this.view = this.getWeekView(this.events);
+    }
+  }
+
+  getDayColumnWidth(eventRowContainer: HTMLElement): number {
+    return Math.floor(eventRowContainer.offsetWidth / this.users.length);
+  }
 
   dragStarted(
     eventsContainer: HTMLElement,
@@ -91,13 +119,13 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent {
     const originalX = dragEvent.x;
     dragEvent.x = 0;
     super.dragMove(dayEvent, dragEvent);
-    const newUserColumn = this.getDraggedUserColumn(dayEvent, originalX);
-    this.view.hourColumns[0].events.forEach(iDayEvent => {
-      if (iDayEvent.event === dayEvent.event) {
-        iDayEvent.left = newUserColumn
-          ? this.originalLeft + originalX
-          : (this.view.users.length - 1) * EVENT_WIDTH;
-      }
+    this.view.hourColumns.forEach(column => {
+      column.events.forEach(iDayEvent => {
+        if (iDayEvent.event === dayEvent.event) {
+          const columnsMoved = Math.round(originalX / this.dayColumnWidth);
+          iDayEvent.left = this.originalLeft + 100 * columnsMoved;
+        }
+      });
     });
   }
 
@@ -107,15 +135,53 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent {
     dayWidth: number,
     useY = false
   ) {
-    super.dragEnded(weekEvent, dragEndEvent, dayWidth, useY);
+    super.dragEnded(
+      weekEvent,
+      {
+        ...dragEndEvent,
+        x: 0
+      },
+      dayWidth,
+      useY
+    );
     const newUser = this.getDraggedUserColumn(weekEvent, dragEndEvent.x);
     if (newUser && newUser !== weekEvent.event.meta.user) {
       this.userChanged.emit({ event: weekEvent.event, newUser });
     }
   }
 
+  protected getWeekView(events: CalendarEvent[]) {
+    return this.utils.getWeekView({
+      events,
+      users: this.users,
+      viewDate: this.viewDate,
+      weekStartsOn: this.weekStartsOn,
+      excluded: this.excludeDays,
+      precision: this.precision,
+      absolutePositionedEvents: true,
+      hourSegments: this.hourSegments,
+      dayStart: {
+        hour: this.dayStartHour,
+        minute: this.dayStartMinute
+      },
+      dayEnd: {
+        hour: this.dayEndHour,
+        minute: this.dayEndMinute
+      },
+      segmentHeight: this.hourSegmentHeight,
+      weekendDays: this.weekendDays,
+      ...getWeekViewPeriod(
+        this.dateAdapter,
+        this.viewDate,
+        this.weekStartsOn,
+        this.excludeDays,
+        this.daysInWeek
+      )
+    });
+  }
+
   private getDraggedUserColumn(dayEvent: WeekViewTimeEvent, xPixels: number) {
-    const columnsMoved = xPixels / EVENT_WIDTH;
+    const columnsMoved = Math.round(xPixels / this.dayColumnWidth);
     const currentColumnIndex = this.view.users.findIndex(
       user => user === dayEvent.event.meta.user
     );

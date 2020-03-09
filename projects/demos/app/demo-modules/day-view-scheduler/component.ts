@@ -5,8 +5,9 @@ import {
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { addHours, startOfDay } from 'date-fns';
+import { User } from './day-view-scheduler.component';
 
-const users = [
+const users: User[] = [
   {
     id: 0,
     name: 'John smith',
@@ -26,6 +27,8 @@ const users = [
 })
 export class DemoComponent {
   viewDate = new Date();
+
+  users = users;
 
   events: CalendarEvent[] = [
     {
