@@ -96,7 +96,8 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
     super.ngOnChanges(changes);
 
     if (changes.users) {
-      this.view = this.getWeekView(this.events);
+      this.refreshBody();
+      this.emitBeforeViewRender();
     }
   }
 
