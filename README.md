@@ -13,7 +13,11 @@
 
 <h2 align="center">Demo</h2>
 
+<div align="center">
+
 https://mattlewis92.github.io/angular-calendar/
+
+</div>
 
 <h2 align="center">Sponsors</h2>
 
@@ -163,7 +167,11 @@ No! While the demo site uses bootstrap, it isn't a requirement of this library. 
 
 <h2 align="center">Angular 1 version</h2>
 
+<div align="center">
+
 https://github.com/mattlewis92/angular-bootstrap-calendar
+
+</div>
 
 <h2 align="center">Development</h2>
 
