@@ -1,4 +1,6 @@
-# angular 6.0+ calendar
+<h1 align="center">angular 6.0+ calendar</h1>
+
+<div align="center">
 
 [![Sponsorship](https://img.shields.io/badge/funding-github-%23EA4AAA)](https://github.com/users/mattlewis92/sponsorship)
 [![Build Status](https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-calendar)
@@ -6,15 +8,19 @@
 [![npm version](https://badge.fury.io/js/angular-calendar.svg)](http://badge.fury.io/js/angular-calendar)
 [![Twitter Follow](https://img.shields.io/twitter/follow/mattlewis92_.svg)](https://twitter.com/mattlewis92_)
 
-## Demo
+</div>
+
+<h2 align="center">Demo</h2>
 
 https://mattlewis92.github.io/angular-calendar/
 
-## Sponsors
+<h2 align="center">Sponsors</h2>
 
+<div align="center">
 <a href="https://github.com/sponsors/mattlewis92">Become a gold or platinum sponsor<a> and get your logo on this README on Github with a link to your site.
 
 <a href="https://runbox.com/" target="_blank"><img src="https://raw.githubusercontent.com/runbox/runbox7/master/src/assets/runbox7_blue_dark.png" width="288"></a>
+</div>
 
 ## Table of contents
 
@@ -27,11 +33,11 @@ https://mattlewis92.github.io/angular-calendar/
 - [Development](#development)
 - [License](#license)
 
-## About
+<h2 align="center">About</h2>
 
 A calendar component for Angular 6.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
-## Getting started
+<h2 align="center">Getting started</h2>
 
 ### ng add (recommended)
 
@@ -84,15 +90,15 @@ If you would like a one on one consultation with me where I can show you the bes
 
 You can find quick start examples for all common module bundlers in the [build-tool-examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
 
-## Documentation
+<h2 align="center">Documentation</h2>
 
 To see all available API options, take a look at the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). You may find it helpful to view the examples on the demo page.
 
-## Breaking changes
+<h2 align="center">Breaking changes</h2>
 
 Where possible this library will strictly adhere to [semver](http://semver.org/) and only introduce API breaking changes in 0.x releases or new major versions post 1.0. The only exception to this is if you are using custom templates or extending the base components to add additional functionality, whereby critical bug fixes may introduce breakages as the internal API changes.
 
-## FAQ
+<h2 align="center">FAQ</h2>
 
 ### Is this library AoT and universal compatible?
 
@@ -154,11 +160,11 @@ All browsers supported by angular, apart from IE9 as it doesn't support flexbox.
 
 No! While the demo site uses bootstrap, it isn't a requirement of this library. The styling is designed to adapt to whatever global styling your app has.
 
-## Angular 1 version
+<h2 align="center">Angular 1 version</h2>
 
 https://github.com/mattlewis92/angular-bootstrap-calendar
 
-## Development
+<h2 align="center">Development</h2>
 
 ### Prepare your environment
 
@@ -181,6 +187,6 @@ Run `npm test` to run tests once or `npm run test:watch` to continually run test
 npm run release
 ```
 
-## License
+<h2 align="center">License</h2>
 
 MIT
