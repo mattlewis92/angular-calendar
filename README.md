@@ -6,6 +6,7 @@
 [![Build Status](https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-calendar)
 [![codecov](https://codecov.io/gh/mattlewis92/angular-calendar/branch/master/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-calendar)
 [![npm version](https://badge.fury.io/js/angular-calendar.svg)](http://badge.fury.io/js/angular-calendar)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Twitter Follow](https://img.shields.io/twitter/follow/mattlewis92_.svg)](https://twitter.com/mattlewis92_)
 
 </div>
@@ -17,7 +18,7 @@ https://mattlewis92.github.io/angular-calendar/
 <h2 align="center">Sponsors</h2>
 
 <div align="center">
-<a href="https://github.com/sponsors/mattlewis92">Become a gold or platinum sponsor<a> and get your logo on this README on Github with a link to your site.
+<a href="https://github.com/sponsors/mattlewis92">Become a gold or platinum sponsor<a> and get your logo on this README on Github with a link to your site.<br><br>
 
 <a href="https://runbox.com/" target="_blank"><img src="https://raw.githubusercontent.com/runbox/runbox7/master/src/assets/runbox7_blue_dark.png" width="288"></a>
 </div>
@@ -186,7 +187,3 @@ Run `npm test` to run tests once or `npm run test:watch` to continually run test
 ```bash
 npm run release
 ```
-
-<h2 align="center">License</h2>
-
-MIT
