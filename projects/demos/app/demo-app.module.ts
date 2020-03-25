@@ -143,6 +143,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           }
         },
         {
+          path: 'custom-segment-duration',
+          loadChildren: () =>
+            import('./demo-modules/custom-segment-duration/module').then(
+              m => m.DemoModule
+            ),
+          data: {
+            label: 'Custom segment duration'
+          }
+        },
+        {
           path: 'day-view-start-end',
           loadChildren: () =>
             import('./demo-modules/day-view-start-end/module').then(

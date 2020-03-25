@@ -1,0 +1,20 @@
+<div class="alert alert-info">
+  Click on a day or time slot on the view.
+  <strong *ngIf="clickedDate"
+    >You clicked on this time: {{ clickedDate | date:'medium' }}</strong
+  >
+  <strong *ngIf="clickedColumn != null"
+    >You clicked on this column: {{ clickedColumn }}</strong
+  >
+</div>
+
+<div class="calendar-wrapper">
+  <mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [segmentDuration]="40"
+    (dayHeaderClicked)="clickedDate = $event.day.date"
+    (hourSegmentClicked)="clickedDate = $event.date"
+  >
+  </mwl-calendar-week-view>
+</div>
