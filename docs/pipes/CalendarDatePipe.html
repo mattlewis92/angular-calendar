@@ -258,7 +258,7 @@ import { CalendarDateFormatter } from &#x27;./calendar-date-formatter.provider&#
  * &#x60;&#x60;&#x60;
  */
 @Pipe({
-  name: &#x27;calendarDate&#x27;
+  name: &#x27;calendarDate&#x27;,
 })
 export class CalendarDatePipe implements PipeTransform {
   constructor(
@@ -277,7 +277,7 @@ export class CalendarDatePipe implements PipeTransform {
     if (typeof this.dateFormatter[method] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) {
       const allowedMethods &#x3D; Object.getOwnPropertyNames(
         Object.getPrototypeOf(CalendarDateFormatter.prototype)
-      ).filter(iMethod &#x3D;&gt; iMethod !&#x3D;&#x3D; &#x27;constructor&#x27;);
+      ).filter((iMethod) &#x3D;&gt; iMethod !&#x3D;&#x3D; &#x27;constructor&#x27;);
       throw new Error(
         &#x60;${method} is not a valid date formatter. Can only be one of ${allowedMethods.join(
           &#x27;, &#x27;
@@ -289,7 +289,7 @@ export class CalendarDatePipe implements PipeTransform {
       locale,
       weekStartsOn,
       excludeDays,
-      daysInWeek
+      daysInWeek,
     });
   }
 }

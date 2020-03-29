@@ -850,7 +850,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   CalendarDateFormatterInterface,
-  DateFormatterParams
+  DateFormatterParams,
 } from &#x27;./calendar-date-formatter.interface&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
@@ -886,7 +886,7 @@ export class CalendarNativeDateFormatter
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {
       year: &#x27;numeric&#x27;,
-      month: &#x27;long&#x27;
+      month: &#x27;long&#x27;,
     }).format(date);
   }
 
@@ -902,11 +902,11 @@ export class CalendarNativeDateFormatter
    */
   public weekViewColumnSubHeader({
     date,
-    locale
+    locale,
   }: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {
       day: &#x27;numeric&#x27;,
-      month: &#x27;short&#x27;
+      month: &#x27;short&#x27;,
     }).format(date);
   }
 
@@ -918,7 +918,7 @@ export class CalendarNativeDateFormatter
     locale,
     weekStartsOn,
     excludeDays,
-    daysInWeek
+    daysInWeek,
   }: DateFormatterParams): string {
     const { viewStart, viewEnd } &#x3D; getWeekViewPeriod(
       this.dateAdapter,
@@ -932,7 +932,7 @@ export class CalendarNativeDateFormatter
       new Intl.DateTimeFormat(locale, {
         day: &#x27;numeric&#x27;,
         month: &#x27;short&#x27;,
-        year: showYear ? &#x27;numeric&#x27; : undefined
+        year: showYear ? &#x27;numeric&#x27; : undefined,
       }).format(dateToFormat);
 
     return &#x60;${format(
@@ -963,7 +963,7 @@ export class CalendarNativeDateFormatter
       day: &#x27;numeric&#x27;,
       month: &#x27;long&#x27;,
       year: &#x27;numeric&#x27;,
-      weekday: &#x27;long&#x27;
+      weekday: &#x27;long&#x27;,
     }).format(date);
   }
 }

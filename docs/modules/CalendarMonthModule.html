@@ -109,7 +109,7 @@ import { CalendarCommonModule } from &#x27;../common/calendar-common.module&#x27
 export {
   CalendarMonthViewComponent,
   CalendarMonthViewBeforeRenderEvent,
-  CalendarMonthViewEventTimesChangedEvent
+  CalendarMonthViewEventTimesChangedEvent,
 } from &#x27;./calendar-month-view.component&#x27;;
 export { MonthViewDay as CalendarMonthViewDay } from &#x27;calendar-utils&#x27;;
 export { collapseAnimation } from &#x27;./calendar-open-day-events.component&#x27;;
@@ -120,15 +120,15 @@ export { collapseAnimation } from &#x27;./calendar-open-day-events.component&#x2
     CalendarMonthViewComponent,
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,
-    CalendarMonthViewHeaderComponent
+    CalendarMonthViewHeaderComponent,
   ],
   exports: [
     DragAndDropModule,
     CalendarMonthViewComponent,
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,
-    CalendarMonthViewHeaderComponent
-  ]
+    CalendarMonthViewHeaderComponent,
+  ],
 })
 export class CalendarMonthModule {}
 </code></pre>

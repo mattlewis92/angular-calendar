@@ -397,7 +397,7 @@
   EventEmitter,
   HostListener,
   Input,
-  Output
+  Output,
 } from &#x27;@angular/core&#x27;;
 import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
 import { CalendarView } from &#x27;./calendar-view.enum&#x27;;
@@ -416,7 +416,7 @@ import { addDaysWithExclusions } from &#x27;./util&#x27;;
  * &#x60;&#x60;&#x60;
  */
 @Directive({
-  selector: &#x27;[mwlCalendarNextView]&#x27;
+  selector: &#x27;[mwlCalendarNextView]&#x27;,
 })
 export class CalendarNextViewDirective {
   /**
@@ -454,7 +454,7 @@ export class CalendarNextViewDirective {
     const addFn: any &#x3D; {
       day: this.dateAdapter.addDays,
       week: this.dateAdapter.addWeeks,
-      month: this.dateAdapter.addMonths
+      month: this.dateAdapter.addMonths,
     }[this.view];
 
     if (this.view &#x3D;&#x3D;&#x3D; CalendarView.Day) {

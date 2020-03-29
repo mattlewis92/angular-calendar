@@ -1040,7 +1040,7 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from &#x27;@angular/core&#x27;;
 import { CalendarEvent } from &#x27;calendar-utils&#x27;;
 import { Subject } from &#x27;rxjs&#x27;;
@@ -1093,7 +1093,7 @@ export type CalendarDayViewBeforeRenderEvent &#x3D; CalendarWeekViewBeforeRender
       (eventTimesChanged)&#x3D;&quot;eventTimesChanged.emit($event)&quot;
       (beforeViewRender)&#x3D;&quot;beforeViewRender.emit($event)&quot;
     &gt;&lt;/mwl-calendar-week-view&gt;
-  &#x60;
+  &#x60;,
 })
 export class CalendarDayViewComponent {
   /**

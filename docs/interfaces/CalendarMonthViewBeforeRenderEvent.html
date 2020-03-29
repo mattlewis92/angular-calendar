@@ -201,19 +201,19 @@
   OnDestroy,
   LOCALE_ID,
   Inject,
-  TemplateRef
+  TemplateRef,
 } from &#x27;@angular/core&#x27;;
 import {
   CalendarEvent,
   WeekDay,
   MonthView,
   MonthViewDay,
-  ViewPeriod
+  ViewPeriod,
 } from &#x27;calendar-utils&#x27;;
 import { Subject, Subscription } from &#x27;rxjs&#x27;;
 import {
   CalendarEventTimesChangedEvent,
-  CalendarEventTimesChangedEventType
+  CalendarEventTimesChangedEventType,
 } from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
 import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
 import { validateEvents } from &#x27;../common/util&#x27;;
@@ -329,7 +329,7 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-  &#x60;
+  &#x60;,
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy {
@@ -497,7 +497,7 @@ export class CalendarMonthViewComponent
   trackByRowOffset &#x3D; (index: number, offset: number) &#x3D;&gt;
     this.view.days
       .slice(offset, this.view.totalDaysVisibleInWeek)
-      .map(day &#x3D;&gt; day.date.toISOString())
+      .map((day) &#x3D;&gt; day.date.toISOString())
       .join(&#x27;-&#x27;);
 
   /**
@@ -581,7 +581,7 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
-    this.view.days.forEach(day &#x3D;&gt; {
+    this.view.days.forEach((day) &#x3D;&gt; {
       if (isHighlighted &amp;&amp; day.events.indexOf(event) &gt; -1) {
         day.backgroundColor &#x3D;
           (event.color &amp;&amp; event.color.secondary) || &#x27;#D1E8FF&#x27;;
@@ -623,7 +623,7 @@ export class CalendarMonthViewComponent
         newStart,
         newEnd,
         day: droppedOn,
-        type: CalendarEventTimesChangedEventType.Drop
+        type: CalendarEventTimesChangedEventType.Drop,
       });
     }
   }
@@ -633,7 +633,7 @@ export class CalendarMonthViewComponent
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
-      weekendDays: this.weekendDays
+      weekendDays: this.weekendDays,
     });
   }
 
@@ -643,14 +643,14 @@ export class CalendarMonthViewComponent
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
-      weekendDays: this.weekendDays
+      weekendDays: this.weekendDays,
     });
   }
 
   protected checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen &#x3D;&#x3D;&#x3D; true) {
       const activeDay &#x3D; this.activeDay || this.viewDate;
-      this.openDay &#x3D; this.view.days.find(day &#x3D;&gt;
+      this.openDay &#x3D; this.view.days.find((day) &#x3D;&gt;
         this.dateAdapter.isSameDay(day.date, activeDay)
       );
       const index: number &#x3D; this.view.days.indexOf(this.openDay);
@@ -675,7 +675,7 @@ export class CalendarMonthViewComponent
       this.beforeViewRender.emit({
         header: this.columnHeaders,
         body: this.view.days,
-        period: this.view.period
+        period: this.view.period,
       });
     }
   }

@@ -174,8 +174,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:113</a></div>
                 </td>
             </tr>
 
@@ -247,8 +247,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:120</a></div>
                 </td>
             </tr>
 
@@ -393,8 +393,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:48</a></div>
                 </td>
             </tr>
 
@@ -466,8 +466,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:55</a></div>
                 </td>
             </tr>
 
@@ -539,8 +539,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:62</a></div>
                 </td>
             </tr>
 
@@ -612,8 +612,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:69</a></div>
                 </td>
             </tr>
 
@@ -685,8 +685,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:106</a></div>
                 </td>
             </tr>
 
@@ -758,8 +758,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts:79</a></div>
                 </td>
             </tr>
 
@@ -816,7 +816,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { InjectionToken, Inject, Injectable } from &#x27;@angular/core&#x27;;
 import {
   CalendarDateFormatterInterface,
-  DateFormatterParams
+  DateFormatterParams,
 } from &#x27;./calendar-date-formatter.interface&#x27;;
 import { getWeekViewPeriod } from &#x27;./util&#x27;;
 import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
@@ -854,36 +854,28 @@ export class CalendarMomentDateFormatter
    * The month view header week day labels
    */
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;dddd&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;dddd&#x27;);
   }
 
   /**
    * The month view cell day number
    */
   public monthViewDayNumber({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;D&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;D&#x27;);
   }
 
   /**
    * The month view title
    */
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;MMMM YYYY&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;MMMM YYYY&#x27;);
   }
 
   /**
    * The week view header week day labels
    */
   public weekViewColumnHeader({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;dddd&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;dddd&#x27;);
   }
 
   /**
@@ -891,11 +883,9 @@ export class CalendarMomentDateFormatter
    */
   public weekViewColumnSubHeader({
     date,
-    locale
+    locale,
   }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;MMM D&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;MMM D&#x27;);
   }
 
   /**
@@ -906,7 +896,7 @@ export class CalendarMomentDateFormatter
     locale,
     weekStartsOn,
     excludeDays,
-    daysInWeek
+    daysInWeek,
   }: DateFormatterParams): string {
     const { viewStart, viewEnd } &#x3D; getWeekViewPeriod(
       this.dateAdapter,
@@ -929,27 +919,21 @@ export class CalendarMomentDateFormatter
    * The time formatting down the left hand side of the week view
    */
   public weekViewHour({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;ha&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;ha&#x27;);
   }
 
   /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;ha&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;ha&#x27;);
   }
 
   /**
    * The day view title
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date)
-      .locale(locale)
-      .format(&#x27;dddd, D MMMM, YYYY&#x27;);
+    return this.moment(date).locale(locale).format(&#x27;dddd, D MMMM, YYYY&#x27;);
   }
 }
 </code></pre>

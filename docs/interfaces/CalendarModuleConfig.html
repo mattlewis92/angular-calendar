@@ -252,7 +252,7 @@ import { CalendarEventActionsComponent } from &#x27;./calendar-event-actions.com
 import { CalendarEventTitleComponent } from &#x27;./calendar-event-title.component&#x27;;
 import {
   CalendarTooltipDirective,
-  CalendarTooltipWindowComponent
+  CalendarTooltipWindowComponent,
 } from &#x27;./calendar-tooltip.directive&#x27;;
 import { CalendarPreviousViewDirective } from &#x27;./calendar-previous-view.directive&#x27;;
 import { CalendarNextViewDirective } from &#x27;./calendar-next-view.directive&#x27;;
@@ -291,7 +291,7 @@ export {
   CalendarEvent,
   EventAction as CalendarEventAction,
   DAYS_OF_WEEK,
-  ViewPeriod as CalendarViewPeriod
+  ViewPeriod as CalendarViewPeriod,
 } from &#x27;calendar-utils&#x27;;
 
 /**
@@ -323,7 +323,7 @@ export {
     CalendarEventTitlePipe,
     CalendarA11yPipe,
     ClickDirective,
-    KeydownEnterDirective
+    KeydownEnterDirective,
   ],
   imports: [CommonModule],
   exports: [
@@ -338,10 +338,10 @@ export {
     CalendarEventTitlePipe,
     CalendarA11yPipe,
     ClickDirective,
-    KeydownEnterDirective
+    KeydownEnterDirective,
   ],
   providers: [I18nPluralPipe],
-  entryComponents: [CalendarTooltipWindowComponent]
+  entryComponents: [CalendarTooltipWindowComponent],
 })
 export class CalendarCommonModule {
   static forRoot(
@@ -355,8 +355,8 @@ export class CalendarCommonModule {
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
         config.utils || CalendarUtils,
-        config.a11y || CalendarA11y
-      ]
+        config.a11y || CalendarA11y,
+      ],
     };
   }
 }
