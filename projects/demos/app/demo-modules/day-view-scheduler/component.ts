@@ -58,7 +58,7 @@ export class DemoComponent {
       draggable: true,
     },
     {
-      title: 'An 3rd event',
+      title: 'A 3rd event',
       color: users[0].color,
       start: addHours(startOfDay(new Date()), 7),
       meta: {
@@ -69,6 +69,36 @@ export class DemoComponent {
         afterEnd: true,
       },
       draggable: true,
+    },
+    {
+      title: 'An all day event',
+      color: users[0].color,
+      start: new Date(),
+      meta: {
+        user: users[0],
+      },
+      draggable: true,
+      allDay: true,
+    },
+    {
+      title: 'Another all day event',
+      color: users[1].color,
+      start: new Date(),
+      meta: {
+        user: users[1],
+      },
+      draggable: true,
+      allDay: true,
+    },
+    {
+      title: 'A 3rd all day event',
+      color: users[0].color,
+      start: new Date(),
+      meta: {
+        user: users[0],
+      },
+      draggable: true,
+      allDay: true,
     },
   ];
 

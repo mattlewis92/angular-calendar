@@ -25,8 +25,6 @@ import {
 } from 'calendar-utils';
 import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
 
-const EVENT_WIDTH = 150;
-
 export interface User {
   id: number;
   name: string;
@@ -52,7 +50,7 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
       users: [...args.users],
     };
 
-    view.users.forEach((user) => {
+    view.users.forEach((user, columnIndex) => {
       const events = args.events.filter(
         (event) => event.meta.user.id === user.id
       );
@@ -61,6 +59,16 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
         events,
       });
       view.hourColumns.push(columnView.hourColumns[0]);
+      columnView.allDayEventRows.forEach(({ row }, rowIndex) => {
+        view.allDayEventRows[rowIndex] = view.allDayEventRows[rowIndex] || {
+          row: [],
+        };
+        view.allDayEventRows[rowIndex].row.push({
+          ...row[0],
+          offset: columnIndex,
+          span: 1,
+        });
+      });
     });
 
     return view;
