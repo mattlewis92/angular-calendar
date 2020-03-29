@@ -69,7 +69,7 @@
   },
   "homepage": "https://github.com/mattlewis92/angular-calendar#readme",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.25",
+    "@angular-devkit/build-angular": "0.803.22",
     "@angular-devkit/build-ng-packagr": "^0.803.25",
     "@angular/animations": "^8.2.14",
     "@angular/cdk": "^8.2.3",
