@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   OnDestroy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { CalendarView } from 'angular-calendar';
@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './template.html'
+  templateUrl: './template.html',
 })
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Week;
@@ -33,16 +33,16 @@ export class DemoComponent implements OnInit, OnDestroy {
     const CALENDAR_RESPONSIVE = {
       small: {
         breakpoint: '(max-width: 576px)',
-        daysInWeek: 2
+        daysInWeek: 2,
       },
       medium: {
         breakpoint: '(max-width: 768px)',
-        daysInWeek: 3
+        daysInWeek: 3,
       },
       large: {
         breakpoint: '(max-width: 960px)',
-        daysInWeek: 5
-      }
+        daysInWeek: 5,
+      },
     };
 
     this.breakpointObserver

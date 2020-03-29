@@ -5,7 +5,7 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -18,16 +18,16 @@ export class DemoComponent {
       color: colors.yellow,
       start: new Date(),
       meta: {
-        id: 1
-      }
+        id: 1,
+      },
     },
     {
       title: 'Event 2',
       color: colors.blue,
       start: new Date(),
       meta: {
-        id: 2
-      }
-    }
+        id: 2,
+      },
+    },
   ];
 }

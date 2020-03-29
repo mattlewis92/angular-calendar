@@ -9,19 +9,19 @@ import {
   OnDestroy,
   LOCALE_ID,
   Inject,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import {
   CalendarEvent,
   WeekDay,
   MonthView,
   MonthViewDay,
-  ViewPeriod
+  ViewPeriod,
 } from 'calendar-utils';
 import { Subject, Subscription } from 'rxjs';
 import {
   CalendarEventTimesChangedEvent,
-  CalendarEventTimesChangedEventType
+  CalendarEventTimesChangedEventType,
 } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import { validateEvents } from '../common/util';
@@ -137,7 +137,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy {
@@ -305,7 +305,7 @@ export class CalendarMonthViewComponent
   trackByRowOffset = (index: number, offset: number) =>
     this.view.days
       .slice(offset, this.view.totalDaysVisibleInWeek)
-      .map(day => day.date.toISOString())
+      .map((day) => day.date.toISOString())
       .join('-');
 
   /**
@@ -389,7 +389,7 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
-    this.view.days.forEach(day => {
+    this.view.days.forEach((day) => {
       if (isHighlighted && day.events.indexOf(event) > -1) {
         day.backgroundColor =
           (event.color && event.color.secondary) || '#D1E8FF';
@@ -431,7 +431,7 @@ export class CalendarMonthViewComponent
         newStart,
         newEnd,
         day: droppedOn,
-        type: CalendarEventTimesChangedEventType.Drop
+        type: CalendarEventTimesChangedEventType.Drop,
       });
     }
   }
@@ -441,7 +441,7 @@ export class CalendarMonthViewComponent
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
-      weekendDays: this.weekendDays
+      weekendDays: this.weekendDays,
     });
   }
 
@@ -451,14 +451,14 @@ export class CalendarMonthViewComponent
       viewDate: this.viewDate,
       weekStartsOn: this.weekStartsOn,
       excluded: this.excludeDays,
-      weekendDays: this.weekendDays
+      weekendDays: this.weekendDays,
     });
   }
 
   protected checkActiveDayIsOpen(): void {
     if (this.activeDayIsOpen === true) {
       const activeDay = this.activeDay || this.viewDate;
-      this.openDay = this.view.days.find(day =>
+      this.openDay = this.view.days.find((day) =>
         this.dateAdapter.isSameDay(day.date, activeDay)
       );
       const index: number = this.view.days.indexOf(this.openDay);
@@ -483,7 +483,7 @@ export class CalendarMonthViewComponent
       this.beforeViewRender.emit({
         header: this.columnHeaders,
         body: this.view.days,
-        period: this.view.period
+        period: this.view.period,
       });
     }
   }

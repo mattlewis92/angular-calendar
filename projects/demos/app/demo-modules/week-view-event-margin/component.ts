@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { addDays, addHours, startOfDay } from 'date-fns';
@@ -21,8 +21,8 @@ import { colors } from '../demo-utils/colors';
       .cal-week-view .cal-hour {
         width: calc(100% + 10px);
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;
@@ -33,19 +33,19 @@ export class DemoComponent {
     {
       start: startOfDay(new Date()),
       title: 'An event',
-      color: colors.yellow
+      color: colors.yellow,
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: new Date(),
       title: 'Another event',
-      color: colors.blue
+      color: colors.blue,
     },
     {
       start: addDays(addHours(startOfDay(new Date()), 2), 2),
       end: addDays(new Date(), 2),
       title: 'And another',
-      color: colors.red
-    }
+      color: colors.red,
+    },
   ];
 }

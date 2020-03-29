@@ -5,7 +5,7 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -22,9 +22,9 @@ export class DemoComponent {
           label: '<i class="fa fa-fw fa-pencil"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
             console.log('Edit event', event);
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       title: 'Deletable event',
@@ -34,16 +34,16 @@ export class DemoComponent {
         {
           label: '<i class="fa fa-fw fa-times"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
-            this.events = this.events.filter(iEvent => iEvent !== event);
+            this.events = this.events.filter((iEvent) => iEvent !== event);
             console.log('Event deleted', event);
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       title: 'Non editable and deletable event',
       color: colors.red,
-      start: new Date()
-    }
+      start: new Date(),
+    },
   ];
 }

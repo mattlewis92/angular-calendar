@@ -16,7 +16,7 @@ export class CalendarDragHelper {
     y,
     snapDraggedEvents,
     dragAlreadyMoved,
-    transform
+    transform,
   }: {
     x: number;
     y: number;
@@ -29,7 +29,7 @@ export class CalendarDragHelper {
         left: this.startPosition.left + transform.x,
         right: this.startPosition.right + transform.x,
         top: this.startPosition.top + transform.y,
-        bottom: this.startPosition.bottom + transform.y
+        bottom: this.startPosition.bottom + transform.y,
       });
 
       return (

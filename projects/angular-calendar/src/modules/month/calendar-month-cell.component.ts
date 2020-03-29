@@ -3,7 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
@@ -98,8 +98,8 @@ import { PlacementArray } from 'positioning';
     '[class.cal-out-month]': '!day.inMonth',
     '[class.cal-has-events]': 'day.events.length > 0',
     '[class.cal-open]': 'day === openDay',
-    '[class.cal-event-highlight]': '!!day.backgroundColor'
-  }
+    '[class.cal-event-highlight]': '!!day.backgroundColor',
+  },
 })
 export class CalendarMonthCellComponent {
   @Input() day: MonthViewDay;

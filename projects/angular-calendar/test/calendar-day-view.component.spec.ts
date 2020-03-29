@@ -4,7 +4,7 @@ import {
   TestBed,
   fakeAsync,
   flush,
-  async
+  async,
 } from '@angular/core/testing';
 import moment from 'moment';
 import { expect } from 'chai';
@@ -19,7 +19,7 @@ import {
   MOMENT,
   CalendarEventTimesChangedEvent,
   CalendarDayViewComponent,
-  DateAdapter
+  DateAdapter,
 } from '../src';
 import { Subject } from 'rxjs';
 import { triggerDomEvent, ExternalEventComponent } from './util';
@@ -33,24 +33,24 @@ describe('CalendarDayViewComponent component', () => {
         CalendarModule.forRoot(
           {
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
           },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter
-            }
+              useClass: CalendarMomentDateFormatter,
+            },
           }
         ),
-        DragAndDropModule
+        DragAndDropModule,
       ],
       declarations: [ExternalEventComponent],
-      providers: [{ provide: MOMENT, useValue: moment }]
+      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+  beforeEach(inject([CalendarEventTitleFormatter], (_eventTitle_) => {
     eventTitle = _eventTitle_;
   }));
 
@@ -65,9 +65,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo',
         color: {
           primary: '',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
     fixture.detectChanges();
     expect(
@@ -85,8 +85,8 @@ describe('CalendarDayViewComponent component', () => {
       {
         start: new Date('2016-05-30'),
         end: new Date('2016-06-02'),
-        title: 'foo'
-      }
+        title: 'foo',
+      },
     ];
 
     fixture.detectChanges();
@@ -117,9 +117,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo',
         color: {
           primary: '',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -143,9 +143,9 @@ describe('CalendarDayViewComponent component', () => {
         allDay: true,
         color: {
           primary: '',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -169,9 +169,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -195,10 +195,10 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: ''
+          secondary: '',
         },
-        allDay: true
-      }
+        allDay: true,
+      },
     ];
 
     fixture.detectChanges();
@@ -246,9 +246,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'bar',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -272,16 +272,16 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
+          secondary: 'rgb(238, 238, 238)',
         },
         actions: [
           {
             label: '<i class="fa fa-fw fa-times"></i>',
             onClick: sinon.spy(),
-            cssClass: 'foo'
-          }
-        ]
-      }
+            cssClass: 'foo',
+          },
+        ],
+      },
     ];
 
     fixture.detectChanges();
@@ -309,9 +309,9 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.beforeViewRender
       .pipe(take(1))
       .subscribe(({ hourColumns }) => {
-        hourColumns.forEach(hourColumn => {
-          hourColumn.hours.forEach(hour => {
-            hour.segments.forEach(segment => {
+        hourColumns.forEach((hourColumn) => {
+          hourColumn.hours.forEach((hour) => {
+            hour.segments.forEach((segment) => {
               segment.cssClass = 'foo';
             });
           });
@@ -336,16 +336,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .add(6, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
-          beforeStart: true
-        }
-      }
+          beforeStart: true,
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -355,7 +351,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -364,12 +360,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.top,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.top - 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(rect.top - 30);
@@ -377,7 +373,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top - 30,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -388,9 +384,7 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .subtract(30, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(6, 'hours')
-        .toDate()
+      newEnd: moment('2016-06-27').add(6, 'hours').toDate(),
     });
   });
 
@@ -403,16 +397,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .add(6, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
-          afterEnd: true
-        }
-      }
+          afterEnd: true,
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -422,7 +412,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -431,12 +421,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.bottom + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
@@ -444,20 +434,15 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top + 30,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
       type: 'resize',
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27')
-        .add(4, 'hours')
-        .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(6, 'hours')
-        .add(30, 'minutes')
-        .toDate()
+      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
+      newEnd: moment('2016-06-27').add(6, 'hours').add(30, 'minutes').toDate(),
     });
   });
 
@@ -470,16 +455,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .add(6, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
-          afterEnd: true
-        }
-      }
+          afterEnd: true,
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -489,7 +470,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -498,19 +479,19 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.bottom + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
     expect(event.getBoundingClientRect().height).to.equal(150);
     triggerDomEvent('mousemove', handle, {
       clientY: rect.bottom,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom);
@@ -526,13 +507,11 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(4, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(4, 'hours').toDate(),
         resizable: {
-          afterEnd: true
-        }
-      }
+          afterEnd: true,
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -542,7 +521,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -551,12 +530,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.bottom + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
@@ -564,19 +543,15 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top + 30,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
       type: 'resize',
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27')
-        .add(4, 'hours')
-        .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(5, 'hours')
-        .toDate()
+      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
+      newEnd: moment('2016-06-27').add(5, 'hours').toDate(),
     });
   });
 
@@ -590,13 +565,11 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(4, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(4, 'hours').toDate(),
         resizable: {
-          afterEnd: true
-        }
-      }
+          afterEnd: true,
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -606,7 +579,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -615,12 +588,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.bottom,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.bottom + 30,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().bottom).to.equal(rect.bottom + 30);
@@ -628,20 +601,15 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top + 30,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
     expect(resizeEvent).to.deep.equal({
       type: 'resize',
       event: fixture.componentInstance.events[0],
-      newStart: moment('2016-06-27')
-        .add(4, 'hours')
-        .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(4, 'hours')
-        .add(30, 'minutes')
-        .toDate()
+      newStart: moment('2016-06-27').add(4, 'hours').toDate(),
+      newEnd: moment('2016-06-27').add(4, 'hours').add(30, 'minutes').toDate(),
     });
   });
 
@@ -654,16 +622,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .add(6, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
-          beforeStart: true
-        }
-      }
+          beforeStart: true,
+        },
+      },
     ];
     fixture.componentInstance.eventSnapSize = 1;
 
@@ -674,7 +638,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let resizeEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
@@ -683,12 +647,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.top,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.top - 10,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(rect.top - 10);
@@ -696,7 +660,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top - 10,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -707,9 +671,7 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .subtract(10, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(6, 'hours')
-        .toDate()
+      newEnd: moment('2016-06-27').add(6, 'hours').toDate(),
     });
   });
 
@@ -728,9 +690,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo <b>bar</b>',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -768,9 +730,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo <b>bar</b>',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -793,16 +755,10 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .startOf('day')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .startOf('day')
-          .add(6, 'hours')
-          .toDate(),
-        draggable: true
-      }
+        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        draggable: true,
+      },
     ];
 
     fixture.detectChanges();
@@ -816,12 +772,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top + 5,
       clientX: eventPosition.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientY: eventPosition.top + 35,
-      clientX: eventPosition.left + 10
+      clientX: eventPosition.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 30);
@@ -831,7 +787,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', document.body, {
       clientY: eventPosition.top + 30,
       clientX: eventPosition.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -842,11 +798,8 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .add(30, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(6, 'hours')
-        .add(30, 'minutes')
-        .toDate(),
-      allDay: false
+      newEnd: moment('2016-06-27').add(6, 'hours').add(30, 'minutes').toDate(),
+      allDay: false,
     });
     expect(eventDropped).to.have.been.calledOnce;
   });
@@ -859,16 +812,10 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        start: moment('2016-06-27')
-          .startOf('day')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .startOf('day')
-          .add(6, 'hours')
-          .toDate(),
-        draggable: true
-      }
+        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        draggable: true,
+      },
     ];
     fixture.componentInstance.eventSnapSize = 1;
     fixture.componentInstance.snapDraggedEvents = false;
@@ -885,12 +832,12 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top,
       clientX: eventPosition.left,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientY: calendarPosition.top,
-      clientX: eventPosition.left - 10
+      clientX: eventPosition.left - 10,
     });
     fixture.detectChanges();
     const ghostElement = event.nextSibling as HTMLElement;
@@ -905,7 +852,7 @@ describe('CalendarDayViewComponent component', () => {
     );
     triggerDomEvent('mousemove', document.body, {
       clientY: calendarPosition.top - 60,
-      clientX: eventPosition.left - 10
+      clientX: eventPosition.left - 10,
     });
     fixture.detectChanges();
     expect(ghostElement.getBoundingClientRect().top).to.equal(
@@ -920,7 +867,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', document.body, {
       clientY: calendarPosition.top - 60,
       clientX: eventPosition.left - 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     expect(eventDropped).not.to.have.been.called;
@@ -935,16 +882,10 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        start: moment('2016-06-27')
-          .startOf('day')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .startOf('day')
-          .add(6, 'hours')
-          .toDate(),
-        draggable: true
-      }
+        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        draggable: true,
+      },
     ];
     fixture.componentInstance.eventSnapSize = 30;
     fixture.componentInstance.snapDraggedEvents = false;
@@ -960,18 +901,18 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top,
       clientX: eventPosition.left,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientY: eventPosition.top - 20,
-      clientX: eventPosition.left
+      clientX: eventPosition.left,
     });
     fixture.detectChanges();
     triggerDomEvent('mouseup', document.body, {
       clientY: eventPosition.top - 20,
       clientX: eventPosition.left,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -986,7 +927,7 @@ describe('CalendarDayViewComponent component', () => {
         .add(6, 'hours')
         .subtract(30, 'minutes')
         .toDate(),
-      allDay: false
+      allDay: false,
     });
   });
 
@@ -999,16 +940,12 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .add(1, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .add(6, 'hours')
-          .toDate(),
+        start: moment('2016-06-27').add(1, 'hours').toDate(),
+        end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
-          beforeStart: true
-        }
-      }
+          beforeStart: true,
+        },
+      },
     ];
 
     fixture.detectChanges();
@@ -1023,19 +960,19 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mousedown', handle, {
       clientY: rect.top,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', handle, {
       clientY: rect.top - 60,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(rect.top - 60);
     expect(event.getBoundingClientRect().height).to.equal(rect.height + 60);
     triggerDomEvent('mousemove', handle, {
       clientY: rect.top - 120,
-      clientX: rect.left + 10
+      clientX: rect.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(rect.top - 60);
@@ -1043,7 +980,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', handle, {
       clientY: rect.top - 60,
       clientX: rect.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1058,16 +995,10 @@ describe('CalendarDayViewComponent component', () => {
       {
         title: 'foo',
         color: { primary: '', secondary: '' },
-        start: moment('2016-06-27')
-          .startOf('day')
-          .add(4, 'hours')
-          .toDate(),
-        end: moment('2016-06-27')
-          .startOf('day')
-          .add(6, 'hours')
-          .toDate(),
-        draggable: true
-      }
+        start: moment('2016-06-27').startOf('day').add(4, 'hours').toDate(),
+        end: moment('2016-06-27').startOf('day').add(6, 'hours').toDate(),
+        draggable: true,
+      },
     ];
     fixture.componentInstance.eventSnapSize = 1;
 
@@ -1078,18 +1009,18 @@ describe('CalendarDayViewComponent component', () => {
     );
     const eventPosition: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
       clientY: eventPosition.top + 5,
       clientX: eventPosition.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientY: eventPosition.top + 15,
-      clientX: eventPosition.left + 10
+      clientX: eventPosition.left + 10,
     });
     fixture.detectChanges();
     expect(event.getBoundingClientRect().top).to.equal(eventPosition.top + 10);
@@ -1099,7 +1030,7 @@ describe('CalendarDayViewComponent component', () => {
     triggerDomEvent('mouseup', document.body, {
       clientY: eventPosition.top + 10,
       clientX: eventPosition.left + 10,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1110,11 +1041,8 @@ describe('CalendarDayViewComponent component', () => {
         .add(4, 'hours')
         .add(10, 'minutes')
         .toDate(),
-      newEnd: moment('2016-06-27')
-        .add(6, 'hours')
-        .add(10, 'minutes')
-        .toDate(),
-      allDay: false
+      newEnd: moment('2016-06-27').add(6, 'hours').add(10, 'minutes').toDate(),
+      allDay: false,
     });
   });
 
@@ -1124,7 +1052,7 @@ describe('CalendarDayViewComponent component', () => {
       CalendarDayViewComponent
     );
     fixture.componentInstance.events = [
-      { start: 1234, title: '', color: { primary: '', secondary: '' } }
+      { start: 1234, title: '', color: { primary: '', secondary: '' } },
     ] as any;
     fixture.componentInstance.viewDate = new Date('2017-01-01');
     fixture.detectChanges();
@@ -1216,30 +1144,30 @@ describe('CalendarDayViewComponent component', () => {
       {
         start: new Date('2016-05-30'),
         end: new Date('2016-06-02'),
-        title: 'foo'
+        title: 'foo',
       },
       {
         start: new Date('2016-05-30'),
         end: new Date('2016-06-02'),
         title: 'bar',
-        allDay: true
+        allDay: true,
       },
       {
         start: new Date('2017-05-30'),
         end: new Date('2017-06-02'),
         title: 'bar',
-        allDay: true
-      }
+        allDay: true,
+      },
     ];
     fixture.componentInstance.viewDate = new Date('2016-06-01');
     fixture.detectChanges();
 
     const {
-      period: { events }
+      period: { events },
     } = beforeViewRenderCalled.getCall(0).args[0];
     expect(events).to.deep.equal([
       fixture.componentInstance.events[0],
-      fixture.componentInstance.events[1]
+      fixture.componentInstance.events[1],
     ]);
   });
 
@@ -1260,8 +1188,8 @@ describe('CalendarDayViewComponent component', () => {
           .toDate(),
         title: 'foo',
         draggable: true,
-        allDay: true
-      }
+        allDay: true,
+      },
     ];
     fixture.componentInstance.snapDraggedEvents = false;
 
@@ -1270,13 +1198,13 @@ describe('CalendarDayViewComponent component', () => {
     const event = fixture.nativeElement.querySelector('.cal-event-container');
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       dragEvent = e;
     });
     triggerDomEvent('mousedown', event, {
       clientX: rect.left,
       clientY: rect.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     const hourSegment = fixture.nativeElement.querySelectorAll(
@@ -1285,13 +1213,13 @@ describe('CalendarDayViewComponent component', () => {
     const hourSegmentPosition = hourSegment.getBoundingClientRect();
     triggerDomEvent('mousemove', hourSegment, {
       clientX: hourSegmentPosition.left,
-      clientY: hourSegmentPosition.top
+      clientY: hourSegmentPosition.top,
     });
     fixture.detectChanges();
     triggerDomEvent('mouseup', hourSegment, {
       clientX: hourSegmentPosition.left,
       clientY: hourSegmentPosition.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -1302,7 +1230,7 @@ describe('CalendarDayViewComponent component', () => {
       newStart: moment(new Date('2018-07-29'))
         .startOf('day')
         .add(90, 'minutes')
-        .toDate()
+        .toDate(),
     });
   });
 
@@ -1328,9 +1256,9 @@ describe('CalendarDayViewComponent component', () => {
         title: 'foo',
         color: {
           primary: 'var(--white)',
-          secondary: 'var(--black)'
-        }
-      }
+          secondary: 'var(--black)',
+        },
+      },
     ];
 
     fixture.detectChanges();

@@ -3,7 +3,7 @@ import {
   Input,
   TemplateRef,
   EventEmitter,
-  Output
+  Output,
 } from '@angular/core';
 import { WeekDay } from 'calendar-utils';
 import { trackByWeekDayHeaderDate } from '../common/util';
@@ -48,7 +48,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarMonthViewHeaderComponent {
   @Input() days: WeekDay[];

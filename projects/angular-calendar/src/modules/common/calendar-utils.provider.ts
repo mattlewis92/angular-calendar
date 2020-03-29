@@ -8,7 +8,7 @@ import {
   WeekView,
   getMonthView,
   getWeekViewHeader,
-  getWeekView
+  getWeekView,
 } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 

@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Injectable,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { CalendarEvent, CalendarEventTitleFormatter } from 'angular-calendar';
 import { WeekViewHourSegment } from 'calendar-utils';
@@ -42,17 +42,17 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   providers: [
     {
       provide: CalendarEventTitleFormatter,
-      useClass: CustomEventTitleFormatter
-    }
+      useClass: CustomEventTitleFormatter,
+    },
   ],
   styles: [
     `
       .disable-hover {
         pointer-events: none;
       }
-    `
+    `,
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
   viewDate = new Date();
@@ -75,14 +75,14 @@ export class DemoComponent {
       title: 'New event',
       start: segment.date,
       meta: {
-        tmpEvent: true
-      }
+        tmpEvent: true,
+      },
     };
     this.events = [...this.events, dragToSelectEvent];
     const segmentPosition = segmentElement.getBoundingClientRect();
     this.dragToCreateActive = true;
     const endOfView = endOfWeek(this.viewDate, {
-      weekStartsOn: this.weekStartsOn
+      weekStartsOn: this.weekStartsOn,
     });
 
     fromEvent(document, 'mousemove')

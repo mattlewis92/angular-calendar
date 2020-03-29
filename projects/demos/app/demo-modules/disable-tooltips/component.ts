@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CalendarEvent,
   CalendarEventTitleFormatter,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { CustomEventTitleFormatter } from './custom-event-title-formatter.provider';
 import { colors } from '../demo-utils/colors';
@@ -14,9 +14,9 @@ import { colors } from '../demo-utils/colors';
   providers: [
     {
       provide: CalendarEventTitleFormatter,
-      useClass: CustomEventTitleFormatter
-    }
-  ]
+      useClass: CustomEventTitleFormatter,
+    },
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -27,7 +27,7 @@ export class DemoComponent {
     {
       title: 'An event',
       start: new Date(),
-      color: colors.red
-    }
+      color: colors.red,
+    },
   ];
 }

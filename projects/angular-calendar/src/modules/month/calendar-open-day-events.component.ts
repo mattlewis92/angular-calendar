@@ -3,7 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import {
   trigger,
@@ -11,7 +11,7 @@ import {
   state,
   transition,
   animate,
-  AnimationTriggerMetadata
+  AnimationTriggerMetadata,
 } from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
@@ -23,7 +23,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       height: 0,
       overflow: 'hidden',
       'padding-top': 0,
-      'padding-bottom': 0
+      'padding-bottom': 0,
     })
   ),
   state(
@@ -32,11 +32,11 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       height: '*',
       overflow: 'hidden',
       'padding-top': '*',
-      'padding-bottom': '*'
+      'padding-bottom': '*',
     })
   ),
   transition('* => void', animate('150ms ease-out')),
-  transition('void => *', animate('150ms ease-in'))
+  transition('void => *', animate('150ms ease-in')),
 ]);
 
 @Component({
@@ -125,7 +125,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
     >
     </ng-template>
   `,
-  animations: [collapseAnimation]
+  animations: [collapseAnimation],
 })
 export class CalendarOpenDayEventsComponent {
   @Input() locale: string;

@@ -1,7 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
@@ -17,8 +17,8 @@ import { colors } from '../demo-utils/colors';
       .my-custom-class span {
         color: #ff3d7f !important;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -30,7 +30,7 @@ export class DemoComponent {
       title: 'Has custom class',
       color: colors.yellow,
       start: new Date(),
-      cssClass: 'my-custom-class'
-    }
+      cssClass: 'my-custom-class',
+    },
   ];
 }

@@ -4,7 +4,7 @@ import {
   TestBed,
   fakeAsync,
   flush,
-  tick
+  tick,
 } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import moment from 'moment';
@@ -23,7 +23,7 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarMonthViewComponent,
   DateAdapter,
-  CalendarMonthViewEventTimesChangedEvent
+  CalendarMonthViewEventTimesChangedEvent,
 } from '../src';
 import { Subject } from 'rxjs';
 import { triggerDomEvent } from './util';
@@ -42,22 +42,22 @@ describe('calendarMonthView component', () => {
         CalendarModule.forRoot(
           {
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
           },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter
-            }
+              useClass: CalendarMomentDateFormatter,
+            },
           }
-        )
+        ),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }]
+      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 
   let eventTitle: CalendarEventTitleFormatter;
-  beforeEach(inject([CalendarEventTitleFormatter], _eventTitle_ => {
+  beforeEach(inject([CalendarEventTitleFormatter], (_eventTitle_) => {
     eventTitle = _eventTitle_;
   }));
 
@@ -72,7 +72,7 @@ describe('calendarMonthView component', () => {
       7,
       14,
       21,
-      28
+      28,
     ]);
     expect(fixture.componentInstance.view.days.length).to.equal(35);
     expect(fixture.componentInstance.view.totalDaysVisibleInWeek).to.equal(7);
@@ -82,14 +82,14 @@ describe('calendarMonthView component', () => {
     fixture.destroy();
   });
 
-  it('should emit on the columnHeaderClicked output', done => {
+  it('should emit on the columnHeaderClicked output', (done) => {
     const fixture: ComponentFixture<CalendarMonthViewComponent> = TestBed.createComponent(
       CalendarMonthViewComponent
     );
     fixture.componentInstance.viewDate = new Date('2016-06-29');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
-    fixture.componentInstance.columnHeaderClicked.subscribe(val => {
+    fixture.componentInstance.columnHeaderClicked.subscribe((val) => {
       expect(val.isoDayNumber).to.equal(0);
       expect(val.sourceEvent instanceof MouseEvent).to.be.true;
       done();
@@ -108,8 +108,8 @@ describe('calendarMonthView component', () => {
       {
         start: new Date('2016-05-30'),
         end: new Date('2016-06-02'),
-        title: 'foo'
-      }
+        title: 'foo',
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
@@ -143,7 +143,7 @@ describe('calendarMonthView component', () => {
       5,
       10,
       15,
-      20
+      20,
     ]);
     expect(fixture.componentInstance.view.days[0].date).to.deep.equal(
       moment('2015-12-28').toDate()
@@ -177,7 +177,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({
       viewDate: {},
-      activeDayIsOpen: {}
+      activeDayIsOpen: {},
     });
     expect(fixture.componentInstance.openRowIndex).to.equal(7);
     expect(fixture.componentInstance.openDay).to.equal(
@@ -186,7 +186,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.activeDayIsOpen = false;
     fixture.componentInstance.ngOnChanges({
       viewDate: {},
-      activeDayIsOpen: {}
+      activeDayIsOpen: {},
     });
     expect(!!fixture.componentInstance.openRowIndex).to.equal(false);
     expect(!!fixture.componentInstance.openDay).to.equal(false);
@@ -212,7 +212,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({
       viewDate: {},
-      activeDayIsOpen: {}
+      activeDayIsOpen: {},
     });
     expect(fixture.componentInstance.openRowIndex).to.equal(7);
     expect(fixture.componentInstance.openDay).to.equal(
@@ -221,7 +221,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.activeDayIsOpen = false;
     fixture.componentInstance.ngOnChanges({
       viewDate: {},
-      activeDayIsOpen: {}
+      activeDayIsOpen: {},
     });
     expect(!!fixture.componentInstance.openRowIndex).to.equal(false);
     expect(!!fixture.componentInstance.openDay).to.equal(false);
@@ -241,9 +241,9 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
@@ -332,9 +332,9 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        }
-      }
+          secondary: 'rgb(238, 238, 238)',
+        },
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
@@ -366,16 +366,16 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
+          secondary: 'rgb(238, 238, 238)',
         },
         actions: [
           {
             label: '<i class="fa fa-fw fa-times"></i>',
             onClick: spy(),
-            cssClass: 'foo'
-          }
-        ]
-      }
+            cssClass: 'foo',
+          },
+        ],
+      },
     ];
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -407,16 +407,16 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
+          secondary: 'rgb(238, 238, 238)',
         },
         actions: [
           {
             label: '<i class="fa fa-fw fa-times"></i>',
             onClick: spy(),
-            cssClass: 'foo'
-          }
-        ]
-      }
+            cssClass: 'foo',
+          },
+        ],
+      },
     ];
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -431,7 +431,7 @@ describe('calendarMonthView component', () => {
       fixture.componentInstance.events[0].actions[0].onClick
     ).to.have.been.calledWith({
       event: fixture.componentInstance.events[0],
-      sourceEvent
+      sourceEvent,
     });
   });
 
@@ -447,9 +447,9 @@ describe('calendarMonthView component', () => {
         title: '<span>foo</span>',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        }
-      }
+          secondary: 'rgb(238, 238, 238)',
+        },
+      },
     ];
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -458,10 +458,10 @@ describe('calendarMonthView component', () => {
       '.cal-open-day-events .cal-event-title'
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
-    fixture.componentInstance.eventClicked.subscribe(val => {
+    fixture.componentInstance.eventClicked.subscribe((val) => {
       expect(val).to.deep.equal({
         event: fixture.componentInstance.events[0],
-        sourceEvent: window['event']
+        sourceEvent: window['event'],
       });
     });
     title.click();
@@ -479,9 +479,9 @@ describe('calendarMonthView component', () => {
         title: '<span>foo</span>',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        }
-      }
+          secondary: 'rgb(238, 238, 238)',
+        },
+      },
     ];
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -490,10 +490,10 @@ describe('calendarMonthView component', () => {
       '.cal-open-day-events .cal-event-title'
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
-    fixture.componentInstance.eventClicked.subscribe(val => {
+    fixture.componentInstance.eventClicked.subscribe((val) => {
       expect(val).to.deep.equal({
         event: fixture.componentInstance.events[0],
-        sourceEvent: window['event']
+        sourceEvent: window['event'],
       });
     });
     triggerDomEvent('keydown', title, { keyCode: 13 });
@@ -513,13 +513,13 @@ describe('calendarMonthView component', () => {
       title: 'foo',
       color: {
         primary: 'blue',
-        secondary: 'lightblue'
-      }
+        secondary: 'lightblue',
+      },
     };
     fixture.componentInstance.events.push(event);
     fixture.componentInstance.refresh.next(true);
     expect(fixture.componentInstance.view.days[3].events).to.deep.equal([
-      event
+      event,
     ]);
     fixture.destroy();
   });
@@ -539,9 +539,9 @@ describe('calendarMonthView component', () => {
         title: 'bar',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        }
-      }
+          secondary: 'rgb(238, 238, 238)',
+        },
+      },
     ];
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -600,9 +600,9 @@ describe('calendarMonthView component', () => {
         title: 'foo <b>bar</b>',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        }
-      }
+          secondary: 'rgb(238, 238, 238)',
+        },
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
@@ -638,8 +638,8 @@ describe('calendarMonthView component', () => {
       {
         start: new Date('2016-05-30'),
         end: new Date('2016-06-02'),
-        title: 'foo <b>bar</b>'
-      }
+        title: 'foo <b>bar</b>',
+      },
     ];
     fixture.componentInstance.tooltipDelay = 2000;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -680,9 +680,9 @@ describe('calendarMonthView component', () => {
         title: 'foo <b>bar</b>',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
-        }
-      }
+          secondary: 'rgb(238, 238, 238)',
+        },
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
@@ -721,14 +721,14 @@ describe('calendarMonthView component', () => {
         title: 'draggable event',
         color: {
           primary: 'blue',
-          secondary: 'rgb(238, 238, 238)'
+          secondary: 'rgb(238, 238, 238)',
         },
-        draggable: true
-      }
+        draggable: true,
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     let dragEvent: CalendarMonthViewEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       dragEvent = e;
     });
     fixture.detectChanges();
@@ -746,12 +746,12 @@ describe('calendarMonthView component', () => {
     triggerDomEvent('mousedown', event, {
       clientX: eventStartPosition.left,
       clientY: eventStartPosition.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientX: dragToCellPosition.left,
-      clientY: dragToCellPosition.top
+      clientY: dragToCellPosition.top,
     });
     fixture.detectChanges();
     expect(cells[10].classList.contains('cal-drag-over')).to.equal(true);
@@ -768,7 +768,7 @@ describe('calendarMonthView component', () => {
     triggerDomEvent('mouseup', document.body, {
       clientX: dragToCellPosition.left,
       clientY: dragToCellPosition.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     expect(cells[10].classList.contains('cal-drag-over')).to.equal(false);
@@ -789,12 +789,12 @@ describe('calendarMonthView component', () => {
       {
         start: new Date('2017-02-01'),
         title: 'draggable event',
-        draggable: true
-      }
+        draggable: true,
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     let dragEvent: CalendarEventTimesChangedEvent;
-    fixture.componentInstance.eventTimesChanged.subscribe(e => {
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => {
       dragEvent = e;
     });
     fixture.detectChanges();
@@ -812,18 +812,18 @@ describe('calendarMonthView component', () => {
     triggerDomEvent('mousedown', event, {
       clientX: eventStartPosition.left,
       clientY: eventStartPosition.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientX: dragToCellPosition.left,
-      clientY: dragToCellPosition.top
+      clientY: dragToCellPosition.top,
     });
     fixture.detectChanges();
     triggerDomEvent('mouseup', document.body, {
       clientX: dragToCellPosition.left,
       clientY: dragToCellPosition.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     fixture.destroy();
@@ -843,12 +843,12 @@ describe('calendarMonthView component', () => {
         start: new Date('2018-10-13'),
         end: new Date('2018-10-14'),
         title: 'draggable event',
-        draggable: true
-      }
+        draggable: true,
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     const dragSpy = sinon.spy();
-    fixture.componentInstance.eventTimesChanged.subscribe(e => dragSpy(e));
+    fixture.componentInstance.eventTimesChanged.subscribe((e) => dragSpy(e));
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const cells: HTMLElement[] = fixture.nativeElement.querySelectorAll(
@@ -862,19 +862,19 @@ describe('calendarMonthView component', () => {
     triggerDomEvent('mousedown', events[1], {
       clientX: eventStartPosition.left,
       clientY: eventStartPosition.top,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     triggerDomEvent('mousemove', document.body, {
       clientX: dragToCellPosition.left + 5,
-      clientY: dragToCellPosition.top + 5
+      clientY: dragToCellPosition.top + 5,
     });
     fixture.detectChanges();
     expect(cells[14].classList.contains('cal-drag-over')).to.equal(true);
     triggerDomEvent('mouseup', document.body, {
       clientX: dragToCellPosition.left + 5,
       clientY: dragToCellPosition.top + 5,
-      button: 0
+      button: 0,
     });
     fixture.detectChanges();
     expect(cells[14].classList.contains('cal-drag-over')).to.equal(false);
@@ -893,9 +893,9 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
     fixture.componentInstance.activeDayIsOpen = true;
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
@@ -922,14 +922,14 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'blue',
-          secondary: ''
-        }
-      }
+          secondary: '',
+        },
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     let eventClickedEvent: any;
-    fixture.componentInstance.eventClicked.subscribe(e => {
+    fixture.componentInstance.eventClicked.subscribe((e) => {
       eventClickedEvent = e;
     });
     let dayClickedFired: boolean = false;
@@ -973,7 +973,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.viewDate = new Date('2017-06-25');
     fixture.componentInstance.weekendDays = [
       DAYS_OF_WEEK.FRIDAY,
-      DAYS_OF_WEEK.SATURDAY
+      DAYS_OF_WEEK.SATURDAY,
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, weekendDays: {} });
     fixture.detectChanges();
@@ -1034,7 +1034,7 @@ describe('calendarMonthView component', () => {
     );
     fixture.componentInstance.viewDate = new Date('2017-01-01');
     fixture.componentInstance.events = [
-      { start: 1234, title: '', color: { primary: '', secondary: '' } }
+      { start: 1234, title: '', color: { primary: '', secondary: '' } },
     ] as any;
     fixture.componentInstance.ngOnChanges({ events: {}, viewDate: {} });
     fixture.detectChanges();
@@ -1087,9 +1087,9 @@ describe('calendarMonthView component', () => {
         title: 'foo',
         color: {
           primary: 'var(--white)',
-          secondary: 'var(--black)'
-        }
-      }
+          secondary: 'var(--black)',
+        },
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
@@ -1112,8 +1112,8 @@ describe('calendarMonthView component', () => {
       {
         start: new Date('2016-05-30'),
         end: new Date('2016-06-02'),
-        title: 'foo'
-      }
+        title: 'foo',
+      },
     ];
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();

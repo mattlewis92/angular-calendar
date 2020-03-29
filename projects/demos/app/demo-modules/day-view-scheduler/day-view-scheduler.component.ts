@@ -8,20 +8,20 @@ import {
   LOCALE_ID,
   OnChanges,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import {
   CalendarUtils,
   CalendarWeekViewComponent,
   DateAdapter,
-  getWeekViewPeriod
+  getWeekViewPeriod,
 } from 'angular-calendar';
 import {
   WeekView,
   GetWeekViewArgs,
   WeekViewTimeEvent,
   EventColor,
-  CalendarEvent
+  CalendarEvent,
 } from 'calendar-utils';
 import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
 
@@ -49,16 +49,16 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
       period,
       allDayEventRows: [],
       hourColumns: [],
-      users: [...args.users]
+      users: [...args.users],
     };
 
-    view.users.forEach(user => {
+    view.users.forEach((user) => {
       const events = args.events.filter(
-        event => event.meta.user.id === user.id
+        (event) => event.meta.user.id === user.id
       );
       const columnView = super.getWeekView({
         ...args,
-        events
+        events,
       });
       view.hourColumns.push(columnView.hourColumns[0]);
     });
@@ -71,7 +71,7 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
   // tslint:disable-line max-classes-per-file
   selector: 'mwl-day-view-scheduler',
   templateUrl: 'day-view-scheduler.component.html',
-  providers: [DayViewSchedulerCalendarUtils]
+  providers: [DayViewSchedulerCalendarUtils],
 })
 export class DayViewSchedulerComponent extends CalendarWeekViewComponent
   implements OnChanges {
@@ -118,9 +118,9 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
       const adjustedEvent = {
         ...originalEvent,
         ...newEventTimes,
-        meta: { ...originalEvent.meta, user: newUser }
+        meta: { ...originalEvent.meta, user: newUser },
       };
-      const tempEvents = this.events.map(event => {
+      const tempEvents = this.events.map((event) => {
         if (event === originalEvent) {
           return adjustedEvent;
         }
@@ -144,7 +144,7 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
       weekEvent,
       {
         ...dragEndEvent,
-        x: 0
+        x: 0,
       },
       dayWidth,
       useY
@@ -167,11 +167,11 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
       hourSegments: this.hourSegments,
       dayStart: {
         hour: this.dayStartHour,
-        minute: this.dayStartMinute
+        minute: this.dayStartMinute,
       },
       dayEnd: {
         hour: this.dayEndHour,
-        minute: this.dayEndMinute
+        minute: this.dayEndMinute,
       },
       segmentHeight: this.hourSegmentHeight,
       weekendDays: this.weekendDays,
@@ -181,14 +181,14 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
         this.weekStartsOn,
         this.excludeDays,
         this.daysInWeek
-      )
+      ),
     });
   }
 
   private getDraggedUserColumn(dayEvent: WeekViewTimeEvent, xPixels: number) {
     const columnsMoved = Math.round(xPixels / this.dayColumnWidth);
     const currentColumnIndex = this.view.users.findIndex(
-      user => user === dayEvent.event.meta.user
+      (user) => user === dayEvent.event.meta.user
     );
     const newIndex = currentColumnIndex + columnsMoved;
     return this.view.users[newIndex];

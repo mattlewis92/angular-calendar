@@ -6,7 +6,7 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   viewDate: Date = new Date();
@@ -15,8 +15,8 @@ export class DemoComponent {
     {
       start: new Date(),
       title: 'An event',
-      color: colors.red
-    }
+      color: colors.red,
+    },
   ];
 
   activeDayIsOpen: boolean;

@@ -4,7 +4,7 @@ import {
   Inject,
   OnDestroy,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 
@@ -16,7 +16,7 @@ import { DOCUMENT } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
   styleUrls: ['styles.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Month;
@@ -27,8 +27,8 @@ export class DemoComponent implements OnInit, OnDestroy {
     {
       title: 'An event',
       start: new Date(),
-      color: colors.red
-    }
+      color: colors.red,
+    },
   ];
 
   private readonly darkThemeClass = 'dark-theme';

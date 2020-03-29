@@ -10,7 +10,7 @@ import { A11yParams } from './calendar-a11y.interface';
  * ```
  */
 @Pipe({
-  name: 'calendarA11y'
+  name: 'calendarA11y',
 })
 export class CalendarA11yPipe implements PipeTransform {
   constructor(
@@ -23,7 +23,7 @@ export class CalendarA11yPipe implements PipeTransform {
     if (typeof this.calendarA11y[method] === 'undefined') {
       const allowedMethods = Object.getOwnPropertyNames(
         Object.getPrototypeOf(CalendarA11y.prototype)
-      ).filter(iMethod => iMethod !== 'constructor');
+      ).filter((iMethod) => iMethod !== 'constructor');
       throw new Error(
         `${method} is not a valid a11y method. Can only be one of ${allowedMethods.join(
           ', '

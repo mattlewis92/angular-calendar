@@ -6,7 +6,7 @@ import {
   validateEvents as validateEventsWithoutLog,
   ViewPeriod,
   WeekDay,
-  WeekViewAllDayEvent
+  WeekViewAllDayEvent,
 } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 

@@ -5,7 +5,7 @@ import { getHours } from 'date-fns';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './template.html',
-  styleUrls: ['./styles.scss']
+  styleUrls: ['./styles.scss'],
 })
 export class DemoComponent {
   viewDate = new Date();

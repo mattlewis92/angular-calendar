@@ -20,9 +20,9 @@ export class MyCalendarUtils extends CalendarUtils {
   providers: [
     {
       provide: CalendarUtils,
-      useClass: MyCalendarUtils
-    }
-  ]
+      useClass: MyCalendarUtils,
+    },
+  ],
 })
 export class DemoComponent {
   viewDate: Date = new Date();

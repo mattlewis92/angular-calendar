@@ -11,12 +11,12 @@ import { CalendarWeekViewCurrentTimeMarkerComponent } from './calendar-week-view
 
 export {
   CalendarWeekViewComponent,
-  CalendarWeekViewBeforeRenderEvent
+  CalendarWeekViewBeforeRenderEvent,
 } from './calendar-week-view.component';
 export {
   WeekViewAllDayEvent as CalendarWeekViewAllDayEvent,
   WeekViewAllDayEventRow as CalendarWeekViewAllDayEventRow,
-  GetWeekViewArgs as CalendarGetWeekViewArgs
+  GetWeekViewArgs as CalendarGetWeekViewArgs,
 } from 'calendar-utils';
 export { getWeekViewPeriod } from '../common/util';
 
@@ -25,14 +25,14 @@ export { getWeekViewPeriod } from '../common/util';
     CommonModule,
     ResizableModule,
     DragAndDropModule,
-    CalendarCommonModule
+    CalendarCommonModule,
   ],
   declarations: [
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,
     CalendarWeekViewHourSegmentComponent,
-    CalendarWeekViewCurrentTimeMarkerComponent
+    CalendarWeekViewCurrentTimeMarkerComponent,
   ],
   exports: [
     ResizableModule,
@@ -41,7 +41,7 @@ export { getWeekViewPeriod } from '../common/util';
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,
     CalendarWeekViewHourSegmentComponent,
-    CalendarWeekViewCurrentTimeMarkerComponent
-  ]
+    CalendarWeekViewCurrentTimeMarkerComponent,
+  ],
 })
 export class CalendarWeekModule {}

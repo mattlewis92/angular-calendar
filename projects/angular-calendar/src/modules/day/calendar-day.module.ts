@@ -6,12 +6,12 @@ import { CalendarWeekModule } from '../week/calendar-week.module';
 
 export {
   CalendarDayViewComponent,
-  CalendarDayViewBeforeRenderEvent
+  CalendarDayViewBeforeRenderEvent,
 } from './calendar-day-view.component';
 
 @NgModule({
   imports: [CommonModule, CalendarCommonModule, CalendarWeekModule],
   declarations: [CalendarDayViewComponent],
-  exports: [CalendarDayViewComponent]
+  exports: [CalendarDayViewComponent],
 })
 export class CalendarDayModule {}

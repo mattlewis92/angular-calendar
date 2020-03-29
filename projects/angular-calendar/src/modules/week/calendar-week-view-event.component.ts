@@ -3,12 +3,12 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import {
   WeekViewAllDayEvent,
   WeekViewTimeEvent,
-  WeekViewHourColumn
+  WeekViewHourColumn,
 } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
 
@@ -84,7 +84,7 @@ import { PlacementArray } from 'positioning';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarWeekViewEventComponent {
   @Input() locale: string;

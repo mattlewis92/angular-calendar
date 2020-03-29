@@ -1,12 +1,12 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   CalendarEvent,
   CalendarMonthViewDay,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { WeekViewHour } from 'calendar-utils';
 
@@ -21,9 +21,9 @@ import { WeekViewHour } from 'calendar-utils';
       .cal-day-selected:hover {
         background-color: deeppink !important;
       }
-    `
+    `,
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -44,7 +44,7 @@ export class DemoComponent {
     this.selectedMonthViewDay = day;
     const selectedDateTime = this.selectedMonthViewDay.date.getTime();
     const dateIndex = this.selectedDays.findIndex(
-      selectedDay => selectedDay.date.getTime() === selectedDateTime
+      (selectedDay) => selectedDay.date.getTime() === selectedDateTime
     );
     if (dateIndex > -1) {
       delete this.selectedMonthViewDay.cssClass;
@@ -57,10 +57,10 @@ export class DemoComponent {
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
-    body.forEach(day => {
+    body.forEach((day) => {
       if (
         this.selectedDays.some(
-          selectedDay => selectedDay.date.getTime() === day.date.getTime()
+          (selectedDay) => selectedDay.date.getTime() === day.date.getTime()
         )
       ) {
         day.cssClass = 'cal-day-selected';
@@ -79,8 +79,8 @@ export class DemoComponent {
   }
 
   private addSelectedDayViewClass() {
-    this.dayView.forEach(hourSegment => {
-      hourSegment.segments.forEach(segment => {
+    this.dayView.forEach((hourSegment) => {
+      hourSegment.segments.forEach((segment) => {
         delete segment.cssClass;
         if (
           this.selectedDayViewDate &&

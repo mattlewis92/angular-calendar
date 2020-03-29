@@ -1,12 +1,12 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   CalendarEvent,
   CalendarMonthViewDay,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 
@@ -26,8 +26,8 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
       .blue-cell {
         background-color: blue !important;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -46,7 +46,7 @@ export class DemoComponent {
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
-    body.forEach(day => {
+    body.forEach((day) => {
       if (day.date.getDate() % 2 === 1) {
         day.cssClass = this.cssClass;
       }

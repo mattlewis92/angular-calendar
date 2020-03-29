@@ -1,14 +1,14 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   CalendarEvent,
   CalendarMonthViewBeforeRenderEvent,
   CalendarWeekViewBeforeRenderEvent,
   CalendarDayViewBeforeRenderEvent,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 
 @Component({
@@ -21,8 +21,8 @@ import {
       .bg-pink {
         background-color: hotpink !important;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -32,7 +32,7 @@ export class DemoComponent {
   events: CalendarEvent[] = [];
 
   beforeMonthViewRender(renderEvent: CalendarMonthViewBeforeRenderEvent): void {
-    renderEvent.body.forEach(day => {
+    renderEvent.body.forEach((day) => {
       const dayOfMonth = day.date.getDate();
       if (dayOfMonth > 5 && dayOfMonth < 10 && day.inMonth) {
         day.cssClass = 'bg-pink';
@@ -41,9 +41,9 @@ export class DemoComponent {
   }
 
   beforeWeekViewRender(renderEvent: CalendarWeekViewBeforeRenderEvent) {
-    renderEvent.hourColumns.forEach(hourColumn => {
-      hourColumn.hours.forEach(hour => {
-        hour.segments.forEach(segment => {
+    renderEvent.hourColumns.forEach((hourColumn) => {
+      hourColumn.hours.forEach((hour) => {
+        hour.segments.forEach((segment) => {
           if (
             segment.date.getHours() >= 2 &&
             segment.date.getHours() <= 5 &&
@@ -57,9 +57,9 @@ export class DemoComponent {
   }
 
   beforeDayViewRender(renderEvent: CalendarDayViewBeforeRenderEvent) {
-    renderEvent.hourColumns.forEach(hourColumn => {
-      hourColumn.hours.forEach(hour => {
-        hour.segments.forEach(segment => {
+    renderEvent.hourColumns.forEach((hourColumn) => {
+      hourColumn.hours.forEach((hour) => {
+        hour.segments.forEach((segment) => {
           if (segment.date.getHours() >= 2 && segment.date.getHours() <= 5) {
             segment.cssClass = 'bg-pink';
           }

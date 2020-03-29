@@ -10,7 +10,7 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   MOMENT,
-  DateAdapter
+  DateAdapter,
 } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
@@ -20,9 +20,9 @@ describe('common module', () => {
       imports: [
         CalendarCommonModule.forRoot({
           provide: DateAdapter,
-          useFactory: adapterFactory
-        })
-      ]
+          useFactory: adapterFactory,
+        }),
+      ],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
@@ -36,17 +36,17 @@ describe('common module', () => {
         CalendarCommonModule.forRoot(
           {
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
           },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter
-            }
+              useClass: CalendarMomentDateFormatter,
+            },
           }
-        )
+        ),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }]
+      providers: [{ provide: MOMENT, useValue: moment }],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
@@ -60,10 +60,10 @@ describe('common module', () => {
       imports: [
         CalendarCommonModule.forRoot({
           provide: DateAdapter,
-          useFactory: adapterFactory
+          useFactory: adapterFactory,
         }),
-        CalendarMonthModule
-      ]
+        CalendarMonthModule,
+      ],
     });
     expect(() =>
       TestBed.createComponent(CalendarMonthViewComponent)

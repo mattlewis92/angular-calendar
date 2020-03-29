@@ -12,13 +12,13 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
+      useFactory: adapterFactory,
     }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
-    FormsModule
+    FormsModule,
   ],
   declarations: [DemoComponent],
-  exports: [DemoComponent]
+  exports: [DemoComponent],
 })
 export class DemoModule {}

@@ -4,7 +4,7 @@ import {
   CalendarModuleConfig,
   CalendarEventTitleFormatter,
   CalendarDateFormatter,
-  CalendarA11y
+  CalendarA11y,
 } from './common/calendar-common.module';
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';
@@ -36,14 +36,14 @@ export * from './day/calendar-day.module';
     CalendarCommonModule,
     CalendarMonthModule,
     CalendarWeekModule,
-    CalendarDayModule
+    CalendarDayModule,
   ],
   exports: [
     CalendarCommonModule,
     CalendarMonthModule,
     CalendarWeekModule,
-    CalendarDayModule
-  ]
+    CalendarDayModule,
+  ],
 })
 export class CalendarModule {
   static forRoot(
@@ -57,8 +57,8 @@ export class CalendarModule {
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
         config.utils || CalendarUtils,
-        config.a11y || CalendarA11y
-      ]
+        config.a11y || CalendarA11y,
+      ],
     };
   }
 }

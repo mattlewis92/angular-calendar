@@ -9,7 +9,7 @@ import {
   OnDestroy,
   LOCALE_ID,
   Inject,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import {
@@ -22,14 +22,14 @@ import {
   WeekViewTimeEvent,
   WeekViewHourSegment,
   WeekViewHour,
-  WeekViewAllDayEventRow
+  WeekViewAllDayEventRow,
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import {
   CalendarEventTimesChangedEvent,
-  CalendarEventTimesChangedEventType
+  CalendarEventTimesChangedEventType,
 } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import {
@@ -46,14 +46,14 @@ import {
   shouldFireDroppedEvent,
   getWeekViewPeriod,
   trackByWeekAllDayEvent,
-  trackByWeekTimeEvent
+  trackByWeekTimeEvent,
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
   DragEndEvent,
   DropEvent,
   DragMoveEvent,
-  ValidateDrag
+  ValidateDrag,
 } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
@@ -397,7 +397,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
@@ -619,7 +619,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   eventDragEnterByType = {
     allDay: 0,
-    time: 0
+    time: 0,
   };
 
   /**
@@ -830,7 +830,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newStart: newEventDates.start,
         newEnd: newEventDates.end,
         event: timeEvent.event,
-        type: CalendarEventTimesChangedEventType.Resize
+        type: CalendarEventTimesChangedEventType.Resize,
       });
     }
   }
@@ -846,7 +846,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.allDayEventResizes.set(allDayEvent, {
       originalOffset: allDayEvent.offset,
       originalSpan: allDayEvent.span,
-      edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right'
+      edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right',
     });
     this.resizeStarted(
       allDayEventsContainer,
@@ -918,7 +918,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newStart,
         newEnd,
         event: allDayEvent.event,
-        type: CalendarEventTimesChangedEventType.Resize
+        type: CalendarEventTimesChangedEventType.Resize,
       });
       this.allDayEventResizes.delete(allDayEvent);
     }
@@ -954,7 +954,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
         newStart: date,
-        allDay
+        allDay,
       });
     }
   }
@@ -994,18 +994,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         y,
         snapDraggedEvents: this.snapDraggedEvents,
         dragAlreadyMoved: this.dragAlreadyMoved,
-        transform
+        transform,
       });
     this.dragActive = true;
     this.dragAlreadyMoved = false;
     this.eventDragEnterByType = {
       allDay: 0,
-      time: 0
+      time: 0,
     };
     if (!this.snapDraggedEvents && dayEvent) {
-      this.view.hourColumns.forEach(column => {
+      this.view.hourColumns.forEach((column) => {
         const linkedEvent = column.events.find(
-          columnEvent =>
+          (columnEvent) =>
             columnEvent.event === dayEvent.event && columnEvent !== dayEvent
         );
         // hide any linked events while dragging
@@ -1031,7 +1031,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       );
       const originalEvent = dayEvent.event;
       const adjustedEvent = { ...originalEvent, ...newEventTimes };
-      const tempEvents = this.events.map(event => {
+      const tempEvents = this.events.map((event) => {
         if (event === originalEvent) {
           return adjustedEvent;
         }
@@ -1078,7 +1078,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newEnd: end,
         event: weekEvent.event,
         type: CalendarEventTimesChangedEventType.Drag,
-        allDay: !useY
+        allDay: !useY,
       });
     }
   }
@@ -1095,7 +1095,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.weekStartsOn,
         this.excludeDays,
         this.daysInWeek
-      )
+      ),
     });
   }
 
@@ -1113,7 +1113,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.days && this.view) {
       this.beforeViewRender.emit({
         header: this.days,
-        ...this.view
+        ...this.view,
       });
     }
   }
@@ -1129,11 +1129,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       hourSegments: this.hourSegments,
       dayStart: {
         hour: this.dayStartHour,
-        minute: this.dayStartMinute
+        minute: this.dayStartMinute,
       },
       dayEnd: {
         hour: this.dayEndHour,
-        minute: this.dayEndMinute
+        minute: this.dayEndMinute,
       },
       segmentHeight: this.hourSegmentHeight,
       weekendDays: this.weekendDays,
@@ -1143,7 +1143,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.weekStartsOn,
         this.excludeDays,
         this.daysInWeek
-      )
+      ),
     });
   }
 
@@ -1194,7 +1194,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     const previousView = this.view;
     this.view = this.getWeekView(tempEvents);
-    const adjustedEventsArray = tempEvents.filter(event =>
+    const adjustedEventsArray = tempEvents.filter((event) =>
       adjustedEvents.has(event)
     );
     this.view.hourColumns.forEach((column, columnIndex) => {
@@ -1204,10 +1204,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
             segment.cssClass;
         });
       });
-      adjustedEventsArray.forEach(adjustedEvent => {
+      adjustedEventsArray.forEach((adjustedEvent) => {
         const originalEvent = adjustedEvents.get(adjustedEvent);
         const existingColumnEvent = column.events.find(
-          columnEvent => columnEvent.event === adjustedEvent
+          (columnEvent) => columnEvent.event === adjustedEvent
         );
         if (existingColumnEvent) {
           // restore the original event so trackBy kicks in and the dom isn't changed
@@ -1221,7 +1221,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
             height: 0,
             width: 0,
             startsBeforeDay: false,
-            endsAfterDay: false
+            endsAfterDay: false,
           });
         }
       });
@@ -1243,7 +1243,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.dateAdapter,
         calendarEvent,
         minimumEventHeight
-      )
+      ),
     };
     const { end, ...eventWithoutEnd } = calendarEvent;
     const smallestResizes = {
@@ -1255,7 +1255,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.dateAdapter,
         eventWithoutEnd,
         minimumEventHeight
-      )
+      ),
     };
 
     if (typeof resizeEvent.edges.left !== 'undefined') {

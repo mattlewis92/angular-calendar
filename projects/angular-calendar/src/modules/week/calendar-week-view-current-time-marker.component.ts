@@ -4,7 +4,7 @@ import {
   NgZone,
   OnChanges,
   SimpleChanges,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { switchMapTo, startWith, map, switchMap } from 'rxjs/operators';
@@ -42,7 +42,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
   @Input() columnDate: Date;
@@ -70,7 +70,7 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
     switchMap(() => interval(60 * 1000)),
     startWith(0),
     switchMapTo(this.columnDate$),
-    map(columnDate => {
+    map((columnDate) => {
       const startOfDay = this.dateAdapter.setMinutes(
         this.dateAdapter.setHours(columnDate, this.dayStartHour),
         this.dayStartMinute
@@ -89,7 +89,7 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
           now <= endOfDay,
         top:
           this.dateAdapter.differenceInMinutes(now, startOfDay) *
-          hourHeightModifier
+          hourHeightModifier,
       };
     })
   );

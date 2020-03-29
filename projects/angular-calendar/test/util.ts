@@ -26,8 +26,8 @@ export function triggerDomEvent(
         width: 10px;
         height: 10px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ExternalEventComponent {
   event: CalendarEvent = {
@@ -36,7 +36,7 @@ export class ExternalEventComponent {
     draggable: true,
     color: {
       primary: 'blue',
-      secondary: 'lightblue'
-    }
+      secondary: 'lightblue',
+    },
   };
 }

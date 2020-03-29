@@ -3,7 +3,7 @@ import { InsertChange, Change } from '@schematics/angular/utility/change';
 import {
   addImportToModule,
   findNodes,
-  insertAfterLastOccurrence
+  insertAfterLastOccurrence,
 } from '@schematics/angular/utility/ast-utils';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';

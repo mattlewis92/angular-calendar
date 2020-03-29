@@ -11,7 +11,7 @@ import {
   endOfWeek,
   startOfDay,
   endOfDay,
-  format
+  format,
 } from 'date-fns';
 import { Observable } from 'rxjs';
 import { colors } from '../demo-utils/colors';
@@ -36,7 +36,7 @@ function getTimezoneOffsetString(date: Date): string {
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
@@ -57,13 +57,13 @@ export class DemoComponent implements OnInit {
     const getStart: any = {
       month: startOfMonth,
       week: startOfWeek,
-      day: startOfDay
+      day: startOfDay,
     }[this.view];
 
     const getEnd: any = {
       month: endOfMonth,
       week: endOfWeek,
-      day: endOfDay
+      day: endOfDay,
     }[this.view];
 
     const params = new HttpParams()
@@ -90,8 +90,8 @@ export class DemoComponent implements OnInit {
               color: colors.yellow,
               allDay: true,
               meta: {
-                film
-              }
+                film,
+              },
             };
           });
         })
@@ -100,7 +100,7 @@ export class DemoComponent implements OnInit {
 
   dayClicked({
     date,
-    events
+    events,
   }: {
     date: Date;
     events: Array<CalendarEvent<{ film: Film }>>;

@@ -20,7 +20,7 @@ import { CalendarEvent } from 'calendar-utils';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarEventTitleComponent {
   @Input() event: CalendarEvent;

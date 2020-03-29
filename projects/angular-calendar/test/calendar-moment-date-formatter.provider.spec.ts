@@ -6,7 +6,7 @@ import {
   CalendarMomentDateFormatter,
   MOMENT,
   CalendarNativeDateFormatter,
-  DateAdapter
+  DateAdapter,
 } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
@@ -19,14 +19,14 @@ describe('calendarMomentDateFormatter provider', () => {
         CalendarNativeDateFormatter,
         {
           provide: DateAdapter,
-          useFactory: adapterFactory
-        }
-      ]
+          useFactory: adapterFactory,
+        },
+      ],
     });
   });
 
   let dateFormatter: CalendarMomentDateFormatter;
-  beforeEach(inject([CalendarMomentDateFormatter], _dateFormatter_ => {
+  beforeEach(inject([CalendarMomentDateFormatter], (_dateFormatter_) => {
     dateFormatter = _dateFormatter_;
   }));
 
@@ -34,7 +34,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.monthViewColumnHeader({
         date: new Date('2016-01-01'),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('Friday');
   });
@@ -43,7 +43,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.monthViewDayNumber({
         date: new Date('2016-01-01'),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('1');
   });
@@ -52,7 +52,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.monthViewTitle({
         date: new Date('2016-01-01'),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('January 2016');
   });
@@ -61,7 +61,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.weekViewColumnHeader({
         date: new Date('2016-01-01'),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('Friday');
   });
@@ -70,7 +70,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.weekViewColumnSubHeader({
         date: new Date('2016-01-01'),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('Jan 1');
   });
@@ -79,7 +79,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.weekViewTitle({
         date: new Date('2016-01-04'),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('Jan 3 - Jan 9, 2016');
   });
@@ -88,7 +88,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.weekViewHour({
         date: startOfDay(new Date('2016-01-01')),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('12am');
   });
@@ -97,7 +97,7 @@ describe('calendarMomentDateFormatter provider', () => {
     expect(
       dateFormatter.dayViewHour({
         date: startOfDay(new Date('2016-01-01')),
-        locale: 'en'
+        locale: 'en',
       })
     ).to.equal('12am');
   });

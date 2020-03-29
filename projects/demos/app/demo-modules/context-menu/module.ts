@@ -12,15 +12,15 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CommonModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
+      useFactory: adapterFactory,
     }),
     ContextMenuModule.forRoot({
-      useBootstrap4: true
+      useBootstrap4: true,
     }),
     DemoUtilsModule,
-    RouterModule.forChild([{ path: '', component: DemoComponent }])
+    RouterModule.forChild([{ path: '', component: DemoComponent }]),
   ],
   declarations: [DemoComponent],
-  exports: [DemoComponent]
+  exports: [DemoComponent],
 })
 export class DemoModule {}

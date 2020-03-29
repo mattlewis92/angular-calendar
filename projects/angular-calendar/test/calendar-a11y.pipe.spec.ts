@@ -5,7 +5,7 @@ import { A11yParams, CalendarModule, DateAdapter } from '../src';
 import { adapterFactory } from 'calendar-utils/date-adapters/date-fns';
 
 @Component({
-  template: '{{ a11yParams | calendarA11y:method }}'
+  template: '{{ a11yParams | calendarA11y:method }}',
 })
 class TestComponent {
   a11yParams: A11yParams;
@@ -18,10 +18,10 @@ describe('calendarA11y pipe', () => {
       imports: [
         CalendarModule.forRoot({
           provide: DateAdapter,
-          useFactory: adapterFactory
-        })
+          useFactory: adapterFactory,
+        }),
       ],
-      declarations: [TestComponent]
+      declarations: [TestComponent],
     });
   });
 

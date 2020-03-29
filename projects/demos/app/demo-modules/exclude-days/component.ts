@@ -1,7 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { CalendarEvent, CalendarView, DAYS_OF_WEEK } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
@@ -10,7 +10,7 @@ import { colors } from '../demo-utils/colors';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -23,14 +23,14 @@ export class DemoComponent {
       end: new Date('2016-01-10'),
       title: 'One day excluded event',
       color: colors.red,
-      allDay: true
+      allDay: true,
     },
     {
       start: new Date('2016-01-01'),
       end: new Date('2016-01-09'),
       title: 'Multiple weeks event',
-      allDay: true
-    }
+      allDay: true,
+    },
   ];
 
   // exclude weekends
