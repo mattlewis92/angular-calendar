@@ -12,7 +12,8 @@
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="events"
-    [segmentDuration]="40"
+    [hourDuration]="40"
+    [hourSegments]="2"
     (dayHeaderClicked)="clickedDate = $event.day.date"
     (hourSegmentClicked)="clickedDate = $event.date"
   >

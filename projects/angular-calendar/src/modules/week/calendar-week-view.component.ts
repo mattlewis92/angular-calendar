@@ -248,7 +248,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               [dayEndHour]="dayEndHour"
               [dayEndMinute]="dayEndMinute"
               [hourSegments]="hourSegments"
-              [segmentDuration]="segmentDuration"
+              [hourDuration]="hourDuration"
               [hourSegmentHeight]="hourSegmentHeight"
               [customTemplate]="currentTimeMarkerTemplate"
             ></mwl-calendar-week-view-current-time-marker>
@@ -499,7 +499,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Segment duration in minutes. Overlap hourSegments property
    */
-  @Input() segmentDuration: number | null = null;
+  @Input() hourDuration: number | null = null;
 
   /**
    * The height in pixels of each hour segment
@@ -741,7 +741,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.dayEndHour ||
       changes.dayEndMinute ||
       changes.hourSegments ||
-      changes.segmentDuration ||
+      changes.hourDuration ||
       changes.weekStartsOn ||
       changes.weekendDays ||
       changes.excludeDays ||
@@ -1126,8 +1126,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   protected getWeekView(events: CalendarEvent[]) {
-    console.log(this.segmentDuration, this.dayEndHour);
-
     return this.utils.getWeekView({
       events,
       viewDate: this.viewDate,
@@ -1136,7 +1134,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       precision: this.precision,
       absolutePositionedEvents: true,
       hourSegments: this.hourSegments,
-      segmentDuration: this.segmentDuration,
+      hourDuration: this.hourDuration,
       dayStart: {
         hour: this.dayStartHour,
         minute: this.dayStartMinute
@@ -1169,8 +1167,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
           dragEndEvent.y,
           this.hourSegments,
           this.hourSegmentHeight,
-          this.eventSnapSize,
-          this.segmentDuration
+          this.eventSnapSize
         )
       : 0;
 
@@ -1246,8 +1243,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     const minimumEventHeight = getMinimumEventHeightInMinutes(
       this.hourSegments,
-      this.hourSegmentHeight,
-      this.segmentDuration
+      this.hourSegmentHeight
     );
     const newEventDates = {
       start: calendarEvent.start,
@@ -1307,8 +1303,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         resizeEvent.edges.top as number,
         this.hourSegments,
         this.hourSegmentHeight,
-        this.eventSnapSize,
-        this.segmentDuration
+        this.eventSnapSize
       );
       const newStart = this.dateAdapter.addMinutes(
         newEventDates.start,
@@ -1324,8 +1319,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         resizeEvent.edges.bottom as number,
         this.hourSegments,
         this.hourSegmentHeight,
-        this.eventSnapSize,
-        this.segmentDuration
+        this.eventSnapSize
       );
       const newEnd = this.dateAdapter.addMinutes(
         newEventDates.end,

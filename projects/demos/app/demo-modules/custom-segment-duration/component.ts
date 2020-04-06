@@ -8,18 +8,7 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html',
-  styles: [
-    `
-      .calendar-wrapper
-        ::ng-deep
-        .cal-week-view
-        .cal-hour-segment.cal-after-hour-start
-        .cal-time {
-        display: block;
-      }
-    `
-  ]
+  templateUrl: 'template.html'
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;
