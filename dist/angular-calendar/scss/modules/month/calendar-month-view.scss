@@ -1,0 +1,205 @@
+@import '../../variables';
+
+$cal-month-view-vars: () !default;
+$cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
+
+@mixin cal-month-view-theme($overrides) {
+  $theme: map-merge($cal-month-view-vars, $overrides);
+
+  .cal-month-view {
+    background-color: map-get($theme, bg-primary);
+
+    .cal-cell-row:hover {
+      background-color: map-get($theme, bg-secondary);
+    }
+
+    .cal-cell-row .cal-cell:hover,
+    .cal-cell.cal-has-events.cal-open {
+      background-color: map-get($theme, bg-active);
+    }
+
+    .cal-days {
+      border-color: map-get($theme, border-color);
+    }
+
+    .cal-day-cell:not(:last-child) {
+      border-right-color: map-get($theme, border-color);
+    }
+
+    .cal-days .cal-cell-row {
+      border-bottom-color: map-get($theme, border-color);
+    }
+
+    .cal-day-badge {
+      background-color: map-get($theme, badge-color);
+      color: map-get($theme, white);
+    }
+
+    .cal-event {
+      background-color: map-get($theme, event-color-primary);
+      border-color: map-get($theme, event-color-secondary);
+      color: map-get($theme, white);
+    }
+
+    .cal-day-cell.cal-weekend .cal-day-number {
+      color: map-get($theme, weekend-color);
+    }
+
+    .cal-day-cell.cal-today {
+      background-color: map-get($theme, today-bg);
+    }
+
+    .cal-day-cell.cal-drag-over {
+      background-color: darken(map-get($theme, bg-active), 5%) !important;
+    }
+
+    .cal-open-day-events {
+      color: map-get($theme, white);
+      background-color: map-get($theme, gray);
+      box-shadow: inset 0 0 15px 0 rgba(map-get($theme, black), 0.5);
+    }
+  }
+}
+
+.cal-month-view {
+  .cal-header {
+    text-align: center;
+    font-weight: bolder;
+  }
+
+  .cal-header .cal-cell {
+    padding: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .cal-days {
+    border: 1px solid;
+    border-bottom: 0;
+  }
+
+  .cal-cell-top {
+    min-height: 78px;
+    flex: 1;
+  }
+
+  .cal-cell-row {
+    display: flex;
+  }
+
+  .cal-cell {
+    float: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cal-day-cell {
+    min-height: 100px;
+
+    // ie11 hack for https://github.com/mattlewis92/angular-calendar/issues/501
+    @media all and (-ms-high-contrast: none) {
+      display: block;
+    }
+  }
+
+  .cal-day-cell:not(:last-child) {
+    border-right: 1px solid;
+  }
+
+  .cal-days .cal-cell-row {
+    border-bottom: 1px solid;
+  }
+
+  .cal-day-badge {
+    margin-top: 18px;
+    margin-left: 10px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+  }
+
+  .cal-day-number {
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-top: 15px;
+    margin-right: 15px;
+    float: right;
+    margin-bottom: 10px;
+  }
+
+  .cal-events {
+    flex: 1;
+    align-items: flex-end;
+    margin: 3px;
+    line-height: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cal-event {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  .cal-day-cell.cal-in-month.cal-has-events {
+    cursor: pointer;
+  }
+
+  .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  .cal-day-cell.cal-today .cal-day-number {
+    font-size: 1.9em;
+  }
+
+  .cal-open-day-events {
+    padding: 15px;
+  }
+
+  .cal-open-day-events .cal-event {
+    position: relative;
+    top: 2px;
+  }
+
+  .cal-out-month {
+    .cal-day-badge,
+    .cal-event {
+      opacity: 0.3;
+    }
+  }
+
+  .cal-draggable {
+    cursor: move;
+  }
+
+  .cal-drag-active * {
+    pointer-events: none;
+  }
+
+  .cal-event-title {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@include cal-month-view-theme($cal-month-view-vars);

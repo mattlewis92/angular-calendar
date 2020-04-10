@@ -1,0 +1,60 @@
+$cal-event-color-primary: #1e90ff !default;
+$cal-event-color-secondary: #d1e8ff !default;
+$cal-border-color: #e1e1e1 !default;
+$cal-bg-primary: #fff !default;
+$cal-bg-secondary: #fafafa !default;
+$cal-bg-active: #ededed !default;
+$cal-today-bg: #e8fde7 !default;
+$cal-weekend-color: #8b0000 !default;
+$cal-badge-color: #b94a48 !default;
+$cal-current-time-marker-color: #ea4334 !default;
+$cal-white: #fff !default;
+$cal-gray: #555 !default;
+$cal-black: #000 !default;
+
+$cal-vars: () !default;
+$cal-vars: map-merge(
+  (
+
+    // the default event primary color if not set on the event color object
+    event-color-primary: $cal-event-color-primary,
+
+    // the default event secondary color if not set on the event color object
+    event-color-secondary: $cal-event-color-secondary,
+
+    // the border color used between cells
+    border-color: $cal-border-color,
+
+    // the primary background of each component
+    bg-primary: $cal-bg-primary,
+
+    // the secondary background, used for alternating rows on the day and week views
+    bg-secondary: $cal-bg-secondary,
+
+    // the color used when hovering over cells and headers
+    bg-active: $cal-bg-active,
+
+    // the background color to mark today in the week view header
+    today-bg: $cal-today-bg,
+
+    // the color used to indicate a day is a weekend
+    weekend-color: $cal-weekend-color,
+
+    // the badge background color on the month view
+    badge-color: $cal-badge-color,
+
+    // the current time marker color on the week and day view
+    current-time-marker-color: $cal-current-time-marker-color,
+
+    // a standard white color used for tooltip text and month view event titles
+    white: $cal-white,
+
+    // a standard gray color used for the background color of the open month view events box
+    gray: $cal-gray,
+
+    // a standard black color used as the tooltip background and the gradient color of the open month view events
+    black: $cal-black
+
+  ),
+  $cal-vars
+);

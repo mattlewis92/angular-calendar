@@ -1,0 +1,19 @@
+.cal-day-view {
+  /* stylelint-disable-next-line selector-type-no-unknown */
+  mwl-calendar-week-view-header {
+    display: none;
+  }
+
+  .cal-events-container {
+    margin-left: 70px;
+  }
+
+  .cal-day-column {
+    border-left: 0;
+  }
+
+  .cal-current-time-marker {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "name": "angular-calendar",
+  "version": "0.28.5",
+  "description": "A calendar component for angular 6.0+ that can display events on a month, week or day view",
+  "funding": {
+    "url": "https://github.com/sponsors/mattlewis92"
+  },
+  "schematics": "./schematics/collection.json",
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattlewis92/angular-calendar.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular6",
+    "calendar",
+    "schematics"
+  ],
+  "author": "Matt Lewis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattlewis92/angular-calendar/issues"
+  },
+  "homepage": "https://github.com/mattlewis92/angular-calendar#readme",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.803.22",
+    "@angular-devkit/build-ng-packagr": "^0.803.25",
+    "@angular/animations": "^8.2.14",
+    "@angular/cdk": "^8.2.3",
+    "@angular/cli": "^8.3.25",
+    "@angular/common": "^8.2.14",
+    "@angular/compiler": "^8.2.14",
+    "@angular/compiler-cli": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "@angular/forms": "^8.2.14",
+    "@angular/language-service": "^8.2.14",
+    "@angular/platform-browser": "^8.2.14",
+    "@angular/platform-browser-dynamic": "^8.2.14",
+    "@angular/router": "^8.2.14",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/prompt": "^8.3.5",
+    "@compodoc/compodoc": "^1.1.11",
+    "@ng-bootstrap/ng-bootstrap": "^5.3.0",
+    "@schematics/angular": "^8.3.25",
+    "@sinonjs/fake-timers": "^6.0.1",
+    "@stackblitz/sdk": "^1.3.0",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/moment-timezone": "^0.5.13",
+    "@types/node": "^13.9.5",
+    "@types/sinon": "^7.5.2",
+    "@types/sinon-chai": "^3.2.3",
+    "angular-cli-ghpages": "^0.5.3",
+    "angulartics2": "^8.3.0",
+    "angularx-flatpickr": "^6.3.1",
+    "autoprefixer": "^9.7.5",
+    "bootstrap-css-only": "^4.4.1",
+    "chai": "^4.2.0",
+    "codecov": "^3.6.5",
+    "codelyzer": "^5.2.2",
+    "commitizen": "^4.0.3",
+    "copyfiles": "^2.2.0",
+    "core-js": "^3.6.4",
+    "cp-cli": "^2.0.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.4.2",
+    "date-fns": "^2.11.1",
+    "del-cli": "^3.0.0",
+    "flatpickr": "^4.6.3",
+    "font-awesome": "^4.7.0",
+    "highlightjs-loader": "^0.2.3",
+    "husky": "^4.2.3",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage-istanbul-reporter": "^2.1.1",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "mocha": "^7.1.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
+    "ng-packagr": "^5.7.1",
+    "ngx-clipboard": "^12.3.1",
+    "ngx-contextmenu": "^5.4.0",
+    "ngx-perfect-scrollbar": "^8.0.0",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.0",
+    "postcss-flexibility": "^2.0.0",
+    "prettier": "^2.0.2",
+    "pretty-quick": "^2.0.1",
+    "rrule": "^2.6.4",
+    "rxjs": "^6.5.4",
+    "sinon": "^9.0.1",
+    "sinon-chai": "^3.5.0",
+    "standard-version": "^7.1.0",
+    "stylelint": "^13.2.1",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0",
+    "ts-node": "^8.8.1",
+    "tslib": "^1.11.1",
+    "tslint": "^5.20.1",
+    "tslint-config-mwl": "^0.6.0",
+    "typescript": "~3.5.3",
+    "zone.js": "~0.9.1"
+  },
+  "peerDependencies": {
+    "@angular/animations": ">=6.0.0 <10.0.0",
+    "@angular/common": ">=6.0.0 <10.0.0",
+    "@angular/core": ">=6.0.0 <10.0.0"
+  },
+  "dependencies": {
+    "angular-draggable-droppable": "^4.3.10",
+    "angular-resizable-element": "^3.3.0",
+    "calendar-utils": "^0.7.0",
+    "positioning": "^2.0.1",
+    "tslib": "^1.9.0"
+  },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e",
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "main": "bundles/angular-calendar.umd.js",
+  "module": "fesm5/angular-calendar.js",
+  "es2015": "fesm2015/angular-calendar.js",
+  "esm5": "esm5/angular-calendar.js",
+  "esm2015": "esm2015/angular-calendar.js",
+  "fesm5": "fesm5/angular-calendar.js",
+  "fesm2015": "fesm2015/angular-calendar.js",
+  "typings": "angular-calendar.d.ts",
+  "metadata": "angular-calendar.metadata.json"
+}
