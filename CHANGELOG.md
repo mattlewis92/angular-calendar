@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.7](https://github.com/mattlewis92/angular-calendar/compare/v0.28.6...v0.28.7) (2020-04-12)
+
+
+### Bug Fixes
+
+* make universal rendering work without any hacks ([40de98d](https://github.com/mattlewis92/angular-calendar/commit/40de98d344f4a0140939b4ce63cf9cb57b01303c)), closes [#1211](https://github.com/mattlewis92/angular-calendar/issues/1211)
+* **universal:** remove need to add KeyboardEvent hack to server.ts ([0e9e8d1](https://github.com/mattlewis92/angular-calendar/commit/0e9e8d1d0fba4dc4eb3ad0743f2eb927048b97e6))
+
 ### [0.28.6](https://github.com/mattlewis92/angular-calendar/compare/v0.28.5...v0.28.6) (2020-04-12)
 
 
