@@ -18,7 +18,9 @@ import {
   templateUrl: 'template.html',
   styles: [
     `
-      .bg-pink {
+      .cal-month-view .bg-pink,
+      .cal-week-view .cal-day-columns .bg-pink,
+      .cal-day-view .bg-pink {
         background-color: hotpink !important;
       }
     `,
