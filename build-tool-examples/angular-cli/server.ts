@@ -21,7 +21,6 @@ import * as express from 'express';
 import {join} from 'path';
 
 global['window'] = {};
-global['KeyboardEvent'] = null;
 
 // Express server
 const app = express();

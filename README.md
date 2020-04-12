@@ -25,6 +25,7 @@ https://mattlewis92.github.io/angular-calendar/
 <a href="https://github.com/sponsors/mattlewis92">Become a gold or platinum sponsor<a> and get your logo on this README on Github with a link to your site.<br><br>
 
 <a href="https://runbox.com/" target="_blank"><img src="https://raw.githubusercontent.com/runbox/runbox7/master/src/assets/runbox7_blue_dark.png" width="288"></a>
+
 </div>
 
 ## Table of contents
@@ -78,9 +79,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     BrowserAnimationsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
-    })
-  ]
+      useFactory: adapterFactory,
+    }),
+  ],
 })
 export class MyModule {}
 ```
@@ -111,7 +112,6 @@ Yes. For universal to work though, you will need to add this near the top of you
 
 ```ts
 global['window'] = {};
-global['KeyboardEvent'] = null;
 ```
 
 ### What major versions of angular does this library support?
