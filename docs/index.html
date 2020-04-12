@@ -89,9 +89,9 @@ import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;
     BrowserAnimationsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
-    })
-  ]
+      useFactory: adapterFactory,
+    }),
+  ],
 })
 export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
 <p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
@@ -107,9 +107,8 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <h2 align="center">FAQ</h2>
 
 <h3 id="is-this-library-aot-and-universal-compatible">Is this library AoT and universal compatible?</h3>
-<p>Yes. For universal to work though, you will need to add this near the top of your <code>server.ts</code> file:</p>
-<div><pre class="line-numbers"><code class="language-ts">global[&#39;window&#39;] = {};
-global[&#39;KeyboardEvent&#39;] = null;</code></pre></div><h3 id="what-major-versions-of-angular-does-this-library-support">What major versions of angular does this library support?</h3>
+<p>Yes.</p>
+<h3 id="what-major-versions-of-angular-does-this-library-support">What major versions of angular does this library support?</h3>
 <table class="table table-bordered compodoc-table">
 <thead>
 <tr>
