@@ -215,7 +215,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://angular.io/api/core/ModuleWithProviders" target="_blank" >ModuleWithProviders</a></code>
+                        <b>Returns : </b>    <code>ModuleWithProviders&lt;CalendarCommonModule&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -331,7 +331,7 @@ export class CalendarCommonModule {
   static forRoot(
     dateAdapter: Provider,
     config: CalendarModuleConfig &#x3D; {}
-  ): ModuleWithProviders {
+  ): ModuleWithProviders&lt;CalendarCommonModule&gt; {
     return {
       ngModule: CalendarCommonModule,
       providers: [
