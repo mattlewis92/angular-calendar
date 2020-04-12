@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.6](https://github.com/mattlewis92/angular-calendar/compare/v0.28.5...v0.28.6) (2020-04-12)
+
+
+### Bug Fixes
+
+* add module type for ivy compatibility ([c622cd8](https://github.com/mattlewis92/angular-calendar/commit/c622cd860fe9ec9e01e66496a24f6a2a7a0333d4)), closes [#1214](https://github.com/mattlewis92/angular-calendar/issues/1214) [#1218](https://github.com/mattlewis92/angular-calendar/issues/1218)
+
 ### [0.28.5](https://github.com/mattlewis92/angular-calendar/compare/v0.28.4...v0.28.5) (2020-03-01)
 
 
