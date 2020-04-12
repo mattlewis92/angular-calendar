@@ -99,7 +99,7 @@ export class CalendarCommonModule {
   static forRoot(
     dateAdapter: Provider,
     config: CalendarModuleConfig = {}
-  ): ModuleWithProviders {
+  ): ModuleWithProviders<CalendarCommonModule> {
     return {
       ngModule: CalendarCommonModule,
       providers: [
