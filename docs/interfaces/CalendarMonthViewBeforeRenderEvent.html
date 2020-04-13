@@ -494,6 +494,18 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
+  constructor(
+    protected cdr: ChangeDetectorRef,
+    protected utils: CalendarUtils,
+    @Inject(LOCALE_ID) locale: string,
+    protected dateAdapter: DateAdapter
+  ) {
+    this.locale &#x3D; locale;
+  }
+
+  /**
+   * @hidden
+   */
   trackByRowOffset &#x3D; (index: number, offset: number) &#x3D;&gt;
     this.view.days
       .slice(offset, this.view.totalDaysVisibleInWeek)
@@ -504,18 +516,6 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   trackByDate &#x3D; (index: number, day: MonthViewDay) &#x3D;&gt; day.date.toISOString();
-
-  /**
-   * @hidden
-   */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter
-  ) {
-    this.locale &#x3D; locale;
-  }
 
   /**
    * @hidden

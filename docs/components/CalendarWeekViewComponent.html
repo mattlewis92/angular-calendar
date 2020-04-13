@@ -2241,17 +2241,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByHourColumn &#x3D; (index: number, column: WeekViewHourColumn) &#x3D;&gt;
-    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
-
-  /**
-   * @hidden
-   */
-  trackById &#x3D; (index: number, row: WeekViewAllDayEventRow) &#x3D;&gt; row.id;
-
-  /**
-   * @hidden
-   */
   constructor(
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
@@ -2260,6 +2249,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     this.locale &#x3D; locale;
   }
+
+  /**
+   * @hidden
+   */
+  trackByHourColumn &#x3D; (index: number, column: WeekViewHourColumn) &#x3D;&gt;
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+
+  /**
+   * @hidden
+   */
+  trackById &#x3D; (index: number, row: WeekViewAllDayEventRow) &#x3D;&gt; row.id;
 
   /**
    * @hidden
@@ -2322,17 +2322,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
-  }
-
-  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
-    this.dayColumnWidth &#x3D; this.getDayColumnWidth(eventsContainer);
-    const resizeHelper: CalendarResizeHelper &#x3D; new CalendarResizeHelper(
-      eventsContainer,
-      minWidth
-    );
-    this.validateResize &#x3D; ({ rectangle }) &#x3D;&gt;
-      resizeHelper.validateResize({ rectangle });
-    this.cdr.markForCheck();
   }
 
   /**
@@ -2881,6 +2870,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     return newEventDates;
+  }
+
+  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
+    this.dayColumnWidth &#x3D; this.getDayColumnWidth(eventsContainer);
+    const resizeHelper: CalendarResizeHelper &#x3D; new CalendarResizeHelper(
+      eventsContainer,
+      minWidth
+    );
+    this.validateResize &#x3D; ({ rectangle }) &#x3D;&gt;
+      resizeHelper.validateResize({ rectangle });
+    this.cdr.markForCheck();
   }
 }
 </code></pre>
