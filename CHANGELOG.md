@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.8](https://github.com/mattlewis92/angular-calendar/compare/v0.28.7...v0.28.8) (2020-04-13)
+
+
+### Bug Fixes
+
+* **month-view:** show all weeks with view range and excluding days ([3d5f00b](https://github.com/mattlewis92/angular-calendar/commit/3d5f00b7709f5649a990ea79e50ec49c9b1842ce)), closes [#1201](https://github.com/mattlewis92/angular-calendar/issues/1201)
+
 ### [0.28.7](https://github.com/mattlewis92/angular-calendar/compare/v0.28.6...v0.28.7) (2020-04-12)
 
 
