@@ -12,7 +12,7 @@ export class DemoComponent {
 
   viewDate: Date = new Date();
 
-  events: Array<CalendarEvent<{ id: number }>> = [
+  events: CalendarEvent<{ id: number }>[] = [
     {
       title: 'Event 1',
       color: colors.yellow,

@@ -10,7 +10,7 @@ import { colors } from '../demo-utils/colors';
 export class DemoComponent {
   viewDate: Date = new Date();
 
-  events: Array<CalendarEvent<{ incrementsBadgeTotal: boolean }>> = [
+  events: CalendarEvent<{ incrementsBadgeTotal: boolean }>[] = [
     {
       title: 'Increments badge total on the day cell',
       color: colors.yellow,

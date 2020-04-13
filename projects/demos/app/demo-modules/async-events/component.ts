@@ -43,7 +43,7 @@ export class DemoComponent implements OnInit {
 
   viewDate: Date = new Date();
 
-  events$: Observable<Array<CalendarEvent<{ film: Film }>>>;
+  events$: Observable<CalendarEvent<{ film: Film }>[]>;
 
   activeDayIsOpen: boolean = false;
 
@@ -103,7 +103,7 @@ export class DemoComponent implements OnInit {
     events,
   }: {
     date: Date;
-    events: Array<CalendarEvent<{ film: Film }>>;
+    events: CalendarEvent<{ film: Film }>[];
   }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (

@@ -74,7 +74,7 @@ export abstract class DateAdapter implements BaseDateAdapter {
     dateRight: Date | number
   ): boolean;
 
-  abstract max(dates: Array<Date | number>): Date;
+  abstract max(dates: (Date | number)[]): Date;
 
   abstract setHours(date: Date | number, hours: number): Date;
 

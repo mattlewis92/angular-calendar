@@ -685,17 +685,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
-    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
-
-  /**
-   * @hidden
-   */
-  trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
-
-  /**
-   * @hidden
-   */
   constructor(
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
@@ -704,6 +693,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     this.locale = locale;
   }
+
+  /**
+   * @hidden
+   */
+  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+
+  /**
+   * @hidden
+   */
+  trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
 
   /**
    * @hidden
@@ -766,17 +766,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
-  }
-
-  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
-    this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
-    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
-      eventsContainer,
-      minWidth
-    );
-    this.validateResize = ({ rectangle }) =>
-      resizeHelper.validateResize({ rectangle });
-    this.cdr.markForCheck();
   }
 
   /**
@@ -1325,5 +1314,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     return newEventDates;
+  }
+
+  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
+    this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
+    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
+      eventsContainer,
+      minWidth
+    );
+    this.validateResize = ({ rectangle }) =>
+      resizeHelper.validateResize({ rectangle });
+    this.cdr.markForCheck();
   }
 }

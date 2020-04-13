@@ -120,7 +120,7 @@ export class DemoComponent implements OnInit {
   beforeMonthViewRender({
     body,
   }: {
-    body: Array<CalendarMonthViewDay<EventGroupMeta>>;
+    body: CalendarMonthViewDay<EventGroupMeta>[];
   }): void {
     // month view has a different UX from the week and day view so we only really need to group by the type
     body.forEach((cell) => {

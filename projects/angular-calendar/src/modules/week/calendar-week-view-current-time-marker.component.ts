@@ -61,7 +61,7 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
 
   @Input() customTemplate: TemplateRef<any>;
 
-  private columnDate$ = new BehaviorSubject<Date>(this.columnDate);
+  columnDate$ = new BehaviorSubject<Date>(this.columnDate);
 
   marker$: Observable<{
     isVisible: boolean;
