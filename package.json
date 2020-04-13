@@ -37,7 +37,7 @@
     "postrelease": "npm run gh-pages",
     "gh-pages:demos": "ng build --prod",
     "gh-pages:compodoc": "compodoc -p tsconfig-compodoc.json -d dist/demos/docs --disableGraph --disableCoverage --disablePrivate --disableInternal --disableLifeCycleHooks --disableProtected --gaID UA-63367573-2",
-    "gh-pages:deploy": "ngh --dir=dist/demos --no-silent",
+    "gh-pages:deploy": "ng deploy",
     "gh-pages": "run-s build:clean gh-pages:demos gh-pages:compodoc gh-pages:deploy build:clean"
   },
   "schematics": "./schematics/collection.json",
@@ -97,7 +97,7 @@
     "@types/node": "^13.9.5",
     "@types/sinon": "^7.5.2",
     "@types/sinon-chai": "^3.2.3",
-    "angular-cli-ghpages": "^0.5.3",
+    "angular-cli-ghpages": "^0.6.2",
     "angulartics2": "^8.3.0",
     "angularx-flatpickr": "^6.3.1",
     "autoprefixer": "^9.7.5",

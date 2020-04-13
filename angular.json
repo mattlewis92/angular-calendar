@@ -93,6 +93,13 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "noSilent": true,
+            "noBuild": true
+          }
         }
       }
     },
