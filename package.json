@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open",
     "build:copy-package-json": "copyfiles package.json projects/angular-calendar",
-    "build:lib": "ng build angular-calendar",
+    "build:lib": "ng build angular-calendar --prod",
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json",
     "build:styles": "node-sass projects/angular-calendar/src/angular-calendar.scss | postcss --output dist/angular-calendar/css/angular-calendar.css",
     "build:clean": "del-cli dist",
