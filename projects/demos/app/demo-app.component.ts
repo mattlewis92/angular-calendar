@@ -225,6 +225,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
           'angularx-flatpickr': dependencyVersions.angularxFlatpickr,
+          'core-js': '2',
         },
       },
       {
