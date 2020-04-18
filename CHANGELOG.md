@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.10](https://github.com/mattlewis92/angular-calendar/compare/v0.28.9...v0.28.10) (2020-04-18)
+
+
+### Bug Fixes
+
+* fix click and scroll events on touch devices ([fe08a96](https://github.com/mattlewis92/angular-calendar/commit/fe08a967f0966b0a14e9f500f09006d87fbe6945)), closes [#1144](https://github.com/mattlewis92/angular-calendar/issues/1144)
+* **tooltip:** hide tooltip when dragging starts ([f565162](https://github.com/mattlewis92/angular-calendar/commit/f565162c0839841e578fa5c1111bac39432c66e9))
+
 ### [0.28.9](https://github.com/mattlewis92/angular-calendar/compare/v0.28.8...v0.28.9) (2020-04-18)
 
 
