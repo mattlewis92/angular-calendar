@@ -99,6 +99,10 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
       this.tooltipRef.instance.customTemplate = this.customTemplate;
       this.tooltipRef.instance.event = this.event;
       this.tooltipRef.changeDetectorRef.markForCheck();
+
+      if (!this.contents) {
+        this.hide();
+      }
     }
   }
 

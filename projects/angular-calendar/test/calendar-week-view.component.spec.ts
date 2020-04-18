@@ -380,6 +380,51 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   }));
 
+  it('should hide the tooltip when dragging', fakeAsync(() => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
+      CalendarWeekViewComponent
+    );
+    eventTitle.weekTooltip = (e: CalendarEvent) => {
+      return `title: ${e.title}`;
+    };
+    fixture.componentInstance.viewDate = new Date('2016-06-01');
+    fixture.componentInstance.events = [
+      {
+        start: new Date('2016-05-30'),
+        end: new Date('2016-06-02'),
+        title: 'foo <b>bar</b>',
+        color: {
+          primary: 'blue',
+          secondary: '',
+        },
+        draggable: true,
+      },
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event'
+    );
+    triggerDomEvent('mouseenter', event);
+    fixture.detectChanges();
+    flush();
+    expect(document.body.querySelector('.cal-tooltip')).to.be.ok;
+    const eventPosition = event.getBoundingClientRect();
+    triggerDomEvent('mousedown', event, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top,
+      button: 0,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', event, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top + 100,
+    });
+    fixture.detectChanges();
+    expect(document.body.querySelector('.cal-tooltip')).not.to.be.ok;
+    fixture.destroy();
+  }));
+
   it('should allow the start of the week to be changed', () => {
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
       CalendarWeekViewComponent
