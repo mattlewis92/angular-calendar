@@ -847,6 +847,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  lastDraggedEvent: CalendarEvent;
+
+  /**
+   * @hidden
+   */
   trackByWeekDayHeaderDate &#x3D; trackByWeekDayHeaderDate;
 
   /**
@@ -1129,7 +1134,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     if (
       shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId) &amp;&amp;
-      this.lastDragEnterDate.getTime() &#x3D;&#x3D;&#x3D; date.getTime()
+      this.lastDragEnterDate.getTime() &#x3D;&#x3D;&#x3D; date.getTime() &amp;&amp;
+      (!this.snapDraggedEvents ||
+        dropEvent.dropData.event !&#x3D;&#x3D; this.lastDraggedEvent)
     ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
@@ -1138,6 +1145,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         allDay,
       });
     }
+    this.lastDraggedEvent &#x3D; null;
   }
 
   /**
@@ -1179,6 +1187,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       });
     this.dragActive &#x3D; true;
     this.dragAlreadyMoved &#x3D; false;
+    this.lastDraggedEvent &#x3D; null;
     this.eventDragEnterByType &#x3D; {
       allDay: 0,
       time: 0,
@@ -1244,6 +1253,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     this.view &#x3D; this.getWeekView(this.events);
     this.dragActive &#x3D; false;
+    this.validateDrag &#x3D; null;
     const { start, end } &#x3D; this.getDragMovedEventTimes(
       weekEvent,
       dragEndEvent,
@@ -1251,9 +1261,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       useY
     );
     if (
-      this.eventDragEnterByType[useY ? &#x27;time&#x27; : &#x27;allDay&#x27;] &gt; 0 &amp;&amp;
+      (this.snapDraggedEvents ||
+        this.eventDragEnterByType[useY ? &#x27;time&#x27; : &#x27;allDay&#x27;] &gt; 0) &amp;&amp;
       isDraggedWithinPeriod(start, end, this.view.period)
     ) {
+      this.lastDraggedEvent &#x3D; weekEvent.event;
       this.eventTimesChanged.emit({
         newStart: start,
         newEnd: end,
