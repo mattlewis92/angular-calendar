@@ -64,6 +64,7 @@ import { PlacementArray } from 'positioning';
           [dropData]="{ event: event, draggedFrom: day }"
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
+          [touchStartLongPress]="{ delay: 300, delta: 30 }"
           (mwlClick)="eventClicked.emit({ event: event, sourceEvent: $event })"
           [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
         ></div>

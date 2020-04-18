@@ -156,6 +156,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             }"
             [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
             [validateDrag]="validateDrag"
+            [touchStartLongPress]="{ delay: 300, delta: 30 }"
             (dragStart)="dragStarted(eventRowContainer, event)"
             (dragging)="allDayEventDragMove()"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"
@@ -299,6 +300,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                       }
                     : {}
                 "
+                [touchStartLongPress]="{ delay: 300, delta: 30 }"
                 [ghostDragEnabled]="!snapDraggedEvents"
                 [validateDrag]="validateDrag"
                 (dragStart)="dragStarted(dayColumns, event, timeEvent)"

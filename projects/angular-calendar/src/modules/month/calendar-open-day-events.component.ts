@@ -80,6 +80,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
           [dropData]="{ event: event }"
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
+          [touchStartLongPress]="{ delay: 300, delta: 30 }"
         >
           <span
             class="cal-event"
