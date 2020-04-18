@@ -655,6 +655,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  lastDraggedEvent: CalendarEvent;
+
+  /**
+   * @hidden
+   */
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 
   /**
@@ -937,7 +942,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     if (
       shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId) &&
-      this.lastDragEnterDate.getTime() === date.getTime()
+      this.lastDragEnterDate.getTime() === date.getTime() &&
+      (!this.snapDraggedEvents ||
+        dropEvent.dropData.event !== this.lastDraggedEvent)
     ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
@@ -946,6 +953,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         allDay,
       });
     }
+    this.lastDraggedEvent = null;
   }
 
   /**
@@ -987,6 +995,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       });
     this.dragActive = true;
     this.dragAlreadyMoved = false;
+    this.lastDraggedEvent = null;
     this.eventDragEnterByType = {
       allDay: 0,
       time: 0,
@@ -1052,6 +1061,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     this.view = this.getWeekView(this.events);
     this.dragActive = false;
+    this.validateDrag = null;
     const { start, end } = this.getDragMovedEventTimes(
       weekEvent,
       dragEndEvent,
@@ -1059,9 +1069,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       useY
     );
     if (
-      this.eventDragEnterByType[useY ? 'time' : 'allDay'] > 0 &&
+      (this.snapDraggedEvents ||
+        this.eventDragEnterByType[useY ? 'time' : 'allDay'] > 0) &&
       isDraggedWithinPeriod(start, end, this.view.period)
     ) {
+      this.lastDraggedEvent = weekEvent.event;
       this.eventTimesChanged.emit({
         newStart: start,
         newEnd: end,

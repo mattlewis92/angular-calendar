@@ -2481,5 +2481,57 @@ describe('calendarWeekView component', () => {
       );
       expect(marker.style.top).to.equal('2760px');
     });
+
+    it('should not change the all day event end date when ending the drop inside the hour grid', () => {
+      const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
+        CalendarWeekViewComponent
+      );
+      fixture.componentInstance.viewDate = new Date();
+      fixture.componentInstance.events = [
+        {
+          title: 'foo',
+          start: moment().startOf('week').toDate(),
+          end: moment().startOf('week').add(2, 'days').toDate(),
+          draggable: true,
+          allDay: true,
+        },
+      ];
+      fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+      fixture.detectChanges();
+      document.body.appendChild(fixture.nativeElement);
+      // remove the header as it was causing the test to fail
+      const header: HTMLElement = fixture.nativeElement.querySelector(
+        '.cal-day-headers'
+      );
+      header.parentNode.removeChild(header);
+
+      const eventDropped = sinon.spy();
+      fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
+
+      const event: HTMLElement = fixture.nativeElement.querySelector(
+        '.cal-event-container'
+      );
+      const dayWidth: number = event.parentElement.offsetWidth / 7;
+      const eventPosition: ClientRect = event.getBoundingClientRect();
+      triggerDomEvent('mousedown', event, {
+        clientX: eventPosition.right,
+        clientY: eventPosition.top,
+        button: 0,
+      });
+      fixture.detectChanges();
+      triggerDomEvent('mousemove', document.body, {
+        clientX: eventPosition.right + dayWidth,
+        clientY: eventPosition.top + 100,
+      });
+      fixture.detectChanges();
+      triggerDomEvent('mouseup', document.body, {
+        clientX: eventPosition.right + dayWidth,
+        clientY: eventPosition.top + 100,
+        button: 0,
+      });
+      fixture.detectChanges();
+
+      expect(eventDropped).to.have.been.calledOnce;
+    });
   });
 });
