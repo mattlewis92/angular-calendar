@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.11](https://github.com/mattlewis92/angular-calendar/compare/v0.28.10...v0.28.11) (2020-04-19)
+
+
+### Bug Fixes
+
+* fix scroll issues on touch devices when dragging ([4cb3314](https://github.com/mattlewis92/angular-calendar/commit/4cb33148065a5b608385b90d5dee49b9510f19a3))
+
 ### [0.28.10](https://github.com/mattlewis92/angular-calendar/compare/v0.28.9...v0.28.10) (2020-04-18)
 
 
