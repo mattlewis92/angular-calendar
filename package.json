@@ -155,6 +155,7 @@
     "@angular/core": ">=6.0.0 <10.0.0"
   },
   "dependencies": {
+    "@scarf/scarf": "^1.0.0",
     "angular-draggable-droppable": "^4.4.4",
     "angular-resizable-element": "^3.3.0",
     "calendar-utils": "^0.7.1",
