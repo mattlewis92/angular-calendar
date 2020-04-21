@@ -9,5 +9,12 @@
     "strictInjectionParameters": true,
     "preserveWhitespaces": true,
     "fullTemplateTypeCheck": true
-  }
+  },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "./app/demo-modules/**/*.ts"
+  ]
 }

@@ -54,21 +54,4 @@ describe('common module', () => {
     expect(dateFormatter).not.to.be.an.instanceOf(CalendarDateFormatter);
     expect(dateFormatter).to.be.an.instanceOf(CalendarMomentDateFormatter);
   });
-
-  it('should allow just the month view to be created', () => {
-    TestBed.configureTestingModule({
-      imports: [
-        CalendarCommonModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory,
-        }),
-        CalendarMonthModule,
-      ],
-    });
-    expect(() =>
-      TestBed.createComponent(CalendarMonthViewComponent)
-    ).not.to.throw();
-    expect(() => TestBed.createComponent(CalendarWeekViewComponent)).to.throw();
-    expect(() => TestBed.createComponent(CalendarDayViewComponent)).to.throw();
-  });
 });
