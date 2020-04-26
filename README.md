@@ -51,8 +51,6 @@ A calendar component for Angular 6.0+ that can display events on a month, week o
 ng add angular-calendar
 ```
 
-Note: angular-calendar uses [Scarf](https://scarf.sh/) to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you'd like to opt out, you can do so by setting `scarfSettings.enabled = false` in your project's package.json. Alternatively, you can set the environment variable `SCARF_ANALYTICS=false` before you install.
-
 ### Manual setup (ng add will do this all for you)
 
 First install through npm:
