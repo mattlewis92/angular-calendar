@@ -115,7 +115,6 @@
     "date-fns": "^2.12.0",
     "del-cli": "^3.0.0",
     "flatpickr": "^4.6.3",
-    "font-awesome": "^4.7.0",
     "highlightjs-loader": "^0.2.3",
     "husky": "^4.2.5",
     "karma": "^5.0.2",
@@ -151,6 +150,7 @@
   },
   "peerDependencies": {},
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@scarf/scarf": "^1.0.0",
     "angular-draggable-droppable": "^4.4.4",
     "angular-resizable-element": "^3.3.0",

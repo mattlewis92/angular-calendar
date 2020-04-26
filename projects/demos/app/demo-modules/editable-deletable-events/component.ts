@@ -19,7 +19,7 @@ export class DemoComponent {
       start: new Date(),
       actions: [
         {
-          label: '<i class="fa fa-fw fa-pencil"></i>',
+          label: '<i class="fas fa-fw fa-pencil-alt"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
             console.log('Edit event', event);
           },
@@ -32,7 +32,7 @@ export class DemoComponent {
       start: new Date(),
       actions: [
         {
-          label: '<i class="fa fa-fw fa-times"></i>',
+          label: '<i class="fas fa-fw fa-trash-alt"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
             this.events = this.events.filter((iEvent) => iEvent !== event);
             console.log('Event deleted', event);

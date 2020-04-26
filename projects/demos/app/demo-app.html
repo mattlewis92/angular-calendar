@@ -106,7 +106,7 @@
           href="https://twitter.com/mattlewis92_"
           target="_blank"
         >
-          Follow me <i class="fa fa-twitter"></i>
+          Follow me <i class="fab fa-twitter"></i>
         </a>
       </li>
       <li class="nav-item">
@@ -125,7 +125,7 @@
 <ng-template #loading>
   <div class="card">
     <div class="card-body text-center">
-      <i class="fa fa-spin fa-spinner fa-5x"></i> <br />
+      <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
       Loading demo...
     </div>
   </div>
@@ -143,10 +143,10 @@
             <div class="col-md-6"><h3>{{ activeDemo.label }}</h3></div>
             <div class="col-md-6">
               <button
-                class="btn btn-info pull-right"
+                class="btn btn-info float-right"
                 (click)="editInStackblitz(activeDemo)"
               >
-                <i class="fa fa-edit"></i> Edit in Stackblitz
+                <i class="fas fa-edit"></i> Edit in Stackblitz
               </button>
             </div>
           </div>
@@ -155,7 +155,7 @@
           <ngb-tabset [destroyOnHide]="false">
             <ngb-tab>
               <ng-template ngbTabTitle>
-                <i class="fa fa-fw fa-laptop"></i> Live demo
+                <i class="fas fa-fw fa-laptop"></i> Live demo
               </ng-template>
               <ng-template ngbTabContent>
                 <div class="spacer-top"><router-outlet></router-outlet></div>
@@ -165,9 +165,9 @@
             <ngb-tab *ngFor="let source of activeDemo?.sources">
               <ng-template ngbTabTitle>
                 <span [ngSwitch]="source.language">
-                  <i class="fa fa-fw fa-html5" *ngSwitchCase="'html'"></i>
-                  <i class="fa fa-fw fa-css3" *ngSwitchCase="'css'"></i>
-                  <i class="fa fa-fw fa-code" *ngSwitchDefault></i>
+                  <i class="fab fa-fw fa-html5" *ngSwitchCase="'html'"></i>
+                  <i class="fab fa-fw fa-css3" *ngSwitchCase="'css'"></i>
+                  <i class="fas fa-fw fa-code" *ngSwitchDefault></i>
                 </span>
                 {{ source.filename }}
               </ng-template>

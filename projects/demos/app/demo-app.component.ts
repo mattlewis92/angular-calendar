@@ -72,7 +72,7 @@ const dependencyVersions: any = {
   zoneJs: require('zone.js/package.json').version,
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
-  fontAwesome: require('font-awesome/package.json').version,
+  fontAwesome: require('@fortawesome/fontawesome-free/package.json').version,
   positioning: require('positioning/package.json').version,
   flatpickr: require('flatpickr/package.json').version,
   angularxFlatpickr: require('angularx-flatpickr/package.json').version,
@@ -152,7 +152,7 @@ export class DemoAppComponent implements OnInit {
     } = {
       'index.html': `
 <link href="https://unpkg.com/bootstrap-css-only@${dependencyVersions.bootstrap}/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://unpkg.com/font-awesome@${dependencyVersions.fontAwesome}/css/font-awesome.css" rel="stylesheet">
+<link href="https://unpkg.com/@fortawesome/fontawesome-free@${dependencyVersions.fontAwesome}/css/all.css" rel="stylesheet">
 <link href="https://unpkg.com/angular-calendar@${dependencyVersions.angularCalendar}/css/angular-calendar.css" rel="stylesheet">
 <link href="https://unpkg.com/flatpickr@${dependencyVersions.flatpickr}/dist/flatpickr.css" rel="stylesheet">
 <mwl-demo-component>Loading...</mwl-demo-component>
