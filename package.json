@@ -1,6 +1,6 @@
 {
   "name": "angular-calendar",
-  "version": "0.28.12-beta.0",
+  "version": "0.28.12",
   "description": "A calendar component for angular 6.0+ that can display events on a month, week or day view",
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
@@ -88,6 +88,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@commitlint/prompt": "^8.3.5",
     "@compodoc/compodoc": "^1.1.11",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@ng-bootstrap/ng-bootstrap": "^6.0.3",
     "@schematics/angular": "^9.1.1",
     "@sinonjs/fake-timers": "^6.0.1",
@@ -150,7 +151,6 @@
   },
   "peerDependencies": {},
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
     "@scarf/scarf": "^1.0.0",
     "angular-draggable-droppable": "^4.4.4",
     "angular-resizable-element": "^3.3.0",
