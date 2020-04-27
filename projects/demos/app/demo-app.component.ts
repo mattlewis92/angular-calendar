@@ -134,6 +134,12 @@ export class DemoAppComponent implements OnInit {
         );
         this.activeDemo.sources = await getSources(this.activeDemo.path);
       });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('data-uid', '7c1627e655');
+    script.src = 'https://angular-calendar.ck.page/7c1627e655/index.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
   }
 
   updateFilteredDemos() {
