@@ -105,7 +105,8 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "noSilent": true,
-            "noBuild": true
+            "noBuild": true,
+            "cname": "angular-calendar.com"
           }
         }
       }
