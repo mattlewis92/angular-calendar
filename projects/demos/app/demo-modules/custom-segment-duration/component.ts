@@ -66,11 +66,27 @@ export class DemoComponent {
       start: setHours(setMinutes(new Date(), 20), 15),
       end: setHours(setMinutes(new Date(), 40), 17),
       title: 'An event',
-      color: colors.yellow
+      color: colors.yellow,
+      resizable: {
+        afterEnd: true
+      },
+      draggable: true
     }
   ];
 
   clickedDate: Date;
 
   clickedColumn: number;
+
+  refresh: Subject<any> = new Subject();
+
+  eventTimesChanged({
+    event,
+    newStart,
+    newEnd
+  }: CalendarEventTimesChangedEvent): void {
+    event.start = newStart;
+    event.end = newEnd;
+    this.refresh.next();
+  }
 }

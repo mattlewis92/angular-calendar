@@ -1167,7 +1167,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
           dragEndEvent.y,
           this.hourSegments,
           this.hourSegmentHeight,
-          this.eventSnapSize
+          this.eventSnapSize,
+          this.hourDuration
         )
       : 0;
 
@@ -1243,7 +1244,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     const minimumEventHeight = getMinimumEventHeightInMinutes(
       this.hourSegments,
-      this.hourSegmentHeight
+      this.hourSegmentHeight,
+      this.hourDuration
     );
     const newEventDates = {
       start: calendarEvent.start,
@@ -1303,7 +1305,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         resizeEvent.edges.top as number,
         this.hourSegments,
         this.hourSegmentHeight,
-        this.eventSnapSize
+        this.eventSnapSize,
+        this.hourDuration
       );
       const newStart = this.dateAdapter.addMinutes(
         newEventDates.start,
@@ -1319,7 +1322,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         resizeEvent.edges.bottom as number,
         this.hourSegments,
         this.hourSegmentHeight,
-        this.eventSnapSize
+        this.eventSnapSize,
+        this.hourDuration
       );
       const newEnd = this.dateAdapter.addMinutes(
         newEventDates.end,

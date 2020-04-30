@@ -14,8 +14,10 @@
     [events]="events"
     [hourDuration]="40"
     [hourSegments]="2"
+    [refresh]="refresh"
     (dayHeaderClicked)="clickedDate = $event.day.date"
     (hourSegmentClicked)="clickedDate = $event.date"
+    (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-week-view>
 </div>
