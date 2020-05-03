@@ -509,6 +509,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() hourSegmentHeight: number = 30;
 
   /**
+   * The minimum height in pixels of each event
+   */
+  @Input() minimumEventHeight: number = 30;
+
+  /**
    * The day start hours in 24 hour time. Must be 0-23
    */
   @Input() dayStartHour: number = 0;
@@ -754,7 +759,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       changes.excludeDays ||
       changes.hourSegmentHeight ||
       changes.events ||
-      changes.daysInWeek;
+      changes.daysInWeek ||
+      changes.minimumEventHeight;
 
     if (refreshHeader) {
       this.refreshHeader();
@@ -1148,6 +1154,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       },
       segmentHeight: this.hourSegmentHeight,
       weekendDays: this.weekendDays,
+      minimumEventHeight: this.minimumEventHeight,
       ...getWeekViewPeriod(
         this.dateAdapter,
         this.viewDate,
