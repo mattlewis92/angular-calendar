@@ -60,16 +60,18 @@ const MINUTES_IN_HOUR = 60;
 
 function getPixelAmountInMinutes(
   hourSegments: number,
-  hourSegmentHeight: number
+  hourSegmentHeight: number,
+  hourDuration?: number
 ) {
-  return MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+  return (hourDuration || MINUTES_IN_HOUR) / (hourSegments * hourSegmentHeight);
 }
 
 export function getMinutesMoved(
   movedY: number,
   hourSegments: number,
   hourSegmentHeight: number,
-  eventSnapSize: number
+  eventSnapSize: number,
+  hourDuration?: number
 ): number {
   const draggedInPixelsSnapSize = roundToNearest(
     movedY,
@@ -77,17 +79,20 @@ export function getMinutesMoved(
   );
   const pixelAmountInMinutes = getPixelAmountInMinutes(
     hourSegments,
-    hourSegmentHeight
+    hourSegmentHeight,
+    hourDuration
   );
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
 }
 
 export function getMinimumEventHeightInMinutes(
   hourSegments: number,
-  hourSegmentHeight: number
+  hourSegmentHeight: number,
+  hourDuration?: number
 ) {
   return (
-    getPixelAmountInMinutes(hourSegments, hourSegmentHeight) * hourSegmentHeight
+    getPixelAmountInMinutes(hourSegments, hourSegmentHeight, hourDuration) *
+    hourSegmentHeight
   );
 }
 

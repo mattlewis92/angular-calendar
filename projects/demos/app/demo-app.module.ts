@@ -141,6 +141,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           },
         },
         {
+          path: 'custom-hour-duration',
+          loadChildren: () =>
+            import('./demo-modules/custom-hour-duration/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Custom hour duration',
+          },
+        },
+        {
           path: 'day-view-start-end',
           loadChildren: () =>
             import('./demo-modules/day-view-start-end/module').then(

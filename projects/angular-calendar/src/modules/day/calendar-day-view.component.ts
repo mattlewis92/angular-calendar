@@ -32,6 +32,7 @@ export type CalendarDayViewBeforeRenderEvent = CalendarWeekViewBeforeRenderEvent
       [viewDate]="viewDate"
       [events]="events"
       [hourSegments]="hourSegments"
+      [hourDuration]="hourDuration"
       [hourSegmentHeight]="hourSegmentHeight"
       [dayStartHour]="dayStartHour"
       [dayStartMinute]="dayStartMinute"
@@ -79,6 +80,11 @@ export class CalendarDayViewComponent {
    * The height in pixels of each hour segment
    */
   @Input() hourSegmentHeight: number = 30;
+
+  /**
+   * The duration of each segment group in minutes
+   */
+  @Input() hourDuration: number;
 
   /**
    * The day start hours in 24 hour time. Must be 0-23
