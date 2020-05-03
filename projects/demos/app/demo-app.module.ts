@@ -431,6 +431,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           },
         },
         {
+          path: 'public-holidays',
+          loadChildren: () =>
+            import('./demo-modules/public-holidays/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Public holidays',
+          },
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink',
         },
