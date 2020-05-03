@@ -12,12 +12,12 @@ import { DayViewSchedulerComponent } from './day-view-scheduler.component';
     CommonModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
+      useFactory: adapterFactory,
     }),
     DemoUtilsModule,
-    RouterModule.forChild([{ path: '', component: DemoComponent }])
+    RouterModule.forChild([{ path: '', component: DemoComponent }]),
   ],
   declarations: [DemoComponent, DayViewSchedulerComponent],
-  exports: [DemoComponent]
+  exports: [DemoComponent],
 })
 export class DemoModule {}

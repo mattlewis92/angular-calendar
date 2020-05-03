@@ -8,14 +8,14 @@ import {
   EventEmitter,
   Inject,
   Input,
-  NgZone
+  NgZone,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Directive({
-  selector: '[mwlClick]'
+  selector: '[mwlClick]',
 })
 export class ClickDirective implements OnInit, OnDestroy {
   @Input() clickListenerDisabled = false;
@@ -34,7 +34,7 @@ export class ClickDirective implements OnInit, OnDestroy {
     if (!this.clickListenerDisabled) {
       this.listen()
         .pipe(takeUntil(this.destroy$))
-        .subscribe(event => {
+        .subscribe((event) => {
           event.stopPropagation();
           this.click.emit(event);
         });
@@ -46,8 +46,8 @@ export class ClickDirective implements OnInit, OnDestroy {
   }
 
   private listen() {
-    return new Observable<MouseEvent>(observer => {
-      return this.renderer.listen(this.elm.nativeElement, 'click', event => {
+    return new Observable<MouseEvent>((observer) => {
+      return this.renderer.listen(this.elm.nativeElement, 'click', (event) => {
         observer.next(event);
       });
     });

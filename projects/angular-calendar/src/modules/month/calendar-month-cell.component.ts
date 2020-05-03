@@ -3,7 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
@@ -64,6 +64,7 @@ import { PlacementArray } from 'positioning';
           [dropData]="{ event: event, draggedFrom: day }"
           [dragAxis]="{ x: event.draggable, y: event.draggable }"
           [validateDrag]="validateDrag"
+          [touchStartLongPress]="{ delay: 300, delta: 30 }"
           (mwlClick)="eventClicked.emit({ event: event, sourceEvent: $event })"
           [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
         ></div>
@@ -98,8 +99,8 @@ import { PlacementArray } from 'positioning';
     '[class.cal-out-month]': '!day.inMonth',
     '[class.cal-has-events]': 'day.events.length > 0',
     '[class.cal-open]': 'day === openDay',
-    '[class.cal-event-highlight]': '!!day.backgroundColor'
-  }
+    '[class.cal-event-highlight]': '!!day.backgroundColor',
+  },
 })
 export class CalendarMonthCellComponent {
   @Input() day: MonthViewDay;

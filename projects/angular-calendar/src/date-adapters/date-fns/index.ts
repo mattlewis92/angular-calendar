@@ -10,7 +10,7 @@ import {
   setMonth,
   setYear,
   getDate,
-  getYear
+  getYear,
 } from 'date-fns';
 import { DateAdapter } from '../date-adapter';
 
@@ -27,6 +27,6 @@ export function adapterFactory(): DateAdapter {
     setMonth,
     setYear,
     getDate,
-    getYear
+    getYear,
   };
 }

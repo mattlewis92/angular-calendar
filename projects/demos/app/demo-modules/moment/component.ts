@@ -6,14 +6,14 @@ import moment from 'moment';
 moment.updateLocale('en', {
   week: {
     dow: DAYS_OF_WEEK.MONDAY,
-    doy: 0
-  }
+    doy: 0,
+  },
 });
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

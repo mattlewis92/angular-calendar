@@ -2,7 +2,7 @@ import { Tree, SchematicsException } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import {
   WorkspaceProject,
-  WorkspaceSchema
+  WorkspaceSchema,
 } from '@schematics/angular/utility/workspace-models';
 
 import { getProjectFromWorkspace } from '.';

@@ -3,7 +3,7 @@ import {
   Rule,
   SchematicContext,
   Tree,
-  chain
+  chain,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getWorkspace } from '@schematics/angular/utility/config';
@@ -13,7 +13,7 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import {
   addPackageJsonDependency,
   NodeDependency,
-  NodeDependencyType
+  NodeDependencyType,
 } from '@schematics/angular/utility/dependencies';
 import { normalize } from '@angular-devkit/core';
 
@@ -24,22 +24,22 @@ import {
   getProjectMainFile,
   getProjectFromWorkspace,
   insertWildcardImport,
-  insertAfterImports
+  insertAfterImports,
 } from '../utils';
 
 import { Schema } from './schema';
 import {
   dateFnsVersion,
   momentVersion,
-  angularCalendarVersion
+  angularCalendarVersion,
 } from './version-names';
 
-export default function(options: Schema): Rule {
+export default function (options: Schema): Rule {
   return chain([
     addPackageJsonDependencies(options),
     installPackageJsonDependencies(),
     addModuleToImports(options),
-    addAngularCalendarStyle(options)
+    addAngularCalendarStyle(options),
   ]);
 }
 
@@ -56,7 +56,7 @@ function addPackageJsonDependencies(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const dateAdapters: { [key: string]: string } = {
       moment: momentVersion,
-      'date-fns': dateFnsVersion
+      'date-fns': dateFnsVersion,
     };
 
     const angularCalendarDependency: NodeDependency = nodeDependencyFactory(
@@ -93,7 +93,7 @@ function nodeDependencyFactory(
     type: NodeDependencyType.Default,
     name: packageName,
     version,
-    overwrite: true
+    overwrite: true,
   };
 }
 
@@ -131,7 +131,7 @@ function addModuleToImports(options: Schema): Rule {
         appModulePath,
         'adapterFactory',
         `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`
-      ) as InsertChange
+      ) as InsertChange,
     ];
 
     if (options.dateAdapter === 'moment') {
@@ -155,7 +155,7 @@ function addModuleToImports(options: Schema): Rule {
     }
 
     const recorder = host.beginUpdate(appModulePath);
-    updates.forEach(update => {
+    updates.forEach((update) => {
       recorder.insertLeft(update.pos, update.toAdd);
     });
     host.commitUpdate(recorder);

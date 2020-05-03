@@ -12,13 +12,13 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
+      useFactory: adapterFactory,
     }),
     NgbPopoverModule,
     DemoUtilsModule,
-    RouterModule.forChild([{ path: '', component: DemoComponent }])
+    RouterModule.forChild([{ path: '', component: DemoComponent }]),
   ],
   declarations: [DemoComponent],
-  exports: [DemoComponent]
+  exports: [DemoComponent],
 })
 export class DemoModule {}

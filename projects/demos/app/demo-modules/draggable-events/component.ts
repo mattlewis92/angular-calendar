@@ -3,14 +3,14 @@ import { Subject } from 'rxjs';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -22,13 +22,13 @@ export class DemoComponent {
       title: 'Draggable event',
       color: colors.yellow,
       start: new Date(),
-      draggable: true
+      draggable: true,
     },
     {
       title: 'A non draggable event',
       color: colors.blue,
-      start: new Date()
-    }
+      start: new Date(),
+    },
   ];
 
   refresh: Subject<any> = new Subject();
@@ -36,7 +36,7 @@ export class DemoComponent {
   eventTimesChanged({
     event,
     newStart,
-    newEnd
+    newEnd,
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;

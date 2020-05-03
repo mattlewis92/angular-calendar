@@ -1,6 +1,6 @@
 import {
   SchematicTestRunner,
-  UnitTestTree
+  UnitTestTree,
 } from '@angular-devkit/schematics/testing';
 import { join } from 'path';
 
@@ -21,7 +21,7 @@ export async function createTestApp(
     .runExternalSchematicAsync(SHEMATICS_PACKAGE_NAME, 'workspace', {
       name: 'workspace',
       version: '9.0.0',
-      newProjectRoot: 'projects'
+      newProjectRoot: 'projects',
     })
     .toPromise();
 
@@ -31,7 +31,7 @@ export async function createTestApp(
       'application',
       {
         name: appOptions.name,
-        ...appOptions
+        ...appOptions,
       },
       workspace
     )

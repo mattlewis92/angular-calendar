@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CalendarEvent,
   CalendarDateFormatter,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { CustomDateFormatter } from './custom-date-formatter.provider';
 
@@ -13,9 +13,9 @@ import { CustomDateFormatter } from './custom-date-formatter.provider';
   providers: [
     {
       provide: CalendarDateFormatter,
-      useClass: CustomDateFormatter
-    }
-  ]
+      useClass: CustomDateFormatter,
+    },
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

@@ -14,7 +14,7 @@ import {
   Renderer2,
   TemplateRef,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { PlacementArray, positionElements } from 'positioning';
@@ -45,7 +45,7 @@ import { takeUntil } from 'rxjs/operators';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarTooltipWindowComponent {
   @Input() contents: string;
@@ -58,7 +58,7 @@ export class CalendarTooltipWindowComponent {
 }
 
 @Directive({
-  selector: '[mwlCalendarTooltip]'
+  selector: '[mwlCalendarTooltip]',
 })
 export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
@@ -99,6 +99,10 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
       this.tooltipRef.instance.customTemplate = this.customTemplate;
       this.tooltipRef.instance.event = this.event;
       this.tooltipRef.changeDetectorRef.markForCheck();
+
+      if (!this.contents) {
+        this.hide();
+      }
     }
   }
 
@@ -165,7 +169,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
       ) {
         this.positionTooltip([
           ...previousPositions,
-          this.tooltipRef.instance.placement
+          this.tooltipRef.instance.placement,
         ]);
       }
     }

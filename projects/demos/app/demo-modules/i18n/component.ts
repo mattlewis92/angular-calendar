@@ -3,7 +3,7 @@ import {
   CalendarDateFormatter,
   CalendarEvent,
   CalendarView,
-  DAYS_OF_WEEK
+  DAYS_OF_WEEK,
 } from 'angular-calendar';
 import { CustomDateFormatter } from './custom-date-formatter.provider';
 
@@ -14,9 +14,9 @@ import { CustomDateFormatter } from './custom-date-formatter.provider';
   providers: [
     {
       provide: CalendarDateFormatter,
-      useClass: CustomDateFormatter
-    }
-  ]
+      useClass: CustomDateFormatter,
+    },
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

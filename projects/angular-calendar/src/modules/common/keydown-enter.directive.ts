@@ -1,7 +1,7 @@
 import { Directive, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[mwlKeydownEnter]'
+  selector: '[mwlKeydownEnter]',
 })
 export class KeydownEnterDirective {
   @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // tslint:disable-line

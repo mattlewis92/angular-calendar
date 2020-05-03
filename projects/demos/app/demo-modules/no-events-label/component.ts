@@ -1,7 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -9,14 +9,14 @@ import {
   CalendarMonthViewBeforeRenderEvent,
   CalendarWeekViewBeforeRenderEvent,
   CalendarDayViewBeforeRenderEvent,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -27,8 +27,8 @@ export class DemoComponent {
     {
       title: 'Event 1',
       color: colors.yellow,
-      start: new Date()
-    }
+      start: new Date(),
+    },
   ];
 
   period: CalendarViewPeriod;

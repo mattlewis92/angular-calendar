@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import {
   CalendarEvent,
   CalendarMonthViewDay,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { isSameMinute, startOfDay } from 'date-fns';
@@ -24,8 +24,8 @@ interface EventGroupMeta {
       .badge {
         margin-right: 5px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
@@ -38,41 +38,41 @@ export class DemoComponent implements OnInit {
       color: colors.yellow,
       start: startOfDay(new Date()),
       meta: {
-        type: 'warning'
-      }
+        type: 'warning',
+      },
     },
     {
       title: 'Event 2',
       color: colors.yellow,
       start: startOfDay(new Date()),
       meta: {
-        type: 'warning'
-      }
+        type: 'warning',
+      },
     },
     {
       title: 'Event 3',
       color: colors.blue,
       start: startOfDay(new Date()),
       meta: {
-        type: 'info'
-      }
+        type: 'info',
+      },
     },
     {
       title: 'Event 4',
       color: colors.red,
       start: startOfDay(new Date()),
       meta: {
-        type: 'danger'
-      }
+        type: 'danger',
+      },
     },
     {
       title: 'Event 5',
       color: colors.red,
       start: startOfDay(new Date()),
       meta: {
-        type: 'danger'
-      }
-    }
+        type: 'danger',
+      },
+    },
   ];
 
   groupedSimilarEvents: CalendarEvent[] = [];
@@ -82,11 +82,11 @@ export class DemoComponent implements OnInit {
     // use for when you have a lot of events on the week or day view at the same time
     this.groupedSimilarEvents = [];
     const processedEvents = new Set();
-    this.events.forEach(event => {
+    this.events.forEach((event) => {
       if (processedEvents.has(event)) {
         return;
       }
-      const similarEvents = this.events.filter(otherEvent => {
+      const similarEvents = this.events.filter((otherEvent) => {
         return (
           otherEvent !== event &&
           !processedEvents.has(otherEvent) &&
@@ -98,7 +98,7 @@ export class DemoComponent implements OnInit {
         );
       });
       processedEvents.add(event);
-      similarEvents.forEach(otherEvent => {
+      similarEvents.forEach((otherEvent) => {
         processedEvents.add(otherEvent);
       });
       if (similarEvents.length > 0) {
@@ -108,8 +108,8 @@ export class DemoComponent implements OnInit {
           start: event.start,
           end: event.end,
           meta: {
-            groupedEvents: [event, ...similarEvents]
-          }
+            groupedEvents: [event, ...similarEvents],
+          },
         });
       } else {
         this.groupedSimilarEvents.push(event);
@@ -118,12 +118,12 @@ export class DemoComponent implements OnInit {
   }
 
   beforeMonthViewRender({
-    body
+    body,
   }: {
-    body: Array<CalendarMonthViewDay<EventGroupMeta>>;
+    body: CalendarMonthViewDay<EventGroupMeta>[];
   }): void {
     // month view has a different UX from the week and day view so we only really need to group by the type
-    body.forEach(cell => {
+    body.forEach((cell) => {
       const groups = {};
       cell.events.forEach((event: CalendarEvent<EventGroupMeta>) => {
         groups[event.meta.type] = groups[event.meta.type] || [];

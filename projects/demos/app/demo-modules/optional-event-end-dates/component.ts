@@ -6,7 +6,7 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Day;
@@ -17,12 +17,12 @@ export class DemoComponent {
     {
       title: 'No event end date',
       start: setHours(setMinutes(new Date(), 0), 3),
-      color: colors.blue
+      color: colors.blue,
     },
     {
       title: 'No event end date',
       start: setHours(setMinutes(new Date(), 0), 5),
-      color: colors.yellow
-    }
+      color: colors.yellow,
+    },
   ];
 }

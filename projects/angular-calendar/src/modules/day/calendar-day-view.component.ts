@@ -3,7 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 import { Subject } from 'rxjs';
@@ -56,7 +56,7 @@ export type CalendarDayViewBeforeRenderEvent = CalendarWeekViewBeforeRenderEvent
       (eventTimesChanged)="eventTimesChanged.emit($event)"
       (beforeViewRender)="beforeViewRender.emit($event)"
     ></mwl-calendar-week-view>
-  `
+  `,
 })
 export class CalendarDayViewComponent {
   /**

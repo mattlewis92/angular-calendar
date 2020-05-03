@@ -9,7 +9,7 @@ import {
   OnDestroy,
   LOCALE_ID,
   Inject,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import {
@@ -22,14 +22,14 @@ import {
   WeekViewTimeEvent,
   WeekViewHourSegment,
   WeekViewHour,
-  WeekViewAllDayEventRow
+  WeekViewAllDayEventRow,
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import {
   CalendarEventTimesChangedEvent,
-  CalendarEventTimesChangedEventType
+  CalendarEventTimesChangedEventType,
 } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import {
@@ -46,14 +46,14 @@ import {
   shouldFireDroppedEvent,
   getWeekViewPeriod,
   trackByWeekAllDayEvent,
-  trackByWeekTimeEvent
+  trackByWeekTimeEvent,
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
   DragEndEvent,
   DropEvent,
   DragMoveEvent,
-  ValidateDrag
+  ValidateDrag,
 } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
 
@@ -156,6 +156,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             }"
             [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
             [validateDrag]="validateDrag"
+            [touchStartLongPress]="{ delay: 300, delta: 30 }"
             (dragStart)="dragStarted(eventRowContainer, event)"
             (dragging)="allDayEventDragMove()"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"
@@ -300,6 +301,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                       }
                     : {}
                 "
+                [touchStartLongPress]="{ delay: 300, delta: 30 }"
                 [ghostDragEnabled]="!snapDraggedEvents"
                 [validateDrag]="validateDrag"
                 (dragStart)="dragStarted(dayColumns, event, timeEvent)"
@@ -398,7 +400,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
@@ -625,7 +627,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   eventDragEnterByType = {
     allDay: 0,
-    time: 0
+    time: 0,
   };
 
   /**
@@ -661,6 +663,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  lastDraggedEvent: CalendarEvent;
+
+  /**
+   * @hidden
+   */
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 
   /**
@@ -691,17 +698,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
-    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
-
-  /**
-   * @hidden
-   */
-  trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
-
-  /**
-   * @hidden
-   */
   constructor(
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
@@ -710,6 +706,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     this.locale = locale;
   }
+
+  /**
+   * @hidden
+   */
+  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+
+  /**
+   * @hidden
+   */
+  trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
 
   /**
    * @hidden
@@ -775,17 +782,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
-    this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
-    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
-      eventsContainer,
-      minWidth
-    );
-    this.validateResize = ({ rectangle }) =>
-      resizeHelper.validateResize({ rectangle });
-    this.cdr.markForCheck();
-  }
-
   /**
    * @hidden
    */
@@ -837,7 +833,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newStart: newEventDates.start,
         newEnd: newEventDates.end,
         event: timeEvent.event,
-        type: CalendarEventTimesChangedEventType.Resize
+        type: CalendarEventTimesChangedEventType.Resize,
       });
     }
   }
@@ -853,7 +849,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.allDayEventResizes.set(allDayEvent, {
       originalOffset: allDayEvent.offset,
       originalSpan: allDayEvent.span,
-      edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right'
+      edge: typeof resizeEvent.edges.left !== 'undefined' ? 'left' : 'right',
     });
     this.resizeStarted(
       allDayEventsContainer,
@@ -925,7 +921,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newStart,
         newEnd,
         event: allDayEvent.event,
-        type: CalendarEventTimesChangedEventType.Resize
+        type: CalendarEventTimesChangedEventType.Resize,
       });
       this.allDayEventResizes.delete(allDayEvent);
     }
@@ -955,15 +951,18 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     if (
       shouldFireDroppedEvent(dropEvent, date, allDay, this.calendarId) &&
-      this.lastDragEnterDate.getTime() === date.getTime()
+      this.lastDragEnterDate.getTime() === date.getTime() &&
+      (!this.snapDraggedEvents ||
+        dropEvent.dropData.event !== this.lastDraggedEvent)
     ) {
       this.eventTimesChanged.emit({
         type: CalendarEventTimesChangedEventType.Drop,
         event: dropEvent.dropData.event,
         newStart: date,
-        allDay
+        allDay,
       });
     }
+    this.lastDraggedEvent = null;
   }
 
   /**
@@ -1001,18 +1000,19 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         y,
         snapDraggedEvents: this.snapDraggedEvents,
         dragAlreadyMoved: this.dragAlreadyMoved,
-        transform
+        transform,
       });
     this.dragActive = true;
     this.dragAlreadyMoved = false;
+    this.lastDraggedEvent = null;
     this.eventDragEnterByType = {
       allDay: 0,
-      time: 0
+      time: 0,
     };
     if (!this.snapDraggedEvents && dayEvent) {
-      this.view.hourColumns.forEach(column => {
+      this.view.hourColumns.forEach((column) => {
         const linkedEvent = column.events.find(
-          columnEvent =>
+          (columnEvent) =>
             columnEvent.event === dayEvent.event && columnEvent !== dayEvent
         );
         // hide any linked events while dragging
@@ -1038,7 +1038,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       );
       const originalEvent = dayEvent.event;
       const adjustedEvent = { ...originalEvent, ...newEventTimes };
-      const tempEvents = this.events.map(event => {
+      const tempEvents = this.events.map((event) => {
         if (event === originalEvent) {
           return adjustedEvent;
         }
@@ -1070,6 +1070,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ): void {
     this.view = this.getWeekView(this.events);
     this.dragActive = false;
+    this.validateDrag = null;
     const { start, end } = this.getDragMovedEventTimes(
       weekEvent,
       dragEndEvent,
@@ -1077,15 +1078,17 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       useY
     );
     if (
-      this.eventDragEnterByType[useY ? 'time' : 'allDay'] > 0 &&
+      (this.snapDraggedEvents ||
+        this.eventDragEnterByType[useY ? 'time' : 'allDay'] > 0) &&
       isDraggedWithinPeriod(start, end, this.view.period)
     ) {
+      this.lastDraggedEvent = weekEvent.event;
       this.eventTimesChanged.emit({
         newStart: start,
         newEnd: end,
         event: weekEvent.event,
         type: CalendarEventTimesChangedEventType.Drag,
-        allDay: !useY
+        allDay: !useY,
       });
     }
   }
@@ -1102,7 +1105,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.weekStartsOn,
         this.excludeDays,
         this.daysInWeek
-      )
+      ),
     });
   }
 
@@ -1120,7 +1123,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.days && this.view) {
       this.beforeViewRender.emit({
         header: this.days,
-        ...this.view
+        ...this.view,
       });
     }
   }
@@ -1137,11 +1140,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       hourDuration: this.hourDuration,
       dayStart: {
         hour: this.dayStartHour,
-        minute: this.dayStartMinute
+        minute: this.dayStartMinute,
       },
       dayEnd: {
         hour: this.dayEndHour,
-        minute: this.dayEndMinute
+        minute: this.dayEndMinute,
       },
       segmentHeight: this.hourSegmentHeight,
       weekendDays: this.weekendDays,
@@ -1151,7 +1154,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.weekStartsOn,
         this.excludeDays,
         this.daysInWeek
-      )
+      ),
     });
   }
 
@@ -1203,7 +1206,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     const previousView = this.view;
     this.view = this.getWeekView(tempEvents);
-    const adjustedEventsArray = tempEvents.filter(event =>
+    const adjustedEventsArray = tempEvents.filter((event) =>
       adjustedEvents.has(event)
     );
     this.view.hourColumns.forEach((column, columnIndex) => {
@@ -1213,25 +1216,28 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
             segment.cssClass;
         });
       });
-      adjustedEventsArray.forEach(adjustedEvent => {
+      adjustedEventsArray.forEach((adjustedEvent) => {
         const originalEvent = adjustedEvents.get(adjustedEvent);
         const existingColumnEvent = column.events.find(
-          columnEvent => columnEvent.event === adjustedEvent
+          (columnEvent) => columnEvent.event === adjustedEvent
         );
         if (existingColumnEvent) {
           // restore the original event so trackBy kicks in and the dom isn't changed
           existingColumnEvent.event = originalEvent;
+          existingColumnEvent['tempEvent'] = adjustedEvent;
         } else {
           // add a dummy event to the drop so if the event was removed from the original column the drag doesn't end early
-          column.events.push({
+          const event = {
             event: originalEvent,
             left: 0,
             top: 0,
             height: 0,
             width: 0,
             startsBeforeDay: false,
-            endsAfterDay: false
-          });
+            endsAfterDay: false,
+            tempEvent: adjustedEvent,
+          };
+          column.events.push(event);
         }
       });
     });
@@ -1253,7 +1259,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.dateAdapter,
         calendarEvent,
         minimumEventHeight
-      )
+      ),
     };
     const { end, ...eventWithoutEnd } = calendarEvent;
     const smallestResizes = {
@@ -1265,7 +1271,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         this.dateAdapter,
         eventWithoutEnd,
         minimumEventHeight
-      )
+      ),
     };
 
     if (typeof resizeEvent.edges.left !== 'undefined') {
@@ -1337,5 +1343,16 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     return newEventDates;
+  }
+
+  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
+    this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
+    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
+      eventsContainer,
+      minWidth
+    );
+    this.validateResize = ({ rectangle }) =>
+      resizeHelper.validateResize({ rectangle });
+    this.cdr.markForCheck();
   }
 }

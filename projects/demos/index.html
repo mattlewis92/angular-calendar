@@ -6,17 +6,29 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Angular 6.0+ calendar</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <style type="text/css">
+      .formkit-slide-in {
+        max-width: 350px !important;
+        z-index: 1 !important;
+      }
+
+      .formkit-slide-in .formkit-close {
+        z-index: 3;
+        top: 0 !important;
+      }
+    </style>
   </head>
   <body>
     <mwl-demo-app>Loading demo...</mwl-demo-app>
 
     <!-- Google Analytics -->
     <script>
-      (function(i, s, o, g, r, a, m) {
+      (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         (i[r] =
           i[r] ||
-          function() {
+          function () {
             (i[r].q = i[r].q || []).push(arguments);
           }),
           (i[r].l = 1 * new Date());

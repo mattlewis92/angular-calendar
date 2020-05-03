@@ -8,7 +8,7 @@
 
 import {
   WorkspaceSchema,
-  WorkspaceProject
+  WorkspaceProject,
 } from '@schematics/angular/utility/workspace-models';
 
 /**

@@ -4,7 +4,7 @@ import { CalendarEventActionsComponent } from './calendar-event-actions.componen
 import { CalendarEventTitleComponent } from './calendar-event-title.component';
 import {
   CalendarTooltipDirective,
-  CalendarTooltipWindowComponent
+  CalendarTooltipWindowComponent,
 } from './calendar-tooltip.directive';
 import { CalendarPreviousViewDirective } from './calendar-previous-view.directive';
 import { CalendarNextViewDirective } from './calendar-next-view.directive';
@@ -43,7 +43,7 @@ export {
   CalendarEvent,
   EventAction as CalendarEventAction,
   DAYS_OF_WEEK,
-  ViewPeriod as CalendarViewPeriod
+  ViewPeriod as CalendarViewPeriod,
 } from 'calendar-utils';
 
 /**
@@ -75,7 +75,7 @@ export {
     CalendarEventTitlePipe,
     CalendarA11yPipe,
     ClickDirective,
-    KeydownEnterDirective
+    KeydownEnterDirective,
   ],
   imports: [CommonModule],
   exports: [
@@ -90,16 +90,16 @@ export {
     CalendarEventTitlePipe,
     CalendarA11yPipe,
     ClickDirective,
-    KeydownEnterDirective
+    KeydownEnterDirective,
   ],
   providers: [I18nPluralPipe],
-  entryComponents: [CalendarTooltipWindowComponent]
+  entryComponents: [CalendarTooltipWindowComponent],
 })
 export class CalendarCommonModule {
   static forRoot(
     dateAdapter: Provider,
     config: CalendarModuleConfig = {}
-  ): ModuleWithProviders {
+  ): ModuleWithProviders<CalendarCommonModule> {
     return {
       ngModule: CalendarCommonModule,
       providers: [
@@ -107,8 +107,8 @@ export class CalendarCommonModule {
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
         config.utils || CalendarUtils,
-        config.a11y || CalendarA11y
-      ]
+        config.a11y || CalendarA11y,
+      ],
     };
   }
 }

@@ -31,7 +31,7 @@ async function getSources(folder: string): Promise<Source[]> {
     const languages: { [extension: string]: string } = {
       ts: 'typescript',
       html: 'html',
-      css: 'css'
+      css: 'css',
     };
     return {
       filename,
@@ -50,9 +50,9 @@ async function getSources(folder: string): Promise<Source[]> {
           .replace(
             '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
             ''
-          )
+          ),
       },
-      language: languages[extension]
+      language: languages[extension],
     };
   });
 }
@@ -72,16 +72,16 @@ const dependencyVersions: any = {
   zoneJs: require('zone.js/package.json').version,
   ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
   rrule: require('rrule/package.json').version,
-  fontAwesome: require('font-awesome/package.json').version,
+  fontAwesome: require('@fortawesome/fontawesome-free/package.json').version,
   positioning: require('positioning/package.json').version,
   flatpickr: require('flatpickr/package.json').version,
-  angularxFlatpickr: require('angularx-flatpickr/package.json').version
+  angularxFlatpickr: require('angularx-flatpickr/package.json').version,
 };
 
 @Component({
   selector: 'mwl-demo-app',
   styleUrls: ['./demo-app.css'],
-  templateUrl: './demo-app.html'
+  templateUrl: './demo-app.html',
 })
 export class DemoAppComponent implements OnInit {
   demos: Demo[] = [];
@@ -97,27 +97,29 @@ export class DemoAppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const defaultRoute = this.router.config.find(route => route.path === '**');
+    const defaultRoute = this.router.config.find(
+      (route) => route.path === '**'
+    );
 
     this.demos = this.router.config
-      .filter(route => route.path !== '**')
-      .map(route => ({
+      .filter((route) => route.path !== '**')
+      .map((route) => ({
         path: route.path,
         label: route.data.label,
         darkTheme: route.data.darkTheme,
-        tags: route.data.tags || []
+        tags: route.data.tags || [],
       }));
     this.updateFilteredDemos();
 
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .pipe(take(1))
       .subscribe(() => {
         this.firstDemoLoaded = true;
       });
 
     this.router.events
-      .pipe(filter(event => event instanceof NavigationStart))
+      .pipe(filter((event) => event instanceof NavigationStart))
       .pipe(
         map((event: NavigationStart) => {
           if (event.url === '/') {
@@ -128,17 +130,23 @@ export class DemoAppComponent implements OnInit {
       )
       .subscribe(async (event: NavigationStart) => {
         this.activeDemo = this.demos.find(
-          demo => `/${demo.path}` === event.url
+          (demo) => `/${demo.path}` === event.url
         );
         this.activeDemo.sources = await getSources(this.activeDemo.path);
       });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('data-uid', '7c1627e655');
+    script.src = 'https://angular-calendar.ck.page/7c1627e655/index.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
   }
 
   updateFilteredDemos() {
     this.filteredDemos = this.demos.filter(
-      demo =>
+      (demo) =>
         !this.searchText ||
-        [demo.label.toLowerCase(), ...demo.tags].some(tag =>
+        [demo.label.toLowerCase(), ...demo.tags].some((tag) =>
           tag.includes(this.searchText.toLowerCase())
         )
     );
@@ -150,7 +158,7 @@ export class DemoAppComponent implements OnInit {
     } = {
       'index.html': `
 <link href="https://unpkg.com/bootstrap-css-only@${dependencyVersions.bootstrap}/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://unpkg.com/font-awesome@${dependencyVersions.fontAwesome}/css/font-awesome.css" rel="stylesheet">
+<link href="https://unpkg.com/@fortawesome/fontawesome-free@${dependencyVersions.fontAwesome}/css/all.css" rel="stylesheet">
 <link href="https://unpkg.com/angular-calendar@${dependencyVersions.angularCalendar}/css/angular-calendar.css" rel="stylesheet">
 <link href="https://unpkg.com/flatpickr@${dependencyVersions.flatpickr}/dist/flatpickr.css" rel="stylesheet">
 <mwl-demo-component>Loading...</mwl-demo-component>
@@ -185,14 +193,14 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
 
   // Otherwise, log the boot error
 }).catch(err => console.error(err));
-`.trim()
+`.trim(),
     };
 
-    demoUtilsSources.forEach(source => {
+    demoUtilsSources.forEach((source) => {
       files[`demo-utils/${source.filename}`] = source.contents.raw.default;
     });
 
-    demo.sources.forEach(source => {
+    demo.sources.forEach((source) => {
       files[`demo/${source.filename}`] = source.contents.raw;
     });
 
@@ -222,11 +230,12 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           rrule: dependencyVersions.rrule,
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
-          'angularx-flatpickr': dependencyVersions.angularxFlatpickr
-        }
+          'angularx-flatpickr': dependencyVersions.angularxFlatpickr,
+          'core-js': '2',
+        },
       },
       {
-        openFile: 'demo/component.ts'
+        openFile: 'demo/component.ts',
       }
     );
   }

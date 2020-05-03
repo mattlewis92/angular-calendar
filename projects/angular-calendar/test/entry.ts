@@ -16,7 +16,7 @@ import * as sinonChai from 'sinon-chai';
 import { getTestBed } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
+  platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 import * as sinon from 'sinon';
 

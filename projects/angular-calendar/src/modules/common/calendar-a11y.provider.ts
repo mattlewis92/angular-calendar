@@ -57,7 +57,7 @@ export class CalendarA11y {
         ${this.i18nPlural.transform(day.badgeTotal, {
           '=0': 'No events',
           '=1': 'One event',
-          other: '# events'
+          other: '# events',
         })},
          click to expand
       `;

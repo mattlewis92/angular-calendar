@@ -15,8 +15,8 @@ import { colors } from '../demo-utils/colors';
         flex-direction: column;
         align-items: stretch;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
@@ -31,7 +31,7 @@ export class DemoComponent {
     this.events.push({
       start: date,
       title: 'New event',
-      color: colors.red
+      color: colors.red,
     });
     this.refresh.next();
   }

@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.13](https://github.com/mattlewis92/angular-calendar/compare/v0.28.11...v0.28.13) (2020-05-03)
+
+
+### Bug Fixes
+
+* **month-view:** dont fire click event when dropping event in cell ([1b81353](https://github.com/mattlewis92/angular-calendar/commit/1b8135357bf8da501136b46c2cb5381c74de24a8)), closes [#1237](https://github.com/mattlewis92/angular-calendar/issues/1237)
+* **week-view:** update event title time when dragging and resizing ([b31e35b](https://github.com/mattlewis92/angular-calendar/commit/b31e35b2fae177dc10253c44a30468c57608754e)), closes [#1238](https://github.com/mattlewis92/angular-calendar/issues/1238)
+
+### [0.28.11](https://github.com/mattlewis92/angular-calendar/compare/v0.28.10...v0.28.11) (2020-04-19)
+
+
+### Bug Fixes
+
+* fix scroll issues on touch devices when dragging ([4cb3314](https://github.com/mattlewis92/angular-calendar/commit/4cb33148065a5b608385b90d5dee49b9510f19a3))
+
+### [0.28.10](https://github.com/mattlewis92/angular-calendar/compare/v0.28.9...v0.28.10) (2020-04-18)
+
+
+### Bug Fixes
+
+* fix click and scroll events on touch devices ([fe08a96](https://github.com/mattlewis92/angular-calendar/commit/fe08a967f0966b0a14e9f500f09006d87fbe6945)), closes [#1144](https://github.com/mattlewis92/angular-calendar/issues/1144)
+* **tooltip:** hide tooltip when dragging starts ([f565162](https://github.com/mattlewis92/angular-calendar/commit/f565162c0839841e578fa5c1111bac39432c66e9))
+
+### [0.28.9](https://github.com/mattlewis92/angular-calendar/compare/v0.28.8...v0.28.9) (2020-04-18)
+
+
+### Bug Fixes
+
+* **week-view:** allow dragging all day events multiple times ([253ef80](https://github.com/mattlewis92/angular-calendar/commit/253ef804b391b079dd8af69f07e107739169e664)), closes [#1173](https://github.com/mattlewis92/angular-calendar/issues/1173)
+
+### [0.28.8](https://github.com/mattlewis92/angular-calendar/compare/v0.28.7...v0.28.8) (2020-04-13)
+
+
+### Bug Fixes
+
+* **month-view:** show all weeks with view range and excluding days ([3d5f00b](https://github.com/mattlewis92/angular-calendar/commit/3d5f00b7709f5649a990ea79e50ec49c9b1842ce)), closes [#1201](https://github.com/mattlewis92/angular-calendar/issues/1201)
+
+### [0.28.7](https://github.com/mattlewis92/angular-calendar/compare/v0.28.6...v0.28.7) (2020-04-12)
+
+
+### Bug Fixes
+
+* make universal rendering work without any hacks ([40de98d](https://github.com/mattlewis92/angular-calendar/commit/40de98d344f4a0140939b4ce63cf9cb57b01303c)), closes [#1211](https://github.com/mattlewis92/angular-calendar/issues/1211)
+* **universal:** remove need to add KeyboardEvent hack to server.ts ([0e9e8d1](https://github.com/mattlewis92/angular-calendar/commit/0e9e8d1d0fba4dc4eb3ad0743f2eb927048b97e6))
+
+### [0.28.6](https://github.com/mattlewis92/angular-calendar/compare/v0.28.5...v0.28.6) (2020-04-12)
+
+
+### Bug Fixes
+
+* add module type for ivy compatibility ([c622cd8](https://github.com/mattlewis92/angular-calendar/commit/c622cd860fe9ec9e01e66496a24f6a2a7a0333d4)), closes [#1214](https://github.com/mattlewis92/angular-calendar/issues/1214) [#1218](https://github.com/mattlewis92/angular-calendar/issues/1218)
+
 ### [0.28.5](https://github.com/mattlewis92/angular-calendar/compare/v0.28.4...v0.28.5) (2020-03-01)
 
 

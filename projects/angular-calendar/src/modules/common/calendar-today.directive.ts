@@ -3,7 +3,7 @@ import {
   HostListener,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 
@@ -19,7 +19,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
  * ```
  */
 @Directive({
-  selector: '[mwlCalendarToday]'
+  selector: '[mwlCalendarToday]',
 })
 export class CalendarTodayDirective {
   /**

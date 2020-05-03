@@ -3,12 +3,12 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import {
   WeekViewAllDayEvent,
   WeekViewTimeEvent,
-  WeekViewHourColumn
+  WeekViewHourColumn,
 } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
 
@@ -38,11 +38,11 @@ import { PlacementArray } from 'positioning';
             ? (weekEvent.event.title
               | calendarEventTitle
                 : (daysInWeek === 1 ? 'dayTooltip' : 'weekTooltip')
-                : weekEvent.event)
+                : weekEvent.tempEvent || weekEvent.event)
             : ''
         "
         [tooltipPlacement]="tooltipPlacement"
-        [tooltipEvent]="weekEvent.event"
+        [tooltipEvent]="weekEvent.tempEvent || weekEvent.event"
         [tooltipTemplate]="tooltipTemplate"
         [tooltipAppendToBody]="tooltipAppendToBody"
         [tooltipDelay]="tooltipDelay"
@@ -51,18 +51,18 @@ import { PlacementArray } from 'positioning';
         tabindex="0"
         role="application"
         [attr.aria-label]="
-          { event: weekEvent.event, locale: locale }
+          { event: weekEvent.tempEvent || weekEvent.event, locale: locale }
             | calendarA11y: 'eventDescription'
         "
       >
         <mwl-calendar-event-actions
-          [event]="weekEvent.event"
+          [event]="weekEvent.tempEvent || weekEvent.event"
           [customTemplate]="eventActionsTemplate"
         >
         </mwl-calendar-event-actions>
         &ngsp;
         <mwl-calendar-event-title
-          [event]="weekEvent.event"
+          [event]="weekEvent.tempEvent || weekEvent.event"
           [customTemplate]="eventTitleTemplate"
           [view]="daysInWeek === 1 ? 'day' : 'week'"
         >
@@ -84,7 +84,7 @@ import { PlacementArray } from 'positioning';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarWeekViewEventComponent {
   @Input() locale: string;

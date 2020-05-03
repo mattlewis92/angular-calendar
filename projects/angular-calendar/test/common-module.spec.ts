@@ -10,7 +10,7 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   MOMENT,
-  DateAdapter
+  DateAdapter,
 } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
@@ -20,9 +20,9 @@ describe('common module', () => {
       imports: [
         CalendarCommonModule.forRoot({
           provide: DateAdapter,
-          useFactory: adapterFactory
-        })
-      ]
+          useFactory: adapterFactory,
+        }),
+      ],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
@@ -36,39 +36,22 @@ describe('common module', () => {
         CalendarCommonModule.forRoot(
           {
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
           },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter
-            }
+              useClass: CalendarMomentDateFormatter,
+            },
           }
-        )
+        ),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }]
+      providers: [{ provide: MOMENT, useValue: moment }],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
     );
     expect(dateFormatter).not.to.be.an.instanceOf(CalendarDateFormatter);
     expect(dateFormatter).to.be.an.instanceOf(CalendarMomentDateFormatter);
-  });
-
-  it('should allow just the month view to be created', () => {
-    TestBed.configureTestingModule({
-      imports: [
-        CalendarCommonModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory
-        }),
-        CalendarMonthModule
-      ]
-    });
-    expect(() =>
-      TestBed.createComponent(CalendarMonthViewComponent)
-    ).not.to.throw();
-    expect(() => TestBed.createComponent(CalendarWeekViewComponent)).to.throw();
-    expect(() => TestBed.createComponent(CalendarDayViewComponent)).to.throw();
   });
 });

@@ -6,7 +6,7 @@ import {
   CalendarModule,
   CalendarMomentDateFormatter,
   DateAdapter,
-  MOMENT
+  MOMENT,
 } from 'angular-calendar';
 import moment from 'moment-timezone';
 import { DemoUtilsModule } from '../demo-utils/module';
@@ -23,25 +23,25 @@ export function momentAdapterFactory() {
     CalendarModule.forRoot(
       {
         provide: DateAdapter,
-        useFactory: momentAdapterFactory
+        useFactory: momentAdapterFactory,
       },
       {
         dateFormatter: {
           provide: CalendarDateFormatter,
-          useClass: CalendarMomentDateFormatter
-        }
+          useClass: CalendarMomentDateFormatter,
+        },
       }
     ),
     DemoUtilsModule,
-    RouterModule.forChild([{ path: '', component: DemoComponent }])
+    RouterModule.forChild([{ path: '', component: DemoComponent }]),
   ],
   declarations: [DemoComponent],
   exports: [DemoComponent],
   providers: [
     {
       provide: MOMENT,
-      useValue: moment
-    }
-  ]
+      useValue: moment,
+    },
+  ],
 })
 export class DemoModule {}
