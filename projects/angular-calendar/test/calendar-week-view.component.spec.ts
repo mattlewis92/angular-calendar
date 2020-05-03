@@ -2652,6 +2652,67 @@ describe('calendarWeekView component', () => {
     fixture.destroy();
   });
 
+  it('should drag a time event down and into another day', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
+      CalendarWeekViewComponent
+    );
+    fixture.componentInstance.viewDate = new Date('2020-05-03');
+    fixture.componentInstance.daysInWeek = 2;
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2020-05-03')).startOf('day').hours(20).toDate(),
+        end: moment(new Date('2020-05-03')).startOf('day').hours(23).toDate(),
+        title: 'foo',
+        draggable: true,
+      },
+    ];
+    fixture.componentInstance.ngOnChanges({
+      viewDate: {},
+      events: {},
+    });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const events = fixture.nativeElement.querySelectorAll(
+      '.cal-event-container'
+    );
+    const rect1: ClientRect = events[0].getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe((e) => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', events[0], {
+      clientX: 0,
+      clientY: rect1.bottom,
+      button: 0,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', events[0], {
+      clientX: 0,
+      clientY: rect1.bottom + 95,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mouseup', events[0], {
+      clientX: 0,
+      clientY: rect1.bottom + 95,
+      button: 0,
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drag',
+      allDay: false,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(1, 'hour')
+        .add(30, 'minutes')
+        .toDate(),
+    });
+  });
+
   describe('current time marker', () => {
     let clock: any;
     beforeEach(() => {
