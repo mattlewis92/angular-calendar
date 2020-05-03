@@ -1215,9 +1215,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         if (existingColumnEvent) {
           // restore the original event so trackBy kicks in and the dom isn't changed
           existingColumnEvent.event = originalEvent;
+          existingColumnEvent['tempEvent'] = adjustedEvent;
         } else {
           // add a dummy event to the drop so if the event was removed from the original column the drag doesn't end early
-          column.events.push({
+          const event = {
             event: originalEvent,
             left: 0,
             top: 0,
@@ -1225,7 +1226,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
             width: 0,
             startsBeforeDay: false,
             endsAfterDay: false,
-          });
+            tempEvent: adjustedEvent,
+          };
+          column.events.push(event);
         }
       });
     });
