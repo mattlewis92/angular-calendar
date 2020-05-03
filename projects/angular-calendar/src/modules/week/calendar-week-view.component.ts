@@ -499,9 +499,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() hourSegments: number = 2;
 
   /**
-   * Segment duration in minutes. Overlap hourSegments property
+   * The duration of each segment group in minutes
    */
-  @Input() hourDuration: number | null = null;
+  @Input() hourDuration: number;
 
   /**
    * The height in pixels of each hour segment
