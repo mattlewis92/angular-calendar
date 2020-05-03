@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.13](https://github.com/mattlewis92/angular-calendar/compare/v0.28.11...v0.28.13) (2020-05-03)
+
+
+### Bug Fixes
+
+* **month-view:** dont fire click event when dropping event in cell ([1b81353](https://github.com/mattlewis92/angular-calendar/commit/1b8135357bf8da501136b46c2cb5381c74de24a8)), closes [#1237](https://github.com/mattlewis92/angular-calendar/issues/1237)
+* **week-view:** update event title time when dragging and resizing ([b31e35b](https://github.com/mattlewis92/angular-calendar/commit/b31e35b2fae177dc10253c44a30468c57608754e)), closes [#1238](https://github.com/mattlewis92/angular-calendar/issues/1238)
+
 ### [0.28.11](https://github.com/mattlewis92/angular-calendar/compare/v0.28.10...v0.28.11) (2020-04-19)
 
 
