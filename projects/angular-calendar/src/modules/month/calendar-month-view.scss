@@ -95,6 +95,10 @@ $cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
     display: flex;
     flex-direction: column;
     align-items: stretch;
+
+    .cal-event {
+      pointer-events: all !important;
+    }
   }
 
   .cal-day-cell {
