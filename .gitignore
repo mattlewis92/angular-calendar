@@ -34,6 +34,7 @@ yarn-error.log
 testem.log
 /typings
 projects/angular-calendar/package.json
+projects/angular-calendar/schematics/ng-add/package.json
 
 # System Files
 .DS_Store
