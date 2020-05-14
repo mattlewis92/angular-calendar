@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.14](https://github.com/mattlewis92/angular-calendar/compare/v0.28.13...v0.28.14) (2020-05-14)
+
+
+### Bug Fixes
+
+* **schematics:** fix error on install ([4afe3ae](https://github.com/mattlewis92/angular-calendar/commit/4afe3ae50eecfc04461080064b5946e5e9c0be5d)), closes [#1253](https://github.com/mattlewis92/angular-calendar/issues/1253)
+* re-add peer dependencies ([19588d6](https://github.com/mattlewis92/angular-calendar/commit/19588d65e05f87c4c7c32c12bc543009db7a48bd))
+
 ### [0.28.13](https://github.com/mattlewis92/angular-calendar/compare/v0.28.11...v0.28.13) (2020-05-03)
 
 
