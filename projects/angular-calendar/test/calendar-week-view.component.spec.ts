@@ -2488,7 +2488,7 @@ describe('calendarWeekView component', () => {
     const updatedEvent1 = fixture.nativeElement.querySelector(
       '.cal-event-container'
     );
-    expect(updatedEvent1.innerText).to.equal('4:30 - 6:30');
+    expect(updatedEvent1.innerText.trim()).to.equal('4:30 - 6:30');
   });
 
   describe('current time marker', () => {
