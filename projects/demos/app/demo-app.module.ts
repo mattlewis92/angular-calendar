@@ -451,6 +451,14 @@ import { ClipboardModule } from 'ngx-clipboard';
           },
         },
         {
+          path: 'rtl',
+          loadChildren: () =>
+            import('./demo-modules/rtl/module').then((m) => m.DemoModule),
+          data: {
+            label: 'RTL',
+          },
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink',
         },

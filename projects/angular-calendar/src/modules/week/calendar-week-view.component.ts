@@ -10,6 +10,8 @@ import {
   LOCALE_ID,
   Inject,
   TemplateRef,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import {
@@ -133,7 +135,14 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"
             [ngClass]="allDayEvent.event?.cssClass"
             [style.width.%]="(100 / days.length) * allDayEvent.span"
-            [style.marginLeft.%]="(100 / days.length) * allDayEvent.offset"
+            [style.marginLeft.%]="
+              rtl ? null : (100 / days.length) * allDayEvent.offset
+            "
+            [style.marginRight.%]="
+              rtl
+                ? (100 / days.length) * (days.length - allDayEvent.offset) * -1
+                : null
+            "
             mwlResizable
             [resizeSnapGrid]="{ left: dayColumnWidth, right: dayColumnWidth }"
             [validateResize]="validateResize"
@@ -408,7 +417,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
     </div>
   `,
 })
-export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
+export class CalendarWeekViewComponent
+  implements OnChanges, OnInit, OnDestroy, AfterViewInit {
   /**
    * The current view date
    */
@@ -679,6 +689,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
+  rtl = false;
+
+  /**
+   * @hidden
+   */
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 
   /**
@@ -713,7 +728,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter,
+    protected element: ElementRef<HTMLElement>
   ) {
     this.locale = locale;
   }
@@ -792,6 +808,14 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
+  }
+
+  /**
+   * @hidden
+   */
+  ngAfterViewInit() {
+    this.rtl = getComputedStyle(this.element.nativeElement).direction === 'rtl';
+    this.cdr.detectChanges();
   }
 
   /**
@@ -881,12 +905,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       allDayEvent
     );
 
+    const modifier = this.rtl ? -1 : 1;
     if (typeof resizeEvent.edges.left !== 'undefined') {
-      const diff: number = Math.round(+resizeEvent.edges.left / dayWidth);
+      const diff: number =
+        Math.round(+resizeEvent.edges.left / dayWidth) * modifier;
       allDayEvent.offset = currentResize.originalOffset + diff;
       allDayEvent.span = currentResize.originalSpan - diff;
     } else if (typeof resizeEvent.edges.right !== 'undefined') {
-      const diff: number = Math.round(+resizeEvent.edges.right / dayWidth);
+      const diff: number =
+        Math.round(+resizeEvent.edges.right / dayWidth) * modifier;
       allDayEvent.span = currentResize.originalSpan + diff;
     }
   }
@@ -1176,7 +1203,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     dayWidth: number,
     useY: boolean
   ) {
-    const daysDragged = roundToNearest(dragEndEvent.x, dayWidth) / dayWidth;
+    const daysDragged =
+      (roundToNearest(dragEndEvent.x, dayWidth) / dayWidth) *
+      (this.rtl ? -1 : 1);
     const minutesMoved = useY
       ? getMinutesMoved(
           dragEndEvent.y,
@@ -1292,10 +1321,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       ),
     };
 
+    const modifier = this.rtl ? -1 : 1;
+
     if (typeof resizeEvent.edges.left !== 'undefined') {
-      const daysDiff = Math.round(
-        +resizeEvent.edges.left / this.dayColumnWidth
-      );
+      const daysDiff =
+        Math.round(+resizeEvent.edges.left / this.dayColumnWidth) * modifier;
       const newStart = addDaysWithExclusions(
         this.dateAdapter,
         newEventDates.start,
@@ -1308,9 +1338,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         newEventDates.start = smallestResizes.start;
       }
     } else if (typeof resizeEvent.edges.right !== 'undefined') {
-      const daysDiff = Math.round(
-        +resizeEvent.edges.right / this.dayColumnWidth
-      );
+      const daysDiff =
+        Math.round(+resizeEvent.edges.right / this.dayColumnWidth) * modifier;
       const newEnd = addDaysWithExclusions(
         this.dateAdapter,
         newEventDates.end,
@@ -1367,10 +1396,11 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
     const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
       eventsContainer,
-      minWidth
+      minWidth,
+      this.rtl
     );
-    this.validateResize = ({ rectangle }) =>
-      resizeHelper.validateResize({ rectangle });
+    this.validateResize = ({ rectangle, edges }) =>
+      resizeHelper.validateResize({ rectangle: { ...rectangle }, edges });
     this.cdr.markForCheck();
   }
 }

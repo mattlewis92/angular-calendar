@@ -18,10 +18,20 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
     .cal-day-headers .cal-header {
       &:not(:last-child) {
         border-right-color: map-get($theme, border-color);
+
+        [dir='rtl'] & {
+          border-right-color: initial;
+          border-left: solid 1px map-get($theme, border-color) !important;
+        }
       }
 
       &:first-child {
         border-left-color: map-get($theme, border-color);
+
+        [dir='rtl'] & {
+          border-left-color: initial;
+          border-right-color: map-get($theme, border-color);
+        }
       }
     }
 
@@ -32,6 +42,11 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
 
     .cal-day-column {
       border-left-color: map-get($theme, border-color);
+
+      [dir='rtl'] & {
+        border-left-color: initial;
+        border-right-color: map-get($theme, border-color);
+      }
     }
 
     .cal-event {
@@ -92,6 +107,11 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
     display: flex;
     padding-left: 70px;
     border: 1px solid;
+
+    [dir='rtl'] & {
+      padding-left: initial;
+      padding-right: 70px;
+    }
   }
 
   .cal-day-headers .cal-header {
@@ -101,10 +121,20 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
 
     &:not(:last-child) {
       border-right: 1px solid;
+
+      [dir='rtl'] & {
+        border-right: initial;
+        border-left: 1px solid;
+      }
     }
 
     &:first-child {
       border-left: 1px solid;
+
+      [dir='rtl'] & {
+        border-left: initial;
+        border-right: 1px solid;
+      }
     }
   }
 
@@ -116,11 +146,17 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
   .cal-day-column {
     flex-grow: 1;
     border-left: solid 1px;
+
+    [dir='rtl'] & {
+      border-left: initial;
+      border-right: solid 1px;
+    }
   }
 
   .cal-event {
     font-size: 12px;
     border: 1px solid;
+    direction: ltr;
   }
 
   .cal-time-label-column {
@@ -155,6 +191,11 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
       position: relative;
       height: 31px;
       margin-left: 70px;
+
+      [dir='rtl'] & {
+        margin-left: initial;
+        margin-right: 70px;
+      }
     }
 
     .cal-event-container {
@@ -178,11 +219,25 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
     .cal-starts-within-week .cal-event {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
+
+      [dir='rtl'] & {
+        border-top-left-radius: initial;
+        border-bottom-left-radius: initial;
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+      }
     }
 
     .cal-ends-within-week .cal-event {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+
+      [dir='rtl'] & {
+        border-top-right-radius: initial;
+        border-bottom-right-radius: initial;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
     }
 
     .cal-time-label-column {
@@ -201,6 +256,11 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
 
       &.cal-resize-handle-after-end {
         right: 0;
+
+        [dir='rtl'] & {
+          right: initial;
+          left: 0;
+        }
       }
     }
   }
