@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.15](https://github.com/mattlewis92/angular-calendar/compare/v0.28.14...v0.28.15) (2020-05-16)
+
+
+### Bug Fixes
+
+* **week-view:** update event time when dragging and not snapping events ([558f6f3](https://github.com/mattlewis92/angular-calendar/commit/558f6f37e85793776723326d8171b080eb3dc3f2)), closes [#1238](https://github.com/mattlewis92/angular-calendar/issues/1238)
+
 ### [0.28.14](https://github.com/mattlewis92/angular-calendar/compare/v0.28.13...v0.28.14) (2020-05-14)
 
 
