@@ -814,7 +814,9 @@ export class CalendarWeekViewComponent
    * @hidden
    */
   ngAfterViewInit() {
-    this.rtl = getComputedStyle(this.element.nativeElement).direction === 'rtl';
+    this.rtl =
+      typeof window !== 'undefined' &&
+      getComputedStyle(this.element.nativeElement).direction === 'rtl';
     this.cdr.detectChanges();
   }
 
