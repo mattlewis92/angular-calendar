@@ -7,8 +7,9 @@ import {
   CalendarEvent,
   CalendarMonthViewDay,
   CalendarView,
+  CalendarWeekViewBeforeRenderEvent,
 } from 'angular-calendar';
-import { WeekViewHour } from 'calendar-utils';
+import { WeekViewHour, WeekViewHourColumn } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -34,7 +35,7 @@ export class DemoComponent {
 
   selectedDayViewDate: Date;
 
-  dayView: WeekViewHour[];
+  hourColumns: WeekViewHourColumn[];
 
   events: CalendarEvent[] = [];
 
@@ -73,21 +74,23 @@ export class DemoComponent {
     this.addSelectedDayViewClass();
   }
 
-  beforeDayViewRender(dayView: WeekViewHour[]) {
-    this.dayView = dayView;
+  beforeWeekOrDayViewRender(event: CalendarWeekViewBeforeRenderEvent) {
+    this.hourColumns = event.hourColumns;
     this.addSelectedDayViewClass();
   }
 
   private addSelectedDayViewClass() {
-    this.dayView.forEach((hourSegment) => {
-      hourSegment.segments.forEach((segment) => {
-        delete segment.cssClass;
-        if (
-          this.selectedDayViewDate &&
-          segment.date.getTime() === this.selectedDayViewDate.getTime()
-        ) {
-          segment.cssClass = 'cal-day-selected';
-        }
+    this.hourColumns.forEach((column) => {
+      column.hours.forEach((hourSegment) => {
+        hourSegment.segments.forEach((segment) => {
+          delete segment.cssClass;
+          if (
+            this.selectedDayViewDate &&
+            segment.date.getTime() === this.selectedDayViewDate.getTime()
+          ) {
+            segment.cssClass = 'cal-day-selected';
+          }
+        });
       });
     });
   }

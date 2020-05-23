@@ -23,6 +23,8 @@ import {
   WeekViewTimeEvent,
   EventColor,
   CalendarEvent,
+  WeekViewAllDayEventRow,
+  WeekViewAllDayEvent,
 } from 'calendar-utils';
 import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
 
@@ -102,6 +104,8 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
     super(cdr, utils, locale, dateAdapter, element);
   }
 
+  trackByUserId = (index: number, row: User) => row.id;
+
   ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
 
@@ -145,7 +149,7 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
   }
 
   dragEnded(
-    weekEvent: WeekViewTimeEvent,
+    weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent,
     dragEndEvent: DragEndEvent,
     dayWidth: number,
     useY = false
@@ -195,7 +199,10 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
     });
   }
 
-  private getDraggedUserColumn(dayEvent: WeekViewTimeEvent, xPixels: number) {
+  private getDraggedUserColumn(
+    dayEvent: WeekViewTimeEvent | WeekViewAllDayEvent,
+    xPixels: number
+  ) {
     const columnsMoved = Math.round(xPixels / this.dayColumnWidth);
     const currentColumnIndex = this.view.users.findIndex(
       (user) => user === dayEvent.event.meta.user
