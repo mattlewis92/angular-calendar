@@ -23,7 +23,10 @@ module.exports = (config) => {
         functions: 100,
       },
     },
-    reporters: ['mocha', 'coverage-istanbul'],
+    reporters: [
+      'mocha',
+      config.buildWebpack.options.codeCoverage ? 'coverage-istanbul' : null,
+    ].filter(Boolean),
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['ChromeHeadless'],
