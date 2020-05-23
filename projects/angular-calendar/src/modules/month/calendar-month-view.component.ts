@@ -237,14 +237,14 @@ export class CalendarMonthViewComponent
    * An output that will be called before the view is rendered for the current month.
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
-  @Output()
-  beforeViewRender = new EventEmitter<CalendarMonthViewBeforeRenderEvent>();
+  @Output() beforeViewRender = new EventEmitter<
+    CalendarMonthViewBeforeRenderEvent
+  >();
 
   /**
    * Called when the day cell is clicked
    */
-  @Output()
-  dayClicked = new EventEmitter<{
+  @Output() dayClicked = new EventEmitter<{
     day: MonthViewDay;
     sourceEvent: MouseEvent | KeyboardEvent;
   }>();
@@ -252,8 +252,7 @@ export class CalendarMonthViewComponent
   /**
    * Called when the event title is clicked
    */
-  @Output()
-  eventClicked = new EventEmitter<{
+  @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
     sourceEvent: MouseEvent | KeyboardEvent;
   }>();
