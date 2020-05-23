@@ -42,22 +42,22 @@ import { CalendarView } from 'angular-calendar';
         <div class="btn-group">
           <div
             class="btn btn-primary"
-            (click)="viewChange.emit('month')"
-            [class.active]="view === 'month'"
+            (click)="viewChange.emit(CalendarView.Month)"
+            [class.active]="view === CalendarView.Month"
           >
             Month
           </div>
           <div
             class="btn btn-primary"
-            (click)="viewChange.emit('week')"
-            [class.active]="view === 'week'"
+            (click)="viewChange.emit(CalendarView.Week)"
+            [class.active]="view === CalendarView.Week"
           >
             Week
           </div>
           <div
             class="btn btn-primary"
-            (click)="viewChange.emit('day')"
-            [class.active]="view === 'day'"
+            (click)="viewChange.emit(CalendarView.Day)"
+            [class.active]="view === CalendarView.Day"
           >
             Day
           </div>
@@ -68,13 +68,15 @@ import { CalendarView } from 'angular-calendar';
   `,
 })
 export class CalendarHeaderComponent {
-  @Input() view: CalendarView | 'month' | 'week' | 'day';
+  @Input() view: CalendarView;
 
   @Input() viewDate: Date;
 
   @Input() locale: string = 'en';
 
-  @Output() viewChange: EventEmitter<string> = new EventEmitter();
+  @Output() viewChange = new EventEmitter<CalendarView>();
 
-  @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
+  @Output() viewDateChange = new EventEmitter<Date>();
+
+  CalendarView = CalendarView;
 }

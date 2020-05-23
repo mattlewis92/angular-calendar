@@ -8,7 +8,7 @@
     "trace": true,
     "strictInjectionParameters": true,
     "preserveWhitespaces": true,
-    "fullTemplateTypeCheck": true
+    "strictTemplates": true
   },
   "files": [
     "main.ts",

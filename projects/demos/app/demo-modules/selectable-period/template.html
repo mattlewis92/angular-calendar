@@ -2,7 +2,7 @@
 </mwl-demo-utils-calendar-header>
 
 <div class="alert alert-info">
-  Click on a month view day or a day view hour to select it
+  Click on a month view day or a time on the week or day view to select it
 </div>
 
 <div [ngSwitch]="view">
@@ -18,13 +18,15 @@
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
+    (beforeViewRender)="beforeWeekOrDayViewRender($event)"
+    (hourSegmentClicked)="hourSegmentClicked($event.date)"
   >
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
-    (beforeViewRender)="beforeDayViewRender($event.body.hourGrid)"
+    (beforeViewRender)="beforeWeekOrDayViewRender($event)"
     (hourSegmentClicked)="hourSegmentClicked($event.date)"
   >
   </mwl-calendar-day-view>
