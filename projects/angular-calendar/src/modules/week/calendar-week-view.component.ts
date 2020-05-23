@@ -838,7 +838,7 @@ export class CalendarWeekViewComponent
     resizeEvent: ResizeEvent
   ): void {
     this.timeEventResizes.set(timeEvent.event, resizeEvent);
-    this.resizeStarted(eventsContainer);
+    this.resizeStarted(eventsContainer, timeEvent);
   }
 
   /**
@@ -900,6 +900,7 @@ export class CalendarWeekViewComponent
     });
     this.resizeStarted(
       allDayEventsContainer,
+      allDayEvent,
       this.getDayColumnWidth(allDayEventsContainer)
     );
   }
@@ -949,27 +950,15 @@ export class CalendarWeekViewComponent
       allDayEvent.offset = currentResize.originalOffset;
       allDayEvent.span = currentResize.originalSpan;
 
-      let newStart: Date = allDayEvent.event.start;
-      let newEnd: Date = allDayEvent.event.end || allDayEvent.event.start;
-      if (allDayEventResizingBeforeStart) {
-        newStart = addDaysWithExclusions(
-          this.dateAdapter,
-          newStart,
-          daysDiff,
-          this.excludeDays
-        );
-      } else {
-        newEnd = addDaysWithExclusions(
-          this.dateAdapter,
-          newEnd,
-          daysDiff,
-          this.excludeDays
-        );
-      }
+      const newDates = this.getAllDayEventResizedDates(
+        allDayEvent.event,
+        daysDiff,
+        allDayEventResizingBeforeStart
+      );
 
       this.eventTimesChanged.emit({
-        newStart,
-        newEnd,
+        newStart: newDates.start,
+        newEnd: newDates.end,
         event: allDayEvent.event,
         type: CalendarEventTimesChangedEventType.Resize,
       });
@@ -1422,15 +1411,87 @@ export class CalendarWeekViewComponent
     return newEventDates;
   }
 
-  protected resizeStarted(eventsContainer: HTMLElement, minWidth?: number) {
+  protected resizeStarted(
+    eventsContainer: HTMLElement,
+    event: WeekViewTimeEvent | WeekViewAllDayEvent,
+    dayWidth?: number
+  ) {
     this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
-    const resizeHelper: CalendarResizeHelper = new CalendarResizeHelper(
+    const resizeHelper = new CalendarResizeHelper(
       eventsContainer,
-      minWidth,
+      dayWidth,
       this.rtl
     );
-    this.validateResize = ({ rectangle, edges }) =>
-      resizeHelper.validateResize({ rectangle: { ...rectangle }, edges });
+    this.validateResize = ({ rectangle, edges }) => {
+      const isWithinBoundary = resizeHelper.validateResize({
+        rectangle: { ...rectangle },
+        edges,
+      });
+
+      if (isWithinBoundary && this.validateEventTimesChanged) {
+        let newEventDates;
+        if (!dayWidth) {
+          newEventDates = this.getTimeEventResizedDates(event.event, {
+            rectangle,
+            edges,
+          });
+        } else {
+          const modifier = this.rtl ? -1 : 1;
+          if (typeof edges.left !== 'undefined') {
+            const diff = Math.round(+edges.left / dayWidth) * modifier;
+            newEventDates = this.getAllDayEventResizedDates(
+              event.event,
+              diff,
+              !this.rtl
+            );
+          } else {
+            const diff = Math.round(+edges.right / dayWidth) * modifier;
+            newEventDates = this.getAllDayEventResizedDates(
+              event.event,
+              diff,
+              this.rtl
+            );
+          }
+        }
+        return this.validateEventTimesChanged({
+          type: CalendarEventTimesChangedEventType.Resize,
+          event: event.event,
+          newStart: newEventDates.start,
+          newEnd: newEventDates.end,
+        });
+      }
+
+      return isWithinBoundary;
+    };
     this.cdr.markForCheck();
+  }
+
+  /**
+   * @hidden
+   */
+  protected getAllDayEventResizedDates(
+    event: CalendarEvent,
+    daysDiff: number,
+    beforeStart: boolean
+  ) {
+    let start: Date = event.start;
+    let end: Date = event.end || event.start;
+    if (beforeStart) {
+      start = addDaysWithExclusions(
+        this.dateAdapter,
+        start,
+        daysDiff,
+        this.excludeDays
+      );
+    } else {
+      end = addDaysWithExclusions(
+        this.dateAdapter,
+        end,
+        daysDiff,
+        this.excludeDays
+      );
+    }
+
+    return { start, end };
   }
 }
