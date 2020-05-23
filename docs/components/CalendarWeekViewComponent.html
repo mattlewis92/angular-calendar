@@ -1433,7 +1433,7 @@ Note, you should also pass this to the calendar title pipe so it shows the same 
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="586" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:586</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="584" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:584</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1461,7 +1461,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="561" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:561</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="560" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:560</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1488,7 +1488,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="570" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:570</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="568" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:568</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1515,7 +1515,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="579" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:579</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="576" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:576</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1542,7 +1542,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="592" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:592</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="591" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:591</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -2121,8 +2121,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when a header week day is clicked. Adding a &#x60;cssClass&#x60; property on &#x60;$event.day&#x60; will add that class to the header element
    */
-  @Output()
-  dayHeaderClicked &#x3D; new EventEmitter&lt;{
+  @Output() dayHeaderClicked &#x3D; new EventEmitter&lt;{
     day: WeekDay;
     sourceEvent: MouseEvent;
   }&gt;();
@@ -2130,8 +2129,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when the event title is clicked
    */
-  @Output()
-  eventClicked &#x3D; new EventEmitter&lt;{
+  @Output() eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
     sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
@@ -2139,21 +2137,22 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output()
-  eventTimesChanged &#x3D; new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
+  @Output() eventTimesChanged &#x3D; new EventEmitter&lt;
+    CalendarEventTimesChangedEvent
+  &gt;();
 
   /**
    * An output that will be called before the view is rendered for the current week.
    * If you add the &#x60;cssClass&#x60; property to a day in the header it will add that class to the cell element in the template
    */
-  @Output()
-  beforeViewRender &#x3D; new EventEmitter&lt;CalendarWeekViewBeforeRenderEvent&gt;();
+  @Output() beforeViewRender &#x3D; new EventEmitter&lt;
+    CalendarWeekViewBeforeRenderEvent
+  &gt;();
 
   /**
    * Called when an hour segment is clicked
    */
-  @Output()
-  hourSegmentClicked &#x3D; new EventEmitter&lt;{
+  @Output() hourSegmentClicked &#x3D; new EventEmitter&lt;{
     date: Date;
     sourceEvent: MouseEvent;
   }&gt;();

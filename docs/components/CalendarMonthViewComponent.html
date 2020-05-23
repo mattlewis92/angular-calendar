@@ -852,7 +852,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:241</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:240</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -880,7 +880,7 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:264</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:263</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -934,7 +934,7 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:256</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:255</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -961,7 +961,7 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:273</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="272" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view.component.ts:272</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1220,14 +1220,14 @@ export class CalendarMonthViewComponent
    * An output that will be called before the view is rendered for the current month.
    * If you add the &#x60;cssClass&#x60; property to a day in the body it will add that class to the cell element in the template
    */
-  @Output()
-  beforeViewRender &#x3D; new EventEmitter&lt;CalendarMonthViewBeforeRenderEvent&gt;();
+  @Output() beforeViewRender &#x3D; new EventEmitter&lt;
+    CalendarMonthViewBeforeRenderEvent
+  &gt;();
 
   /**
    * Called when the day cell is clicked
    */
-  @Output()
-  dayClicked &#x3D; new EventEmitter&lt;{
+  @Output() dayClicked &#x3D; new EventEmitter&lt;{
     day: MonthViewDay;
     sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
@@ -1235,8 +1235,7 @@ export class CalendarMonthViewComponent
   /**
    * Called when the event title is clicked
    */
-  @Output()
-  eventClicked &#x3D; new EventEmitter&lt;{
+  @Output() eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
     sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
