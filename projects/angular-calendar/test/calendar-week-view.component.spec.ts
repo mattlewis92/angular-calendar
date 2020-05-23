@@ -701,6 +701,102 @@ describe('calendarWeekView component', () => {
     expect(eventDropped).to.have.been.calledOnce;
   });
 
+  it('should allow the all day event to be dragged and dropped and control where it can be dragged', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
+      CalendarWeekViewComponent
+    );
+    fixture.componentInstance.viewDate = new Date('2016-12-08');
+    fixture.componentInstance.events = [
+      {
+        title: 'foo',
+        start: moment('2016-12-08').add(4, 'hours').toDate(),
+        end: moment('2016-12-08').add(6, 'hours').toDate(),
+        draggable: true,
+        allDay: true,
+      },
+    ];
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    // remove the header as it was causing the test to fail
+    const header: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-day-headers'
+    );
+    header.parentNode.removeChild(header);
+    const event: HTMLElement = fixture.nativeElement.querySelector(
+      '.cal-event-container'
+    );
+    const dayWidth: number = event.parentElement.offsetWidth / 7;
+    const eventPosition: ClientRect = event.getBoundingClientRect();
+    const eventDropped = sinon.spy();
+    const validateEventTimesChanged = sinon
+      .stub()
+      .onFirstCall()
+      .returns(true)
+      .onSecondCall()
+      .returns(false);
+    fixture.componentInstance.validateEventTimesChanged = validateEventTimesChanged;
+    fixture.componentInstance.eventTimesChanged
+      .pipe(take(1))
+      .subscribe(eventDropped);
+    triggerDomEvent('mousedown', event, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top,
+      button: 0,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: eventPosition.left,
+      clientY: eventPosition.top,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', document.body, {
+      clientX: eventPosition.left - dayWidth,
+      clientY: eventPosition.top,
+    });
+    fixture.detectChanges();
+    const ghostElement = event.nextSibling as HTMLElement;
+    expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
+      Math.round(eventPosition.left - dayWidth) + 1
+    );
+    triggerDomEvent('mousemove', document.body, {
+      clientX: eventPosition.left - dayWidth * 2,
+      clientY: eventPosition.top,
+    });
+    fixture.detectChanges();
+    expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
+      Math.round(eventPosition.left - dayWidth) + 1
+    );
+    triggerDomEvent('mouseup', document.body, {
+      clientX: eventPosition.left - dayWidth * 2,
+      clientY: eventPosition.top,
+      button: 0,
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(eventDropped.getCall(0).args[0]).to.deep.equal({
+      type: 'drag',
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-12-07').add(4, 'hours').toDate(),
+      newEnd: moment('2016-12-07').add(6, 'hours').toDate(),
+      allDay: true,
+    });
+    expect(eventDropped).to.have.been.calledOnce;
+    expect(validateEventTimesChanged).to.have.been.calledTwice;
+    expect(validateEventTimesChanged.getCall(0).args[0]).to.deep.equal({
+      type: 'drag',
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-12-07').add(4, 'hours').toDate(),
+      newEnd: moment('2016-12-07').add(6, 'hours').toDate(),
+    });
+    expect(validateEventTimesChanged.getCall(1).args[0]).to.deep.equal({
+      type: 'drag',
+      event: fixture.componentInstance.events[0],
+      newStart: moment('2016-12-06').add(4, 'hours').toDate(),
+      newEnd: moment('2016-12-06').add(6, 'hours').toDate(),
+    });
+  });
+
   it('should allow all day events to be dragged outside of the calendar', () => {
     const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
       CalendarWeekViewComponent
@@ -709,7 +805,6 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        color: { primary: '', secondary: '' },
         start: moment('2016-12-08').add(4, 'hours').toDate(),
         end: moment('2016-12-08').add(6, 'hours').toDate(),
         draggable: true,
@@ -833,7 +928,6 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        color: { primary: '', secondary: '' },
         start: moment('2016-06-27').add(4, 'hours').toDate(),
         end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
@@ -887,7 +981,6 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        color: { primary: '', secondary: '' },
         start: moment('2016-06-27').add(4, 'hours').toDate(),
         end: moment('2016-06-27').add(6, 'hours').toDate(),
         resizable: {
@@ -1825,6 +1918,106 @@ describe('calendarWeekView component', () => {
         .add(1, 'day')
         .add(1, 'hour')
         .add(30, 'minutes')
+        .toDate(),
+    });
+  });
+
+  it('should control dragging time events', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> = TestBed.createComponent(
+      CalendarWeekViewComponent
+    );
+    fixture.componentInstance.viewDate = new Date('2018-07-29');
+    fixture.componentInstance.events = [
+      {
+        start: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(3, 'hours')
+          .toDate(),
+        end: moment(new Date('2018-07-29'))
+          .startOf('day')
+          .add(1, 'day')
+          .add(18, 'hours')
+          .toDate(),
+        title: 'foo',
+        draggable: true,
+      },
+    ];
+    const validateEventTimesChanged = sinon
+      .stub()
+      .onFirstCall()
+      .returns(true)
+      .onSecondCall()
+      .returns(false);
+    fixture.componentInstance.validateEventTimesChanged = validateEventTimesChanged;
+    fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
+    fixture.detectChanges();
+    document.body.appendChild(fixture.nativeElement);
+    const event = fixture.nativeElement.querySelector('.cal-event-container');
+    const rect: ClientRect = event.getBoundingClientRect();
+    let dragEvent: CalendarEventTimesChangedEvent;
+    fixture.componentInstance.eventTimesChanged.pipe(take(1)).subscribe((e) => {
+      dragEvent = e;
+    });
+    triggerDomEvent('mousedown', event, {
+      clientX: rect.right,
+      clientY: rect.bottom,
+      button: 0,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', event, {
+      clientX: rect.right,
+      clientY: rect.bottom,
+    });
+    fixture.detectChanges();
+    triggerDomEvent('mousemove', event, {
+      clientX: rect.right,
+      clientY: rect.bottom + 95,
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(rect.top + 90);
+    triggerDomEvent('mousemove', event, {
+      clientX: rect.right,
+      clientY: rect.bottom + 180,
+    });
+    fixture.detectChanges();
+    expect(event.getBoundingClientRect().top).to.equal(rect.top + 90);
+    triggerDomEvent('mouseup', event, {
+      clientX: rect.right,
+      clientY: rect.bottom + 180,
+      button: 0,
+    });
+    fixture.detectChanges();
+    fixture.destroy();
+    expect(dragEvent).to.deep.equal({
+      type: 'drag',
+      allDay: false,
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(90, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(90, 'minutes')
+        .toDate(),
+    });
+    expect(validateEventTimesChanged).to.have.been.calledTwice;
+    expect(validateEventTimesChanged.getCall(0).args[0]).to.deep.equal({
+      type: 'drag',
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(90, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(90, 'minutes')
+        .toDate(),
+    });
+    expect(validateEventTimesChanged.getCall(1).args[0]).to.deep.equal({
+      type: 'drag',
+      event: fixture.componentInstance.events[0],
+      newStart: moment(fixture.componentInstance.events[0].start)
+        .add(180, 'minutes')
+        .toDate(),
+      newEnd: moment(fixture.componentInstance.events[0].end)
+        .add(180, 'minutes')
         .toDate(),
     });
   });

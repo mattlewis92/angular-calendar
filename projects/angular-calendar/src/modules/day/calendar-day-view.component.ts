@@ -53,6 +53,7 @@ export type CalendarDayViewBeforeRenderEvent = CalendarWeekViewBeforeRenderEvent
       [snapDraggedEvents]="snapDraggedEvents"
       [allDayEventsLabelTemplate]="allDayEventsLabelTemplate"
       [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"
+      [validateEventTimesChanged]="validateEventTimesChanged"
       (eventClicked)="eventClicked.emit($event)"
       (hourSegmentClicked)="hourSegmentClicked.emit($event)"
       (eventTimesChanged)="eventTimesChanged.emit($event)"
@@ -182,6 +183,14 @@ export class CalendarDayViewComponent {
    * A custom template to use for the current time marker
    */
   @Input() currentTimeMarkerTemplate: TemplateRef<any>;
+
+  /**
+   * Allow you to customise where events can be dragged and resized to.
+   * Return true to allow dragging and resizing to the new location, or false to prevent it
+   */
+  @Input() validateEventTimesChanged: (
+    event: CalendarEventTimesChangedEvent
+  ) => boolean;
 
   /**
    * Called when an event title is clicked

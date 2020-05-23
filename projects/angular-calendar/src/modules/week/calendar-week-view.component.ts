@@ -166,7 +166,9 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
             [validateDrag]="validateDrag"
             [touchStartLongPress]="{ delay: 300, delta: 30 }"
-            (dragStart)="dragStarted(eventRowContainer, event)"
+            (dragStart)="
+              dragStarted(eventRowContainer, event, allDayEvent, false)
+            "
             (dragging)="allDayEventDragMove()"
             (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"
           >
@@ -314,7 +316,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [ghostDragEnabled]="!snapDraggedEvents"
                 [ghostElementTemplate]="weekEventTemplate"
                 [validateDrag]="validateDrag"
-                (dragStart)="dragStarted(dayColumns, event, timeEvent)"
+                (dragStart)="dragStarted(dayColumns, event, timeEvent, true)"
                 (dragging)="dragMove(timeEvent, $event)"
                 (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"
               >
@@ -574,6 +576,14 @@ export class CalendarWeekViewComponent
    * A custom template to use for the current time marker
    */
   @Input() currentTimeMarkerTemplate: TemplateRef<any>;
+
+  /**
+   * Allow you to customise where events can be dragged and resized to.
+   * Return true to allow dragging and resizing to the new location, or false to prevent it
+   */
+  @Input() validateEventTimesChanged: (
+    event: CalendarEventTimesChangedEvent
+  ) => boolean;
 
   /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
@@ -1023,25 +1033,44 @@ export class CalendarWeekViewComponent
    * @hidden
    */
   dragStarted(
-    eventsContainer: HTMLElement,
-    event: HTMLElement,
-    dayEvent?: WeekViewTimeEvent
+    eventsContainerElement: HTMLElement,
+    eventElement: HTMLElement,
+    event: WeekViewTimeEvent | WeekViewAllDayEvent,
+    useY: boolean
   ): void {
-    this.dayColumnWidth = this.getDayColumnWidth(eventsContainer);
+    this.dayColumnWidth = this.getDayColumnWidth(eventsContainerElement);
     const dragHelper: CalendarDragHelper = new CalendarDragHelper(
-      eventsContainer,
-      event
+      eventsContainerElement,
+      eventElement
     );
-    this.validateDrag = ({ x, y, transform }) =>
-      this.allDayEventResizes.size === 0 &&
-      this.timeEventResizes.size === 0 &&
-      dragHelper.validateDrag({
-        x,
-        y,
-        snapDraggedEvents: this.snapDraggedEvents,
-        dragAlreadyMoved: this.dragAlreadyMoved,
-        transform,
-      });
+    this.validateDrag = ({ x, y, transform }) => {
+      const isAllowed =
+        this.allDayEventResizes.size === 0 &&
+        this.timeEventResizes.size === 0 &&
+        dragHelper.validateDrag({
+          x,
+          y,
+          snapDraggedEvents: this.snapDraggedEvents,
+          dragAlreadyMoved: this.dragAlreadyMoved,
+          transform,
+        });
+      if (isAllowed && this.validateEventTimesChanged) {
+        const newEventTimes = this.getDragMovedEventTimes(
+          event,
+          { x, y },
+          this.dayColumnWidth,
+          useY
+        );
+        return this.validateEventTimesChanged({
+          type: CalendarEventTimesChangedEventType.Drag,
+          event: event.event,
+          newStart: newEventTimes.start,
+          newEnd: newEventTimes.end,
+        });
+      }
+
+      return isAllowed;
+    };
     this.dragActive = true;
     this.dragAlreadyMoved = false;
     this.lastDraggedEvent = null;
@@ -1049,11 +1078,11 @@ export class CalendarWeekViewComponent
       allDay: 0,
       time: 0,
     };
-    if (!this.snapDraggedEvents && dayEvent) {
+    if (!this.snapDraggedEvents && useY) {
       this.view.hourColumns.forEach((column) => {
         const linkedEvent = column.events.find(
           (columnEvent) =>
-            columnEvent.event === dayEvent.event && columnEvent !== dayEvent
+            columnEvent.event === event.event && columnEvent !== event
         );
         // hide any linked events while dragging
         if (linkedEvent) {

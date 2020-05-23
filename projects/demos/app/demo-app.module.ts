@@ -459,6 +459,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           },
         },
         {
+          path: 'validate-drag-and-resize',
+          loadChildren: () =>
+            import('./demo-modules/validate-drag-and-resize/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Validate dragging and resizing',
+          },
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink',
         },
