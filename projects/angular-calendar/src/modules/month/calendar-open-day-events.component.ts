@@ -143,8 +143,7 @@ export class CalendarOpenDayEventsComponent {
 
   @Input() date: Date;
 
-  @Output()
-  eventClicked = new EventEmitter<{
+  @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
     sourceEvent: MouseEvent | KeyboardEvent;
   }>();

@@ -123,8 +123,7 @@ export class CalendarMonthCellComponent {
 
   @Output() unhighlightDay: EventEmitter<any> = new EventEmitter();
 
-  @Output()
-  eventClicked = new EventEmitter<{
+  @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
     sourceEvent: MouseEvent;
   }>();
