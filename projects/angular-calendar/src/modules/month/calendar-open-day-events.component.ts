@@ -145,7 +145,7 @@ export class CalendarOpenDayEventsComponent {
 
   @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
-    sourceEvent: MouseEvent | KeyboardEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 
   trackByEventId = trackByEventId;
