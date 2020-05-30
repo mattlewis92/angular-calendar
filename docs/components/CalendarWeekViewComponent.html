@@ -2131,7 +2131,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   @Output() eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
-    sourceEvent: MouseEvent | KeyboardEvent;
+    sourceEvent: MouseEvent | any;
   }&gt;();
 
   /**
