@@ -246,7 +246,7 @@ export class CalendarMonthViewComponent
    */
   @Output() dayClicked = new EventEmitter<{
     day: MonthViewDay;
-    sourceEvent: MouseEvent | KeyboardEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 
   /**
@@ -254,7 +254,7 @@ export class CalendarMonthViewComponent
    */
   @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
-    sourceEvent: MouseEvent | KeyboardEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 
   /**
@@ -262,7 +262,7 @@ export class CalendarMonthViewComponent
    */
   @Output() columnHeaderClicked = new EventEmitter<{
     isoDayNumber: number;
-    sourceEvent: MouseEvent | KeyboardEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 
   /**

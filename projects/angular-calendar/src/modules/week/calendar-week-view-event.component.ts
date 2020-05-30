@@ -112,6 +112,6 @@ export class CalendarWeekViewEventComponent {
   @Input() daysInWeek: number;
 
   @Output() eventClicked = new EventEmitter<{
-    sourceEvent: MouseEvent | KeyboardEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 }
