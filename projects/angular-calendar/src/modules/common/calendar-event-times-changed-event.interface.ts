@@ -3,7 +3,7 @@ import { CalendarEvent } from 'calendar-utils';
 export enum CalendarEventTimesChangedEventType {
   Drag = 'drag',
   Drop = 'drop',
-  Resize = 'resize'
+  Resize = 'resize',
 }
 
 /**

@@ -3,7 +3,7 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  Output
+  Output,
 } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import { CalendarView } from './calendar-view.enum';
@@ -22,13 +22,13 @@ import { addDaysWithExclusions } from './util';
  * ```
  */
 @Directive({
-  selector: '[mwlCalendarNextView]'
+  selector: '[mwlCalendarNextView]',
 })
 export class CalendarNextViewDirective {
   /**
    * The current view
    */
-  @Input() view: CalendarView;
+  @Input() view: CalendarView | 'month' | 'week' | 'day';
 
   /**
    * The current view date
@@ -60,7 +60,7 @@ export class CalendarNextViewDirective {
     const addFn: any = {
       day: this.dateAdapter.addDays,
       week: this.dateAdapter.addWeeks,
-      month: this.dateAdapter.addMonths
+      month: this.dateAdapter.addMonths,
     }[this.view];
 
     if (this.view === CalendarView.Day) {

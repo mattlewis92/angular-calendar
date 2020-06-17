@@ -1,31 +1,34 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CalendarEvent,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { addHours, startOfDay } from 'date-fns';
+import { User } from './day-view-scheduler.component';
 
-const users = [
+const users: User[] = [
   {
     id: 0,
     name: 'John smith',
-    color: colors.yellow
+    color: colors.yellow,
   },
   {
     id: 1,
     name: 'Jane Doe',
-    color: colors.blue
-  }
+    color: colors.blue,
+  },
 ];
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   viewDate = new Date();
+
+  users = users;
 
   events: CalendarEvent[] = [
     {
@@ -33,46 +36,76 @@ export class DemoComponent {
       color: users[0].color,
       start: addHours(startOfDay(new Date()), 5),
       meta: {
-        user: users[0]
+        user: users[0],
       },
       resizable: {
         beforeStart: true,
-        afterEnd: true
+        afterEnd: true,
       },
-      draggable: true
+      draggable: true,
     },
     {
       title: 'Another event',
       color: users[1].color,
       start: addHours(startOfDay(new Date()), 2),
       meta: {
-        user: users[1]
+        user: users[1],
       },
       resizable: {
         beforeStart: true,
-        afterEnd: true
+        afterEnd: true,
       },
-      draggable: true
+      draggable: true,
     },
     {
-      title: 'An 3rd event',
+      title: 'A 3rd event',
       color: users[0].color,
       start: addHours(startOfDay(new Date()), 7),
       meta: {
-        user: users[0]
+        user: users[0],
       },
       resizable: {
         beforeStart: true,
-        afterEnd: true
+        afterEnd: true,
       },
-      draggable: true
-    }
+      draggable: true,
+    },
+    {
+      title: 'An all day event',
+      color: users[0].color,
+      start: new Date(),
+      meta: {
+        user: users[0],
+      },
+      draggable: true,
+      allDay: true,
+    },
+    {
+      title: 'Another all day event',
+      color: users[1].color,
+      start: new Date(),
+      meta: {
+        user: users[1],
+      },
+      draggable: true,
+      allDay: true,
+    },
+    {
+      title: 'A 3rd all day event',
+      color: users[0].color,
+      start: new Date(),
+      meta: {
+        user: users[0],
+      },
+      draggable: true,
+      allDay: true,
+    },
   ];
 
   eventTimesChanged({
     event,
     newStart,
-    newEnd
+    newEnd,
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;

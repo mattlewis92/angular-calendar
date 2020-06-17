@@ -10,9 +10,11 @@ export function triggerDomEvent(
   Object.assign(event, eventData);
   event.initEvent(eventType, true, true);
   target.dispatchEvent(event);
+  return event;
 }
 
 @Component({
+  selector: 'mwl-external-event',
   template:
     '<div class="external-event" mwlDraggable [dropData]="{event: event}">{{ event.title }}</div>',
   styles: [
@@ -24,8 +26,8 @@ export function triggerDomEvent(
         width: 10px;
         height: 10px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ExternalEventComponent {
   event: CalendarEvent = {
@@ -34,7 +36,7 @@ export class ExternalEventComponent {
     draggable: true,
     color: {
       primary: 'blue',
-      secondary: 'lightblue'
-    }
+      secondary: 'lightblue',
+    },
   };
 }

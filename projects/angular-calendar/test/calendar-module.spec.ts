@@ -6,7 +6,7 @@ import {
   CalendarDateFormatter,
   CalendarMomentDateFormatter,
   MOMENT,
-  DateAdapter
+  DateAdapter,
 } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
@@ -16,9 +16,9 @@ describe('calendar module', () => {
       imports: [
         CalendarModule.forRoot({
           provide: DateAdapter,
-          useFactory: adapterFactory
-        })
-      ]
+          useFactory: adapterFactory,
+        }),
+      ],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter
@@ -32,17 +32,17 @@ describe('calendar module', () => {
         CalendarModule.forRoot(
           {
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
           },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter
-            }
+              useClass: CalendarMomentDateFormatter,
+            },
           }
-        )
+        ),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }]
+      providers: [{ provide: MOMENT, useValue: moment }],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
       CalendarDateFormatter

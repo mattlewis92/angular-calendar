@@ -5,34 +5,34 @@ import { colors } from '../demo-utils/colors';
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
   viewDate: Date = new Date();
 
-  events: Array<CalendarEvent<{ incrementsBadgeTotal: boolean }>> = [
+  events: CalendarEvent<{ incrementsBadgeTotal: boolean }>[] = [
     {
       title: 'Increments badge total on the day cell',
       color: colors.yellow,
       start: new Date(),
       meta: {
-        incrementsBadgeTotal: true
-      }
+        incrementsBadgeTotal: true,
+      },
     },
     {
       title: 'Does not increment the badge total on the day cell',
       color: colors.blue,
       start: new Date(),
       meta: {
-        incrementsBadgeTotal: false
-      }
-    }
+        incrementsBadgeTotal: false,
+      },
+    },
   ];
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
-    body.forEach(day => {
+    body.forEach((day) => {
       day.badgeTotal = day.events.filter(
-        event => event.meta.incrementsBadgeTotal
+        (event) => event.meta.incrementsBadgeTotal
       ).length;
     });
   }

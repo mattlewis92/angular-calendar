@@ -5,16 +5,10 @@ import {
   GetWeekViewHeaderArgs,
   WeekDay,
   GetWeekViewArgs,
-  GetDayViewArgs,
-  DayView,
-  GetDayViewHourGridArgs,
-  DayViewHour,
   WeekView,
-  getDayView,
-  getDayViewHourGrid,
   getMonthView,
   getWeekViewHeader,
-  getWeekView
+  getWeekView,
 } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 
@@ -32,16 +26,5 @@ export class CalendarUtils {
 
   getWeekView(args: GetWeekViewArgs, timezone?: string): WeekView {
     return getWeekView(this.dateAdapter.withTimezone(timezone), args);
-  }
-
-  getDayView(args: GetDayViewArgs, timezone?: string): DayView {
-    return getDayView(this.dateAdapter.withTimezone(timezone), args);
-  }
-
-  getDayViewHourGrid(
-    args: GetDayViewHourGridArgs,
-    timezone?: string
-  ): DayViewHour[] {
-    return getDayViewHourGrid(this.dateAdapter.withTimezone(timezone), args);
   }
 }

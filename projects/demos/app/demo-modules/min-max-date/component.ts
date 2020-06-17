@@ -1,9 +1,13 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
-import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarMonthViewDay,
+  CalendarView,
+} from 'angular-calendar';
 import {
   subMonths,
   addMonths,
@@ -16,7 +20,7 @@ import {
   startOfWeek,
   endOfWeek,
   startOfDay,
-  endOfDay
+  endOfDay,
 } from 'date-fns';
 
 type CalendarPeriod = 'day' | 'week' | 'month';
@@ -25,7 +29,7 @@ function addPeriod(period: CalendarPeriod, date: Date, amount: number): Date {
   return {
     day: addDays,
     week: addWeeks,
-    month: addMonths
+    month: addMonths,
   }[period](date, amount);
 }
 
@@ -33,7 +37,7 @@ function subPeriod(period: CalendarPeriod, date: Date, amount: number): Date {
   return {
     day: subDays,
     week: subWeeks,
-    month: subMonths
+    month: subMonths,
   }[period](date, amount);
 }
 
@@ -41,7 +45,7 @@ function startOfPeriod(period: CalendarPeriod, date: Date): Date {
   return {
     day: startOfDay,
     week: startOfWeek,
-    month: startOfMonth
+    month: startOfMonth,
   }[period](date);
 }
 
@@ -49,7 +53,7 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   return {
     day: endOfDay,
     week: endOfWeek,
-    month: endOfMonth
+    month: endOfMonth,
   }[period](date);
 }
 
@@ -59,10 +63,10 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   templateUrl: 'template.html',
   styleUrls: ['styles.css'],
   // this is a hack to get styles to apply to the inner component. Your app should just use a global stylesheet
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
-  view: CalendarPeriod = 'month';
+  view: CalendarView | CalendarPeriod = CalendarView.Month;
 
   viewDate: Date = new Date();
 
@@ -121,7 +125,7 @@ export class DemoComponent {
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
-    body.forEach(day => {
+    body.forEach((day) => {
       if (!this.dateIsValid(day.date)) {
         day.cssClass = 'cal-disabled';
       }

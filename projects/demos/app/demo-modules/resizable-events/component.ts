@@ -3,17 +3,18 @@ import { Subject } from 'rxjs';
 import { addDays } from 'date-fns';
 import {
   CalendarEvent,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarView,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
-  view: string = 'week';
+  view: CalendarView = CalendarView.Week;
 
   viewDate: Date = new Date();
 
@@ -25,15 +26,15 @@ export class DemoComponent {
       end: addDays(new Date(), 1), // an end date is always required for resizable events to work
       resizable: {
         beforeStart: true, // this allows you to configure the sides the event is resizable from
-        afterEnd: true
-      }
+        afterEnd: true,
+      },
     },
     {
       title: 'A non resizable event',
       color: colors.blue,
       start: new Date(),
-      end: addDays(new Date(), 1)
-    }
+      end: addDays(new Date(), 1),
+    },
   ];
 
   refresh: Subject<any> = new Subject();
@@ -41,7 +42,7 @@ export class DemoComponent {
   eventTimesChanged({
     event,
     newStart,
-    newEnd
+    newEnd,
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;

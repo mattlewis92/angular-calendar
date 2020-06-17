@@ -2,14 +2,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ViewEncapsulation
+  Injectable,
+  ViewEncapsulation,
 } from '@angular/core';
-import {
-  CalendarEvent,
-  CalendarEventTitleFormatter,
-  CalendarView
-} from 'angular-calendar';
-import { DayViewHourSegment } from 'calendar-utils';
+import { CalendarEvent, CalendarEventTitleFormatter } from 'angular-calendar';
+import { WeekViewHourSegment } from 'calendar-utils';
 import { fromEvent } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { addDays, addMinutes, endOfWeek } from 'date-fns';
@@ -22,6 +19,7 @@ function ceilToNearest(amount: number, precision: number) {
   return Math.ceil(amount / precision) * precision;
 }
 
+@Injectable()
 export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   weekTooltip(event: CalendarEvent, title: string) {
     if (!event.meta.tmpEvent) {
@@ -44,17 +42,17 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   providers: [
     {
       provide: CalendarEventTitleFormatter,
-      useClass: CustomEventTitleFormatter
-    }
+      useClass: CustomEventTitleFormatter,
+    },
   ],
   styles: [
     `
       .disable-hover {
         pointer-events: none;
       }
-    `
+    `,
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
   viewDate = new Date();
@@ -63,10 +61,12 @@ export class DemoComponent {
 
   dragToCreateActive = false;
 
+  weekStartsOn: 0 = 0;
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   startDragToCreate(
-    segment: DayViewHourSegment,
+    segment: WeekViewHourSegment,
     mouseDownEvent: MouseEvent,
     segmentElement: HTMLElement
   ) {
@@ -75,13 +75,15 @@ export class DemoComponent {
       title: 'New event',
       start: segment.date,
       meta: {
-        tmpEvent: true
-      }
+        tmpEvent: true,
+      },
     };
     this.events = [...this.events, dragToSelectEvent];
     const segmentPosition = segmentElement.getBoundingClientRect();
     this.dragToCreateActive = true;
-    const endOfView = endOfWeek(this.viewDate);
+    const endOfView = endOfWeek(this.viewDate, {
+      weekStartsOn: this.weekStartsOn,
+    });
 
     fromEvent(document, 'mousemove')
       .pipe(

@@ -15,10 +15,10 @@ import { DemoComponent } from './component';
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
-    })
+      useFactory: adapterFactory,
+    }),
   ],
   declarations: [DemoComponent],
-  exports: [DemoComponent]
+  exports: [DemoComponent],
 })
 export class DemoModule {}

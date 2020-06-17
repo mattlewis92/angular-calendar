@@ -7,14 +7,14 @@ import {
   CalendarModule,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  MOMENT
+  MOMENT,
 } from '../src';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 import { DateAdapter } from 'angular-calendar';
 
 @Component({
   template:
-    '{{ date | calendarDate:method:locale:weekStartsOn:excludeDays:daysInWeek }}'
+    '{{ date | calendarDate:method:locale:weekStartsOn:excludeDays:daysInWeek }}',
 })
 class TestComponent {
   date: Date;
@@ -34,18 +34,18 @@ describe('calendarDate pipe', () => {
         CalendarModule.forRoot(
           {
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
           },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter
-            }
+              useClass: CalendarMomentDateFormatter,
+            },
           }
-        )
+        ),
       ],
       declarations: [TestComponent],
-      providers: [{ provide: MOMENT, useValue: moment }]
+      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 
@@ -74,7 +74,7 @@ describe('calendarDate pipe', () => {
       daysInWeek: undefined,
       excludeDays: [],
       timezone: undefined,
-      weekStartsOn: 0
+      weekStartsOn: 0,
     });
   });
 
@@ -94,7 +94,7 @@ describe('calendarDate pipe', () => {
       daysInWeek: undefined,
       excludeDays: [],
       timezone: undefined,
-      weekStartsOn: 0
+      weekStartsOn: 0,
     });
   });
 

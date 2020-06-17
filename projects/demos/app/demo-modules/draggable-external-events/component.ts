@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
@@ -21,8 +21,8 @@ import { colors } from '../demo-utils/colors';
       .drag-over {
         background-color: #eee;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DemoComponent {
   CalendarView = CalendarView;
@@ -36,14 +36,14 @@ export class DemoComponent {
       title: 'Event 1',
       color: colors.yellow,
       start: new Date(),
-      draggable: true
+      draggable: true,
     },
     {
       title: 'Event 2',
       color: colors.blue,
       start: new Date(),
-      draggable: true
-    }
+      draggable: true,
+    },
   ];
 
   events: CalendarEvent[] = [];
@@ -56,7 +56,7 @@ export class DemoComponent {
     event,
     newStart,
     newEnd,
-    allDay
+    allDay,
   }: CalendarEventTimesChangedEvent): void {
     const externalIndex = this.externalEvents.indexOf(event);
     if (typeof allDay !== 'undefined') {
@@ -79,7 +79,7 @@ export class DemoComponent {
 
   externalDrop(event: CalendarEvent) {
     if (this.externalEvents.indexOf(event) === -1) {
-      this.events = this.events.filter(iEvent => iEvent !== event);
+      this.events = this.events.filter((iEvent) => iEvent !== event);
       this.externalEvents.push(event);
     }
   }

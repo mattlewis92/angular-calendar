@@ -1,7 +1,7 @@
 import { InjectionToken, Inject, Injectable } from '@angular/core';
 import {
   CalendarDateFormatterInterface,
-  DateFormatterParams
+  DateFormatterParams,
 } from './calendar-date-formatter.interface';
 import { getWeekViewPeriod } from './util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
@@ -41,11 +41,9 @@ export class CalendarMomentDateFormatter
   public monthViewColumnHeader({
     date,
     locale,
-    timezone
+    timezone,
   }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('dddd');
+    return this.tzMoment(date, timezone).locale(locale).format('dddd');
   }
 
   /**
@@ -54,11 +52,9 @@ export class CalendarMomentDateFormatter
   public monthViewDayNumber({
     date,
     locale,
-    timezone
+    timezone,
   }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('D');
+    return this.tzMoment(date, timezone).locale(locale).format('D');
   }
 
   /**
@@ -67,11 +63,9 @@ export class CalendarMomentDateFormatter
   public monthViewTitle({
     date,
     locale,
-    timezone
+    timezone,
   }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('MMMM YYYY');
+    return this.tzMoment(date, timezone).locale(locale).format('MMMM YYYY');
   }
 
   /**
@@ -80,11 +74,9 @@ export class CalendarMomentDateFormatter
   public weekViewColumnHeader({
     date,
     locale,
-    timezone
+    timezone,
   }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('dddd');
+    return this.tzMoment(date, timezone).locale(locale).format('dddd');
   }
 
   /**
@@ -93,11 +85,9 @@ export class CalendarMomentDateFormatter
   public weekViewColumnSubHeader({
     date,
     locale,
-    timezone
+    timezone,
   }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('MMM D');
+    return this.tzMoment(date, timezone).locale(locale).format('MMM D');
   }
 
   /**
@@ -109,7 +99,7 @@ export class CalendarMomentDateFormatter
     weekStartsOn,
     excludeDays,
     daysInWeek,
-    timezone
+    timezone,
   }: DateFormatterParams): string {
     const { viewStart, viewEnd } = getWeekViewPeriod(
       this.dateAdapter.withTimezone(timezone),
@@ -133,18 +123,14 @@ export class CalendarMomentDateFormatter
    * The time formatting down the left hand side of the week view
    */
   public weekViewHour({ date, locale, timezone }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('ha');
+    return this.tzMoment(date, timezone).locale(locale).format('ha');
   }
 
   /**
    * The time formatting down the left hand side of the day view
    */
   public dayViewHour({ date, locale, timezone }: DateFormatterParams): string {
-    return this.tzMoment(date, timezone)
-      .locale(locale)
-      .format('ha');
+    return this.tzMoment(date, timezone).locale(locale).format('ha');
   }
 
   /**

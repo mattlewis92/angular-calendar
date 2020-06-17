@@ -12,7 +12,9 @@ import {
   ComponentFactory,
   Inject,
   Renderer2,
-  TemplateRef
+  TemplateRef,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { PlacementArray, positionElements } from 'positioning';
@@ -43,7 +45,7 @@ import { takeUntil } from 'rxjs/operators';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarTooltipWindowComponent {
   @Input() contents: string;
@@ -56,9 +58,9 @@ export class CalendarTooltipWindowComponent {
 }
 
 @Directive({
-  selector: '[mwlCalendarTooltip]'
+  selector: '[mwlCalendarTooltip]',
 })
-export class CalendarTooltipDirective implements OnDestroy {
+export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
 
   @Input('tooltipPlacement') placement: PlacementArray = 'auto'; // tslint:disable-line no-input-rename
@@ -86,6 +88,22 @@ export class CalendarTooltipDirective implements OnDestroy {
     this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
       CalendarTooltipWindowComponent
     );
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      this.tooltipRef &&
+      (changes.contents || changes.customTemplate || changes.event)
+    ) {
+      this.tooltipRef.instance.contents = this.contents;
+      this.tooltipRef.instance.customTemplate = this.customTemplate;
+      this.tooltipRef.instance.event = this.event;
+      this.tooltipRef.changeDetectorRef.markForCheck();
+
+      if (!this.contents) {
+        this.hide();
+      }
+    }
   }
 
   ngOnDestroy(): void {
@@ -136,7 +154,7 @@ export class CalendarTooltipDirective implements OnDestroy {
     this.cancelTooltipDelay$.next();
   }
 
-  private positionTooltip(previousPosition?: string): void {
+  private positionTooltip(previousPositions: string[] = []): void {
     if (this.tooltipRef) {
       this.tooltipRef.changeDetectorRef.detectChanges();
       this.tooltipRef.instance.placement = positionElements(
@@ -146,8 +164,13 @@ export class CalendarTooltipDirective implements OnDestroy {
         this.appendToBody
       );
       // keep re-positioning the tooltip until the arrow position doesn't make a difference
-      if (previousPosition !== this.tooltipRef.instance.placement) {
-        this.positionTooltip(this.tooltipRef.instance.placement);
+      if (
+        previousPositions.indexOf(this.tooltipRef.instance.placement) === -1
+      ) {
+        this.positionTooltip([
+          ...previousPositions,
+          this.tooltipRef.instance.placement,
+        ]);
       }
     }
   }

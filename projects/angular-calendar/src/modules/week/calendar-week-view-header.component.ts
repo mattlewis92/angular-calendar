@@ -3,7 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
 import { trackByWeekDayHeaderDate } from '../common/util';
@@ -18,8 +18,9 @@ import { trackByWeekDayHeaderDate } from '../common/util';
       let-dayHeaderClicked="dayHeaderClicked"
       let-eventDropped="eventDropped"
       let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate"
+      let-dragEnter="dragEnter"
     >
-      <div class="cal-day-headers">
+      <div class="cal-day-headers" role="row">
         <div
           class="cal-header"
           *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
@@ -28,7 +29,7 @@ import { trackByWeekDayHeaderDate } from '../common/util';
           [class.cal-future]="day.isFuture"
           [class.cal-weekend]="day.isWeekend"
           [ngClass]="day.cssClass"
-          (mwlClick)="dayHeaderClicked.emit({ day: day })"
+          (mwlClick)="dayHeaderClicked.emit({ day: day, sourceEvent: $event })"
           mwlDroppable
           dragOverClass="cal-drag-over"
           (drop)="
@@ -37,6 +38,9 @@ import { trackByWeekDayHeaderDate } from '../common/util';
               newStart: day.date
             })
           "
+          (dragEnter)="dragEnter.emit({ date: day.date })"
+          tabindex="0"
+          role="columnheader"
         >
           <b>{{ day.date | calendarDate: 'weekViewColumnHeader':locale }}</b
           ><br />
@@ -53,11 +57,12 @@ import { trackByWeekDayHeaderDate } from '../common/util';
         locale: locale,
         dayHeaderClicked: dayHeaderClicked,
         eventDropped: eventDropped,
+        dragEnter: dragEnter,
         trackByWeekDayHeaderDate: trackByWeekDayHeaderDate
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarWeekViewHeaderComponent {
   @Input() days: WeekDay[];
@@ -66,16 +71,17 @@ export class CalendarWeekViewHeaderComponent {
 
   @Input() customTemplate: TemplateRef<any>;
 
-  @Output()
-  dayHeaderClicked: EventEmitter<{ day: WeekDay }> = new EventEmitter<{
+  @Output() dayHeaderClicked = new EventEmitter<{
     day: WeekDay;
+    sourceEvent: MouseEvent;
   }>();
 
-  @Output()
-  eventDropped: EventEmitter<{
+  @Output() eventDropped = new EventEmitter<{
     event: CalendarEvent;
     newStart: Date;
-  }> = new EventEmitter<{ event: CalendarEvent; newStart: Date }>();
+  }>();
+
+  @Output() dragEnter = new EventEmitter<{ date: Date }>();
 
   trackByWeekDayHeaderDate = trackByWeekDayHeaderDate;
 }

@@ -3,9 +3,9 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
-import { WeekViewAllDayEvent, DayViewEvent } from 'calendar-utils';
+import { WeekViewAllDayEvent, WeekViewTimeEvent } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
 
 @Component({
@@ -67,10 +67,10 @@ import { PlacementArray } from 'positioning';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarWeekListViewEventComponent {
-  @Input() weekEvent: WeekViewAllDayEvent | DayViewEvent;
+  @Input() weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent;
 
   @Input() tooltipPlacement: PlacementArray;
 

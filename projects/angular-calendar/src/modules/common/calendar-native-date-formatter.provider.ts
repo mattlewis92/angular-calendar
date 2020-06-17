@@ -1,6 +1,6 @@
 import {
   CalendarDateFormatterInterface,
-  DateFormatterParams
+  DateFormatterParams,
 } from './calendar-date-formatter.interface';
 import { Injectable } from '@angular/core';
 import { DateAdapter } from '../../date-adapters/date-adapter';
@@ -36,7 +36,7 @@ export class CalendarNativeDateFormatter
   public monthViewTitle({ date, locale }: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {
       year: 'numeric',
-      month: 'long'
+      month: 'long',
     }).format(date);
   }
 
@@ -52,11 +52,11 @@ export class CalendarNativeDateFormatter
    */
   public weekViewColumnSubHeader({
     date,
-    locale
+    locale,
   }: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {
       day: 'numeric',
-      month: 'short'
+      month: 'short',
     }).format(date);
   }
 
@@ -68,7 +68,7 @@ export class CalendarNativeDateFormatter
     locale,
     weekStartsOn,
     excludeDays,
-    daysInWeek
+    daysInWeek,
   }: DateFormatterParams): string {
     const { viewStart, viewEnd } = getWeekViewPeriod(
       this.dateAdapter,
@@ -82,7 +82,7 @@ export class CalendarNativeDateFormatter
       new Intl.DateTimeFormat(locale, {
         day: 'numeric',
         month: 'short',
-        year: showYear ? 'numeric' : undefined
+        year: showYear ? 'numeric' : undefined,
       }).format(dateToFormat);
 
     return `${format(
@@ -113,7 +113,7 @@ export class CalendarNativeDateFormatter
       day: 'numeric',
       month: 'long',
       year: 'numeric',
-      weekday: 'long'
+      weekday: 'long',
     }).format(date);
   }
 }

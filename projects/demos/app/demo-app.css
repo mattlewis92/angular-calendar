@@ -59,3 +59,13 @@ pre {
 .scroll-y {
   overflow-y: auto;
 }
+
+.code-container {
+  position: relative;
+}
+
+.copy-code {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}

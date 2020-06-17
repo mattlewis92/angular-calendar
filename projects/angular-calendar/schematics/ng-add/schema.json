@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "angular-calendar-schematic-ng-add",
+  "title": "angular-calendar ng-add schematic",
+  "type": "object",
+  "properties": {
+    "dateAdapter": {
+      "description": "Which date adapter to use",
+      "type": "string",
+      "default": "date-fns",
+      "enum": [
+        "moment",
+        "date-fns"
+      ],
+      "x-prompt": {
+        "message": "What date adapter would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "date-fns",       "label": "date-fns        [ https://date-fns.org/ ]" },
+          { "value": "moment",         "label": "moment          [ https://momentjs.com/ ]" }
+        ]
+      }
+    },
+    "module": {
+      "type": "string",
+      "description": "Where to add the module import",
+      "x-prompt": "Please enter a path to the NgModule that will use the calendar. It should be relative to the root project directory, for example src/app/app.module.ts (optional, will use the root app module if not specified)"
+    },
+    "projectName": {
+      "type": "string",
+      "description": "Which project should the styles be added to",
+      "x-prompt": "Please enter the name of the project that will use the calendar (optional, will use the default project if not specified)"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

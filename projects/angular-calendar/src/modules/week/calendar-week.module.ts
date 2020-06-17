@@ -7,15 +7,16 @@ import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.com
 import { CalendarWeekViewEventComponent } from './calendar-week-view-event.component';
 import { CalendarCommonModule } from '../common/calendar-common.module';
 import { CalendarWeekViewHourSegmentComponent } from './calendar-week-view-hour-segment.component';
+import { CalendarWeekViewCurrentTimeMarkerComponent } from './calendar-week-view-current-time-marker.component';
 
 export {
   CalendarWeekViewComponent,
-  CalendarWeekViewBeforeRenderEvent
+  CalendarWeekViewBeforeRenderEvent,
 } from './calendar-week-view.component';
 export {
   WeekViewAllDayEvent as CalendarWeekViewAllDayEvent,
   WeekViewAllDayEventRow as CalendarWeekViewAllDayEventRow,
-  GetWeekViewArgs as CalendarGetWeekViewArgs
+  GetWeekViewArgs as CalendarGetWeekViewArgs,
 } from 'calendar-utils';
 export { getWeekViewPeriod } from '../common/util';
 
@@ -24,13 +25,14 @@ export { getWeekViewPeriod } from '../common/util';
     CommonModule,
     ResizableModule,
     DragAndDropModule,
-    CalendarCommonModule
+    CalendarCommonModule,
   ],
   declarations: [
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,
-    CalendarWeekViewHourSegmentComponent
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent,
   ],
   exports: [
     ResizableModule,
@@ -38,7 +40,8 @@ export { getWeekViewPeriod } from '../common/util';
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,
-    CalendarWeekViewHourSegmentComponent
-  ]
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent,
+  ],
 })
 export class CalendarWeekModule {}

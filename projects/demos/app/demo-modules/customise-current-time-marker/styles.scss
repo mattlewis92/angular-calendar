@@ -1,0 +1,18 @@
+.cal-current-time-marker {
+  height: 3px;
+  background: linear-gradient(270deg, #ec268d, #1f55dd);
+  background-size: 400% 400%;
+  animation: BackgroundFade 5s ease infinite;
+
+  @keyframes BackgroundFade {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+}

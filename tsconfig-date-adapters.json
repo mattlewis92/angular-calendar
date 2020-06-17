@@ -9,7 +9,8 @@
     "emitDecoratorMetadata": false,
     "baseUrl": "",
     "inlineSources": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "target": "es5"
   },
   "files": [
     "projects/angular-calendar/src/date-adapters/date-fns/index.ts",

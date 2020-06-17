@@ -3,9 +3,9 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
-import { DayViewEvent, WeekDay, WeekViewHourColumn } from 'calendar-utils';
+import { WeekDay, WeekViewHourColumn, WeekViewTimeEvent } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
 import { ValidateDrag } from 'angular-draggable-droppable';
 
@@ -71,7 +71,7 @@ import { ValidateDrag } from 'angular-draggable-droppable';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarWeekListViewDayComponent {
   @Input() column: WeekViewHourColumn;
@@ -114,6 +114,6 @@ export class CalendarWeekListViewDayComponent {
   /**
    * @hidden
    */
-  trackByTimeEvent = (index: number, dayEvent: DayViewEvent) =>
+  trackByTimeEvent = (index: number, dayEvent: WeekViewTimeEvent) =>
     dayEvent.event.start.toISOString();
 }

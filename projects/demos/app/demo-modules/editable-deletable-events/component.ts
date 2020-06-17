@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 
@@ -19,12 +19,12 @@ export class DemoComponent {
       start: new Date(),
       actions: [
         {
-          label: '<i class="fa fa-fw fa-pencil"></i>',
+          label: '<i class="fas fa-fw fa-pencil-alt"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
             console.log('Edit event', event);
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       title: 'Deletable event',
@@ -32,18 +32,18 @@ export class DemoComponent {
       start: new Date(),
       actions: [
         {
-          label: '<i class="fa fa-fw fa-times"></i>',
+          label: '<i class="fas fa-fw fa-trash-alt"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
-            this.events = this.events.filter(iEvent => iEvent !== event);
+            this.events = this.events.filter((iEvent) => iEvent !== event);
             console.log('Event deleted', event);
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       title: 'Non editable and deletable event',
       color: colors.red,
-      start: new Date()
-    }
+      start: new Date(),
+    },
   ];
 }

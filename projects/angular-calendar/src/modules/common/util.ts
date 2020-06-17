@@ -1,12 +1,12 @@
 import {
   CalendarEvent,
-  DayViewEvent,
-  DayViewHour,
-  DayViewHourSegment,
+  WeekViewTimeEvent,
+  WeekViewHour,
+  WeekViewHourSegment,
   validateEvents as validateEventsWithoutLog,
   ViewPeriod,
   WeekDay,
-  WeekViewAllDayEvent
+  WeekViewAllDayEvent,
 } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 
@@ -40,18 +40,30 @@ export const trackByWeekDayHeaderDate = (index: number, day: WeekDay) =>
 
 export const trackByHourSegment = (
   index: number,
-  segment: DayViewHourSegment
+  segment: WeekViewHourSegment
 ) => segment.date.toISOString();
 
-export const trackByHour = (index: number, hour: DayViewHour) =>
+export const trackByHour = (index: number, hour: WeekViewHour) =>
   hour.segments[0].date.toISOString();
 
-export const trackByDayOrWeekEvent = (
+export const trackByWeekAllDayEvent = (
   index: number,
-  weekEvent: WeekViewAllDayEvent | DayViewEvent
+  weekEvent: WeekViewAllDayEvent
+) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
+
+export const trackByWeekTimeEvent = (
+  index: number,
+  weekEvent: WeekViewTimeEvent
 ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
 
 const MINUTES_IN_HOUR = 60;
+
+function getPixelAmountInMinutes(
+  hourSegments: number,
+  hourSegmentHeight: number
+) {
+  return MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+}
 
 export function getMinutesMoved(
   movedY: number,
@@ -63,8 +75,10 @@ export function getMinutesMoved(
     movedY,
     eventSnapSize || hourSegmentHeight
   );
-  const pixelAmountInMinutes =
-    MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+  const pixelAmountInMinutes = getPixelAmountInMinutes(
+    hourSegments,
+    hourSegmentHeight
+  );
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
 }
 
@@ -73,7 +87,7 @@ export function getMinimumEventHeightInMinutes(
   hourSegmentHeight: number
 ) {
   return (
-    (MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight)) * hourSegmentHeight
+    getPixelAmountInMinutes(hourSegments, hourSegmentHeight) * hourSegmentHeight
   );
 }
 
@@ -149,11 +163,12 @@ export function getWeekViewPeriod(
   let viewStart = daysInWeek
     ? tzDateAdapter.startOfDay(viewDate)
     : tzDateAdapter.startOfWeek(viewDate, { weekStartsOn });
-  if (excluded.indexOf(tzDateAdapter.getDay(viewStart)) > -1) {
-    viewStart = tzDateAdapter.subDays(
-      addDaysWithExclusions(tzDateAdapter, viewStart, 1, excluded),
-      1
-    );
+  const endOfWeek = tzDateAdapter.endOfWeek(viewDate, { weekStartsOn });
+  while (
+    excluded.indexOf(tzDateAdapter.getDay(viewStart)) > -1 &&
+    viewStart < endOfWeek
+  ) {
+    viewStart = tzDateAdapter.addDays(viewStart, 1);
   }
   if (daysInWeek) {
     const viewEnd = tzDateAdapter.endOfDay(
@@ -161,13 +176,18 @@ export function getWeekViewPeriod(
     );
     return { viewStart, viewEnd };
   } else {
-    let viewEnd = tzDateAdapter.endOfWeek(viewDate, { weekStartsOn });
-    if (excluded.indexOf(tzDateAdapter.getDay(viewEnd)) > -1) {
-      viewEnd = tzDateAdapter.addDays(
-        addDaysWithExclusions(tzDateAdapter, viewEnd, -1, excluded),
-        1
-      );
+    let viewEnd = endOfWeek;
+    while (
+      excluded.indexOf(tzDateAdapter.getDay(viewEnd)) > -1 &&
+      viewEnd > viewStart
+    ) {
+      viewEnd = tzDateAdapter.subDays(viewEnd, 1);
     }
     return { viewStart, viewEnd };
   }
+}
+
+export function isWithinThreshold({ x, y }: { x: number; y: number }) {
+  const DRAG_THRESHOLD = 1;
+  return Math.abs(x) > DRAG_THRESHOLD || Math.abs(y) > DRAG_THRESHOLD;
 }

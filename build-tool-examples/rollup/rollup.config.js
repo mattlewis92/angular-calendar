@@ -11,10 +11,10 @@ export default {
     sourcemap: true
   },
   plugins: [
+    nodeResolve(),
     typescript({
       typescript: ts
     }),
-    nodeResolve(),
     commonjs({
       include: 'node_modules/**'
     }),

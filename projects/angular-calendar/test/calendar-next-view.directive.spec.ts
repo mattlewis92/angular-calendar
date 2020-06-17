@@ -15,7 +15,7 @@ import { adapterFactory } from '../src/date-adapters/date-fns';
     >
       Next
     </button>
-  `
+  `,
 })
 class TestComponent {
   view: string;
@@ -30,10 +30,10 @@ describe('mwlCalendarNextView directive', () => {
       imports: [
         CalendarModule.forRoot({
           provide: DateAdapter,
-          useFactory: adapterFactory
-        })
+          useFactory: adapterFactory,
+        }),
       ],
-      declarations: [TestComponent]
+      declarations: [TestComponent],
     });
   });
 

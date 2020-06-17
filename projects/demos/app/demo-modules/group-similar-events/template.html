@@ -1,0 +1,101 @@
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
+</mwl-demo-utils-calendar-header>
+
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top">
+    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
+      >{{ day.badgeTotal }}</span
+    >
+    <span class="cal-day-number"
+      >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
+    >
+  </div>
+  <div class="cell-totals">
+    <span
+      *ngFor="let group of day.eventGroups"
+      class="badge badge-{{ group[0] }}"
+    >
+      {{ group[1].length }}
+    </span>
+  </div>
+</ng-template>
+
+<ng-template
+  #customEventTemplate
+  let-weekEvent="weekEvent"
+  let-tooltipPlacement="tooltipPlacement"
+  let-eventClicked="eventClicked"
+  let-tooltipTemplate="tooltipTemplate"
+  let-tooltipAppendToBody="tooltipAppendToBody"
+  let-tooltipDisabled="tooltipDisabled"
+  let-tooltipDelay="tooltipDelay"
+  let-column="column"
+>
+  <ng-template #groupedEventsTemplate>
+    <div style="min-width: 150px;">
+      <div *ngFor="let event of weekEvent.event.meta.groupedEvents">
+        <mwl-calendar-event-actions [event]="event">
+        </mwl-calendar-event-actions>
+        &ngsp;
+        <mwl-calendar-event-title [event]="event" view="week">
+        </mwl-calendar-event-title>
+      </div>
+    </div>
+  </ng-template>
+
+  <div
+    [ngbPopover]="groupedEventsTemplate"
+    [disablePopover]="!weekEvent.event.meta.groupedEvents"
+    class="cal-event"
+    [ngStyle]="{
+          backgroundColor: weekEvent.event.color?.secondary,
+          borderColor: weekEvent.event.color?.primary
+        }"
+    [mwlCalendarTooltip]="
+          !tooltipDisabled && !weekEvent.event.meta.groupedEvents
+            ? (weekEvent.event.title
+              | calendarEventTitle: 'weekTooltip':weekEvent.event)
+            : ''
+        "
+    [tooltipPlacement]="tooltipPlacement"
+    [tooltipEvent]="weekEvent.event"
+    [tooltipTemplate]="tooltipTemplate"
+    [tooltipAppendToBody]="tooltipAppendToBody"
+    [tooltipDelay]="tooltipDelay"
+    (mwlClick)="eventClicked.emit()"
+  >
+    <ng-container *ngIf="!weekEvent.event.meta.groupedEvents">
+      <mwl-calendar-event-actions [event]="weekEvent.event">
+      </mwl-calendar-event-actions>
+      &ngsp;
+    </ng-container>
+    <mwl-calendar-event-title [event]="weekEvent.event" view="week">
+    </mwl-calendar-event-title>
+  </div>
+</ng-template>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [cellTemplate]="customCellTemplate"
+    (beforeViewRender)="beforeMonthViewRender($event)"
+    [activeDayIsOpen]="true"
+  >
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="groupedSimilarEvents"
+    [eventTemplate]="customEventTemplate"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="groupedSimilarEvents"
+    [eventTemplate]="customEventTemplate"
+  >
+  </mwl-calendar-day-view>
+</div>

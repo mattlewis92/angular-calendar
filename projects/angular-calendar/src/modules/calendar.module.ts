@@ -3,7 +3,8 @@ import {
   CalendarCommonModule,
   CalendarModuleConfig,
   CalendarEventTitleFormatter,
-  CalendarDateFormatter
+  CalendarDateFormatter,
+  CalendarA11y,
 } from './common/calendar-common.module';
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';
@@ -37,29 +38,30 @@ export * from './day/calendar-day.module';
     CalendarMonthModule,
     CalendarWeekModule,
     CalendarWeekListModule,
-    CalendarDayModule
+    CalendarDayModule,
   ],
   exports: [
     CalendarCommonModule,
     CalendarMonthModule,
     CalendarWeekModule,
     CalendarWeekListModule,
-    CalendarDayModule
-  ]
+    CalendarDayModule,
+  ],
 })
 export class CalendarModule {
   static forRoot(
     dateAdapter: Provider,
     config: CalendarModuleConfig = {}
-  ): ModuleWithProviders {
+  ): ModuleWithProviders<CalendarModule> {
     return {
       ngModule: CalendarModule,
       providers: [
         dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
-        config.utils || CalendarUtils
-      ]
+        config.utils || CalendarUtils,
+        config.a11y || CalendarA11y,
+      ],
     };
   }
 }

@@ -9,7 +9,7 @@ import { CalendarDateFormatter } from './calendar-date-formatter.provider';
  * ```
  */
 @Pipe({
-  name: 'calendarDate'
+  name: 'calendarDate',
 })
 export class CalendarDatePipe implements PipeTransform {
   constructor(
@@ -29,7 +29,7 @@ export class CalendarDatePipe implements PipeTransform {
     if (typeof this.dateFormatter[method] === 'undefined') {
       const allowedMethods = Object.getOwnPropertyNames(
         Object.getPrototypeOf(CalendarDateFormatter.prototype)
-      ).filter(iMethod => iMethod !== 'constructor');
+      ).filter((iMethod) => iMethod !== 'constructor');
       throw new Error(
         `${method} is not a valid date formatter. Can only be one of ${allowedMethods.join(
           ', '
@@ -42,7 +42,7 @@ export class CalendarDatePipe implements PipeTransform {
       weekStartsOn,
       excludeDays,
       daysInWeek,
-      timezone
+      timezone,
     });
   }
 }

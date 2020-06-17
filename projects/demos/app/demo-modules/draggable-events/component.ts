@@ -2,17 +2,18 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Subject } from 'rxjs';
 import {
   CalendarEvent,
-  CalendarEventTimesChangedEvent
+  CalendarEventTimesChangedEvent,
+  CalendarView,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 
@@ -21,13 +22,13 @@ export class DemoComponent {
       title: 'Draggable event',
       color: colors.yellow,
       start: new Date(),
-      draggable: true
+      draggable: true,
     },
     {
       title: 'A non draggable event',
       color: colors.blue,
-      start: new Date()
-    }
+      start: new Date(),
+    },
   ];
 
   refresh: Subject<any> = new Subject();
@@ -35,7 +36,7 @@ export class DemoComponent {
   eventTimesChanged({
     event,
     newStart,
-    newEnd
+    newEnd,
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;

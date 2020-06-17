@@ -8,6 +8,7 @@ import { CalendarEvent } from 'calendar-utils';
       <span
         class="cal-event-title"
         [innerHTML]="event.title | calendarEventTitle: view:event"
+        [attr.aria-hidden]="{} | calendarA11y: 'hideEventTitle'"
       >
       </span>
     </ng-template>
@@ -19,7 +20,7 @@ import { CalendarEvent } from 'calendar-utils';
       }"
     >
     </ng-template>
-  `
+  `,
 })
 export class CalendarEventTitleComponent {
   @Input() event: CalendarEvent;

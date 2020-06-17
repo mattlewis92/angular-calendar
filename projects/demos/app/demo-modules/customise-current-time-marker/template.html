@@ -1,0 +1,34 @@
+<ng-template
+  #currentTimeMarkerTemplate
+  let-columnDate="columnDate"
+  let-dayStartHour="dayStartHour"
+  let-dayStartMinute="dayStartMinute"
+  let-dayEndHour="dayEndHour"
+  let-dayEndMinute="dayEndMinute"
+  let-isVisible="isVisible"
+  let-topPx="topPx"
+>
+  <div
+    class="cal-current-time-marker"
+    *ngIf="isVisible && showMarker"
+    [style.top.px]="topPx"
+  ></div>
+</ng-template>
+
+<div class="form-group form-check">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="showMarker"
+    [(ngModel)]="showMarker"
+  />
+  <label class="form-check-label" for="showMarker">Show marker</label>
+</div>
+
+<mwl-calendar-week-view
+  [viewDate]="viewDate"
+  [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"
+  [dayStartHour]="dayStartHour"
+  [dayEndHour]="dayEndHour"
+>
+</mwl-calendar-week-view>

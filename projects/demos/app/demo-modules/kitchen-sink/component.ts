@@ -2,7 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import {
   startOfDay,
@@ -12,7 +12,7 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  addHours
+  addHours,
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,32 +20,32 @@ import {
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
-  CalendarView
+  CalendarView,
 } from 'angular-calendar';
 
 const colors: any = {
   red: {
     primary: '#ad2121',
-    secondary: '#FAE3E3'
+    secondary: '#FAE3E3',
   },
   blue: {
     primary: '#1e90ff',
-    secondary: '#D1E8FF'
+    secondary: '#D1E8FF',
   },
   yellow: {
     primary: '#e3bc08',
-    secondary: '#FDF1BA'
-  }
+    secondary: '#FDF1BA',
+  },
 };
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['styles.css'],
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
-  @ViewChild('modalContent') modalContent: TemplateRef<any>;
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
@@ -60,18 +60,20 @@ export class DemoComponent {
 
   actions: CalendarEventAction[] = [
     {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
+      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
+      a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.handleEvent('Edited', event);
-      }
+      },
     },
     {
-      label: '<i class="fa fa-fw fa-times"></i>',
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
+        this.events = this.events.filter((iEvent) => iEvent !== event);
         this.handleEvent('Deleted', event);
-      }
-    }
+      },
+    },
   ];
 
   refresh: Subject<any> = new Subject();
@@ -86,35 +88,35 @@ export class DemoComponent {
       allDay: true,
       resizable: {
         beforeStart: true,
-        afterEnd: true
+        afterEnd: true,
       },
-      draggable: true
+      draggable: true,
     },
     {
       start: startOfDay(new Date()),
       title: 'An event with no end date',
       color: colors.yellow,
-      actions: this.actions
+      actions: this.actions,
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
       title: 'A long event that spans 2 months',
       color: colors.blue,
-      allDay: true
+      allDay: true,
     },
     {
       start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
+      end: addHours(new Date(), 2),
       title: 'A draggable and resizable event',
       color: colors.yellow,
       actions: this.actions,
       resizable: {
         beforeStart: true,
-        afterEnd: true
+        afterEnd: true,
       },
-      draggable: true
-    }
+      draggable: true,
+    },
   ];
 
   activeDayIsOpen: boolean = true;
@@ -123,7 +125,6 @@ export class DemoComponent {
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      this.viewDate = date;
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
         events.length === 0
@@ -132,20 +133,21 @@ export class DemoComponent {
       } else {
         this.activeDayIsOpen = true;
       }
+      this.viewDate = date;
     }
   }
 
   eventTimesChanged({
     event,
     newStart,
-    newEnd
+    newEnd,
   }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map(iEvent => {
+    this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
         return {
           ...event,
           start: newStart,
-          end: newEnd
+          end: newEnd,
         };
       }
       return iEvent;
@@ -169,14 +171,14 @@ export class DemoComponent {
         draggable: true,
         resizable: {
           beforeStart: true,
-          afterEnd: true
-        }
-      }
+          afterEnd: true,
+        },
+      },
     ];
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter(event => event !== eventToDelete);
+    this.events = this.events.filter((event) => event !== eventToDelete);
   }
 
   setView(view: CalendarView) {

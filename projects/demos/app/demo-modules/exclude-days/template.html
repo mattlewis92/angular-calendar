@@ -38,21 +38,21 @@
     <div class="btn-group">
       <div
         class="btn btn-primary"
-        (click)="view = 'month'"
+        (click)="view = CalendarView.Month"
         [class.active]="view === 'month'"
       >
         Month
       </div>
       <div
         class="btn btn-primary"
-        (click)="view = 'week'"
+        (click)="view = CalendarView.Week"
         [class.active]="view === 'week'"
       >
         Week
       </div>
       <div
         class="btn btn-primary"
-        (click)="view = 'day'"
+        (click)="view = CalendarView.Day"
         [class.active]="view === 'day'"
       >
         Day

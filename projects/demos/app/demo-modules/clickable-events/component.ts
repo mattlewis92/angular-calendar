@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'template.html'
+  templateUrl: 'template.html',
 })
 export class DemoComponent {
-  view: string = 'month';
+  view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
 
@@ -16,13 +16,13 @@ export class DemoComponent {
     {
       title: 'Click me',
       color: colors.yellow,
-      start: new Date()
+      start: new Date(),
     },
     {
       title: 'Or click me',
       color: colors.blue,
-      start: new Date()
-    }
+      start: new Date(),
+    },
   ];
 
   eventClicked({ event }: { event: CalendarEvent }): void {

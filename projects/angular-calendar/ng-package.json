@@ -13,6 +13,7 @@
     "angular-draggable-droppable",
     "angular-resizable-element",
     "calendar-utils",
-    "positioning"
+    "positioning",
+    "@scarf/scarf"
   ]
 }

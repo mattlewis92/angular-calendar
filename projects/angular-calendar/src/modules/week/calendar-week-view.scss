@@ -8,9 +8,11 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
 
   .cal-week-view {
     background-color: map-get($theme, bg-primary);
+    border-top: solid 1px map-get($theme, border-color);
 
     .cal-day-headers {
       border-color: map-get($theme, border-color);
+      border-top: 0;
     }
 
     .cal-day-headers .cal-header {
@@ -74,6 +76,10 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
     .cal-hour:last-child :not(:last-child) .cal-hour-segment {
       border-bottom-color: map-get($theme, border-color);
     }
+
+    .cal-current-time-marker {
+      background-color: map-get($theme, current-time-marker-color);
+    }
   }
 }
 
@@ -120,6 +126,13 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
   .cal-time-label-column {
     width: 70px;
     height: 100%;
+  }
+
+  .cal-current-time-marker {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    z-index: 2;
   }
 
   .cal-all-day-events {
@@ -220,6 +233,10 @@ $cal-week-view-vars: map-merge($cal-vars, $cal-week-view-vars);
     }
 
     .cal-day-column {
+      position: relative;
+    }
+
+    .cal-events-container {
       position: relative;
     }
 

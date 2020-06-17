@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {
-  BrowserModule,
-  HAMMER_GESTURE_CONFIG
-} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbTabsetModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbTabsetModule,
+  NgbCollapseModule,
+  NgbTooltipModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 import { environment } from '../environments/environment';
-import { CustomHammerConfig } from './hammer-config';
 import { FormsModule } from '@angular/forms';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -24,7 +24,12 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     NgbTabsetModule,
     NgbCollapseModule,
+    NgbTooltipModule,
     DragAndDropModule,
+    Angulartics2Module.forRoot({
+      developerMode: !environment.production,
+    }),
+    ClipboardModule,
     DefaultDemoModule,
     RouterModule.forRoot(
       [
@@ -32,297 +37,419 @@ import { FormsModule } from '@angular/forms';
           path: 'kitchen-sink',
           component: DefaultDemoComponent,
           data: {
-            label: 'Kitchen sink'
-          }
+            label: 'Kitchen sink',
+          },
         },
         {
           path: 'async-events',
-          loadChildren: './demo-modules/async-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/async-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Async events'
-          }
+            label: 'Async events',
+          },
         },
         {
           path: 'optional-event-end-dates',
-          loadChildren:
-            './demo-modules/optional-event-end-dates/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/optional-event-end-dates/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Optional event end dates'
-          }
+            label: 'Optional event end dates',
+          },
         },
         {
           path: 'editable-deletable-events',
-          loadChildren:
-            './demo-modules/editable-deletable-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/editable-deletable-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Editable / deletable events'
-          }
+            label: 'Editable / deletable events',
+          },
         },
         {
           path: 'draggable-events',
-          loadChildren: './demo-modules/draggable-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/draggable-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Draggable events'
-          }
+            label: 'Draggable events',
+          },
         },
         {
           path: 'resizable-events',
-          loadChildren: './demo-modules/resizable-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/resizable-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Resizable events'
-          }
+            label: 'Resizable events',
+          },
         },
         {
           path: 'month-view-badge-total',
-          loadChildren:
-            './demo-modules/month-view-badge-total/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/month-view-badge-total/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Month view badge total'
-          }
+            label: 'Month view badge total',
+          },
         },
         {
           path: 'recurring-events',
-          loadChildren: './demo-modules/recurring-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/recurring-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Recurring events'
-          }
+            label: 'Recurring events',
+          },
         },
         {
           path: 'custom-event-class',
-          loadChildren: './demo-modules/custom-event-class/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/custom-event-class/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Custom event class'
-          }
+            label: 'Custom event class',
+          },
         },
         {
           path: 'clickable-events',
-          loadChildren: './demo-modules/clickable-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/clickable-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Clickable events'
-          }
+            label: 'Clickable events',
+          },
         },
         {
           path: 'clickable-days',
-          loadChildren: './demo-modules/clickable-days/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/clickable-days/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Clickable days'
-          }
+            label: 'Clickable times',
+          },
         },
         {
           path: 'day-view-start-end',
-          loadChildren: './demo-modules/day-view-start-end/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/day-view-start-end/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Day view start / end time'
-          }
+            label: 'Day view start / end time',
+          },
         },
         {
           path: 'day-view-hour-split',
-          loadChildren: './demo-modules/day-view-hour-split/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/day-view-hour-split/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Day view hour split'
-          }
+            label: 'Day view hour split',
+          },
         },
         {
           path: 'navigating-between-views',
-          loadChildren:
-            './demo-modules/navigating-between-views/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/navigating-between-views/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Navigating between views'
-          }
+            label: 'Navigating between views',
+          },
         },
         {
           path: 'before-view-render',
-          loadChildren: './demo-modules/before-view-render/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/before-view-render/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
             label: 'Before view render',
-            tags: ['disable']
-          }
+            tags: ['disable'],
+          },
         },
         {
           path: 'exclude-days',
-          loadChildren: './demo-modules/exclude-days/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/exclude-days/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Exclude Weekends'
-          }
+            label: 'Exclude Weekends',
+          },
         },
         {
           path: 'i18n',
-          loadChildren: './demo-modules/i18n/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/i18n/module').then((m) => m.DemoModule),
           data: {
             label: 'Internationalisation',
-            tags: ['translation', 'i18n', 'translate', 'locale']
-          }
+            tags: ['translation', 'i18n', 'translate', 'locale'],
+          },
         },
         {
           path: 'draggable-external-events',
-          loadChildren:
-            './demo-modules/draggable-external-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/draggable-external-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Draggable external events'
-          }
+            label: 'Draggable external events',
+          },
         },
         {
           path: 'all-day-events',
-          loadChildren: './demo-modules/all-day-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/all-day-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'All day events'
-          }
+            label: 'All day events',
+          },
         },
         {
           path: 'customise-date-formats',
-          loadChildren:
-            './demo-modules/customise-date-formats/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/customise-date-formats/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Customise date formats'
-          }
+            label: 'Customise date formats',
+          },
         },
         {
           path: 'show-dates-on-titles',
-          loadChildren: './demo-modules/show-dates-on-titles/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/show-dates-on-titles/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Show dates on title'
-          }
+            label: 'Show dates on title',
+          },
         },
         {
           path: 'disable-tooltips',
-          loadChildren: './demo-modules/disable-tooltips/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/disable-tooltips/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Disable tooltips'
-          }
+            label: 'Disable tooltips',
+          },
         },
         {
           path: 'additional-event-properties',
-          loadChildren:
-            './demo-modules/additional-event-properties/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/additional-event-properties/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Additional event properties'
-          }
+            label: 'Additional event properties',
+          },
         },
         {
           path: 'selectable-period',
-          loadChildren: './demo-modules/selectable-period/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/selectable-period/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Selectable period'
-          }
+            label: 'Selectable period',
+          },
         },
         {
           path: 'min-max-date',
-          loadChildren: './demo-modules/min-max-date/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/min-max-date/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Min max date'
-          }
+            label: 'Min max date',
+          },
         },
         {
           path: 'refreshing-the-view',
-          loadChildren: './demo-modules/refreshing-the-view/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/refreshing-the-view/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Refreshing the view'
-          }
+            label: 'Refreshing the view',
+          },
         },
         {
           path: 'custom-templates',
-          loadChildren: './demo-modules/custom-templates/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/custom-templates/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Custom templates'
-          }
+            label: 'Custom templates',
+          },
         },
         {
-          path: 'group-month-view-events',
-          loadChildren:
-            './demo-modules/group-month-view-events/module#DemoModule',
+          path: 'group-similar-events',
+          loadChildren: () =>
+            import('./demo-modules/group-similar-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Group month view events'
-          }
+            label: 'Group similar events',
+          },
         },
         {
           path: 'context-menu',
-          loadChildren: './demo-modules/context-menu/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/context-menu/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
             label: 'Context menu',
-            tags: ['right click']
-          }
+            tags: ['right click'],
+          },
         },
         {
           path: 'week-view-minute-precision',
-          loadChildren:
-            './demo-modules/week-view-minute-precision/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/week-view-minute-precision/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Week view minute precision'
-          }
+            label: 'Week view minute precision',
+          },
         },
         {
           path: 'extra-month-view-weeks',
-          loadChildren:
-            './demo-modules/extra-month-view-weeks/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/extra-month-view-weeks/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Extra month view weeks'
-          }
+            label: 'Extra month view weeks',
+          },
         },
         {
           path: 'disable-slide-animation',
-          loadChildren:
-            './demo-modules/disable-slide-animation/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/disable-slide-animation/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Disable slide animation'
-          }
+            label: 'Disable slide animation',
+          },
         },
         {
           path: 'no-events-label',
-          loadChildren: './demo-modules/no-events-label/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/no-events-label/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'No events label'
-          }
+            label: 'No events label',
+          },
         },
         {
           path: 'moment',
-          loadChildren: './demo-modules/moment/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/moment/module').then((m) => m.DemoModule),
           data: {
-            label: 'Use moment'
-          }
+            label: 'Use moment',
+          },
         },
         {
           path: 'day-view-scheduler',
-          loadChildren: './demo-modules/day-view-scheduler/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/day-view-scheduler/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Day view scheduler'
-          }
+            label: 'Day view scheduler',
+          },
         },
         {
           path: 'drag-to-create-events',
-          loadChildren:
-            './demo-modules/drag-to-create-events/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/drag-to-create-events/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
-            label: 'Drag to create events'
-          }
+            label: 'Drag to create events',
+          },
+        },
+        {
+          path: 'responsive-week-view',
+          loadChildren: () =>
+            import('./demo-modules/responsive-week-view/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Responsive week view',
+          },
         },
         {
           path: 'dark-theme',
-          loadChildren: './demo-modules/dark-theme/module#DemoModule',
+          loadChildren: () =>
+            import('./demo-modules/dark-theme/module').then(
+              (m) => m.DemoModule
+            ),
           data: {
             label: 'Dark theme',
-            darkTheme: true
-          }
+            darkTheme: true,
+          },
+        },
+        {
+          path: 'week-view-event-margin',
+          loadChildren: () =>
+            import('./demo-modules/week-view-event-margin/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Week view event margin',
+          },
+        },
+        {
+          path: 'customise-current-time-marker',
+          loadChildren: () =>
+            import('./demo-modules/customise-current-time-marker/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Customise current time marker',
+          },
+        },
+        {
+          path: 'public-holidays',
+          loadChildren: () =>
+            import('./demo-modules/public-holidays/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Public holidays',
+          },
         },
         {
           path: '**',
-          redirectTo: 'kitchen-sink'
-        }
+          redirectTo: 'kitchen-sink',
+        },
       ],
       {
-        useHash: true
+        useHash: true,
       }
     ),
-    Angulartics2Module.forRoot({
-      developerMode: !environment.production
-    }),
-    PerfectScrollbarModule
   ],
-  providers: [
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: CustomHammerConfig
-    }
-  ],
-  bootstrap: [DemoAppComponent]
+  bootstrap: [DemoAppComponent],
 })
 export class DemoAppModule {}
