@@ -155,7 +155,7 @@
   },
   "dependencies": {
     "@scarf/scarf": "^1.0.5",
-    "angular-draggable-droppable": "^4.4.6",
+    "angular-draggable-droppable": "^4.5.4",
     "angular-resizable-element": "^3.3.2",
     "calendar-utils": "^0.8.2",
     "positioning": "^2.0.1",
