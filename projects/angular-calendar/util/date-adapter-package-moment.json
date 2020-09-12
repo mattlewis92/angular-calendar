@@ -1,0 +1,5 @@
+{
+  "main": "./index.js",
+  "module": "../esm/moment/index.js",
+  "typings": "./index.d.ts"
+}
