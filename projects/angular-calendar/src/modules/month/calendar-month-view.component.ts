@@ -199,7 +199,16 @@ export class CalendarMonthViewComponent
   @Input() tooltipDelay: number | null = null;
 
   /**
-   * The start number of the week
+   * The start number of the week.
+   * If using the moment date adapter this option won't do anything and you'll need to set it globally like so:
+   * ```
+   * moment.updateLocale('en', {
+   *   week: {
+   *     dow: 1, // set start of week to monday instead
+   *     doy: 0,
+   *   },
+   * });
+   * ```
    */
   @Input() weekStartsOn: number;
 
