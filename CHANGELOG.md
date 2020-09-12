@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.17](https://github.com/mattlewis92/angular-calendar/compare/v0.28.16...v0.28.17) (2020-09-12)
+
+
+### Bug Fixes
+
+* export date adapters as es modules to enable tree shaking ([8ab3113](https://github.com/mattlewis92/angular-calendar/commit/8ab311323148a1b239be09655b9ecad0f3058877)), closes [#1283](https://github.com/mattlewis92/angular-calendar/issues/1283) [#1331](https://github.com/mattlewis92/angular-calendar/issues/1331) [#1292](https://github.com/mattlewis92/angular-calendar/issues/1292)
+
 ### [0.28.16](https://github.com/mattlewis92/angular-calendar/compare/v0.28.15...v0.28.16) (2020-05-30)
 
 
