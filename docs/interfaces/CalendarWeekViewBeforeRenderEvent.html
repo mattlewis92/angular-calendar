@@ -593,6 +593,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * The start number of the week.
    * This is ignored when the &#x60;daysInWeek&#x60; input is also set as the &#x60;viewDate&#x60; will be used as the start of the week instead.
    * Note, you should also pass this to the calendar title pipe so it shows the same days: {{ viewDate | calendarDate:(view + &#x27;ViewTitle&#x27;):locale:weekStartsOn }}
+   * If using the moment date adapter this option won&#x27;t do anything and you&#x27;ll need to set it globally like so:
+   * &#x60;&#x60;&#x60;
+   * moment.updateLocale(&#x27;en&#x27;, {
+   *   week: {
+   *     dow: 1, // set start of week to monday instead
+   *     doy: 0,
+   *   },
+   * });
+   * &#x60;&#x60;&#x60;
    */
   @Input() weekStartsOn: number;
 
@@ -633,7 +642,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() snapDraggedEvents: boolean &#x3D; true;
 
   /**
-   * The number of segments in an hour. Must be &lt;&#x3D; 6
+   * The number of segments in an hour. Must divide equally into 60.
    */
   @Input() hourSegments: number &#x3D; 2;
 
