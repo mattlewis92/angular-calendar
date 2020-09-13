@@ -1210,7 +1210,10 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     snapDraggedEvents = true
   ) {
     const previousView = this.view;
-    this.view = this.getWeekView(tempEvents);
+    if (snapDraggedEvents) {
+      this.view = this.getWeekView(tempEvents);
+    }
+
     const adjustedEventsArray = tempEvents.filter((event) =>
       adjustedEvents.has(event)
     );
@@ -1225,7 +1228,9 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
       adjustedEventsArray.forEach((adjustedEvent) => {
         const originalEvent = adjustedEvents.get(adjustedEvent);
         const existingColumnEvent = column.events.find(
-          (columnEvent) => columnEvent.event === adjustedEvent
+          (columnEvent) =>
+            columnEvent.event ===
+            (snapDraggedEvents ? adjustedEvent : originalEvent)
         );
         if (existingColumnEvent) {
           // restore the original event so trackBy kicks in and the dom isn't changed
