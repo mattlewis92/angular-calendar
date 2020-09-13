@@ -176,6 +176,7 @@ export class CalendarDayViewComponent {
    */
   @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 
   /**
@@ -183,6 +184,7 @@ export class CalendarDayViewComponent {
    */
   @Output() hourSegmentClicked = new EventEmitter<{
     date: Date;
+    sourceEvent: MouseEvent;
   }>();
 
   /**
