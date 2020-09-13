@@ -74,7 +74,7 @@ export class CalendarDayViewComponent {
   @Input() events: CalendarEvent[] = [];
 
   /**
-   * The number of segments in an hour. Must be <= 6
+   * The number of segments in an hour. Must divide equally into 60.
    */
   @Input() hourSegments: number = 2;
 
@@ -197,6 +197,7 @@ export class CalendarDayViewComponent {
    */
   @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
+    sourceEvent: MouseEvent | any;
   }>();
 
   /**
@@ -204,6 +205,7 @@ export class CalendarDayViewComponent {
    */
   @Output() hourSegmentClicked = new EventEmitter<{
     date: Date;
+    sourceEvent: MouseEvent;
   }>();
 
   /**
