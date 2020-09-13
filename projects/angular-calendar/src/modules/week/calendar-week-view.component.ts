@@ -508,7 +508,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() snapDraggedEvents: boolean = true;
 
   /**
-   * The number of segments in an hour. Must be <= 6
+   * The number of segments in an hour. Must divide equally into 60.
    */
   @Input() hourSegments: number = 2;
 
