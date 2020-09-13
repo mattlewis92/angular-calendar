@@ -603,7 +603,7 @@ export class CalendarWeekViewComponent
   }>();
 
   /**
-   * Called when the event title is clicked
+   * Called when an event title is clicked
    */
   @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
