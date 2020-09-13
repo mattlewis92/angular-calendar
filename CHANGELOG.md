@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.19](https://github.com/mattlewis92/angular-calendar/compare/v0.28.18...v0.28.19) (2020-09-13)
+
+
+### Bug Fixes
+
+* **day-view:** add sourceEvent to click events ([71dfc63](https://github.com/mattlewis92/angular-calendar/commit/71dfc63f7bb9feb0e7ca06f9970f5096b8b4ca6d)), closes [#1274](https://github.com/mattlewis92/angular-calendar/issues/1274)
+
 ### [0.28.18](https://github.com/mattlewis92/angular-calendar/compare/v0.28.17...v0.28.18) (2020-09-12)
 
 
