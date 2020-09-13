@@ -13,6 +13,7 @@
             *ngFor="let event of externalEvents"
             mwlDraggable
             [dropData]="{event: event}"
+            [touchStartLongPress]="{ delay: 300, delta: 30 }"
             dragActiveClass="drag-active"
           >
             <a href="javascript:;" [style.color]="event.color.primary">
