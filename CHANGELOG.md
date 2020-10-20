@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.22](https://github.com/mattlewis92/angular-calendar/compare/v0.28.21...v0.28.22) (2020-10-20)
+
+
+### Bug Fixes
+
+* prevent events from disappearing when dragging in quick succession ([d37e459](https://github.com/mattlewis92/angular-calendar/commit/d37e4597887b1e46ba183cef7226f4633bdd61b1)), closes [#1346](https://github.com/mattlewis92/angular-calendar/issues/1346)
+
+### [0.28.21](https://github.com/mattlewis92/angular-calendar/compare/v0.28.20...v0.28.21) (2020-10-20)
+
+
+### Bug Fixes
+
+* **week-view:** use correct height for events on days where DST changes ([3531e6e](https://github.com/mattlewis92/angular-calendar/commit/3531e6e02f776fe8a30a192208b1933f5019157f)), closes [#1348](https://github.com/mattlewis92/angular-calendar/issues/1348)
+
+### [0.28.20](https://github.com/mattlewis92/angular-calendar/compare/v0.28.19...v0.28.20) (2020-09-13)
+
+
+### Bug Fixes
+
+* **week-view:** fix dragging of events when snapDraggedEvents=false ([fdb1181](https://github.com/mattlewis92/angular-calendar/commit/fdb118141d73091c98dbba953b13437a9bd3737b)), closes [#1269](https://github.com/mattlewis92/angular-calendar/issues/1269)
+
 ### [0.28.19](https://github.com/mattlewis92/angular-calendar/compare/v0.28.18...v0.28.19) (2020-09-13)
 
 
