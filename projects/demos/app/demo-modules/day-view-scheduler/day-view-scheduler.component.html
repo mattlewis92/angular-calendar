@@ -126,6 +126,16 @@
         class="cal-day-column"
         *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
       >
+        <mwl-calendar-week-view-current-time-marker
+          [columnDate]="column.date"
+          [dayStartHour]="dayStartHour"
+          [dayStartMinute]="dayStartMinute"
+          [dayEndHour]="dayEndHour"
+          [dayEndMinute]="dayEndMinute"
+          [hourSegments]="hourSegments"
+          [hourSegmentHeight]="hourSegmentHeight"
+          [customTemplate]="currentTimeMarkerTemplate"
+        ></mwl-calendar-week-view-current-time-marker>
         <div
           *ngFor="let timeEvent of column.events; trackBy: trackByWeekTimeEvent"
           #event
