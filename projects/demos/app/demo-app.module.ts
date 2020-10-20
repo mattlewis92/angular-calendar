@@ -441,6 +441,16 @@ import { ClipboardModule } from 'ngx-clipboard';
           },
         },
         {
+          path: 'scroll-to-current-time',
+          loadChildren: () =>
+            import('./demo-modules/scroll-to-current-time/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Scroll to current time',
+          },
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink',
         },
