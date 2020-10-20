@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.22](https://github.com/mattlewis92/angular-calendar/compare/v0.28.21...v0.28.22) (2020-10-20)
+
+
+### Bug Fixes
+
+* prevent events from disappearing when dragging in quick succession ([d37e459](https://github.com/mattlewis92/angular-calendar/commit/d37e4597887b1e46ba183cef7226f4633bdd61b1)), closes [#1346](https://github.com/mattlewis92/angular-calendar/issues/1346)
+
 ### [0.28.21](https://github.com/mattlewis92/angular-calendar/compare/v0.28.20...v0.28.21) (2020-10-20)
 
 
