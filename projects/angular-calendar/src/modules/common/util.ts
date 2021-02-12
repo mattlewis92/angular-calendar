@@ -99,17 +99,6 @@ export function getMinutesMoved(
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
 }
 
-export function getMinimumEventHeightInMinutes(
-  hourSegments: number,
-  hourSegmentHeight: number,
-  hourDuration?: number
-) {
-  return (
-    getPixelAmountInMinutes(hourSegments, hourSegmentHeight, hourDuration) *
-    hourSegmentHeight
-  );
-}
-
 export function getDefaultEventEnd(
   dateAdapter: DateAdapter,
   event: CalendarEvent,

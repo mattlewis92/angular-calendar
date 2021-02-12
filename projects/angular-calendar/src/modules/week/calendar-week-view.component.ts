@@ -42,7 +42,6 @@ import {
   trackByHour,
   getMinutesMoved,
   getDefaultEventEnd,
-  getMinimumEventHeightInMinutes,
   addDaysWithExclusions,
   isDraggedWithinPeriod,
   shouldFireDroppedEvent,
@@ -1328,29 +1327,24 @@ export class CalendarWeekViewComponent
     calendarEvent: CalendarEvent,
     resizeEvent: ResizeEvent
   ) {
-    const minimumEventHeight = getMinimumEventHeightInMinutes(
-      this.hourSegments,
-      this.hourSegmentHeight,
-      this.hourDuration
-    );
     const newEventDates = {
       start: calendarEvent.start,
       end: getDefaultEventEnd(
         this.dateAdapter,
         calendarEvent,
-        minimumEventHeight
+        this.minimumEventHeight
       ),
     };
     const { end, ...eventWithoutEnd } = calendarEvent;
     const smallestResizes = {
       start: this.dateAdapter.addMinutes(
         newEventDates.end,
-        minimumEventHeight * -1
+        this.minimumEventHeight * -1
       ),
       end: getDefaultEventEnd(
         this.dateAdapter,
         eventWithoutEnd,
-        minimumEventHeight
+        this.minimumEventHeight
       ),
     };
 

@@ -3090,7 +3090,7 @@ describe('calendarWeekView component', () => {
       clientY: rect.bottom - 200,
     });
     fixture.detectChanges();
-    expect(event.getBoundingClientRect().height).to.equal(20);
+    expect(event.getBoundingClientRect().height).to.equal(1);
     triggerDomEvent('mouseup', document.body, {
       clientX: rect.right,
       clientY: rect.bottom - 200,
@@ -3102,7 +3102,7 @@ describe('calendarWeekView component', () => {
       event: fixture.componentInstance.events[0],
       newStart: fixture.componentInstance.events[0].start,
       newEnd: moment(fixture.componentInstance.events[0].start)
-        .add(30, 'minutes')
+        .add(1, 'minutes')
         .toDate(),
     });
   });
@@ -3159,7 +3159,7 @@ describe('calendarWeekView component', () => {
       clientY: rect.bottom - 120,
     });
     fixture.detectChanges();
-    expect(event.getBoundingClientRect().height).to.equal(20);
+    expect(event.getBoundingClientRect().height).to.equal(1);
     triggerDomEvent('mouseup', document.body, {
       clientX: rect.right,
       clientY: rect.bottom - 120,
@@ -3171,7 +3171,7 @@ describe('calendarWeekView component', () => {
       event: fixture.componentInstance.events[0],
       newStart: fixture.componentInstance.events[0].start,
       newEnd: moment(fixture.componentInstance.events[0].start)
-        .add(20, 'minutes')
+        .add(1, 'minutes')
         .toDate(),
     });
   });
