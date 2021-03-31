@@ -4,6 +4,9 @@ import {
   Output,
   EventEmitter,
   TemplateRef,
+  OnChanges,
+  SimpleChanges,
+  HostBinding,
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../common/util';
@@ -102,7 +105,11 @@ import { PlacementArray } from 'positioning';
     '[class.cal-event-highlight]': '!!day.backgroundColor',
   },
 })
-export class CalendarMonthCellComponent {
+export class CalendarMonthCellComponent implements OnChanges {
+  @HostBinding('style.margin-top') marginTop;
+
+  @Input() notes: CalendarEvent[];
+
   @Input() day: MonthViewDay;
 
   @Input() openDay: MonthViewDay;
@@ -131,4 +138,20 @@ export class CalendarMonthCellComponent {
   trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes?.notes?.currentValue) {
+      const notesOfTheDay = this.notes.filter(
+        (note) => note.start <= this.day.date && note.end >= this.day.date
+      );
+      if (!!notesOfTheDay.length) {
+        this.marginTop =
+          'calc(' +
+          (notesOfTheDay.length - 1) +
+          'em + 3px + ' +
+          notesOfTheDay.length * 3 +
+          'px)';
+      }
+    }
+  }
 }

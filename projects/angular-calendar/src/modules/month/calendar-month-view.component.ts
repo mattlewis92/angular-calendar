@@ -64,8 +64,35 @@ export interface CalendarMonthViewEventTimesChangedEvent<
       </mwl-calendar-month-view-header>
       <div class="cal-days">
         <div
+          class="cal-days-container"
           *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"
         >
+          <div class="cell-header">
+            <ng-container
+              *ngFor="
+                let day of view.days
+                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek;
+                trackBy: trackByDate
+              "
+            >
+              <ng-template
+                [ngTemplateOutlet]="cellHeaderTemplate"
+                [ngTemplateOutletContext]="{
+                  day: day,
+                  locale: locale
+                }"
+              >
+              </ng-template>
+            </ng-container>
+          </div>
+          <div class="cal-notes-row">
+            <mwl-calendar-month-row
+              [notes]="notes"
+              [view]="view"
+              [rowIndex]="rowIndex"
+            >
+            </mwl-calendar-month-row>
+          </div>
           <div class="cal-cell-row">
             <mwl-calendar-month-cell
               *ngFor="
@@ -73,6 +100,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                   | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek;
                 trackBy: trackByDate
               "
+              [notes]="notes"
               [ngClass]="day?.cssClass"
               [day]="day"
               [openDay]="openDay"
@@ -141,6 +169,9 @@ export interface CalendarMonthViewEventTimesChangedEvent<
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy {
+  @Input() cellHeaderTemplate: TemplateRef<any>;
+
+  @Input() notes: CalendarEvent[] = [];
   /**
    * The current view date
    */
