@@ -113,14 +113,47 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
     opacity: 0.5;
   }
 
-  .cal-day-column {
+  .cal-day-column,
+  .cal-note-column {
     flex-grow: 1;
-    border-left: solid 1px;
+
+    &:not(:first-child) {
+      border-left: solid 1px #e1e1e1;
+    }
   }
 
   .cal-event {
     font-size: 12px;
     border: 1px solid;
+  }
+
+  .notes-container {
+    position: relative;
+
+    .cal-notes-columns {
+      border-right: 1px solid #e1e1e1;
+      border-left: 1px solid #e1e1e1;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+
+    .cal-events-row-container {
+      padding: 3px 0;
+
+      .cal-events-row {
+        position: relative;
+        height: 22px;
+
+        .cal-event-container {
+          display: inline-block;
+          position: absolute;
+        }
+      }
+    }
   }
 
   .cal-time-label-column {
@@ -235,6 +268,13 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
     height: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  .cal-note {
+    background: yellowgreen;
+    border: 1px solid green;
+    border-radius: 2px;
+    padding-left: 4px;
   }
 }
 

@@ -4,23 +4,6 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
 @Component({
   selector: 'mwl-calendar-month-row',
   template: `
-    <!--<div class="row-day" *ngFor="let note of concernedNotes">
-      <div
-        class="note-day"
-        *ngFor="let day of daysSliced; let indexOfelement = index"
-        [class.hidden]="day.date < note.start || day.date > note.end"
-        [class.cal-past]="day.date < note.start || (day.date > note.end && day.isPast)"
-        [class.last]="day.date.valueOf() === note.end.valueOf() && indexOfelement !== 6"
-        style="background-color: yellowgreen"
-      >
-        <span
-          *ngIf="day.date.valueOf() == note.start.valueOf() ||
-            (startDate.valueOf() == day.date.valueOf() && note.start < day.date)"
-          >{{ note.title }} </span
-        >
-      </div>
-    </div>-->
-
     <div class="cell-day" *ngFor="let day of daysSliced">
       <div *ngFor="let note of notePerDay.get(day)">
         <div
