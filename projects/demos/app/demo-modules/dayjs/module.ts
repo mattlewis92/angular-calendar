@@ -8,13 +8,10 @@ import {
   DateAdapter,
   MOMENT,
 } from 'angular-calendar';
-// import moment from 'moment';
 import dayjs from 'dayjs';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
-import { adapterFactory } from 'projects/angular-calendar/src/date-adapters/dayjs';
-// TODO: fix import
-// import { adapterFactory } from 'angular-calendar/date-adapters/dayjs';
+import { adapterFactory } from 'angular-calendar/date-adapters/dayjs';
 
 export function dayjsAdapterFactory() {
   return adapterFactory(dayjs);
