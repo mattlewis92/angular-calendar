@@ -41,6 +41,7 @@ export class CalendarMonthRowComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes?.notes?.currentValue) {
+      this.notePerDay = new Map();
       this.daysSliced = this.view.days.slice(
         this.rowIndex,
         this.view.totalDaysVisibleInWeek + this.rowIndex
