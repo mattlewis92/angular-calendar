@@ -11,5 +11,7 @@ Work on this calendar is funded entirely by donations. If you'd like to support 
 
 <h2 align="center">Backers</h2>
 
-- [John Allan Canning](https://github.com/jcanning)
+- [Jordan Hall](https://github.com/Jordan-Hall)
+- [lixiangabcd08](https://github.com/lixiangabcd08)
+- [korolar](https://github.com/korolar)
 - [_Your name here?_](https://github.com/users/mattlewis92/sponsorship)
