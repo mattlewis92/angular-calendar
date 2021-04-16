@@ -6,7 +6,8 @@
     "url": "https://github.com/sponsors/mattlewis92"
   },
   "scripts": {
-    "start": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open",
+    "node:memory": "cross-env NODE_OPTIONS=--max_old_space_size=8192",
+    "start": "npm run node:memory -- ng serve --open",
     "build:copy-package-json": "copyfiles package.json projects/angular-calendar & copyfiles package.json projects/angular-calendar/schematics/ng-add",
     "build:lib": "ng build angular-calendar --prod",
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json && tsc -p tsconfig-date-adapters.json --module es2015 --outDir ./dist/angular-calendar/date-adapters/esm",
