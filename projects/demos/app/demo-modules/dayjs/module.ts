@@ -11,7 +11,7 @@ import {
 import dayjs from 'dayjs';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
-import { adapterFactory } from 'angular-calendar/date-adapters/dayjs';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 
 export function dayjsAdapterFactory() {
   return adapterFactory(dayjs);

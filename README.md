@@ -179,8 +179,6 @@ https://github.com/mattlewis92/angular-bootstrap-calendar
 
 Run `npm start` to start a development server on port 8000 with auto reload + tests.
 
-> To run this on a windows machine change `npm start` in `package.json` from `node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open` to `node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --open`.
-
 ### Testing
 
 Run `npm test` to run tests once or `npm run test:watch` to continually run tests.
