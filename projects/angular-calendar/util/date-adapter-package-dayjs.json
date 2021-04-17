@@ -1,6 +1,0 @@
-{
-    "main": "./index.js",
-    "module": "../esm/dayjs/index.js",
-    "typings": "./index.d.ts"
-  }
-  
