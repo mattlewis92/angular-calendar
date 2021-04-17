@@ -15,6 +15,5 @@
   "files": [
     "projects/angular-calendar/src/date-adapters/date-fns/index.ts",
     "projects/angular-calendar/src/date-adapters/moment/index.ts",
-    "projects/angular-calendar/src/date-adapters/dayjs/index.ts"
   ]
 }
