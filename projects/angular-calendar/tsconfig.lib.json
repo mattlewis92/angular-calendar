@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
-    "target": "es5",
+    "target": "es2015",
     "module": "es2015",
     "declaration": true,
     "inlineSources": true,
@@ -10,8 +10,7 @@
     "types": [],
     "lib": [
       "dom",
-      "es2015",
-      "es2017"
+      "es2015"
     ],
     "emitDecoratorMetadata": true
   },
