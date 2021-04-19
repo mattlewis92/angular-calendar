@@ -114,6 +114,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.0",
     "date-fns": "^2.16.1",
+    "dayjs": "^1.10.4",
     "del-cli": "^3.0.1",
     "flatpickr": "^4.6.6",
     "highlightjs-loader": "^0.2.3",
@@ -159,7 +160,7 @@
     "@scarf/scarf": "^1.1.0",
     "angular-draggable-droppable": "^4.5.6",
     "angular-resizable-element": "^3.3.3",
-    "calendar-utils": "^0.8.3",
+    "calendar-utils": "^0.8.4",
     "positioning": "^2.0.1",
     "tslib": "^1.14.1"
   },

@@ -370,6 +370,14 @@ import { ClipboardModule } from 'ngx-clipboard';
           },
         },
         {
+          path: 'dayjs',
+          loadChildren: () =>
+            import('./demo-modules/dayjs/module').then((m) => m.DemoModule),
+          data: {
+            label: 'Use dayjs',
+          },
+        },
+        {
           path: 'day-view-scheduler',
           loadChildren: () =>
             import('./demo-modules/day-view-scheduler/module').then(
