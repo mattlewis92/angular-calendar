@@ -1,26 +1,5 @@
 @import '../../variables';
 
-/*
-.hidden {
-  background: unset !important;
-}
-
-.row-day {
-  display: flex;
-}
-
-.note-day {
-  flex: 1;
-}
-
-.cal-past {
-  background-color: rgba(245, 247, 248, 0.5) !important;
-}
-
-.last {
-}
-*/
-
 :host {
   display: flex;
   position: relative;
@@ -28,14 +7,4 @@
 
 .cell-day {
   flex: 1;
-}
-
-.note {
-  position: absolute;
-  height: 1em;
-  max-height: 1em;
-  padding-bottom: 2px;
-  overflow: hidden;
-  line-height: 1em;
-  border-radius: 2px;
 }

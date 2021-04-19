@@ -90,6 +90,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [notes]="notes"
               [view]="view"
               [rowIndex]="rowIndex"
+              [cellMonthNoteTemplate]="cellMonthNoteTemplate"
             >
             </mwl-calendar-month-row>
           </div>
@@ -172,6 +173,8 @@ export class CalendarMonthViewComponent
   @Input() cellHeaderTemplate: TemplateRef<any>;
 
   @Input() notes: CalendarEvent[] = [];
+
+  @Input() cellMonthNoteTemplate: TemplateRef<any>;
   /**
    * The current view date
    */

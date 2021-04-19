@@ -127,6 +127,17 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
     border: 1px solid;
   }
 
+  .cal-note-header-container {
+    display: flex;
+    .cal-note-header {
+      flex: 1;
+      border-right: 1px solid #e1e1e1;
+      &:first-child {
+        border-left: 1px solid #e1e1e1;
+      }
+    }
+  }
+
   .notes-container {
     position: relative;
 
@@ -140,13 +151,14 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
       top: 0;
       z-index: 0;
     }
-
     .cal-events-row-container {
-      padding: 3px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e1e1e1;
 
       .cal-events-row {
         position: relative;
-        height: 22px;
+        height: 33px; // Adapt the height to fit with the design of notes
+        margin-bottom: 4px;
 
         .cal-event-container {
           display: inline-block;
@@ -268,13 +280,6 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
     height: 100%;
     display: flex;
     flex-direction: column;
-  }
-
-  .cal-note {
-    background: yellowgreen;
-    border: 1px solid green;
-    border-radius: 2px;
-    padding-left: 4px;
   }
 }
 

@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  TemplateRef,
+} from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
 
 @Component({
@@ -6,20 +12,15 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
   template: `
     <div class="cell-day" *ngFor="let day of daysSliced">
       <div *ngFor="let note of notePerDay.get(day)">
-        <div
-          class="note"
-          *ngIf="
-            note.meta &&
-            (note.start.valueOf() === day.date.valueOf() ||
-              day.date.valueOf() === daysSliced[0].date.valueOf())
-          "
-          [style.width]="note.meta.width"
-          [style.left]="note.meta.left"
-          [style.top]="note.meta.top"
-          style="background-color: yellowgreen"
+        <ng-template
+          [ngTemplateOutlet]="cellMonthNoteTemplate"
+          [ngTemplateOutletContext]="{
+            day: day,
+            firstDayOfRow: firstDayOfRow,
+            note: note
+          }"
         >
-          {{ note.title }}
-        </div>
+        </ng-template>
       </div>
     </div>
   `,
@@ -29,11 +30,13 @@ export class CalendarMonthRowComponent implements OnChanges {
   @Input() notes: CalendarEvent[];
   @Input() view: any;
   @Input() rowIndex: number;
+  @Input() cellMonthNoteTemplate: TemplateRef<any>;
 
   startDate: Date;
   endDate: Date;
 
   daysSliced: WeekDay[] = [];
+  firstDayOfRow: WeekDay;
 
   concernedNotes: CalendarEvent[];
 
@@ -46,6 +49,7 @@ export class CalendarMonthRowComponent implements OnChanges {
         this.rowIndex,
         this.view.totalDaysVisibleInWeek + this.rowIndex
       );
+      this.firstDayOfRow = this.daysSliced[0];
       this.startDate = this.daysSliced[0].date;
       this.endDate = this.daysSliced[6].date;
       const notesCopy = this.deepCopyFunction(this.notes);
@@ -83,7 +87,7 @@ export class CalendarMonthRowComponent implements OnChanges {
     } else {
       left = 0;
     }
-    return 'calc(' + left + '% + 2px)';
+    return 'calc(' + left + '% + 3px)';
   }
 
   manageTop(notes: CalendarEvent[]) {
@@ -108,7 +112,7 @@ export class CalendarMonthRowComponent implements OnChanges {
       }
       ordersReserved.push(i);
       v.meta.order = i;
-      v.meta.top = 'calc(' + (i - 1) + 'em + ' + (i - 1) * 3 + 'px)';
+      v.meta.top = 'calc(' + (i - 1) + 'em + ' + (i - 1) * 4 + 'px)';
     });
   }
 
@@ -138,7 +142,7 @@ export class CalendarMonthRowComponent implements OnChanges {
     else if (indexStartDate === -1 && indexEndDate === -1) {
       width = 100;
     }
-    return 'calc(' + width + '% - 4px)';
+    return 'calc(' + width + '% - 5px)';
   }
 
   dateDiffIndays(date1: Date, date2: Date): number {
