@@ -144,7 +144,7 @@ export class CalendarMonthCellComponent implements OnChanges {
       const notesOfTheDay = this.notes.filter(
         (note) => note.start <= this.day.date && note.end >= this.day.date
       );
-      if (!!notesOfTheDay.length) {
+      if (notesOfTheDay.length) {
         this.marginTop =
           'calc(' +
           (notesOfTheDay.length - 1) +

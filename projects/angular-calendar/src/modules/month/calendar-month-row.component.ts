@@ -5,7 +5,7 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { CalendarEvent, WeekDay } from 'calendar-utils';
+import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
 
 @Component({
   selector: 'mwl-calendar-month-row',
@@ -28,7 +28,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
 })
 export class CalendarMonthRowComponent implements OnChanges {
   @Input() notes: CalendarEvent[];
-  @Input() view: any;
+  @Input() view: MonthView;
   @Input() rowIndex: number;
   @Input() cellMonthNoteTemplate: TemplateRef<any>;
 
@@ -78,12 +78,12 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   manageLeft(note: CalendarEvent): string {
-    const d = this.daysSliced
+    const dayIndex = this.daysSliced
       .map((daySliced) => daySliced.date)
       .findIndex((date) => date.valueOf() === note.start.valueOf());
     let left: number;
-    if (d !== -1) {
-      left = d * (100 / 7);
+    if (dayIndex !== -1) {
+      left = dayIndex * (100 / 7);
     } else {
       left = 0;
     }
@@ -91,28 +91,29 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   manageTop(notes: CalendarEvent[]) {
-    let tabWithoutOrder = [];
+    let tabWithoutOrder: CalendarEvent[] = [];
     let ordersReserved: number[] = [];
 
     tabWithoutOrder = notes
       .filter((value) => !value.meta.order)
       .sort(
-        (a, b) =>
-          this.dateDiffIndays(a.end, a.start) -
-          this.dateDiffIndays(b.end, b.start)
+        (prev, current) =>
+          this.dateDiffIndays(prev.end, prev.start) -
+          this.dateDiffIndays(current.end, current.start)
       );
     ordersReserved = notes
       .filter((value) => value.meta.order)
       .map((value) => +value.meta.order);
 
-    tabWithoutOrder.forEach((v) => {
-      let i = 1;
-      while (ordersReserved.includes(i)) {
-        i++;
+    tabWithoutOrder.forEach((calendarEvent) => {
+      let index = 1;
+      while (ordersReserved.includes(index)) {
+        index++;
       }
-      ordersReserved.push(i);
-      v.meta.order = i;
-      v.meta.top = 'calc(' + (i - 1) + 'em + ' + (i - 1) * 4 + 'px)';
+      ordersReserved.push(index);
+      calendarEvent.meta.order = index;
+      calendarEvent.meta.top =
+        'calc(' + (index - 1) + 'em + ' + (index - 1) * 4 + 'px)';
     });
   }
 
@@ -130,13 +131,19 @@ export class CalendarMonthRowComponent implements OnChanges {
     }
     // start dans le row en cours et pas le end
     else if (indexStartDate !== -1 && indexEndDate === -1) {
-      const a = this.dateDiffIndays(note.start, this.daysSliced[6].date);
-      width = (a + 1) * (100 / 7);
+      const daysNumberFromNoteStart = this.dateDiffIndays(
+        note.start,
+        this.daysSliced[6].date
+      );
+      width = (daysNumberFromNoteStart + 1) * (100 / 7);
     }
     // end dans le row en cours et pas le start
     else if (indexStartDate === -1 && indexEndDate !== -1) {
-      const a = this.dateDiffIndays(this.daysSliced[0].date, note.end);
-      width = (a + 1) * (100 / 7);
+      const daysNumberToNoteEnd = this.dateDiffIndays(
+        this.daysSliced[0].date,
+        note.end
+      );
+      width = (daysNumberToNoteEnd + 1) * (100 / 7);
     }
     // start et end sont en dehors du row en cours
     else if (indexStartDate === -1 && indexEndDate === -1) {
@@ -153,38 +160,34 @@ export class CalendarMonthRowComponent implements OnChanges {
     );
   }
 
-  hideSpan(note, day): boolean {
-    return day.date < note.start || day.date > note.end;
-  }
-
   deepCopyFunction(obj) {
-    var rv;
+    var result;
 
     switch (typeof obj) {
       case 'object':
         if (obj === null) {
           // null => null
-          rv = null;
+          result = null;
         } else {
           switch (toString.call(obj)) {
             case '[object Array]':
               // It's an array, create a new array with
               // deep copies of the entries
-              rv = obj.map((o) => this.deepCopyFunction(o));
+              result = obj.map((o) => this.deepCopyFunction(o));
               break;
             case '[object Date]':
               // Clone the date
-              rv = new Date(obj);
+              result = new Date(obj);
               break;
             case '[object RegExp]':
               // Clone the RegExp
-              rv = new RegExp(obj);
+              result = new RegExp(obj);
               break;
             // ...probably a few others
             default:
               // Some other kind of object, deep-copy its
               // properties into a new object
-              rv = Object.keys(obj).reduce((prev, key) => {
+              result = Object.keys(obj).reduce((prev, key) => {
                 prev[key] = this.deepCopyFunction(obj[key]);
                 return prev;
               }, {});
@@ -194,9 +197,9 @@ export class CalendarMonthRowComponent implements OnChanges {
         break;
       default:
         // It's a primitive, copy via assignment
-        rv = obj;
+        result = obj;
         break;
     }
-    return rv;
+    return result;
   }
 }
