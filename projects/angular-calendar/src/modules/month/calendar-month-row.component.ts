@@ -11,7 +11,9 @@ import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
   selector: 'mwl-calendar-month-row',
   template: `
     <div class="cell-day" *ngFor="let day of daysSliced">
-      <div *ngFor="let note of notesPerDay.get(day)">
+      <div
+        *ngFor="let note of notesPerDay.get(day); trackBy: trackByNotePerDay"
+      >
         <ng-template
           [ngTemplateOutlet]="cellMonthNoteTemplate"
           [ngTemplateOutletContext]="{
@@ -158,7 +160,7 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   deepCopyFunction(obj) {
-    var result;
+    let result;
 
     switch (typeof obj) {
       case 'object':
@@ -198,5 +200,9 @@ export class CalendarMonthRowComponent implements OnChanges {
         break;
     }
     return result;
+  }
+
+  trackByNotePerDay(index: number, el: any) {
+    return el.id;
   }
 }
