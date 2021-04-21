@@ -1096,26 +1096,6 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private refreshHeader(): void {
-    this.days = this.utils.getWeekViewHeader(
-      {
-        viewDate: this.viewDate,
-        weekStartsOn: this.weekStartsOn,
-        excluded: this.excludeDays,
-        weekendDays: this.weekendDays,
-        ...getWeekViewPeriod(
-          this.dateAdapter,
-          this.viewDate,
-          this.weekStartsOn,
-          this.excludeDays,
-          this.daysInWeek,
-          this.timezone
-        ),
-      },
-      this.timezone
-    );
-  }
-
   protected refreshBody(): void {
     this.view = this.getWeekView(this.events);
   }
@@ -1366,5 +1346,25 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     this.validateResize = ({ rectangle }) =>
       resizeHelper.validateResize({ rectangle });
     this.cdr.markForCheck();
+  }
+
+  private refreshHeader(): void {
+    this.days = this.utils.getWeekViewHeader(
+      {
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays,
+        ...getWeekViewPeriod(
+          this.dateAdapter,
+          this.viewDate,
+          this.weekStartsOn,
+          this.excludeDays,
+          this.daysInWeek,
+          this.timezone
+        ),
+      },
+      this.timezone
+    );
   }
 }

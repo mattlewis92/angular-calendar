@@ -478,17 +478,6 @@ export class CalendarWeekListViewComponent
   /**
    * @hidden
    */
-  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
-    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
-
-  /**
-   * @hidden
-   */
-  trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
-
-  /**
-   * @hidden
-   */
   constructor(
     private cdr: ChangeDetectorRef,
     private utils: CalendarUtils,
@@ -497,6 +486,17 @@ export class CalendarWeekListViewComponent
   ) {
     this.locale = locale;
   }
+
+  /**
+   * @hidden
+   */
+  trackByHourColumn = (index: number, column: WeekViewHourColumn) =>
+    column.hours[0] ? column.hours[0].segments[0].date.toISOString() : column;
+
+  /**
+   * @hidden
+   */
+  trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
 
   /**
    * @hidden
