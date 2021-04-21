@@ -11,7 +11,7 @@ import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
   selector: 'mwl-calendar-month-row',
   template: `
     <div class="cell-day" *ngFor="let day of daysSliced">
-      <div *ngFor="let note of notePerDay.get(day)">
+      <div *ngFor="let note of notesPerDay.get(day)">
         <ng-template
           [ngTemplateOutlet]="cellMonthNoteTemplate"
           [ngTemplateOutletContext]="{
@@ -34,17 +34,14 @@ export class CalendarMonthRowComponent implements OnChanges {
 
   startDate: Date;
   endDate: Date;
-
   daysSliced: WeekDay[] = [];
   firstDayOfRow: WeekDay;
-
-  concernedNotes: CalendarEvent[];
-
-  notePerDay: Map<WeekDay, CalendarEvent[]> = new Map();
+  currentRowNotes: CalendarEvent[];
+  notesPerDay: Map<WeekDay, CalendarEvent[]> = new Map();
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes?.notes?.currentValue) {
-      this.notePerDay = new Map();
+      this.notesPerDay = new Map();
       this.daysSliced = this.view.days.slice(
         this.rowIndex,
         this.view.totalDaysVisibleInWeek + this.rowIndex
@@ -53,20 +50,20 @@ export class CalendarMonthRowComponent implements OnChanges {
       this.startDate = this.daysSliced[0].date;
       this.endDate = this.daysSliced[6].date;
       const notesCopy = this.deepCopyFunction(this.notes);
-      this.concernedNotes = notesCopy.filter(
+      this.currentRowNotes = notesCopy.filter(
         (note) =>
           (note.start >= this.startDate && note.start <= this.endDate) ||
           (note.end >= this.startDate && note.end <= this.endDate) ||
           (note.start < this.startDate && note.end > this.endDate)
       );
       this.daysSliced.forEach((currentDay) => {
-        const notesOfTheDay = this.concernedNotes.filter(
+        const notesOfTheDay = this.currentRowNotes.filter(
           (note) => note.start <= currentDay.date && note.end >= currentDay.date
         );
-        this.notePerDay.set(currentDay, notesOfTheDay);
+        this.notesPerDay.set(currentDay, notesOfTheDay);
       });
 
-      this.notePerDay.forEach((values, key) => {
+      this.notesPerDay.forEach((values, key) => {
         this.manageTop(values);
         values.forEach((value) => {
           value.meta.left = this.manageLeft(value);

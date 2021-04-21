@@ -141,17 +141,21 @@ export class CalendarMonthCellComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes?.notes?.currentValue) {
-      const notesOfTheDay = this.notes.filter(
-        (note) => note.start <= this.day.date && note.end >= this.day.date
-      );
-      if (notesOfTheDay.length) {
-        this.marginTop =
-          'calc(' +
-          (notesOfTheDay.length - 1) +
-          'em + 3px + ' +
-          notesOfTheDay.length * 3 +
-          'px)';
-      }
+      this.manageHostMarginTop();
+    }
+  }
+
+  private manageHostMarginTop() {
+    const dayNotes = this.notes.filter(
+      (note) => note.start <= this.day.date && note.end >= this.day.date
+    );
+    if (dayNotes.length) {
+      this.marginTop =
+        'calc(' +
+        (dayNotes.length - 1) +
+        'em + 3px + ' +
+        dayNotes.length * 3 +
+        'px)';
     }
   }
 }
