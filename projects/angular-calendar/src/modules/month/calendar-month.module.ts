@@ -6,6 +6,7 @@ import { CalendarMonthViewHeaderComponent } from './calendar-month-view-header.c
 import { CalendarMonthCellComponent } from './calendar-month-cell.component';
 import { CalendarOpenDayEventsComponent } from './calendar-open-day-events.component';
 import { CalendarCommonModule } from '../common/calendar-common.module';
+import { CalendarMonthRowComponent } from './calendar-month-row.component';
 
 export {
   CalendarMonthViewComponent,
@@ -22,6 +23,7 @@ export { collapseAnimation } from './calendar-open-day-events.component';
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,
     CalendarMonthViewHeaderComponent,
+    CalendarMonthRowComponent,
   ],
   exports: [
     DragAndDropModule,
@@ -29,6 +31,7 @@ export { collapseAnimation } from './calendar-open-day-events.component';
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,
     CalendarMonthViewHeaderComponent,
+    CalendarMonthRowComponent,
   ],
 })
 export class CalendarMonthModule {}

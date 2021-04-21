@@ -113,14 +113,59 @@ $cal-week-list-view-vars: map-merge($cal-vars, $cal-week-list-view-vars);
     opacity: 0.5;
   }
 
-  .cal-day-column {
+  .cal-day-column,
+  .cal-note-column {
     flex-grow: 1;
-    border-left: solid 1px;
+
+    &:not(:first-child) {
+      border-left: solid 1px #e1e1e1;
+    }
   }
 
   .cal-event {
     font-size: 12px;
     border: 1px solid;
+  }
+
+  .cal-note-header-container {
+    display: flex;
+    .cal-note-header {
+      flex: 1;
+      border-right: 1px solid #e1e1e1;
+      &:first-child {
+        border-left: 1px solid #e1e1e1;
+      }
+    }
+  }
+
+  .notes-container {
+    position: relative;
+
+    .cal-notes-columns {
+      border-right: 1px solid #e1e1e1;
+      border-left: 1px solid #e1e1e1;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+    .cal-events-row-container {
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e1e1e1;
+
+      .cal-events-row {
+        position: relative;
+        height: 33px; // Adapt the height to fit with the design of notes
+        margin-bottom: 4px;
+
+        .cal-event-container {
+          display: inline-block;
+          position: absolute;
+        }
+      }
+    }
   }
 
   .cal-time-label-column {

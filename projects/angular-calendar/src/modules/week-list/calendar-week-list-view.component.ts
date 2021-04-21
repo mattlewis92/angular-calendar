@@ -81,6 +81,61 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         "
       >
       </mwl-calendar-week-list-view-header>
+      <div class="cal-note-header-container">
+        <div
+          class="cal-note-header"
+          *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
+        >
+          <ng-template
+            [ngTemplateOutlet]="cellWeekNoteHeaderTemplate"
+            [ngTemplateOutletContext]="{
+              day: day
+            }"
+          >
+          </ng-template>
+        </div>
+      </div>
+
+      <div
+        *ngIf="notesView?.allDayEventRows.length > 0"
+        class="notes-container"
+      >
+        <div class="cal-notes-columns">
+          <div
+            class="cal-note-column"
+            *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate"
+          ></div>
+        </div>
+        <div class="cal-events-row-container">
+          <div
+            *ngFor="
+              let eventRow of notesView.allDayEventRows;
+              trackBy: trackById
+            "
+            #eventRowContainer
+            class="cal-events-row"
+          >
+            <div
+              *ngFor="let allDayEvent of eventRow.row"
+              #event
+              class="cal-event-container"
+              [class.cal-starts-within-week]="!allDayEvent.startsBeforeWeek"
+              [class.cal-ends-within-week]="!allDayEvent.endsAfterWeek"
+              [ngClass]="allDayEvent.event?.cssClass"
+              [style.width.%]="(100 / days.length) * allDayEvent.span"
+              [style.left.%]="(100 / days.length) * allDayEvent.offset"
+            >
+              <ng-template
+                [ngTemplateOutlet]="cellWeekNoteTemplate"
+                [ngTemplateOutletContext]="{
+                  allDayEvent: allDayEvent
+                }"
+              >
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
       <div
         class="cal-time-events"
         mwlDroppable
@@ -127,6 +182,11 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
 })
 export class CalendarWeekListViewComponent
   implements OnChanges, OnInit, OnDestroy {
+  @Input() notes: CalendarEvent[];
+
+  @Input() cellWeekNoteTemplate: TemplateRef<any>;
+
+  @Input() cellWeekNoteHeaderTemplate: TemplateRef<any>;
   /**
    * The current view date
    */
@@ -346,6 +406,11 @@ export class CalendarWeekListViewComponent
    * @hidden
    */
   view: WeekView;
+
+  /**
+   * @hidden
+   */
+  notesView: WeekView;
 
   /**
    * @hidden
@@ -658,6 +723,7 @@ export class CalendarWeekListViewComponent
 
   private refreshBody(): void {
     this.view = this.getWeekView(this.events);
+    this.notesView = this.getWeekView(this.notes);
   }
 
   private refreshAll(): void {

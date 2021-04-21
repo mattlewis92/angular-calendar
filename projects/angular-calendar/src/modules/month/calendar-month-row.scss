@@ -1,0 +1,10 @@
+@import '../../variables';
+
+:host {
+  display: flex;
+  position: relative;
+}
+
+.cell-day {
+  flex: 1;
+}
