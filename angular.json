@@ -122,13 +122,13 @@
           "options": {
             "tsConfig": "projects/angular-calendar/tsconfig.lib.json",
             "project": "projects/angular-calendar/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/angular-calendar/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
