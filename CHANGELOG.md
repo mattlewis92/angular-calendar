@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.24](https://github.com/mattlewis92/angular-calendar/compare/v0.28.23...v0.28.24) (2021-05-03)
+
+
+### Bug Fixes
+
+* restore compatibility with angular 6 and 7 ([79c2509](https://github.com/mattlewis92/angular-calendar/commit/79c2509450221b5f14fa5dd8ff0b07fa1c7ae6df))
+
+### [0.28.23](https://github.com/mattlewis92/angular-calendar/compare/v0.28.22...v0.28.23) (2021-05-03)
+
 ### [0.28.22](https://github.com/mattlewis92/angular-calendar/compare/v0.28.21...v0.28.22) (2020-10-20)
 
 

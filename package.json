@@ -1,12 +1,13 @@
 {
   "name": "angular-calendar",
-  "version": "0.28.22",
+  "version": "0.28.24",
   "description": "A calendar component for angular 8.0+ that can display events on a month, week or day view",
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
   },
   "scripts": {
-    "start": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve --open",
+    "node:memory": "cross-env NODE_OPTIONS=--max_old_space_size=8192",
+    "start": "npm run node:memory -- ng serve --open",
     "build:copy-package-json": "copyfiles package.json projects/angular-calendar & copyfiles package.json projects/angular-calendar/schematics/ng-add",
     "build:lib": "ng build angular-calendar --prod",
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json && tsc -p tsconfig-date-adapters.json --module es2015 --outDir ./dist/angular-calendar/date-adapters/esm",
@@ -112,6 +113,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.0",
     "date-fns": "^2.16.1",
+    "dayjs": "^1.10.4",
     "del-cli": "^3.0.1",
     "flatpickr": "^4.6.6",
     "highlightjs-loader": "^0.2.3",
@@ -155,9 +157,9 @@
   },
   "dependencies": {
     "@scarf/scarf": "^1.1.0",
-    "angular-draggable-droppable": "^4.5.6",
-    "angular-resizable-element": "^3.3.3",
-    "calendar-utils": "^0.8.3",
+    "angular-draggable-droppable": "^4.6.0",
+    "angular-resizable-element": "^3.3.5",
+    "calendar-utils": "^0.8.4",
     "positioning": "^2.0.1",
     "tslib": "^1.14.1"
   },
