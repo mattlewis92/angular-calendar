@@ -26,7 +26,7 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
       this.keydownListener = this.renderer.listen(
         this.host.nativeElement,
         'keydown',
-        (event: KeyboardEvent) => {
+        (event) => {
           if (
             event.keyCode === 13 ||
             event.which === 13 ||
