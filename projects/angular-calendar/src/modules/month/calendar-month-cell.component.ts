@@ -105,9 +105,7 @@ import { PlacementArray } from 'positioning';
     '[class.cal-event-highlight]': '!!day.backgroundColor',
   },
 })
-export class CalendarMonthCellComponent implements OnChanges {
-  @HostBinding('style.margin-top') marginTop;
-
+export class CalendarMonthCellComponent {
   @Input() notes: CalendarEvent[];
 
   @Input() day: MonthViewDay;
@@ -138,24 +136,4 @@ export class CalendarMonthCellComponent implements OnChanges {
   trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes?.notes?.currentValue) {
-      this.manageHostMarginTop();
-    }
-  }
-
-  private manageHostMarginTop() {
-    const dayNotes = this.notes.filter(
-      (note) => note.start <= this.day.date && note.end >= this.day.date
-    );
-    if (dayNotes.length) {
-      this.marginTop =
-        'calc(' +
-        (dayNotes.length - 1) +
-        'em + 3px + ' +
-        dayNotes.length * 3 +
-        'px)';
-    }
-  }
 }
