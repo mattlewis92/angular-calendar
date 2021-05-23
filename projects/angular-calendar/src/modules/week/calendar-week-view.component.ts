@@ -559,6 +559,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   @Input() daysInWeek: number;
 
   /**
+   *  The column width from an event. For example you can reduce the with to 90. After that you can drag and create
+   *  events at the same position similar to outlook.
+   */
+  @Input() columnWidth: number = 100;
+
+  /**
    * A custom template to use for the current time marker
    */
   @Input() currentTimeMarkerTemplate: TemplateRef<any>;
@@ -1152,6 +1158,7 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
         minute: this.dayEndMinute,
       },
       segmentHeight: this.hourSegmentHeight,
+      columnWidth: this.columnWidth,
       weekendDays: this.weekendDays,
       ...getWeekViewPeriod(
         this.dateAdapter,

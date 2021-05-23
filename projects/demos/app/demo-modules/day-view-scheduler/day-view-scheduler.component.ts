@@ -83,7 +83,8 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
   templateUrl: 'day-view-scheduler.component.html',
   providers: [DayViewSchedulerCalendarUtils],
 })
-export class DayViewSchedulerComponent extends CalendarWeekViewComponent
+export class DayViewSchedulerComponent
+  extends CalendarWeekViewComponent
   implements OnChanges {
   @Input() users: User[] = [];
 
@@ -186,6 +187,7 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
         minute: this.dayEndMinute,
       },
       segmentHeight: this.hourSegmentHeight,
+      columnWidth: this.columnWidth,
       weekendDays: this.weekendDays,
       ...getWeekViewPeriod(
         this.dateAdapter,
