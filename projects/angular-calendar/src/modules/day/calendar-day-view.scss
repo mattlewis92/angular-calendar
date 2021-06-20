@@ -6,6 +6,11 @@
 
   .cal-events-container {
     margin-left: 70px;
+
+    [dir='rtl'] & {
+      margin-left: initial;
+      margin-right: 70px;
+    }
   }
 
   .cal-day-column {
@@ -15,5 +20,10 @@
   .cal-current-time-marker {
     margin-left: 70px;
     width: calc(100% - 70px);
+
+    [dir='rtl'] & {
+      margin-left: initial;
+      margin-right: 70px;
+    }
   }
 }

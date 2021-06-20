@@ -24,6 +24,11 @@ $cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
 
     .cal-day-cell:not(:last-child) {
       border-right-color: map-get($theme, border-color);
+
+      [dir='rtl'] & {
+        border-right-color: initial;
+        border-left-color: map-get($theme, border-color);
+      }
     }
 
     .cal-days .cal-cell-row {
@@ -112,6 +117,11 @@ $cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
 
   .cal-day-cell:not(:last-child) {
     border-right: 1px solid;
+
+    [dir='rtl'] & {
+      border-right: initial;
+      border-left: 1px solid;
+    }
   }
 
   .cal-days .cal-cell-row {

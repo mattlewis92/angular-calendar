@@ -105,6 +105,6 @@ describe('calendarMomentDateFormatter provider', () => {
   it('dayViewTitle', () => {
     expect(
       dateFormatter.dayViewTitle({ date: new Date('2016-01-01'), locale: 'en' })
-    ).to.equal('Friday, 1 January, 2016');
+    ).to.equal('Friday, January 1, 2016');
   });
 });

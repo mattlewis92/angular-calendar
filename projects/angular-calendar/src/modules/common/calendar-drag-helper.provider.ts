@@ -1,4 +1,4 @@
-import { isInside, isWithinThreshold } from './util';
+import { isInsideLeftAndRight, isWithinThreshold } from './util';
 import { ValidateDragParams } from 'angular-draggable-droppable';
 
 export class CalendarDragHelper {
@@ -24,20 +24,34 @@ export class CalendarDragHelper {
     dragAlreadyMoved: boolean;
     transform: ValidateDragParams['transform'];
   }): boolean {
+    const isDraggedWithinThreshold =
+      isWithinThreshold({ x, y }) || dragAlreadyMoved;
+
     if (snapDraggedEvents) {
-      const newRect: ClientRect = Object.assign({}, this.startPosition, {
+      const inner: ClientRect = Object.assign({}, this.startPosition, {
         left: this.startPosition.left + transform.x,
         right: this.startPosition.right + transform.x,
         top: this.startPosition.top + transform.y,
         bottom: this.startPosition.bottom + transform.y,
       });
 
-      return (
-        (isWithinThreshold({ x, y }) || dragAlreadyMoved) &&
-        isInside(this.dragContainerElement.getBoundingClientRect(), newRect)
-      );
+      if (isDraggedWithinThreshold) {
+        const outer = this.dragContainerElement.getBoundingClientRect();
+
+        const isTopInside = outer.top < inner.top && inner.top < outer.bottom;
+
+        const isBottomInside =
+          outer.top < inner.bottom && inner.bottom < outer.bottom;
+
+        return (
+          isInsideLeftAndRight(outer, inner) && (isTopInside || isBottomInside)
+        );
+      }
+
+      /* istanbul ignore next */
+      return false;
     } else {
-      return isWithinThreshold({ x, y }) || dragAlreadyMoved;
+      return isDraggedWithinThreshold;
     }
   }
 }

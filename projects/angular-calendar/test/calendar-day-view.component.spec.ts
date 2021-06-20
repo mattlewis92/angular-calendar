@@ -561,10 +561,10 @@ describe('CalendarDayViewComponent component', () => {
     );
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.hourSegments = 4;
+    fixture.componentInstance.minimumEventHeight = 15;
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        color: { primary: '', secondary: '' },
         start: moment('2016-06-27').add(4, 'hours').toDate(),
         resizable: {
           afterEnd: true,

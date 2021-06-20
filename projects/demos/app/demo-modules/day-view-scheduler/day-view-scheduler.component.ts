@@ -1,6 +1,7 @@
 import {
   ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   Inject,
   Injectable,
@@ -97,9 +98,10 @@ export class DayViewSchedulerComponent extends CalendarWeekViewComponent
     protected cdr: ChangeDetectorRef,
     protected utils: DayViewSchedulerCalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter,
+    protected element: ElementRef<HTMLElement>
   ) {
-    super(cdr, utils, locale, dateAdapter);
+    super(cdr, utils, locale, dateAdapter, element);
   }
 
   trackByUserId = (index: number, row: User) => row.id;

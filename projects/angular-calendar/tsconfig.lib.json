@@ -11,8 +11,7 @@
     "lib": [
       "dom",
       "es2015"
-    ],
-    "emitDecoratorMetadata": true
+    ]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
