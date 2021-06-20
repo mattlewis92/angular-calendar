@@ -6,7 +6,6 @@ import {
   chain,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { getWorkspace } from '@schematics/angular/utility/config';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { insertImport } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
@@ -25,6 +24,7 @@ import {
   getProjectFromWorkspace,
   insertWildcardImport,
   insertAfterImports,
+  getWorkspace,
 } from '../utils';
 
 import { Schema } from './schema';

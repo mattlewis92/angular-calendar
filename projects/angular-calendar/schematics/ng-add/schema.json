@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "angular-calendar-schematic-ng-add",
+  "$id": "angular-calendar-schematic-ng-add",
   "title": "angular-calendar ng-add schematic",
   "type": "object",
   "properties": {
