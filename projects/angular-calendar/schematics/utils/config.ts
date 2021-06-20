@@ -1,11 +1,10 @@
 import { Tree, SchematicsException } from '@angular-devkit/schematics';
-import { getWorkspace } from '@schematics/angular/utility/config';
 import {
   WorkspaceProject,
   WorkspaceSchema,
 } from '@schematics/angular/utility/workspace-models';
 
-import { getProjectFromWorkspace } from '.';
+import { getProjectFromWorkspace, getWorkspace } from '.';
 
 const ANGULAR_CONFIG_PATH = 'angular.json';
 

@@ -2,7 +2,6 @@ import {
   SchematicTestRunner,
   UnitTestTree,
 } from '@angular-devkit/schematics/testing';
-import { getWorkspace } from '@schematics/angular/utility/config';
 
 import * as path from 'path';
 import { expect } from 'chai';
@@ -10,7 +9,11 @@ import { expect } from 'chai';
 import { createTestApp } from '../testing/workspace';
 import { Schema } from './schema';
 import { angularCalendarVersion, momentVersion } from './version-names';
-import { getProjectFromWorkspace, getProjectTargetOptions } from '../utils';
+import {
+  getProjectFromWorkspace,
+  getProjectTargetOptions,
+  getWorkspace,
+} from '../utils';
 
 const collectionPath = path.join(__dirname, '../collection.json');
 
