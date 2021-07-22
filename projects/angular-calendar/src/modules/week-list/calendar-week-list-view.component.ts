@@ -95,7 +95,6 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           </ng-template>
         </div>
       </div>
-
       <div
         *ngIf="notesView?.allDayEventRows.length > 0"
         class="notes-container"
@@ -108,11 +107,11 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         </div>
         <div class="cal-events-row-container">
           <div
+            #eventRowContainer
             *ngFor="
               let eventRow of notesView.allDayEventRows;
               trackBy: trackById
             "
-            #eventRowContainer
             class="cal-events-row"
           >
             <div
@@ -533,6 +532,7 @@ export class CalendarWeekListViewComponent
       changes.excludeDays ||
       changes.hourSegmentHeight ||
       changes.events ||
+      changes.notes ||
       changes.daysInWeek;
 
     if (refreshHeader) {
