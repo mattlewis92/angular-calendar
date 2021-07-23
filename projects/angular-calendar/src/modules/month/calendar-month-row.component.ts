@@ -12,7 +12,7 @@ import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
   template: `
     <div class="cell-day" *ngFor="let day of daysSliced">
       <div
-        *ngFor="let note of notesPerDay.get(day); trackBy: trackByNotePerDay"
+        *ngFor="let note of notesPerDay[day.day]; trackBy: trackByNotePerDay"
       >
         <ng-template
           [ngTemplateOutlet]="cellMonthNoteTemplate"
@@ -39,11 +39,11 @@ export class CalendarMonthRowComponent implements OnChanges {
   daysSliced: WeekDay[] = [];
   firstDayOfRow: WeekDay;
   currentRowNotes: CalendarEvent[];
-  notesPerDay: Map<WeekDay, CalendarEvent[]> = new Map();
+  notesPerDay: { [key: number]: CalendarEvent[] };
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes?.notes?.currentValue) {
-      this.notesPerDay = new Map();
+      this.notesPerDay = {};
       this.daysSliced = this.view.days.slice(
         this.rowIndex,
         this.view.totalDaysVisibleInWeek + this.rowIndex
@@ -62,17 +62,20 @@ export class CalendarMonthRowComponent implements OnChanges {
         const notesOfTheDay = this.currentRowNotes.filter(
           (note) => note.start <= currentDay.date && note.end >= currentDay.date
         );
-        this.notesPerDay.set(currentDay, notesOfTheDay);
+        this.notesPerDay[currentDay.day] = notesOfTheDay;
       });
 
-      this.notesPerDay.forEach((values, key) => {
-        this.manageTop(values);
-        values.forEach((value) => {
+      // tslint:disable-next-line:forin
+      for (const notePerDay in this.notesPerDay) {
+        this.manageTop(this.notesPerDay[notePerDay]);
+        this.notesPerDay[notePerDay].forEach((value) => {
           value.meta.left = this.manageLeft(value);
           value.meta.width = this.manageWidth(value);
         });
-        values.sort((a, b) => a.meta.order - b.meta.order);
-      });
+        this.notesPerDay[notePerDay].sort(
+          (a, b) => a.meta.order - b.meta.order
+        );
+      }
     }
   }
 
