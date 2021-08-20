@@ -19,7 +19,8 @@ import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
           [ngTemplateOutletContext]="{
             day: day,
             firstDayOfRow: firstDayOfRow,
-            note: note
+            note: note,
+            rowIndex: rowIndex
           }"
         >
         </ng-template>
