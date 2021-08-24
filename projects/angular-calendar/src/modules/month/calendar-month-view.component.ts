@@ -91,6 +91,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [view]="view"
               [rowIndex]="rowIndex"
               [cellMonthNoteTemplate]="cellMonthNoteTemplate"
+              [maxEventDisplayedCount]="maxEventDisplayedCount"
             >
             </mwl-calendar-month-row>
           </div>
@@ -173,6 +174,8 @@ export class CalendarMonthViewComponent
   @Input() cellHeaderTemplate: TemplateRef<any>;
 
   @Input() notes: CalendarEvent[] = [];
+
+  @Input() maxEventDisplayedCount: number;
 
   @Input() cellMonthNoteTemplate: TemplateRef<any>;
   /**
