@@ -12,7 +12,10 @@ import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
   template: `
     <div class="cell-day" *ngFor="let day of daysSliced">
       <div
-        *ngFor="let note of notesPerDay[day.day]; trackBy: trackByNotePerDay"
+        *ngFor="
+          let note of notesPerDay[day.day] | slice: 0:maxEventDisplayedCount;
+          trackBy: trackByNotePerDay
+        "
       >
         <ng-template
           [ngTemplateOutlet]="cellMonthNoteTemplate"
@@ -20,7 +23,8 @@ import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
             day: day,
             firstDayOfRow: firstDayOfRow,
             note: note,
-            rowIndex: rowIndex
+            rowIndex: rowIndex,
+            notesPerDay: notesPerDay
           }"
         >
         </ng-template>
@@ -33,6 +37,7 @@ export class CalendarMonthRowComponent implements OnChanges {
   @Input() notes: CalendarEvent[];
   @Input() view: MonthView;
   @Input() rowIndex: number;
+  @Input() maxEventDisplayedCount: number;
   @Input() cellMonthNoteTemplate: TemplateRef<any>;
 
   startDate: Date;
