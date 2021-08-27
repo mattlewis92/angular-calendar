@@ -66,8 +66,9 @@ export interface CalendarMonthViewEventTimesChangedEvent<
         <div
           *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"
         >
-          <div class="cal-cell-row">
+          <div role="row" class="cal-cell-row">
             <mwl-calendar-month-cell
+              role="gridcell"
               *ngFor="
                 let day of view.days
                   | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek;
