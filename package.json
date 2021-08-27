@@ -157,10 +157,10 @@
     "@angular/core": ">=6.0.0"
   },
   "dependencies": {
-    "@scarf/scarf": "^1.1.0",
+    "@scarf/scarf": "^1.1.1",
     "angular-draggable-droppable": "^4.6.0",
-    "angular-resizable-element": "^3.3.5",
-    "calendar-utils": "^0.8.4",
+    "angular-resizable-element": "^3.4.0",
+    "calendar-utils": "^0.8.5",
     "positioning": "^2.0.1",
     "tslib": "^1.14.1"
   },
