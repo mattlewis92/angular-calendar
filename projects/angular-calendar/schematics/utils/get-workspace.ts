@@ -17,5 +17,5 @@ export function getWorkspace(host: Tree): WorkspaceSchema {
   }
   const content = configBuffer.toString();
 
-  return (parseJson(content, JsonParseMode.Loose) as {}) as WorkspaceSchema;
+  return parseJson(content, JsonParseMode.Loose) as {} as WorkspaceSchema;
 }

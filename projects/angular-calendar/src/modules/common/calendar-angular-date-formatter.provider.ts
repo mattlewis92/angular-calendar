@@ -12,7 +12,8 @@ import { getWeekViewPeriod } from './util';
  */
 @Injectable()
 export class CalendarAngularDateFormatter
-  implements CalendarDateFormatterInterface {
+  implements CalendarDateFormatterInterface
+{
   constructor(protected dateAdapter: DateAdapter) {}
 
   /**

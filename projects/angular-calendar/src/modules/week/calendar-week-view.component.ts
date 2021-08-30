@@ -419,7 +419,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
   `,
 })
 export class CalendarWeekViewComponent
-  implements OnChanges, OnInit, OnDestroy, AfterViewInit {
+  implements OnChanges, OnInit, OnDestroy, AfterViewInit
+{
   /**
    * The current view date
    */
@@ -612,17 +613,15 @@ export class CalendarWeekViewComponent
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output() eventTimesChanged = new EventEmitter<
-    CalendarEventTimesChangedEvent
-  >();
+  @Output() eventTimesChanged =
+    new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * An output that will be called before the view is rendered for the current week.
    * If you add the `cssClass` property to a day in the header it will add that class to the cell element in the template
    */
-  @Output() beforeViewRender = new EventEmitter<
-    CalendarWeekViewBeforeRenderEvent
-  >();
+  @Output() beforeViewRender =
+    new EventEmitter<CalendarWeekViewBeforeRenderEvent>();
 
   /**
    * Called when an hour segment is clicked
@@ -650,10 +649,8 @@ export class CalendarWeekViewComponent
   /**
    * @hidden
    */
-  allDayEventResizes: Map<
-    WeekViewAllDayEvent,
-    WeekViewAllDayEventResize
-  > = new Map();
+  allDayEventResizes: Map<WeekViewAllDayEvent, WeekViewAllDayEventResize> =
+    new Map();
 
   /**
    * @hidden
@@ -921,9 +918,8 @@ export class CalendarWeekViewComponent
     resizeEvent: ResizeEvent,
     dayWidth: number
   ): void {
-    const currentResize: WeekViewAllDayEventResize = this.allDayEventResizes.get(
-      allDayEvent
-    );
+    const currentResize: WeekViewAllDayEventResize =
+      this.allDayEventResizes.get(allDayEvent);
 
     const modifier = this.rtl ? -1 : 1;
     if (typeof resizeEvent.edges.left !== 'undefined') {
@@ -942,9 +938,8 @@ export class CalendarWeekViewComponent
    * @hidden
    */
   allDayEventResizeEnded(allDayEvent: WeekViewAllDayEvent): void {
-    const currentResize: WeekViewAllDayEventResize = this.allDayEventResizes.get(
-      allDayEvent
-    );
+    const currentResize: WeekViewAllDayEventResize =
+      this.allDayEventResizes.get(allDayEvent);
 
     if (currentResize) {
       const allDayEventResizingBeforeStart = currentResize.edge === 'left';

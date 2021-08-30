@@ -26,9 +26,8 @@ describe('calendarA11y pipe', () => {
   });
 
   it('should throw when an invalid method is passed', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     fixture.componentInstance.a11yParams = {};
     fixture.componentInstance.method = 'invalid';
     expect(() => fixture.detectChanges()).to.throw(

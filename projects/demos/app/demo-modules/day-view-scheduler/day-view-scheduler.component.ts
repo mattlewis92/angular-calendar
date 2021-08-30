@@ -84,8 +84,10 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
   templateUrl: 'day-view-scheduler.component.html',
   providers: [DayViewSchedulerCalendarUtils],
 })
-export class DayViewSchedulerComponent extends CalendarWeekViewComponent
-  implements OnChanges {
+export class DayViewSchedulerComponent
+  extends CalendarWeekViewComponent
+  implements OnChanges
+{
   @Input() users: User[] = [];
 
   @Output() userChanged = new EventEmitter();

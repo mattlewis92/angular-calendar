@@ -26,7 +26,8 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
  */
 @Injectable()
 export class CalendarMomentDateFormatter
-  implements CalendarDateFormatterInterface {
+  implements CalendarDateFormatterInterface
+{
   /**
    * @hidden
    */
@@ -119,5 +120,5 @@ export class CalendarMomentDateFormatter
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd, LL'); // dddd = Thursday
-  }                                                             // LL = locale-dependent Month Day, Year
+  } // LL = locale-dependent Month Day, Year
 }
