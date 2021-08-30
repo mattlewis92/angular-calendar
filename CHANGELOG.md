@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.27](https://github.com/mattlewis92/angular-calendar/compare/v0.28.26...v0.28.27) (2021-08-27)
+
+
+### Bug Fixes
+
+* **month-view:** add missing a11y attributes ([959029e](https://github.com/mattlewis92/angular-calendar/commit/959029eff6d65b3c561ddf247a920c8e580f7e7d))
+
 ### [0.28.26](https://github.com/mattlewis92/angular-calendar/compare/v0.28.25...v0.28.26) (2021-06-20)
 
 
