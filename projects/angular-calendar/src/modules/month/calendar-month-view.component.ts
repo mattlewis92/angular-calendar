@@ -491,9 +491,17 @@ export class CalendarMonthViewComponent
   }
 
   protected refreshBody(): void {
+    let events: CalendarEvent[] = [];
+    if (this.notes?.length && this.events.length) {
+      events = [...this.events, ...this.notes];
+    } else if (this.events.length) {
+      events = this.events;
+    } else if (this.notes?.length) {
+      events = this.notes;
+    }
     this.view = this.utils.getMonthView(
       {
-        events: this.events,
+        events,
         viewDate: this.viewDate,
         weekStartsOn: this.weekStartsOn,
         excluded: this.excludeDays,
