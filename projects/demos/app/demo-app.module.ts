@@ -493,6 +493,7 @@ import { ClipboardModule } from 'ngx-clipboard';
       ],
       {
         useHash: true,
+        relativeLinkResolution: 'legacy',
       }
     ),
   ],

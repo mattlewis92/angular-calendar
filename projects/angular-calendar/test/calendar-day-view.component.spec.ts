@@ -4,7 +4,7 @@ import {
   TestBed,
   fakeAsync,
   flush,
-  async,
+  waitForAsync,
 } from '@angular/core/testing';
 import moment from 'moment';
 import { expect } from 'chai';
