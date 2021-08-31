@@ -166,7 +166,7 @@ export class DemoAppComponent implements OnInit {
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
       'main.ts': `
-import 'zone.js/dist/zone';
+import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

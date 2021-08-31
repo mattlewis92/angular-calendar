@@ -14,13 +14,6 @@ export const sources = [
     },
   },
   {
-    filename: 'styles.css',
-    contents: {
-      raw: require('!!raw-loader!./styles.css'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=css!./styles.css'),
-    },
-  },
-  {
     filename: 'module.ts',
     contents: {
       raw: require('!!raw-loader!./module'),

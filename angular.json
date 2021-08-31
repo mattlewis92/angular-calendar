@@ -23,7 +23,6 @@
           "skipTests": true
         },
         "@schematics/angular:module": {
-          "skipTests": true
         },
         "@schematics/angular:pipe": {
           "skipTests": true
@@ -36,7 +35,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/demos",
             "index": "projects/demos/index.html",
             "main": "projects/demos/main.ts",
@@ -50,7 +48,13 @@
             "styles": [
               "projects/demos/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -70,12 +74,11 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false
+              "vendorChunk": false
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
