@@ -166,8 +166,6 @@ export class DemoAppComponent implements OnInit {
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
       'main.ts': `
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
@@ -233,7 +231,6 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
           'angularx-flatpickr': dependencyVersions.angularxFlatpickr,
-          'core-js': '2',
         },
       },
       {

@@ -133,7 +133,8 @@
             "main": "projects/angular-calendar/test/entry.ts",
             "tsConfig": "projects/angular-calendar/tsconfig.spec.json",
             "karmaConfig": "projects/angular-calendar/karma.conf.ts",
-            "sourceMap": true
+            "sourceMap": true,
+            "styles": ["projects/angular-calendar/src/angular-calendar.scss"]
           }
         },
         "lint": {
