@@ -29,7 +29,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh = new Subject();
+  refresh = new Subject<void>();
 
   eventTimesChanged({
     event,

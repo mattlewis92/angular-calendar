@@ -76,7 +76,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh = new Subject();
+  refresh = new Subject<void>();
 
   validateEventTimesChanged = (
     { event, newStart, newEnd, allDay }: CalendarEventTimesChangedEvent,

@@ -16,7 +16,7 @@ import { addDays, addHours, endOfMonth, startOfDay, subDays } from 'date-fns';
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   events: CalendarEvent[] = [
     {
@@ -56,7 +56,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh = new Subject();
+  refresh = new Subject<void>();
 
   eventTimesChanged({
     event,

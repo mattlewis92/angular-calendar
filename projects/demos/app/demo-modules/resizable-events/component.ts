@@ -16,7 +16,7 @@ import { colors } from '../demo-utils/colors';
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   events: CalendarEvent[] = [
     {
@@ -37,7 +37,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh: Subject<any> = new Subject();
+  refresh = new Subject<void>();
 
   eventTimesChanged({
     event,

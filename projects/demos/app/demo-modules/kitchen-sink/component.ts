@@ -87,7 +87,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh: Subject<any> = new Subject();
+  refresh = new Subject<void>();
 
   events: CalendarEvent[] = [
     {

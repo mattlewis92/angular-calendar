@@ -75,7 +75,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
-  private cancelTooltipDelay$ = new Subject();
+  private cancelTooltipDelay$ = new Subject<void>();
 
   constructor(
     private elementRef: ElementRef,
