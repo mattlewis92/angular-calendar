@@ -39,7 +39,8 @@
     "gh-pages:demos": "ng build --prod",
     "gh-pages:compodoc": "compodoc -p tsconfig-compodoc.json -d dist/demos/docs --disableGraph --disableCoverage --disablePrivate --disableInternal --disableLifeCycleHooks --disableProtected --gaID UA-63367573-2",
     "gh-pages:deploy": "ng deploy",
-    "gh-pages": "run-s build:clean gh-pages:demos gh-pages:compodoc gh-pages:deploy build:clean"
+    "gh-pages": "run-s build:clean gh-pages:demos gh-pages:compodoc gh-pages:deploy build:clean",
+    "prepare": "husky install"
   },
   "schematics": "./schematics/collection.json",
   "config": {
@@ -116,7 +117,7 @@
     "del-cli": "^3.0.1",
     "flatpickr": "^4.6.9",
     "highlightjs-loader": "^0.2.3",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "karma": "~6.3.4",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "^2.0.3",
@@ -163,11 +164,5 @@
   "sideEffects": [
     "*.css",
     "*.scss"
-  ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e",
-      "pre-commit": "pretty-quick --staged"
-    }
-  }
+  ]
 }
