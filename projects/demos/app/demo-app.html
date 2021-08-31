@@ -133,26 +133,24 @@
           </div>
         </div>
         <div class="card-body">
-          <ngb-tabset [destroyOnHide]="false">
-            <ngb-tab>
-              <ng-template ngbTabTitle>
-                <i class="fas fa-fw fa-laptop"></i> Live demo
-              </ng-template>
-              <ng-template ngbTabContent>
+          <ul ngbNav #nav="ngbNav" class="justify-content-start nav-tabs">
+            <li ngbNavItem domId="demo">
+              <a ngbNavLink><i class="fas fa-fw fa-laptop"></i> Live demo</a>
+              <ng-template ngbNavContent>
                 <div class="spacer-top"><router-outlet></router-outlet></div>
               </ng-template>
-            </ngb-tab>
+            </li>
 
-            <ngb-tab *ngFor="let source of activeDemo?.sources">
-              <ng-template ngbTabTitle>
+            <li ngbNavItem *ngFor="let source of activeDemo?.sources">
+              <a ngbNavLink>
                 <span [ngSwitch]="source.language">
                   <i class="fab fa-fw fa-html5" *ngSwitchCase="'html'"></i>
                   <i class="fab fa-fw fa-css3" *ngSwitchCase="'css'"></i>
                   <i class="fas fa-fw fa-code" *ngSwitchDefault></i>
                 </span>
                 {{ source.filename }}
-              </ng-template>
-              <ng-template ngbTabContent>
+              </a>
+              <ng-template ngbNavContent>
                 <div class="code-container">
                   <button
                     class="btn btn-outline-primary copy-code"
@@ -170,8 +168,9 @@
                   <pre><code [innerHTML]="source.contents.highlighted"></code></pre>
                 </div>
               </ng-template>
-            </ngb-tab>
-          </ngb-tabset>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav"></div>
         </div>
       </div>
     </div>
@@ -188,6 +187,7 @@
           <a
             [routerLink]="[demo.path]"
             [class.active]="activeDemo?.path === demo.path"
+            (click)="nav.select('demo')"
           >
             {{ demo.label }}
           </a>

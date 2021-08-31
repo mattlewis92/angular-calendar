@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
 
 interface Source {
   filename: string;
@@ -84,6 +85,7 @@ const dependencyVersions: any = {
   templateUrl: './demo-app.html',
 })
 export class DemoAppComponent implements OnInit {
+  @ViewChild('nav') nav: NgbNav;
   demos: Demo[] = [];
   filteredDemos: Demo[] = [];
   activeDemo: Demo;
