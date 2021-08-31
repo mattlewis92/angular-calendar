@@ -114,7 +114,7 @@
     "css-loader": "^5.2.7",
     "date-fns": "^2.23.0",
     "dayjs": "^1.10.6",
-    "del-cli": "^3.0.1",
+    "del-cli": "^4.0.1",
     "flatpickr": "^4.6.9",
     "highlightjs-loader": "^0.2.3",
     "husky": "^7.0.0",
