@@ -7,22 +7,12 @@
     "module": "es2015",
     "declaration": true,
     "inlineSources": true,
-    "importHelpers": true,
     "types": [],
-    "lib": [
-      "dom",
-      "es2015"
-    ]
+    "lib": ["dom", "es2015"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "strictTemplates": true,
-    "strictInjectionParameters": true,
-    "trace": true
+    "strictMetadataEmit": true
   },
-  "exclude": [
-    "test/**/*.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["test/**/*.ts", "**/*.spec.ts"]
 }
