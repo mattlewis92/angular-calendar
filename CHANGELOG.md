@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.28.28](https://github.com/mattlewis92/angular-calendar/compare/v0.28.27...v0.28.28) (2021-09-01)
 
+* no functional changes, just needed to publish a readme update to npm
+
 ### [0.28.27](https://github.com/mattlewis92/angular-calendar/compare/v0.28.26...v0.28.27) (2021-08-27)
 
 
