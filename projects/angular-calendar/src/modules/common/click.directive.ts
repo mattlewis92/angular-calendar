@@ -20,7 +20,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ClickDirective implements OnInit, OnDestroy {
   @Input() clickListenerDisabled = false;
 
-  @Output('mwlClick') click = new EventEmitter<MouseEvent>(); // tslint:disable-line
+  @Output('mwlClick') click = new EventEmitter<MouseEvent>(); // eslint-disable-line
 
   private destroy$ = new Subject<void>();
 

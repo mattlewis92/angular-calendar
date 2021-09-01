@@ -162,7 +162,7 @@
                   >
                     <i
                       class="fa"
-                      [ngClass]="{'fa-copy': !(copied$ | async), 'fa-check': (copied$ | async) }"
+                      [ngClass]="{'fa-copy': (copied$ | async) !== true, 'fa-check': (copied$ | async) }"
                     ></i>
                   </button>
                   <pre><code [innerHTML]="source.contents.highlighted"></code></pre>

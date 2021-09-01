@@ -89,6 +89,7 @@ import { PlacementArray } from 'positioning';
     >
     </ng-template>
   `,
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'cal-cell cal-day-cell',
     '[class.cal-past]': 'day.isPast',

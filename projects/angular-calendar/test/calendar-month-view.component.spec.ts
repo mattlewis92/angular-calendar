@@ -991,7 +991,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ events: {}, viewDate: {} });
     fixture.detectChanges();
     stub.restore();
-    expect(stub).to.have.been.calledOnce; // tslint:disable-line
+    expect(stub).to.have.been.calledOnce; // eslint-disable-line
   });
 
   it('should expose the view period on the beforeViewRender output', () => {

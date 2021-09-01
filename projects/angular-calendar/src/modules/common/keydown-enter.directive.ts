@@ -13,7 +13,7 @@ import {
   selector: '[mwlKeydownEnter]',
 })
 export class KeydownEnterDirective implements OnInit, OnDestroy {
-  @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // tslint:disable-line
+  @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // eslint-disable-line
 
   private keydownListener: VoidFunction | null = null;
 

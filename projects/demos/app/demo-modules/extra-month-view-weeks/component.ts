@@ -12,7 +12,6 @@ export class MyCalendarUtils extends CalendarUtils {
   }
 }
 
-// tslint:disable-next-line
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,

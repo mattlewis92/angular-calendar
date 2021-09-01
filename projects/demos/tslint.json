@@ -1,9 +1,0 @@
-{
-  "extends": "../../tslint.json",
-  "rules": {
-    "use-component-view-encapsulation": false,
-    "no-unused-css": false,
-    "template-use-track-by-function": false,
-    "relative-url-prefix": false
-  }
-}

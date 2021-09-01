@@ -1298,7 +1298,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({ events: {}, viewDate: {} });
     fixture.detectChanges();
     stub.restore();
-    expect(stub).to.have.been.calledOnce; // tslint:disable-line
+    expect(stub).to.have.been.calledOnce; // eslint-disable-line
   });
 
   it('should only call the beforeViewRender output once when refreshing the view', () => {
