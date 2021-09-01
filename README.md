@@ -22,7 +22,7 @@ https://angular-calendar.com/
 <h2 align="center">Sponsors</h2>
 
 <div align="center">
-<a href="https://github.com/sponsors/mattlewis92">Become a gold or platinum sponsor<a> and get your logo on this README on Github with a link to your site.
+<a href="https://github.com/sponsors/mattlewis92">Become a silver or gold sponsor<a> and get your logo on this README on Github with a link to your site.
 </div>
 
 ## Table of contents
