@@ -91,10 +91,6 @@ If you would like a one on one consultation with me where I can show you the bes
 
 > Please note: angular-calendar uses [Scarf](https://scarf.sh/) to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you'd like to opt out, you can do so by setting `scarfSettings.enabled = false` in your project's package.json. Alternatively, you can set the environment variable `SCARF_ANALYTICS=false` before you install.
 
-### Module bundlers
-
-You can find quick start examples for all common module bundlers in the [build-tool-examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
-
 <h2 align="center">Documentation</h2>
 
 To see all available API options, take a look at the auto generated [documentation](https://angular-calendar.com/docs/). You may find it helpful to view the examples on the demo page.
@@ -117,10 +113,6 @@ Yes.
 | 5.x            | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1) |
 | 4.x            | [0.22.3](https://github.com/mattlewis92/angular-calendar/tree/v0.22.3) |
 | 2.x            | [0.9.1](https://github.com/mattlewis92/angular-calendar/tree/v0.9.1)   |
-
-### How do I use this with my favourite module bundler?
-
-See the [examples list](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples).
 
 ### No styles are appearing?
 
