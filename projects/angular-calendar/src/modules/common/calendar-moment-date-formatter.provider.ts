@@ -26,7 +26,8 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
  */
 @Injectable()
 export class CalendarMomentDateFormatter
-  implements CalendarDateFormatterInterface {
+  implements CalendarDateFormatterInterface
+{
   /**
    * @hidden
    */

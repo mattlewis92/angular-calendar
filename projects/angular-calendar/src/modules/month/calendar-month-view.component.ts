@@ -141,7 +141,8 @@ export interface CalendarMonthViewEventTimesChangedEvent<
   `,
 })
 export class CalendarMonthViewComponent
-  implements OnChanges, OnInit, OnDestroy {
+  implements OnChanges, OnInit, OnDestroy
+{
   /**
    * The current view date
    */
@@ -247,9 +248,8 @@ export class CalendarMonthViewComponent
    * An output that will be called before the view is rendered for the current month.
    * If you add the `cssClass` property to a day in the body it will add that class to the cell element in the template
    */
-  @Output() beforeViewRender = new EventEmitter<
-    CalendarMonthViewBeforeRenderEvent
-  >();
+  @Output() beforeViewRender =
+    new EventEmitter<CalendarMonthViewBeforeRenderEvent>();
 
   /**
    * Called when the day cell is clicked
@@ -279,9 +279,7 @@ export class CalendarMonthViewComponent
    * Called when an event is dragged and dropped
    */
   @Output()
-  eventTimesChanged = new EventEmitter<
-    CalendarMonthViewEventTimesChangedEvent
-  >();
+  eventTimesChanged = new EventEmitter<CalendarMonthViewEventTimesChangedEvent>();
 
   /**
    * @hidden

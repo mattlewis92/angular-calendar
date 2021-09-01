@@ -26,9 +26,8 @@ describe('mwlCalendarNextView directive', () => {
   });
 
   it('should set the view date to the start of today', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     fixture.componentInstance.viewDate = new Date('2017-01-28');
     fixture.detectChanges();
     fixture.nativeElement.querySelector('button').click();

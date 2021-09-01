@@ -23,10 +23,11 @@ export const sources = [
         ),
       },
       highlighted: {
-        default: require('!!raw-loader!highlightjs-loader?lang=scss!./styles.scss').default.replace(
-          '../../../../angular-calendar/src/angular-calendar.scss',
-          '~angular-calendar/scss/angular-calendar.scss'
-        ),
+        default:
+          require('!!raw-loader!highlightjs-loader?lang=scss!./styles.scss').default.replace(
+            '../../../../angular-calendar/src/angular-calendar.scss',
+            '~angular-calendar/scss/angular-calendar.scss'
+          ),
       },
     },
   },

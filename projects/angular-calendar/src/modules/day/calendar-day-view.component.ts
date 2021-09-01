@@ -11,7 +11,8 @@ import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-c
 import { PlacementArray } from 'positioning';
 import { CalendarWeekViewBeforeRenderEvent } from '../week/calendar-week.module';
 
-export type CalendarDayViewBeforeRenderEvent = CalendarWeekViewBeforeRenderEvent;
+export type CalendarDayViewBeforeRenderEvent =
+  CalendarWeekViewBeforeRenderEvent;
 
 /**
  * Shows all events on a given day. Example usage:
@@ -190,15 +191,13 @@ export class CalendarDayViewComponent {
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output() eventTimesChanged = new EventEmitter<
-    CalendarEventTimesChangedEvent
-  >();
+  @Output() eventTimesChanged =
+    new EventEmitter<CalendarEventTimesChangedEvent>();
 
   /**
    * An output that will be called before the view is rendered for the current day.
    * If you add the `cssClass` property to an hour grid segment it will add that class to the hour segment in the template
    */
-  @Output() beforeViewRender = new EventEmitter<
-    CalendarDayViewBeforeRenderEvent
-  >();
+  @Output() beforeViewRender =
+    new EventEmitter<CalendarDayViewBeforeRenderEvent>();
 }

@@ -60,9 +60,8 @@ describe('calendarDate pipe', () => {
   ));
 
   it('should use the date formatter to format the date', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     spy(dateFormatter, 'monthViewColumnHeader');
     fixture.componentInstance.date = new Date('2016-01-01');
     fixture.componentInstance.method = 'monthViewColumnHeader';
@@ -78,9 +77,8 @@ describe('calendarDate pipe', () => {
   });
 
   it('should allow the locale to be customised', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     fixture.componentInstance.locale = 'de';
     spy(dateFormatter, 'monthViewColumnHeader');
     fixture.componentInstance.date = new Date('2016-01-01');
@@ -97,9 +95,8 @@ describe('calendarDate pipe', () => {
   });
 
   it('should throw when an invalid method is passed', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     fixture.componentInstance.date = new Date('2016-01-01');
     fixture.componentInstance.method = 'invalid';
     expect(() => fixture.detectChanges()).to.throw(
