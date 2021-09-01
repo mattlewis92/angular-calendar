@@ -1444,7 +1444,7 @@ If using the moment date adapter this option won&#39;t do anything and you&#39;l
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="593" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:593</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="592" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:592</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1553,7 +1553,7 @@ If you add the <code>cssClass</code> property to a day in the header it will add
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="600" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:600</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="598" class="link-to-prism">projects/angular-calendar/src/modules/week/calendar-week-view.component.ts:598</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -2157,17 +2157,15 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Called when an event is resized or dragged and dropped
    */
-  @Output() eventTimesChanged &#x3D; new EventEmitter&lt;
-    CalendarEventTimesChangedEvent
-  &gt;();
+  @Output() eventTimesChanged &#x3D;
+    new EventEmitter&lt;CalendarEventTimesChangedEvent&gt;();
 
   /**
    * An output that will be called before the view is rendered for the current week.
    * If you add the &#x60;cssClass&#x60; property to a day in the header it will add that class to the cell element in the template
    */
-  @Output() beforeViewRender &#x3D; new EventEmitter&lt;
-    CalendarWeekViewBeforeRenderEvent
-  &gt;();
+  @Output() beforeViewRender &#x3D;
+    new EventEmitter&lt;CalendarWeekViewBeforeRenderEvent&gt;();
 
   /**
    * Called when an hour segment is clicked
@@ -2195,10 +2193,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * @hidden
    */
-  allDayEventResizes: Map&lt;
-    WeekViewAllDayEvent,
-    WeekViewAllDayEventResize
-  &gt; &#x3D; new Map();
+  allDayEventResizes: Map&lt;WeekViewAllDayEvent, WeekViewAllDayEventResize&gt; &#x3D;
+    new Map();
 
   /**
    * @hidden
@@ -2447,9 +2443,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     resizeEvent: ResizeEvent,
     dayWidth: number
   ): void {
-    const currentResize: WeekViewAllDayEventResize &#x3D; this.allDayEventResizes.get(
-      allDayEvent
-    );
+    const currentResize: WeekViewAllDayEventResize &#x3D;
+      this.allDayEventResizes.get(allDayEvent);
 
     if (typeof resizeEvent.edges.left !&#x3D;&#x3D; &#x27;undefined&#x27;) {
       const diff: number &#x3D; Math.round(+resizeEvent.edges.left / dayWidth);
@@ -2465,9 +2460,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    * @hidden
    */
   allDayEventResizeEnded(allDayEvent: WeekViewAllDayEvent): void {
-    const currentResize: WeekViewAllDayEventResize &#x3D; this.allDayEventResizes.get(
-      allDayEvent
-    );
+    const currentResize: WeekViewAllDayEventResize &#x3D;
+      this.allDayEventResizes.get(allDayEvent);
 
     if (currentResize) {
       const allDayEventResizingBeforeStart &#x3D; currentResize.edge &#x3D;&#x3D;&#x3D; &#x27;left&#x27;;
