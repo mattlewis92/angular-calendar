@@ -3,3 +3,9 @@
 @import '~highlight.js/styles/github.css';
 @import '~flatpickr/dist/flatpickr.css';
 @import '../angular-calendar/src/angular-calendar.scss';
+
+@media (min-width: 768px) {
+  body {
+    overflow-y: hidden;
+  }
+}
