@@ -96,8 +96,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         </div>
       </div>
       <div
-        *ngIf="notesView?.allDayEventRows.length > 0"
         class="notes-container"
+        *ngIf="notesView?.allDayEventRows.length > 0"
       >
         <div class="cal-notes-columns">
           <div
@@ -108,11 +108,11 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         <div class="cal-events-row-container">
           <div
             #eventRowContainer
+            class="cal-events-row"
             *ngFor="
               let eventRow of notesView.allDayEventRows;
               trackBy: trackById
             "
-            class="cal-events-row"
           >
             <div
               *ngFor="let allDayEvent of eventRow.row"
@@ -723,7 +723,7 @@ export class CalendarWeekListViewComponent
 
   private refreshBody(): void {
     this.view = this.getWeekView(this.events);
-    this.notesView = this.getWeekView(this.notes);
+    this.notesView = this.getWeekView(this.notes, false);
   }
 
   private refreshAll(): void {
@@ -741,7 +741,7 @@ export class CalendarWeekListViewComponent
     }
   }
 
-  private getWeekView(events: CalendarEvent[]) {
+  private getWeekView(events: CalendarEvent[], withTimezone: boolean = true) {
     return this.utils.getWeekView(
       {
         events,
@@ -770,7 +770,7 @@ export class CalendarWeekListViewComponent
           this.timezone
         ),
       },
-      this.timezone
+      withTimezone ? this.timezone : null
     );
   }
 
