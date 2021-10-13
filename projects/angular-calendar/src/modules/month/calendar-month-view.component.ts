@@ -492,18 +492,16 @@ export class CalendarMonthViewComponent
 
   protected refreshBody(): void {
     // get the view of events with timezone information
-    const viewEvent = this.events
-      ? this.utils.getMonthView(
-          {
-            events: this.events,
-            viewDate: this.viewDate,
-            weekStartsOn: this.weekStartsOn,
-            excluded: this.excludeDays,
-            weekendDays: this.weekendDays,
-          },
-          this.timezone
-        )
-      : null;
+    const viewEvent = this.utils.getMonthView(
+      {
+        events: this.events,
+        viewDate: this.viewDate,
+        weekStartsOn: this.weekStartsOn,
+        excluded: this.excludeDays,
+        weekendDays: this.weekendDays,
+      },
+      this.timezone
+    );
     // get the view of notes without timezone information
     const viewNotes = this.notes
       ? this.utils.getMonthView({
@@ -523,10 +521,10 @@ export class CalendarMonthViewComponent
         i++;
       });
       this.view = tempEvent;
-    } else if (this.events.length) {
-      this.view = viewEvent;
     } else if (this.notes?.length) {
       this.view = viewNotes;
+    } else {
+      this.view = viewEvent;
     }
   }
 
