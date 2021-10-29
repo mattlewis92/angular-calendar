@@ -92,6 +92,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               [rowIndex]="rowIndex"
               [cellMonthNoteTemplate]="cellMonthNoteTemplate"
               [maxEventDisplayedCount]="maxEventDisplayedCount"
+              [timezone]="timezone"
             >
             </mwl-calendar-month-row>
           </div>
