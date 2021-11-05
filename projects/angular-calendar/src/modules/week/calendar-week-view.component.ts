@@ -1,28 +1,26 @@
 import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
+  AfterViewInit,
   ChangeDetectorRef,
-  OnChanges,
-  OnInit,
-  OnDestroy,
-  LOCALE_ID,
+  Component,
+  EventEmitter,
   Inject,
+  Input,
+  LOCALE_ID,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
   TemplateRef,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import {
-  WeekDay,
   CalendarEvent,
-  WeekViewAllDayEvent,
+  WeekDay,
   WeekView,
-  ViewPeriod,
+  WeekViewAllDayEvent,
+  WeekViewAllDayEventRow,
   WeekViewHourColumn,
   WeekViewTimeEvent,
-  WeekViewHourSegment,
-  WeekViewHour,
-  WeekViewAllDayEventRow,
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
@@ -33,26 +31,26 @@ import {
 } from '../common/calendar-event-times-changed-event.interface';
 import { CalendarUtils } from '../common/calendar-utils.provider';
 import {
-  validateEvents,
-  roundToNearest,
-  trackByWeekDayHeaderDate,
-  trackByHourSegment,
-  trackByHour,
-  getMinutesMoved,
+  addDaysWithExclusions,
   getDefaultEventEnd,
   getMinimumEventHeightInMinutes,
-  addDaysWithExclusions,
-  isDraggedWithinPeriod,
-  shouldFireDroppedEvent,
+  getMinutesMoved,
   getWeekViewPeriod,
+  isDraggedWithinPeriod,
+  roundToNearest,
+  shouldFireDroppedEvent,
+  trackByHour,
+  trackByHourSegment,
   trackByWeekAllDayEvent,
+  trackByWeekDayHeaderDate,
   trackByWeekTimeEvent,
+  validateEvents,
 } from '../common/util';
 import { DateAdapter } from '../../date-adapters/date-adapter';
 import {
   DragEndEvent,
-  DropEvent,
   DragMoveEvent,
+  DropEvent,
   ValidateDrag,
 } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
@@ -407,7 +405,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
     </div>
   `,
 })
-export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
+export class CalendarWeekViewComponent
+  implements OnChanges, OnInit, OnDestroy, AfterViewInit {
   /**
    * The current view date
    */
@@ -599,6 +598,8 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
     sourceEvent: MouseEvent;
   }>();
 
+  @Output() viewInitCompleted = new EventEmitter<void>();
+
   /**
    * @hidden
    */
@@ -723,6 +724,12 @@ export class CalendarWeekViewComponent implements OnChanges, OnInit, OnDestroy {
    */
   trackById = (index: number, row: WeekViewAllDayEventRow) => row.id;
 
+  /**
+   * @hidden
+   */
+  ngAfterViewInit(): void {
+    this.viewInitCompleted.emit();
+  }
   /**
    * @hidden
    */
