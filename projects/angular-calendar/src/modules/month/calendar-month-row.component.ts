@@ -157,14 +157,14 @@ export class CalendarMonthRowComponent implements OnChanges {
     else if (indexStartDate !== -1 && indexEndDate === -1) {
       const daysNumberFromNoteStart = this.dateDiffIndays(
         note.start,
-        this.daysSliced[6].date
+        this.timezoneManager.reverseTz(this.daysSliced[6].date, this.timezone)
       );
       width = (daysNumberFromNoteStart + 1) * (100 / 7);
     }
     // end dans le row en cours et pas le start
     else if (indexStartDate === -1 && indexEndDate !== -1) {
       const daysNumberToNoteEnd = this.dateDiffIndays(
-        this.daysSliced[0].date,
+        this.timezoneManager.reverseTz(this.daysSliced[0].date, this.timezone),
         note.end
       );
       width = (daysNumberToNoteEnd + 1) * (100 / 7);
