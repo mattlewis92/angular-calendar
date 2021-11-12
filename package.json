@@ -164,7 +164,7 @@
     "@scarf/scarf": "^1.1.1",
     "angular-draggable-droppable": "^5.0.0",
     "angular-resizable-element": "^4.0.0",
-    "calendar-utils": "^0.8.5",
+    "calendar-utils": "^0.9.0",
     "positioning": "^2.0.1",
     "tslib": "^2.0.0"
   },
