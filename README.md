@@ -22,6 +22,9 @@ https://mattlewis92.github.io/angular-calendar/
 <h2 align="center">Sponsors</h2>
 
 <div align="center">
+  
+<a href="https://clickup.com/careers/senior-frontend-engineer" target="_blank"><img src="https://i.imgur.com/0RWYhEB.jpg"></a>
+  
 <a href="https://github.com/sponsors/mattlewis92">Become a silver or gold sponsor<a> and get your logo on this README on Github with a link to your site.
 </div>
 
