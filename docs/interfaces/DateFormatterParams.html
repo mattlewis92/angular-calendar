@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>DateFormatterParams</li>
+  <li
+  >
+  DateFormatterParams</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/angular-calendar/src/modules/common/calendar-date-formatter.interface.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -86,23 +90,38 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#date">date</a>
+                                        <a href="#date" 
+>
+                                            date
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#daysInWeek">daysInWeek</a>
+                                        <a href="#daysInWeek" 
+>
+                                            daysInWeek
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#excludeDays">excludeDays</a>
+                                        <a href="#excludeDays" 
+>
+                                            excludeDays
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#locale">locale</a>
+                                        <a href="#locale" 
+>
+                                            locale
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#weekStartsOn">weekStartsOn</a>
+                                        <a href="#weekStartsOn" 
+>
+                                            weekStartsOn
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -120,7 +139,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="date"></a>
-                                        <span class="name"><b>date</b><a href="#date"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>date</b>
+                                            <a href="#date">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -155,7 +178,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="daysInWeek"></a>
-                                        <span class="name"><b>daysInWeek</b><a href="#daysInWeek"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>daysInWeek</b>
+                                            <a href="#daysInWeek">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -196,7 +223,11 @@ The first day of the week will always be the <code>viewDate</code></p>
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="excludeDays"></a>
-                                        <span class="name"><b>excludeDays</b><a href="#excludeDays"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>excludeDays</b>
+                                            <a href="#excludeDays">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -236,7 +267,11 @@ The first day of the week will always be the <code>viewDate</code></p>
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="locale"></a>
-                                        <span class="name"><b>locale</b><a href="#locale"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>locale</b>
+                                            <a href="#locale">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -276,7 +311,11 @@ The first day of the week will always be the <code>viewDate</code></p>
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="weekStartsOn"></a>
-                                        <span class="name"><b>weekStartsOn</b><a href="#weekStartsOn"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>weekStartsOn</b>
+                                            <a href="#weekStartsOn">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -426,9 +465,9 @@ export interface CalendarDateFormatterInterface {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

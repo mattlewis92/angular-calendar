@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	      <link rel="stylesheet" href="./styles/style.css">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -30,7 +31,7 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 align="center">angular 6.0+ calendar</h1>
+<h1 align="center">angular 12.0+ calendar</h1>
 
 <div align="center">
 
@@ -52,7 +53,9 @@
 <h2 align="center">Sponsors</h2>
 
 <div align="center">
-<a href="https://github.com/sponsors/mattlewis92">Become a silver or gold sponsor<a> and get your logo on this README on Github with a link to your site.
+  
+<p><a href="https://clickup.com/careers/senior-frontend-engineer" target="_blank"><img src="https://i.imgur.com/0RWYhEB.jpg"></a></p>
+<p><a href="https://github.com/sponsors/mattlewis92">Become a silver or gold sponsor<a> and get your logo on this README on Github with a link to your site.</p>
 </div>
 
 <h2 id="table-of-contents">Table of contents</h2>
@@ -68,7 +71,7 @@
 </ul>
 <h2 align="center">About</h2>
 
-<p>A calendar component for Angular 6.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
+<p>A calendar component for Angular 12.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 align="center">Getting started</h2>
 
 <h3 id="ng-add-recommended">ng add (recommended)</h3>
@@ -97,8 +100,6 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <blockquote>
 <p>Please note: angular-calendar uses <a href="https://scarf.sh/">Scarf</a> to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you&#39;d like to opt out, you can do so by setting <code>scarfSettings.enabled = false</code> in your project&#39;s package.json. Alternatively, you can set the environment variable <code>SCARF_ANALYTICS=false</code> before you install.</p>
 </blockquote>
-<h3 id="module-bundlers">Module bundlers</h3>
-<p>You can find quick start examples for all common module bundlers in the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">build-tool-examples</a> folder.</p>
 <h2 align="center">Documentation</h2>
 
 <p>To see all available API options, take a look at the auto generated <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a>. You may find it helpful to view the examples on the demo page.</p>
@@ -119,8 +120,12 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 </thead>
 <tbody>
 <tr>
-<td>6.x and higher</td>
+<td>12.x and higher</td>
 <td>latest version</td>
+</tr>
+<tr>
+<td>6.x - 11.x</td>
+<td><a href="https://github.com/mattlewis92/angular-calendar/tree/v0.28.28">0.28.28</a></td>
 </tr>
 <tr>
 <td>5.x</td>
@@ -136,8 +141,6 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 </tr>
 </tbody>
 </table>
-<h3 id="how-do-i-use-this-with-my-favourite-module-bundler">How do I use this with my favourite module bundler?</h3>
-<p>See the <a href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples">examples list</a>.</p>
 <h3 id="no-styles-are-appearing">No styles are appearing?</h3>
 <p>No component styles are included with each component to make it easier to override them (otherwise you’d have to use <code>!important</code> on every rule that you customised). Thus you need to import the CSS file separately from <code>node_modules/angular-calendar/css/angular-calendar.css</code>.</p>
 <h3 id="how-come-there-are-so-many-dependencies">How come there are so many dependencies?</h3>
@@ -152,8 +155,8 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <p>All parts of this calendar can be customised via the use of an <code>ng-template</code>. The recipe for applying one is as follows:</p>
 <ul>
 <li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
-<li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/a5fe1f975ecf332c96797326f48081e5d02d264d/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts">this component</a></li>
-<li>Now copy the <a href="https://github.com/mattlewis92/angular-calendar/blob/a5fe1f975ecf332c96797326f48081e5d02d264d/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts#L15-L51">template source</a> for your chosen template into your own component and modify as your see fit.</li>
+<li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/master/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts">this component</a></li>
+<li>Now copy the <a href="https://github.com/mattlewis92/angular-calendar/blob/be842da460a803ebb570418bc10e11fab56bd7b9/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts#L15-L72">template source</a> for your chosen template into your own component and modify as your see fit.</li>
 <li>Finally pass the template to the components input: <code>&lt;mwl-calendar-month-view [cellTemplate]=&quot;cellTemplateId&quot; /&gt;</code></li>
 <li>You can see an e2e working example of this <a href="https://mattlewis92.github.io/angular-calendar/#/custom-templates">here</a></li>
 </ul>
@@ -225,9 +228,9 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="./js/menu-wc.js" defer></script>
+       
+       <script type="module" src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

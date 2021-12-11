@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -41,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Pipes</li>
-  <li>CalendarDatePipe</li>
+  <li >CalendarDatePipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,18 +64,14 @@
             <code>projects/angular-calendar/src/modules/common/calendar-date.pipe.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
                 <p>This pipe is primarily for rendering the current view title. Example usage:</p>
-<p>```typescript</p>
-<ul>
-<li>// where <code>viewDate</code> is a <code>Date</code> and view is <code>&#39;month&#39; | &#39;week&#39; | &#39;day&#39;</code></li>
-<li>{{ viewDate | calendarDate:(view + &#39;ViewTitle&#39;):&#39;en&#39; }}</li>
-<li>```</li>
-</ul>
-
+<div><pre class="line-numbers"><code class="language-typescript">// where `viewDate` is a `Date` and view is `&#39;month&#39; | &#39;week&#39; | &#39;day&#39;`
+{{ viewDate | calendarDate:(view + &#39;ViewTitle&#39;):&#39;en&#39; }}</code></pre></div>
             </p>
 
 
@@ -101,9 +98,7 @@
                 <td class="col-md-4">
                     <a name="transform"></a>
                     <span class="name">
-                        <b>
-                            transform
-                        </b>
+                        <span ><b>transform</b></span>
                         <a href="#transform"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -329,9 +324,9 @@ export class CalendarDatePipe implements PipeTransform {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

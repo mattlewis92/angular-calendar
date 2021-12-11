@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,7 +36,9 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>CalendarMonthViewComponent</li>
+  <li
+  >
+  CalendarMonthViewComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,20 +61,16 @@
     <code>projects/angular-calendar/src/modules/month/calendar-month-view.component.ts</code>
 </p>
 
+
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
         <p>Shows all events on a given month. Example usage:</p>
-<p>```typescript</p>
-<ul>
-<li>&lt;mwl-calendar-month-view</li>
-<li>[viewDate]=&quot;viewDate&quot;</li>
-<li>[events]=&quot;events&quot;&gt;</li>
-<li></mwl-calendar-month-view></li>
-<li>```</li>
-</ul>
-
+<div><pre class="line-numbers"><code class="language-typescript">&lt;mwl-calendar-month-view
+ [viewDate]=&quot;viewDate&quot;
+ [events]=&quot;events&quot;&gt;
+&lt;/mwl-calendar-month-view&gt;</code></pre></div>
     </p>
 
 
@@ -223,58 +222,58 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#activeDay">activeDay</a>
+                                <a href="#activeDay" >activeDay</a>
                             </li>
                             <li>
-                                <a href="#activeDayIsOpen">activeDayIsOpen</a>
+                                <a href="#activeDayIsOpen" >activeDayIsOpen</a>
                             </li>
                             <li>
-                                <a href="#cellTemplate">cellTemplate</a>
+                                <a href="#cellTemplate" >cellTemplate</a>
                             </li>
                             <li>
-                                <a href="#eventActionsTemplate">eventActionsTemplate</a>
+                                <a href="#eventActionsTemplate" >eventActionsTemplate</a>
                             </li>
                             <li>
-                                <a href="#events">events</a>
+                                <a href="#events" >events</a>
                             </li>
                             <li>
-                                <a href="#eventTitleTemplate">eventTitleTemplate</a>
+                                <a href="#eventTitleTemplate" >eventTitleTemplate</a>
                             </li>
                             <li>
-                                <a href="#excludeDays">excludeDays</a>
+                                <a href="#excludeDays" >excludeDays</a>
                             </li>
                             <li>
-                                <a href="#headerTemplate">headerTemplate</a>
+                                <a href="#headerTemplate" >headerTemplate</a>
                             </li>
                             <li>
-                                <a href="#locale">locale</a>
+                                <a href="#locale" >locale</a>
                             </li>
                             <li>
-                                <a href="#openDayEventsTemplate">openDayEventsTemplate</a>
+                                <a href="#openDayEventsTemplate" >openDayEventsTemplate</a>
                             </li>
                             <li>
-                                <a href="#refresh">refresh</a>
+                                <a href="#refresh" >refresh</a>
                             </li>
                             <li>
-                                <a href="#tooltipAppendToBody">tooltipAppendToBody</a>
+                                <a href="#tooltipAppendToBody" >tooltipAppendToBody</a>
                             </li>
                             <li>
-                                <a href="#tooltipDelay">tooltipDelay</a>
+                                <a href="#tooltipDelay" >tooltipDelay</a>
                             </li>
                             <li>
-                                <a href="#tooltipPlacement">tooltipPlacement</a>
+                                <a href="#tooltipPlacement" >tooltipPlacement</a>
                             </li>
                             <li>
-                                <a href="#tooltipTemplate">tooltipTemplate</a>
+                                <a href="#tooltipTemplate" >tooltipTemplate</a>
                             </li>
                             <li>
-                                <a href="#viewDate">viewDate</a>
+                                <a href="#viewDate" >viewDate</a>
                             </li>
                             <li>
-                                <a href="#weekendDays">weekendDays</a>
+                                <a href="#weekendDays" >weekendDays</a>
                             </li>
                             <li>
-                                <a href="#weekStartsOn">weekStartsOn</a>
+                                <a href="#weekStartsOn" >weekStartsOn</a>
                             </li>
                         </ul>
                     </td>
@@ -289,19 +288,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#beforeViewRender">beforeViewRender</a>
+                                <a href="#beforeViewRender" >beforeViewRender</a>
                             </li>
                             <li>
-                                <a href="#columnHeaderClicked">columnHeaderClicked</a>
+                                <a href="#columnHeaderClicked" >columnHeaderClicked</a>
                             </li>
                             <li>
-                                <a href="#dayClicked">dayClicked</a>
+                                <a href="#dayClicked" >dayClicked</a>
                             </li>
                             <li>
-                                <a href="#eventClicked">eventClicked</a>
+                                <a href="#eventClicked" >eventClicked</a>
                             </li>
                             <li>
-                                <a href="#eventTimesChanged">eventTimesChanged</a>
+                                <a href="#eventTimesChanged" >eventTimesChanged</a>
                             </li>
                         </ul>
                     </td>
@@ -830,17 +829,12 @@ will be displayed immediately.</p>
                     <td class="col-md-4">
                         <div class="io-description"><p>The start number of the week.
 If using the moment date adapter this option won&#39;t do anything and you&#39;ll need to set it globally like so:</p>
-<p>```</p>
-<ul>
-<li>moment.updateLocale(&#39;en&#39;, {</li>
-<li>week: {</li>
-<li>dow: 1, // set start of week to monday instead</li>
-<li>doy: 0,</li>
-<li>},</li>
-<li>});</li>
-<li>```</li>
-</ul>
-</div>
+<div><pre class="line-numbers"><code class="language-none">moment.updateLocale(&#39;en&#39;, {
+  week: {
+    dow: 1, // set start of week to monday instead
+    doy: 0,
+  },
+});</code></pre></div></div>
                     </td>
                 </tr>
             </tbody>
@@ -1251,7 +1245,7 @@ export class CalendarMonthViewComponent
    */
   @Output() dayClicked &#x3D; new EventEmitter&lt;{
     day: MonthViewDay;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -1259,7 +1253,7 @@ export class CalendarMonthViewComponent
    */
   @Output() eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -1267,7 +1261,7 @@ export class CalendarMonthViewComponent
    */
   @Output() columnHeaderClicked &#x3D; new EventEmitter&lt;{
     isoDayNumber: number;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -1564,9 +1558,9 @@ export class CalendarMonthViewComponent
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

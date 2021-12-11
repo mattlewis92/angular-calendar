@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>CalendarMonthViewBeforeRenderEvent</li>
+  <li
+  >
+  CalendarMonthViewBeforeRenderEvent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,6 +69,7 @@
 
 
 
+
         <section>
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
@@ -79,13 +83,22 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#body">body</a>
+                                        <a href="#body" 
+>
+                                            body
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#header">header</a>
+                                        <a href="#header" 
+>
+                                            header
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#period">period</a>
+                                        <a href="#period" 
+>
+                                            period
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -103,7 +116,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="body"></a>
-                                        <span class="name"><b>body</b><a href="#body"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>body</b>
+                                            <a href="#body">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,7 +149,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="header"></a>
-                                        <span class="name"><b>header</b><a href="#header"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>header</b>
+                                            <a href="#header">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -161,7 +182,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="period"></a>
-                                        <span class="name"><b>period</b><a href="#period"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>period</b>
+                                            <a href="#period">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -448,7 +473,7 @@ export class CalendarMonthViewComponent
    */
   @Output() dayClicked &#x3D; new EventEmitter&lt;{
     day: MonthViewDay;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -456,7 +481,7 @@ export class CalendarMonthViewComponent
    */
   @Output() eventClicked &#x3D; new EventEmitter&lt;{
     event: CalendarEvent;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -464,7 +489,7 @@ export class CalendarMonthViewComponent
    */
   @Output() columnHeaderClicked &#x3D; new EventEmitter&lt;{
     isoDayNumber: number;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }&gt;();
 
   /**
@@ -720,9 +745,9 @@ export class CalendarMonthViewComponent
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

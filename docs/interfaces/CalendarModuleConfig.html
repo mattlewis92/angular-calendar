@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>CalendarModuleConfig</li>
+  <li
+  >
+  CalendarModuleConfig</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,6 +69,7 @@
 
 
 
+
         <section>
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
@@ -80,19 +84,31 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#a11y">a11y</a>
+                                        <a href="#a11y" 
+>
+                                            a11y
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#dateFormatter">dateFormatter</a>
+                                        <a href="#dateFormatter" 
+>
+                                            dateFormatter
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#eventTitleFormatter">eventTitleFormatter</a>
+                                        <a href="#eventTitleFormatter" 
+>
+                                            eventTitleFormatter
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#utils">utils</a>
+                                        <a href="#utils" 
+>
+                                            utils
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -110,7 +126,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="a11y"></a>
-                                        <span class="name"><b>a11y</b><a href="#a11y"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>a11y</b>
+                                            <a href="#a11y">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -144,7 +164,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="dateFormatter"></a>
-                                        <span class="name"><b>dateFormatter</b><a href="#dateFormatter"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>dateFormatter</b>
+                                            <a href="#dateFormatter">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -178,7 +202,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="eventTitleFormatter"></a>
-                                        <span class="name"><b>eventTitleFormatter</b><a href="#eventTitleFormatter"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>eventTitleFormatter</b>
+                                            <a href="#eventTitleFormatter">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -212,7 +240,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="utils"></a>
-                                        <span class="name"><b>utils</b><a href="#utils"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>utils</b>
+                                            <a href="#utils">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -286,6 +318,22 @@ export * from &#x27;./calendar-date-formatter.interface&#x27;;
 export * from &#x27;./calendar-event-times-changed-event.interface&#x27;;
 export * from &#x27;../../date-adapters/date-adapter&#x27;;
 export * from &#x27;./calendar-view.enum&#x27;;
+
+// needed for ivy, not part of the public api
+export { CalendarEventActionsComponent as ɵCalendarEventActionsComponent } from &#x27;./calendar-event-actions.component&#x27;;
+export { CalendarEventTitleComponent as ɵCalendarEventTitleComponent } from &#x27;./calendar-event-title.component&#x27;;
+export {
+  CalendarTooltipDirective as ɵCalendarTooltipDirective,
+  CalendarTooltipWindowComponent as ɵCalendarTooltipWindowComponent,
+} from &#x27;./calendar-tooltip.directive&#x27;;
+export { CalendarPreviousViewDirective as ɵCalendarPreviousViewDirective } from &#x27;./calendar-previous-view.directive&#x27;;
+export { CalendarNextViewDirective as ɵCalendarNextViewDirective } from &#x27;./calendar-next-view.directive&#x27;;
+export { CalendarTodayDirective as ɵCalendarTodayDirective } from &#x27;./calendar-today.directive&#x27;;
+export { CalendarDatePipe as ɵCalendarDatePipe } from &#x27;./calendar-date.pipe&#x27;;
+export { CalendarEventTitlePipe as ɵCalendarEventTitlePipe } from &#x27;./calendar-event-title.pipe&#x27;;
+export { ClickDirective as ɵClickDirective } from &#x27;./click.directive&#x27;;
+export { KeydownEnterDirective as ɵKeydownEnterDirective } from &#x27;./keydown-enter.directive&#x27;;
+export { CalendarA11yPipe as ɵCalendarA11yPipe } from &#x27;./calendar-a11y.pipe&#x27;;
 
 export {
   CalendarEvent,
@@ -393,9 +441,9 @@ export class CalendarCommonModule {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

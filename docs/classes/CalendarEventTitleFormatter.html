@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -42,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>CalendarEventTitleFormatter</li>
+  <li >CalendarEventTitleFormatter</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,33 +64,29 @@
             <code>projects/angular-calendar/src/modules/common/calendar-event-title-formatter.provider.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
                 <p>This class is responsible for displaying all event titles within the calendar. You may override any of its methods via angulars DI to suit your requirements. For example:</p>
-<p>```typescript</p>
-<ul>
-<li>import { Injectable } from &#39;@angular/core&#39;;</li>
-<li>import { CalendarEventTitleFormatter, CalendarEvent } from &#39;angular-calendar&#39;;</li>
-<li></li>
-<li>@Injectable()</li>
-<li>class CustomEventTitleFormatter extends CalendarEventTitleFormatter {</li>
-<li></li>
-<li>month(event: CalendarEvent): string {</li>
-<li>return <code>Custom prefix: ${event.title}</code>;</li>
-<li>}</li>
-<li></li>
-<li>}</li>
-<li></li>
-<li>// in your component</li>
-<li>providers: [{</li>
-<li>provide: CalendarEventTitleFormatter,</li>
-<li>useClass: CustomEventTitleFormatter</li>
-<li>}]</li>
-<li>```</li>
-</ul>
+<div><pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#39;&#64;angular/core&#39;;
+import { CalendarEventTitleFormatter, CalendarEvent } from &#39;angular-calendar&#39;;
 
+&#64;Injectable()
+class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
+
+  month(event: CalendarEvent): string {
+    return `Custom prefix: ${event.title}`;
+  }
+
+}
+
+// in your component
+providers: [{
+ provide: CalendarEventTitleFormatter,
+ useClass: CustomEventTitleFormatter
+}]</code></pre></div>
             </p>
 
 
@@ -109,22 +106,22 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#day">day</a>
+                                <a href="#day" >day</a>
                             </li>
                             <li>
-                                <a href="#dayTooltip">dayTooltip</a>
+                                <a href="#dayTooltip" >dayTooltip</a>
                             </li>
                             <li>
-                                <a href="#month">month</a>
+                                <a href="#month" >month</a>
                             </li>
                             <li>
-                                <a href="#monthTooltip">monthTooltip</a>
+                                <a href="#monthTooltip" >monthTooltip</a>
                             </li>
                             <li>
-                                <a href="#week">week</a>
+                                <a href="#week" >week</a>
                             </li>
                             <li>
-                                <a href="#weekTooltip">weekTooltip</a>
+                                <a href="#weekTooltip" >weekTooltip</a>
                             </li>
                         </ul>
                     </td>
@@ -151,9 +148,7 @@
                 <td class="col-md-4">
                     <a name="day"></a>
                     <span class="name">
-                        <b>
-                            day
-                        </b>
+                        <span ><b>day</b></span>
                         <a href="#day"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -235,9 +230,7 @@
                 <td class="col-md-4">
                     <a name="dayTooltip"></a>
                     <span class="name">
-                        <b>
-                            dayTooltip
-                        </b>
+                        <span ><b>dayTooltip</b></span>
                         <a href="#dayTooltip"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -319,9 +312,7 @@
                 <td class="col-md-4">
                     <a name="month"></a>
                     <span class="name">
-                        <b>
-                            month
-                        </b>
+                        <span ><b>month</b></span>
                         <a href="#month"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -403,9 +394,7 @@
                 <td class="col-md-4">
                     <a name="monthTooltip"></a>
                     <span class="name">
-                        <b>
-                            monthTooltip
-                        </b>
+                        <span ><b>monthTooltip</b></span>
                         <a href="#monthTooltip"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -487,9 +476,7 @@
                 <td class="col-md-4">
                     <a name="week"></a>
                     <span class="name">
-                        <b>
-                            week
-                        </b>
+                        <span ><b>week</b></span>
                         <a href="#week"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -571,9 +558,7 @@
                 <td class="col-md-4">
                     <a name="weekTooltip"></a>
                     <span class="name">
-                        <b>
-                            weekTooltip
-                        </b>
+                        <span ><b>weekTooltip</b></span>
                         <a href="#weekTooltip"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -761,9 +746,9 @@ export class CalendarEventTitleFormatter {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

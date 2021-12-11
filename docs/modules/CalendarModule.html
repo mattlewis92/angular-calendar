@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -34,7 +35,7 @@
 
 <ol class="breadcrumb">
     <li>Modules</li>
-    <li>CalendarModule</li>
+    <li >CalendarModule</li>
 </ol>
 
 
@@ -58,24 +59,20 @@
         </p>
 
 
+
         <p class="comment">
             <h3>Description</h3>
         </p>
         <p class="comment">
             <p>The main module of this library. Example usage:</p>
-<p>```typescript</p>
-<ul>
-<li>import { CalenderModule } from &#39;angular-calendar&#39;;</li>
-<li></li>
-<li>@NgModule({</li>
-<li>imports: [</li>
-<li>CalenderModule.forRoot()</li>
-<li>]</li>
-<li>})</li>
-<li>class MyModule {}</li>
-<li>```</li>
-</ul>
+<div><pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from &#39;angular-calendar&#39;;
 
+&#64;NgModule({
+  imports: [
+    CalenderModule.forRoot()
+  ]
+})
+class MyModule {}</code></pre></div>
         </p>
 
 
@@ -131,10 +128,8 @@
                 <td class="col-md-4">
                     <a name="forRoot"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Static</span>
-                            forRoot
-                        </b>
+                        <span class="modifier">Static</span>
+                        <span ><b>forRoot</b></span>
                         <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -142,7 +137,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>forRoot(dateAdapter: <a href="https://angular.io/api/core/Provider" target="_blank">Provider</a>, config: <a href="../interfaces/CalendarModuleConfig.html">CalendarModuleConfig</a>)</code>
+                    <code>forRoot(dateAdapter: <a href="https://angular.io/api/core/Provider" target="_blank">Provider</a>, config: <a href="../interfaces/CalendarModuleConfig.html" target="_self">CalendarModuleConfig</a>)</code>
                 </td>
             </tr>
 
@@ -325,9 +320,9 @@ export class CalendarModule {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

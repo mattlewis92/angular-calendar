@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -34,7 +35,7 @@
 
 <ol class="breadcrumb">
     <li>Modules</li>
-    <li>CalendarMonthModule</li>
+    <li >CalendarMonthModule</li>
 </ol>
 
 
@@ -56,6 +57,7 @@
         <p class="comment">
             <code>projects/angular-calendar/src/modules/month/calendar-month.module.ts</code>
         </p>
+
 
 
 
@@ -113,6 +115,11 @@ export {
 } from &#x27;./calendar-month-view.component&#x27;;
 export { MonthViewDay as CalendarMonthViewDay } from &#x27;calendar-utils&#x27;;
 export { collapseAnimation } from &#x27;./calendar-open-day-events.component&#x27;;
+
+// needed for ivy, not part of the public api
+export { CalendarMonthCellComponent as ɵCalendarMonthCellComponent } from &#x27;./calendar-month-cell.component&#x27;;
+export { CalendarMonthViewHeaderComponent as ɵCalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view-header.component&#x27;;
+export { CalendarOpenDayEventsComponent as ɵCalendarOpenDayEventsComponent } from &#x27;./calendar-open-day-events.component&#x27;;
 
 @NgModule({
   imports: [CommonModule, DragAndDropModule, CalendarCommonModule],
@@ -172,9 +179,9 @@ export class CalendarMonthModule {}
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

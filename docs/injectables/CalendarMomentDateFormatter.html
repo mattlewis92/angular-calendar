@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -38,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>CalendarMomentDateFormatter</li>
+  <li >CalendarMomentDateFormatter</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,26 +60,22 @@
             <code>projects/angular-calendar/src/modules/common/calendar-moment-date-formatter.provider.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
                 <p>This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:</p>
-<p>```typescript</p>
-<ul>
-<li>import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from &#39;angular-calendar&#39;;</li>
-<li>import moment from &#39;moment&#39;;</li>
-<li></li>
-<li>// in your component</li>
-<li>provide: [{</li>
-<li>provide: MOMENT, useValue: moment</li>
-<li>}, {</li>
-<li>provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter</li>
-<li>}]</li>
-<li></li>
-<li>```</li>
-</ul>
+<div><pre class="line-numbers"><code class="language-typescript">import { CalendarDateFormatter, CalendarMomentDateFormatter, MOMENT } from &#39;angular-calendar&#39;;
+import moment from &#39;moment&#39;;
 
+// in your component
+provide: [{
+  provide: MOMENT, useValue: moment
+}, {
+  provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter
+}]
+</code></pre></div>
             </p>
 
 
@@ -98,39 +95,39 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#dayViewHour">dayViewHour</a>
+                                <a href="#dayViewHour" >dayViewHour</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#dayViewTitle">dayViewTitle</a>
+                                <a href="#dayViewTitle" >dayViewTitle</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#monthViewColumnHeader">monthViewColumnHeader</a>
+                                <a href="#monthViewColumnHeader" >monthViewColumnHeader</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#monthViewDayNumber">monthViewDayNumber</a>
+                                <a href="#monthViewDayNumber" >monthViewDayNumber</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#monthViewTitle">monthViewTitle</a>
+                                <a href="#monthViewTitle" >monthViewTitle</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#weekViewColumnHeader">weekViewColumnHeader</a>
+                                <a href="#weekViewColumnHeader" >weekViewColumnHeader</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#weekViewColumnSubHeader">weekViewColumnSubHeader</a>
+                                <a href="#weekViewColumnSubHeader" >weekViewColumnSubHeader</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#weekViewHour">weekViewHour</a>
+                                <a href="#weekViewHour" >weekViewHour</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#weekViewTitle">weekViewTitle</a>
+                                <a href="#weekViewTitle" >weekViewTitle</a>
                             </li>
                         </ul>
                     </td>
@@ -156,10 +153,8 @@
                 <td class="col-md-4">
                     <a name="dayViewHour"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            dayViewHour
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>dayViewHour</b></span>
                         <a href="#dayViewHour"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -167,7 +162,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>dayViewHour(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>dayViewHour(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -229,10 +224,8 @@
                 <td class="col-md-4">
                     <a name="dayViewTitle"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            dayViewTitle
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>dayViewTitle</b></span>
                         <a href="#dayViewTitle"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -240,7 +233,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>dayViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>dayViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -302,10 +295,8 @@
                 <td class="col-md-4">
                     <a name="monthViewColumnHeader"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            monthViewColumnHeader
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>monthViewColumnHeader</b></span>
                         <a href="#monthViewColumnHeader"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -313,7 +304,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>monthViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>monthViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -375,10 +366,8 @@
                 <td class="col-md-4">
                     <a name="monthViewDayNumber"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            monthViewDayNumber
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>monthViewDayNumber</b></span>
                         <a href="#monthViewDayNumber"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -386,7 +375,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>monthViewDayNumber(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>monthViewDayNumber(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -448,10 +437,8 @@
                 <td class="col-md-4">
                     <a name="monthViewTitle"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            monthViewTitle
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>monthViewTitle</b></span>
                         <a href="#monthViewTitle"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -459,7 +446,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>monthViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>monthViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -521,10 +508,8 @@
                 <td class="col-md-4">
                     <a name="weekViewColumnHeader"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            weekViewColumnHeader
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>weekViewColumnHeader</b></span>
                         <a href="#weekViewColumnHeader"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -532,7 +517,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>weekViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>weekViewColumnHeader(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -594,10 +579,8 @@
                 <td class="col-md-4">
                     <a name="weekViewColumnSubHeader"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            weekViewColumnSubHeader
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>weekViewColumnSubHeader</b></span>
                         <a href="#weekViewColumnSubHeader"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -605,7 +588,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>weekViewColumnSubHeader(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>weekViewColumnSubHeader(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -667,10 +650,8 @@
                 <td class="col-md-4">
                     <a name="weekViewHour"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            weekViewHour
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>weekViewHour</b></span>
                         <a href="#weekViewHour"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -678,7 +659,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>weekViewHour(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>weekViewHour(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -740,10 +721,8 @@
                 <td class="col-md-4">
                     <a name="weekViewTitle"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            weekViewTitle
-                        </b>
+                        <span class="modifier">Public</span>
+                        <span ><b>weekViewTitle</b></span>
                         <a href="#weekViewTitle"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -751,7 +730,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>weekViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html">DateFormatterParams</a>)</code>
+                    <code>weekViewTitle(undefined: <a href="../interfaces/DateFormatterParams.html" target="_self">DateFormatterParams</a>)</code>
                 </td>
             </tr>
 
@@ -934,8 +913,8 @@ export class CalendarMomentDateFormatter
    * The day view title
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format(&#x27;dddd, D MMMM, YYYY&#x27;);
-  }
+    return this.moment(date).locale(locale).format(&#x27;dddd, LL&#x27;); // dddd &#x3D; Thursday
+  } // LL &#x3D; locale-dependent Month Day, Year
 }
 </code></pre>
     </div>
@@ -976,9 +955,9 @@ export class CalendarMomentDateFormatter
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
