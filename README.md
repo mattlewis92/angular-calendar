@@ -112,8 +112,8 @@ Yes.
 
 | Angular major   | Last supported angular-calendar version                                  |
 | --------------- | ------------------------------------------------------------------------ |
-| 10.x and higher | latest version                                                           |
-| 6.x - 9.x       | [0.28.27](https://github.com/mattlewis92/angular-calendar/tree/v0.28.27) |
+| 12.x and higher | latest version                                                           |
+| 6.x - 11.x      | [0.28.28](https://github.com/mattlewis92/angular-calendar/tree/v0.28.28) |
 | 5.x             | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1)   |
 | 4.x             | [0.22.3](https://github.com/mattlewis92/angular-calendar/tree/v0.22.3)   |
 | 2.x             | [0.9.1](https://github.com/mattlewis92/angular-calendar/tree/v0.9.1)     |
