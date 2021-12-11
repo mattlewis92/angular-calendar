@@ -41,7 +41,18 @@ const colors: any = {
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['styles.css'],
+  styles: [
+    `
+      h3 {
+        margin: 0 0 10px;
+      }
+
+      pre {
+        background-color: #f5f5f5;
+        padding: 15px;
+      }
+    `,
+  ],
   templateUrl: 'template.html',
 })
 export class DemoComponent {
@@ -76,7 +87,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh: Subject<any> = new Subject();
+  refresh = new Subject<void>();
 
   events: CalendarEvent[] = [
     {

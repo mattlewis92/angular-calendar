@@ -18,11 +18,11 @@ import { takeUntil } from 'rxjs/operators';
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Week;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   daysInWeek = 7;
 
-  private destroy$ = new Subject();
+  private destroy$ = new Subject<void>();
 
   constructor(
     private breakpointObserver: BreakpointObserver,

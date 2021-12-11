@@ -32,11 +32,11 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   events: CalendarEvent[] = [];
 
-  refresh: Subject<any> = new Subject();
+  refresh = new Subject<void>();
 
   cssClass: string = RED_CELL;
 

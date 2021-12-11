@@ -8,16 +8,19 @@
       "description": "Which date adapter to use",
       "type": "string",
       "default": "date-fns",
-      "enum": [
-        "moment",
-        "date-fns"
-      ],
+      "enum": ["moment", "date-fns"],
       "x-prompt": {
         "message": "What date adapter would you like to use?",
         "type": "list",
         "items": [
-          { "value": "date-fns",       "label": "date-fns        [ https://date-fns.org/ ]" },
-          { "value": "moment",         "label": "moment          [ https://momentjs.com/ ]" }
+          {
+            "value": "date-fns",
+            "label": "date-fns        [ https://date-fns.org/ ]"
+          },
+          {
+            "value": "moment",
+            "label": "moment          [ https://momentjs.com/ ]"
+          }
         ]
       }
     },

@@ -9,9 +9,11 @@ import {
   OnDestroy,
 } from '@angular/core';
 
-@Directive({ selector: '[mwlKeydownEnter]' })
+@Directive({
+  selector: '[mwlKeydownEnter]',
+})
 export class KeydownEnterDirective implements OnInit, OnDestroy {
-  @Output('mwlKeydownEnter') keydown = new EventEmitter<any>(); // tslint:disable-line
+  @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // eslint-disable-line
 
   private keydownListener: VoidFunction | null = null;
 
@@ -26,7 +28,7 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
       this.keydownListener = this.renderer.listen(
         this.host.nativeElement,
         'keydown',
-        (event) => {
+        (event: KeyboardEvent) => {
           if (
             event.keyCode === 13 ||
             event.which === 13 ||

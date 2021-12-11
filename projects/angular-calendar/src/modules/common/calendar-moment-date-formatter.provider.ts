@@ -119,6 +119,6 @@ export class CalendarMomentDateFormatter
    * The day view title
    */
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
-    return this.moment(date).locale(locale).format('dddd, D MMMM, YYYY');
-  }
+    return this.moment(date).locale(locale).format('dddd, LL'); // dddd = Thursday
+  } // LL = locale-dependent Month Day, Year
 }

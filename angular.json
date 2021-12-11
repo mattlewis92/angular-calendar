@@ -22,9 +22,7 @@
         "@schematics/angular:guard": {
           "skipTests": true
         },
-        "@schematics/angular:module": {
-          "skipTests": true
-        },
+        "@schematics/angular:module": {},
         "@schematics/angular:pipe": {
           "skipTests": true
         },
@@ -36,22 +34,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/demos",
             "index": "projects/demos/index.html",
             "main": "projects/demos/main.ts",
             "polyfills": "projects/demos/polyfills.ts",
-            "es5BrowserSupport": true,
             "tsConfig": "projects/demos/tsconfig.app.json",
             "assets": [
               "projects/demos/favicon.ico",
               "projects/demos/sw.js",
               "projects/demos/assets"
             ],
-            "styles": [
-              "projects/demos/styles.scss"
-            ],
-            "scripts": []
+            "styles": ["projects/demos/styles.scss"],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -70,14 +70,12 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false
+              "vendorChunk": false
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -91,13 +89,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/demos/tsconfig.app.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/demos/**/*.ts",
+              "projects/demos/**/*.html"
             ]
           }
         },
@@ -117,7 +113,7 @@
       "prefix": "mwl",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-calendar/tsconfig.lib.json",
             "project": "projects/angular-calendar/ng-package.json"
@@ -134,23 +130,24 @@
             "main": "projects/angular-calendar/test/entry.ts",
             "tsConfig": "projects/angular-calendar/tsconfig.spec.json",
             "karmaConfig": "projects/angular-calendar/karma.conf.ts",
-            "sourceMap": true
+            "sourceMap": true,
+            "styles": ["projects/angular-calendar/src/angular-calendar.scss"]
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/angular-calendar/tsconfig.lib.json",
-              "projects/angular-calendar/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/angular-calendar/**/*.ts",
+              "projects/angular-calendar/**/*.html"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "demos"
+  "defaultProject": "demos",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

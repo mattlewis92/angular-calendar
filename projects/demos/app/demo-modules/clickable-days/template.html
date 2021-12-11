@@ -6,7 +6,7 @@
   <strong *ngIf="clickedDate"
     >You clicked on this time: {{ clickedDate | date:'medium' }}</strong
   >
-  <strong *ngIf="clickedColumn != null"
+  <strong *ngIf="clickedColumn !== undefined"
     >You clicked on this column: {{ clickedColumn }}</strong
   >
 </div>

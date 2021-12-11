@@ -4,7 +4,7 @@ import {
   TestBed,
   fakeAsync,
   flush,
-  async,
+  waitForAsync,
 } from '@angular/core/testing';
 import moment from 'moment';
 import { expect } from 'chai';
@@ -545,10 +545,10 @@ describe('CalendarDayViewComponent component', () => {
       TestBed.createComponent(CalendarDayViewComponent);
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.hourSegments = 4;
+    fixture.componentInstance.minimumEventHeight = 15;
     fixture.componentInstance.events = [
       {
         title: 'foo',
-        color: { primary: '', secondary: '' },
         start: moment('2016-06-27').add(4, 'hours').toDate(),
         resizable: {
           afterEnd: true,
@@ -1031,7 +1031,7 @@ describe('CalendarDayViewComponent component', () => {
     fixture.componentInstance.viewDate = new Date('2017-01-01');
     fixture.detectChanges();
     stub.restore();
-    expect(stub).to.have.been.calledOnce; // tslint:disable-line
+    expect(stub).to.have.been.calledOnce; // eslint-disable-line
   });
 
   it('should allow the hour segment height to be customised', () => {

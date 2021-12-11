@@ -5,22 +5,26 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "importHelpers": true,
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "paths": {
       "angular-calendar": ["./projects/angular-calendar/src"],
-      "angular-calendar/date-adapters/date-fns": ["./projects/angular-calendar/src/date-adapters/date-fns"],
-      "angular-calendar/date-adapters/moment": ["./projects/angular-calendar/src/date-adapters/moment"]
+      "angular-calendar/date-adapters/date-fns": [
+        "./projects/angular-calendar/src/date-adapters/date-fns"
+      ],
+      "angular-calendar/date-adapters/moment": [
+        "./projects/angular-calendar/src/date-adapters/moment"
+      ]
     },
     "allowSyntheticDefaultImports": true
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "strictInjectionParameters": true
   }
 }

@@ -1,9 +1,0 @@
-{
-  "extends": "tslint-config-mwl",
-  "rules": {
-    "no-host-metadata-property": false,
-    "no-inferrable-types": false,
-    "component-max-inline-declarations": false,
-    "template-no-negated-async": false
-  }
-}

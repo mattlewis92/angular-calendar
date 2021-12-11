@@ -57,11 +57,13 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
 
   @Input() hourSegments: number;
 
+  @Input() hourDuration: number;
+
   @Input() hourSegmentHeight: number;
 
   @Input() customTemplate: TemplateRef<any>;
 
-  columnDate$ = new BehaviorSubject<Date>(this.columnDate);
+  columnDate$ = new BehaviorSubject<Date>(undefined);
 
   marker$: Observable<{
     isVisible: boolean;
@@ -80,7 +82,8 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
         this.dayEndMinute
       );
       const hourHeightModifier =
-        (this.hourSegments * this.hourSegmentHeight) / 60;
+        (this.hourSegments * this.hourSegmentHeight) /
+        (this.hourDuration || 60);
       const now = new Date();
       return {
         isVisible:

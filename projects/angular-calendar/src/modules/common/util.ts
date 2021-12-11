@@ -15,16 +15,30 @@ export const validateEvents = (events: CalendarEvent[]) => {
   return validateEventsWithoutLog(events, warn);
 };
 
-export function isInside(outer: ClientRect, inner: ClientRect): boolean {
+export function isInsideLeftAndRight(
+  outer: ClientRect,
+  inner: ClientRect
+): boolean {
   return (
     Math.floor(outer.left) <= Math.ceil(inner.left) &&
     Math.floor(inner.left) <= Math.ceil(outer.right) &&
     Math.floor(outer.left) <= Math.ceil(inner.right) &&
-    Math.floor(inner.right) <= Math.ceil(outer.right) &&
+    Math.floor(inner.right) <= Math.ceil(outer.right)
+  );
+}
+
+function isInsideTopAndBottom(outer: ClientRect, inner: ClientRect): boolean {
+  return (
     Math.floor(outer.top) <= Math.ceil(inner.top) &&
     Math.floor(inner.top) <= Math.ceil(outer.bottom) &&
     Math.floor(outer.top) <= Math.ceil(inner.bottom) &&
     Math.floor(inner.bottom) <= Math.ceil(outer.bottom)
+  );
+}
+
+export function isInside(outer: ClientRect, inner: ClientRect): boolean {
+  return (
+    isInsideLeftAndRight(outer, inner) && isInsideTopAndBottom(outer, inner)
   );
 }
 
@@ -60,16 +74,18 @@ const MINUTES_IN_HOUR = 60;
 
 function getPixelAmountInMinutes(
   hourSegments: number,
-  hourSegmentHeight: number
+  hourSegmentHeight: number,
+  hourDuration?: number
 ) {
-  return MINUTES_IN_HOUR / (hourSegments * hourSegmentHeight);
+  return (hourDuration || MINUTES_IN_HOUR) / (hourSegments * hourSegmentHeight);
 }
 
 export function getMinutesMoved(
   movedY: number,
   hourSegments: number,
   hourSegmentHeight: number,
-  eventSnapSize: number
+  eventSnapSize: number,
+  hourDuration?: number
 ): number {
   const draggedInPixelsSnapSize = roundToNearest(
     movedY,
@@ -77,18 +93,10 @@ export function getMinutesMoved(
   );
   const pixelAmountInMinutes = getPixelAmountInMinutes(
     hourSegments,
-    hourSegmentHeight
+    hourSegmentHeight,
+    hourDuration
   );
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
-}
-
-export function getMinimumEventHeightInMinutes(
-  hourSegments: number,
-  hourSegmentHeight: number
-) {
-  return (
-    getPixelAmountInMinutes(hourSegments, hourSegmentHeight) * hourSegmentHeight
-  );
 }
 
 export function getDefaultEventEnd(

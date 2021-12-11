@@ -61,7 +61,18 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  styleUrls: ['styles.css'],
+  styles: [
+    `
+      .cal-disabled {
+        background-color: #eee;
+        pointer-events: none;
+      }
+
+      .cal-disabled .cal-day-number {
+        opacity: 0.1;
+      }
+    `,
+  ],
   // this is a hack to get styles to apply to the inner component. Your app should just use a global stylesheet
   encapsulation: ViewEncapsulation.None,
 })

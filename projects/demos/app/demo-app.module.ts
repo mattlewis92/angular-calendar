@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  NgbTabsetModule,
+  NgbNavModule,
   NgbCollapseModule,
   NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
@@ -23,7 +23,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbTabsetModule,
+    NgbNavModule,
     NgbCollapseModule,
     NgbTooltipModule,
     DragAndDropModule,
@@ -139,6 +139,16 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
             ),
           data: {
             label: 'Clickable times',
+          },
+        },
+        {
+          path: 'custom-hour-duration',
+          loadChildren: () =>
+            import('./demo-modules/custom-hour-duration/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Custom hour duration',
           },
         },
         {
@@ -460,12 +470,31 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           },
         },
         {
+          path: 'rtl',
+          loadChildren: () =>
+            import('./demo-modules/rtl/module').then((m) => m.DemoModule),
+          data: {
+            label: 'RTL',
+          },
+        },
+        {
+          path: 'validate-drag-and-resize',
+          loadChildren: () =>
+            import('./demo-modules/validate-drag-and-resize/module').then(
+              (m) => m.DemoModule
+            ),
+          data: {
+            label: 'Validate dragging and resizing',
+          },
+        },
+        {
           path: '**',
           redirectTo: 'kitchen-sink',
         },
       ],
       {
         useHash: true,
+        relativeLinkResolution: 'legacy',
       }
     ),
   ],

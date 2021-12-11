@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
 
 interface Source {
   filename: string;
@@ -84,6 +85,7 @@ const dependencyVersions: any = {
   templateUrl: './demo-app.html',
 })
 export class DemoAppComponent implements OnInit {
+  @ViewChild('nav') nav: NgbNav;
   demos: Demo[] = [];
   filteredDemos: Demo[] = [];
   activeDemo: Demo;
@@ -164,9 +166,7 @@ export class DemoAppComponent implements OnInit {
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
       'main.ts': `
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
+import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -231,7 +231,6 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
           'angularx-flatpickr': dependencyVersions.angularxFlatpickr,
-          'core-js': '2',
         },
       },
       {

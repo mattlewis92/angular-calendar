@@ -63,7 +63,7 @@
         }"
         [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
         [validateDrag]="validateDrag"
-        (dragStart)="dragStarted(eventRowContainer, event)"
+        (dragStart)="dragStarted(eventRowContainer, event, allDayEvent, false)"
         (dragging)="allDayEventDragMove()"
         (dragEnd)="dragEnded(allDayEvent, $event, dayColumnWidth)"
       >
@@ -177,7 +177,7 @@
           "
           [ghostDragEnabled]="!snapDraggedEvents"
           [validateDrag]="validateDrag"
-          (dragStart)="dragStarted(dayColumns, event, timeEvent)"
+          (dragStart)="dragStarted(dayColumns, event, timeEvent, true)"
           (dragging)="dragMove(timeEvent, $event)"
           (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"
         >

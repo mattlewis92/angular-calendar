@@ -15,6 +15,11 @@ export {
 export { MonthViewDay as CalendarMonthViewDay } from 'calendar-utils';
 export { collapseAnimation } from './calendar-open-day-events.component';
 
+// needed for ivy, not part of the public api
+export { CalendarMonthCellComponent as ɵCalendarMonthCellComponent } from './calendar-month-cell.component';
+export { CalendarMonthViewHeaderComponent as ɵCalendarMonthViewHeaderComponent } from './calendar-month-view-header.component';
+export { CalendarOpenDayEventsComponent as ɵCalendarOpenDayEventsComponent } from './calendar-open-day-events.component';
+
 @NgModule({
   imports: [CommonModule, DragAndDropModule, CalendarCommonModule],
   declarations: [

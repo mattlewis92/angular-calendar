@@ -61,21 +61,21 @@ export class CalendarTooltipWindowComponent {
   selector: '[mwlCalendarTooltip]',
 })
 export class CalendarTooltipDirective implements OnDestroy, OnChanges {
-  @Input('mwlCalendarTooltip') contents: string; // tslint:disable-line no-input-rename
+  @Input('mwlCalendarTooltip') contents: string; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  @Input('tooltipPlacement') placement: PlacementArray = 'auto'; // tslint:disable-line no-input-rename
+  @Input('tooltipPlacement') placement: PlacementArray = 'auto'; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  @Input('tooltipTemplate') customTemplate: TemplateRef<any>; // tslint:disable-line no-input-rename
+  @Input('tooltipTemplate') customTemplate: TemplateRef<any>; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  @Input('tooltipEvent') event: CalendarEvent; // tslint:disable-line no-input-rename
+  @Input('tooltipEvent') event: CalendarEvent; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  @Input('tooltipAppendToBody') appendToBody: boolean; // tslint:disable-line no-input-rename
+  @Input('tooltipAppendToBody') appendToBody: boolean; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  @Input('tooltipDelay') delay: number | null = null; // tslint:disable-line no-input-rename
+  @Input('tooltipDelay') delay: number | null = null; // eslint-disable-line  @angular-eslint/no-input-rename
 
   private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
-  private cancelTooltipDelay$ = new Subject();
+  private cancelTooltipDelay$ = new Subject<void>();
 
   constructor(
     private elementRef: ElementRef,
@@ -83,7 +83,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
     private renderer: Renderer2,
     componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
-    @Inject(DOCUMENT) private document //tslint:disable-line
+    @Inject(DOCUMENT) private document // eslint-disable-line
   ) {
     this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
       CalendarTooltipWindowComponent

@@ -3,18 +3,10 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "types": ["node"]
-},
-  "angularCompilerOptions": {
-    "trace": true,
-    "strictInjectionParameters": true,
-    "preserveWhitespaces": true,
-    "strictTemplates": true
   },
-  "files": [
-    "main.ts",
-    "polyfills.ts"
-  ],
-  "include": [
-    "./app/demo-modules/**/*.ts"
-  ]
+  "angularCompilerOptions": {
+    "preserveWhitespaces": true
+  },
+  "files": ["main.ts", "polyfills.ts"],
+  "include": ["./app/demo-modules/**/*.ts"]
 }

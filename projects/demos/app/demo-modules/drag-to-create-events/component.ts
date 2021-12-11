@@ -34,7 +34,6 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   }
 }
 
-// tslint:disable-next-line max-classes-per-file
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,

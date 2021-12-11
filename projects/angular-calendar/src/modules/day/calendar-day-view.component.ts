@@ -33,7 +33,9 @@ export type CalendarDayViewBeforeRenderEvent =
       [viewDate]="viewDate"
       [events]="events"
       [hourSegments]="hourSegments"
+      [hourDuration]="hourDuration"
       [hourSegmentHeight]="hourSegmentHeight"
+      [minimumEventHeight]="minimumEventHeight"
       [dayStartHour]="dayStartHour"
       [dayStartMinute]="dayStartMinute"
       [dayEndHour]="dayEndHour"
@@ -52,6 +54,7 @@ export type CalendarDayViewBeforeRenderEvent =
       [snapDraggedEvents]="snapDraggedEvents"
       [allDayEventsLabelTemplate]="allDayEventsLabelTemplate"
       [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"
+      [validateEventTimesChanged]="validateEventTimesChanged"
       (eventClicked)="eventClicked.emit($event)"
       (hourSegmentClicked)="hourSegmentClicked.emit($event)"
       (eventTimesChanged)="eventTimesChanged.emit($event)"
@@ -80,6 +83,16 @@ export class CalendarDayViewComponent {
    * The height in pixels of each hour segment
    */
   @Input() hourSegmentHeight: number = 30;
+
+  /**
+   * The duration of each segment group in minutes
+   */
+  @Input() hourDuration: number;
+
+  /**
+   * The minimum height in pixels of each event
+   */
+  @Input() minimumEventHeight: number = 30;
 
   /**
    * The day start hours in 24 hour time. Must be 0-23
@@ -173,11 +186,19 @@ export class CalendarDayViewComponent {
   @Input() currentTimeMarkerTemplate: TemplateRef<any>;
 
   /**
+   * Allow you to customise where events can be dragged and resized to.
+   * Return true to allow dragging and resizing to the new location, or false to prevent it
+   */
+  @Input() validateEventTimesChanged: (
+    event: CalendarEventTimesChangedEvent
+  ) => boolean;
+
+  /**
    * Called when an event title is clicked
    */
   @Output() eventClicked = new EventEmitter<{
     event: CalendarEvent;
-    sourceEvent: MouseEvent | any;
+    sourceEvent: MouseEvent | KeyboardEvent;
   }>();
 
   /**

@@ -1,4 +1,4 @@
-<h1 align="center">angular 6.0+ calendar</h1>
+<h1 align="center">angular 12.0+ calendar</h1>
 
 <div align="center">
 
@@ -41,7 +41,7 @@ https://mattlewis92.github.io/angular-calendar/
 
 <h2 align="center">About</h2>
 
-A calendar component for Angular 6.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
+A calendar component for Angular 12.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
 <h2 align="center">Getting started</h2>
 
@@ -94,10 +94,6 @@ If you would like a one on one consultation with me where I can show you the bes
 
 > Please note: angular-calendar uses [Scarf](https://scarf.sh/) to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you'd like to opt out, you can do so by setting `scarfSettings.enabled = false` in your project's package.json. Alternatively, you can set the environment variable `SCARF_ANALYTICS=false` before you install.
 
-### Module bundlers
-
-You can find quick start examples for all common module bundlers in the [build-tool-examples](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples) folder.
-
 <h2 align="center">Documentation</h2>
 
 To see all available API options, take a look at the auto generated [documentation](https://mattlewis92.github.io/angular-calendar/docs/). You may find it helpful to view the examples on the demo page.
@@ -114,16 +110,13 @@ Yes.
 
 ### What major versions of angular does this library support?
 
-| Angular major  | Last supported angular-calendar version                                |
-| -------------- | ---------------------------------------------------------------------- |
-| 6.x and higher | latest version                                                         |
-| 5.x            | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1) |
-| 4.x            | [0.22.3](https://github.com/mattlewis92/angular-calendar/tree/v0.22.3) |
-| 2.x            | [0.9.1](https://github.com/mattlewis92/angular-calendar/tree/v0.9.1)   |
-
-### How do I use this with my favourite module bundler?
-
-See the [examples list](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples).
+| Angular major   | Last supported angular-calendar version                                  |
+| --------------- | ------------------------------------------------------------------------ |
+| 10.x and higher | latest version                                                           |
+| 6.x - 9.x       | [0.28.27](https://github.com/mattlewis92/angular-calendar/tree/v0.28.27) |
+| 5.x             | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1)   |
+| 4.x             | [0.22.3](https://github.com/mattlewis92/angular-calendar/tree/v0.22.3)   |
+| 2.x             | [0.9.1](https://github.com/mattlewis92/angular-calendar/tree/v0.9.1)     |
 
 ### No styles are appearing?
 

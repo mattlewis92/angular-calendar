@@ -4,7 +4,7 @@
   [class.bg-dark]="activeDemo?.darkTheme"
   role="navigation"
 >
-  <a class="navbar-brand" href="#">Angular 6.0+ calendar</a>
+  <a class="navbar-brand" href="#">Angular 12.0+ calendar</a>
 
   <button
     type="button"
@@ -35,14 +35,6 @@
           href="https://mattlewis92.github.io/angular-calendar/docs/"
         >
           <i class="fas fa-book"></i> API docs
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples"
-        >
-          <i class="fas fa-tools"></i> Build tool examples
         </a>
       </li>
       <li class="nav-item">
@@ -133,26 +125,24 @@
           </div>
         </div>
         <div class="card-body">
-          <ngb-tabset [destroyOnHide]="false">
-            <ngb-tab>
-              <ng-template ngbTabTitle>
-                <i class="fas fa-fw fa-laptop"></i> Live demo
-              </ng-template>
-              <ng-template ngbTabContent>
+          <ul ngbNav #nav="ngbNav" class="justify-content-start nav-tabs">
+            <li ngbNavItem domId="demo">
+              <a ngbNavLink><i class="fas fa-fw fa-laptop"></i> Live demo</a>
+              <ng-template ngbNavContent>
                 <div class="spacer-top"><router-outlet></router-outlet></div>
               </ng-template>
-            </ngb-tab>
+            </li>
 
-            <ngb-tab *ngFor="let source of activeDemo?.sources">
-              <ng-template ngbTabTitle>
+            <li ngbNavItem *ngFor="let source of activeDemo?.sources">
+              <a ngbNavLink>
                 <span [ngSwitch]="source.language">
                   <i class="fab fa-fw fa-html5" *ngSwitchCase="'html'"></i>
                   <i class="fab fa-fw fa-css3" *ngSwitchCase="'css'"></i>
                   <i class="fas fa-fw fa-code" *ngSwitchDefault></i>
                 </span>
                 {{ source.filename }}
-              </ng-template>
-              <ng-template ngbTabContent>
+              </a>
+              <ng-template ngbNavContent>
                 <div class="code-container">
                   <button
                     class="btn btn-outline-primary copy-code"
@@ -164,14 +154,15 @@
                   >
                     <i
                       class="fa"
-                      [ngClass]="{'fa-copy': !(copied$ | async), 'fa-check': (copied$ | async) }"
+                      [ngClass]="{'fa-copy': (copied$ | async) !== true, 'fa-check': (copied$ | async) }"
                     ></i>
                   </button>
                   <pre><code [innerHTML]="source.contents.highlighted"></code></pre>
                 </div>
               </ng-template>
-            </ngb-tab>
-          </ngb-tabset>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav"></div>
         </div>
       </div>
     </div>
@@ -189,6 +180,7 @@
           <a
             [routerLink]="[demo.path]"
             [class.active]="activeDemo?.path === demo.path"
+            (click)="nav.select('demo')"
           >
             {{ demo.label }}
           </a>

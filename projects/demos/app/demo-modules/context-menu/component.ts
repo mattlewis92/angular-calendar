@@ -21,11 +21,11 @@ import { colors } from '../demo-utils/colors';
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  viewDate = new Date();
 
   events: CalendarEvent[] = [];
 
-  refresh: Subject<any> = new Subject();
+  refresh = new Subject<void>();
 
   addEvent(date: Date): void {
     this.events.push({
