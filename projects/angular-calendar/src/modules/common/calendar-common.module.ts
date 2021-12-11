@@ -39,6 +39,22 @@ export * from './calendar-event-times-changed-event.interface';
 export * from '../../date-adapters/date-adapter';
 export * from './calendar-view.enum';
 
+// needed for ivy, not part of the public api
+export { CalendarEventActionsComponent as ɵCalendarEventActionsComponent } from './calendar-event-actions.component';
+export { CalendarEventTitleComponent as ɵCalendarEventTitleComponent } from './calendar-event-title.component';
+export {
+  CalendarTooltipDirective as ɵCalendarTooltipDirective,
+  CalendarTooltipWindowComponent as ɵCalendarTooltipWindowComponent,
+} from './calendar-tooltip.directive';
+export { CalendarPreviousViewDirective as ɵCalendarPreviousViewDirective } from './calendar-previous-view.directive';
+export { CalendarNextViewDirective as ɵCalendarNextViewDirective } from './calendar-next-view.directive';
+export { CalendarTodayDirective as ɵCalendarTodayDirective } from './calendar-today.directive';
+export { CalendarDatePipe as ɵCalendarDatePipe } from './calendar-date.pipe';
+export { CalendarEventTitlePipe as ɵCalendarEventTitlePipe } from './calendar-event-title.pipe';
+export { ClickDirective as ɵClickDirective } from './click.directive';
+export { KeydownEnterDirective as ɵKeydownEnterDirective } from './keydown-enter.directive';
+export { CalendarA11yPipe as ɵCalendarA11yPipe } from './calendar-a11y.pipe';
+
 export {
   CalendarEvent,
   EventAction as CalendarEventAction,
