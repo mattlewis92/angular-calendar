@@ -426,7 +426,7 @@ export class CalendarWeekViewComponent
   /**
    * An observable that when emitted on will re-render the current view
    */
-  @Input() refresh: Subject<any>;
+  @Input() refresh: Subject<boolean>;
 
   /**
    * The locale used to format dates
