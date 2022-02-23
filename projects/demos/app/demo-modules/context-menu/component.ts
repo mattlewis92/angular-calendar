@@ -25,7 +25,7 @@ export class DemoComponent {
 
   events: CalendarEvent[] = [];
 
-  refresh: Subject<any> = new Subject();
+  refresh: Subject<boolean> = new Subject();
 
   addEvent(date: Date): void {
     this.events.push({
