@@ -37,7 +37,7 @@ export class DemoComponent {
     },
   ];
 
-  refresh: Subject<any> = new Subject();
+  refresh: Subject<boolean> = new Subject();
 
   eventTimesChanged({
     event,
