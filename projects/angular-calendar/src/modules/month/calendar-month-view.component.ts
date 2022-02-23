@@ -60,7 +60,6 @@ export interface CalendarMonthViewEventTimesChangedEvent<
         [locale]="locale"
         (columnHeaderClicked)="columnHeaderClicked.emit($event)"
         [customTemplate]="headerTemplate"
-        ²²²²²²²²²²²²²²²²²²²²²²²²
       >
       </mwl-calendar-month-view-header>
       <div class="cal-days">
