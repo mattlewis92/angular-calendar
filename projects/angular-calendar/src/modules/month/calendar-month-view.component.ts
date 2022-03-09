@@ -505,13 +505,16 @@ export class CalendarMonthViewComponent
     );
     // get the view of notes without timezone information
     const viewNotes = this.notes
-      ? this.utils.getMonthView({
-          events: this.notes,
-          viewDate: this.viewDate,
-          weekStartsOn: this.weekStartsOn,
-          excluded: this.excludeDays,
-          weekendDays: this.weekendDays,
-        })
+      ? this.utils.getMonthView(
+          {
+            events: this.notes,
+            viewDate: this.viewDate,
+            weekStartsOn: this.weekStartsOn,
+            excluded: this.excludeDays,
+            weekendDays: this.weekendDays,
+          },
+          this.timezone
+        )
       : null;
     if (viewEvent && viewNotes) {
       // Merge events & notes
