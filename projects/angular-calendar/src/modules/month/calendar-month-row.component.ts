@@ -59,8 +59,14 @@ export class CalendarMonthRowComponent implements OnChanges {
         this.view.totalDaysVisibleInWeek + this.rowIndex
       );
       this.firstDayOfRow = this.daysSliced[0];
-      this.startDate = this.daysSliced[0].date;
-      this.endDate = this.daysSliced[6].date;
+      this.startDate = this.timezoneManager.reverseTz(
+        this.daysSliced[0].date,
+        this.timezone
+      );
+      this.endDate = this.timezoneManager.reverseTz(
+        this.daysSliced[6].date,
+        this.timezone
+      );
       const notesCopy = this.deepCopyFunction(this.notes);
       this.currentRowNotes = notesCopy.filter(
         (note) =>
