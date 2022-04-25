@@ -50,7 +50,7 @@ export class DemoComponent {
 
   activeDayIsOpen = false;
 
-  refresh = new Subject<void>();
+  refresh = new Subject<boolean>();
 
   eventDropped({
     event,
