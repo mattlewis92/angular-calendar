@@ -38,7 +38,6 @@
 <ul>
 <li>angular 12 or higher is now required to use this package</li>
 <li>if you are implementing your own date adapter you will now need to implement the <code>getTimezoneOffset</code> method</li>
-<li>angular 10 or higher is now required to use this package</li>
 <li><strong>week-view:</strong> Previously when resizing events the minimum event height would be calculated based on <code>hourSegments</code>, <code>hourSegmentHeight</code> and <code>hourDuration</code>. It now respects the <code>minimumEventHeight</code> input instead.</li>
 </ul>
 <p>To restore the old behaviour you will need to set <code>minimumEventHeight</code> appropriately (by default it&#39;s <code>30</code> so should continue to work as expected for most users)</p>
@@ -52,7 +51,6 @@
   }
 
 }</code></pre></div><ul>
-<li>angular 6 and 7 are no longer supported. To use this package you must upgrade to angular 8 or higher.</li>
 <li><strong>week-view:</strong> the drag behaviour now mimicks the resize behaviour where you can drag an event down to move it into the next day. To restore the old behaviour you can use the new <code>validateEventTimesChanged</code> input to control where an event can be dragged.</li>
 <li><strong>week-view:</strong> events on the week and day view will now always be at least 30 pixels high by default. To restore the old behaviour you can set <code>[minimumEventHeight]=&quot;1&quot;</code>.</li>
 </ul>
@@ -60,7 +58,6 @@
 <ul>
 <li>add support for rtl (<a href="https://github.com/mattlewis92/angular-calendar/commit/caaf96c388824801c142a5ad1b844b95273054e3">caaf96c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1203">#1203</a></li>
 <li>allow timezone offset to be overridden in the date adapter (<a href="https://github.com/mattlewis92/angular-calendar/commit/96726e12a54011e2845e8839d7514126b1c84803">96726e1</a>)</li>
-<li>drop support for angular 6 and 7 (<a href="https://github.com/mattlewis92/angular-calendar/commit/bc15e03459f2b1b5d0c8ef19304d109e4a285a28">bc15e03</a>)</li>
 <li>publish package in ivy partial compilation mode (<a href="https://github.com/mattlewis92/angular-calendar/commit/29eb8c902a12c36b138f0eb5301974f9361958d3">29eb8c9</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1536">#1536</a></li>
 <li><strong>week-view:</strong> add hourDuration option (<a href="https://github.com/mattlewis92/angular-calendar/commit/6a72448b43f77184de6a10cc94dfd7169798c249">6a72448</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1080">#1080</a></li>
 <li><strong>week-view:</strong> add minimumEventHeight option (<a href="https://github.com/mattlewis92/angular-calendar/commit/7789fdaf8d7f48c725e5cc33918f0556e809694e">7789fda</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1192">#1192</a></li>
@@ -72,10 +69,6 @@
 <li>use locale aware day view title for moment date formatter (<a href="https://github.com/mattlewis92/angular-calendar/commit/acf93a3598e96ca95b0fbbef03fffa3b2e43a2ba">acf93a3</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1396">#1396</a></li>
 <li><strong>week-view:</strong> allow dragging events to span multiple days (<a href="https://github.com/mattlewis92/angular-calendar/commit/ef5749cb08c0972679c314cecde099a93f337821">ef5749c</a>), closes <a href="https://github.com/mattlewis92/angular-calendar/issues/1234">#1234</a></li>
 <li><strong>week-view:</strong> respect minimumEventHeight input when resizing (<a href="https://github.com/mattlewis92/angular-calendar/commit/5f0f6beb5494d031d3b3012c649f26940553170b">5f0f6be</a>)</li>
-</ul>
-<h3 id="build">build</h3>
-<ul>
-<li>upgrade to angular 10 (<a href="https://github.com/mattlewis92/angular-calendar/commit/0417635e6694a2dafee3e54ed510766608a019cd">0417635</a>)</li>
 </ul>
 <h3 id="02828-2021-09-01"><a href="https://github.com/mattlewis92/angular-calendar/compare/v0.28.27...v0.28.28">0.28.28</a> (2021-09-01)</h3>
 <ul>
