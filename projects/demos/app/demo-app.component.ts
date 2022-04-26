@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2/gst';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
 import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
@@ -94,7 +94,10 @@ export class DemoAppComponent implements OnInit {
   searchText = '';
   copied$ = new Subject<boolean>();
 
-  constructor(private router: Router, analytics: Angulartics2GoogleAnalytics) {
+  constructor(
+    private router: Router,
+    analytics: Angulartics2GoogleGlobalSiteTag
+  ) {
     analytics.startTracking();
   }
 
