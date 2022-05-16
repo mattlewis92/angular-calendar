@@ -30,6 +30,7 @@ import { PlacementArray } from 'positioning';
       <div
         class="cal-event"
         [ngStyle]="{
+          color: weekEvent.event.color?.secondaryText,
           backgroundColor: weekEvent.event.color?.secondary,
           borderColor: weekEvent.event.color?.primary
         }"

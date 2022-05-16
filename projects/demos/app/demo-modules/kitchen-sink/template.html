@@ -108,7 +108,7 @@
       <tr>
         <th>Title</th>
         <th>Primary color</th>
-        <th>Secondary color</th>
+        <th>Secondary + text color</th>
         <th>Starts at</th>
         <th>Ends at</th>
         <th>Remove</th>
@@ -136,6 +136,12 @@
           <input
             type="color"
             [(ngModel)]="event.color.secondary"
+            (change)="refresh.next()"
+          />
+          <input
+            type="color"
+            [ngModel]="event.color.secondaryText ?? '#1e90ff'"
+            (ngModelChange)="event.color.secondaryText = $event"
             (change)="refresh.next()"
           />
         </td>
