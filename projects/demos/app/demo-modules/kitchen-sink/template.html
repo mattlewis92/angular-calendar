@@ -108,7 +108,7 @@
       <tr>
         <th>Title</th>
         <th>Primary color</th>
-        <th>Secondary color</th>
+        <th>Secondary color / foreground</th>
         <th>Starts at</th>
         <th>Ends at</th>
         <th>Remove</th>
@@ -136,6 +136,11 @@
           <input
             type="color"
             [(ngModel)]="event.color.secondary"
+            (change)="refresh.next()"
+          />
+          <input
+            type="color"
+            [(ngModel)]="event.color.secondaryForeground"
             (change)="refresh.next()"
           />
         </td>
