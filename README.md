@@ -189,7 +189,8 @@ Run `npm test` to run tests once or `npm run test:watch` to continually run test
 ### Release
 
 - Bump the version in package.json (once the module hits 1.0 this will become automatic)
+- Use npm 2FA to add it in OTP when demanded
 
 ```bash
-npm run release
+npm run release:npm
 ```
