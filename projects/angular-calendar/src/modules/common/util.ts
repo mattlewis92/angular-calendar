@@ -157,9 +157,16 @@ export function getWeekViewPeriod(
   weekStartsOn: number,
   excluded: number[] = [],
   daysInWeek?: number,
-  timezone?: string
+  timezone?: string,
+  convertViewDate?: boolean
 ): { viewStart: Date; viewEnd: Date } {
-  const tzDateAdapter = dateAdapter.withTimezone(timezone);
+  const tzDateAdapter = dateAdapter.withTimezone(
+    !convertViewDate ? timezone : null
+  );
+  if (convertViewDate) {
+    const specialDateAdapter = dateAdapter.withTimezone(timezone);
+    viewDate = specialDateAdapter.reverseTz(viewDate);
+  }
   let viewStart = daysInWeek
     ? tzDateAdapter.startOfDay(viewDate)
     : tzDateAdapter.startOfWeek(viewDate, { weekStartsOn });

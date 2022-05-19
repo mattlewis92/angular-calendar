@@ -49,6 +49,10 @@ export function adapterFactory(moment): DateAdapter {
       return moment(date).year();
     },
 
+    reverseTz(date: Date | number): Date {
+      return new Date(date);
+    },
+
     withTimezone(timezone: string): DateAdapter {
       return this;
     },

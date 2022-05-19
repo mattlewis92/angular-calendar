@@ -3,6 +3,8 @@ import { DateAdapter as BaseDateAdapter } from 'calendar-utils/date-adapters/dat
 export abstract class DateAdapter implements BaseDateAdapter {
   abstract addWeeks(date: Date | number, amount: number): Date;
 
+  abstract reverseTz(date: Date | number): Date;
+
   abstract addMonths(date: Date | number, amount: number): Date;
 
   abstract subDays(date: Date | number, amount: number): Date;

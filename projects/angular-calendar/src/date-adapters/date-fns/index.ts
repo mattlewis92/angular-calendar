@@ -28,6 +28,9 @@ export function adapterFactory(): DateAdapter {
     setYear,
     getDate,
     getYear,
+    reverseTz(date: Date | number): Date {
+      return new Date(date);
+    },
     withTimezone(timezone: string): DateAdapter {
       return this;
     },
