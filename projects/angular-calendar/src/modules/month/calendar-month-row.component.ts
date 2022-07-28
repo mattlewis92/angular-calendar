@@ -68,17 +68,21 @@ export class CalendarMonthRowComponent implements OnChanges {
         this.timezone
       );
       const notesCopy = this.deepCopyFunction(this.notes);
-      this.currentRowNotes = notesCopy.filter(
-        (note) =>
-          (note.start >= this.startDate && note.start <= this.endDate) ||
-          (note.end >= this.startDate && note.end <= this.endDate) ||
-          (note.start < this.startDate && note.end > this.endDate)
-      );
+      this.currentRowNotes = notesCopy.filter((note: CalendarEvent) => {
+        const startDate: Date = new Date(this.startDate.toDateString());
+        const endDate: Date = new Date(this.endDate.toDateString());
+        return (
+          (note.start >= startDate && note.start <= endDate) ||
+          (note.end >= startDate && note.end <= endDate) ||
+          (note.start < startDate && note.end > endDate)
+        );
+      });
       let index = 0;
       this.daysSliced.forEach((daySliced) => {
-        const currentDay = this.timezoneManager.reverseTz(
-          daySliced.date,
-          this.timezone
+        const currentDay = new Date(
+          this.timezoneManager
+            .reverseTz(daySliced.date, this.timezone)
+            .toDateString()
         );
         const notesOfTheDay = this.currentRowNotes.filter(
           (note) => note.start <= currentDay && note.end >= currentDay
@@ -106,7 +110,7 @@ export class CalendarMonthRowComponent implements OnChanges {
       .map((daySliced) =>
         this.timezoneManager.reverseTz(daySliced.date, this.timezone)
       )
-      .findIndex((date) => date.valueOf() === note.start.valueOf());
+      .findIndex((date) => date.toDateString() === note.start.toDateString());
     let left: number;
     if (dayIndex !== -1) {
       left = dayIndex * (100 / 7);
@@ -149,12 +153,17 @@ export class CalendarMonthRowComponent implements OnChanges {
       .map((daySliced) =>
         this.timezoneManager.reverseTz(daySliced.date, this.timezone)
       )
-      .findIndex((date) => date.valueOf() === note.start.valueOf());
+      .findIndex(
+        (date) =>
+          new Date(date.toDateString()).valueOf() === note.start.valueOf()
+      );
     const indexEndDate = this.daysSliced
       .map((daySliced) =>
         this.timezoneManager.reverseTz(daySliced.date, this.timezone)
       )
-      .findIndex((date) => date.valueOf() === note.end.valueOf());
+      .findIndex(
+        (date) => new Date(date.toDateString()).valueOf() === note.end.valueOf()
+      );
     // start et end dans le row en cours
     if (indexEndDate !== -1 && indexStartDate !== -1) {
       width = (indexEndDate - indexStartDate + 1) * (100 / 7);

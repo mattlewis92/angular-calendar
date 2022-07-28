@@ -516,10 +516,27 @@ export class CalendarMonthViewComponent
     if (viewEvent && viewNotes) {
       // Merge events & notes
       const tempEvent = viewEvent;
-      let i = 0;
-      tempEvent.days.forEach((day) => {
-        day.events = day.events.concat(viewNotes.days[i].events);
-        i++;
+      // We create a set of the dates without timezones as posts have been calculated with timezones but notes have not
+      const dates: Set<string> = new Set(
+        tempEvent.days
+          .map((day) => day.date.toDateString())
+          .concat(viewNotes.days.map((day) => day.date.toDateString()))
+      );
+      dates.forEach((date) => {
+        if (tempEvent.days.find((day) => day.date.toDateString() === date)) {
+          tempEvent.days
+            .find((day) => day.date.toDateString() === date)
+            .events.concat(
+              viewNotes.days.find((day) => day.date.toDateString() === date)
+                ?.events
+            );
+        } else if (
+          viewNotes.days.find((day) => day.date.toDateString() === date)
+        ) {
+          tempEvent.days.push(
+            viewNotes.days.find((day) => day.date.toDateString() === date)
+          );
+        }
       });
       this.view = tempEvent;
     } else if (this.notes?.length) {
