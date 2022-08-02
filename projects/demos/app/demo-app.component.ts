@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
-import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2/gst';
+import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
 import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
@@ -24,38 +24,40 @@ interface Demo {
   tags: string[];
 }
 
-async function getSources(folder: string): Promise<Source[]> {
-  const { sources } = await import('./demo-modules/' + folder + '/sources.ts');
-
-  return sources.map(({ filename, contents }) => {
-    const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
-    const languages: { [extension: string]: string } = {
-      ts: 'typescript',
-      html: 'html',
-      css: 'css',
-    };
-    return {
-      filename,
-      contents: {
-        raw: contents.raw.default
-          .replace(
-            ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-            ''
-          )
-          .replace("\nimport { RouterModule } from '@angular/router';", ''),
-        highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
-          .replace(
-            ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
-            ''
-          )
-          .replace(
-            '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
-            ''
-          ),
-      },
-      language: languages[extension],
-    };
-  });
+function getSources(folder: string): Promise<Source[]> {
+  return import('./demo-modules/' + folder + '/sources.ts').then(
+    ({ sources }) => {
+      return sources.map(({ filename, contents }) => {
+        const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
+        const languages: { [extension: string]: string } = {
+          ts: 'typescript',
+          html: 'html',
+          css: 'css',
+        };
+        return {
+          filename,
+          contents: {
+            raw: contents.raw.default
+              .replace(
+                ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
+                ''
+              )
+              .replace("\nimport { RouterModule } from '@angular/router';", ''),
+            highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
+              .replace(
+                ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
+                ''
+              )
+              .replace(
+                '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
+                ''
+              ),
+          },
+          language: languages[extension],
+        };
+      });
+    }
+  );
 }
 
 const dependencyVersions: any = {
@@ -133,11 +135,13 @@ export class DemoAppComponent implements OnInit {
           return event;
         })
       )
-      .subscribe(async (event: NavigationStart) => {
+      .subscribe((event: NavigationStart) => {
         this.activeDemo = this.demos.find(
           (demo) => `/${demo.path}` === event.url
         );
-        this.activeDemo.sources = await getSources(this.activeDemo.path);
+        getSources(this.activeDemo.path).then((sources) => {
+          this.activeDemo.sources = sources;
+        });
       });
 
     const script = document.createElement('script');
