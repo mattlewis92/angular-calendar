@@ -1,4 +1,4 @@
-<h1 align="center">angular 13.0+ calendar</h1>
+<h1 align="center">angular 14.0+ calendar</h1>
 
 <div align="center">
 
@@ -41,7 +41,7 @@ https://mattlewis92.github.io/angular-calendar/
 
 <h2 align="center">About</h2>
 
-A calendar component for angular 13.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
+A calendar component for angular 14.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
 <h2 align="center">Getting started</h2>
 
@@ -112,7 +112,8 @@ Yes.
 
 | Angular major   | Last supported angular-calendar version                                  |
 | --------------- | ------------------------------------------------------------------------ |
-| 12.x and higher | latest version                                                           |
+| 14.x and higher | latest version                                                           |
+| 12.x - 13.x     | [0.29.0](https://github.com/mattlewis92/angular-calendar/tree/v0.29.0)   |
 | 6.x - 11.x      | [0.28.28](https://github.com/mattlewis92/angular-calendar/tree/v0.28.28) |
 | 5.x             | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1)   |
 | 4.x             | [0.22.3](https://github.com/mattlewis92/angular-calendar/tree/v0.22.3)   |
