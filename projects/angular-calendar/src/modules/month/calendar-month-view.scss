@@ -1,67 +1,72 @@
+@use 'sass:map';
+@use 'sass:color';
 @import '../../variables';
 
 $cal-month-view-vars: () !default;
-$cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
+$cal-month-view-vars: map.merge($cal-vars, $cal-month-view-vars);
 
 @mixin cal-month-view-theme($overrides) {
-  $theme: map-merge($cal-month-view-vars, $overrides);
+  $theme: map.merge($cal-month-view-vars, $overrides);
 
   .cal-month-view {
-    background-color: map-get($theme, bg-primary);
+    background-color: map.get($theme, bg-primary);
 
     .cal-cell-row:hover {
-      background-color: map-get($theme, bg-secondary);
+      background-color: map.get($theme, bg-secondary);
     }
 
     .cal-cell-row .cal-cell:hover,
     .cal-cell.cal-has-events.cal-open {
-      background-color: map-get($theme, bg-active);
+      background-color: map.get($theme, bg-active);
     }
 
     .cal-days {
-      border-color: map-get($theme, border-color);
+      border-color: map.get($theme, border-color);
     }
 
     .cal-day-cell:not(:last-child) {
-      border-right-color: map-get($theme, border-color);
+      border-right-color: map.get($theme, border-color);
 
       [dir='rtl'] & {
         border-right-color: initial;
-        border-left-color: map-get($theme, border-color);
+        border-left-color: map.get($theme, border-color);
       }
     }
 
     .cal-days .cal-cell-row {
-      border-bottom-color: map-get($theme, border-color);
+      border-bottom-color: map.get($theme, border-color);
     }
 
     .cal-day-badge {
-      background-color: map-get($theme, badge-color);
-      color: map-get($theme, white);
+      background-color: map.get($theme, badge-color);
+      color: map.get($theme, white);
     }
 
     .cal-event {
-      background-color: map-get($theme, event-color-primary);
-      border-color: map-get($theme, event-color-secondary);
-      color: map-get($theme, white);
+      background-color: map.get($theme, event-color-primary);
+      border-color: map.get($theme, event-color-secondary);
+      color: map.get($theme, white);
     }
 
     .cal-day-cell.cal-weekend .cal-day-number {
-      color: map-get($theme, weekend-color);
+      color: map.get($theme, weekend-color);
     }
 
     .cal-day-cell.cal-today {
-      background-color: map-get($theme, today-bg);
+      background-color: map.get($theme, today-bg);
     }
 
     .cal-day-cell.cal-drag-over {
-      background-color: darken(map-get($theme, bg-active), 5%) !important;
+      background-color: color.adjust(
+        map.get($theme, bg-active),
+        $lightness: -5%
+      ) !important;
     }
 
     .cal-open-day-events {
-      color: map-get($theme, white);
-      background-color: map-get($theme, gray);
-      box-shadow: inset 0 0 15px 0 rgba(map-get($theme, black), 0.5);
+      color: map.get($theme, white);
+      background-color: map.get($theme, gray);
+      box-shadow: inset 0 0 15px 0 rgba(map.get($theme, black), 0.5);
     }
   }
 }

@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $cal-event-color-primary: #1e90ff !default;
 $cal-event-color-secondary: #d1e8ff !default;
 $cal-border-color: #e1e1e1 !default;
@@ -11,9 +13,8 @@ $cal-current-time-marker-color: #ea4334 !default;
 $cal-white: #fff !default;
 $cal-gray: #555 !default;
 $cal-black: #000 !default;
-
 $cal-vars: () !default;
-$cal-vars: map-merge(
+$cal-vars: map.merge(
   (
 
     // the default event primary color if not set on the event color object
