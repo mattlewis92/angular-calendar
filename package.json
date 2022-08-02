@@ -160,9 +160,9 @@
   },
   "dependencies": {
     "@scarf/scarf": "^1.1.1",
-    "angular-draggable-droppable": "^6.1.0",
-    "angular-resizable-element": "^5.0.0",
-    "calendar-utils": "^0.9.0",
+    "angular-draggable-droppable": "^7.0.0",
+    "angular-resizable-element": "^6.0.0",
+    "calendar-utils": "^0.10.1",
     "positioning": "^2.0.1",
     "tslib": "^2.4.0"
   },
