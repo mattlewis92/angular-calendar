@@ -729,7 +729,7 @@ describe('calendarMonthView component', () => {
     );
     const movedTop: number = dragToCellPosition.top - eventStartPosition.top;
     expect(Math.round(eventAfterDragPosition.top)).to.equal(
-      eventStartPosition.top + movedTop
+      Math.round(eventStartPosition.top + movedTop)
     );
     triggerDomEvent('mouseup', document.body, {
       clientX: dragToCellPosition.left,

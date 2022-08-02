@@ -987,7 +987,10 @@ export class CalendarWeekViewComponent
    * @hidden
    */
   eventDropped(
-    dropEvent: DropEvent<{ event?: CalendarEvent; calendarId?: symbol }>,
+    dropEvent: Pick<
+      DropEvent<{ event?: CalendarEvent; calendarId?: symbol }>,
+      'dropData'
+    >,
     date: Date,
     allDay: boolean
   ): void {
