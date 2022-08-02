@@ -150,7 +150,7 @@ All parts of this calendar can be customised via the use of an `ng-template`. Th
 
 ### What is the browser compatibility?
 
-All browsers supported by angular, apart from IE9 as it doesn't support flexbox.
+All evergreen browsers supported by angular.
 
 ### Does this library require bootstrap?
 
