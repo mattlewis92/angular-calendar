@@ -1,4 +1,4 @@
-@import '../../../../angular-calendar/src/angular-calendar.scss';
+@import '../../../../angular-calendar/src/angular-calendar';
 
 .dark-theme {
   // First define some global color variables for your app, these are just for the demo, they can be anything you like
@@ -6,11 +6,11 @@
   $bg-dark-secondary: #394046;
   $bg-active: #2c343a;
   $text-color: #d5d6d7;
-  $border-color: rgba(0, 0, 0, 0.6);
+  $border-color: rgb(0 0 0 / 60%);
 
   // Call the calendar mixin with a sass color map of your theme. Every property is optional.
   // For a list of all variables and how they are used,
-  // see https://github.com/mattlewis92/angular-calendar/tree/master/projects/angular-calendar/src/variables.scss
+  // see https://github.com/mattlewis92/angular-calendar/tree/main/projects/angular-calendar/src/variables.scss
   @include cal-theme(
     (
       bg-primary: $bg-dark-primary,

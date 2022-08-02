@@ -2054,7 +2054,8 @@ describe('calendarWeekView component', () => {
       '.cal-event-container'
     );
     expect(events[0]).to.equal(event);
-    expect(events[1].getBoundingClientRect().top).to.equal(1106);
+    // locally the top comes out as 1107 but on the CI it's 1106
+    expect(events[1].getBoundingClientRect().top).to.closeTo(1106, 1);
     expect(events[1].getBoundingClientRect().height).to.equal(30);
     triggerDomEvent('mouseup', document.body, {
       clientX: rect.left + dayWidth * 2,

@@ -8,7 +8,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2015",
+    "target": "es2020",
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],

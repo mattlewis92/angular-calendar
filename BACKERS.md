@@ -7,11 +7,10 @@ Work on this calendar is funded entirely by donations. If you'd like to support 
 
 <h2 align="center">Sponsors</h2>
 
-<a href="https://runbox.com/" target="_blank"><img src="https://raw.githubusercontent.com/runbox/runbox7/master/src/assets/runbox7_blue_dark.png" width="288"></a>
+- [_Your company logo here?_](https://github.com/users/mattlewis92/sponsorship)
 
 <h2 align="center">Backers</h2>
 
-- [Jordan Hall](https://github.com/Jordan-Hall)
-- [lixiangabcd08](https://github.com/lixiangabcd08)
-- [korolar](https://github.com/korolar)
+- [Geir Thomas Andersen](https://github.com/gtandersen)
+- [ZdsLogic Technologies](https://github.com/zdslogic)
 - [_Your name here?_](https://github.com/users/mattlewis92/sponsorship)
