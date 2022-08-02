@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Sponsorship](https://img.shields.io/badge/funding-github-%23EA4AAA)](https://github.com/users/mattlewis92/sponsorship)
-[![Build Status](https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=main)](https://travis-ci.org/mattlewis92/angular-calendar)
+[![Build Status](https://github.com/mattlewis92/angular-calendar/actions/workflows/ci.yml/badge.svg)](https://github.com/mattlewis92/angular-calendar/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/mattlewis92/angular-calendar/branch/main/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-calendar)
 [![npm version](https://badge.fury.io/js/angular-calendar.svg)](http://badge.fury.io/js/angular-calendar)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
