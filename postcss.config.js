@@ -1,5 +1,4 @@
 const autoprefixer = require('autoprefixer');
-const postCssFlexibility = require('postcss-flexibility').default;
 
 module.exports = () => ({
   plugins: [
@@ -11,6 +10,5 @@ module.exports = () => ({
         'last 20 Firefox versions',
       ],
     }),
-    postCssFlexibility,
   ],
 });
