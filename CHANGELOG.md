@@ -810,7 +810,7 @@ If using the mwlDraggable directive anywhere else in your app you will need to a
 * **day-view:** if you were extending the day view component then the internal API has changed slightly and you may need to adjust your app
 * deep module imports angular-calendar/modules/{common,month,week,day} are no longer supported as the package is now treeshakable. To migrate, adjust your imports to be from angular-calendar directly
 * **moment:** the moment weekViewColumnSubHeader format has changed for consistency with the other date formatters
-* there were some minor breaking changes in the drag and drop library that might affect your app if you were using it outside of the calendar. See the changelog for more info: https://github.com/mattlewis92/angular-draggable-droppable/blob/master/CHANGELOG.md
+* there were some minor breaking changes in the drag and drop library that might affect your app if you were using it outside of the calendar. See the changelog for more info: https://github.com/mattlewis92/angular-draggable-droppable/blob/main/CHANGELOG.md
 * **week-view:** events with no end date that are resized now assume to have the start date as the end date
 
 

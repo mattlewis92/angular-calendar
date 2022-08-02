@@ -30,7 +30,7 @@
     "release:git-add": "git add package.json package-lock.json",
     "release:git-commit": "git commit -m 'chore: bump version number'",
     "release:git-changelog": "standard-version --first-release",
-    "release:git-push": "git push --follow-tags origin master",
+    "release:git-push": "git push --follow-tags origin main",
     "release:git": "run-s release:git-add release:git-commit release:git-changelog release:git-push",
     "release:npm-publish": "npm publish dist/angular-calendar",
     "release:npm": "run-s build release:npm-publish",
