@@ -181,5 +181,19 @@
   "sideEffects": [
     "*.css",
     "*.scss"
-  ]
+  ],
+  "exports": {
+    "./date-adapters/date-adapter": {
+      "types": "./date-adapters/esm/date-adapter.d.ts",
+      "default": "./date-adapters/esm/date-adapter.js"
+    },
+    "./date-adapters/date-fns": {
+      "types": "./date-adapters/esm/date-fns/index.d.ts",
+      "default": "./date-adapters/esm/date-fns/index.js"
+    },
+    "./date-adapters/moment": {
+      "types": "./date-adapters/esm/moment/index.d.ts",
+      "default": "./date-adapters/esm/moment/index.js"
+    }
+  }
 }
