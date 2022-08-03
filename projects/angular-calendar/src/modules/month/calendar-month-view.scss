@@ -141,6 +141,7 @@ $cal-month-view-vars: map.merge($cal-vars, $cal-month-view-vars);
     white-space: nowrap;
     vertical-align: middle;
     border-radius: 10px;
+    float: left;
   }
 
   .cal-day-number {
