@@ -9,7 +9,7 @@
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 	   <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
 
@@ -31,13 +31,13 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 align="center">angular 12.0+ calendar</h1>
+<h1 align="center">angular 14.0+ calendar</h1>
 
 <div align="center">
 
 <p><a href="https://github.com/users/mattlewis92/sponsorship"><img src="https://img.shields.io/badge/funding-github-%23EA4AAA" alt="Sponsorship" class="img-responsive"></a>
-<a href="https://travis-ci.org/mattlewis92/angular-calendar"><img src="https://travis-ci.org/mattlewis92/angular-calendar.svg?branch=master" alt="Build Status" class="img-responsive"></a>
-<a href="https://codecov.io/gh/mattlewis92/angular-calendar"><img src="https://codecov.io/gh/mattlewis92/angular-calendar/branch/master/graph/badge.svg" alt="codecov" class="img-responsive"></a>
+<a href="https://github.com/mattlewis92/angular-calendar/actions/workflows/ci.yml"><img src="https://github.com/mattlewis92/angular-calendar/actions/workflows/ci.yml/badge.svg" alt="Build Status" class="img-responsive"></a>
+<a href="https://codecov.io/gh/mattlewis92/angular-calendar"><img src="https://codecov.io/gh/mattlewis92/angular-calendar/branch/main/graph/badge.svg" alt="codecov" class="img-responsive"></a>
 <a href="http://badge.fury.io/js/angular-calendar"><img src="https://badge.fury.io/js/angular-calendar.svg" alt="npm version" class="img-responsive"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" class="img-responsive"></a>
 <a href="https://twitter.com/mattlewis92_"><img src="https://img.shields.io/twitter/follow/mattlewis92_.svg" alt="Twitter Follow" class="img-responsive"></a></p>
@@ -71,7 +71,7 @@
 </ul>
 <h2 align="center">About</h2>
 
-<p>A calendar component for Angular 12.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
+<p>A calendar component for angular 14.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 align="center">Getting started</h2>
 
 <h3 id="ng-add-recommended">ng add (recommended)</h3>
@@ -120,8 +120,12 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 </thead>
 <tbody>
 <tr>
-<td>12.x and higher</td>
+<td>14.x and higher</td>
 <td>latest version</td>
+</tr>
+<tr>
+<td>12.x - 13.x</td>
+<td><a href="https://github.com/mattlewis92/angular-calendar/tree/v0.29.0">0.29.0</a></td>
 </tr>
 <tr>
 <td>6.x - 11.x</td>
@@ -155,13 +159,13 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <p>All parts of this calendar can be customised via the use of an <code>ng-template</code>. The recipe for applying one is as follows:</p>
 <ul>
 <li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
-<li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/master/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts">this component</a></li>
+<li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/main/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts">this component</a></li>
 <li>Now copy the <a href="https://github.com/mattlewis92/angular-calendar/blob/be842da460a803ebb570418bc10e11fab56bd7b9/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts#L15-L72">template source</a> for your chosen template into your own component and modify as your see fit.</li>
 <li>Finally pass the template to the components input: <code>&lt;mwl-calendar-month-view [cellTemplate]=&quot;cellTemplateId&quot; /&gt;</code></li>
 <li>You can see an e2e working example of this <a href="https://mattlewis92.github.io/angular-calendar/#/custom-templates">here</a></li>
 </ul>
 <h3 id="what-is-the-browser-compatibility">What is the browser compatibility?</h3>
-<p>All browsers supported by angular, apart from IE9 as it doesn&#39;t support flexbox.</p>
+<p>All evergreen browsers supported by angular.</p>
 <h3 id="does-this-library-require-bootstrap">Does this library require bootstrap?</h3>
 <p>No! While the demo site uses bootstrap, it isn&#39;t a requirement of this library. The styling is designed to adapt to whatever global styling your app has.</p>
 <h2 align="center">Angular 1 version</h2>
@@ -200,14 +204,16 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -219,6 +225,15 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
@@ -228,8 +243,8 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       
-       <script type="module" src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/menu-wc.js" defer></script>
        <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>

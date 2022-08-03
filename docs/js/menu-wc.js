@@ -1,6 +1,5 @@
 'use strict';
 
-
 customElements.define('compodoc-menu', class extends HTMLElement {
     constructor() {
         super();
@@ -49,6 +48,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         <span class="icon ion-ios-list"></span>Dependencies
                                     </a>
                                 </li>
+                                <li class="link">
+                                    <a href="properties.html" data-type="chapter-link">
+                                        <span class="icon ion-ios-apps"></span>Properties
+                                    </a>
+                                </li>
                     </ul>
                 </li>
                     <li class="chapter modules">
@@ -65,13 +69,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarCommonModule.html" data-type="entity-link" >CalendarCommonModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' : 'data-target="#xs-directives-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' }>
+                                        'data-target="#directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' : 'data-target="#xs-directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' :
-                                        'id="xs-directives-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' :
+                                        'id="xs-directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
                                         <li class="link">
                                             <a href="directives/CalendarNextViewDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarNextViewDirective</a>
                                         </li>
@@ -85,13 +89,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' : 'data-target="#xs-pipes-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' }>
+                                            'data-target="#pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' : 'data-target="#xs-pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' :
-                                            'id="xs-pipes-links-module-CalendarCommonModule-f937c83315c89bf6f705be14d7ff2637"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' :
+                                            'id="xs-pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
                                             <li class="link">
                                                 <a href="pipes/CalendarDatePipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarDatePipe</a>
                                             </li>
@@ -102,13 +106,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarDayModule.html" data-type="entity-link" >CalendarDayModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarDayModule-d43477b6d6849335d77d42ac8e76d41c"' : 'data-target="#xs-components-links-module-CalendarDayModule-d43477b6d6849335d77d42ac8e76d41c"' }>
+                                            'data-target="#components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' : 'data-target="#xs-components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarDayModule-d43477b6d6849335d77d42ac8e76d41c"' :
-                                            'id="xs-components-links-module-CalendarDayModule-d43477b6d6849335d77d42ac8e76d41c"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' :
+                                            'id="xs-components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' }>
                                             <li class="link">
                                                 <a href="components/CalendarDayViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarDayViewComponent</a>
                                             </li>
@@ -122,13 +126,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarMonthModule.html" data-type="entity-link" >CalendarMonthModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarMonthModule-13e9f8215b9721ef23e9a937184a40c3"' : 'data-target="#xs-components-links-module-CalendarMonthModule-13e9f8215b9721ef23e9a937184a40c3"' }>
+                                            'data-target="#components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' : 'data-target="#xs-components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarMonthModule-13e9f8215b9721ef23e9a937184a40c3"' :
-                                            'id="xs-components-links-module-CalendarMonthModule-13e9f8215b9721ef23e9a937184a40c3"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' :
+                                            'id="xs-components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' }>
                                             <li class="link">
                                                 <a href="components/CalendarMonthViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarMonthViewComponent</a>
                                             </li>
@@ -139,13 +143,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarWeekModule.html" data-type="entity-link" >CalendarWeekModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarWeekModule-2fc6e659bfb911c3cbfe1199162140c9"' : 'data-target="#xs-components-links-module-CalendarWeekModule-2fc6e659bfb911c3cbfe1199162140c9"' }>
+                                            'data-target="#components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' : 'data-target="#xs-components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarWeekModule-2fc6e659bfb911c3cbfe1199162140c9"' :
-                                            'id="xs-components-links-module-CalendarWeekModule-2fc6e659bfb911c3cbfe1199162140c9"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' :
+                                            'id="xs-components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' }>
                                             <li class="link">
                                                 <a href="components/CalendarWeekViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarWeekViewComponent</a>
                                             </li>
