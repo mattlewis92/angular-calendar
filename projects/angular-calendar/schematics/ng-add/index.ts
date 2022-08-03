@@ -4,11 +4,14 @@ import {
   SchematicContext,
   Tree,
   chain,
+  source,
+  mergeWith,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { insertImport } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
+import { getWorkspace } from '@schematics/angular/utility/workspace';
 import {
   addPackageJsonDependency,
   NodeDependency,
@@ -24,7 +27,6 @@ import {
   getProjectFromWorkspace,
   insertWildcardImport,
   insertAfterImports,
-  getWorkspace,
 } from '../utils';
 
 import { Schema } from './schema';
@@ -98,10 +100,10 @@ function nodeDependencyFactory(
 }
 
 function addModuleToImports(options: Schema): Rule {
-  return (host: Tree, context: SchematicContext) => {
+  return async (host: Tree, context: SchematicContext) => {
     context.logger.log('info', `Add modules imports options...`);
 
-    const workspace = getWorkspace(host);
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.projectName);
     const mainPath = getProjectMainFile(project);
     const appModulePath = options.module
@@ -160,15 +162,11 @@ function addModuleToImports(options: Schema): Rule {
     });
     host.commitUpdate(recorder);
 
-    return host;
+    return mergeWith(source(host));
   };
 }
 
 function addAngularCalendarStyle(options: Schema): Rule {
-  return (host: Tree) => {
-    const libStylePath =
-      'node_modules/angular-calendar/css/angular-calendar.css';
-    addStyle(host, libStylePath, options.projectName);
-    return host;
-  };
+  const libStylePath = 'node_modules/angular-calendar/css/angular-calendar.css';
+  return addStyle(libStylePath, options.projectName);
 }
