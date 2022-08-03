@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.30.0](https://github.com/mattlewis92/angular-calendar/compare/v0.29.0...v0.30.0) (2022-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **rtl:** week view all day events with RTL may need some styling adjustments in your application for them to display properly
+* angular 14 or higher is now required to use this package
+* IE11 is no longer supported
+
+### Features
+
+* add secondaryText to event colors that you can use to customise week and day view event text ([6bfbf70](https://github.com/mattlewis92/angular-calendar/commit/6bfbf706688ef33976c61a2e7b716d48a055cceb)), closes [#1375](https://github.com/mattlewis92/angular-calendar/issues/1375)
+* drop support for IE11 ([39b4e76](https://github.com/mattlewis92/angular-calendar/commit/39b4e769d3a268a298d10118ff02f7edc11bea37))
+
+
+### Bug Fixes
+
+* **rtl:** apply styling fixes for non bootstrap 4 layouts ([565a689](https://github.com/mattlewis92/angular-calendar/commit/565a689816bc7804489646d5de7fc409e35e2bbc)), closes [#1583](https://github.com/mattlewis92/angular-calendar/issues/1583)
+
+
+### build
+
+* upgrade to angular 14 ([a496f35](https://github.com/mattlewis92/angular-calendar/commit/a496f3554921829891fa0f9a28632d31bda4ec1c))
+
 ## [0.29.0](https://github.com/mattlewis92/angular-calendar/compare/v0.28.28...v0.29.0) (2021-12-11)
 
 
