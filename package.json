@@ -20,7 +20,7 @@
     "test:watch": "cross-env TZ=UTC ng test angular-calendar",
     "test:schematics": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} TS_NODE_PREFER_TS_EXTS=true mocha --require ts-node/register projects/angular-calendar/schematics/**/*.spec.ts",
     "test": "run-s lint test:single test:schematics build build:clean",
-    "lint:styles": "stylelint \"projects/**/*.scss\" --fix",
+    "lint:styles": "stylelint \"projects/**/*.scss\"",
     "lint:ts": "ng lint",
     "lint": "run-s lint:ts lint:styles",
     "commit": "git-cz",
@@ -56,6 +56,11 @@
         0
       ]
     }
+  },
+  "lint-staged": {
+    "*.scss": [
+      "stylelint --fix"
+    ]
   },
   "repository": {
     "type": "git",
@@ -134,6 +139,7 @@
     "karma-coverage": "^2.2.0",
     "karma-mocha": "^2.0.1",
     "karma-mocha-reporter": "^2.2.5",
+    "lint-staged": "^13.0.3",
     "mocha": "^10.0.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.34",
