@@ -8,7 +8,7 @@ export interface AppOptions {
   name: string;
 }
 
-const SHEMATICS_PACKAGE_NAME = '@schematics/angular';
+const SCHEMATICS_PACKAGE_NAME = '@schematics/angular';
 const collectionPath = join(__dirname, '../collection.json');
 export async function createTestApp(
   appOptions: AppOptions
@@ -18,7 +18,7 @@ export async function createTestApp(
     collectionPath
   );
   const workspace = await runner
-    .runExternalSchematicAsync(SHEMATICS_PACKAGE_NAME, 'workspace', {
+    .runExternalSchematicAsync(SCHEMATICS_PACKAGE_NAME, 'workspace', {
       name: 'workspace',
       version: '9.0.0',
       newProjectRoot: 'projects',
@@ -27,7 +27,7 @@ export async function createTestApp(
 
   return runner
     .runExternalSchematicAsync(
-      SHEMATICS_PACKAGE_NAME,
+      SCHEMATICS_PACKAGE_NAME,
       'application',
       {
         name: appOptions.name,

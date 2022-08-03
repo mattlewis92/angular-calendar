@@ -10,6 +10,8 @@ import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 
 import { getSourceFile } from './file';
+import { ProjectDefinition } from '@schematics/angular/utility/workspace';
+import { getProjectMainFile } from './project-main-file';
 
 /**
  * Import and add module to the root module.
@@ -22,12 +24,10 @@ export function addModuleImportToRootModule(
   host: Tree,
   importedModuleName: string,
   importedModulePath: string,
-  project: WorkspaceProject
+  project: ProjectDefinition
 ) {
-  const appModulePath = getAppModulePath(
-    host,
-    project.architect!.build!.options.main
-  );
+  const mainPath = getProjectMainFile(project);
+  const appModulePath = getAppModulePath(host, mainPath);
   addModuleImportToModule(
     host,
     appModulePath,
