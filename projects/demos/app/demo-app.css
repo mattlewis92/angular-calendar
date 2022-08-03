@@ -2,7 +2,7 @@ h3 {
   margin: 0;
 }
 
-.container-fluid {
+.main-content.container-fluid {
   padding-top: 70px;
 }
 
@@ -10,8 +10,12 @@ h3 {
   padding-bottom: 15px;
 }
 
+.sidebar-nav {
+  width: 355px;
+}
+
 @media (min-width: 768px) {
-  .container-fluid {
+  .main-content.container-fluid {
     height: 100vh;
   }
 }

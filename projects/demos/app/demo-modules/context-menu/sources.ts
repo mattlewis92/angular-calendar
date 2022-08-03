@@ -14,6 +14,13 @@ export const sources = [
     },
   },
   {
+    filename: 'styles.scss',
+    contents: {
+      raw: require('!!raw-loader!./styles.scss'),
+      highlighted: require('!!raw-loader!highlightjs-loader?lang=xml!./styles.scss'),
+    },
+  },
+  {
     filename: 'module.ts',
     contents: {
       raw: require('!!raw-loader!./module'),

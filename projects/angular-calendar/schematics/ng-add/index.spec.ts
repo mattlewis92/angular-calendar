@@ -9,11 +9,8 @@ import { expect } from 'chai';
 import { createTestApp } from '../testing/workspace';
 import { Schema } from './schema';
 import { angularCalendarVersion, momentVersion } from './version-names';
-import {
-  getProjectFromWorkspace,
-  getProjectTargetOptions,
-  getWorkspace,
-} from '../utils';
+import { getProjectFromWorkspace, getProjectTargetOptions } from '../utils';
+import { getWorkspace } from '@schematics/angular/utility/workspace';
 
 const collectionPath = path.join(__dirname, '../collection.json');
 
@@ -115,7 +112,7 @@ describe('angular-calendar schematics', () => {
       .runSchematicAsync('ng-add', defaultOptions, appTree)
       .toPromise();
 
-    const workspace = getWorkspace(tree);
+    const workspace = await getWorkspace(tree);
     const project = getProjectFromWorkspace(workspace);
     const styles = getProjectTargetOptions(project, 'build').styles;
     const stylesTest = getProjectTargetOptions(project, 'test').styles;

@@ -50,7 +50,12 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "footer-max-line-length": [
+        0
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -93,7 +98,9 @@
     "@commitlint/prompt": "^17.0.3",
     "@compodoc/compodoc": "^1.1.19",
     "@fortawesome/fontawesome-free": "^6.1.2",
-    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
+    "@perfectmemory/ngx-contextmenu": "^14.0.0",
+    "@popperjs/core": "^2.11.5",
     "@schematics/angular": "^14.1.0",
     "@sinonjs/fake-timers": "^9.1.2",
     "@stackblitz/sdk": "^1.8.0",
@@ -108,7 +115,7 @@
     "angulartics2": "^12.1.0",
     "angularx-flatpickr": "^6.6.0",
     "autoprefixer": "^10.4.8",
-    "bootstrap-css-only": "^4.4.1",
+    "bootstrap": "^5.2.0",
     "chai": "^4.3.6",
     "commitizen": "^4.2.5",
     "copyfiles": "^2.4.1",
@@ -122,7 +129,7 @@
     "flatpickr": "^4.6.13",
     "highlightjs-loader": "^0.2.3",
     "husky": "^8.0.1",
-    "karma": "^6.3.20",
+    "karma": "^6.4.0",
     "karma-chrome-launcher": "^3.1.1",
     "karma-coverage": "^2.2.0",
     "karma-mocha": "^2.0.1",
@@ -132,7 +139,6 @@
     "moment-timezone": "^0.5.34",
     "ng-packagr": "^14.1.0",
     "ngx-clipboard": "^15.1.0",
-    "ngx-contextmenu": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "postcss-cli": "^10.0.0",
@@ -142,7 +148,7 @@
     "raw-loader": "^4.0.2",
     "rrule": "^2.7.1",
     "rxjs": "^7.5.6",
-    "sass": "^1.54.0",
+    "sass": "^1.54.1",
     "sinon": "^14.0.0",
     "sinon-chai": "^3.7.0",
     "standard-version": "^9.5.0",
@@ -151,7 +157,7 @@
     "stylelint-config-standard": "^26.0.0",
     "stylelint-config-standard-scss": "^5.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4",
+    "typescript": "~4.7.4",
     "util": "^0.12.4",
     "zone.js": "^0.11.7"
   },

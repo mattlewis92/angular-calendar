@@ -1,56 +1,49 @@
-import { Tree, SchematicsException } from '@angular-devkit/schematics';
+import { SchematicsException, Rule } from '@angular-devkit/schematics';
+
+import { getProjectFromWorkspace } from '.';
 import {
-  WorkspaceProject,
-  WorkspaceSchema,
-} from '@schematics/angular/utility/workspace-models';
+  ProjectDefinition,
+  WorkspaceDefinition,
+  updateWorkspace,
+} from '@schematics/angular/utility/workspace';
 
-import { getProjectFromWorkspace, getWorkspace } from '.';
-
-const ANGULAR_CONFIG_PATH = 'angular.json';
-
-export function addStyle(
-  host: Tree,
-  stylePath: string,
-  projectName?: string
-): void {
-  const workspace = getWorkspace(host);
-  const appConfig = getAngularAppConfig(workspace, projectName);
-
-  if (appConfig) {
-    appConfig.architect.build.options.styles.unshift(stylePath);
-    appConfig.architect.test.options.styles.unshift(stylePath);
-
-    writeConfig(host, workspace);
-  } else {
-    throw new SchematicsException(`project configuration could not be found`);
-  }
+function addStyleToTarget(
+  project: ProjectDefinition,
+  targetName: string,
+  stylePath: string
+) {
+  const target = project.targets.get(targetName);
+  return project.targets.set(targetName, {
+    ...target,
+    options: {
+      ...target.options,
+      styles: [stylePath, ...(target.options.styles as string[])],
+    },
+  });
 }
 
-function writeConfig(host: Tree, config: WorkspaceSchema): void {
-  const DEFAULT_ANGULAR_INDENTION = 2;
-  host.overwrite(
-    ANGULAR_CONFIG_PATH,
-    JSON.stringify(config, null, DEFAULT_ANGULAR_INDENTION)
-  );
+export function addStyle(stylePath: string, projectName?: string): Rule {
+  return updateWorkspace((workspace) => {
+    const appConfig = getAngularAppConfig(workspace, projectName);
+    if (appConfig) {
+      addStyleToTarget(appConfig, 'build', stylePath);
+      addStyleToTarget(appConfig, 'test', stylePath);
+    } else {
+      throw new SchematicsException(`project configuration could not be found`);
+    }
+  });
 }
 
-function isAngularBrowserProject(projectConfig: any): boolean {
-  if (projectConfig.projectType === 'application') {
-    const buildConfig = projectConfig.architect.build;
-    return buildConfig.builder === '@angular-devkit/build-angular:browser';
-  }
-
-  return false;
+function isAngularBrowserProject(projectConfig: ProjectDefinition): boolean {
+  const buildConfig = projectConfig.targets.get('build');
+  return buildConfig?.builder === '@angular-devkit/build-angular:browser';
 }
 
 function getAngularAppConfig(
-  workspace: WorkspaceSchema,
+  workspace: WorkspaceDefinition,
   projectName: string
-): WorkspaceProject | null {
-  const projectConfig = getProjectFromWorkspace(
-    workspace,
-    projectName ? projectName : workspace.defaultProject
-  );
+): ProjectDefinition | null {
+  const projectConfig = getProjectFromWorkspace(workspace, projectName);
 
   return isAngularBrowserProject(projectConfig) ? projectConfig : null;
 }
