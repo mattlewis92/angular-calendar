@@ -4,94 +4,96 @@
   [class.bg-dark]="activeDemo?.darkTheme"
   role="navigation"
 >
-  <a class="navbar-brand" href="#">angular 14.0+ calendar</a>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Angular 14.0+ calendar</a>
 
-  <button
-    type="button"
-    class="navbar-toggler"
-    (click)="isMenuVisible = !isMenuVisible"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button
+      type="button"
+      class="navbar-toggler"
+      (click)="isMenuVisible = !isMenuVisible"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" [ngbCollapse]="!isMenuVisible">
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="javascript:;">
-          <i class="fas fa-laptop"></i> Demos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://github.com/mattlewis92/angular-calendar#getting-started"
-        >
-          <i class="fas fa-map-pin"></i> Getting started
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://mattlewis92.github.io/angular-calendar/docs/"
-        >
-          <i class="fas fa-book"></i> API docs
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          data-formkit-toggle="7c1627e655"
-          href="javascript:;"
-          (click)="isMenuVisible = false"
-        >
-          <i class="fas fa-fw fa-envelope"></i>Subscribe
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link text-danger"
-          href="https://github.com/users/mattlewis92/sponsorship"
-          target="_blank"
-        >
-          <i class="fas fa-dollar-sign"></i> Donate
-        </a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav ml-md-auto">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://www.npmjs.com/package/angular-calendar"
-          target="_blank"
-          [ngbTooltip]="'View on npm'"
-        >
-          <i class="fab fa-lg fa-npm"></i>
-          <span class="d-lg-none">View on npm</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://github.com/mattlewis92/angular-calendar"
-          target="_blank"
-          [ngbTooltip]="'View on GitHub'"
-        >
-          <i class="fab fa-lg fa-github"></i>
-          <span class="d-lg-none">View on GitHub</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link text-primary"
-          href="https://twitter.com/mattlewis92_"
-          target="_blank"
-          [ngbTooltip]="'Follow me on Twitter'"
-        >
-          <i class="fab fa-lg fa-twitter"></i>
-          <span class="d-lg-none">Follow me on Twitter</span>
-        </a>
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse" [ngbCollapse]="!isMenuVisible">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:;">
+            <i class="fas fa-laptop"></i> Demos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://github.com/mattlewis92/angular-calendar#getting-started"
+          >
+            <i class="fas fa-map-pin"></i> Getting started
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://mattlewis92.github.io/angular-calendar/docs/"
+          >
+            <i class="fas fa-book"></i> API docs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-formkit-toggle="7c1627e655"
+            href="javascript:;"
+            (click)="isMenuVisible = false"
+          >
+            <i class="fas fa-fw fa-envelope"></i>Subscribe
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-danger"
+            href="https://github.com/users/mattlewis92/sponsorship"
+            target="_blank"
+          >
+            <i class="fas fa-dollar-sign"></i> Donate
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav ml-md-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.npmjs.com/package/angular-calendar"
+            target="_blank"
+            [ngbTooltip]="'View on npm'"
+          >
+            <i class="fab fa-lg fa-npm"></i>
+            <span class="d-lg-none">View on npm</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://github.com/mattlewis92/angular-calendar"
+            target="_blank"
+            [ngbTooltip]="'View on GitHub'"
+          >
+            <i class="fab fa-lg fa-github"></i>
+            <span class="d-lg-none">View on GitHub</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-primary"
+            href="https://twitter.com/mattlewis92_"
+            target="_blank"
+            [ngbTooltip]="'Follow me on Twitter'"
+          >
+            <i class="fab fa-lg fa-twitter"></i>
+            <span class="d-lg-none">Follow me on Twitter</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -104,7 +106,7 @@
   </div>
 </ng-template>
 
-<div class="container-fluid">
+<div class="container-fluid main-content">
   <div class="row fill-height">
     <div
       class="col fill-height scroll-y demo-container"
@@ -116,7 +118,7 @@
             <div class="col-md-6"><h3>{{ activeDemo.label }}</h3></div>
             <div class="col-md-6">
               <button
-                class="btn btn-info float-right"
+                class="btn btn-info float-end"
                 (click)="editInStackblitz(activeDemo)"
               >
                 <i class="fas fa-edit"></i> Edit in Stackblitz

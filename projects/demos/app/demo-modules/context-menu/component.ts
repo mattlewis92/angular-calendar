@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
@@ -7,16 +11,8 @@ import { colors } from '../demo-utils/colors';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  styles: [
-    `
-      .fill-height {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-      }
-    `,
-  ],
+  styleUrls: ['./styles.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

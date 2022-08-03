@@ -2,7 +2,7 @@
 </mwl-demo-utils-calendar-header>
 
 <context-menu #basicMenu>
-  <ng-template contextMenuItem (execute)="addEvent($event.item)">
+  <ng-template contextMenuItem (execute)="addEvent($event.value)">
     Add event
   </ng-template>
 </context-menu>
@@ -18,9 +18,9 @@
   let-eventClicked="eventClicked"
 >
   <div
-    class="fill-height"
+    class="month-cell-fill-height"
     [contextMenu]="basicMenu"
-    [contextMenuSubject]="day.date"
+    [contextMenuValue]="day.date"
   >
     <div class="cal-cell-top">
       <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
@@ -62,7 +62,7 @@
       [class.cal-weekend]="day.isWeekend"
       (click)="dayHeaderClicked.emit({day: day})"
       [contextMenu]="basicMenu"
-      [contextMenuSubject]="day.date"
+      [contextMenuValue]="day.date"
     >
       <b>{{ day.date | calendarDate:'weekViewColumnHeader':locale }}</b><br />
       <span
@@ -85,7 +85,7 @@
     [class.cal-after-hour-start]="!segment.isStart"
     [ngClass]="segment.cssClass"
     [contextMenu]="basicMenu"
-    [contextMenuSubject]="segment.date"
+    [contextMenuValue]="segment.date"
   >
     <div class="cal-time">
       {{ segment.date | calendarDate: 'dayViewHour':locale }}
@@ -107,7 +107,7 @@
     [class.cal-after-hour-start]="!segment.isStart"
     [ngClass]="segment.cssClass"
     [contextMenu]="basicMenu"
-    [contextMenuSubject]="segment.date"
+    [contextMenuValue]="segment.date"
   >
     <div class="cal-time" *ngIf="isTimeLabel">
       {{ segment.date | calendarDate: 'weekViewHour':locale }}
