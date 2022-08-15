@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.30.1](https://github.com/mattlewis92/angular-calendar/compare/v0.30.0...v0.30.1) (2022-08-15)
+
+
+### Bug Fixes
+
+* add missing SASS entry point ([#1595](https://github.com/mattlewis92/angular-calendar/issues/1595)) ([c83293c](https://github.com/mattlewis92/angular-calendar/commit/c83293c8bea2c27f5b23dd56d76df4063ff7e9de)), closes [#1596](https://github.com/mattlewis92/angular-calendar/issues/1596)
+* restore compatibility with jest 28 ([#1599](https://github.com/mattlewis92/angular-calendar/issues/1599)) ([3cb63e1](https://github.com/mattlewis92/angular-calendar/commit/3cb63e1c4767395a07f504cd915d28fdff006d17))
+
 ## [0.30.0](https://github.com/mattlewis92/angular-calendar/compare/v0.29.0...v0.30.0) (2022-08-03)
 
 
