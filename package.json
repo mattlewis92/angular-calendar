@@ -5,9 +5,17 @@
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
   },
+  "packageManager": "pnpm@7.9.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "webpack",
+        "@angular-devkit/*"
+      ]
+    }
+  },
   "scripts": {
-    "node:memory": "cross-env NODE_OPTIONS=--max_old_space_size=8192",
-    "start": "npm run node:memory -- ng serve --open",
+    "start": "pnpm ng serve --open",
     "build:copy-package-json": "copyfiles package.json projects/angular-calendar & copyfiles package.json projects/angular-calendar/schematics/ng-add",
     "build:lib": "ng build angular-calendar --configuration production",
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json && tsc -p tsconfig-date-adapters.json --module es2015 --outDir ./dist/angular-calendar/date-adapters/esm",
@@ -24,17 +32,17 @@
     "lint:ts": "ng lint",
     "lint": "run-s lint:ts lint:styles",
     "commit": "git-cz",
-    "prerelease": "npm test",
-    "pretest:schematics": "npm run build:copy-package-json",
+    "prerelease": "pnpm test",
+    "pretest:schematics": "pnpm build:copy-package-json",
     "release:git-add": "git add package.json package-lock.json",
     "release:git-commit": "git commit -m 'chore: bump version number'",
     "release:git-changelog": "standard-version --first-release",
     "release:git-push": "git push --follow-tags origin main",
     "release:git": "run-s release:git-add release:git-commit release:git-changelog release:git-push",
-    "release:npm-publish": "npm publish dist/angular-calendar",
+    "release:npm-publish": "pnpm publish dist/angular-calendar",
     "release:npm": "run-s build release:npm-publish",
     "release": "run-s release:git release:npm",
-    "postrelease": "npm run gh-pages",
+    "postrelease": "pnpm gh-pages",
     "gh-pages:demos": "ng build --configuration production",
     "gh-pages:compodoc": "compodoc -p tsconfig-compodoc.json -d dist/demos/docs --disableGraph --disableCoverage --disablePrivate --disableInternal --disableLifeCycleHooks --disableProtected --gaID UA-63367573-2",
     "gh-pages:deploy": "ng deploy",
@@ -42,11 +50,6 @@
     "prepare": "husky install"
   },
   "schematics": "./schematics/collection.json",
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/prompt"
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
