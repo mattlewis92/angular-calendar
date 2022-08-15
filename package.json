@@ -194,6 +194,9 @@
     "./date-adapters/moment": {
       "types": "./date-adapters/esm/moment/index.d.ts",
       "default": "./date-adapters/esm/moment/index.js"
+    },
+    "./scss/*" : {
+      "sass": "./scss/*"
     }
   }
 }
