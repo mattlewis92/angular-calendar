@@ -186,35 +186,35 @@
     "./date-adapters/date-adapter": {
       "main": "./date-adapters/index.js",
       "types": "./date-adapters/index.d.ts",
-      "default": "./date-adapters/esm/date-adapter.js",
       "require": "./date-adapters/index.js",
       "import": "./date-adapters/esm/date-adapter.js",
       "es2020": "./date-adapters/esm/date-adapter.js",
       "esm2020": "./date-adapters/esm/date-adapter.js",
       "fesm2020": "./date-adapters/esm/date-adapter.js",
-      "fesm2015": "./date-adapters/esm/date-adapter.js"
+      "fesm2015": "./date-adapters/esm/date-adapter.js",
+      "default": "./date-adapters/esm/date-adapter.js"
     },
     "./date-adapters/date-fns": {
       "main": "./date-adapters/date-fns/index.js",
       "types": "./date-adapters/date-fns/index.d.ts",
-      "default": "./date-adapters/esm/date-fns/index.js",
       "require": "./date-adapters/date-fns/index.js",
       "import": "./date-adapters/esm/date-fns/index.js",
       "es2020": "./date-adapters/esm/date-fns/index.js",
       "esm2020": "./date-adapters/esm/date-fns/index.js",
       "fesm2020": "./date-adapters/esm/date-fns/index.js",
-      "fesm2015": "./date-adapters/esm/date-fns/index.js"
+      "fesm2015": "./date-adapters/esm/date-fns/index.js",
+      "default": "./date-adapters/esm/date-fns/index.js"
     },
     "./date-adapters/moment": {
       "main": "./date-adapters/moment/index.js",
       "types": "./date-adapters/moment/index.d.ts",
-      "default": "./date-adapters/esm/moment/index.js",
       "require": "./date-adapters/moment/index.js",
       "import": "./date-adapters/esm/moment/index.js",
       "es2020": "./date-adapters/esm/moment/index.js",
       "esm2020": "./date-adapters/esm/moment/index.js",
       "fesm2020": "./date-adapters/esm/moment/index.js",
-      "fesm2015": "./date-adapters/esm/moment/index.js"
+      "fesm2015": "./date-adapters/esm/moment/index.js",
+      "default": "./date-adapters/esm/moment/index.js"
     },
     "./scss/*": {
       "sass": "./scss/*"
