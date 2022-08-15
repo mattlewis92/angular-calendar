@@ -215,6 +215,9 @@
       "esm2020": "./date-adapters/esm/moment/index.js",
       "fesm2020": "./date-adapters/esm/moment/index.js",
       "fesm2015": "./date-adapters/esm/moment/index.js"
+    },
+    "./scss/*" : {
+      "sass": "./scss/*"
     }
   }
 }
