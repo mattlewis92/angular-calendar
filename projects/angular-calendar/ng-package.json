@@ -2,14 +2,16 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/angular-calendar",
   "lib": {
-    "entryFile": "src/index.ts"
+    "entryFile": "./index.ts"
   },
-  "whitelistedNonPeerDependencies": [
+  "allowedNonPeerDependencies": [
     "tslib",
     "angular-draggable-droppable",
     "angular-resizable-element",
     "calendar-utils",
     "positioning",
-    "@scarf/scarf"
+    "@scarf/scarf",
+    "postcss",
+    "sass"
   ]
 }

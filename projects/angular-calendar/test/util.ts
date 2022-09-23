@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CalendarEvent } from './../src';
+import { CalendarEvent } from '../index';
 
 export function triggerDomEvent(
   eventType: string,

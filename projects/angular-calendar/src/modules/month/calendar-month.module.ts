@@ -15,6 +15,10 @@ export {
 } from './calendar-month-view.component';
 export { MonthViewDay as CalendarMonthViewDay } from 'calendar-utils';
 export { collapseAnimation } from './calendar-open-day-events.component';
+export { CalendarMonthCellComponent } from './calendar-month-cell.component';
+export { CalendarOpenDayEventsComponent } from './calendar-open-day-events.component';
+export { CalendarMonthViewHeaderComponent } from './calendar-month-view-header.component';
+export { CalendarMonthRowComponent } from './calendar-month-row.component';
 
 @NgModule({
   imports: [CommonModule, DragAndDropModule, CalendarCommonModule],

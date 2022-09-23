@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import { A11yParams, CalendarModule, DateAdapter } from '../src';
+import { A11yParams, CalendarModule, DateAdapter } from '../index';
 import { adapterFactory } from 'calendar-utils/date-adapters/date-fns';
 
 @Component({
@@ -26,9 +26,8 @@ describe('calendarA11y pipe', () => {
   });
 
   it('should throw when an invalid method is passed', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     fixture.componentInstance.a11yParams = {};
     fixture.componentInstance.method = 'invalid';
     expect(() => fixture.detectChanges()).to.throw(

@@ -38,7 +38,17 @@ export * from './calendar-date-formatter.interface';
 export * from './calendar-event-times-changed-event.interface';
 export * from '../../date-adapters/date-adapter';
 export * from './calendar-view.enum';
-
+export * from './calendar-event-actions.component';
+export * from './calendar-event-title.component';
+export * from './calendar-tooltip.directive';
+export * from './calendar-previous-view.directive';
+export * from './calendar-next-view.directive';
+export * from './calendar-today.directive';
+export * from './calendar-date.pipe';
+export * from './calendar-event-title.pipe';
+export * from './calendar-a11y.pipe';
+export * from './click.directive';
+export * from './keydown-enter.directive';
 export {
   CalendarEvent,
   EventAction as CalendarEventAction,

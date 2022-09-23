@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import { CalendarModule, DateAdapter } from '../src';
+import { CalendarModule, DateAdapter } from '../index';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
 @Component({

@@ -2,7 +2,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import { startOfDay } from 'date-fns';
 import localePl from '@angular/common/locales/pl';
-import { CalendarAngularDateFormatter, DateAdapter } from '../src';
+import { CalendarAngularDateFormatter, DateAdapter } from '../index';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 import { registerLocaleData } from '@angular/common';
 

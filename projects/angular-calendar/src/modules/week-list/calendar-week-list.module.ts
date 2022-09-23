@@ -10,13 +10,11 @@ import { CalendarWeekListViewDayComponent } from './calendar-week-list-view-day.
 
 export {
   CalendarWeekListViewComponent,
-  CalendarWeekViewBeforeRenderEvent
+  CalendarWeekViewBeforeRenderEvent as CalendarWeekListViewBeforeRenderEvent,
 } from './calendar-week-list-view.component';
-export {
-  WeekViewAllDayEvent as CalendarWeekViewAllDayEvent,
-  WeekViewAllDayEventRow as CalendarWeekViewAllDayEventRow,
-  GetWeekViewArgs as CalendarGetWeekViewArgs
-} from 'calendar-utils';
+export { CalendarWeekListViewHeaderComponent } from './calendar-week-list-view-header.component';
+export { CalendarWeekListViewEventComponent } from './calendar-week-list-view-event.component';
+export { CalendarWeekListViewDayComponent } from './calendar-week-list-view-day.component';
 export { getWeekViewPeriod } from '../common/util';
 
 @NgModule({
@@ -24,13 +22,13 @@ export { getWeekViewPeriod } from '../common/util';
     CommonModule,
     ResizableModule,
     DragAndDropModule,
-    CalendarCommonModule
+    CalendarCommonModule,
   ],
   declarations: [
     CalendarWeekListViewComponent,
     CalendarWeekListViewHeaderComponent,
     CalendarWeekListViewEventComponent,
-    CalendarWeekListViewDayComponent
+    CalendarWeekListViewDayComponent,
   ],
   exports: [
     ResizableModule,
@@ -38,7 +36,7 @@ export { getWeekViewPeriod } from '../common/util';
     CalendarWeekListViewComponent,
     CalendarWeekListViewHeaderComponent,
     CalendarWeekListViewEventComponent,
-    CalendarWeekListViewDayComponent
-  ]
+    CalendarWeekListViewDayComponent,
+  ],
 })
 export class CalendarWeekListModule {}

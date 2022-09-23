@@ -7,7 +7,7 @@ import {
   MOMENT,
   CalendarNativeDateFormatter,
   DateAdapter,
-} from '../src';
+} from '../index';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
 describe('calendarMomentDateFormatter provider', () => {

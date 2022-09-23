@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 import { startOfDay } from 'date-fns';
-import { CalendarModule, DateAdapter } from '../src';
+import { CalendarModule, DateAdapter } from '../index';
 import { adapterFactory } from '../src/date-adapters/date-fns';
 
 @Component({
@@ -26,9 +26,8 @@ describe('mwlCalendarNextView directive', () => {
   });
 
   it('should set the view date to the start of today', () => {
-    const fixture: ComponentFixture<TestComponent> = TestBed.createComponent(
-      TestComponent
-    );
+    const fixture: ComponentFixture<TestComponent> =
+      TestBed.createComponent(TestComponent);
     fixture.componentInstance.viewDate = new Date('2017-01-28');
     fixture.detectChanges();
     fixture.nativeElement.querySelector('button').click();

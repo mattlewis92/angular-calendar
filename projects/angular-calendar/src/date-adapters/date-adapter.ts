@@ -98,6 +98,4 @@ export abstract class DateAdapter implements BaseDateAdapter {
   abstract getMinutes(date: Date | number): number;
 
   abstract withTimezone(timezone: string): DateAdapter;
-
-  abstract getTimezoneOffset(date: Date | number): number;
 }
