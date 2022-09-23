@@ -122,21 +122,21 @@
             type="text"
             class="form-control"
             [(ngModel)]="event.title"
-            (keyup)="refresh.next()"
+            (keyup)="refresh.next(null)"
           />
         </td>
         <td>
           <input
             type="color"
             [(ngModel)]="event.color.primary"
-            (change)="refresh.next()"
+            (change)="refresh.next(null)"
           />
         </td>
         <td>
           <input
             type="color"
             [(ngModel)]="event.color.secondary"
-            (change)="refresh.next()"
+            (change)="refresh.next(null)"
           />
         </td>
         <td>
@@ -145,7 +145,7 @@
             type="text"
             mwlFlatpickr
             [(ngModel)]="event.start"
-            (ngModelChange)="refresh.next()"
+            (ngModelChange)="refresh.next(null)"
             [altInput]="true"
             [convertModelValue]="true"
             [enableTime]="true"
@@ -160,7 +160,7 @@
             type="text"
             mwlFlatpickr
             [(ngModel)]="event.end"
-            (ngModelChange)="refresh.next()"
+            (ngModelChange)="refresh.next(null)"
             [altInput]="true"
             [convertModelValue]="true"
             [enableTime]="true"

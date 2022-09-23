@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { ContextMenuModule } from 'ngx-contextmenu';
+import { ContextMenuModule } from '@perfectmemory/ngx-contextmenu';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -14,9 +14,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    ContextMenuModule.forRoot({
-      useBootstrap4: true,
-    }),
+    ContextMenuModule,
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
   ],

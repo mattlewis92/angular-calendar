@@ -33,6 +33,6 @@ export class DemoComponent {
       title: 'New event',
       color: colors.red,
     });
-    this.refresh.next();
+    this.refresh.next(null);
   }
 }
