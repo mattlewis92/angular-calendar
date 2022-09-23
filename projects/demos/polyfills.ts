@@ -23,4 +23,4 @@ import '@angular/localize/init';
  */
 
 import 'core-js/modules/es.object.entries';
-import 'zone.js/dist/zone';
+import 'zone.js';

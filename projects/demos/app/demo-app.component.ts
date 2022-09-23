@@ -166,7 +166,7 @@ export class DemoAppComponent implements OnInit {
       'main.ts': `
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
+import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
