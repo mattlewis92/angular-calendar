@@ -73,7 +73,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false
@@ -90,17 +89,6 @@
             "production": {
               "browserTarget": "demos:build:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/demos/tsconfig.app.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "deploy": {
@@ -138,18 +126,6 @@
             "tsConfig": "projects/angular-calendar/tsconfig.spec.json",
             "karmaConfig": "projects/angular-calendar/karma.conf.ts",
             "sourceMap": true
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/angular-calendar/tsconfig.lib.json",
-              "projects/angular-calendar/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }

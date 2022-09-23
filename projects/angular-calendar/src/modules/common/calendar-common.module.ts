@@ -93,7 +93,6 @@ export {
     KeydownEnterDirective,
   ],
   providers: [I18nPluralPipe],
-  entryComponents: [CalendarTooltipWindowComponent],
 })
 export class CalendarCommonModule {
   static forRoot(
