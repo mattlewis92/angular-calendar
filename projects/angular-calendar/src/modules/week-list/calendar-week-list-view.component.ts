@@ -77,7 +77,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         [customTemplate]="headerTemplate"
         (dayHeaderClicked)="dayHeaderClicked.emit($event)"
         (eventDropped)="
-          eventDropped({ dropData: $event }, $event.newStart, true)
+          eventDropped($any({ dropData: $event }), $event.newStart, true)
         "
       >
       </mwl-calendar-week-list-view-header>
@@ -180,7 +180,8 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
   `,
 })
 export class CalendarWeekListViewComponent
-  implements OnChanges, OnInit, OnDestroy {
+  implements OnChanges, OnInit, OnDestroy
+{
   @Input() notes: CalendarEvent[];
 
   @Input() cellWeekNoteTemplate: TemplateRef<any>;
@@ -419,10 +420,8 @@ export class CalendarWeekListViewComponent
   /**
    * @hidden
    */
-  allDayEventResizes: Map<
-    WeekViewAllDayEvent,
-    WeekViewAllDayEventResize
-  > = new Map();
+  allDayEventResizes: Map<WeekViewAllDayEvent, WeekViewAllDayEventResize> =
+    new Map();
 
   /**
    * @hidden

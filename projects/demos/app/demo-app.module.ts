@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  NgbTabsetModule,
   NgbCollapseModule,
+  NgbNavModule,
   NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
@@ -22,8 +22,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbTabsetModule,
     NgbCollapseModule,
+    NgbNavModule,
     NgbTooltipModule,
     DragAndDropModule,
     Angulartics2Module.forRoot({

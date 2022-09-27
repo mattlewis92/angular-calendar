@@ -151,7 +151,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
       );
       this.tooltipRef = null;
     }
-    this.cancelTooltipDelay$.next();
+    this.cancelTooltipDelay$.next(null);
   }
 
   private positionTooltip(previousPositions: string[] = []): void {

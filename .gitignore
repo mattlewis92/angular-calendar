@@ -27,6 +27,7 @@ angular-calendar.iml
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -41,3 +42,7 @@ projects/angular-calendar/schematics/ng-add/package.json
 # System Files
 .DS_Store
 Thumbs.db
+
+# Agorapulse files
+.ap-branchNames
+.ap-commitMessages

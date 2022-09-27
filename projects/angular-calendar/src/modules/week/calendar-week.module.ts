@@ -13,6 +13,10 @@ export {
   CalendarWeekViewComponent,
   CalendarWeekViewBeforeRenderEvent,
 } from './calendar-week-view.component';
+export { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.component';
+export { CalendarWeekViewEventComponent } from './calendar-week-view-event.component';
+export { CalendarWeekViewHourSegmentComponent } from './calendar-week-view-hour-segment.component';
+export { CalendarWeekViewCurrentTimeMarkerComponent } from './calendar-week-view-current-time-marker.component';
 export {
   WeekViewAllDayEvent as CalendarWeekViewAllDayEvent,
   WeekViewAllDayEventRow as CalendarWeekViewAllDayEventRow,

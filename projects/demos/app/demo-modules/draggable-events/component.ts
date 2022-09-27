@@ -40,6 +40,6 @@ export class DemoComponent {
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
-    this.refresh.next();
+    this.refresh.next(null);
   }
 }

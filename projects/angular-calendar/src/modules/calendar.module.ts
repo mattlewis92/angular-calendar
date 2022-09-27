@@ -16,6 +16,7 @@ export * from './common/calendar-common.module';
 export * from './month/calendar-month.module';
 export * from './week/calendar-week.module';
 export * from './day/calendar-day.module';
+export * from './week-list/calendar-week-list.module';
 
 /**
  * The main module of this library. Example usage:

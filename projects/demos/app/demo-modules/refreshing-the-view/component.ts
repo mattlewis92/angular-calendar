@@ -42,7 +42,7 @@ export class DemoComponent {
 
   refreshView(): void {
     this.cssClass = this.cssClass === RED_CELL ? BLUE_CELL : RED_CELL;
-    this.refresh.next();
+    this.refresh.next(null);
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
 
@@ -92,9 +91,7 @@ export class DemoAppComponent implements OnInit {
   searchText = '';
   copied$ = new Subject<boolean>();
 
-  constructor(private router: Router, analytics: Angulartics2GoogleAnalytics) {
-    analytics.startTracking();
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     const defaultRoute = this.router.config.find(
@@ -166,7 +163,7 @@ export class DemoAppComponent implements OnInit {
       'main.ts': `
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
+import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

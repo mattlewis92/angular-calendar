@@ -45,7 +45,7 @@ import { DateAdapter } from '../../date-adapters/date-adapter';
   `,
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
-  @Input() columnDate: Date;
+  @Input() columnDate: Date = null;
 
   @Input() dayStartHour: number;
 

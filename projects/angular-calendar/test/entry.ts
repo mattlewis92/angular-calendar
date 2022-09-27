@@ -2,7 +2,7 @@
 
 import '!!style-loader!css-loader!sass-loader!../src/angular-calendar.scss';
 import 'core-js/es/reflect';
-import 'zone.js/dist/zone';
+import 'zone.js';
 import 'zone.js/dist/long-stack-trace-zone';
 import 'zone.js/dist/proxy';
 import 'zone.js/dist/sync-test';
@@ -39,7 +39,10 @@ afterEach(() => {
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  platformBrowserDynamicTesting(),
+  {
+    teardown: { destroyAfterEach: false },
+  }
 );
 
 // Then we find all the tests.
