@@ -13,4 +13,5 @@ Work on this calendar is funded entirely by donations. If you'd like to support 
 
 - [Geir Thomas Andersen](https://github.com/gtandersen)
 - [ZdsLogic Technologies](https://github.com/zdslogic)
+- [HouseOfAngular](https://github.com/HouseOfAngular)
 - [_Your name here?_](https://github.com/users/mattlewis92/sponsorship)
