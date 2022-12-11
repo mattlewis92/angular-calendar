@@ -110,7 +110,7 @@ Yes.
 | Angular major   | Last supported angular-calendar version                                  |
 | --------------- | ------------------------------------------------------------------------ |
 | 15.x and higher | latest version                                                           |
-| 14.x            | [0.30.0](https://github.com/mattlewis92/angular-calendar/tree/v0.30.1)   |
+| 14.x            | [0.30.1](https://github.com/mattlewis92/angular-calendar/tree/v0.30.1)   |
 | 12.x - 13.x     | [0.29.0](https://github.com/mattlewis92/angular-calendar/tree/v0.29.0)   |
 | 6.x - 11.x      | [0.28.28](https://github.com/mattlewis92/angular-calendar/tree/v0.28.28) |
 | 5.x             | [0.24.1](https://github.com/mattlewis92/angular-calendar/tree/v0.24.1)   |
