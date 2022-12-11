@@ -34,7 +34,7 @@
     "commit": "git-cz",
     "prerelease": "pnpm test",
     "pretest:schematics": "pnpm build:copy-package-json",
-    "release:git-add": "git add package.json package-lock.json",
+    "release:git-add": "git add package.json",
     "release:git-commit": "git commit -m 'chore: bump version number'",
     "release:git-changelog": "standard-version --first-release",
     "release:git-push": "git push --follow-tags origin main",
