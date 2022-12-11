@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/angular-calendar/src/modules/week/calendar-week-view.component.ts</code>
+            <code>projects/angular-calendar/src/modules/week/calendar-week-view/calendar-week-view.component.ts</code>
         </p>
 
 
@@ -245,13 +245,14 @@ import {
   WeekViewAllDayEventRow,
 } from &#x27;calendar-utils&#x27;;
 import { ResizeEvent } from &#x27;angular-resizable-element&#x27;;
-import { CalendarDragHelper } from &#x27;../common/calendar-drag-helper.provider&#x27;;
-import { CalendarResizeHelper } from &#x27;../common/calendar-resize-helper.provider&#x27;;
+import { ResizeCursors } from &#x27;angular-resizable-element&#x27;;
+import { CalendarDragHelper } from &#x27;../../common/calendar-drag-helper/calendar-drag-helper.provider&#x27;;
+import { CalendarResizeHelper } from &#x27;../../common/calendar-resize-helper/calendar-resize-helper.provider&#x27;;
 import {
   CalendarEventTimesChangedEvent,
   CalendarEventTimesChangedEventType,
-} from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
-import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
+} from &#x27;../../common/calendar-event-times-changed-event/calendar-event-times-changed-event.interface&#x27;;
+import { CalendarUtils } from &#x27;../../common/calendar-utils/calendar-utils.provider&#x27;;
 import {
   validateEvents,
   roundToNearest,
@@ -266,8 +267,8 @@ import {
   getWeekViewPeriod,
   trackByWeekAllDayEvent,
   trackByWeekTimeEvent,
-} from &#x27;../common/util&#x27;;
-import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
+} from &#x27;../../common/util/util&#x27;;
+import { DateAdapter } from &#x27;../../../date-adapters/date-adapter&#x27;;
 import {
   DragEndEvent,
   DropEvent,
@@ -359,6 +360,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
               rtl ? (100 / days.length) * allDayEvent.offset : null
             &quot;
             mwlResizable
+            [resizeCursors]&#x3D;&quot;resizeCursors&quot;
             [resizeSnapGrid]&#x3D;&quot;{ left: dayColumnWidth, right: dayColumnWidth }&quot;
             [validateResize]&#x3D;&quot;validateResize&quot;
             (resizeStart)&#x3D;&quot;
@@ -499,6 +501,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [style.left.%]&#x3D;&quot;timeEvent.left&quot;
                 [style.width.%]&#x3D;&quot;timeEvent.width&quot;
                 mwlResizable
+                [resizeCursors]&#x3D;&quot;resizeCursors&quot;
                 [resizeSnapGrid]&#x3D;&quot;{
                   left: dayColumnWidth,
                   right: dayColumnWidth,
@@ -809,6 +812,13 @@ export class CalendarWeekViewComponent
   @Input() validateEventTimesChanged: (
     event: CalendarEventTimesChangedEvent
   ) &#x3D;&gt; boolean;
+
+  /**
+   * Customise the document cursor when dragging to resize an event
+   */
+  @Input() resizeCursors: Partial&lt;
+    Pick&lt;ResizeCursors, &#x27;leftOrRight&#x27; | &#x27;topOrBottom&#x27;&gt;
+  &gt;;
 
   /**
    * Called when a header week day is clicked. Adding a &#x60;cssClass&#x60; property on &#x60;$event.day&#x60; will add that class to the header element

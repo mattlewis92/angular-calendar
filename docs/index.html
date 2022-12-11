@@ -31,7 +31,7 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 align="center">angular 14.0+ calendar</h1>
+<h1 align="center">angular 15.0+ calendar</h1>
 
 <div align="center">
 
@@ -55,7 +55,6 @@
 <div align="center">
   
 <p><a href="https://clickup.com/careers/senior-frontend-engineer" target="_blank"><img src="https://i.imgur.com/0RWYhEB.jpg"></a></p>
-<p><a href="https://github.com/sponsors/mattlewis92">Become a silver or gold sponsor<a> and get your logo on this README on Github with a link to your site.</p>
 </div>
 
 <h2 id="table-of-contents">Table of contents</h2>
@@ -71,7 +70,7 @@
 </ul>
 <h2 align="center">About</h2>
 
-<p>A calendar component for angular 14.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
+<p>A calendar component for angular 15.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 align="center">Getting started</h2>
 
 <h3 id="ng-add-recommended">ng add (recommended)</h3>
@@ -96,7 +95,6 @@ import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;
 })
 export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
 <p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
-<p>If you would like a one on one consultation with me where I can show you the best way to integrate and customise this calendar within your application, then you can get this by becoming a Platinum Sponsor on <a href="https://github.com/users/mattlewis92/sponsorship">GitHub</a>.</p>
 <blockquote>
 <p>Please note: angular-calendar uses <a href="https://scarf.sh/">Scarf</a> to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you&#39;d like to opt out, you can do so by setting <code>scarfSettings.enabled = false</code> in your project&#39;s package.json. Alternatively, you can set the environment variable <code>SCARF_ANALYTICS=false</code> before you install.</p>
 </blockquote>
@@ -159,7 +157,7 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <p>All parts of this calendar can be customised via the use of an <code>ng-template</code>. The recipe for applying one is as follows:</p>
 <ul>
 <li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
-<li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/main/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts">this component</a></li>
+<li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/main/projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-cell/calendar-month-cell.component.ts">this component</a></li>
 <li>Now copy the <a href="https://github.com/mattlewis92/angular-calendar/blob/be842da460a803ebb570418bc10e11fab56bd7b9/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts#L15-L72">template source</a> for your chosen template into your own component and modify as your see fit.</li>
 <li>Finally pass the template to the components input: <code>&lt;mwl-calendar-month-view [cellTemplate]=&quot;cellTemplateId&quot; /&gt;</code></li>
 <li>You can see an e2e working example of this <a href="https://mattlewis92.github.io/angular-calendar/#/custom-templates">here</a></li>
@@ -179,18 +177,19 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 
 <h3 id="prepare-your-environment">Prepare your environment</h3>
 <ul>
-<li>Install <a href="http://nodejs.org/">Node.js</a> and NPM (should come with)</li>
-<li>Install local dev dependencies: <code>npm install</code> while current directory is this repo</li>
+<li>Install <a href="http://nodejs.org/">Node.js (&gt;=14.19.0 or &gt;=16.9.0)</a></li>
+<li>Install pnpm: <code>corepack enable</code></li>
+<li>Install local dev dependencies: <code>pnpm install</code> while current directory is this repo</li>
 </ul>
 <h3 id="development-server">Development server</h3>
-<p>Run <code>npm start</code> to start a development server on port 8000 with auto reload + tests.</p>
+<p>Run <code>pnpm start</code> to start a development server on port 8000 with auto reload + tests.</p>
 <h3 id="testing">Testing</h3>
-<p>Run <code>npm test</code> to run tests once or <code>npm run test:watch</code> to continually run tests.</p>
+<p>Run <code>pnpm test</code> to run tests once or <code>pnpm test:watch</code> to continually run tests.</p>
 <h3 id="release">Release</h3>
 <ul>
 <li>Bump the version in package.json (once the module hits 1.0 this will become automatic)</li>
 </ul>
-<div><pre class="line-numbers"><code class="language-bash">npm run release</code></pre></div>
+<div><pre class="line-numbers"><code class="language-bash">pnpm release</code></pre></div>
 
 
 

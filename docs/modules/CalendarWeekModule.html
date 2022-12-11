@@ -103,29 +103,29 @@
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ResizableModule } from &#x27;angular-resizable-element&#x27;;
 import { DragAndDropModule } from &#x27;angular-draggable-droppable&#x27;;
-import { CalendarWeekViewComponent } from &#x27;./calendar-week-view.component&#x27;;
-import { CalendarWeekViewHeaderComponent } from &#x27;./calendar-week-view-header.component&#x27;;
-import { CalendarWeekViewEventComponent } from &#x27;./calendar-week-view-event.component&#x27;;
+import { CalendarWeekViewComponent } from &#x27;./calendar-week-view/calendar-week-view.component&#x27;;
+import { CalendarWeekViewHeaderComponent } from &#x27;./calendar-week-view/calendar-week-view-header/calendar-week-view-header.component&#x27;;
+import { CalendarWeekViewEventComponent } from &#x27;./calendar-week-view/calendar-week-view-event/calendar-week-view-event.component&#x27;;
 import { CalendarCommonModule } from &#x27;../common/calendar-common.module&#x27;;
-import { CalendarWeekViewHourSegmentComponent } from &#x27;./calendar-week-view-hour-segment.component&#x27;;
-import { CalendarWeekViewCurrentTimeMarkerComponent } from &#x27;./calendar-week-view-current-time-marker.component&#x27;;
+import { CalendarWeekViewHourSegmentComponent } from &#x27;./calendar-week-view/calendar-week-view-hour-segment/calendar-week-view-hour-segment.component&#x27;;
+import { CalendarWeekViewCurrentTimeMarkerComponent } from &#x27;./calendar-week-view/calendar-week-view-current-time-marker/calendar-week-view-current-time-marker.component&#x27;;
 
 export {
   CalendarWeekViewComponent,
   CalendarWeekViewBeforeRenderEvent,
-} from &#x27;./calendar-week-view.component&#x27;;
+} from &#x27;./calendar-week-view/calendar-week-view.component&#x27;;
 export {
   WeekViewAllDayEvent as CalendarWeekViewAllDayEvent,
   WeekViewAllDayEventRow as CalendarWeekViewAllDayEventRow,
   GetWeekViewArgs as CalendarGetWeekViewArgs,
 } from &#x27;calendar-utils&#x27;;
-export { getWeekViewPeriod } from &#x27;../common/util&#x27;;
+export { getWeekViewPeriod } from &#x27;../common/util/util&#x27;;
 
 // needed for ivy, not part of the public api
-export { CalendarWeekViewHeaderComponent as ɵCalendarWeekViewHeaderComponent } from &#x27;./calendar-week-view-header.component&#x27;;
-export { CalendarWeekViewEventComponent as ɵCalendarWeekViewEventComponent } from &#x27;./calendar-week-view-event.component&#x27;;
-export { CalendarWeekViewHourSegmentComponent as ɵCalendarWeekViewHourSegmentComponent } from &#x27;./calendar-week-view-hour-segment.component&#x27;;
-export { CalendarWeekViewCurrentTimeMarkerComponent as ɵCalendarWeekViewCurrentTimeMarkerComponent } from &#x27;./calendar-week-view-current-time-marker.component&#x27;;
+export { CalendarWeekViewHeaderComponent as ɵCalendarWeekViewHeaderComponent } from &#x27;./calendar-week-view/calendar-week-view-header/calendar-week-view-header.component&#x27;;
+export { CalendarWeekViewEventComponent as ɵCalendarWeekViewEventComponent } from &#x27;./calendar-week-view/calendar-week-view-event/calendar-week-view-event.component&#x27;;
+export { CalendarWeekViewHourSegmentComponent as ɵCalendarWeekViewHourSegmentComponent } from &#x27;./calendar-week-view/calendar-week-view-hour-segment/calendar-week-view-hour-segment.component&#x27;;
+export { CalendarWeekViewCurrentTimeMarkerComponent as ɵCalendarWeekViewCurrentTimeMarkerComponent } from &#x27;./calendar-week-view/calendar-week-view-current-time-marker/calendar-week-view-current-time-marker.component&#x27;;
 
 @NgModule({
   imports: [

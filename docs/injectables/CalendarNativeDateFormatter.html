@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts</code>
+            <code>projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts</code>
         </p>
 
 
@@ -145,7 +145,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -211,7 +211,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="105"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:105</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:105</a></div>
                 </td>
             </tr>
 
@@ -283,7 +283,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="112"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:112</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:112</a></div>
                 </td>
             </tr>
 
@@ -355,7 +355,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:23</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:23</a></div>
                 </td>
             </tr>
 
@@ -427,7 +427,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:30</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:30</a></div>
                 </td>
             </tr>
 
@@ -499,7 +499,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:37</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:37</a></div>
                 </td>
             </tr>
 
@@ -571,7 +571,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:47</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:47</a></div>
                 </td>
             </tr>
 
@@ -643,7 +643,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:54</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:54</a></div>
                 </td>
             </tr>
 
@@ -715,7 +715,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:98</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:98</a></div>
                 </td>
             </tr>
 
@@ -787,7 +787,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter.provider.ts:67</a></div>
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-native-date-formatter/calendar-native-date-formatter.provider.ts:67</a></div>
                 </td>
             </tr>
 
@@ -845,10 +845,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   CalendarDateFormatterInterface,
   DateFormatterParams,
-} from &#x27;./calendar-date-formatter.interface&#x27;;
+} from &#x27;../calendar-date-formatter/calendar-date-formatter.interface&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
-import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
-import { getWeekViewPeriod } from &#x27;./util&#x27;;
+import { DateAdapter } from &#x27;../../../date-adapters/date-adapter&#x27;;
+import { getWeekViewPeriod } from &#x27;../util/util&#x27;;
 
 /**
  * This will use &lt;a href&#x3D;&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl&quot; target&#x3D;&quot;_blank&quot;&gt;Intl&lt;/a&gt; API to do all date formatting.

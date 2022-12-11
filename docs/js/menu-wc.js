@@ -69,13 +69,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarCommonModule.html" data-type="entity-link" >CalendarCommonModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' : 'data-target="#xs-directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
+                                        'data-target="#directives-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' : 'data-target="#xs-directives-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' :
-                                        'id="xs-directives-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' :
+                                        'id="xs-directives-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' }>
                                         <li class="link">
                                             <a href="directives/CalendarNextViewDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarNextViewDirective</a>
                                         </li>
@@ -89,13 +89,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' : 'data-target="#xs-pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
+                                            'data-target="#pipes-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' : 'data-target="#xs-pipes-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' :
-                                            'id="xs-pipes-links-module-CalendarCommonModule-67c384f8601053d8adb200e955c82e2e5303bd8e21713a197323294757e78db5866d206353bdcea35844d7b24009826791fdbce00bad5e24a263df41f6ef4c18"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' :
+                                            'id="xs-pipes-links-module-CalendarCommonModule-1424be3e7e93e0965597089e62d3adcbb56abf245768df4a56819e89af7383488329a68cd3fafd4362c206e2ebbb4fd62c5eb1c80bad17da8d0c29473dc836dc"' }>
                                             <li class="link">
                                                 <a href="pipes/CalendarDatePipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarDatePipe</a>
                                             </li>
@@ -106,13 +106,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarDayModule.html" data-type="entity-link" >CalendarDayModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' : 'data-target="#xs-components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' }>
+                                            'data-target="#components-links-module-CalendarDayModule-dd2d46ed011db1c1751b84223c9032ead450cbeb0d303e8c5947207cf6f19e9e315023463dcc4945cc7f510680b2f6363fd66100a07869cb456eabd6130e9cbe"' : 'data-target="#xs-components-links-module-CalendarDayModule-dd2d46ed011db1c1751b84223c9032ead450cbeb0d303e8c5947207cf6f19e9e315023463dcc4945cc7f510680b2f6363fd66100a07869cb456eabd6130e9cbe"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' :
-                                            'id="xs-components-links-module-CalendarDayModule-e98192b1a931cd0a878233ada0b038befcd692f7f649042c957dc384e876fe0e6c8068548342068fdfd0032955b962970b7920d64479250c760cd8d8a9614040"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarDayModule-dd2d46ed011db1c1751b84223c9032ead450cbeb0d303e8c5947207cf6f19e9e315023463dcc4945cc7f510680b2f6363fd66100a07869cb456eabd6130e9cbe"' :
+                                            'id="xs-components-links-module-CalendarDayModule-dd2d46ed011db1c1751b84223c9032ead450cbeb0d303e8c5947207cf6f19e9e315023463dcc4945cc7f510680b2f6363fd66100a07869cb456eabd6130e9cbe"' }>
                                             <li class="link">
                                                 <a href="components/CalendarDayViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarDayViewComponent</a>
                                             </li>
@@ -126,13 +126,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarMonthModule.html" data-type="entity-link" >CalendarMonthModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' : 'data-target="#xs-components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' }>
+                                            'data-target="#components-links-module-CalendarMonthModule-108ad7203e6cd081a050424cb4f381407709f206283831cc0835bd53fdb09c02f6bdbd0c38ccea65b568540ab64966fee25e873afb7fc424ff1965a647623724"' : 'data-target="#xs-components-links-module-CalendarMonthModule-108ad7203e6cd081a050424cb4f381407709f206283831cc0835bd53fdb09c02f6bdbd0c38ccea65b568540ab64966fee25e873afb7fc424ff1965a647623724"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' :
-                                            'id="xs-components-links-module-CalendarMonthModule-cafc1675d9bbc9761e3fb51faaa382b09c60f060379d30e8d73cf5595cd1b74b1bc54608824d1575eb079ebe883635323d2e5524cf02e297e1bca9139084b003"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarMonthModule-108ad7203e6cd081a050424cb4f381407709f206283831cc0835bd53fdb09c02f6bdbd0c38ccea65b568540ab64966fee25e873afb7fc424ff1965a647623724"' :
+                                            'id="xs-components-links-module-CalendarMonthModule-108ad7203e6cd081a050424cb4f381407709f206283831cc0835bd53fdb09c02f6bdbd0c38ccea65b568540ab64966fee25e873afb7fc424ff1965a647623724"' }>
                                             <li class="link">
                                                 <a href="components/CalendarMonthViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarMonthViewComponent</a>
                                             </li>
@@ -143,13 +143,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CalendarWeekModule.html" data-type="entity-link" >CalendarWeekModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' : 'data-target="#xs-components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' }>
+                                            'data-target="#components-links-module-CalendarWeekModule-52595f2c8b2e472865d2209ac68c584d5feb77cd771d06ae548072870b1f17f8c4a4731004f232da039148c272eb76fa87f24f945d870376c1583710c5bce847"' : 'data-target="#xs-components-links-module-CalendarWeekModule-52595f2c8b2e472865d2209ac68c584d5feb77cd771d06ae548072870b1f17f8c4a4731004f232da039148c272eb76fa87f24f945d870376c1583710c5bce847"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' :
-                                            'id="xs-components-links-module-CalendarWeekModule-b23ecbfcc9e253989d2e43bbd5ab48d17a69cefe2369d5142bd2645b44e5947d07ec4db07318e64b8dec7dcd99f25840f0f516550f563f6c2ef6e25d86e05743"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CalendarWeekModule-52595f2c8b2e472865d2209ac68c584d5feb77cd771d06ae548072870b1f17f8c4a4731004f232da039148c272eb76fa87f24f945d870376c1583710c5bce847"' :
+                                            'id="xs-components-links-module-CalendarWeekModule-52595f2c8b2e472865d2209ac68c584d5feb77cd771d06ae548072870b1f17f8c4a4731004f232da039148c272eb76fa87f24f945d870376c1583710c5bce847"' }>
                                             <li class="link">
                                                 <a href="components/CalendarWeekViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarWeekViewComponent</a>
                                             </li>

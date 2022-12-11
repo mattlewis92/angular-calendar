@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/angular-calendar/src/modules/month/calendar-month-view.component.ts</code>
+            <code>projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts</code>
         </p>
 
 
@@ -240,10 +240,10 @@ import { Subject, Subscription } from &#x27;rxjs&#x27;;
 import {
   CalendarEventTimesChangedEvent,
   CalendarEventTimesChangedEventType,
-} from &#x27;../common/calendar-event-times-changed-event.interface&#x27;;
-import { CalendarUtils } from &#x27;../common/calendar-utils.provider&#x27;;
-import { validateEvents } from &#x27;../common/util&#x27;;
-import { DateAdapter } from &#x27;../../date-adapters/date-adapter&#x27;;
+} from &#x27;../../common/calendar-event-times-changed-event/calendar-event-times-changed-event.interface&#x27;;
+import { CalendarUtils } from &#x27;../../common/calendar-utils/calendar-utils.provider&#x27;;
+import { validateEvents } from &#x27;../../common/util/util&#x27;;
+import { DateAdapter } from &#x27;../../../date-adapters/date-adapter&#x27;;
 import { PlacementArray } from &#x27;positioning&#x27;;
 
 export interface CalendarMonthViewBeforeRenderEvent {
@@ -289,7 +289,7 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
               role&#x3D;&quot;gridcell&quot;
               *ngFor&#x3D;&quot;
                 let day of view.days
-                  | slice: rowIndex:rowIndex + view.totalDaysVisibleInWeek;
+                  | slice : rowIndex : rowIndex + view.totalDaysVisibleInWeek;
                 trackBy: trackByDate
               &quot;
               [ngClass]&#x3D;&quot;day?.cssClass&quot;
@@ -324,7 +324,7 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
                   sourceEvent: $event.sourceEvent
                 })
               &quot;
-              [attr.tabindex]&#x3D;&quot;{} | calendarA11y: &#x27;monthCellTabIndex&#x27;&quot;
+              [attr.tabindex]&#x3D;&quot;{} | calendarA11y : &#x27;monthCellTabIndex&#x27;&quot;
             &gt;
             &lt;/mwl-calendar-month-cell&gt;
           &lt;/div&gt;
@@ -497,7 +497,8 @@ export class CalendarMonthViewComponent
    * Called when an event is dragged and dropped
    */
   @Output()
-  eventTimesChanged &#x3D; new EventEmitter&lt;CalendarMonthViewEventTimesChangedEvent&gt;();
+  eventTimesChanged &#x3D;
+    new EventEmitter&lt;CalendarMonthViewEventTimesChangedEvent&gt;();
 
   /**
    * @hidden

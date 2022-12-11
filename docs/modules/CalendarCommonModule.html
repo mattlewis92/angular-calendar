@@ -219,24 +219,24 @@ class MyModule {}</code></pre></div>
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ModuleWithProviders, NgModule, Provider } from &#x27;@angular/core&#x27;;
 import { CommonModule, I18nPluralPipe } from &#x27;@angular/common&#x27;;
-import { CalendarEventActionsComponent } from &#x27;./calendar-event-actions.component&#x27;;
-import { CalendarEventTitleComponent } from &#x27;./calendar-event-title.component&#x27;;
+import { CalendarEventActionsComponent } from &#x27;./calendar-event-actions/calendar-event-actions.component&#x27;;
+import { CalendarEventTitleComponent } from &#x27;./calendar-event-title/calendar-event-title.component&#x27;;
 import {
   CalendarTooltipDirective,
   CalendarTooltipWindowComponent,
-} from &#x27;./calendar-tooltip.directive&#x27;;
-import { CalendarPreviousViewDirective } from &#x27;./calendar-previous-view.directive&#x27;;
-import { CalendarNextViewDirective } from &#x27;./calendar-next-view.directive&#x27;;
-import { CalendarTodayDirective } from &#x27;./calendar-today.directive&#x27;;
-import { CalendarDatePipe } from &#x27;./calendar-date.pipe&#x27;;
-import { CalendarEventTitlePipe } from &#x27;./calendar-event-title.pipe&#x27;;
-import { ClickDirective } from &#x27;./click.directive&#x27;;
-import { KeydownEnterDirective } from &#x27;./keydown-enter.directive&#x27;;
-import { CalendarEventTitleFormatter } from &#x27;./calendar-event-title-formatter.provider&#x27;;
-import { CalendarDateFormatter } from &#x27;./calendar-date-formatter.provider&#x27;;
-import { CalendarUtils } from &#x27;./calendar-utils.provider&#x27;;
-import { CalendarA11y } from &#x27;./calendar-a11y.provider&#x27;;
-import { CalendarA11yPipe } from &#x27;./calendar-a11y.pipe&#x27;;
+} from &#x27;./calendar-tooltip/calendar-tooltip.directive&#x27;;
+import { CalendarPreviousViewDirective } from &#x27;./calendar-previous-view/calendar-previous-view.directive&#x27;;
+import { CalendarNextViewDirective } from &#x27;./calendar-next-view/calendar-next-view.directive&#x27;;
+import { CalendarTodayDirective } from &#x27;./calendar-today/calendar-today.directive&#x27;;
+import { CalendarDatePipe } from &#x27;./calendar-date/calendar-date.pipe&#x27;;
+import { CalendarEventTitlePipe } from &#x27;./calendar-event-title/calendar-event-title.pipe&#x27;;
+import { ClickDirective } from &#x27;./click/click.directive&#x27;;
+import { KeydownEnterDirective } from &#x27;./keydown-enter/keydown-enter.directive&#x27;;
+import { CalendarEventTitleFormatter } from &#x27;./calendar-event-title-formatter/calendar-event-title-formatter.provider&#x27;;
+import { CalendarDateFormatter } from &#x27;./calendar-date-formatter/calendar-date-formatter.provider&#x27;;
+import { CalendarUtils } from &#x27;./calendar-utils/calendar-utils.provider&#x27;;
+import { CalendarA11y } from &#x27;./calendar-a11y/calendar-a11y.provider&#x27;;
+import { CalendarA11yPipe } from &#x27;./calendar-a11y/calendar-a11y.pipe&#x27;;
 
 export interface CalendarModuleConfig {
   eventTitleFormatter?: Provider;
@@ -245,34 +245,34 @@ export interface CalendarModuleConfig {
   a11y?: Provider;
 }
 
-export * from &#x27;./calendar-event-title-formatter.provider&#x27;;
-export * from &#x27;./calendar-moment-date-formatter.provider&#x27;;
-export * from &#x27;./calendar-native-date-formatter.provider&#x27;;
-export * from &#x27;./calendar-angular-date-formatter.provider&#x27;;
-export * from &#x27;./calendar-date-formatter.provider&#x27;;
-export * from &#x27;./calendar-utils.provider&#x27;;
-export * from &#x27;./calendar-a11y.provider&#x27;;
-export * from &#x27;./calendar-a11y.interface&#x27;;
-export * from &#x27;./calendar-date-formatter.interface&#x27;;
-export * from &#x27;./calendar-event-times-changed-event.interface&#x27;;
+export * from &#x27;./calendar-event-title-formatter/calendar-event-title-formatter.provider&#x27;;
+export * from &#x27;./calendar-moment-date-formatter/calendar-moment-date-formatter.provider&#x27;;
+export * from &#x27;./calendar-native-date-formatter/calendar-native-date-formatter.provider&#x27;;
+export * from &#x27;./calendar-angular-date-formatter/calendar-angular-date-formatter.provider&#x27;;
+export * from &#x27;./calendar-date-formatter/calendar-date-formatter.provider&#x27;;
+export * from &#x27;./calendar-utils/calendar-utils.provider&#x27;;
+export * from &#x27;./calendar-a11y/calendar-a11y.provider&#x27;;
+export * from &#x27;./calendar-a11y/calendar-a11y.interface&#x27;;
+export * from &#x27;./calendar-date-formatter/calendar-date-formatter.interface&#x27;;
+export * from &#x27;./calendar-event-times-changed-event/calendar-event-times-changed-event.interface&#x27;;
 export * from &#x27;../../date-adapters/date-adapter&#x27;;
-export * from &#x27;./calendar-view.enum&#x27;;
+export * from &#x27;./calendar-view/calendar-view.enum&#x27;;
 
 // needed for ivy, not part of the public api
-export { CalendarEventActionsComponent as ɵCalendarEventActionsComponent } from &#x27;./calendar-event-actions.component&#x27;;
-export { CalendarEventTitleComponent as ɵCalendarEventTitleComponent } from &#x27;./calendar-event-title.component&#x27;;
+export { CalendarEventActionsComponent as ɵCalendarEventActionsComponent } from &#x27;./calendar-event-actions/calendar-event-actions.component&#x27;;
+export { CalendarEventTitleComponent as ɵCalendarEventTitleComponent } from &#x27;./calendar-event-title/calendar-event-title.component&#x27;;
 export {
   CalendarTooltipDirective as ɵCalendarTooltipDirective,
   CalendarTooltipWindowComponent as ɵCalendarTooltipWindowComponent,
-} from &#x27;./calendar-tooltip.directive&#x27;;
-export { CalendarPreviousViewDirective as ɵCalendarPreviousViewDirective } from &#x27;./calendar-previous-view.directive&#x27;;
-export { CalendarNextViewDirective as ɵCalendarNextViewDirective } from &#x27;./calendar-next-view.directive&#x27;;
-export { CalendarTodayDirective as ɵCalendarTodayDirective } from &#x27;./calendar-today.directive&#x27;;
-export { CalendarDatePipe as ɵCalendarDatePipe } from &#x27;./calendar-date.pipe&#x27;;
-export { CalendarEventTitlePipe as ɵCalendarEventTitlePipe } from &#x27;./calendar-event-title.pipe&#x27;;
-export { ClickDirective as ɵClickDirective } from &#x27;./click.directive&#x27;;
-export { KeydownEnterDirective as ɵKeydownEnterDirective } from &#x27;./keydown-enter.directive&#x27;;
-export { CalendarA11yPipe as ɵCalendarA11yPipe } from &#x27;./calendar-a11y.pipe&#x27;;
+} from &#x27;./calendar-tooltip/calendar-tooltip.directive&#x27;;
+export { CalendarPreviousViewDirective as ɵCalendarPreviousViewDirective } from &#x27;./calendar-previous-view/calendar-previous-view.directive&#x27;;
+export { CalendarNextViewDirective as ɵCalendarNextViewDirective } from &#x27;./calendar-next-view/calendar-next-view.directive&#x27;;
+export { CalendarTodayDirective as ɵCalendarTodayDirective } from &#x27;./calendar-today/calendar-today.directive&#x27;;
+export { CalendarDatePipe as ɵCalendarDatePipe } from &#x27;./calendar-date/calendar-date.pipe&#x27;;
+export { CalendarEventTitlePipe as ɵCalendarEventTitlePipe } from &#x27;./calendar-event-title/calendar-event-title.pipe&#x27;;
+export { ClickDirective as ɵClickDirective } from &#x27;./click/click.directive&#x27;;
+export { KeydownEnterDirective as ɵKeydownEnterDirective } from &#x27;./keydown-enter/keydown-enter.directive&#x27;;
+export { CalendarA11yPipe as ɵCalendarA11yPipe } from &#x27;./calendar-a11y/calendar-a11y.pipe&#x27;;
 
 export {
   CalendarEvent,

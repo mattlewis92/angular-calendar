@@ -102,24 +102,24 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { DragAndDropModule } from &#x27;angular-draggable-droppable&#x27;;
-import { CalendarMonthViewComponent } from &#x27;./calendar-month-view.component&#x27;;
-import { CalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view-header.component&#x27;;
-import { CalendarMonthCellComponent } from &#x27;./calendar-month-cell.component&#x27;;
-import { CalendarOpenDayEventsComponent } from &#x27;./calendar-open-day-events.component&#x27;;
+import { CalendarMonthViewComponent } from &#x27;./calendar-month-view/calendar-month-view.component&#x27;;
+import { CalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view/calendar-month-view-header/calendar-month-view-header.component&#x27;;
+import { CalendarMonthCellComponent } from &#x27;./calendar-month-view/calendar-month-cell/calendar-month-cell.component&#x27;;
+import { CalendarOpenDayEventsComponent } from &#x27;./calendar-month-view/calendar-open-day-events/calendar-open-day-events.component&#x27;;
 import { CalendarCommonModule } from &#x27;../common/calendar-common.module&#x27;;
 
 export {
   CalendarMonthViewComponent,
   CalendarMonthViewBeforeRenderEvent,
   CalendarMonthViewEventTimesChangedEvent,
-} from &#x27;./calendar-month-view.component&#x27;;
+} from &#x27;./calendar-month-view/calendar-month-view.component&#x27;;
 export { MonthViewDay as CalendarMonthViewDay } from &#x27;calendar-utils&#x27;;
-export { collapseAnimation } from &#x27;./calendar-open-day-events.component&#x27;;
+export { collapseAnimation } from &#x27;./calendar-month-view/calendar-open-day-events/calendar-open-day-events.component&#x27;;
 
 // needed for ivy, not part of the public api
-export { CalendarMonthCellComponent as ɵCalendarMonthCellComponent } from &#x27;./calendar-month-cell.component&#x27;;
-export { CalendarMonthViewHeaderComponent as ɵCalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view-header.component&#x27;;
-export { CalendarOpenDayEventsComponent as ɵCalendarOpenDayEventsComponent } from &#x27;./calendar-open-day-events.component&#x27;;
+export { CalendarMonthCellComponent as ɵCalendarMonthCellComponent } from &#x27;./calendar-month-view/calendar-month-cell/calendar-month-cell.component&#x27;;
+export { CalendarMonthViewHeaderComponent as ɵCalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view/calendar-month-view-header/calendar-month-view-header.component&#x27;;
+export { CalendarOpenDayEventsComponent as ɵCalendarOpenDayEventsComponent } from &#x27;./calendar-month-view/calendar-open-day-events/calendar-open-day-events.component&#x27;;
 
 @NgModule({
   imports: [CommonModule, DragAndDropModule, CalendarCommonModule],
