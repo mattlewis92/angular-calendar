@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { PlacementArray } from 'positioning';
 import { CalendarWeekViewBeforeRenderEvent } from '../week/calendar-week.module';
+import { ResizeCursors } from 'angular-resizable-element';
 
 export type CalendarDayViewBeforeRenderEvent =
   CalendarWeekViewBeforeRenderEvent;
@@ -47,6 +48,7 @@ export type CalendarDayViewBeforeRenderEvent =
       [tooltipTemplate]="tooltipTemplate"
       [tooltipAppendToBody]="tooltipAppendToBody"
       [tooltipDelay]="tooltipDelay"
+      [resizeCursors]="resizeCursors"
       [hourSegmentTemplate]="hourSegmentTemplate"
       [eventTemplate]="eventTemplate"
       [eventTitleTemplate]="eventTitleTemplate"
@@ -192,6 +194,13 @@ export class CalendarDayViewComponent {
   @Input() validateEventTimesChanged: (
     event: CalendarEventTimesChangedEvent
   ) => boolean;
+
+  /**
+   * Customise the document cursor when dragging to resize an event
+   */
+  @Input() resizeCursors: Partial<
+    Pick<ResizeCursors, 'leftOrRight' | 'topOrBottom'>
+  >;
 
   /**
    * Called when an event title is clicked
