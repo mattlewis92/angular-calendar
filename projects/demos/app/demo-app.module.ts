@@ -494,7 +494,6 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
       ],
       {
         useHash: true,
-        relativeLinkResolution: 'legacy',
       }
     ),
   ],
