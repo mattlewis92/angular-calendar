@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.31.0](https://github.com/mattlewis92/angular-calendar/compare/v0.30.1...v0.31.0) (2022-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* angular 15 or higher is now required to use this package
+
+### Features
+
+* **week-view:** add ability to customise document cursor when resizing events ([#1613](https://github.com/mattlewis92/angular-calendar/issues/1613)) ([5135590](https://github.com/mattlewis92/angular-calendar/commit/513559092b61ca11acbbbd8b2d9979dd71a253a7))
+
+
+### build
+
+* upgrade to angular 15 ([71e3318](https://github.com/mattlewis92/angular-calendar/commit/71e33184fd30354453b4818d77b107af66024d24))
+
 ### [0.30.1](https://github.com/mattlewis92/angular-calendar/compare/v0.30.0...v0.30.1) (2022-08-15)
 
 
