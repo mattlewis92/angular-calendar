@@ -14,5 +14,5 @@
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true
   },
-  "exclude": ["test/**/*.ts", "**/*.spec.ts"]
+  "exclude": ["src/test/**/*.ts", "src/test-entry.ts", "**/*.spec.ts"]
 }

@@ -1,0 +1,116 @@
+@use 'sass:map';
+@import '../../../variables';
+
+$cal-tooltip-vars: () !default;
+$cal-tooltip-vars: map.merge($cal-vars, $cal-tooltip-vars);
+
+@mixin cal-tooltip-theme($overrides) {
+  $theme: map.merge($cal-tooltip-vars, $overrides);
+
+  .cal-tooltip.cal-tooltip-top .cal-tooltip-arrow {
+    border-top-color: map.get($theme, black);
+  }
+
+  .cal-tooltip.cal-tooltip-right .cal-tooltip-arrow {
+    border-right-color: map.get($theme, black);
+  }
+
+  .cal-tooltip.cal-tooltip-bottom .cal-tooltip-arrow {
+    border-bottom-color: map.get($theme, black);
+  }
+
+  .cal-tooltip.cal-tooltip-left .cal-tooltip-arrow {
+    border-left-color: map.get($theme, black);
+  }
+
+  .cal-tooltip-inner {
+    color: map.get($theme, white);
+    background-color: map.get($theme, black);
+  }
+}
+
+.cal-tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-break: auto;
+  line-height: 1.5;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  font-size: 11px;
+  word-wrap: break-word;
+  opacity: 0.9;
+}
+
+.cal-tooltip.cal-tooltip-top {
+  padding: 5px 0;
+  margin-top: -3px;
+}
+
+.cal-tooltip.cal-tooltip-top .cal-tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+}
+
+.cal-tooltip.cal-tooltip-right {
+  padding: 0 5px;
+  margin-left: 3px;
+}
+
+.cal-tooltip.cal-tooltip-right .cal-tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-width: 5px 5px 5px 0;
+}
+
+.cal-tooltip.cal-tooltip-bottom {
+  padding: 5px 0;
+  margin-top: 3px;
+}
+
+.cal-tooltip.cal-tooltip-bottom .cal-tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+}
+
+.cal-tooltip.cal-tooltip-left {
+  padding: 0 5px;
+  margin-left: -3px;
+}
+
+.cal-tooltip.cal-tooltip-left .cal-tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-width: 5px 0 5px 5px;
+}
+
+.cal-tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  text-align: center;
+  border-radius: 0.25rem;
+}
+
+.cal-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+@include cal-tooltip-theme($cal-tooltip-vars);

@@ -9,7 +9,7 @@ import {
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';
 import { CalendarDayModule } from './day/calendar-day.module';
-import { CalendarUtils } from './common/calendar-utils.provider';
+import { CalendarUtils } from './common/calendar-utils/calendar-utils.provider';
 
 export * from './common/calendar-common.module';
 export * from './month/calendar-month.module';

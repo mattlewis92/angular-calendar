@@ -1,0 +1,380 @@
+@use 'sass:map';
+@import '../../../variables';
+
+$cal-week-view-vars: () !default;
+$cal-week-view-vars: map.merge($cal-vars, $cal-week-view-vars);
+
+@mixin cal-week-view-theme($overrides) {
+  $theme: map.merge($cal-week-view-vars, $overrides);
+
+  .cal-week-view {
+    background-color: map.get($theme, bg-primary);
+    border-top: solid 1px map.get($theme, border-color);
+
+    .cal-day-headers {
+      border-color: map.get($theme, border-color);
+      border-top: 0;
+    }
+
+    .cal-day-headers .cal-header {
+      &:not(:last-child) {
+        border-right-color: map.get($theme, border-color);
+
+        [dir='rtl'] & {
+          border-right-color: initial;
+          border-left: solid 1px map.get($theme, border-color) !important;
+        }
+      }
+
+      &:first-child {
+        border-left-color: map.get($theme, border-color);
+
+        [dir='rtl'] & {
+          border-left-color: initial;
+          border-right-color: map.get($theme, border-color);
+        }
+      }
+    }
+
+    .cal-day-headers .cal-header:hover,
+    .cal-day-headers .cal-drag-over {
+      background-color: map.get($theme, bg-active);
+    }
+
+    .cal-day-column {
+      border-left-color: map.get($theme, border-color);
+
+      [dir='rtl'] & {
+        border-left-color: initial;
+        border-right-color: map.get($theme, border-color);
+      }
+    }
+
+    .cal-event {
+      background-color: map.get($theme, event-color-secondary);
+      border-color: map.get($theme, event-color-primary);
+      color: map.get($theme, event-color-primary);
+    }
+
+    .cal-all-day-events {
+      border-color: map.get($theme, border-color);
+    }
+
+    .cal-header.cal-today {
+      background-color: map.get($theme, today-bg);
+    }
+
+    .cal-header.cal-weekend span {
+      color: map.get($theme, weekend-color);
+    }
+
+    .cal-time-events {
+      border-color: map.get($theme, border-color);
+
+      .cal-day-columns {
+        &:not(.cal-resize-active) {
+          .cal-hour-segment:hover {
+            background-color: map.get($theme, bg-active);
+          }
+        }
+      }
+    }
+
+    .cal-hour-odd {
+      background-color: map.get($theme, bg-secondary);
+    }
+
+    .cal-drag-over .cal-hour-segment {
+      background-color: map.get($theme, bg-active);
+    }
+
+    .cal-hour:not(:last-child) .cal-hour-segment,
+    .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+      border-bottom-color: map.get($theme, border-color);
+    }
+
+    .cal-current-time-marker {
+      background-color: map.get($theme, current-time-marker-color);
+    }
+  }
+}
+
+.cal-week-view {
+  * {
+    box-sizing: border-box;
+  }
+
+  .cal-day-headers {
+    display: flex;
+    padding-left: 70px;
+    border: 1px solid;
+
+    [dir='rtl'] & {
+      padding-left: initial;
+      padding-right: 70px;
+    }
+  }
+
+  .cal-day-headers .cal-header {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+
+    &:not(:last-child) {
+      border-right: 1px solid;
+
+      [dir='rtl'] & {
+        border-right: initial;
+        border-left: 1px solid;
+      }
+    }
+
+    &:first-child {
+      border-left: 1px solid;
+
+      [dir='rtl'] & {
+        border-left: initial;
+        border-right: 1px solid;
+      }
+    }
+  }
+
+  .cal-day-headers span {
+    font-weight: 400;
+    opacity: 0.5;
+  }
+
+  .cal-day-column {
+    flex-grow: 1;
+    border-left: solid 1px;
+
+    [dir='rtl'] & {
+      border-left: initial;
+      border-right: solid 1px;
+    }
+  }
+
+  .cal-event {
+    font-size: 12px;
+    border: 1px solid;
+    direction: ltr;
+  }
+
+  .cal-time-label-column {
+    width: 70px;
+    height: 100%;
+  }
+
+  .cal-current-time-marker {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    z-index: 2;
+  }
+
+  .cal-all-day-events {
+    border: solid 1px;
+    border-top: 0;
+    border-bottom-width: 3px;
+    padding-top: 3px;
+    position: relative;
+
+    .cal-day-columns {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+
+    .cal-events-row {
+      position: relative;
+      height: 31px;
+      margin-left: 70px;
+
+      [dir='rtl'] & {
+        margin-left: initial;
+        margin-right: 70px;
+      }
+    }
+
+    .cal-event-container {
+      display: inline-block;
+      position: absolute;
+
+      &.resize-active {
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+
+    .cal-event {
+      padding: 0 5px;
+      margin-left: 2px;
+      margin-right: 2px;
+      height: 28px;
+      line-height: 28px;
+    }
+
+    .cal-starts-within-week .cal-event {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+
+      [dir='rtl'] & {
+        border-top-left-radius: initial;
+        border-bottom-left-radius: initial;
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important; // stylelint-disable-line declaration-block-no-redundant-longhand-properties
+      }
+    }
+
+    .cal-ends-within-week .cal-event {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+
+      [dir='rtl'] & {
+        border-top-right-radius: initial;
+        border-bottom-right-radius: initial;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px; // stylelint-disable-line declaration-block-no-redundant-longhand-properties
+      }
+    }
+
+    .cal-time-label-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .cal-resize-handle {
+      width: 6px;
+      height: 100%;
+      cursor: col-resize;
+      position: absolute;
+      top: 0;
+
+      &.cal-resize-handle-after-end {
+        right: 0;
+
+        [dir='rtl'] & {
+          right: initial;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .cal-event,
+  .cal-header {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cal-drag-active {
+    pointer-events: none;
+    z-index: 1;
+
+    & * {
+      pointer-events: none;
+    }
+  }
+
+  .cal-time-events {
+    position: relative;
+    border: solid 1px;
+    border-top: 0;
+    display: flex;
+
+    .cal-day-columns {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .cal-day-column {
+      position: relative;
+    }
+
+    .cal-events-container {
+      position: relative;
+    }
+
+    .cal-event-container {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .cal-event {
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      margin: 1px;
+      padding: 0 5px;
+      line-height: 25px;
+    }
+
+    .cal-resize-handle {
+      width: 100%;
+      height: 4px;
+      cursor: row-resize;
+      position: absolute;
+
+      &.cal-resize-handle-after-end {
+        bottom: 0;
+      }
+    }
+  }
+
+  .cal-hour-segment {
+    position: relative;
+
+    &::after {
+      content: '\00a0';
+    }
+  }
+
+  .cal-event-container:not(.cal-draggable) {
+    cursor: pointer;
+  }
+
+  .cal-draggable {
+    cursor: move;
+  }
+
+  /* stylelint-disable-next-line selector-type-no-unknown */
+  mwl-calendar-week-view-hour-segment, /* fix for https://github.com/mattlewis92/angular-calendar/issues/260*/
+  .cal-hour-segment {
+    display: block;
+  }
+
+  .cal-hour:not(:last-child) .cal-hour-segment,
+  .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+    border-bottom: thin dashed;
+  }
+
+  .cal-time {
+    font-weight: bold;
+    padding-top: 5px;
+    width: 70px;
+    text-align: center;
+  }
+
+  .cal-hour-segment.cal-after-hour-start {
+    .cal-time {
+      display: none;
+    }
+  }
+
+  .cal-starts-within-day .cal-event {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .cal-ends-within-day .cal-event {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+
+@include cal-week-view-theme($cal-week-view-vars);

@@ -127,7 +127,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-calendar/test/entry.ts",
+            "main": "projects/angular-calendar/src/test-entry.ts",
             "tsConfig": "projects/angular-calendar/tsconfig.spec.json",
             "karmaConfig": "projects/angular-calendar/karma.conf.ts",
             "sourceMap": true,

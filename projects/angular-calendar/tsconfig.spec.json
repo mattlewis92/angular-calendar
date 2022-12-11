@@ -4,6 +4,6 @@
     "outDir": "../../out-tsc/spec",
     "types": ["mocha", "node"]
   },
-  "files": ["test/entry.ts"],
+  "files": ["src/test-entry.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]
 }
