@@ -41,7 +41,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.46.0
   angular-cli-ghpages: ^1.0.5
   angular-draggable-droppable: ^7.0.0
-  angular-resizable-element: ^6.0.1
+  angular-resizable-element: ^6.0.2
   angulartics2: ^12.2.0
   angularx-flatpickr: 7.0.0
   autoprefixer: ^10.4.13
@@ -98,7 +98,7 @@ specifiers:
 dependencies:
   '@scarf/scarf': 1.1.1
   angular-draggable-droppable: 7.0.0_@angular+core@14.2.12
-  angular-resizable-element: 6.0.1_@angular+core@14.2.12
+  angular-resizable-element: 6.0.2_@angular+core@14.2.12
   calendar-utils: 0.10.4
   positioning: 2.0.1
   tslib: 2.4.1
@@ -4664,8 +4664,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /angular-resizable-element/6.0.1_@angular+core@14.2.12:
-    resolution: {integrity: sha512-dw3+S106gPrdl6TeTv6BwhWG4DPBCKWT+dmxvCuNr4GFYBzcHuKaixRTnP9tL/hrIEhZ8c1j7wcmTdbWQU0RUA==}
+  /angular-resizable-element/6.0.2_@angular+core@14.2.12:
+    resolution: {integrity: sha512-OEWDfI945UqQMpHfRn/XNrGrOZAXEv6Utzqoc83yAYuNIKJXyTpivcrr/IZsQq735QYLLV/OeDzdP5XilLdMDA==}
     peerDependencies:
       '@angular/core': '>=14.0.0'
     dependencies:
@@ -8298,7 +8298,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.1
+      minimatch: 5.1.0
       once: 1.4.0
     dev: true
 
