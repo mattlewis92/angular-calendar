@@ -27,7 +27,7 @@ import {
   WeekViewAllDayEventRow,
 } from 'calendar-utils';
 import { ResizeEvent } from 'angular-resizable-element';
-import { ResizeCursors } from 'angular-resizable-element/lib/resizable.directive';
+import { ResizeCursors } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../common/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../common/calendar-resize-helper.provider';
 import {
@@ -596,9 +596,11 @@ export class CalendarWeekViewComponent
   ) => boolean;
 
   /**
-   * Custom resize cursors for the mwlResizable
+   * Customise the document cursor when dragging to resize an event
    */
-  @Input() resizeCursors: ResizeCursors;
+  @Input() resizeCursors: Partial<
+    Pick<ResizeCursors, 'leftOrRight' | 'topOrBottom'>
+  >;
 
   /**
    * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element

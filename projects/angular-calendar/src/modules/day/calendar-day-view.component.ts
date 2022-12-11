@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 import { CalendarEventTimesChangedEvent } from '../common/calendar-event-times-changed-event.interface';
 import { PlacementArray } from 'positioning';
 import { CalendarWeekViewBeforeRenderEvent } from '../week/calendar-week.module';
-import { ResizeCursors } from 'angular-resizable-element/lib/resizable.directive';
+import { ResizeCursors } from 'angular-resizable-element';
 
 export type CalendarDayViewBeforeRenderEvent =
   CalendarWeekViewBeforeRenderEvent;
@@ -196,9 +196,11 @@ export class CalendarDayViewComponent {
   ) => boolean;
 
   /**
-   * Custom resize cursors for the mwlResizable
+   * Customise the document cursor when dragging to resize an event
    */
-  @Input() resizeCursors: ResizeCursors;
+  @Input() resizeCursors: Partial<
+    Pick<ResizeCursors, 'leftOrRight' | 'topOrBottom'>
+  >;
 
   /**
    * Called when an event title is clicked
