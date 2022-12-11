@@ -176,7 +176,7 @@
   "dependencies": {
     "@scarf/scarf": "^1.1.1",
     "angular-draggable-droppable": "^7.0.0",
-    "angular-resizable-element": "^6.0.1",
+    "angular-resizable-element": "^6.0.2",
     "calendar-utils": "^0.10.4",
     "positioning": "^2.0.1",
     "tslib": "^2.4.1"
