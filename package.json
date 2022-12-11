@@ -5,7 +5,7 @@
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
   },
-  "packageManager": "pnpm@7.9.0",
+  "packageManager": "pnpm@7.18.1",
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
