@@ -19,14 +19,14 @@ export const sources = [
       raw: {
         default: require('!!raw-loader!./styles.scss').default.replace(
           '../../../../angular-calendar/src/angular-calendar.scss',
-          '~angular-calendar/scss/angular-calendar.scss'
+          'angular-calendar/scss/angular-calendar.scss'
         ),
       },
       highlighted: {
         default:
           require('!!raw-loader!highlightjs-loader?lang=scss!./styles.scss').default.replace(
             '../../../../angular-calendar/src/angular-calendar.scss',
-            '~angular-calendar/scss/angular-calendar.scss'
+            'angular-calendar/scss/angular-calendar.scss'
           ),
       },
     },
