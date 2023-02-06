@@ -44,5 +44,6 @@ projects/angular-calendar/schematics/ng-add/package.json
 Thumbs.db
 
 # Agorapulse files
+.agorapulse/*
 .ap-branchNames
 .ap-commitMessages

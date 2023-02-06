@@ -8,7 +8,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -17,10 +17,17 @@
       "dom"
     ],
     "paths": {
-      "angular-calendar": ["./projects/angular-calendar/src"],
-      "angular-calendar/date-adapters/date-fns": ["./projects/angular-calendar/src/date-adapters/date-fns"],
-      "angular-calendar/date-adapters/moment": ["./projects/angular-calendar/src/date-adapters/moment"]
+      "angular-calendar": [
+        "./projects/angular-calendar/src"
+      ],
+      "angular-calendar/date-adapters/date-fns": [
+        "./projects/angular-calendar/src/date-adapters/date-fns"
+      ],
+      "angular-calendar/date-adapters/moment": [
+        "./projects/angular-calendar/src/date-adapters/moment"
+      ]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false
   }
 }
