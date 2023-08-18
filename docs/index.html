@@ -47,7 +47,7 @@
 
 <div align="center">
 
-<p><a href="https://mattlewis92.github.io/angular-calendar/">https://mattlewis92.github.io/angular-calendar/</a></p>
+<p><a href="https://mattlewis-github.com/angular-calendar/">https://mattlewis-github.com/angular-calendar/</a></p>
 </div>
 
 <h2 align="center">Sponsors</h2>
@@ -93,14 +93,14 @@ import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;
     }),
   ],
 })
-export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
-<p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
+export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis-github.com/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
+<p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis-github.com/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis-github.com/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis-github.com/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
 <blockquote>
 <p>Please note: angular-calendar uses <a href="https://scarf.sh/">Scarf</a> to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you&#39;d like to opt out, you can do so by setting <code>scarfSettings.enabled = false</code> in your project&#39;s package.json. Alternatively, you can set the environment variable <code>SCARF_ANALYTICS=false</code> before you install.</p>
 </blockquote>
 <h2 align="center">Documentation</h2>
 
-<p>To see all available API options, take a look at the auto generated <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a>. You may find it helpful to view the examples on the demo page.</p>
+<p>To see all available API options, take a look at the auto generated <a href="https://mattlewis-github.com/angular-calendar/docs/">documentation</a>. You may find it helpful to view the examples on the demo page.</p>
 <h2 align="center">Breaking changes</h2>
 
 <p>Where possible this library will strictly adhere to <a href="http://semver.org/">semver</a> and only introduce API breaking changes in 0.x releases or new major versions post 1.0. The only exception to this is if you are using custom templates or extending the base components to add additional functionality, whereby critical bug fixes may introduce breakages as the internal API changes.</p>
@@ -156,15 +156,15 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <h3 id="how-come-theres-no-year-view-like-the-ng1-version">How come there’s no year view like the ng1 version?</h3>
 <p>As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like <code>angular-calendar-year-view</code> though ;)</p>
 <h3 id="does-this-calendar-work-with-mobile">Does this calendar work with mobile?</h3>
-<p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens on the month view and showing less days on the <a href="https://mattlewis92.github.io/angular-calendar/#/responsive-week-view">week view</a>.</p>
+<p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens on the month view and showing less days on the <a href="https://mattlewis-github.com/angular-calendar/#/responsive-week-view">week view</a>.</p>
 <h3 id="how-do-i-use-a-custom-template">How do I use a custom template?</h3>
 <p>All parts of this calendar can be customised via the use of an <code>ng-template</code>. The recipe for applying one is as follows:</p>
 <ul>
-<li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
+<li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis-github.com/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis-github.com/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
 <li>Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is <a href="https://github.com/mattlewis92/angular-calendar/blob/main/projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-cell/calendar-month-cell.component.ts">this component</a></li>
 <li>Now copy the <a href="https://github.com/mattlewis92/angular-calendar/blob/be842da460a803ebb570418bc10e11fab56bd7b9/projects/angular-calendar/src/modules/month/calendar-month-cell.component.ts#L15-L72">template source</a> for your chosen template into your own component and modify as your see fit.</li>
 <li>Finally pass the template to the components input: <code>&lt;mwl-calendar-month-view [cellTemplate]=&quot;cellTemplateId&quot; /&gt;</code></li>
-<li>You can see an e2e working example of this <a href="https://mattlewis92.github.io/angular-calendar/#/custom-templates">here</a></li>
+<li>You can see an e2e working example of this <a href="https://mattlewis-github.com/angular-calendar/#/custom-templates">here</a></li>
 </ul>
 <h3 id="what-is-the-browser-compatibility">What is the browser compatibility?</h3>
 <p>All evergreen browsers supported by angular.</p>
