@@ -4,19 +4,18 @@ about: Suggest an idea for this project
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 <!---
 
 FAQ (please read!):
 
-Need an example of how to do something? Check the demo page, it probably has you covered: https://mattlewis92.github.io/angular-calendar/demos/
+Need an example of how to do something? Check the demo page, it probably has you covered: https://mattlewis-github.com/angular-calendar/demos/
 
 Need a full list of all API options? Check the docs for each component:
-https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html
-https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html
-https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html
+https://mattlewis-github.com/angular-calendar/docs/components/CalendarMonthViewComponent.html
+https://mattlewis-github.com/angular-calendar/docs/components/CalendarWeekViewComponent.html
+https://mattlewis-github.com/angular-calendar/docs/components/CalendarDayViewComponent.html
 
 Please note that issues that ignore this template will be closed without notice!
 
