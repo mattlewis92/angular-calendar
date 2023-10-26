@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { switchMapTo, startWith, map, switchMap } from 'rxjs/operators';
@@ -63,6 +64,8 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
 
   columnDate$ = new BehaviorSubject<Date>(this.columnDate);
 
+  private zone = inject(NgZone);
+
   marker$: Observable<{
     isVisible: boolean;
     top: number;
@@ -94,7 +97,7 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
     })
   );
 
-  constructor(private dateAdapter: DateAdapter, private zone: NgZone) {}
+  constructor(private dateAdapter: DateAdapter) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.columnDate) {
