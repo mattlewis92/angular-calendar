@@ -6,7 +6,6 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
-import { TimezoneManager } from '../services/timezone-manager.service';
 
 @Component({
   selector: 'mwl-calendar-month-row',
@@ -49,7 +48,7 @@ export class CalendarMonthRowComponent implements OnChanges {
   currentRowNotes: CalendarEvent[];
   notesPerDay: { [key: number]: CalendarEvent[] };
 
-  constructor(private timezoneManager: TimezoneManager) {}
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes?.notes?.currentValue) {
@@ -59,31 +58,19 @@ export class CalendarMonthRowComponent implements OnChanges {
         this.view.totalDaysVisibleInWeek + this.rowIndex
       );
       this.firstDayOfRow = this.daysSliced[0];
-      this.startDate = this.timezoneManager.reverseTz(
-        this.daysSliced[0].date,
-        this.timezone
-      );
-      this.endDate = this.timezoneManager.reverseTz(
-        this.daysSliced[6].date,
-        this.timezone
-      );
+      this.startDate = this.daysSliced[0].date;
+      this.endDate = this.daysSliced[6].date;
       const notesCopy = this.deepCopyFunction(this.notes);
       this.currentRowNotes = notesCopy.filter((note: CalendarEvent) => {
-        const startDate: Date = new Date(this.startDate.toDateString());
-        const endDate: Date = new Date(this.endDate.toDateString());
         return (
-          (note.start >= startDate && note.start <= endDate) ||
-          (note.end >= startDate && note.end <= endDate) ||
-          (note.start < startDate && note.end > endDate)
+          (note.start >= this.startDate && note.start <= this.endDate) ||
+          (note.end >= this.startDate && note.end <= this.endDate) ||
+          (note.start < this.startDate && note.end > this.endDate)
         );
       });
       let index = 0;
       this.daysSliced.forEach((daySliced) => {
-        const currentDay = new Date(
-          this.timezoneManager
-            .reverseTz(daySliced.date, this.timezone)
-            .toDateString()
-        );
+        const currentDay = daySliced.date;
         const notesOfTheDay = this.currentRowNotes.filter(
           (note) => note.start <= currentDay && note.end >= currentDay
         );
@@ -107,9 +94,7 @@ export class CalendarMonthRowComponent implements OnChanges {
 
   manageLeft(note: CalendarEvent): string {
     const dayIndex = this.daysSliced
-      .map((daySliced) =>
-        this.timezoneManager.reverseTz(daySliced.date, this.timezone)
-      )
+      .map((daySliced) => daySliced.date)
       .findIndex((date) => date.toDateString() === note.start.toDateString());
     let left: number;
     if (dayIndex !== -1) {
@@ -150,39 +135,30 @@ export class CalendarMonthRowComponent implements OnChanges {
   manageWidth(note: CalendarEvent): string {
     let width: number;
     const indexStartDate = this.daysSliced
-      .map((daySliced) =>
-        this.timezoneManager.reverseTz(daySliced.date, this.timezone)
-      )
-      .findIndex(
-        (date) =>
-          new Date(date.toDateString()).valueOf() === note.start.valueOf()
-      );
+      .map((daySliced) => daySliced.date)
+      .findIndex((date) => date.toDateString() === note.start.toDateString());
     const indexEndDate = this.daysSliced
-      .map((daySliced) =>
-        this.timezoneManager.reverseTz(daySliced.date, this.timezone)
-      )
-      .findIndex(
-        (date) => new Date(date.toDateString()).valueOf() === note.end.valueOf()
-      );
+      .map((daySliced) => daySliced.date)
+      .findIndex((date) => date.toDateString() === note.end.toDateString());
     // start et end dans le row en cours
     if (indexEndDate !== -1 && indexStartDate !== -1) {
-      width = (indexEndDate - indexStartDate + 1) * (100 / 7);
+      width = Math.max(1, indexEndDate - indexStartDate) * (100 / 7);
     }
     // start dans le row en cours et pas le end
     else if (indexStartDate !== -1 && indexEndDate === -1) {
       const daysNumberFromNoteStart = this.dateDiffIndays(
         note.start,
-        this.timezoneManager.reverseTz(this.daysSliced[6].date, this.timezone)
+        this.daysSliced[6].date
       );
       width = (daysNumberFromNoteStart + 1) * (100 / 7);
     }
     // end dans le row en cours et pas le start
     else if (indexStartDate === -1 && indexEndDate !== -1) {
       const daysNumberToNoteEnd = this.dateDiffIndays(
-        this.timezoneManager.reverseTz(this.daysSliced[0].date, this.timezone),
+        this.daysSliced[0].date,
         note.end
       );
-      width = (daysNumberToNoteEnd + 1) * (100 / 7);
+      width = daysNumberToNoteEnd * (100 / 7);
     }
     // start et end sont en dehors du row en cours
     else if (indexStartDate === -1 && indexEndDate === -1) {
@@ -192,10 +168,8 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   dateDiffIndays(date1: Date, date2: Date): number {
-    return Math.floor(
-      (Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) -
-        Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())) /
-        (1000 * 60 * 60 * 24)
+    return Math.round(
+      (date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24)
     );
   }
 
