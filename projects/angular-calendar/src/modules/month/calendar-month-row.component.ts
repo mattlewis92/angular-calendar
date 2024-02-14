@@ -93,12 +93,15 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   manageLeft(note: CalendarEvent): string {
-    const dayIndex = this.daysSliced
-      .map((daySliced) => daySliced.date)
-      .findIndex((date) => date.toDateString() === note.start.toDateString());
+    const fromWeekStartToNoteStartInDays = this.dateDiffIndays(
+      this.daysSliced[0].date,
+      note.start
+    );
+    const noteStartOnWeek =
+      fromWeekStartToNoteStartInDays > 0 && fromWeekStartToNoteStartInDays <= 7;
     let left: number;
-    if (dayIndex !== -1) {
-      left = dayIndex * (100 / 7);
+    if (noteStartOnWeek) {
+      left = fromWeekStartToNoteStartInDays * (100 / 7);
     } else {
       left = 0;
     }
@@ -134,43 +137,52 @@ export class CalendarMonthRowComponent implements OnChanges {
 
   manageWidth(note: CalendarEvent): string {
     let width: number;
-    const indexStartDate = this.daysSliced
-      .map((daySliced) => daySliced.date)
-      .findIndex((date) => date.toDateString() === note.start.toDateString());
-    const indexEndDate = this.daysSliced
-      .map((daySliced) => daySliced.date)
-      .findIndex((date) => date.toDateString() === note.end.toDateString());
-    // start et end dans le row en cours
-    if (indexEndDate !== -1 && indexStartDate !== -1) {
-      width = Math.max(1, indexEndDate - indexStartDate) * (100 / 7);
+    const oneDayInMs = 1000 * 60 * 60 * 24;
+    const weekEndDate = new Date(
+      this.daysSliced[6].date.getTime() + oneDayInMs - 1
+    );
+    const noteLengthInDays = this.dateDiffIndays(note.start, note.end);
+    const fromWeekStartToNoteStartInDays = this.dateDiffIndays(
+      this.daysSliced[0].date,
+      note.start
+    );
+    const fromWeekStartToNoteEndInDays = this.dateDiffIndays(
+      this.daysSliced[0].date,
+      note.end
+    );
+    const fromNoteStartToWeekEndInDays = this.dateDiffIndays(
+      note.start,
+      weekEndDate
+    );
+
+    const noteStartOnWeek =
+      fromWeekStartToNoteStartInDays > 0 && fromWeekStartToNoteStartInDays <= 7;
+    const noteEndOnWeek =
+      fromWeekStartToNoteEndInDays > 0 && fromWeekStartToNoteEndInDays <= 7;
+
+    if (noteStartOnWeek && noteEndOnWeek) {
+      width = noteLengthInDays * (100 / 7);
     }
-    // start dans le row en cours et pas le end
-    else if (indexStartDate !== -1 && indexEndDate === -1) {
-      const daysNumberFromNoteStart = this.dateDiffIndays(
-        note.start,
-        this.daysSliced[6].date
-      );
-      width = (daysNumberFromNoteStart + 1) * (100 / 7);
+    if (!noteStartOnWeek && noteEndOnWeek) {
+      width = fromWeekStartToNoteEndInDays * (100 / 7);
     }
-    // end dans le row en cours et pas le start
-    else if (indexStartDate === -1 && indexEndDate !== -1) {
-      const daysNumberToNoteEnd = this.dateDiffIndays(
-        this.daysSliced[0].date,
-        note.end
-      );
-      width = daysNumberToNoteEnd * (100 / 7);
+    if (noteStartOnWeek && !noteEndOnWeek) {
+      width = fromNoteStartToWeekEndInDays * (100 / 7);
     }
-    // start et end sont en dehors du row en cours
-    else if (indexStartDate === -1 && indexEndDate === -1) {
+    if (!noteStartOnWeek && !noteEndOnWeek) {
       width = 100;
     }
     return 'calc(' + width + '% - 5px)';
   }
 
   dateDiffIndays(date1: Date, date2: Date): number {
-    return Math.round(
-      (date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24)
-    );
+    const oneDayInMs = 1000 * 60 * 60 * 24;
+    const differenceInMs = date2.getTime() - date1.getTime();
+    const differenceInMsAbs = Math.abs(differenceInMs);
+    const differenceInDays =
+      Math.floor(differenceInMsAbs / oneDayInMs) +
+      (differenceInMsAbs % oneDayInMs > 0 ? 1 : 0);
+    return differenceInMs > 0 ? differenceInDays : differenceInDays * -1;
   }
 
   deepCopyFunction(obj) {
