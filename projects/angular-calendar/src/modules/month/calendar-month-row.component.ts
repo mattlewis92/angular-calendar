@@ -59,7 +59,7 @@ export class CalendarMonthRowComponent implements OnChanges {
       );
       this.firstDayOfRow = this.daysSliced[0];
       this.startDate = this.daysSliced[0].date;
-      this.endDate = this.daysSliced[6].date;
+      this.endDate = this.daysSliced[this.view.totalDaysVisibleInWeek - 1].date;
       const notesCopy = this.deepCopyFunction(this.notes);
       this.currentRowNotes = notesCopy.filter((note: CalendarEvent) => {
         return (
@@ -68,15 +68,16 @@ export class CalendarMonthRowComponent implements OnChanges {
           (note.start < this.startDate && note.end > this.endDate)
         );
       });
-      let index = 0;
-      this.daysSliced.forEach((daySliced) => {
-        const currentDay = daySliced.date;
-        const notesOfTheDay = this.currentRowNotes.filter(
-          (note) => note.start <= currentDay && note.end >= currentDay
-        );
-        this.notesPerDay[index] = notesOfTheDay;
-        index = index + 1;
-      });
+
+      this.notesPerDay = this.daysSliced.reduce(
+        (notesPerDay, weekDay, currentIndex) => {
+          notesPerDay[currentIndex] = this.currentRowNotes.filter(
+            (note) => note.start <= weekDay.date && weekDay.date < note.end
+          );
+          return notesPerDay;
+        },
+        {}
+      );
 
       // tslint:disable-next-line:forin
       for (const notePerDay in this.notesPerDay) {
@@ -93,15 +94,12 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   manageLeft(note: CalendarEvent): string {
-    const fromWeekStartToNoteStartInDays = this.dateDiffIndays(
-      this.daysSliced[0].date,
-      note.start
+    const noteStartIndex = this.daysSliced.findIndex(
+      (weekDay) => weekDay.date.getTime() === note.start.getTime()
     );
-    const noteStartOnWeek =
-      fromWeekStartToNoteStartInDays > 0 && fromWeekStartToNoteStartInDays <= 7;
     let left: number;
-    if (noteStartOnWeek) {
-      left = fromWeekStartToNoteStartInDays * (100 / 7);
+    if (noteStartIndex > 0) {
+      left = noteStartIndex * (100 / this.view.totalDaysVisibleInWeek);
     } else {
       left = 0;
     }
@@ -116,8 +114,9 @@ export class CalendarMonthRowComponent implements OnChanges {
       .filter((value) => !value.meta.order)
       .sort(
         (prev, current) =>
-          this.dateDiffIndays(prev.end, prev.start) -
-          this.dateDiffIndays(current.end, current.start)
+          current.end.getTime() -
+          current.start.getTime() -
+          (prev.end.getTime() - prev.start.getTime())
       );
     ordersReserved = notes
       .filter((value) => value.meta.order)
@@ -137,52 +136,38 @@ export class CalendarMonthRowComponent implements OnChanges {
 
   manageWidth(note: CalendarEvent): string {
     let width: number;
-    const oneDayInMs = 1000 * 60 * 60 * 24;
-    const weekEndDate = new Date(
-      this.daysSliced[6].date.getTime() + oneDayInMs - 1
+    const noteStartIndex = this.daysSliced.findIndex(
+      (weekDay) => weekDay.date.getTime() === note.start.getTime()
     );
-    const noteLengthInDays = this.dateDiffIndays(note.start, note.end);
-    const fromWeekStartToNoteStartInDays = this.dateDiffIndays(
-      this.daysSliced[0].date,
-      note.start
-    );
-    const fromWeekStartToNoteEndInDays = this.dateDiffIndays(
-      this.daysSliced[0].date,
-      note.end
-    );
-    const fromNoteStartToWeekEndInDays = this.dateDiffIndays(
-      note.start,
-      weekEndDate
-    );
+    const noteEndIndex =
+      this.daysSliced.findIndex(
+        (weekDay) => weekDay.date.getTime() === note.end.getTime()
+      ) - 1;
 
-    const noteStartOnWeek =
-      fromWeekStartToNoteStartInDays > 0 && fromWeekStartToNoteStartInDays <= 7;
-    const noteEndOnWeek =
-      fromWeekStartToNoteEndInDays > 0 && fromWeekStartToNoteEndInDays <= 7;
+    const noteStartOnWeek = noteStartIndex > -1;
+    const noteEndOnWeek = noteEndIndex > -1;
+
+    const fromNoteStartToWeekEndInDays =
+      this.view.totalDaysVisibleInWeek - noteStartIndex;
+    const fromWeekStartToNoteEndInDays = noteEndIndex + 1;
+    const noteLengthInDays = noteEndIndex - noteStartIndex + 1;
 
     if (noteStartOnWeek && noteEndOnWeek) {
-      width = noteLengthInDays * (100 / 7);
+      width = noteLengthInDays * (100 / this.view.totalDaysVisibleInWeek);
     }
     if (!noteStartOnWeek && noteEndOnWeek) {
-      width = fromWeekStartToNoteEndInDays * (100 / 7);
+      width =
+        fromWeekStartToNoteEndInDays * (100 / this.view.totalDaysVisibleInWeek);
     }
     if (noteStartOnWeek && !noteEndOnWeek) {
-      width = fromNoteStartToWeekEndInDays * (100 / 7);
+      width =
+        fromNoteStartToWeekEndInDays * (100 / this.view.totalDaysVisibleInWeek);
     }
     if (!noteStartOnWeek && !noteEndOnWeek) {
       width = 100;
     }
-    return 'calc(' + width + '% - 5px)';
-  }
 
-  dateDiffIndays(date1: Date, date2: Date): number {
-    const oneDayInMs = 1000 * 60 * 60 * 24;
-    const differenceInMs = date2.getTime() - date1.getTime();
-    const differenceInMsAbs = Math.abs(differenceInMs);
-    const differenceInDays =
-      Math.floor(differenceInMsAbs / oneDayInMs) +
-      (differenceInMsAbs % oneDayInMs > 0 ? 1 : 0);
-    return differenceInMs > 0 ? differenceInDays : differenceInDays * -1;
+    return 'calc(' + width + '% - 5px)';
   }
 
   deepCopyFunction(obj) {
