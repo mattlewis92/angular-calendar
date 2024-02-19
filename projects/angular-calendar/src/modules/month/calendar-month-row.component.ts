@@ -6,6 +6,8 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
+// import moment from "moment";
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'mwl-calendar-month-row',
@@ -62,17 +64,29 @@ export class CalendarMonthRowComponent implements OnChanges {
       this.endDate = this.daysSliced[this.view.totalDaysVisibleInWeek - 1].date;
       const notesCopy = this.deepCopyFunction(this.notes);
       this.currentRowNotes = notesCopy.filter((note: CalendarEvent) => {
+        const noteEnd = moment.tz(note.end, this.timezone).add(1, 'd').toDate();
+        const weekEnd = moment
+          .tz(this.endDate, this.timezone)
+          .add(1, 'd')
+          .toDate();
         return (
-          (note.start >= this.startDate && note.start <= this.endDate) ||
-          (note.end >= this.startDate && note.end <= this.endDate) ||
-          (note.start < this.startDate && note.end > this.endDate)
+          (note.start >= this.startDate && note.start < weekEnd) ||
+          (noteEnd >= this.startDate && noteEnd < weekEnd) ||
+          (note.start < this.startDate && noteEnd > weekEnd)
         );
       });
 
       this.notesPerDay = this.daysSliced.reduce(
         (notesPerDay, weekDay, currentIndex) => {
           notesPerDay[currentIndex] = this.currentRowNotes.filter(
-            (note) => note.start <= weekDay.date && weekDay.date < note.end
+            // (note) => note.start <= weekDay.date && weekDay.date < note.end
+            (note) => {
+              const noteEnd = moment
+                .tz(note.end, this.timezone)
+                .add(1, 'd')
+                .toDate();
+              return note.start <= weekDay.date && weekDay.date < noteEnd;
+            }
           );
           return notesPerDay;
         },
@@ -114,9 +128,8 @@ export class CalendarMonthRowComponent implements OnChanges {
       .filter((value) => !value.meta.order)
       .sort(
         (prev, current) =>
-          current.end.getTime() -
-          current.start.getTime() -
-          (prev.end.getTime() - prev.start.getTime())
+          this.noteLengthInDaysOnWeek(current) -
+          this.noteLengthInDaysOnWeek(prev)
       );
     ordersReserved = notes
       .filter((value) => value.meta.order)
@@ -135,39 +148,41 @@ export class CalendarMonthRowComponent implements OnChanges {
   }
 
   manageWidth(note: CalendarEvent): string {
-    let width: number;
+    const width =
+      this.noteLengthInDaysOnWeek(note) *
+      (100 / this.view.totalDaysVisibleInWeek);
+    return 'calc(' + width + '% - 5px)';
+  }
+
+  noteLengthInDaysOnWeek(note: CalendarEvent) {
+    const noteEnd = moment.tz(note.end, this.timezone).add(1, 'd').toDate();
     const noteStartIndex = this.daysSliced.findIndex(
       (weekDay) => weekDay.date.getTime() === note.start.getTime()
     );
-    const noteEndIndex =
-      this.daysSliced.findIndex(
-        (weekDay) => weekDay.date.getTime() === note.end.getTime()
-      ) - 1;
+    const noteEndIndex = this.daysSliced.findIndex(
+      (weekDay) => weekDay.date.getTime() === noteEnd.getTime()
+    );
 
     const noteStartOnWeek = noteStartIndex > -1;
     const noteEndOnWeek = noteEndIndex > -1;
 
     const fromNoteStartToWeekEndInDays =
       this.view.totalDaysVisibleInWeek - noteStartIndex;
-    const fromWeekStartToNoteEndInDays = noteEndIndex + 1;
-    const noteLengthInDays = noteEndIndex - noteStartIndex + 1;
+    const fromWeekStartToNoteEndInDays = noteEndIndex;
+    const noteLengthInDays = noteEndIndex - noteStartIndex;
 
     if (noteStartOnWeek && noteEndOnWeek) {
-      width = noteLengthInDays * (100 / this.view.totalDaysVisibleInWeek);
+      return noteLengthInDays;
     }
     if (!noteStartOnWeek && noteEndOnWeek) {
-      width =
-        fromWeekStartToNoteEndInDays * (100 / this.view.totalDaysVisibleInWeek);
+      return fromWeekStartToNoteEndInDays;
     }
     if (noteStartOnWeek && !noteEndOnWeek) {
-      width =
-        fromNoteStartToWeekEndInDays * (100 / this.view.totalDaysVisibleInWeek);
+      return fromNoteStartToWeekEndInDays;
     }
     if (!noteStartOnWeek && !noteEndOnWeek) {
-      width = 100;
+      return this.view.totalDaysVisibleInWeek;
     }
-
-    return 'calc(' + width + '% - 5px)';
   }
 
   deepCopyFunction(obj) {
