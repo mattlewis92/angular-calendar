@@ -6,7 +6,6 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { CalendarEvent, MonthView, WeekDay } from 'calendar-utils';
-// import moment from "moment";
 import * as moment from 'moment-timezone';
 
 @Component({
@@ -78,16 +77,13 @@ export class CalendarMonthRowComponent implements OnChanges {
 
       this.notesPerDay = this.daysSliced.reduce(
         (notesPerDay, weekDay, currentIndex) => {
-          notesPerDay[currentIndex] = this.currentRowNotes.filter(
-            // (note) => note.start <= weekDay.date && weekDay.date < note.end
-            (note) => {
-              const noteEnd = moment
-                .tz(note.end, this.timezone)
-                .add(1, 'd')
-                .toDate();
-              return note.start <= weekDay.date && weekDay.date < noteEnd;
-            }
-          );
+          notesPerDay[currentIndex] = this.currentRowNotes.filter((note) => {
+            const noteEnd = moment
+              .tz(note.end, this.timezone)
+              .add(1, 'd')
+              .toDate();
+            return note.start <= weekDay.date && weekDay.date < noteEnd;
+          });
           return notesPerDay;
         },
         {}
