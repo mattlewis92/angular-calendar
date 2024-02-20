@@ -1,6 +1,6 @@
 import { Component, computed, Input, signal, TemplateRef } from '@angular/core';
 import { CalendarEvent, MonthView } from 'calendar-utils';
-import { EventManagerService } from './event-manager.service';
+import { EventManagerService } from '../services/event-manager.service';
 
 @Component({
   selector: 'mwl-calendar-month-row',

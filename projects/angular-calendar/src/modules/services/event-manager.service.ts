@@ -6,13 +6,13 @@ import * as moment from 'moment-timezone';
   providedIn: 'root',
 })
 export class EventManagerService {
-  eventLengthInDaysOnWeek(
-    event: CalendarEvent,
-    week: Date[],
-    timeZone: string
-  ) {
-    const eventStartIndex = this.eventStartIndexOnWeek(event, week);
-    const eventEndIndex = this.eventEndIndexOnWeek(event, week, timeZone);
+  eventPositionOnWeek(event: CalendarEvent, week: Date[]) {
+    const eventStartIndex = week.findIndex(
+      (weekDay) => weekDay.getTime() === event.start.getTime()
+    );
+    const eventEndIndex = week.findIndex(
+      (weekDay) => weekDay.getTime() === event.end.getTime()
+    );
 
     const eventStartOnWeek = eventStartIndex > -1;
     const eventEndOnWeek = eventEndIndex > -1;
@@ -22,16 +22,28 @@ export class EventManagerService {
     const eventLengthInDays = eventEndIndex - eventStartIndex;
 
     if (eventStartOnWeek && eventEndOnWeek) {
-      return eventLengthInDays;
+      return {
+        start: eventStartIndex,
+        length: eventLengthInDays,
+      };
     }
     if (!eventStartOnWeek && eventEndOnWeek) {
-      return fromWeekStartToEventEndInDays;
+      return {
+        start: 0,
+        length: fromWeekStartToEventEndInDays,
+      };
     }
     if (eventStartOnWeek && !eventEndOnWeek) {
-      return fromEventStartToWeekEndInDays;
+      return {
+        start: eventStartIndex,
+        length: fromEventStartToWeekEndInDays,
+      };
     }
     if (!eventStartOnWeek && !eventEndOnWeek) {
-      return week.length;
+      return {
+        start: 0,
+        length: week.length,
+      };
     }
   }
 
@@ -39,12 +51,11 @@ export class EventManagerService {
     const endDate = week[week.length - 1];
     const startDate = week[0];
     return allEvents.filter((event: CalendarEvent) => {
-      const eventEnd = moment.tz(event.end, timeZone).add(1, 'd').toDate();
       const weekEnd = moment.tz(endDate, timeZone).add(1, 'd').toDate();
       return (
         (event.start >= startDate && event.start < weekEnd) ||
-        (eventEnd >= startDate && eventEnd < weekEnd) ||
-        (event.start < startDate && eventEnd > weekEnd)
+        (event.end >= startDate && event.end < weekEnd) ||
+        (event.start < startDate && event.end > weekEnd)
       );
     });
   }
@@ -70,8 +81,7 @@ export class EventManagerService {
     );
     const eventsPerDayOnWeekWithTop = this.computeTopOnWeek(
       eventsPerDayOnWeek,
-      week,
-      timeZone
+      week
     );
     const eventsPerDayOnWeekWithTopAndLeft = this.computeLeftOnWeek(
       eventsPerDayOnWeekWithTop,
@@ -79,8 +89,7 @@ export class EventManagerService {
     );
     const eventsPerDayOnWeekWithTopAndLeftAndWidth = this.computeWidthOnWeek(
       eventsPerDayOnWeekWithTopAndLeft,
-      week,
-      timeZone
+      week
     );
     return eventsPerDayOnWeekWithTopAndLeftAndWidth;
   }
@@ -98,24 +107,10 @@ export class EventManagerService {
         week,
         timeZone
       ).filter((event) => {
-        const eventEnd = moment.tz(event.end, timeZone).add(1, 'd').toDate();
-        return event.start <= weekDay && weekDay < eventEnd;
+        return event.start <= weekDay && weekDay < event.end;
       });
       return eventsPerDay;
     }, {});
-  }
-
-  eventStartIndexOnWeek(event: CalendarEvent, week: Date[]) {
-    return week.findIndex(
-      (weekDay) => weekDay.getTime() === event.start.getTime()
-    );
-  }
-
-  eventEndIndexOnWeek(event: CalendarEvent, week: Date[], timeZone: string) {
-    const eventEnd = moment.tz(event.end, timeZone).add(1, 'd').toDate();
-    return week.findIndex(
-      (weekDay) => weekDay.getTime() === eventEnd.getTime()
-    );
   }
 
   computeLeftOnWeek<
@@ -162,14 +157,8 @@ export class EventManagerService {
       left: number;
     }
   >(event: CalendarEvent<MetaType>, week: Date[]): number {
-    const eventStartIndexOnWeek = this.eventStartIndexOnWeek(event, week);
-    let left: number;
-    if (eventStartIndexOnWeek > 0) {
-      left = eventStartIndexOnWeek * (100 / week.length);
-    } else {
-      left = 0;
-    }
-    return left;
+    const eventPositionOnWeek = this.eventPositionOnWeek(event, week);
+    return eventPositionOnWeek.start * (100 / week.length);
   }
 
   computeWidthOnWeek<
@@ -178,8 +167,7 @@ export class EventManagerService {
     }
   >(
     eventsPerDayOnWeek: { [index: number]: CalendarEvent<MetaType>[] },
-    week: Date[],
-    timeZone: string
+    week: Date[]
   ): {
     [dayWeekIndex: number]: CalendarEvent<MetaType>[];
   } {
@@ -187,7 +175,7 @@ export class EventManagerService {
       (eventsPerDayOnWeekWithTop, currentDayKey) => {
         const dayEvents = eventsPerDayOnWeek[currentDayKey];
         eventsPerDayOnWeekWithTop[currentDayKey] =
-          this.computeWidthOnDayEvents<MetaType>(dayEvents, week, timeZone);
+          this.computeWidthOnDayEvents<MetaType>(dayEvents, week);
         return eventsPerDayOnWeekWithTop;
       },
       {}
@@ -200,14 +188,13 @@ export class EventManagerService {
     }
   >(
     dayEvents: CalendarEvent<MetaType>[],
-    week: Date[],
-    timeZone: string
+    week: Date[]
   ): CalendarEvent<MetaType>[] {
     const computedDayEvents = structuredClone(dayEvents);
     return computedDayEvents.map((event) => {
       event.meta = {
         ...event.meta,
-        width: this.computeWidthOnDayEvent(event, week, timeZone),
+        width: this.computeWidthOnDayEvent(event, week),
       };
       return event;
     });
@@ -217,10 +204,9 @@ export class EventManagerService {
     MetaType = {
       width: number;
     }
-  >(event: CalendarEvent<MetaType>, week: Date[], timeZone: string): number {
-    const width =
-      this.eventLengthInDaysOnWeek(event, week, timeZone) * (100 / week.length);
-    return width;
+  >(event: CalendarEvent<MetaType>, week: Date[]): number {
+    const eventPositionOnWeek = this.eventPositionOnWeek(event, week);
+    return eventPositionOnWeek.length * (100 / week.length);
   }
 
   computeTopOnWeek<
@@ -230,8 +216,7 @@ export class EventManagerService {
     }
   >(
     eventsPerDayOnWeek: { [index: number]: CalendarEvent<MetaType>[] },
-    week: Date[],
-    timeZone: string
+    week: Date[]
   ): {
     [dayWeekIndex: number]: CalendarEvent[];
   } {
@@ -240,8 +225,7 @@ export class EventManagerService {
         const dayEvents = eventsPerDayOnWeek[currentDayKey];
         eventsPerDayOnWeekWithTop[currentDayKey] = this.computeTopOnDayEvents(
           dayEvents,
-          week,
-          timeZone
+          week
         );
         return eventsPerDayOnWeekWithTop;
       },
@@ -254,11 +238,7 @@ export class EventManagerService {
       top: number;
       order: number;
     }
-  >(
-    dayEvents: CalendarEvent[],
-    week: Date[],
-    timeZone: string
-  ): CalendarEvent<MetaType>[] {
+  >(dayEvents: CalendarEvent[], week: Date[]): CalendarEvent<MetaType>[] {
     let tabWithoutOrder: CalendarEvent[] = [];
     let ordersReserved: number[] = [];
     const computedDayEvents = structuredClone(dayEvents);
@@ -267,8 +247,8 @@ export class EventManagerService {
       .filter((value) => !value.meta.order)
       .sort(
         (prev, current) =>
-          this.eventLengthInDaysOnWeek(current, week, timeZone) -
-          this.eventLengthInDaysOnWeek(prev, week, timeZone)
+          this.eventPositionOnWeek(current, week).length -
+          this.eventPositionOnWeek(prev, week).length
       );
     ordersReserved = computedDayEvents
       .filter((value) => value.meta.order)
