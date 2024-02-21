@@ -241,16 +241,15 @@ export class EventManagerService {
   >(dayEvents: CalendarEvent[], week: Date[]): CalendarEvent<MetaType>[] {
     let tabWithoutOrder: CalendarEvent[] = [];
     let ordersReserved: number[] = [];
-    const computedDayEvents = structuredClone(dayEvents);
 
-    tabWithoutOrder = computedDayEvents
+    tabWithoutOrder = dayEvents
       .filter((value) => !value.meta.order)
       .sort(
         (prev, current) =>
           this.eventPositionOnWeek(current, week).length -
           this.eventPositionOnWeek(prev, week).length
       );
-    ordersReserved = computedDayEvents
+    ordersReserved = dayEvents
       .filter((value) => value.meta.order)
       .map((value) => +value.meta.order);
 
@@ -263,6 +262,6 @@ export class EventManagerService {
       calendarEvent.meta.order = index;
       calendarEvent.meta.top = index;
     });
-    return computedDayEvents;
+    return dayEvents;
   }
 }
