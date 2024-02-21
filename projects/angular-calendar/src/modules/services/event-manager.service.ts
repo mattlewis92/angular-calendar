@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
-import * as moment from 'moment-timezone';
+import { DateAdapter } from '../../date-adapters';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventManagerService {
+  constructor(private dateAdapter: DateAdapter) {}
+
   eventPositionOnWeek(event: CalendarEvent, week: Date[]) {
     const eventStartIndex = week.findIndex(
       (weekDay) => weekDay.getTime() === event.start.getTime()
@@ -51,7 +53,7 @@ export class EventManagerService {
     const endDate = week[week.length - 1];
     const startDate = week[0];
     return allEvents.filter((event: CalendarEvent) => {
-      const weekEnd = moment.tz(endDate, timeZone).add(1, 'd').toDate();
+      const weekEnd = this.dateAdapter.addDays(endDate, 1);
       return (
         (event.start >= startDate && event.start < weekEnd) ||
         (event.end >= startDate && event.end < weekEnd) ||
