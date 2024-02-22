@@ -59,7 +59,7 @@ export class CalendarMonthRowComponent {
 
   @Input()
   set notes(notes: CalendarEvent[]) {
-    this.notesSignal.set(notes);
+    this.notesSignal.set(structuredClone(notes));
   }
 
   @Input() set view(view: MonthView) {

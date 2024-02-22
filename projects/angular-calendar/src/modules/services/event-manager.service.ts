@@ -142,7 +142,7 @@ export class EventManagerService {
     dayEvents: CalendarEvent<MetaType>[],
     week: Date[]
   ): CalendarEvent<MetaType>[] {
-    const computedDayEvents = structuredClone(dayEvents);
+    const computedDayEvents = dayEvents;
     return computedDayEvents.map<CalendarEvent<MetaType>>((event) => {
       event.meta = {
         ...event.meta,
@@ -190,7 +190,7 @@ export class EventManagerService {
     dayEvents: CalendarEvent<MetaType>[],
     week: Date[]
   ): CalendarEvent<MetaType>[] {
-    const computedDayEvents = structuredClone(dayEvents);
+    const computedDayEvents = dayEvents;
     return computedDayEvents.map((event) => {
       event.meta = {
         ...event.meta,
@@ -262,6 +262,6 @@ export class EventManagerService {
       calendarEvent.meta.order = index;
       calendarEvent.meta.top = index;
     });
-    return dayEvents;
+    return dayEvents.sort((a, b) => a.meta.order - b.meta.order);
   }
 }
