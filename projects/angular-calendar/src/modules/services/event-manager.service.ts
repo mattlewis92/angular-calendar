@@ -47,7 +47,7 @@ export class EventManagerService {
     }
   }
 
-  eventsOnWeek(allEvents: CalendarEvent[], week: Date[], timeZone: string) {
+  eventsOnWeek(allEvents: CalendarEvent[], week: Date[]) {
     const endDate = week[week.length - 1];
     const startDate = week[0];
     return allEvents.filter((event: CalendarEvent) => {
@@ -69,15 +69,13 @@ export class EventManagerService {
     }
   >(
     allEvents: CalendarEvent<MetaType>[],
-    week: Date[],
-    timeZone: string
+    week: Date[]
   ): {
     [index: number]: CalendarEvent<MetaType>[];
   } {
     const eventsPerDayOnWeek = this.eventsPerDayOnWeek<MetaType>(
       allEvents,
-      week,
-      timeZone
+      week
     );
     const eventsPerDayOnWeekWithTop = this.computeTopOnWeek(
       eventsPerDayOnWeek,
@@ -96,19 +94,16 @@ export class EventManagerService {
 
   eventsPerDayOnWeek<MetaType>(
     allEvents: CalendarEvent<MetaType>[],
-    week: Date[],
-    timeZone: string
+    week: Date[]
   ): {
     [dayWeekIndex: number]: CalendarEvent[];
   } {
     return week.reduce((eventsPerDay, weekDay, currentIndex) => {
-      eventsPerDay[currentIndex] = this.eventsOnWeek(
-        allEvents,
-        week,
-        timeZone
-      ).filter((event) => {
-        return event.start <= weekDay && weekDay < event.end;
-      });
+      eventsPerDay[currentIndex] = this.eventsOnWeek(allEvents, week).filter(
+        (event) => {
+          return event.start <= weekDay && weekDay < event.end;
+        }
+      );
       return eventsPerDay;
     }, {});
   }

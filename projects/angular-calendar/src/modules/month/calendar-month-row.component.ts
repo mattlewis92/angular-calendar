@@ -51,8 +51,7 @@ export class CalendarMonthRowComponent {
   notesPerDaySignal = computed(() =>
     this.eventManagerService.eventsPerDayOnWeekWithPosition(
       this.notesSignal(),
-      this.weekSignal(),
-      this.timezoneSignal()
+      this.weekSignal()
     )
   );
   constructor(private eventManagerService: EventManagerService) {}
