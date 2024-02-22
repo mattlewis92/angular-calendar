@@ -7,6 +7,7 @@ import { CalendarMonthCellComponent } from './calendar-month-cell.component';
 import { CalendarOpenDayEventsComponent } from './calendar-open-day-events.component';
 import { CalendarCommonModule } from '../common/calendar-common.module';
 import { CalendarMonthRowComponent } from './calendar-month-row.component';
+import { EventManagerService } from '../services/event-manager.service';
 
 export {
   CalendarMonthViewComponent,
@@ -37,5 +38,6 @@ export { CalendarMonthRowComponent } from './calendar-month-row.component';
     CalendarMonthViewHeaderComponent,
     CalendarMonthRowComponent,
   ],
+  providers: [EventManagerService],
 })
 export class CalendarMonthModule {}

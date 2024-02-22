@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 import { DateAdapter } from '../../date-adapters';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class EventManagerService {
   constructor(private dateAdapter: DateAdapter) {}
 
