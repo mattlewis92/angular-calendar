@@ -10,9 +10,13 @@ export class EventManagerService {
     const eventStartIndex = week.findIndex(
       (weekDay) => weekDay.getTime() === event.start.getTime()
     );
-    const eventEndIndex = week.findIndex(
-      (weekDay) => weekDay.getTime() === event.end.getTime()
-    );
+    const eventEndIndex = week.findIndex((weekDay) => {
+      if (event.end) {
+        const nextDayStart = this.dateAdapter.addDays(event.end, 1);
+        return weekDay.getTime() === nextDayStart.getTime();
+      }
+      return false;
+    });
 
     const eventStartOnWeek = eventStartIndex > -1;
     const eventEndOnWeek = eventEndIndex > -1;
@@ -45,6 +49,7 @@ export class EventManagerService {
         length: week.length,
       };
     }
+    return { start: 0, length: 0 };
   }
 
   eventsOnWeek(allEvents: CalendarEvent[], week: Date[]) {
@@ -52,10 +57,13 @@ export class EventManagerService {
     const startDate = week[0];
     return allEvents.filter((event: CalendarEvent) => {
       const weekEnd = this.dateAdapter.addDays(endDate, 1);
+      const nextDayStart = event.end
+        ? this.dateAdapter.addDays(event.end, 1)
+        : null;
       return (
         (event.start >= startDate && event.start < weekEnd) ||
-        (event.end >= startDate && event.end < weekEnd) ||
-        (event.start < startDate && event.end > weekEnd)
+        (nextDayStart && nextDayStart >= startDate && nextDayStart < weekEnd) ||
+        (event.start < startDate && nextDayStart && nextDayStart > weekEnd)
       );
     });
   }
@@ -85,11 +93,7 @@ export class EventManagerService {
       eventsPerDayOnWeekWithTop,
       week
     );
-    const eventsPerDayOnWeekWithTopAndLeftAndWidth = this.computeWidthOnWeek(
-      eventsPerDayOnWeekWithTopAndLeft,
-      week
-    );
-    return eventsPerDayOnWeekWithTopAndLeftAndWidth;
+    return this.computeWidthOnWeek(eventsPerDayOnWeekWithTopAndLeft, week);
   }
 
   eventsPerDayOnWeek<MetaType>(
@@ -98,14 +102,24 @@ export class EventManagerService {
   ): {
     [dayWeekIndex: number]: CalendarEvent[];
   } {
-    return week.reduce((eventsPerDay, weekDay, currentIndex) => {
-      eventsPerDay[currentIndex] = this.eventsOnWeek(allEvents, week).filter(
-        (event) => {
-          return event.start <= weekDay && weekDay < event.end;
-        }
-      );
-      return eventsPerDay;
-    }, {});
+    return week.reduce(
+      (eventsPerDay, weekDay, currentIndex) => {
+        eventsPerDay[currentIndex] = this.eventsOnWeek(allEvents, week).filter(
+          (event) => {
+            const nextDayStart = event.end
+              ? this.dateAdapter.addDays(event.end, 1)
+              : null;
+            return (
+              event.start <= weekDay && nextDayStart && weekDay < nextDayStart
+            );
+          }
+        );
+        return eventsPerDay;
+      },
+      {} as {
+        [dayWeekIndex: number]: CalendarEvent[];
+      }
+    );
   }
 
   computeLeftOnWeek<
@@ -120,12 +134,14 @@ export class EventManagerService {
   } {
     return Object.keys(eventsPerDayOnWeek).reduce(
       (eventsPerDayOnWeekWithTop, currentDayKey) => {
-        const dayEvents = eventsPerDayOnWeek[currentDayKey];
-        eventsPerDayOnWeekWithTop[currentDayKey] =
+        const dayEvents = eventsPerDayOnWeek[+currentDayKey];
+        eventsPerDayOnWeekWithTop[+currentDayKey] =
           this.computeLeftOnDayEvents<MetaType>(dayEvents, week);
         return eventsPerDayOnWeekWithTop;
       },
-      {}
+      {} as {
+        [dayWeekIndex: number]: CalendarEvent[];
+      }
     );
   }
 
@@ -137,12 +153,11 @@ export class EventManagerService {
     dayEvents: CalendarEvent<MetaType>[],
     week: Date[]
   ): CalendarEvent<MetaType>[] {
-    const computedDayEvents = dayEvents;
-    return computedDayEvents.map<CalendarEvent<MetaType>>((event) => {
+    return dayEvents.map<CalendarEvent<MetaType>>((event) => {
       event.meta = {
         ...event.meta,
         left: this.computeLeftOnDayEvent(event, week),
-      };
+      } as MetaType;
       return event;
     });
   }
@@ -152,8 +167,8 @@ export class EventManagerService {
       left: number;
     }
   >(event: CalendarEvent<MetaType>, week: Date[]): number {
-    const eventPositionOnWeek = this.eventPositionOnWeek(event, week);
-    return eventPositionOnWeek.start * (100 / week.length);
+    const eventPositionOnWeekValue = this.eventPositionOnWeek(event, week);
+    return eventPositionOnWeekValue.start * (100 / week.length);
   }
 
   computeWidthOnWeek<
@@ -168,12 +183,14 @@ export class EventManagerService {
   } {
     return Object.keys(eventsPerDayOnWeek).reduce(
       (eventsPerDayOnWeekWithTop, currentDayKey) => {
-        const dayEvents = eventsPerDayOnWeek[currentDayKey];
-        eventsPerDayOnWeekWithTop[currentDayKey] =
+        const dayEvents = eventsPerDayOnWeek[+currentDayKey];
+        eventsPerDayOnWeekWithTop[+currentDayKey] =
           this.computeWidthOnDayEvents<MetaType>(dayEvents, week);
         return eventsPerDayOnWeekWithTop;
       },
-      {}
+      {} as {
+        [dayWeekIndex: number]: CalendarEvent[];
+      }
     );
   }
 
@@ -185,12 +202,11 @@ export class EventManagerService {
     dayEvents: CalendarEvent<MetaType>[],
     week: Date[]
   ): CalendarEvent<MetaType>[] {
-    const computedDayEvents = dayEvents;
-    return computedDayEvents.map((event) => {
+    return dayEvents.map((event) => {
       event.meta = {
         ...event.meta,
         width: this.computeWidthOnDayEvent(event, week),
-      };
+      } as MetaType;
       return event;
     });
   }
@@ -217,14 +233,16 @@ export class EventManagerService {
   } {
     return Object.keys(eventsPerDayOnWeek).reduce(
       (eventsPerDayOnWeekWithTop, currentDayKey) => {
-        const dayEvents = eventsPerDayOnWeek[currentDayKey];
-        eventsPerDayOnWeekWithTop[currentDayKey] = this.computeTopOnDayEvents(
+        const dayEvents = eventsPerDayOnWeek[+currentDayKey];
+        eventsPerDayOnWeekWithTop[+currentDayKey] = this.computeTopOnDayEvents(
           dayEvents,
           week
         );
         return eventsPerDayOnWeekWithTop;
       },
-      {}
+      {} as {
+        [dayWeekIndex: number]: CalendarEvent[];
+      }
     );
   }
 
@@ -234,10 +252,9 @@ export class EventManagerService {
       order: number;
     }
   >(dayEvents: CalendarEvent[], week: Date[]): CalendarEvent<MetaType>[] {
-    let tabWithoutOrder: CalendarEvent[] = [];
     let ordersReserved: number[] = [];
 
-    tabWithoutOrder = dayEvents
+    const tabWithoutOrder = dayEvents
       .filter((value) => !value.meta.order)
       .sort(
         (prev, current) =>
