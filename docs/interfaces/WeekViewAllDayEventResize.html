@@ -321,10 +321,11 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         (dragLeave)&#x3D;&quot;dragLeave(&#x27;allDay&#x27;)&quot;
       &gt;
         &lt;div class&#x3D;&quot;cal-day-columns&quot;&gt;
-          &lt;div
-            class&#x3D;&quot;cal-time-label-column&quot;
-            [ngTemplateOutlet]&#x3D;&quot;allDayEventsLabelTemplate&quot;
-          &gt;&lt;/div&gt;
+          &lt;div class&#x3D;&quot;cal-time-label-column&quot;&gt;
+            &lt;ng-container
+              *ngTemplateOutlet&#x3D;&quot;allDayEventsLabelTemplate&quot;
+            &gt;&lt;/ng-container&gt;
+          &lt;/div&gt;
           &lt;div
             class&#x3D;&quot;cal-day-column&quot;
             *ngFor&#x3D;&quot;let day of days; trackBy: trackByWeekDayHeaderDate&quot;
