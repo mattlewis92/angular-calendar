@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.31.1](https://github.com/mattlewis92/angular-calendar/compare/v0.31.0...v0.31.1) (2024-04-19)
+
+
+### Bug Fixes
+
+* **week-view:** allDayEventsLabelTemplate rendered outside of container ([#1708](https://github.com/mattlewis92/angular-calendar/issues/1708)) ([46ea34d](https://github.com/mattlewis92/angular-calendar/commit/46ea34d214ec38801b30a398e3759b12a14f989e))
+
 ## [0.31.0](https://github.com/mattlewis92/angular-calendar/compare/v0.30.1...v0.31.0) (2022-12-11)
 
 
