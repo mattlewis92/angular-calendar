@@ -147,7 +147,9 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": ["@angular-eslint/schematics"],
+    "analytics": false,
+    "packageManager": "pnpm"
   },
   "schematics": {
     "@angular-eslint/schematics:application": {
