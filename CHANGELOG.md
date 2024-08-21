@@ -330,7 +330,7 @@ The `getDayView` and `getDayViewHourGrid` functions have been removed from the `
 
 The following interfaces from `calendar-utils` were renamed: `DayViewHourSegment` -> `WeekViewHourSegment`, `DayViewHour` -> `WeekViewHour`, `DayViewEvent` -> `WeekViewTimeEvent`
 
-The day view scheduler demo is now based off the week view instead, please check the updated demo code for how to migrate: https://mattlewis-github.com/angular-calendar/#/day-view-scheduler
+The day view scheduler demo is now based off the week view instead, please check the updated demo code for how to migrate: https://mattlewis92.github.io/angular-calendar/#/day-view-scheduler
 
 If using a custom template for the `hourSegmentTemplate`, you must pass `let-isTimeLabel="isTimeLabel"` as a local variable and then change `<div class="cal-time">` to `<div class="cal-time" *ngIf="isTimeLabel">`
 * the dist files are no longer annotated for usage with closure compiler.
@@ -1264,7 +1264,7 @@ People using custom day event event templates can also remove these lines from t
 ### BREAKING CHANGES
 
 * **monthView:** the `dayModifier` input has been replaced with a more powerful `beforeViewRender`
-output. See [the demo](https://mattlewis-github.com/angular-calendar/#/before-view-render) for an example of how to migrate your code.
+output. See [the demo](https://mattlewis92.github.io/angular-calendar/#/before-view-render) for an example of how to migrate your code.
 * **dayView:** the `hourSegmentModifier` has been replaced with the `beforeViewRender` output.
 * For system.js users only, the UMD path to the `calendar-utils` module has changed from `calendar-utils/dist/umd/calendarUtils.js` to `calendar-utils/dist/umd/calendar-utils.js`
 * **weekView:** the `allowDragOutside` option has been removed from the week view as this can be implemented in user land. Please see this plunker for how to introduce it yourself: http://plnkr.co/edit/5KyUBC0lnfMsYMcVFAR9?p=preview
