@@ -8,7 +8,7 @@
       "description": "Which date adapter to use",
       "type": "string",
       "default": "date-fns",
-      "enum": ["moment", "date-fns"],
+      "enum": ["moment", "date-fns", "luxon"],
       "x-prompt": {
         "message": "What date adapter would you like to use?",
         "type": "list",
@@ -20,6 +20,10 @@
           {
             "value": "moment",
             "label": "moment          [ https://momentjs.com/ ]"
+          },
+          {
+            "value": "luxon",
+            "label": "luxon          [ https://moment.github.io/luxon/ ]"
           }
         ]
       }
