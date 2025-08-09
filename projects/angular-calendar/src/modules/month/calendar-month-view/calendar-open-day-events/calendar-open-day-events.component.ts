@@ -5,39 +5,8 @@ import {
   EventEmitter,
   TemplateRef,
 } from '@angular/core';
-import {
-  trigger,
-  style,
-  state,
-  transition,
-  animate,
-  AnimationTriggerMetadata,
-} from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold, trackByEventId } from '../../../common/util/util';
-
-export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
-  state(
-    'void',
-    style({
-      height: 0,
-      overflow: 'hidden',
-      'padding-top': 0,
-      'padding-bottom': 0,
-    })
-  ),
-  state(
-    '*',
-    style({
-      height: '*',
-      overflow: 'hidden',
-      'padding-top': '*',
-      'padding-bottom': '*',
-    })
-  ),
-  transition('* => void', animate('150ms ease-out')),
-  transition('void => *', animate('150ms ease-in')),
-]);
 
 @Component({
   selector: 'mwl-calendar-open-day-events',
@@ -51,9 +20,8 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       let-validateDrag="validateDrag"
     >
       <div
-        class="cal-open-day-events"
-        [@collapse]
-        *ngIf="isOpen"
+        class="cal-open-day-events collapse"
+        [class.open]="isOpen"
         role="application"
       >
         <span
@@ -126,7 +94,39 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
     >
     </ng-template>
   `,
-  animations: [collapseAnimation],
+  styles: [
+    `
+      :host {
+        --collapse-pad-y: 16px; /* target vertical padding when open */
+        --collapse-ceil: 1200px; /* raise if content can be taller */
+      }
+
+      /* closed state */
+      .collapse {
+        overflow: hidden;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: max-height 150ms ease-out, padding-top 150ms ease-out,
+          padding-bottom 150ms ease-out;
+      }
+
+      /* open state */
+      .collapse.open {
+        max-height: var(--collapse-ceil);
+        padding-top: var(--collapse-pad-y);
+        padding-bottom: var(--collapse-pad-y);
+        transition: max-height 150ms ease-in, padding-top 150ms ease-in,
+          padding-bottom 150ms ease-in;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .collapse {
+          transition: none;
+        }
+      }
+    `,
+  ],
 })
 export class CalendarOpenDayEventsComponent {
   @Input() locale: string;

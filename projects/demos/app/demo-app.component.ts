@@ -176,7 +176,6 @@ export class DemoAppComponent implements OnInit {
 import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { DemoModule } from './demo/module';
 import { DemoComponent } from './demo/component';
@@ -184,7 +183,6 @@ import { DemoComponent } from './demo/component';
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     DemoModule
   ],
   bootstrap: [DemoComponent]
@@ -226,7 +224,6 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/platform-browser-dynamic': dependencyVersions.angular,
           '@angular/router': dependencyVersions.angular,
           '@angular/forms': dependencyVersions.angular,
-          '@angular/animations': dependencyVersions.angular,
           rxjs: dependencyVersions.rxjs,
           'zone.js': dependencyVersions.zoneJs,
           'angular-draggable-droppable': `^${dependencyVersions.angularDraggableDroppable}`,

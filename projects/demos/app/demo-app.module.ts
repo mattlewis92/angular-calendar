@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NgbNavModule,
   NgbCollapseModule,
@@ -21,7 +20,6 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
   declarations: [DemoAppComponent, CarbonAdComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     NgbNavModule,
     NgbCollapseModule,

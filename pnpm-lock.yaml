@@ -43,9 +43,6 @@ devDependencies:
   '@angular-eslint/template-parser':
     specifier: 15.1.0
     version: 15.1.0(eslint@8.29.0)(typescript@4.8.4)
-  '@angular/animations':
-    specifier: ^15.0.3
-    version: 15.0.3(@angular/core@15.0.3)
   '@angular/cdk':
     specifier: ^15.0.2
     version: 15.0.2(@angular/common@15.0.3)(@angular/core@15.0.3)(rxjs@7.6.0)
@@ -75,7 +72,7 @@ devDependencies:
     version: 15.0.3(@angular/compiler-cli@15.0.3)(@angular/compiler@15.0.3)
   '@angular/platform-browser':
     specifier: ^15.0.3
-    version: 15.0.3(@angular/animations@15.0.3)(@angular/common@15.0.3)(@angular/core@15.0.3)
+    version: 15.0.3(@angular/common@15.0.3)(@angular/core@15.0.3)
   '@angular/platform-browser-dynamic':
     specifier: ^15.0.3
     version: 15.0.3(@angular/common@15.0.3)(@angular/compiler@15.0.3)(@angular/core@15.0.3)(@angular/platform-browser@15.0.3)
@@ -589,16 +586,6 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/animations@15.0.3(@angular/core@15.0.3):
-    resolution: {integrity: sha512-kwUprQMjMvMawpyd5aLzW9DWLd7grlzm4ut4YIqXRf1UJm35KsTjwhvQWNj481u2gUjKxD2rBfkVakyzW5Na3A==}
-    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
-    peerDependencies:
-      '@angular/core': 15.0.3
-    dependencies:
-      '@angular/core': 15.0.3(rxjs@7.6.0)(zone.js@0.11.8)
-      tslib: 2.4.1
-    dev: true
-
   /@angular/cdk@15.0.2(@angular/common@15.0.3)(@angular/core@15.0.3)(rxjs@7.6.0):
     resolution: {integrity: sha512-khTZT/vWDLoCkIxXyrpmeFIMfsED3KdKQqWCiuvUHGHhJn5iOa2wDQXQEkrFpNaQ4v1mbHE2I11DljiieIyv5w==}
     peerDependencies:
@@ -714,7 +701,7 @@ packages:
     dependencies:
       '@angular/common': 15.0.3(@angular/core@15.0.3)(rxjs@7.6.0)
       '@angular/core': 15.0.3(rxjs@7.6.0)(zone.js@0.11.8)
-      '@angular/platform-browser': 15.0.3(@angular/animations@15.0.3)(@angular/common@15.0.3)(@angular/core@15.0.3)
+      '@angular/platform-browser': 15.0.3(@angular/common@15.0.3)(@angular/core@15.0.3)
       rxjs: 7.6.0
       tslib: 2.4.1
     dev: true
@@ -753,11 +740,11 @@ packages:
       '@angular/common': 15.0.3(@angular/core@15.0.3)(rxjs@7.6.0)
       '@angular/compiler': 15.0.3(@angular/core@15.0.3)
       '@angular/core': 15.0.3(rxjs@7.6.0)(zone.js@0.11.8)
-      '@angular/platform-browser': 15.0.3(@angular/animations@15.0.3)(@angular/common@15.0.3)(@angular/core@15.0.3)
+      '@angular/platform-browser': 15.0.3(@angular/common@15.0.3)(@angular/core@15.0.3)
       tslib: 2.4.1
     dev: true
 
-  /@angular/platform-browser@15.0.3(@angular/animations@15.0.3)(@angular/common@15.0.3)(@angular/core@15.0.3):
+  /@angular/platform-browser@15.0.3(@angular/common@15.0.3)(@angular/core@15.0.3):
     resolution: {integrity: sha512-XIgAh6/SI4m2JfFdtKWmh8BVPzs3gV8VuOVYdykWrYrhDCVz5X3J7AXGxn9AX1S+dMuQPi91lM1icErunVrCZQ==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
@@ -768,7 +755,6 @@ packages:
       '@angular/animations':
         optional: true
     dependencies:
-      '@angular/animations': 15.0.3(@angular/core@15.0.3)
       '@angular/common': 15.0.3(@angular/core@15.0.3)(rxjs@7.6.0)
       '@angular/core': 15.0.3(rxjs@7.6.0)(zone.js@0.11.8)
       tslib: 2.4.1
@@ -785,7 +771,7 @@ packages:
     dependencies:
       '@angular/common': 15.0.3(@angular/core@15.0.3)(rxjs@7.6.0)
       '@angular/core': 15.0.3(rxjs@7.6.0)(zone.js@0.11.8)
-      '@angular/platform-browser': 15.0.3(@angular/animations@15.0.3)(@angular/common@15.0.3)(@angular/core@15.0.3)
+      '@angular/platform-browser': 15.0.3(@angular/common@15.0.3)(@angular/core@15.0.3)
       rxjs: 7.6.0
       tslib: 2.4.1
     dev: true
@@ -3150,7 +3136,7 @@ packages:
       object-assign: 4.1.1
       open: 8.4.0
       proxy-middleware: 0.15.0
-      send: 0.18.0
+      send: 1.2.0
       serve-index: 1.9.1
     transitivePeerDependencies:
       - supports-color
@@ -6204,6 +6190,18 @@ packages:
       supports-color: 8.1.1
     dev: true
 
+  /debug@4.4.1:
+    resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.3
+    dev: true
+
   /decache@4.6.1:
     resolution: {integrity: sha512-ohApBM8u9ygepJCjgBrEZSSxPjc0T/PJkD+uNyxXPkqudyUpdXpwJYp0VISm2WrPVzASU6DZyIi6BWdyw7uJ2Q==}
     dependencies:
@@ -6588,6 +6586,11 @@ packages:
 
   /encodeurl@1.0.2:
     resolution: {integrity: sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==}
+    engines: {node: '>= 0.8'}
+    dev: true
+
+  /encodeurl@2.0.0:
+    resolution: {integrity: sha512-Q0n9HRi4m6JuGIV1eFlmvJB7ZEVxu93IrMyiMsGC0lrMJMWzRgx6WGquyfQgZVb31vhGgXnfmPNNXmxnOkRBrg==}
     engines: {node: '>= 0.8'}
     dev: true
 
@@ -7646,6 +7649,11 @@ packages:
   /fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
+    dev: true
+
+  /fresh@2.0.0:
+    resolution: {integrity: sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==}
+    engines: {node: '>= 0.8'}
     dev: true
 
   /from@0.1.7:
@@ -9687,11 +9695,23 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /mime-db@1.54.0:
+    resolution: {integrity: sha512-aU5EJuIN2WDemCcAp2vFBfp/m4EAhWJnUNSSw0ixs7/kXbd6Pg64EmwJkNdFhB8aWt1sH2CTXrLxo/iAGV3oPQ==}
+    engines: {node: '>= 0.6'}
+    dev: true
+
   /mime-types@2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
+    dev: true
+
+  /mime-types@3.0.1:
+    resolution: {integrity: sha512-xRc4oEhT6eaBpU1XF7AjpOFD+xQmXNB5OVKwp4tqCuBpHLS/ZbBDrc07mYTDqVMg6PfxUjjNp85O6Cd2Z/5HWA==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.54.0
     dev: true
 
   /mime@1.6.0:
@@ -11741,6 +11761,25 @@ packages:
       fresh: 0.5.2
       http-errors: 2.0.0
       mime: 1.6.0
+      ms: 2.1.3
+      on-finished: 2.4.1
+      range-parser: 1.2.1
+      statuses: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /send@1.2.0:
+    resolution: {integrity: sha512-uaW0WwXKpL9blXE2o0bRhoL2EGXIrZxQ2ZQ4mgcfoBxdFmQold+qWsD2jLrfZ0trjKL6vOw0j//eAwcALFjKSw==}
+    engines: {node: '>= 18'}
+    dependencies:
+      debug: 4.4.1
+      encodeurl: 2.0.0
+      escape-html: 1.0.3
+      etag: 1.8.1
+      fresh: 2.0.0
+      http-errors: 2.0.0
+      mime-types: 3.0.1
       ms: 2.1.3
       on-finished: 2.4.1
       range-parser: 1.2.1
