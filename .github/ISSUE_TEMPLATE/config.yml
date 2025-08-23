@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://mattlewis92.github.io/angular-calendar/docs/
+    about: Please check the documentation for API reference and examples
+  - name: 🎮 Demo Page
+    url: https://mattlewis92.github.io/angular-calendar/
+    about: Check out the interactive demos to see usage examples
+  - name: 💖 Become a Sponsor
+    url: https://github.com/users/mattlewis92/sponsorship
+    about: Support the development of this project

@@ -1,0 +1,55 @@
+name: '🚀 Feature Request'
+description: Suggest an idea for this project
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a new feature!
+
+        **FAQ (please read!):**
+
+        Need an example of how to do something? Check the demo page, it probably has you covered: https://mattlewis92.github.io/angular-calendar/demos/
+
+        Need a full list of all API options? Check the docs for each component:
+        - https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html
+        - https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html
+        - https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html
+
+        Please note that issues that ignore this template will be closed without notice!
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: 'Is your feature request related to a problem? Please describe'
+      description: 'A clear and concise description of what the problem is.'
+      placeholder: "Ex. I'm always frustrated when [...]"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: "Describe the solution you'd like"
+      description: 'A clear and concise description of what you want to happen.'
+      placeholder: 'I would like...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: 'Describe your use case for implementing this feature'
+      description: 'A clear explanation of how you plan to use this feature in your application'
+      placeholder: 'In my application, I would use this feature to...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 'Additional context'
+      description: 'Add any other context or screenshots about the feature request here.'
+      placeholder: 'Any additional information that might be helpful'
+    validations:
+      required: false

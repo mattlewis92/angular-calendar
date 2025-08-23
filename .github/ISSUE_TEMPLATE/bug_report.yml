@@ -1,0 +1,67 @@
+name: '🐛 Bug Report'
+description: Please search Github for a similar issue or PR before submitting
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+        **FAQ (please read!):**
+
+        Styling not appearing? Make sure you're including `node_modules/angular-calendar/css/angular-calendar.css`
+
+        Please note that issues that ignore this template will be closed without notice!
+
+        Please search existing issues first before opening a new one.
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 'Describe the bug'
+      description: "Please describe the bug you're experiencing here."
+      placeholder: 'A clear and concise description of what the bug is.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 'Minimal reproduction of the problem with instructions'
+      description: "A link to a minimally working stackblitz that reproduces the issue (you can fork a starter from any of the demos by hitting the 'Edit in Stackblitz' button)"
+      placeholder: 'Please provide a link to a stackblitz reproduction'
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 'Screenshots'
+      description: 'If applicable, add screenshots to help explain your problem.'
+      placeholder: 'Drag and drop images here or paste them'
+    validations:
+      required: false
+
+  - type: input
+    id: angular-version
+    attributes:
+      label: '@angular/core version'
+      placeholder: 'e.g. 17.0.0'
+    validations:
+      required: true
+
+  - type: input
+    id: calendar-version
+    attributes:
+      label: 'angular-calendar version'
+      placeholder: 'e.g. 0.31.1'
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: 'Browser name and version'
+      placeholder: 'e.g. Chrome 119.0.0.0'
+    validations:
+      required: true
