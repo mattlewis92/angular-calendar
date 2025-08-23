@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2015",
     "declaration": true,
     "stripInternal": true,
     "outDir": "./dist/angular-calendar/date-adapters",
@@ -10,7 +10,7 @@
     "baseUrl": "",
     "inlineSources": true,
     "importHelpers": true,
-    "target": "es5"
+    "target": "es2015"
   },
   "files": [
     "projects/angular-calendar/src/date-adapters/date-fns/index.ts",

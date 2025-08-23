@@ -69,7 +69,7 @@ describe('angular-calendar schematics', () => {
   });
 
   it('should import angular-calendar module to root module', async () => {
-    const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
+    const rootModulePath = `/projects/${projectName}/src/app/app-module.ts`;
     tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
     expect(tree.files).contain(rootModulePath);
 
@@ -80,12 +80,12 @@ describe('angular-calendar schematics', () => {
   });
 
   it('should import angular-calendar module to root module when passed as an option', async () => {
-    const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
+    const rootModulePath = `/projects/${projectName}/src/app/app-module.ts`;
     tree = await runner.runSchematic(
       'ng-add',
       {
         ...defaultOptions,
-        module: 'src/app/app.module.ts',
+        module: 'src/app/app-module.ts',
       },
       appTree,
     );
@@ -110,7 +110,7 @@ describe('angular-calendar schematics', () => {
   });
 
   it('should add the momentAdapterFactory when using moment', async () => {
-    const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
+    const rootModulePath = `/projects/${projectName}/src/app/app-module.ts`;
     tree = await runner.runSchematic(
       'ng-add',
       {

@@ -15,8 +15,9 @@ import {
   TemplateRef,
   OnChanges,
   SimpleChanges,
+  DOCUMENT,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { PlacementArray, positionElements } from 'positioning';
 import { CalendarEvent } from 'calendar-utils';
 import { Observable, of, Subject, timer } from 'rxjs';

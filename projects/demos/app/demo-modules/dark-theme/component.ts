@@ -5,11 +5,11 @@ import {
   OnDestroy,
   OnInit,
   ViewEncapsulation,
+  DOCUMENT,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 import { colors } from '../demo-utils/colors';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'mwl-demo-component',

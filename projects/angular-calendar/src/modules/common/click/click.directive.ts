@@ -9,8 +9,9 @@ import {
   Inject,
   Input,
   NgZone,
+  DOCUMENT,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

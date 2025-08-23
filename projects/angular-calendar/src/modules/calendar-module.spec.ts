@@ -20,7 +20,7 @@ describe('calendar module', () => {
         }),
       ],
     });
-    const dateFormatter: CalendarDateFormatter = TestBed.get(
+    const dateFormatter: CalendarDateFormatter = TestBed.inject(
       CalendarDateFormatter,
     );
     expect(dateFormatter).to.be.an.instanceOf(CalendarDateFormatter);
@@ -44,7 +44,7 @@ describe('calendar module', () => {
       ],
       providers: [{ provide: MOMENT, useValue: moment }],
     });
-    const dateFormatter: CalendarDateFormatter = TestBed.get(
+    const dateFormatter: CalendarDateFormatter = TestBed.inject(
       CalendarDateFormatter,
     );
     expect(dateFormatter).not.to.be.an.instanceOf(CalendarDateFormatter);
