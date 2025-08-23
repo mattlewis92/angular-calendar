@@ -1,4 +1,4 @@
-const packageJson = require('./package.json'); // eslint-disable-line  @typescript-eslint/no-var-requires
+const packageJson = require('./package.json');
 
 export const angularCalendarVersion = `^${packageJson.version}`;
 export const momentVersion = packageJson.devDependencies.moment;

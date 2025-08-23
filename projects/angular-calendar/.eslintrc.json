@@ -4,13 +4,6 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "parserOptions": {
-        "project": [
-          "projects/angular-calendar/tsconfig.lib.json",
-          "projects/angular-calendar/tsconfig.spec.json"
-        ],
-        "createDefaultProgram": true
-      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
