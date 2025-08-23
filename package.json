@@ -5,14 +5,24 @@
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
   },
-  "packageManager": "pnpm@8.10.0",
+  "packageManager": "pnpm@10.15.0",
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
         "webpack",
         "@angular-devkit/*"
       ]
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "@compodoc/compodoc",
+      "@scarf/scarf",
+      "core-js"
+    ],
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "nice-napi"
+    ]
   },
   "scripts": {
     "start": "pnpm ng serve --open",

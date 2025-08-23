@@ -169,7 +169,7 @@ https://github.com/mattlewis92/angular-bootstrap-calendar
 
 ### Prepare your environment
 
-- Install [Node.js (>=14.19.0 or >=16.9.0)](http://nodejs.org/)
+- Install [Node.js (>=24.5.0)](http://nodejs.org/)
 - Install pnpm: `corepack enable`
 - Install local dev dependencies: `pnpm install` while current directory is this repo
 
