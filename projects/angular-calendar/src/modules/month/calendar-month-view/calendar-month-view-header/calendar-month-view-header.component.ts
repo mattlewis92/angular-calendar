@@ -28,14 +28,14 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
           (click)="
             columnHeaderClicked.emit({
               isoDayNumber: day.day,
-              sourceEvent: $event
+              sourceEvent: $event,
             })
           "
           [ngClass]="day.cssClass"
           tabindex="0"
           role="columnheader"
         >
-          {{ day.date | calendarDate : 'monthViewColumnHeader' : locale }}
+          {{ day.date | calendarDate: 'monthViewColumnHeader' : locale }}
         </div>
       </div>
     </ng-template>
@@ -44,7 +44,7 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
       [ngTemplateOutletContext]="{
         days: days,
         locale: locale,
-        trackByWeekDayHeaderDate: trackByWeekDayHeaderDate
+        trackByWeekDayHeaderDate: trackByWeekDayHeaderDate,
       }"
     >
     </ng-template>

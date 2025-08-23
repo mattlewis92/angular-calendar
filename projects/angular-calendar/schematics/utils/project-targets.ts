@@ -11,13 +11,13 @@ import { ProjectDefinition } from '@schematics/angular/utility/workspace';
 /** Resolves the architect options for the build target of the given project. */
 export function getProjectTargetOptions(
   project: ProjectDefinition,
-  buildTarget: string
+  buildTarget: string,
 ) {
   if (project.targets.get(buildTarget)) {
     return project.targets.get(buildTarget).options;
   }
 
   throw new Error(
-    `Cannot determine project target configuration for: ${buildTarget}.`
+    `Cannot determine project target configuration for: ${buildTarget}.`,
   );
 }

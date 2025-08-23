@@ -26,7 +26,7 @@ export class DemoComponent implements OnInit, OnDestroy {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -47,12 +47,12 @@ export class DemoComponent implements OnInit, OnDestroy {
 
     this.breakpointObserver
       .observe(
-        Object.values(CALENDAR_RESPONSIVE).map(({ breakpoint }) => breakpoint)
+        Object.values(CALENDAR_RESPONSIVE).map(({ breakpoint }) => breakpoint),
       )
       .pipe(takeUntil(this.destroy$))
       .subscribe((state: BreakpointState) => {
         const foundBreakpoint = Object.values(CALENDAR_RESPONSIVE).find(
-          ({ breakpoint }) => !!state.breakpoints[breakpoint]
+          ({ breakpoint }) => !!state.breakpoints[breakpoint],
         );
         if (foundBreakpoint) {
           this.daysInWeek = foundBreakpoint.daysInWeek;

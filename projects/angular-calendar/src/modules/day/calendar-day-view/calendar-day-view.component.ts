@@ -192,7 +192,7 @@ export class CalendarDayViewComponent {
    * Return true to allow dragging and resizing to the new location, or false to prevent it
    */
   @Input() validateEventTimesChanged: (
-    event: CalendarEventTimesChangedEvent
+    event: CalendarEventTimesChangedEvent,
   ) => boolean;
 
   /**

@@ -10,7 +10,7 @@ import {
 function addStyleToTarget(
   project: ProjectDefinition,
   targetName: string,
-  stylePath: string
+  stylePath: string,
 ) {
   const target = project.targets.get(targetName);
   return project.targets.set(targetName, {
@@ -41,7 +41,7 @@ function isAngularBrowserProject(projectConfig: ProjectDefinition): boolean {
 
 function getAngularAppConfig(
   workspace: WorkspaceDefinition,
-  projectName: string
+  projectName: string,
 ): ProjectDefinition | null {
   const projectConfig = getProjectFromWorkspace(workspace, projectName);
 

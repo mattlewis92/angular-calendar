@@ -69,8 +69,8 @@ export class CalendarNextViewDirective {
           this.dateAdapter,
           this.viewDate,
           1,
-          this.excludeDays
-        )
+          this.excludeDays,
+        ),
       );
     } else if (this.view === CalendarView.Week && this.daysInWeek) {
       this.viewDateChange.emit(
@@ -78,8 +78,8 @@ export class CalendarNextViewDirective {
           this.dateAdapter,
           this.viewDate,
           this.daysInWeek,
-          this.excludeDays
-        )
+          this.excludeDays,
+        ),
       );
     } else {
       this.viewDateChange.emit(addFn(this.viewDate, 1));

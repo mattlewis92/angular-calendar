@@ -24,7 +24,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       overflow: 'hidden',
       'padding-top': 0,
       'padding-bottom': 0,
-    })
+    }),
   ),
   state(
     '*',
@@ -33,7 +33,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       overflow: 'hidden',
       'padding-top': '*',
       'padding-bottom': '*',
-    })
+    }),
   ),
   transition('* => void', animate('150ms ease-out')),
   transition('void => *', animate('150ms ease-in')),
@@ -60,7 +60,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
           tabindex="-1"
           role="alert"
           [attr.aria-label]="
-            { date: date, locale: locale } | calendarA11y : 'openDayEventsAlert'
+            { date: date, locale: locale } | calendarA11y: 'openDayEventsAlert'
           "
         ></span>
         <span
@@ -68,7 +68,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
           role="landmark"
           [attr.aria-label]="
             { date: date, locale: locale }
-              | calendarA11y : 'openDayEventsLandmark'
+              | calendarA11y: 'openDayEventsLandmark'
           "
         ></span>
         <div
@@ -101,7 +101,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
             tabindex="0"
             [attr.aria-label]="
               { event: event, locale: locale }
-                | calendarA11y : 'eventDescription'
+                | calendarA11y: 'eventDescription'
             "
           >
           </mwl-calendar-event-title>
@@ -121,7 +121,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         eventClicked: eventClicked,
         isOpen: isOpen,
         trackByEventId: trackByEventId,
-        validateDrag: validateDrag
+        validateDrag: validateDrag,
       }"
     >
     </ng-template>

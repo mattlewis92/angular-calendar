@@ -80,7 +80,7 @@ export class DemoComponent {
 
   validateEventTimesChanged = (
     { event, newStart, newEnd, allDay }: CalendarEventTimesChangedEvent,
-    addCssClass = true
+    addCssClass = true,
   ) => {
     if (event.allDay) {
       return true;
@@ -116,7 +116,7 @@ export class DemoComponent {
   };
 
   eventTimesChanged(
-    eventTimesChangedEvent: CalendarEventTimesChangedEvent
+    eventTimesChangedEvent: CalendarEventTimesChangedEvent,
   ): void {
     delete eventTimesChangedEvent.event.cssClass;
     if (this.validateEventTimesChanged(eventTimesChangedEvent, false)) {

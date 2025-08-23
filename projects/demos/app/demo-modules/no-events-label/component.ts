@@ -39,7 +39,7 @@ export class DemoComponent {
     event:
       | CalendarMonthViewBeforeRenderEvent
       | CalendarWeekViewBeforeRenderEvent
-      | CalendarDayViewBeforeRenderEvent
+      | CalendarDayViewBeforeRenderEvent,
   ) {
     this.period = event.period;
     this.cdr.detectChanges();

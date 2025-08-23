@@ -61,7 +61,7 @@ describe('calendarWeekView component', () => {
               provide: CalendarDateFormatter,
               useClass: CalendarMomentDateFormatter,
             },
-          }
+          },
         ),
         DragAndDropModule,
       ],
@@ -82,7 +82,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     expect(fixture.componentInstance.days.length).to.equal(7);
     expect(fixture.componentInstance.days[0].date).to.deep.equal(
-      moment('2016-06-26').toDate()
+      moment('2016-06-26').toDate(),
     );
   });
 
@@ -110,7 +110,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     expect(fixture.componentInstance.days.length).to.equal(6);
     expect(fixture.nativeElement.querySelector('.cal-weekend')).not.to.equal(
-      null
+      null,
     );
 
     fixture.destroy();
@@ -152,16 +152,16 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
 
     const computedStyles: CSSStyleDeclaration = window.getComputedStyle(
-      fixture.nativeElement.querySelector('.cal-event')
+      fixture.nativeElement.querySelector('.cal-event'),
     );
     expect(computedStyles.getPropertyValue('background-color')).to.equal(
-      'rgb(209, 232, 255)'
+      'rgb(209, 232, 255)',
     );
     expect(computedStyles.getPropertyValue('border-color')).to.equal(
-      'rgb(30, 144, 255)'
+      'rgb(30, 144, 255)',
     );
     expect(computedStyles.getPropertyValue('color')).to.equal(
-      'rgb(30, 144, 255)'
+      'rgb(30, 144, 255)',
     );
     fixture.destroy();
   });
@@ -203,7 +203,7 @@ describe('calendarWeekView component', () => {
     expect(
       fixture.nativeElement
         .querySelector('.cal-event-container')
-        .classList.contains('foo')
+        .classList.contains('foo'),
     ).to.equal(true);
     fixture.destroy();
   });
@@ -254,7 +254,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.events.push(event);
     fixture.componentInstance.refresh.next(true);
     expect(
-      fixture.componentInstance.view.allDayEventRows[0].row[0].event
+      fixture.componentInstance.view.allDayEventRows[0].row[0].event,
     ).to.deep.equal(event);
     fixture.destroy();
   });
@@ -292,7 +292,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cal-header b').innerHTML.trim()
+      fixture.nativeElement.querySelector('.cal-header b').innerHTML.trim(),
     ).to.equal('Sonntag');
   });
 
@@ -322,10 +322,10 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     flush();
     const tooltip: HTMLElement = document.body.querySelector(
-      '.cal-tooltip'
+      '.cal-tooltip',
     ) as HTMLElement;
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
-      'title: foo <b>bar</b>'
+      'title: foo <b>bar</b>',
     );
     expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
     expect(!!tooltip.style.top).to.equal(true);
@@ -414,7 +414,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cal-day-headers b').innerText
+      fixture.nativeElement.querySelector('.cal-day-headers b').innerText,
     ).to.deep.equal('Monday');
     fixture.destroy();
   });
@@ -439,7 +439,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -460,10 +460,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left - dayWidth)
+      Math.round(rect.left - dayWidth),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mouseup', resizeHandle, {
       clientX: rect.left - dayWidth,
@@ -503,7 +503,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -512,7 +512,7 @@ describe('calendarWeekView component', () => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
-      '.cal-resize-handle-after-end'
+      '.cal-resize-handle-after-end',
     );
     triggerDomEvent('mousedown', handle, {
       clientX: rect.right,
@@ -526,10 +526,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left)
+      Math.round(rect.left),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mouseup', handle, {
       clientX: rect.right + dayWidth,
@@ -573,7 +573,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -582,7 +582,7 @@ describe('calendarWeekView component', () => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
-      '.cal-resize-handle-after-end'
+      '.cal-resize-handle-after-end',
     );
     triggerDomEvent('mousedown', handle, {
       clientX: rect.right,
@@ -596,10 +596,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left)
+      Math.round(rect.left),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mousemove', handle, {
       clientX: rect.right + dayWidth * 2,
@@ -607,10 +607,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left)
+      Math.round(rect.left),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mouseup', handle, {
       clientX: rect.right + dayWidth * 2,
@@ -671,7 +671,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -680,7 +680,7 @@ describe('calendarWeekView component', () => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
-      '.cal-resize-handle-before-start'
+      '.cal-resize-handle-before-start',
     );
     triggerDomEvent('mousedown', handle, {
       clientX: rect.left,
@@ -694,10 +694,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left - dayWidth)
+      Math.round(rect.left - dayWidth),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mousemove', handle, {
       clientX: rect.left - dayWidth * 2,
@@ -705,10 +705,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left - dayWidth)
+      Math.round(rect.left - dayWidth),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mouseup', handle, {
       clientX: rect.left - dayWidth * 2,
@@ -763,7 +763,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -772,7 +772,7 @@ describe('calendarWeekView component', () => {
       resizeEvent = e;
     });
     const handle = fixture.nativeElement.querySelector(
-      '.cal-resize-handle-after-end'
+      '.cal-resize-handle-after-end',
     );
     triggerDomEvent('mousedown', handle, {
       clientX: rect.right,
@@ -786,10 +786,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left)
+      Math.round(rect.left),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mouseup', handle, {
       clientX: rect.right + dayWidth,
@@ -828,7 +828,7 @@ describe('calendarWeekView component', () => {
       fixture.nativeElement.querySelector('.cal-day-headers');
     header.parentNode.removeChild(header);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const eventPosition: ClientRect = event.getBoundingClientRect();
@@ -895,7 +895,7 @@ describe('calendarWeekView component', () => {
       fixture.nativeElement.querySelector('.cal-day-headers');
     header.parentNode.removeChild(header);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const eventPosition: ClientRect = event.getBoundingClientRect();
@@ -993,7 +993,7 @@ describe('calendarWeekView component', () => {
       fixture.nativeElement.querySelector('.cal-day-headers');
     header.parentNode.removeChild(header);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const eventPosition: ClientRect = event.getBoundingClientRect();
     const calendarPosition: ClientRect =
@@ -1015,7 +1015,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     const ghostElement = event.nextSibling as HTMLElement;
     expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
-      Math.round(eventPosition.left - 50)
+      Math.round(eventPosition.left - 50),
     );
     triggerDomEvent('mousemove', document.body, {
       clientX: calendarPosition.left - 50,
@@ -1055,7 +1055,7 @@ describe('calendarWeekView component', () => {
       fixture.nativeElement.querySelector('.cal-day-headers');
     header.parentNode.removeChild(header);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const eventPosition: ClientRect = event.getBoundingClientRect();
     const eventDropped = sinon.spy();
@@ -1110,12 +1110,12 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
     const handle = fixture.nativeElement.querySelector(
-      '.cal-resize-handle-before-start'
+      '.cal-resize-handle-before-start',
     );
     triggerDomEvent('mousedown', handle, {
       clientX: rect.left,
@@ -1129,10 +1129,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left)
+      Math.round(rect.left),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width)
+      Math.round(rect.width),
     );
     triggerDomEvent('mouseup', handle, {
       clientX: rect.left - dayWidth,
@@ -1162,12 +1162,12 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth / 7;
     const rect: ClientRect = event.getBoundingClientRect();
     const handle = fixture.nativeElement.querySelector(
-      '.cal-resize-handle-before-start'
+      '.cal-resize-handle-before-start',
     );
     triggerDomEvent('mousedown', handle, {
       clientX: rect.left,
@@ -1181,10 +1181,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left - dayWidth)
+      Math.round(rect.left - dayWidth),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mousemove', handle, {
       clientX: rect.left - dayWidth * 2,
@@ -1192,10 +1192,10 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(Math.round(event.getBoundingClientRect().left)).to.equal(
-      Math.round(rect.left - dayWidth)
+      Math.round(rect.left - dayWidth),
     );
     expect(Math.round(event.getBoundingClientRect().width)).to.equal(
-      Math.round(rect.width + dayWidth)
+      Math.round(rect.width + dayWidth),
     );
     triggerDomEvent('mouseup', handle, {
       clientX: rect.left - dayWidth * 2,
@@ -1213,7 +1213,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const externalEventFixture = fixture.debugElement.query(
-      By.directive(ExternalEventComponent)
+      By.directive(ExternalEventComponent),
     );
 
     const event: HTMLElement =
@@ -1221,7 +1221,7 @@ describe('calendarWeekView component', () => {
     const eventPosition: ClientRect = event.getBoundingClientRect();
 
     const headers: any[] = Array.from(
-      fixture.nativeElement.querySelectorAll('.cal-header')
+      fixture.nativeElement.querySelectorAll('.cal-header'),
     );
     const header: HTMLElement = headers[2];
     const headerPosition: ClientRect = header.getBoundingClientRect();
@@ -1285,7 +1285,7 @@ describe('calendarWeekView component', () => {
     expect(
       fixture.nativeElement
         .querySelector('.cal-header')
-        .classList.contains('foo')
+        .classList.contains('foo'),
     ).to.equal(true);
     fixture.destroy();
   });
@@ -1313,7 +1313,7 @@ describe('calendarWeekView component', () => {
     const beforeViewRenderCalled = sinon.spy();
     // use subscription to test that it was only called a max of one times
     const subscription = fixture.componentInstance.beforeViewRender.subscribe(
-      beforeViewRenderCalled
+      beforeViewRenderCalled,
     );
     fixture.componentInstance.refresh.next(true);
     expect(beforeViewRenderCalled).to.have.been.calledOnce;
@@ -1330,7 +1330,7 @@ describe('calendarWeekView component', () => {
     const beforeViewRenderCalled = sinon.spy();
     // use subscription to test that it was only called a max of one times
     const subscription = fixture.componentInstance.beforeViewRender.subscribe(
-      beforeViewRenderCalled
+      beforeViewRenderCalled,
     );
     fixture.componentInstance.viewDate = new Date('2016-06-28');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
@@ -1380,7 +1380,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event .cal-event-action'
+      '.cal-event .cal-event-action',
     );
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
@@ -1388,7 +1388,7 @@ describe('calendarWeekView component', () => {
     const actionSpy = fixture.componentInstance.events[0].actions[0]
       .onClick as sinon.SinonSpy;
     expect(actionSpy.getCall(0).args[0].event).to.equal(
-      fixture.componentInstance.events[0]
+      fixture.componentInstance.events[0],
     );
     expect(actionSpy.getCall(0).args[0].sourceEvent instanceof MouseEvent).to.be
       .true;
@@ -1414,16 +1414,16 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelectorAll('.cal-header').length
+      fixture.nativeElement.querySelectorAll('.cal-header').length,
     ).to.equal(4);
     expect(
       fixture.nativeElement.querySelectorAll(
-        '.cal-all-day-events .cal-day-column'
-      ).length
+        '.cal-all-day-events .cal-day-column',
+      ).length,
     ).to.equal(4);
     expect(
       fixture.nativeElement.querySelectorAll('.cal-time-events .cal-day-column')
-        .length
+        .length,
     ).to.equal(4);
   });
 
@@ -1451,7 +1451,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1474,7 +1474,7 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().top).to.equal(rect.top);
     expect(event.getBoundingClientRect().height).to.equal(1259);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(events[0]).to.equal(event);
     expect(events[1].getBoundingClientRect().top).to.equal(rect.top - 180);
@@ -1531,7 +1531,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1619,7 +1619,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1682,7 +1682,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     )[1];
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1705,7 +1705,7 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().width).to.equal(0);
     expect(event.getBoundingClientRect().height).to.equal(0);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(events[1]).to.equal(event);
     expect(events[0].getBoundingClientRect().top).to.equal(rect.top + 180);
@@ -1755,7 +1755,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     )[1];
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1818,7 +1818,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     )[1];
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1841,7 +1841,7 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().width).to.equal(0);
     expect(event.getBoundingClientRect().height).to.equal(0);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(events[1]).to.equal(event);
     expect(events[0].getBoundingClientRect().top).to.equal(rect.top + 180);
@@ -1887,7 +1887,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1910,7 +1910,7 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().top).to.equal(rect.top - 180);
     expect(event.getBoundingClientRect().height).to.equal(rect.height + 180);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(events[1]).to.equal(event);
     expect(events[0].getBoundingClientRect().top).to.equal(rect.top - 90);
@@ -1959,7 +1959,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -1982,7 +1982,7 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().width).to.equal(0);
     expect(event.getBoundingClientRect().height).to.equal(0);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(events[0]).to.equal(event);
     expect(events[1].getBoundingClientRect().top).to.equal(rect.top + 90);
@@ -2031,7 +2031,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -2054,7 +2054,7 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().width).to.equal(0);
     expect(event.getBoundingClientRect().height).to.equal(0);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(events[0]).to.equal(event);
     // locally the top comes out as 1107 but on the CI it's 1106
@@ -2108,7 +2108,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect1: ClientRect = events[0].getBoundingClientRect();
@@ -2131,18 +2131,18 @@ describe('calendarWeekView component', () => {
     expect(events[0].getBoundingClientRect().height).to.equal(0);
     expect(events[0].getBoundingClientRect().width).to.equal(0);
     const updatedEvents = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(updatedEvents[0]).to.equal(events[0]);
     expect(updatedEvents[1].getBoundingClientRect().top).to.equal(
-      rect1.top + 90
+      rect1.top + 90,
     );
     expect(updatedEvents[1].getBoundingClientRect().height).to.equal(
-      rect1.height - 90
+      rect1.height - 90,
     );
     expect(updatedEvents[2].getBoundingClientRect().top).to.equal(rect2.top);
     expect(updatedEvents[2].getBoundingClientRect().height).to.equal(
-      rect2.height + 90
+      rect2.height + 90,
     );
     triggerDomEvent('mouseup', events[1], {
       clientX: rect2.right + dayWidth - 5,
@@ -2306,7 +2306,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const updatedEvent1 = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(updatedEvent1.getBoundingClientRect().top).to.equal(rect.top + 90);
     triggerDomEvent('mousemove', event, {
@@ -2315,7 +2315,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const updatedEvent2 = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(updatedEvent2.getBoundingClientRect().top).to.equal(rect.top);
     triggerDomEvent('mouseup', event, {
@@ -2367,14 +2367,14 @@ describe('calendarWeekView component', () => {
     expect(event.getBoundingClientRect().height).to.equal(0);
     expect(event.getBoundingClientRect().width).to.equal(0);
     const updatedEvents = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(updatedEvents[0]).to.equal(event);
     expect(updatedEvents[1].getBoundingClientRect().top).to.equal(
-      rect.top + 90
+      rect.top + 90,
     );
     expect(updatedEvents[1].getBoundingClientRect().height).to.equal(
-      rect.height
+      rect.height,
     );
     triggerDomEvent('mouseup', event, {
       clientX: rect.right + dayWidth - 5,
@@ -2420,7 +2420,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect: ClientRect = events[0].getBoundingClientRect();
@@ -2557,7 +2557,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const hourSegment = fixture.nativeElement.querySelectorAll(
-      '.cal-day-columns mwl-calendar-week-view-hour-segment'
+      '.cal-day-columns mwl-calendar-week-view-hour-segment',
     )[3];
     const hourSegmentPosition = hourSegment.getBoundingClientRect();
     triggerDomEvent('mousemove', hourSegment, {
@@ -2614,7 +2614,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event = fixture.nativeElement.querySelector(
-      '.cal-time-events .cal-event-container'
+      '.cal-time-events .cal-event-container',
     );
     const rect: ClientRect = event.getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
@@ -2628,7 +2628,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const dayColumn = fixture.nativeElement.querySelectorAll(
-      '.cal-all-day-events .cal-day-column'
+      '.cal-all-day-events .cal-day-column',
     )[2];
     const dayColumnPosition = dayColumn.getBoundingClientRect();
     triggerDomEvent('mousemove', dayColumn, {
@@ -2679,7 +2679,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = event.parentElement.offsetWidth;
     const rect: ClientRect = event.getBoundingClientRect();
@@ -2744,7 +2744,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect1: ClientRect = events[0].getBoundingClientRect();
@@ -2815,7 +2815,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect1: ClientRect = events[0].getBoundingClientRect();
@@ -2885,7 +2885,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect1: ClientRect = events[0].getBoundingClientRect();
@@ -2949,18 +2949,18 @@ describe('calendarWeekView component', () => {
             });
           });
         });
-      }
+      },
     );
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
       fixture.nativeElement
         .querySelector('.cal-hour-segment')
-        .classList.contains('disabled-cell')
+        .classList.contains('disabled-cell'),
     ).to.be.true;
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const dayWidth: number = events[0].parentElement.offsetWidth;
     const rect: ClientRect = events[0].getBoundingClientRect();
@@ -2978,7 +2978,7 @@ describe('calendarWeekView component', () => {
     expect(
       fixture.nativeElement
         .querySelector('.cal-hour-segment')
-        .classList.contains('disabled-cell')
+        .classList.contains('disabled-cell'),
     ).to.be.true;
   });
 
@@ -3012,7 +3012,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     )[0];
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
@@ -3080,7 +3080,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const event: HTMLElement = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     )[0];
     const rect: ClientRect = event.getBoundingClientRect();
     const resizeHandle = event.querySelector('.cal-resize-handle-after-end');
@@ -3145,13 +3145,13 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
 
     const computedStyles: CSSStyleDeclaration = window.getComputedStyle(
-      fixture.nativeElement.querySelector('.cal-event')
+      fixture.nativeElement.querySelector('.cal-event'),
     );
     expect(computedStyles.getPropertyValue('background-color')).to.equal(
-      'rgb(0, 0, 0)'
+      'rgb(0, 0, 0)',
     );
     expect(computedStyles.getPropertyValue('border-color')).to.equal(
-      'rgb(255, 255, 255)'
+      'rgb(255, 255, 255)',
     );
     document.head.appendChild(style);
   });
@@ -3163,7 +3163,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const externalEventFixture = fixture.debugElement.query(
-      By.directive(ExternalEventComponent)
+      By.directive(ExternalEventComponent),
     );
 
     const event: HTMLElement =
@@ -3172,8 +3172,8 @@ describe('calendarWeekView component', () => {
 
     const segments: HTMLElement[] = Array.from(
       fixture.nativeElement.querySelectorAll(
-        '.cal-day-columns .cal-hour-segment'
-      )
+        '.cal-day-columns .cal-hour-segment',
+      ),
     );
     const segment = segments[1];
     const segmentPosition: ClientRect = segment.getBoundingClientRect();
@@ -3248,7 +3248,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const updatedEvent1 = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(updatedEvent1.innerText.trim()).to.equal('4:30 - 6:30');
   });
@@ -3293,7 +3293,7 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const updatedEvent1 = fixture.nativeElement.querySelector(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     expect(updatedEvent1.innerText.trim()).to.equal('4:30 - 6:30');
   });
@@ -3311,7 +3311,7 @@ describe('calendarWeekView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cal-event-container').offsetHeight
+      fixture.nativeElement.querySelector('.cal-event-container').offsetHeight,
     ).to.equal(30);
     fixture.destroy();
   });
@@ -3336,7 +3336,7 @@ describe('calendarWeekView component', () => {
     fixture.detectChanges();
     document.body.appendChild(fixture.nativeElement);
     const events = fixture.nativeElement.querySelectorAll(
-      '.cal-event-container'
+      '.cal-event-container',
     );
     const rect1: ClientRect = events[0].getBoundingClientRect();
     let dragEvent: CalendarEventTimesChangedEvent;
@@ -3399,7 +3399,7 @@ describe('calendarWeekView component', () => {
       });
       fixture.detectChanges();
       const marker = fixture.nativeElement.querySelector(
-        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker',
       );
       expect(marker.style.top).to.equal('690px');
     });
@@ -3416,7 +3416,7 @@ describe('calendarWeekView component', () => {
       });
       fixture.detectChanges();
       const marker = fixture.nativeElement.querySelector(
-        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker',
       );
       expect(marker.style.top).to.equal('480px');
     });
@@ -3432,7 +3432,7 @@ describe('calendarWeekView component', () => {
       });
       fixture.detectChanges();
       const marker = fixture.nativeElement.querySelector(
-        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker',
       );
       expect(marker).to.equal(null);
     });
@@ -3449,7 +3449,7 @@ describe('calendarWeekView component', () => {
       });
       fixture.detectChanges();
       const marker = fixture.nativeElement.querySelector(
-        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker'
+        '.cal-day-columns .cal-day-column:nth-child(2) .cal-current-time-marker',
       );
       expect(marker.style.top).to.equal('2760px');
     });
@@ -3479,7 +3479,7 @@ describe('calendarWeekView component', () => {
       fixture.componentInstance.eventTimesChanged.subscribe(eventDropped);
 
       const event: HTMLElement = fixture.nativeElement.querySelector(
-        '.cal-event-container'
+        '.cal-event-container',
       );
       const dayWidth: number = event.parentElement.offsetWidth / 7;
       const eventPosition: ClientRect = event.getBoundingClientRect();

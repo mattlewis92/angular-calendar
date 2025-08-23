@@ -17,7 +17,7 @@ export const validateEvents = (events: CalendarEvent[]) => {
 
 export function isInsideLeftAndRight(
   outer: ClientRect,
-  inner: ClientRect
+  inner: ClientRect,
 ): boolean {
   return (
     Math.floor(outer.left) <= Math.ceil(inner.left) &&
@@ -54,7 +54,7 @@ export const trackByWeekDayHeaderDate = (index: number, day: WeekDay) =>
 
 export const trackByHourSegment = (
   index: number,
-  segment: WeekViewHourSegment
+  segment: WeekViewHourSegment,
 ) => segment.date.toISOString();
 
 export const trackByHour = (index: number, hour: WeekViewHour) =>
@@ -62,12 +62,12 @@ export const trackByHour = (index: number, hour: WeekViewHour) =>
 
 export const trackByWeekAllDayEvent = (
   index: number,
-  weekEvent: WeekViewAllDayEvent
+  weekEvent: WeekViewAllDayEvent,
 ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
 
 export const trackByWeekTimeEvent = (
   index: number,
-  weekEvent: WeekViewTimeEvent
+  weekEvent: WeekViewTimeEvent,
 ) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
 
 const MINUTES_IN_HOUR = 60;
@@ -75,7 +75,7 @@ const MINUTES_IN_HOUR = 60;
 function getPixelAmountInMinutes(
   hourSegments: number,
   hourSegmentHeight: number,
-  hourDuration?: number
+  hourDuration?: number,
 ) {
   return (hourDuration || MINUTES_IN_HOUR) / (hourSegments * hourSegmentHeight);
 }
@@ -85,16 +85,16 @@ export function getMinutesMoved(
   hourSegments: number,
   hourSegmentHeight: number,
   eventSnapSize: number,
-  hourDuration?: number
+  hourDuration?: number,
 ): number {
   const draggedInPixelsSnapSize = roundToNearest(
     movedY,
-    eventSnapSize || hourSegmentHeight
+    eventSnapSize || hourSegmentHeight,
   );
   const pixelAmountInMinutes = getPixelAmountInMinutes(
     hourSegments,
     hourSegmentHeight,
-    hourDuration
+    hourDuration,
   );
   return draggedInPixelsSnapSize * pixelAmountInMinutes;
 }
@@ -102,7 +102,7 @@ export function getMinutesMoved(
 export function getDefaultEventEnd(
   dateAdapter: DateAdapter,
   event: CalendarEvent,
-  minimumMinutes: number
+  minimumMinutes: number,
 ): Date {
   if (event.end) {
     return event.end;
@@ -115,7 +115,7 @@ export function addDaysWithExclusions(
   dateAdapter: DateAdapter,
   date: Date,
   days: number,
-  excluded: number[]
+  excluded: number[],
 ): Date {
   let daysCounter = 0;
   let daysToAdd = 0;
@@ -135,7 +135,7 @@ export function addDaysWithExclusions(
 export function isDraggedWithinPeriod(
   newStart: Date,
   newEnd: Date,
-  period: ViewPeriod
+  period: ViewPeriod,
 ): boolean {
   const end = newEnd || newStart;
   return (
@@ -148,7 +148,7 @@ export function shouldFireDroppedEvent(
   dropEvent: { dropData?: { event?: CalendarEvent; calendarId?: symbol } },
   date: Date,
   allDay: boolean,
-  calendarId: symbol
+  calendarId: symbol,
 ) {
   return (
     dropEvent.dropData &&
@@ -164,7 +164,7 @@ export function getWeekViewPeriod(
   viewDate: Date,
   weekStartsOn: number,
   excluded: number[] = [],
-  daysInWeek?: number
+  daysInWeek?: number,
 ): { viewStart: Date; viewEnd: Date } {
   let viewStart = daysInWeek
     ? dateAdapter.startOfDay(viewDate)
@@ -178,7 +178,7 @@ export function getWeekViewPeriod(
   }
   if (daysInWeek) {
     const viewEnd = dateAdapter.endOfDay(
-      addDaysWithExclusions(dateAdapter, viewStart, daysInWeek - 1, excluded)
+      addDaysWithExclusions(dateAdapter, viewStart, daysInWeek - 1, excluded),
     );
     return { viewStart, viewEnd };
   } else {

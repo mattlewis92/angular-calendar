@@ -4,7 +4,7 @@ import { CalendarEvent } from 'angular-calendar';
 export function triggerDomEvent(
   eventType: string,
   target: HTMLElement | Element,
-  eventData: object = {}
+  eventData: object = {},
 ) {
   const event: Event = document.createEvent('Event');
   Object.assign(event, eventData);

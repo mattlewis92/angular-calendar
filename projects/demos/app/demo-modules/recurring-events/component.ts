@@ -80,7 +80,7 @@ export class DemoComponent {
     viewRender:
       | CalendarMonthViewBeforeRenderEvent
       | CalendarWeekViewBeforeRenderEvent
-      | CalendarDayViewBeforeRenderEvent
+      | CalendarDayViewBeforeRenderEvent,
   ): void {
     if (
       !this.viewPeriod ||

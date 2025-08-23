@@ -14,7 +14,7 @@ import { CalendarDateFormatter } from '../calendar-date-formatter/calendar-date-
 export class CalendarDatePipe implements PipeTransform {
   constructor(
     private dateFormatter: CalendarDateFormatter,
-    @Inject(LOCALE_ID) private locale: string
+    @Inject(LOCALE_ID) private locale: string,
   ) {}
 
   transform(
@@ -23,16 +23,16 @@ export class CalendarDatePipe implements PipeTransform {
     locale: string = this.locale,
     weekStartsOn: number = 0,
     excludeDays: number[] = [],
-    daysInWeek?: number
+    daysInWeek?: number,
   ): string {
     if (typeof this.dateFormatter[method] === 'undefined') {
       const allowedMethods = Object.getOwnPropertyNames(
-        Object.getPrototypeOf(CalendarDateFormatter.prototype)
+        Object.getPrototypeOf(CalendarDateFormatter.prototype),
       ).filter((iMethod) => iMethod !== 'constructor');
       throw new Error(
         `${method} is not a valid date formatter. Can only be one of ${allowedMethods.join(
-          ', '
-        )}`
+          ', ',
+        )}`,
       );
     }
     return this.dateFormatter[method]({

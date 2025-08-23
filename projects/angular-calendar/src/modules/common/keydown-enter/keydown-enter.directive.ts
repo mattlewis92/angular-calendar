@@ -20,7 +20,7 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
   constructor(
     private host: ElementRef<HTMLElement>,
     private ngZone: NgZone,
-    private renderer: Renderer2
+    private renderer: Renderer2,
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
               this.keydown.emit(event);
             });
           }
-        }
+        },
       );
     });
   }

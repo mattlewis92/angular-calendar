@@ -76,7 +76,7 @@ export class CalendarNativeDateFormatter
       date,
       weekStartsOn,
       excludeDays,
-      daysInWeek
+      daysInWeek,
     );
 
     const format = (dateToFormat: Date, showYear: boolean) =>
@@ -88,7 +88,7 @@ export class CalendarNativeDateFormatter
 
     return `${format(
       viewStart,
-      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear()
+      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear(),
     )} - ${format(viewEnd, true)}`;
   }
 

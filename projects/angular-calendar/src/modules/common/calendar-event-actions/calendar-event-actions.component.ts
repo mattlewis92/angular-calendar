@@ -23,7 +23,7 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
           tabindex="0"
           role="button"
           [attr.aria-label]="
-            { action: action } | calendarA11y : 'actionButtonLabel'
+            { action: action } | calendarA11y: 'actionButtonLabel'
           "
         >
         </a>
@@ -33,7 +33,7 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         event: event,
-        trackByActionId: trackByActionId
+        trackByActionId: trackByActionId,
       }"
     >
     </ng-template>

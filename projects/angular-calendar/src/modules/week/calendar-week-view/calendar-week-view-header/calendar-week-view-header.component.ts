@@ -35,17 +35,17 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
           (drop)="
             eventDropped.emit({
               event: $event.dropData.event,
-              newStart: day.date
+              newStart: day.date,
             })
           "
           (dragEnter)="dragEnter.emit({ date: day.date })"
           tabindex="0"
           role="columnheader"
         >
-          <b>{{ day.date | calendarDate : 'weekViewColumnHeader' : locale }}</b
+          <b>{{ day.date | calendarDate: 'weekViewColumnHeader' : locale }}</b
           ><br />
           <span>{{
-            day.date | calendarDate : 'weekViewColumnSubHeader' : locale
+            day.date | calendarDate: 'weekViewColumnSubHeader' : locale
           }}</span>
         </div>
       </div>
@@ -58,7 +58,7 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
         dayHeaderClicked: dayHeaderClicked,
         eventDropped: eventDropped,
         dragEnter: dragEnter,
-        trackByWeekDayHeaderDate: trackByWeekDayHeaderDate
+        trackByWeekDayHeaderDate: trackByWeekDayHeaderDate,
       }"
     >
     </ng-template>

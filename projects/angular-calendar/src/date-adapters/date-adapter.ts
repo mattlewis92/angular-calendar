@@ -35,17 +35,17 @@ export abstract class DateAdapter implements BaseDateAdapter {
 
   abstract differenceInDays(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
   ): number;
 
   abstract differenceInMinutes(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
   ): number;
 
   abstract differenceInSeconds(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
   ): number;
 
   abstract endOfDay(date: Date | number): Date;
@@ -54,24 +54,24 @@ export abstract class DateAdapter implements BaseDateAdapter {
 
   abstract endOfWeek(
     date: Date | number,
-    options?: { weekStartsOn?: number }
+    options?: { weekStartsOn?: number },
   ): Date;
 
   abstract getDay(date: Date | number): number;
 
   abstract isSameDay(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
   ): boolean;
 
   abstract isSameMonth(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
   ): boolean;
 
   abstract isSameSecond(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
   ): boolean;
 
   abstract max(dates: (Date | number)[]): Date;
@@ -88,7 +88,7 @@ export abstract class DateAdapter implements BaseDateAdapter {
 
   abstract startOfWeek(
     date: Date | number,
-    options?: { weekStartsOn?: number }
+    options?: { weekStartsOn?: number },
   ): Date;
 
   abstract getHours(date: Date | number): number;

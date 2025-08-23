@@ -45,7 +45,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'async-events',
           loadChildren: () =>
             import('./demo-modules/async-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Async events',
@@ -55,7 +55,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'optional-event-end-dates',
           loadChildren: () =>
             import('./demo-modules/optional-event-end-dates/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Optional event end dates',
@@ -65,7 +65,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'editable-deletable-events',
           loadChildren: () =>
             import('./demo-modules/editable-deletable-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Editable / deletable events',
@@ -75,7 +75,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'draggable-events',
           loadChildren: () =>
             import('./demo-modules/draggable-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Draggable events',
@@ -85,7 +85,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'resizable-events',
           loadChildren: () =>
             import('./demo-modules/resizable-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Resizable events',
@@ -95,7 +95,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'month-view-badge-total',
           loadChildren: () =>
             import('./demo-modules/month-view-badge-total/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Month view badge total',
@@ -105,7 +105,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'recurring-events',
           loadChildren: () =>
             import('./demo-modules/recurring-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Recurring events',
@@ -115,7 +115,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'custom-event-class',
           loadChildren: () =>
             import('./demo-modules/custom-event-class/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Custom event class',
@@ -125,7 +125,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'clickable-events',
           loadChildren: () =>
             import('./demo-modules/clickable-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Clickable events',
@@ -135,7 +135,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'clickable-days',
           loadChildren: () =>
             import('./demo-modules/clickable-days/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Clickable times',
@@ -145,7 +145,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'custom-hour-duration',
           loadChildren: () =>
             import('./demo-modules/custom-hour-duration/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Custom hour duration',
@@ -155,7 +155,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'day-view-start-end',
           loadChildren: () =>
             import('./demo-modules/day-view-start-end/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Day view start / end time',
@@ -165,7 +165,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'day-view-hour-split',
           loadChildren: () =>
             import('./demo-modules/day-view-hour-split/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Day view hour split',
@@ -175,7 +175,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'navigating-between-views',
           loadChildren: () =>
             import('./demo-modules/navigating-between-views/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Navigating between views',
@@ -185,7 +185,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'before-view-render',
           loadChildren: () =>
             import('./demo-modules/before-view-render/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Before view render',
@@ -196,7 +196,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'exclude-days',
           loadChildren: () =>
             import('./demo-modules/exclude-days/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Exclude Weekends',
@@ -215,7 +215,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'draggable-external-events',
           loadChildren: () =>
             import('./demo-modules/draggable-external-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Draggable external events',
@@ -225,7 +225,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'all-day-events',
           loadChildren: () =>
             import('./demo-modules/all-day-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'All day events',
@@ -235,7 +235,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'customise-date-formats',
           loadChildren: () =>
             import('./demo-modules/customise-date-formats/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Customise date formats',
@@ -245,7 +245,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'show-dates-on-titles',
           loadChildren: () =>
             import('./demo-modules/show-dates-on-titles/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Show dates on title',
@@ -255,7 +255,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'disable-tooltips',
           loadChildren: () =>
             import('./demo-modules/disable-tooltips/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Disable tooltips',
@@ -265,7 +265,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'additional-event-properties',
           loadChildren: () =>
             import('./demo-modules/additional-event-properties/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Additional event properties',
@@ -275,7 +275,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'selectable-period',
           loadChildren: () =>
             import('./demo-modules/selectable-period/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Selectable period',
@@ -285,7 +285,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'min-max-date',
           loadChildren: () =>
             import('./demo-modules/min-max-date/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Min max date',
@@ -295,7 +295,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'refreshing-the-view',
           loadChildren: () =>
             import('./demo-modules/refreshing-the-view/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Refreshing the view',
@@ -305,7 +305,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'custom-templates',
           loadChildren: () =>
             import('./demo-modules/custom-templates/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Custom templates',
@@ -315,7 +315,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'group-similar-events',
           loadChildren: () =>
             import('./demo-modules/group-similar-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Group similar events',
@@ -325,7 +325,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'context-menu',
           loadChildren: () =>
             import('./demo-modules/context-menu/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Context menu',
@@ -336,7 +336,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'week-view-minute-precision',
           loadChildren: () =>
             import('./demo-modules/week-view-minute-precision/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Week view minute precision',
@@ -346,7 +346,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'extra-month-view-weeks',
           loadChildren: () =>
             import('./demo-modules/extra-month-view-weeks/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Extra month view weeks',
@@ -356,7 +356,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'disable-slide-animation',
           loadChildren: () =>
             import('./demo-modules/disable-slide-animation/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Disable slide animation',
@@ -366,7 +366,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'no-events-label',
           loadChildren: () =>
             import('./demo-modules/no-events-label/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'No events label',
@@ -392,7 +392,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'day-view-scheduler',
           loadChildren: () =>
             import('./demo-modules/day-view-scheduler/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Day view scheduler',
@@ -402,7 +402,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'drag-to-create-events',
           loadChildren: () =>
             import('./demo-modules/drag-to-create-events/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Drag to create events',
@@ -412,7 +412,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'responsive-week-view',
           loadChildren: () =>
             import('./demo-modules/responsive-week-view/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Responsive week view',
@@ -422,7 +422,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'dark-theme',
           loadChildren: () =>
             import('./demo-modules/dark-theme/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Dark theme',
@@ -433,7 +433,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'week-view-event-margin',
           loadChildren: () =>
             import('./demo-modules/week-view-event-margin/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Week view event margin',
@@ -443,7 +443,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'customise-current-time-marker',
           loadChildren: () =>
             import('./demo-modules/customise-current-time-marker/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Customise current time marker',
@@ -453,7 +453,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'public-holidays',
           loadChildren: () =>
             import('./demo-modules/public-holidays/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Public holidays',
@@ -463,7 +463,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'scroll-to-current-time',
           loadChildren: () =>
             import('./demo-modules/scroll-to-current-time/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Scroll to current time',
@@ -481,7 +481,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
           path: 'validate-drag-and-resize',
           loadChildren: () =>
             import('./demo-modules/validate-drag-and-resize/module').then(
-              (m) => m.DemoModule
+              (m) => m.DemoModule,
             ),
           data: {
             label: 'Validate dragging and resizing',
@@ -494,7 +494,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
       ],
       {
         useHash: true,
-      }
+      },
     ),
   ],
   bootstrap: [DemoAppComponent],

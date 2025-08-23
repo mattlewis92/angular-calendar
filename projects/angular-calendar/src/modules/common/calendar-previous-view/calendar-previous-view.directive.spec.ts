@@ -45,7 +45,7 @@ describe('calendarPreviousView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2017-01-28')
+      new Date('2017-01-28'),
     );
     fixture.destroy();
   });
@@ -58,7 +58,7 @@ describe('calendarPreviousView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2017-01-21')
+      new Date('2017-01-21'),
     );
     fixture.destroy();
   });
@@ -71,7 +71,7 @@ describe('calendarPreviousView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2017-01-27')
+      new Date('2017-01-27'),
     );
     fixture.destroy();
   });
@@ -85,7 +85,7 @@ describe('calendarPreviousView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2018-06-15')
+      new Date('2018-06-15'),
     );
     fixture.destroy();
   });
@@ -100,7 +100,7 @@ describe('calendarPreviousView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2018-07-27')
+      new Date('2018-07-27'),
     );
     fixture.destroy();
   });

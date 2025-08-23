@@ -24,7 +24,7 @@ export function addModuleImportToRootModule(
   host: Tree,
   importedModuleName: string,
   importedModulePath: string,
-  project: ProjectDefinition
+  project: ProjectDefinition,
 ) {
   const mainPath = getProjectMainFile(project);
   const appModulePath = getAppModulePath(host, mainPath);
@@ -32,7 +32,7 @@ export function addModuleImportToRootModule(
     host,
     appModulePath,
     importedModuleName,
-    importedModulePath
+    importedModulePath,
   );
 }
 
@@ -47,7 +47,7 @@ function addModuleImportToModule(
   host: Tree,
   moduleToImportIn: string,
   importedModuleName: string,
-  importedModulePath: string
+  importedModulePath: string,
 ) {
   const moduleSource = getSourceFile(host, moduleToImportIn);
 
@@ -59,7 +59,7 @@ function addModuleImportToModule(
     moduleSource,
     moduleToImportIn,
     importedModuleName,
-    importedModulePath
+    importedModulePath,
   );
   const recorder = host.beginUpdate(moduleToImportIn);
 
@@ -73,7 +73,7 @@ function addModuleImportToModule(
 export function insertAfterImports(
   source: ts.SourceFile,
   fileToEdit: string,
-  toInsert: string
+  toInsert: string,
 ): Change {
   const allImports = findNodes(source, ts.SyntaxKind.ImportDeclaration);
 
@@ -82,7 +82,7 @@ export function insertAfterImports(
     toInsert,
     fileToEdit,
     0,
-    ts.SyntaxKind.StringLiteral
+    ts.SyntaxKind.StringLiteral,
   );
 }
 
@@ -90,11 +90,11 @@ export function insertWildcardImport(
   source: ts.SourceFile,
   fileToEdit: string,
   symbolName: string,
-  fileName: string
+  fileName: string,
 ): Change {
   return insertAfterImports(
     source,
     fileToEdit,
-    `;\nimport * as ${symbolName} from '${fileName}'`
+    `;\nimport * as ${symbolName} from '${fileName}'`,
   );
 }

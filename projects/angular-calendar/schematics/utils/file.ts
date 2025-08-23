@@ -18,7 +18,7 @@ export function getSourceFile(host: Tree, path: string): ts.SourceFile {
     path,
     content,
     ts.ScriptTarget.Latest,
-    true
+    true,
   );
 
   return sourceFile;

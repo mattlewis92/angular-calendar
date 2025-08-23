@@ -33,7 +33,7 @@ export class CalendarMomentDateFormatter
    */
   constructor(
     @Inject(MOMENT) protected moment: any,
-    protected dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter,
   ) {}
 
   /**
@@ -89,7 +89,7 @@ export class CalendarMomentDateFormatter
       date,
       weekStartsOn,
       excludeDays,
-      daysInWeek
+      daysInWeek,
     );
     const format = (dateToFormat: Date, showYear: boolean) =>
       this.moment(dateToFormat)
@@ -97,7 +97,7 @@ export class CalendarMomentDateFormatter
         .format('MMM D' + (showYear ? ', YYYY' : ''));
     return `${format(
       viewStart,
-      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear()
+      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear(),
     )} - ${format(viewEnd, true)}`;
   }
 

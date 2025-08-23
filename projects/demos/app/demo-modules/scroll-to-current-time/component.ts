@@ -47,7 +47,7 @@ export class DemoComponent implements AfterViewInit {
       // each hour is 60px high, so to get the pixels to scroll it's just the amount of minutes since midnight
       const minutesSinceStartOfDay = differenceInMinutes(
         startOfHour(new Date()),
-        startOfDay(new Date())
+        startOfDay(new Date()),
       );
       const headerHeight = this.view === CalendarView.Week ? 60 : 0;
       this.scrollContainer.nativeElement.scrollTop =

@@ -11,11 +11,11 @@ export interface AppOptions {
 const SCHEMATICS_PACKAGE_NAME = '@schematics/angular';
 const collectionPath = join(__dirname, '../collection.json');
 export async function createTestApp(
-  appOptions: AppOptions
+  appOptions: AppOptions,
 ): Promise<UnitTestTree> {
   const runner = new SchematicTestRunner(
     'angular-calendar-schematics',
-    collectionPath
+    collectionPath,
   );
   const workspace = await runner
     .runExternalSchematicAsync(SCHEMATICS_PACKAGE_NAME, 'workspace', {
@@ -33,7 +33,7 @@ export async function createTestApp(
         name: appOptions.name,
         ...appOptions,
       },
-      workspace
+      workspace,
     )
     .toPromise();
 }

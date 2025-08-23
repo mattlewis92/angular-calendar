@@ -49,7 +49,7 @@ describe('calendarMonthView component', () => {
               provide: CalendarDateFormatter,
               useClass: CalendarMomentDateFormatter,
             },
-          }
+          },
         ),
       ],
       providers: [{ provide: MOMENT, useValue: moment }],
@@ -72,7 +72,7 @@ describe('calendarMonthView component', () => {
     expect(fixture.componentInstance.view.days.length).to.equal(35);
     expect(fixture.componentInstance.view.totalDaysVisibleInWeek).to.equal(7);
     expect(fixture.componentInstance.view.days[0].date).to.deep.equal(
-      moment('2016-05-29').toDate()
+      moment('2016-05-29').toDate(),
     );
     fixture.destroy();
   });
@@ -108,16 +108,16 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
 
     const computedStyles: CSSStyleDeclaration = window.getComputedStyle(
-      fixture.nativeElement.querySelector('.cal-event')
+      fixture.nativeElement.querySelector('.cal-event'),
     );
     expect(computedStyles.getPropertyValue('background-color')).to.equal(
-      'rgb(30, 144, 255)'
+      'rgb(30, 144, 255)',
     );
     expect(computedStyles.getPropertyValue('border-color')).to.equal(
-      'rgb(209, 232, 255)'
+      'rgb(209, 232, 255)',
     );
     expect(computedStyles.getPropertyValue('color')).to.equal(
-      'rgb(255, 255, 255)'
+      'rgb(255, 255, 255)',
     );
     fixture.destroy();
   });
@@ -134,7 +134,7 @@ describe('calendarMonthView component', () => {
       0, 5, 10, 15, 20,
     ]);
     expect(fixture.componentInstance.view.days[0].date).to.deep.equal(
-      moment('2015-12-28').toDate()
+      moment('2015-12-28').toDate(),
     );
     fixture.destroy();
   });
@@ -167,7 +167,7 @@ describe('calendarMonthView component', () => {
     });
     expect(fixture.componentInstance.openRowIndex).to.equal(7);
     expect(fixture.componentInstance.openDay).to.equal(
-      fixture.componentInstance.view.days[8]
+      fixture.componentInstance.view.days[8],
     );
     fixture.componentInstance.activeDayIsOpen = false;
     fixture.componentInstance.ngOnChanges({
@@ -201,7 +201,7 @@ describe('calendarMonthView component', () => {
     });
     expect(fixture.componentInstance.openRowIndex).to.equal(7);
     expect(fixture.componentInstance.openDay).to.equal(
-      fixture.componentInstance.view.days[8]
+      fixture.componentInstance.view.days[8],
     );
     fixture.componentInstance.activeDayIsOpen = false;
     fixture.componentInstance.ngOnChanges({
@@ -232,7 +232,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     expect(event.classList.contains('foo')).to.equal(true);
     fixture.destroy();
@@ -252,7 +252,7 @@ describe('calendarMonthView component', () => {
     expect(
       fixture.nativeElement
         .querySelector('.cal-days .cal-cell')
-        .classList.contains('foo')
+        .classList.contains('foo'),
     ).to.equal(true);
     fixture.destroy();
   });
@@ -271,7 +271,7 @@ describe('calendarMonthView component', () => {
     expect(
       fixture.nativeElement
         .querySelector('.cal-header .cal-cell')
-        .classList.contains('foo')
+        .classList.contains('foo'),
     ).to.equal(true);
     fixture.destroy();
   });
@@ -290,7 +290,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const cell: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell'
+      '.cal-days .cal-cell',
     );
     expect(cell.classList.contains('foo')).to.equal(true);
     expect(cell.classList.contains('cal-out-month')).to.equal(true);
@@ -319,10 +319,10 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     const day: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4)'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4)',
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
@@ -360,7 +360,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-open-day-events .cal-event-action'
+      '.cal-open-day-events .cal-event-action',
     );
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
@@ -368,7 +368,7 @@ describe('calendarMonthView component', () => {
     const actionSpy = fixture.componentInstance.events[0].actions[0]
       .onClick as sinon.SinonSpy;
     expect(actionSpy.getCall(0).args[0].event).to.equal(
-      fixture.componentInstance.events[0]
+      fixture.componentInstance.events[0],
     );
     expect(actionSpy.getCall(0).args[0].sourceEvent instanceof MouseEvent).to.be
       .true;
@@ -400,13 +400,13 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const action: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-open-day-events .cal-event-action'
+      '.cal-open-day-events .cal-event-action',
     );
     expect(action.innerHTML).to.equal('<i class="fa fa-fw fa-times"></i>');
     expect(action.classList.contains('foo')).to.equal(true);
     const sourceEvent = triggerDomEvent('keydown', action, { keyCode: 13 });
     expect(
-      fixture.componentInstance.events[0].actions[0].onClick
+      fixture.componentInstance.events[0].actions[0].onClick,
     ).to.have.been.calledWith({
       event: fixture.componentInstance.events[0],
       sourceEvent,
@@ -432,7 +432,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const title: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-open-day-events .cal-event-title'
+      '.cal-open-day-events .cal-event-title',
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
     fixture.componentInstance.eventClicked.subscribe((val) => {
@@ -463,7 +463,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const title: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-open-day-events .cal-event-title'
+      '.cal-open-day-events .cal-event-title',
     );
     expect(title.innerHTML).to.equal('<span>foo</span>');
     fixture.componentInstance.eventClicked.subscribe((val) => {
@@ -521,7 +521,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const title: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-open-day-events .cal-event-title'
+      '.cal-open-day-events .cal-event-title',
     );
     expect(title.innerHTML).to.equal('foo bar');
   });
@@ -536,7 +536,7 @@ describe('calendarMonthView component', () => {
     expect(
       fixture.nativeElement
         .querySelector('.cal-header .cal-cell')
-        .innerHTML.trim()
+        .innerHTML.trim(),
     ).to.equal('Sonntag');
   });
 
@@ -552,7 +552,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cal-day-badge').innerHTML
+      fixture.nativeElement.querySelector('.cal-day-badge').innerHTML,
     ).to.equal('100');
     fixture.destroy();
   });
@@ -578,16 +578,16 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
     flush();
     const tooltip: HTMLElement = document.body.querySelector(
-      '.cal-tooltip'
+      '.cal-tooltip',
     ) as HTMLElement;
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
-      'title: foo <b>bar</b>'
+      'title: foo <b>bar</b>',
     );
     expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
     expect(!!tooltip.style.top).to.equal(true);
@@ -615,7 +615,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
@@ -624,10 +624,10 @@ describe('calendarMonthView component', () => {
     tick(1);
     expect(!!document.body.querySelector('.cal-tooltip')).to.equal(true);
     const tooltip: HTMLElement = document.body.querySelector(
-      '.cal-tooltip'
+      '.cal-tooltip',
     ) as HTMLElement;
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
-      'title: foo <b>bar</b>'
+      'title: foo <b>bar</b>',
     );
     expect(tooltip.classList.contains('cal-tooltip-top')).to.equal(true);
     expect(!!tooltip.style.top).to.equal(true);
@@ -656,7 +656,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
@@ -672,7 +672,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
     expect(
-      fixture.nativeElement.querySelector('.cal-header .cal-cell').innerText
+      fixture.nativeElement.querySelector('.cal-header .cal-cell').innerText,
     ).to.deep.equal('Monday');
     fixture.destroy();
   });
@@ -725,11 +725,11 @@ describe('calendarMonthView component', () => {
       ghostElement.getBoundingClientRect();
     const movedLeft: number = dragToCellPosition.left - eventStartPosition.left;
     expect(eventAfterDragPosition.left).to.equal(
-      eventStartPosition.left + movedLeft
+      eventStartPosition.left + movedLeft,
     );
     const movedTop: number = dragToCellPosition.top - eventStartPosition.top;
     expect(Math.round(eventAfterDragPosition.top)).to.equal(
-      Math.round(eventStartPosition.top + movedTop)
+      Math.round(eventStartPosition.top + movedTop),
     );
     triggerDomEvent('mouseup', document.body, {
       clientX: dragToCellPosition.left,
@@ -894,11 +894,11 @@ describe('calendarMonthView component', () => {
       dayClickedFired = true;
     });
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     event.click();
     expect(eventClickedEvent.event).to.equal(
-      fixture.componentInstance.events[0]
+      fixture.componentInstance.events[0],
     );
     expect(eventClickedEvent.sourceEvent instanceof MouseEvent).to.be.true;
     expect(dayClickedFired).to.equal(false);
@@ -911,7 +911,7 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     fixture.detectChanges();
     const headerCells: HTMLElement[] = fixture.nativeElement.querySelectorAll(
-      '.cal-header .cal-cell'
+      '.cal-header .cal-cell',
     );
     expect(headerCells[0].classList.contains('cal-past')).to.equal(true);
     expect(headerCells[0].classList.contains('cal-today')).to.equal(false);
@@ -936,7 +936,7 @@ describe('calendarMonthView component', () => {
     expect(fixture.componentInstance.view.days[5].isWeekend).to.equal(true);
     expect(fixture.componentInstance.view.days[6].isWeekend).to.equal(true);
     const headerCells: HTMLElement[] = fixture.nativeElement.querySelectorAll(
-      '.cal-header .cal-cell'
+      '.cal-header .cal-cell',
     );
     expect(headerCells[0].classList.contains('cal-weekend')).to.equal(false);
     expect(headerCells[5].classList.contains('cal-weekend')).to.equal(true);
@@ -954,7 +954,7 @@ describe('calendarMonthView component', () => {
     const beforeViewRenderCalled = sinon.spy();
     // use subscription to test that it was only called a max of one times
     const subscription = fixture.componentInstance.beforeViewRender.subscribe(
-      beforeViewRenderCalled
+      beforeViewRenderCalled,
     );
     fixture.componentInstance.refresh.next(true);
     expect(beforeViewRenderCalled).to.have.been.calledOnce;
@@ -971,7 +971,7 @@ describe('calendarMonthView component', () => {
     const beforeViewRenderCalled = sinon.spy();
     // use subscription to test that it was only called a max of one times
     const subscription = fixture.componentInstance.beforeViewRender.subscribe(
-      beforeViewRenderCalled
+      beforeViewRenderCalled,
     );
     fixture.componentInstance.viewDate = new Date('2016-06-28');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
@@ -1005,13 +1005,13 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.viewDate = new Date('2016-06-27');
     fixture.componentInstance.ngOnChanges({ viewDate: {} });
     expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.start
+      beforeViewRenderCalled.getCall(0).args[0].period.start,
     ).to.be.an.instanceOf(Date);
     expect(
-      beforeViewRenderCalled.getCall(0).args[0].period.end
+      beforeViewRenderCalled.getCall(0).args[0].period.end,
     ).to.be.an.instanceOf(Date);
     expect(
-      Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events)
+      Array.isArray(beforeViewRenderCalled.getCall(0).args[0].period.events),
     ).to.equal(true);
     fixture.destroy();
   });
@@ -1045,10 +1045,10 @@ describe('calendarMonthView component', () => {
     fixture.detectChanges();
 
     const computedStyles: CSSStyleDeclaration = window.getComputedStyle(
-      fixture.nativeElement.querySelector('.cal-event')
+      fixture.nativeElement.querySelector('.cal-event'),
     );
     expect(computedStyles.getPropertyValue('background-color')).to.equal(
-      'rgb(255, 255, 255)'
+      'rgb(255, 255, 255)',
     );
     document.head.removeChild(style);
   });
@@ -1067,19 +1067,19 @@ describe('calendarMonthView component', () => {
     fixture.componentInstance.ngOnChanges({ viewDate: {}, events: {} });
     fixture.detectChanges();
     const event: HTMLElement = fixture.nativeElement.querySelector(
-      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event'
+      '.cal-days .cal-cell-row .cal-cell:nth-child(4) .cal-events .cal-event',
     );
     triggerDomEvent('mouseenter', event);
     fixture.detectChanges();
     flush();
     const tooltip = document.body.querySelector('.cal-tooltip');
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
-      'foo'
+      'foo',
     );
     fixture.componentInstance.events[0].title = 'bar';
     fixture.detectChanges();
     expect(tooltip.querySelector('.cal-tooltip-inner').innerHTML).to.equal(
-      'bar'
+      'bar',
     );
     triggerDomEvent('mouseleave', event);
     fixture.detectChanges();

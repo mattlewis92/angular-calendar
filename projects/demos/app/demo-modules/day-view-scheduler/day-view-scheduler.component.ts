@@ -55,7 +55,7 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
 
     view.users.forEach((user, columnIndex) => {
       const events = args.events.filter(
-        (event) => event.meta.user.id === user.id
+        (event) => event.meta.user.id === user.id,
       );
       const columnView = super.getWeekView({
         ...args,
@@ -100,7 +100,7 @@ export class DayViewSchedulerComponent
     protected utils: DayViewSchedulerCalendarUtils,
     @Inject(LOCALE_ID) locale: string,
     protected dateAdapter: DateAdapter,
-    protected element: ElementRef<HTMLElement>
+    protected element: ElementRef<HTMLElement>,
   ) {
     super(cdr, utils, locale, dateAdapter, element);
   }
@@ -127,7 +127,7 @@ export class DayViewSchedulerComponent
         dayEvent,
         { ...dragEvent, x: 0 },
         this.dayColumnWidth,
-        true
+        true,
       );
       const originalEvent = dayEvent.event;
       const adjustedEvent = {
@@ -143,7 +143,7 @@ export class DayViewSchedulerComponent
       });
       this.restoreOriginalEvents(
         tempEvents,
-        new Map([[adjustedEvent, originalEvent]])
+        new Map([[adjustedEvent, originalEvent]]),
       );
     }
     this.dragAlreadyMoved = true;
@@ -153,7 +153,7 @@ export class DayViewSchedulerComponent
     weekEvent: WeekViewAllDayEvent | WeekViewTimeEvent,
     dragEndEvent: DragEndEvent,
     dayWidth: number,
-    useY = false
+    useY = false,
   ) {
     super.dragEnded(
       weekEvent,
@@ -162,7 +162,7 @@ export class DayViewSchedulerComponent
         x: 0,
       },
       dayWidth,
-      useY
+      useY,
     );
     const newUser = this.getDraggedUserColumn(weekEvent, dragEndEvent.x);
     if (newUser && newUser !== weekEvent.event.meta.user) {
@@ -195,18 +195,18 @@ export class DayViewSchedulerComponent
         this.viewDate,
         this.weekStartsOn,
         this.excludeDays,
-        this.daysInWeek
+        this.daysInWeek,
       ),
     });
   }
 
   private getDraggedUserColumn(
     dayEvent: WeekViewTimeEvent | WeekViewAllDayEvent,
-    xPixels: number
+    xPixels: number,
   ) {
     const columnsMoved = Math.round(xPixels / this.dayColumnWidth);
     const currentColumnIndex = this.view.users.findIndex(
-      (user) => user === dayEvent.event.meta.user
+      (user) => user === dayEvent.event.meta.user,
     );
     const newIndex = currentColumnIndex + columnsMoved;
     return this.view.users[newIndex];

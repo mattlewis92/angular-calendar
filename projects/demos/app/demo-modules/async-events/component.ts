@@ -25,7 +25,7 @@ interface Film {
 function getTimezoneOffsetString(date: Date): string {
   const timezoneOffset = date.getTimezoneOffset();
   const hoursOffset = String(
-    Math.floor(Math.abs(timezoneOffset / 60))
+    Math.floor(Math.abs(timezoneOffset / 60)),
   ).padStart(2, '0');
   const minutesOffset = String(Math.abs(timezoneOffset % 60)).padEnd(2, '0');
   const direction = timezoneOffset > 0 ? '-' : '+';
@@ -69,11 +69,11 @@ export class DemoComponent implements OnInit {
     const params = new HttpParams()
       .set(
         'primary_release_date.gte',
-        format(getStart(this.viewDate), 'yyyy-MM-dd')
+        format(getStart(this.viewDate), 'yyyy-MM-dd'),
       )
       .set(
         'primary_release_date.lte',
-        format(getEnd(this.viewDate), 'yyyy-MM-dd')
+        format(getEnd(this.viewDate), 'yyyy-MM-dd'),
       )
       .set('api_key', '0ec33936a68018857d727958dca1424f');
 
@@ -85,7 +85,7 @@ export class DemoComponent implements OnInit {
             return {
               title: film.title,
               start: new Date(
-                film.release_date + getTimezoneOffsetString(this.viewDate)
+                film.release_date + getTimezoneOffsetString(this.viewDate),
               ),
               color: colors.yellow,
               allDay: true,
@@ -94,7 +94,7 @@ export class DemoComponent implements OnInit {
               },
             };
           });
-        })
+        }),
       );
   }
 
@@ -121,7 +121,7 @@ export class DemoComponent implements OnInit {
   eventClicked(event: CalendarEvent<{ film: Film }>): void {
     window.open(
       `https://www.themoviedb.org/movie/${event.meta.film.id}`,
-      '_blank'
+      '_blank',
     );
   }
 }

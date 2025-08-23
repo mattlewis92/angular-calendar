@@ -30,7 +30,7 @@ export function momentAdapterFactory() {
           provide: CalendarDateFormatter,
           useClass: CalendarMomentDateFormatter,
         },
-      }
+      },
     ),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),

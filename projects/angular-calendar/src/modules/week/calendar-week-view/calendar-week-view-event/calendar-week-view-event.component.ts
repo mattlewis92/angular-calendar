@@ -32,7 +32,7 @@ import { PlacementArray } from 'positioning';
         [ngStyle]="{
           color: weekEvent.event.color?.secondaryText,
           backgroundColor: weekEvent.event.color?.secondary,
-          borderColor: weekEvent.event.color?.primary
+          borderColor: weekEvent.event.color?.primary,
         }"
         [mwlCalendarTooltip]="
           !tooltipDisabled
@@ -53,7 +53,7 @@ import { PlacementArray } from 'positioning';
         role="application"
         [attr.aria-label]="
           { event: weekEvent.tempEvent || weekEvent.event, locale: locale }
-            | calendarA11y : 'eventDescription'
+            | calendarA11y: 'eventDescription'
         "
       >
         <mwl-calendar-event-actions
@@ -81,7 +81,7 @@ import { PlacementArray } from 'positioning';
         tooltipDisabled: tooltipDisabled,
         tooltipDelay: tooltipDelay,
         column: column,
-        daysInWeek: daysInWeek
+        daysInWeek: daysInWeek,
       }"
     >
     </ng-template>

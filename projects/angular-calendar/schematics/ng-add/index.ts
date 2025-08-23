@@ -63,24 +63,24 @@ function addPackageJsonDependencies(options: Schema): Rule {
 
     const angularCalendarDependency: NodeDependency = nodeDependencyFactory(
       'angular-calendar',
-      angularCalendarVersion
+      angularCalendarVersion,
     );
     const dateAdapterLibrary = options.dateAdapter;
     const dateAdapterLibraryDependency: NodeDependency = nodeDependencyFactory(
       dateAdapterLibrary,
-      dateAdapters[dateAdapterLibrary]
+      dateAdapters[dateAdapterLibrary],
     );
 
     addPackageJsonDependency(host, angularCalendarDependency);
     context.logger.log(
       'info',
-      `Added "${angularCalendarDependency.name}" into ${angularCalendarDependency.type}`
+      `Added "${angularCalendarDependency.name}" into ${angularCalendarDependency.type}`,
     );
 
     addPackageJsonDependency(host, dateAdapterLibraryDependency);
     context.logger.log(
       'info',
-      `Added "${dateAdapterLibraryDependency.name}" into ${dateAdapterLibraryDependency.type}`
+      `Added "${dateAdapterLibraryDependency.name}" into ${dateAdapterLibraryDependency.type}`,
     );
 
     return host;
@@ -89,7 +89,7 @@ function addPackageJsonDependencies(options: Schema): Rule {
 
 function nodeDependencyFactory(
   packageName: string,
-  version: string
+  version: string,
 ): NodeDependency {
   return {
     type: NodeDependencyType.Default,
@@ -126,13 +126,13 @@ function addModuleToImports(options: Schema): Rule {
         moduleSource as ts.SourceFile,
         appModulePath,
         'DateAdapter',
-        moduleCalendarSrc
+        moduleCalendarSrc,
       ) as InsertChange,
       insertImport(
         moduleSource as ts.SourceFile,
         appModulePath,
         'adapterFactory',
-        `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`
+        `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`,
       ) as InsertChange,
     ];
 
@@ -142,8 +142,8 @@ function addModuleToImports(options: Schema): Rule {
           moduleSource as ts.SourceFile,
           appModulePath,
           'moment',
-          'moment'
-        ) as InsertChange
+          'moment',
+        ) as InsertChange,
       );
       updates.push(
         insertAfterImports(
@@ -151,8 +151,8 @@ function addModuleToImports(options: Schema): Rule {
           appModulePath,
           `;\n\nexport function momentAdapterFactory() {
   return adapterFactory(moment);
-}`
-        ) as InsertChange
+}`,
+        ) as InsertChange,
       );
     }
 

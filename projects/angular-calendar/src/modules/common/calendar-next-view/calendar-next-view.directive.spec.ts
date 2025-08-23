@@ -45,7 +45,7 @@ describe('mwlCalendarNextView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2017-02-28')
+      new Date('2017-02-28'),
     );
     fixture.destroy();
   });
@@ -58,7 +58,7 @@ describe('mwlCalendarNextView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2017-02-04')
+      new Date('2017-02-04'),
     );
     fixture.destroy();
   });
@@ -71,7 +71,7 @@ describe('mwlCalendarNextView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2017-01-29')
+      new Date('2017-01-29'),
     );
     fixture.destroy();
   });
@@ -85,7 +85,7 @@ describe('mwlCalendarNextView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2018-06-18')
+      new Date('2018-06-18'),
     );
     fixture.destroy();
   });
@@ -100,7 +100,7 @@ describe('mwlCalendarNextView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      new Date('2018-08-02')
+      new Date('2018-08-02'),
     );
     fixture.destroy();
   });

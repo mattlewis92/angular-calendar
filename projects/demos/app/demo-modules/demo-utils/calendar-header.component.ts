@@ -36,7 +36,7 @@ import { CalendarView } from 'angular-calendar';
         </div>
       </div>
       <div class="col-md-4">
-        <h3>{{ viewDate | calendarDate: view + 'ViewTitle':locale }}</h3>
+        <h3>{{ viewDate | calendarDate: view + 'ViewTitle' : locale }}</h3>
       </div>
       <div class="col-md-4">
         <div class="btn-group">

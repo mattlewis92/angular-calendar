@@ -17,7 +17,7 @@ export function getProjectMainFile(project: ProjectDefinition): string {
   if (typeof buildOptions.main !== 'string') {
     throw new SchematicsException(
       `Could not find the project main file inside of the ` +
-        `workspace config (${project.sourceRoot})`
+        `workspace config (${project.sourceRoot})`,
     );
   }
 

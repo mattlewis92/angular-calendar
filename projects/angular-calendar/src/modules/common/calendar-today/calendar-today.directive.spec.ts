@@ -33,7 +33,7 @@ describe('mwlCalendarNextView directive', () => {
     fixture.nativeElement.querySelector('button').click();
     fixture.detectChanges();
     expect(fixture.componentInstance.viewDate).to.deep.equal(
-      startOfDay(new Date())
+      startOfDay(new Date()),
     );
     fixture.destroy();
   });

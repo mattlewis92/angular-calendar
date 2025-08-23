@@ -45,7 +45,7 @@ export class DemoComponent {
     this.selectedMonthViewDay = day;
     const selectedDateTime = this.selectedMonthViewDay.date.getTime();
     const dateIndex = this.selectedDays.findIndex(
-      (selectedDay) => selectedDay.date.getTime() === selectedDateTime
+      (selectedDay) => selectedDay.date.getTime() === selectedDateTime,
     );
     if (dateIndex > -1) {
       delete this.selectedMonthViewDay.cssClass;
@@ -61,7 +61,7 @@ export class DemoComponent {
     body.forEach((day) => {
       if (
         this.selectedDays.some(
-          (selectedDay) => selectedDay.date.getTime() === day.date.getTime()
+          (selectedDay) => selectedDay.date.getTime() === day.date.getTime(),
         )
       ) {
         day.cssClass = 'cal-day-selected';

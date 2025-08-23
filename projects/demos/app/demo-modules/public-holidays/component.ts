@@ -35,7 +35,10 @@ export class DemoComponent implements OnInit {
 
   events: CalendarEventWithMeta[] = [];
 
-  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit(): void {
     this.fetchHolidays();

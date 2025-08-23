@@ -25,7 +25,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
           provide: CalendarDateFormatter,
           useClass: DemoModule,
         },
-      }
+      },
     ),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),

@@ -48,7 +48,7 @@ export * from './day/calendar-day.module';
 export class CalendarModule {
   static forRoot(
     dateAdapter: Provider,
-    config: CalendarModuleConfig = {}
+    config: CalendarModuleConfig = {},
   ): ModuleWithProviders<CalendarModule> {
     return {
       ngModule: CalendarModule,

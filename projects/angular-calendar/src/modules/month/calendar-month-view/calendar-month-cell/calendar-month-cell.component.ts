@@ -30,7 +30,7 @@ import { PlacementArray } from 'positioning';
       <div
         class="cal-cell-top"
         [attr.aria-label]="
-          { day: day, locale: locale } | calendarA11y : 'monthCell'
+          { day: day, locale: locale } | calendarA11y: 'monthCell'
         "
       >
         <span aria-hidden="true">
@@ -38,7 +38,7 @@ import { PlacementArray } from 'positioning';
             day.badgeTotal
           }}</span>
           <span class="cal-day-number">{{
-            day.date | calendarDate : 'monthViewDayNumber' : locale
+            day.date | calendarDate: 'monthViewDayNumber' : locale
           }}</span>
         </span>
       </div>
@@ -51,7 +51,7 @@ import { PlacementArray } from 'positioning';
           (mouseenter)="highlightDay.emit({ event: event })"
           (mouseleave)="unhighlightDay.emit({ event: event })"
           [mwlCalendarTooltip]="
-            event.title | calendarEventTitle : 'monthTooltip' : event
+            event.title | calendarEventTitle: 'monthTooltip' : event
           "
           [tooltipPlacement]="tooltipPlacement"
           [tooltipEvent]="event"
@@ -66,7 +66,7 @@ import { PlacementArray } from 'positioning';
           [validateDrag]="validateDrag"
           [touchStartLongPress]="{ delay: 300, delta: 30 }"
           (mwlClick)="eventClicked.emit({ event: event, sourceEvent: $event })"
-          [attr.aria-hidden]="{} | calendarA11y : 'hideMonthCellEvents'"
+          [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
         ></div>
       </div>
     </ng-template>
@@ -84,7 +84,7 @@ import { PlacementArray } from 'positioning';
         tooltipAppendToBody: tooltipAppendToBody,
         tooltipDelay: tooltipDelay,
         trackByEventId: trackByEventId,
-        validateDrag: validateDrag
+        validateDrag: validateDrag,
       }"
     >
     </ng-template>

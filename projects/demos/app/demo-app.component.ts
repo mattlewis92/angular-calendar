@@ -40,23 +40,23 @@ function getSources(folder: string): Promise<Source[]> {
             raw: contents.raw.default
               .replace(
                 ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-                ''
+                '',
               )
               .replace("\nimport { RouterModule } from '@angular/router';", ''),
             highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
               .replace(
                 ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
-                ''
+                '',
               )
               .replace(
                 '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
-                ''
+                '',
               ),
           },
           language: languages[extension],
         };
       });
-    }
+    },
   );
 }
 
@@ -98,14 +98,14 @@ export class DemoAppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    analytics: Angulartics2GoogleGlobalSiteTag
+    analytics: Angulartics2GoogleGlobalSiteTag,
   ) {
     analytics.startTracking();
   }
 
   ngOnInit() {
     const defaultRoute = this.router.config.find(
-      (route) => route.path === '**'
+      (route) => route.path === '**',
     );
 
     this.demos = this.router.config
@@ -133,11 +133,11 @@ export class DemoAppComponent implements OnInit {
             return { url: `/${defaultRoute.redirectTo}` };
           }
           return event;
-        })
+        }),
       )
       .subscribe((event: NavigationStart) => {
         this.activeDemo = this.demos.find(
-          (demo) => `/${demo.path}` === event.url
+          (demo) => `/${demo.path}` === event.url,
         );
         getSources(this.activeDemo.path).then((sources) => {
           this.activeDemo.sources = sources;
@@ -156,8 +156,8 @@ export class DemoAppComponent implements OnInit {
       (demo) =>
         !this.searchText ||
         [demo.label.toLowerCase(), ...demo.tags].some((tag) =>
-          tag.includes(this.searchText.toLowerCase())
-        )
+          tag.includes(this.searchText.toLowerCase()),
+        ),
     );
   }
 
@@ -242,7 +242,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
       },
       {
         openFile: 'demo/component.ts',
-      }
+      },
     );
   }
 

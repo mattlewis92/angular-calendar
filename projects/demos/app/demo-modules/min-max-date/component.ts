@@ -123,10 +123,10 @@ export class DemoComponent {
 
   dateOrViewChanged(): void {
     this.prevBtnDisabled = !this.dateIsValid(
-      endOfPeriod(this.view, subPeriod(this.view, this.viewDate, 1))
+      endOfPeriod(this.view, subPeriod(this.view, this.viewDate, 1)),
     );
     this.nextBtnDisabled = !this.dateIsValid(
-      startOfPeriod(this.view, addPeriod(this.view, this.viewDate, 1))
+      startOfPeriod(this.view, addPeriod(this.view, this.viewDate, 1)),
     );
     if (this.viewDate < this.minDate) {
       this.changeDate(this.minDate);

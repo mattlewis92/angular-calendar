@@ -31,7 +31,7 @@ describe('calendarA11y pipe', () => {
     fixture.componentInstance.a11yParams = {};
     fixture.componentInstance.method = 'invalid';
     expect(() => fixture.detectChanges()).to.throw(
-      /^invalid is not a valid a11y method. Can only be one of/
+      /^invalid is not a valid a11y method. Can only be one of/,
     );
   });
 });

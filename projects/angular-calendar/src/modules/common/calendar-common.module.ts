@@ -113,7 +113,7 @@ export {
 export class CalendarCommonModule {
   static forRoot(
     dateAdapter: Provider,
-    config: CalendarModuleConfig = {}
+    config: CalendarModuleConfig = {},
   ): ModuleWithProviders<CalendarCommonModule> {
     return {
       ngModule: CalendarCommonModule,

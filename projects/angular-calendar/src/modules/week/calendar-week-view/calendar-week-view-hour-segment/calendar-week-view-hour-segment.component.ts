@@ -43,7 +43,7 @@ import { WeekViewHourSegment } from 'calendar-utils';
         locale: locale,
         segmentHeight: segmentHeight,
         isTimeLabel: isTimeLabel,
-        daysInWeek: daysInWeek
+        daysInWeek: daysInWeek,
       }"
     >
     </ng-template>

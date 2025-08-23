@@ -59,7 +59,7 @@
           y:
             !snapDraggedEvents &&
             allDayEvent.event.draggable &&
-            allDayEventResizes.size === 0
+            allDayEventResizes.size === 0,
         }"
         [dragSnapGrid]="snapDraggedEvents ? { x: dayColumnWidth } : {}"
         [validateDrag]="validateDrag"
@@ -81,7 +81,7 @@
           (eventClicked)="
             eventClicked.emit({
               event: allDayEvent.event,
-              sourceEvent: $event.sourceEvent
+              sourceEvent: $event.sourceEvent,
             })
           "
         >
@@ -156,7 +156,7 @@
             left: dayColumnWidth,
             right: dayColumnWidth,
             top: eventSnapSize || hourSegmentHeight,
-            bottom: eventSnapSize || hourSegmentHeight
+            bottom: eventSnapSize || hourSegmentHeight,
           }"
           [validateResize]="validateResize"
           [allowNegativeResizes]="true"
@@ -168,7 +168,7 @@
           [dropData]="{ event: timeEvent.event, calendarId: calendarId }"
           [dragAxis]="{
             x: timeEvent.event.draggable && timeEventResizes.size === 0,
-            y: timeEvent.event.draggable && timeEventResizes.size === 0
+            y: timeEvent.event.draggable && timeEventResizes.size === 0,
           }"
           [dragSnapGrid]="
             snapDraggedEvents
@@ -190,7 +190,7 @@
             mwlResizeHandle
             [resizeEdges]="{
               left: true,
-              top: true
+              top: true,
             }"
           ></div>
           <mwl-calendar-week-view-event
@@ -208,7 +208,7 @@
             (eventClicked)="
               eventClicked.emit({
                 event: timeEvent.event,
-                sourceEvent: $event.sourceEvent
+                sourceEvent: $event.sourceEvent,
               })
             "
           >
@@ -221,7 +221,7 @@
             mwlResizeHandle
             [resizeEdges]="{
               right: true,
-              bottom: true
+              bottom: true,
             }"
           ></div>
         </div>
@@ -241,7 +241,7 @@
             (mwlClick)="
               hourSegmentClicked.emit({
                 date: segment.date,
-                sourceEvent: $event
+                sourceEvent: $event,
               })
             "
             [clickListenerDisabled]="hourSegmentClicked.observers.length === 0"

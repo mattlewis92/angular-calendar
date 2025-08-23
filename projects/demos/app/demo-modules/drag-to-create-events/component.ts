@@ -67,7 +67,7 @@ export class DemoComponent {
   startDragToCreate(
     segment: WeekViewHourSegment,
     mouseDownEvent: MouseEvent,
-    segmentElement: HTMLElement
+    segmentElement: HTMLElement,
   ) {
     const dragToSelectEvent: CalendarEvent = {
       id: this.events.length,
@@ -91,18 +91,18 @@ export class DemoComponent {
           this.dragToCreateActive = false;
           this.refresh();
         }),
-        takeUntil(fromEvent(document, 'mouseup'))
+        takeUntil(fromEvent(document, 'mouseup')),
       )
       .subscribe((mouseMoveEvent: MouseEvent) => {
         const minutesDiff = ceilToNearest(
           mouseMoveEvent.clientY - segmentPosition.top,
-          30
+          30,
         );
 
         const daysDiff =
           floorToNearest(
             mouseMoveEvent.clientX - segmentPosition.left,
-            segmentPosition.width
+            segmentPosition.width,
           ) / segmentPosition.width;
 
         const newEnd = addDays(addMinutes(segment.date, minutesDiff), daysDiff);

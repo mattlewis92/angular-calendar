@@ -39,7 +39,7 @@ describe('angular-calendar schematics', () => {
     appTree = await createTestApp({ name: projectName });
     runner = new SchematicTestRunner(
       'angular-calendar-schematics',
-      collectionPath
+      collectionPath,
     );
     packageJsonPath = '/package.json';
   });
@@ -96,7 +96,7 @@ describe('angular-calendar schematics', () => {
           ...defaultOptions,
           module: 'src/app/app.module.ts',
         },
-        appTree
+        appTree,
       )
       .toPromise();
     expect(tree.files).contain(rootModulePath);
@@ -130,7 +130,7 @@ describe('angular-calendar schematics', () => {
           ...defaultOptions,
           dateAdapter: 'moment',
         },
-        appTree
+        appTree,
       )
       .toPromise();
     expect(tree.files).contain(rootModulePath);
@@ -138,7 +138,7 @@ describe('angular-calendar schematics', () => {
     const rootModule = tree.readContent(rootModulePath);
 
     expect(rootModule).contain(
-      `import { adapterFactory } from 'angular-calendar/date-adapters/moment';`
+      `import { adapterFactory } from 'angular-calendar/date-adapters/moment';`,
     );
     expect(rootModule).contain(`import * as moment from 'moment';`);
     expect(rootModule).contain(`export function momentAdapterFactory() {

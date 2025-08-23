@@ -41,7 +41,7 @@ import { takeUntil } from 'rxjs/operators';
       [ngTemplateOutletContext]="{
         contents: contents,
         placement: placement,
-        event: event
+        event: event,
       }"
     >
     </ng-template>
@@ -83,10 +83,10 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
     private renderer: Renderer2,
     componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
-    @Inject(DOCUMENT) private document // eslint-disable-line
+    @Inject(DOCUMENT) private document, // eslint-disable-line
   ) {
     this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
-      CalendarTooltipWindowComponent
+      CalendarTooltipWindowComponent,
     );
   }
 
@@ -130,7 +130,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
         this.tooltipFactory,
         0,
         this.injector,
-        []
+        [],
       );
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.customTemplate = this.customTemplate;
@@ -147,7 +147,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   private hide(): void {
     if (this.tooltipRef) {
       this.viewContainerRef.remove(
-        this.viewContainerRef.indexOf(this.tooltipRef.hostView)
+        this.viewContainerRef.indexOf(this.tooltipRef.hostView),
       );
       this.tooltipRef = null;
     }
@@ -161,7 +161,7 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
         this.elementRef.nativeElement,
         this.tooltipRef.location.nativeElement.children[0],
         this.placement,
-        this.appendToBody
+        this.appendToBody,
       );
       // keep re-positioning the tooltip until the arrow position doesn't make a difference
       if (

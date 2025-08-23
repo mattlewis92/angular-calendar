@@ -18,7 +18,7 @@ import { SchematicsException } from '@angular-devkit/schematics';
  */
 export function getProjectFromWorkspace(
   workspace: WorkspaceDefinition,
-  projectName?: string
+  projectName?: string,
 ): ProjectDefinition {
   if (!projectName) {
     const allProjects = Array.from(workspace.projects.values());
@@ -30,7 +30,7 @@ export function getProjectFromWorkspace(
     const defaultProject = allProjects.find((project) => project.root === '');
     if (!defaultProject) {
       throw new SchematicsException(
-        'Workspace does not have a default project'
+        'Workspace does not have a default project',
       );
     }
   }
@@ -39,7 +39,7 @@ export function getProjectFromWorkspace(
 
   if (!project) {
     throw new SchematicsException(
-      `Could not find project in workspace: ${projectName}`
+      `Could not find project in workspace: ${projectName}`,
     );
   }
 

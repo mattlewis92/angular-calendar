@@ -7,8 +7,8 @@ import { CalendarEvent } from 'calendar-utils';
     <ng-template #defaultTemplate let-event="event" let-view="view">
       <span
         class="cal-event-title"
-        [innerHTML]="event.title | calendarEventTitle : view : event"
-        [attr.aria-hidden]="{} | calendarA11y : 'hideEventTitle'"
+        [innerHTML]="event.title | calendarEventTitle: view : event"
+        [attr.aria-hidden]="{} | calendarA11y: 'hideEventTitle'"
       >
       </span>
     </ng-template>
@@ -16,7 +16,7 @@ import { CalendarEvent } from 'calendar-utils';
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
       [ngTemplateOutletContext]="{
         event: event,
-        view: view
+        view: view,
       }"
     >
     </ng-template>

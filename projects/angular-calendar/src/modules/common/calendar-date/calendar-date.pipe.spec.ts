@@ -41,7 +41,7 @@ describe('calendarDate pipe', () => {
               provide: CalendarDateFormatter,
               useClass: CalendarMomentDateFormatter,
             },
-          }
+          },
         ),
       ],
       declarations: [TestComponent],
@@ -56,7 +56,7 @@ describe('calendarDate pipe', () => {
     (_dateFormatter_, locale) => {
       dateFormatter = _dateFormatter_;
       defaultLocale = locale;
-    }
+    },
   ));
 
   it('should use the date formatter to format the date', () => {
@@ -100,7 +100,7 @@ describe('calendarDate pipe', () => {
     fixture.componentInstance.date = new Date('2016-01-01');
     fixture.componentInstance.method = 'invalid';
     expect(() => fixture.detectChanges()).to.throw(
-      /^invalid is not a valid date formatter. Can only be one of/
+      /^invalid is not a valid date formatter. Can only be one of/,
     );
   });
 });

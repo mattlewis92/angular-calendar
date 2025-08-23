@@ -36,7 +36,7 @@ export interface CalendarMonthViewBeforeRenderEvent {
 
 export interface CalendarMonthViewEventTimesChangedEvent<
   EventMetaType = any,
-  DayMetaType = any
+  DayMetaType = any,
 > extends CalendarEventTimesChangedEvent<EventMetaType> {
   day: MonthViewDay<DayMetaType>;
 }
@@ -71,7 +71,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               role="gridcell"
               *ngFor="
                 let day of view.days
-                  | slice : rowIndex : rowIndex + view.totalDaysVisibleInWeek;
+                  | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;
                 trackBy: trackByDate
               "
               [ngClass]="day?.cssClass"
@@ -103,10 +103,10 @@ export interface CalendarMonthViewEventTimesChangedEvent<
               (eventClicked)="
                 eventClicked.emit({
                   event: $event.event,
-                  sourceEvent: $event.sourceEvent
+                  sourceEvent: $event.sourceEvent,
                 })
               "
-              [attr.tabindex]="{} | calendarA11y : 'monthCellTabIndex'"
+              [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
             >
             </mwl-calendar-month-cell>
           </div>
@@ -121,7 +121,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
             (eventClicked)="
               eventClicked.emit({
                 event: $event.event,
-                sourceEvent: $event.sourceEvent
+                sourceEvent: $event.sourceEvent,
               })
             "
             mwlDroppable
@@ -314,7 +314,7 @@ export class CalendarMonthViewComponent
     protected cdr: ChangeDetectorRef,
     protected utils: CalendarUtils,
     @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter
+    protected dateAdapter: DateAdapter,
   ) {
     this.locale = locale;
   }
@@ -413,7 +413,7 @@ export class CalendarMonthViewComponent
   eventDropped(
     droppedOn: MonthViewDay,
     event: CalendarEvent,
-    draggedFrom?: MonthViewDay
+    draggedFrom?: MonthViewDay,
   ): void {
     if (droppedOn !== draggedFrom) {
       const year: number = this.dateAdapter.getYear(droppedOn.date);
@@ -422,15 +422,15 @@ export class CalendarMonthViewComponent
       const newStart: Date = this.dateAdapter.setDate(
         this.dateAdapter.setMonth(
           this.dateAdapter.setYear(event.start, year),
-          month
+          month,
         ),
-        date
+        date,
       );
       let newEnd: Date;
       if (event.end) {
         const secondsDiff: number = this.dateAdapter.differenceInSeconds(
           newStart,
-          event.start
+          event.start,
         );
         newEnd = this.dateAdapter.addSeconds(event.end, secondsDiff);
       }
@@ -467,7 +467,7 @@ export class CalendarMonthViewComponent
     if (this.activeDayIsOpen === true) {
       const activeDay = this.activeDay || this.viewDate;
       this.openDay = this.view.days.find((day) =>
-        this.dateAdapter.isSameDay(day.date, activeDay)
+        this.dateAdapter.isSameDay(day.date, activeDay),
       );
       const index: number = this.view.days.indexOf(this.openDay);
       this.openRowIndex =

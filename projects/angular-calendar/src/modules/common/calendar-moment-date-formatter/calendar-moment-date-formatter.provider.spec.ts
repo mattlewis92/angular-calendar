@@ -35,7 +35,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.monthViewColumnHeader({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Friday');
   });
 
@@ -44,7 +44,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.monthViewDayNumber({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('1');
   });
 
@@ -53,7 +53,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.monthViewTitle({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('January 2016');
   });
 
@@ -62,7 +62,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.weekViewColumnHeader({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Friday');
   });
 
@@ -71,7 +71,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.weekViewColumnSubHeader({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Jan 1');
   });
 
@@ -80,7 +80,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.weekViewTitle({
         date: new Date('2016-01-04'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Jan 3 - Jan 9, 2016');
   });
 
@@ -89,7 +89,7 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.weekViewHour({
         date: startOfDay(new Date('2016-01-01')),
         locale: 'en',
-      })
+      }),
     ).to.equal('12am');
   });
 
@@ -98,13 +98,16 @@ describe('calendarMomentDateFormatter provider', () => {
       dateFormatter.dayViewHour({
         date: startOfDay(new Date('2016-01-01')),
         locale: 'en',
-      })
+      }),
     ).to.equal('12am');
   });
 
   it('dayViewTitle', () => {
     expect(
-      dateFormatter.dayViewTitle({ date: new Date('2016-01-01'), locale: 'en' })
+      dateFormatter.dayViewTitle({
+        date: new Date('2016-01-01'),
+        locale: 'en',
+      }),
     ).to.equal('Friday, January 1, 2016');
   });
 });

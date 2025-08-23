@@ -32,7 +32,7 @@ export class DemoComponent {
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach((day) => {
       day.badgeTotal = day.events.filter(
-        (event) => event.meta.incrementsBadgeTotal
+        (event) => event.meta.incrementsBadgeTotal,
       ).length;
     });
   }

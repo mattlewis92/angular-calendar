@@ -25,7 +25,7 @@ describe('common module', () => {
       ],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
-      CalendarDateFormatter
+      CalendarDateFormatter,
     );
     expect(dateFormatter).to.be.an.instanceOf(CalendarDateFormatter);
   });
@@ -43,13 +43,13 @@ describe('common module', () => {
               provide: CalendarDateFormatter,
               useClass: CalendarMomentDateFormatter,
             },
-          }
+          },
         ),
       ],
       providers: [{ provide: MOMENT, useValue: moment }],
     });
     const dateFormatter: CalendarDateFormatter = TestBed.get(
-      CalendarDateFormatter
+      CalendarDateFormatter,
     );
     expect(dateFormatter).not.to.be.an.instanceOf(CalendarDateFormatter);
     expect(dateFormatter).to.be.an.instanceOf(CalendarMomentDateFormatter);

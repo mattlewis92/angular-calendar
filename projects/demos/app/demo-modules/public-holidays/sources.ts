@@ -5,14 +5,14 @@ export const sources = [
       raw: {
         default: require('!!raw-loader!./component').default.replace(
           '8eb2582d-3a4c-4fc5-94c8-3e21487d4e23',
-          'REPLACE_WITH_YOUR_OWN_TOKEN'
+          'REPLACE_WITH_YOUR_OWN_TOKEN',
         ),
       },
       highlighted: {
         default:
           require('!!raw-loader!highlightjs-loader?lang=typescript!./component').default.replace(
             '8eb2582d-3a4c-4fc5-94c8-3e21487d4e23',
-            'REPLACE_WITH_YOUR_OWN_TOKEN'
+            'REPLACE_WITH_YOUR_OWN_TOKEN',
           ),
       },
     },

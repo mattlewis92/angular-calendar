@@ -6,7 +6,7 @@ export class CalendarDragHelper {
 
   constructor(
     private dragContainerElement: HTMLElement,
-    draggableElement: HTMLElement
+    draggableElement: HTMLElement,
   ) {
     this.startPosition = draggableElement.getBoundingClientRect();
   }

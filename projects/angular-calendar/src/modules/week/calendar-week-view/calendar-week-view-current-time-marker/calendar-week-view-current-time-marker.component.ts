@@ -38,7 +38,7 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
         dayEndHour: dayEndHour,
         dayEndMinute: dayEndMinute,
         isVisible: (marker$ | async)?.isVisible,
-        topPx: (marker$ | async)?.top
+        topPx: (marker$ | async)?.top,
       }"
     >
     </ng-template>
@@ -75,11 +75,11 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
     map((columnDate) => {
       const startOfDay = this.dateAdapter.setMinutes(
         this.dateAdapter.setHours(columnDate, this.dayStartHour),
-        this.dayStartMinute
+        this.dayStartMinute,
       );
       const endOfDay = this.dateAdapter.setMinutes(
         this.dateAdapter.setHours(columnDate, this.dayEndHour),
-        this.dayEndMinute
+        this.dayEndMinute,
       );
       const hourHeightModifier =
         (this.hourSegments * this.hourSegmentHeight) /
@@ -94,10 +94,13 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
           this.dateAdapter.differenceInMinutes(now, startOfDay) *
           hourHeightModifier,
       };
-    })
+    }),
   );
 
-  constructor(private dateAdapter: DateAdapter, private zone: NgZone) {}
+  constructor(
+    private dateAdapter: DateAdapter,
+    private zone: NgZone,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.columnDate) {

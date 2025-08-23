@@ -31,7 +31,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.monthViewColumnHeader({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Friday');
   });
 
@@ -40,7 +40,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.monthViewDayNumber({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('1');
   });
 
@@ -49,7 +49,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.monthViewTitle({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('January 2016');
   });
 
@@ -58,7 +58,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.monthViewTitle({
         date: new Date('2016-01-01'),
         locale: 'pl',
-      })
+      }),
     ).to.equal('styczeń 2016');
   });
 
@@ -67,7 +67,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.weekViewColumnHeader({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Friday');
   });
 
@@ -76,7 +76,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.weekViewColumnSubHeader({
         date: new Date('2016-01-01'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Jan 1');
   });
 
@@ -85,7 +85,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.weekViewTitle({
         date: new Date('2016-01-04'),
         locale: 'en',
-      })
+      }),
     ).to.equal('Jan 3 - Jan 9, 2016');
   });
 
@@ -94,7 +94,7 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.weekViewHour({
         date: startOfDay(new Date('2016-01-01')),
         locale: 'en',
-      })
+      }),
     ).to.equal('12 AM');
   });
 
@@ -103,13 +103,16 @@ describe('CalendarAngularDateFormatter provider', () => {
       dateFormatter.dayViewHour({
         date: startOfDay(new Date('2016-01-01')),
         locale: 'en',
-      })
+      }),
     ).to.equal('12 AM');
   });
 
   it('dayViewTitle', () => {
     expect(
-      dateFormatter.dayViewTitle({ date: new Date('2016-01-01'), locale: 'en' })
+      dateFormatter.dayViewTitle({
+        date: new Date('2016-01-01'),
+        locale: 'en',
+      }),
     ).to.equal('Friday, January 1, 2016');
   });
 });

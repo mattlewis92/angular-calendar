@@ -27,7 +27,7 @@ export class ClickDirective implements OnInit, OnDestroy {
   constructor(
     private renderer: Renderer2,
     private elm: ElementRef<HTMLElement>,
-    @Inject(DOCUMENT) private document
+    @Inject(DOCUMENT) private document,
   ) {}
 
   ngOnInit(): void {

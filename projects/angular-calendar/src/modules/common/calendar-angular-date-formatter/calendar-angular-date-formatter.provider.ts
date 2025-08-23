@@ -69,13 +69,13 @@ export class CalendarAngularDateFormatter
       date,
       weekStartsOn,
       excludeDays,
-      daysInWeek
+      daysInWeek,
     );
     const format = (dateToFormat: Date, showYear: boolean) =>
       formatDate(dateToFormat, 'MMM d' + (showYear ? ', yyyy' : ''), locale);
     return `${format(
       viewStart,
-      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear()
+      viewStart.getUTCFullYear() !== viewEnd.getUTCFullYear(),
     )} - ${format(viewEnd, true)}`;
   }
 
