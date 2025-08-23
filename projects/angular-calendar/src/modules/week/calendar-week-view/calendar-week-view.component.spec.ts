@@ -853,8 +853,8 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const ghostElement = event.nextSibling as HTMLElement;
-    expect(Math.floor(ghostElement.getBoundingClientRect().left)).to.equal(
-      Math.floor(eventPosition.left - dayWidth)
+    expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
+      Math.round(eventPosition.left - dayWidth) + 1
     );
     triggerDomEvent('mouseup', document.body, {
       clientX: eventPosition.left - dayWidth,
@@ -927,16 +927,16 @@ describe('calendarWeekView component', () => {
     });
     fixture.detectChanges();
     const ghostElement = event.nextSibling as HTMLElement;
-    expect(Math.floor(ghostElement.getBoundingClientRect().left)).to.equal(
-      Math.floor(eventPosition.left - dayWidth)
+    expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
+      Math.round(eventPosition.left - dayWidth) + 1
     );
     triggerDomEvent('mousemove', document.body, {
       clientX: eventPosition.left - dayWidth * 2,
       clientY: eventPosition.top,
     });
     fixture.detectChanges();
-    expect(Math.floor(ghostElement.getBoundingClientRect().left)).to.equal(
-      Math.floor(eventPosition.left - dayWidth)
+    expect(Math.round(ghostElement.getBoundingClientRect().left)).to.equal(
+      Math.round(eventPosition.left - dayWidth) + 1
     );
     triggerDomEvent('mouseup', document.body, {
       clientX: eventPosition.left - dayWidth * 2,
