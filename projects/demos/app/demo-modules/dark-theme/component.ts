@@ -17,6 +17,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: 'template.html',
   styleUrls: ['styles.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Month;

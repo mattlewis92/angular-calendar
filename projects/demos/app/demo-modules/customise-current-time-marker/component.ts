@@ -6,6 +6,7 @@ import { getHours } from 'date-fns';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './template.html',
   styleUrls: ['./styles.scss'],
+  standalone: false,
 })
 export class DemoComponent {
   viewDate = new Date();

@@ -17,6 +17,7 @@ import { colors } from '../demo-utils/colors';
       useClass: CustomEventTitleFormatter,
     },
   ],
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

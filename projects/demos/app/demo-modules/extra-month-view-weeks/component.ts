@@ -22,6 +22,7 @@ export class MyCalendarUtils extends CalendarUtils {
       useClass: MyCalendarUtils,
     },
   ],
+  standalone: false,
 })
 export class DemoComponent {
   viewDate: Date = new Date();

@@ -16,6 +16,7 @@ import { takeUntil } from 'rxjs/operators';
 
 @Directive({
   selector: '[mwlClick]',
+  standalone: false,
 })
 export class ClickDirective implements OnInit, OnDestroy {
   @Input() clickListenerDisabled = false;

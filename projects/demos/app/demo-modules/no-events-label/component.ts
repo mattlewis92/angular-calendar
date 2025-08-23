@@ -17,6 +17,7 @@ import { colors } from '../demo-utils/colors';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

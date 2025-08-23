@@ -14,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './template.html',
+  standalone: false,
 })
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Week;

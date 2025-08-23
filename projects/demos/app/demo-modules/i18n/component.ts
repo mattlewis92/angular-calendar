@@ -17,6 +17,7 @@ import { CustomDateFormatter } from './custom-date-formatter.provider';
       useClass: CustomDateFormatter,
     },
   ],
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

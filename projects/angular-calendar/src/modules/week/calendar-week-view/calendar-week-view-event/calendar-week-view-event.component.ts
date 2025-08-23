@@ -86,6 +86,7 @@ import { PlacementArray } from 'positioning';
     >
     </ng-template>
   `,
+  standalone: false,
 })
 export class CalendarWeekViewEventComponent {
   @Input() locale: string;

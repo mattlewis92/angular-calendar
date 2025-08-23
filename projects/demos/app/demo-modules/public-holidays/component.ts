@@ -27,6 +27,7 @@ type CalendarEventWithMeta = CalendarEvent<
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
+  standalone: false,
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

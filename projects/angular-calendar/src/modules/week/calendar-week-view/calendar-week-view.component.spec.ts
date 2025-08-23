@@ -40,6 +40,7 @@ import { formatDate } from '@angular/common';
     ></mwl-calendar-week-view>
     <mwl-external-event></mwl-external-event>
   `,
+  standalone: false,
 })
 class TestComponent {
   viewDate: Date;

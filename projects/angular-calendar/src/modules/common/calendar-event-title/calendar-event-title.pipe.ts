@@ -4,6 +4,7 @@ import { CalendarEventTitleFormatter } from '../calendar-event-title-formatter/c
 
 @Pipe({
   name: 'calendarEventTitle',
+  standalone: false,
 })
 export class CalendarEventTitlePipe implements PipeTransform {
   constructor(private calendarEventTitle: CalendarEventTitleFormatter) {}

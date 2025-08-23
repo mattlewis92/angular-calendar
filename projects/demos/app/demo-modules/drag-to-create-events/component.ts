@@ -52,6 +52,7 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
     `,
   ],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class DemoComponent {
   viewDate = new Date();

@@ -24,6 +24,7 @@ const users: User[] = [
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
+  standalone: false,
 })
 export class DemoComponent {
   viewDate = new Date();

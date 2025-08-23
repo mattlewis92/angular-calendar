@@ -19,6 +19,7 @@ import { colors } from '../demo-utils/colors';
       }
     `,
   ],
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

@@ -26,6 +26,7 @@ interface EventGroupMeta {
       }
     `,
   ],
+  standalone: false,
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

@@ -38,6 +38,7 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
     >
     </ng-template>
   `,
+  standalone: false,
 })
 export class CalendarEventActionsComponent {
   @Input() event: CalendarEvent;

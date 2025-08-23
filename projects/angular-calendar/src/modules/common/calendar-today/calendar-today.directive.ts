@@ -20,6 +20,7 @@ import { DateAdapter } from '../../../date-adapters/date-adapter';
  */
 @Directive({
   selector: '[mwlCalendarToday]',
+  standalone: false,
 })
 export class CalendarTodayDirective {
   /**

@@ -28,6 +28,7 @@ export function triggerDomEvent(
       }
     `,
   ],
+  standalone: false,
 })
 export class ExternalEventComponent {
   event: CalendarEvent = {

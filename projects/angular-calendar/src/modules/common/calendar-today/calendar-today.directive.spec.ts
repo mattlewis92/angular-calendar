@@ -7,6 +7,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @Component({
   template: '<button mwlCalendarToday [(viewDate)]="viewDate">Next</button>',
+  standalone: false,
 })
 class TestComponent {
   public viewDate: Date;

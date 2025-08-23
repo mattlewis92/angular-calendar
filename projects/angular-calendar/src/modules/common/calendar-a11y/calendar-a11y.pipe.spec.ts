@@ -6,6 +6,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @Component({
   template: '{{ a11yParams | calendarA11y:method }}',
+  standalone: false,
 })
 class TestComponent {
   a11yParams: A11yParams;

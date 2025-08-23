@@ -46,6 +46,7 @@ import { takeUntil } from 'rxjs/operators';
     >
     </ng-template>
   `,
+  standalone: false,
 })
 export class CalendarTooltipWindowComponent {
   @Input() contents: string;
@@ -59,6 +60,7 @@ export class CalendarTooltipWindowComponent {
 
 @Directive({
   selector: '[mwlCalendarTooltip]',
+  standalone: false,
 })
 export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   @Input('mwlCalendarTooltip') contents: string; // eslint-disable-line  @angular-eslint/no-input-rename

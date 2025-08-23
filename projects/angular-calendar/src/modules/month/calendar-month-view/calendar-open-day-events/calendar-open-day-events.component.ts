@@ -127,6 +127,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
     </ng-template>
   `,
   animations: [collapseAnimation],
+  standalone: false,
 })
 export class CalendarOpenDayEventsComponent {
   @Input() locale: string;

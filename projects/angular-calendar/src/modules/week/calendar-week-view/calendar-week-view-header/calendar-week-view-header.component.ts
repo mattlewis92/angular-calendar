@@ -63,6 +63,7 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
     >
     </ng-template>
   `,
+  standalone: false,
 })
 export class CalendarWeekViewHeaderComponent {
   @Input() days: WeekDay[];

@@ -43,6 +43,7 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
     >
     </ng-template>
   `,
+  standalone: false,
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
   @Input() columnDate: Date;

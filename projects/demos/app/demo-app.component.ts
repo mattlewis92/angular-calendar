@@ -85,6 +85,7 @@ const dependencyVersions: any = {
   selector: 'mwl-demo-app',
   styleUrls: ['./demo-app.css'],
   templateUrl: './demo-app.html',
+  standalone: false,
 })
 export class DemoAppComponent implements OnInit {
   @ViewChild('nav') nav: NgbNav;

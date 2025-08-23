@@ -82,6 +82,7 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
   selector: 'mwl-day-view-scheduler',
   templateUrl: 'day-view-scheduler.component.html',
   providers: [DayViewSchedulerCalendarUtils],
+  standalone: false,
 })
 export class DayViewSchedulerComponent
   extends CalendarWeekViewComponent

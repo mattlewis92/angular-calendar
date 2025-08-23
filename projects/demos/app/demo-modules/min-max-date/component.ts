@@ -75,6 +75,7 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   ],
   // this is a hack to get styles to apply to the inner component. Your app should just use a global stylesheet
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView | CalendarPeriod = CalendarView.Month;

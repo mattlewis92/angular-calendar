@@ -63,6 +63,7 @@ export type CalendarDayViewBeforeRenderEvent =
       (beforeViewRender)="beforeViewRender.emit($event)"
     ></mwl-calendar-week-view>
   `,
+  standalone: false,
 })
 export class CalendarDayViewComponent {
   /**

@@ -48,6 +48,7 @@ import { WeekViewHourSegment } from 'calendar-utils';
     >
     </ng-template>
   `,
+  standalone: false,
 })
 export class CalendarWeekViewHourSegmentComponent {
   @Input() segment: WeekViewHourSegment;

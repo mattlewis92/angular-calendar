@@ -419,6 +419,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
       </div>
     </div>
   `,
+  standalone: false,
 })
 export class CalendarWeekViewComponent
   implements OnChanges, OnInit, OnDestroy, AfterViewInit

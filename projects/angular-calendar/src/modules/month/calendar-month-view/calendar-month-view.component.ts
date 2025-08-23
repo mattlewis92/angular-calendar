@@ -139,6 +139,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
       </div>
     </div>
   `,
+  standalone: false,
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy

@@ -16,6 +16,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       Previous
     </button>
   `,
+  standalone: false,
 })
 class TestComponent {
   public view: string;

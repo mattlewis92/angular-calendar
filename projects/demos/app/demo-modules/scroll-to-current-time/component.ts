@@ -21,6 +21,7 @@ import { differenceInMinutes, startOfDay, startOfHour } from 'date-fns';
       }
     `,
   ],
+  standalone: false,
 })
 export class DemoComponent implements AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer: ElementRef<HTMLElement>;

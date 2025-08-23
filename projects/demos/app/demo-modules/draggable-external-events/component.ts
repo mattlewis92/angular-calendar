@@ -23,6 +23,7 @@ import { colors } from '../demo-utils/colors';
       }
     `,
   ],
+  standalone: false,
 })
 export class DemoComponent {
   CalendarView = CalendarView;

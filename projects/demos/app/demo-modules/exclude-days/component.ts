@@ -11,6 +11,7 @@ import { colors } from '../demo-utils/colors';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   templateUrl: 'template.html',
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

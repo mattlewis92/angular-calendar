@@ -13,6 +13,7 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html',
   styleUrls: ['./styles.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

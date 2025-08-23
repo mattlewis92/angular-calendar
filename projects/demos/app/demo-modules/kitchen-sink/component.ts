@@ -55,6 +55,7 @@ const colors: Record<string, EventColor> = {
     `,
   ],
   templateUrl: 'template.html',
+  standalone: false,
 })
 export class DemoComponent {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;

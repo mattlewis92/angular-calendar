@@ -28,6 +28,7 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
       }
     `,
   ],
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

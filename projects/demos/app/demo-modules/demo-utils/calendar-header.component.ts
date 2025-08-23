@@ -66,6 +66,7 @@ import { CalendarView } from 'angular-calendar';
     </div>
     <br />
   `,
+  standalone: false,
 })
 export class CalendarHeaderComponent {
   @Input() view: CalendarView;

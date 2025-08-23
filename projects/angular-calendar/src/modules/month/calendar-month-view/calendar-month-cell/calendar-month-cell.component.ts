@@ -89,7 +89,6 @@ import { PlacementArray } from 'positioning';
     >
     </ng-template>
   `,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'cal-cell cal-day-cell',
     '[class.cal-past]': 'day.isPast',
@@ -102,6 +101,7 @@ import { PlacementArray } from 'positioning';
     '[class.cal-open]': 'day === openDay',
     '[class.cal-event-highlight]': '!!day.backgroundColor',
   },
+  standalone: false,
 })
 export class CalendarMonthCellComponent {
   @Input() day: MonthViewDay;

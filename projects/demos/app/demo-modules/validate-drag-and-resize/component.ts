@@ -33,6 +33,7 @@ import {
     `,
   ],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;

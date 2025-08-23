@@ -11,6 +11,7 @@ import {
 
 @Directive({
   selector: '[mwlKeydownEnter]',
+  standalone: false,
 })
 export class KeydownEnterDirective implements OnInit, OnDestroy {
   @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // eslint-disable-line
