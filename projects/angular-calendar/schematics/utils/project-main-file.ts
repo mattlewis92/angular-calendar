@@ -14,12 +14,12 @@ import { getProjectTargetOptions } from './project-targets';
 export function getProjectMainFile(project: ProjectDefinition): string {
   const buildOptions = getProjectTargetOptions(project, 'build');
 
-  if (typeof buildOptions.main !== 'string') {
+  if (typeof buildOptions.browser !== 'string') {
     throw new SchematicsException(
       `Could not find the project main file inside of the ` +
         `workspace config (${project.sourceRoot})`,
     );
   }
 
-  return buildOptions.main;
+  return buildOptions.browser;
 }

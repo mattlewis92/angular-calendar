@@ -49,9 +49,7 @@ describe('angular-calendar schematics', () => {
       name: 'angular-calendar',
       version: angularCalendarVersion,
     };
-    tree = await runner
-      .runSchematicAsync('ng-add', defaultOptions, appTree)
-      .toPromise();
+    tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
     packageJson = JSON.parse(tree.readContent(packageJsonPath));
     expect(packageJson.dependencies[name]).equal(version);
   });
@@ -59,26 +57,20 @@ describe('angular-calendar schematics', () => {
   it('should add date adapter to dependencies based on option selected ', async () => {
     const { name, version } = { name: 'moment', version: momentVersion };
     defaultOptions.dateAdapter = 'moment';
-    tree = await runner
-      .runSchematicAsync('ng-add', defaultOptions, appTree)
-      .toPromise();
+    tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
     packageJson = JSON.parse(tree.readContent(packageJsonPath));
     expect(packageJson.dependencies[name]).equal(version);
   });
 
   it('should schedule install dependencies task', async () => {
-    await runner
-      .runSchematicAsync('ng-add', defaultOptions, appTree)
-      .toPromise();
+    await runner.runSchematic('ng-add', defaultOptions, appTree);
     const tasks = runner.tasks;
     expect(tasks.length).to.equal(1);
   });
 
   it('should import angular-calendar module to root module', async () => {
     const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
-    tree = await runner
-      .runSchematicAsync('ng-add', defaultOptions, appTree)
-      .toPromise();
+    tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
     expect(tree.files).contain(rootModulePath);
 
     const rootModule = tree.readContent(rootModulePath);
@@ -89,16 +81,14 @@ describe('angular-calendar schematics', () => {
 
   it('should import angular-calendar module to root module when passed as an option', async () => {
     const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
-    tree = await runner
-      .runSchematicAsync(
-        'ng-add',
-        {
-          ...defaultOptions,
-          module: 'src/app/app.module.ts',
-        },
-        appTree,
-      )
-      .toPromise();
+    tree = await runner.runSchematic(
+      'ng-add',
+      {
+        ...defaultOptions,
+        module: 'src/app/app.module.ts',
+      },
+      appTree,
+    );
     expect(tree.files).contain(rootModulePath);
 
     const rootModule = tree.readContent(rootModulePath);
@@ -108,9 +98,7 @@ describe('angular-calendar schematics', () => {
   });
 
   it('should add angular-calendar css to architect builder', async () => {
-    tree = await runner
-      .runSchematicAsync('ng-add', defaultOptions, appTree)
-      .toPromise();
+    tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
 
     const workspace = await getWorkspace(tree);
     const project = getProjectFromWorkspace(workspace);
@@ -123,16 +111,14 @@ describe('angular-calendar schematics', () => {
 
   it('should add the momentAdapterFactory when using moment', async () => {
     const rootModulePath = `/projects/${projectName}/src/app/app.module.ts`;
-    tree = await runner
-      .runSchematicAsync(
-        'ng-add',
-        {
-          ...defaultOptions,
-          dateAdapter: 'moment',
-        },
-        appTree,
-      )
-      .toPromise();
+    tree = await runner.runSchematic(
+      'ng-add',
+      {
+        ...defaultOptions,
+        dateAdapter: 'moment',
+      },
+      appTree,
+    );
     expect(tree.files).contain(rootModulePath);
 
     const rootModule = tree.readContent(rootModulePath);

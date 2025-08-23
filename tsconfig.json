@@ -12,6 +12,7 @@
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
     "paths": {
       "angular-calendar": ["./projects/angular-calendar/src"],
       "angular-calendar/date-adapters/date-fns": [
