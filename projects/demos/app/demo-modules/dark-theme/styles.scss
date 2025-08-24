@@ -28,35 +28,4 @@
   .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
     opacity: 0.15;
   }
-
-  // Everything else below is just themes the demo, it's probably not relevant to your app
-  background-color: $bg-dark-primary;
-  color: $text-color;
-
-  .card {
-    border-color: $border-color;
-  }
-
-  .card-header {
-    background-color: $bg-dark-secondary;
-  }
-
-  .card-body {
-    background-color: $bg-dark-primary;
-  }
-
-  .nav-tabs {
-    border-bottom-color: $border-color;
-  }
-
-  .nav-tabs .nav-link.active {
-    background-color: $bg-dark-primary;
-    color: $text-color;
-    border-color: $border-color;
-  }
-
-  .nav-tabs .nav-link:hover,
-  .nav-tabs .nav-link:focus {
-    border-color: $border-color;
-  }
 }
