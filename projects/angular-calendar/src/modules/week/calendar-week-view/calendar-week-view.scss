@@ -1,5 +1,5 @@
 @use 'sass:map';
-@import '../../../variables';
+@use '../../../variables';
 
 $cal-week-view-vars: () !default;
 $cal-week-view-vars: map.merge($cal-vars, $cal-week-view-vars);
