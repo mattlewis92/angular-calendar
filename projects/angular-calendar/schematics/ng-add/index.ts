@@ -34,6 +34,8 @@ import {
   dateFnsVersion,
   momentVersion,
   angularCalendarVersion,
+  angularDraggableDroppableVersion,
+  angularResizableElementVersion,
 } from './version-names';
 
 export default function (options: Schema): Rule {
@@ -70,6 +72,16 @@ function addPackageJsonDependencies(options: Schema): Rule {
       dateAdapterLibrary,
       dateAdapters[dateAdapterLibrary],
     );
+    const angularDraggableDroppableDependency: NodeDependency =
+      nodeDependencyFactory(
+        'angular-draggable-droppable',
+        angularDraggableDroppableVersion,
+      );
+    const angularResizableElementDependency: NodeDependency =
+      nodeDependencyFactory(
+        'angular-resizable-element',
+        angularResizableElementVersion,
+      );
 
     addPackageJsonDependency(host, angularCalendarDependency);
     context.logger.log(
@@ -81,6 +93,18 @@ function addPackageJsonDependencies(options: Schema): Rule {
     context.logger.log(
       'info',
       `Added "${dateAdapterLibraryDependency.name}" into ${dateAdapterLibraryDependency.type}`,
+    );
+
+    addPackageJsonDependency(host, angularDraggableDroppableDependency);
+    context.logger.log(
+      'info',
+      `Added "${angularDraggableDroppableDependency.name}" into ${angularDraggableDroppableDependency.type}`,
+    );
+
+    addPackageJsonDependency(host, angularResizableElementDependency);
+    context.logger.log(
+      'info',
+      `Added "${angularResizableElementDependency.name}" into ${angularResizableElementDependency.type}`,
     );
 
     return host;

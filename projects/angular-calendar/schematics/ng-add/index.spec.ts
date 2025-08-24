@@ -8,7 +8,12 @@ import { expect } from 'chai';
 
 import { createTestApp } from '../testing/workspace';
 import { Schema } from './schema';
-import { angularCalendarVersion, momentVersion } from './version-names';
+import {
+  angularCalendarVersion,
+  momentVersion,
+  angularDraggableDroppableVersion,
+  angularResizableElementVersion,
+} from './version-names';
 import { getProjectFromWorkspace, getProjectTargetOptions } from '../utils';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 
@@ -131,5 +136,25 @@ describe('angular-calendar schematics', () => {
   return adapterFactory(moment);
 }`);
     expect(rootModule).contain(`useFactory: momentAdapterFactory`);
+  });
+
+  it('should add angular-draggable-droppable to dependencies', async () => {
+    const { name, version } = {
+      name: 'angular-draggable-droppable',
+      version: angularDraggableDroppableVersion,
+    };
+    tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
+    packageJson = JSON.parse(tree.readContent(packageJsonPath));
+    expect(packageJson.dependencies[name]).equal(version);
+  });
+
+  it('should add angular-resizable-element to dependencies', async () => {
+    const { name, version } = {
+      name: 'angular-resizable-element',
+      version: angularResizableElementVersion,
+    };
+    tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
+    packageJson = JSON.parse(tree.readContent(packageJsonPath));
+    expect(packageJson.dependencies[name]).equal(version);
   });
 });

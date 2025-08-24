@@ -166,8 +166,6 @@
   },
   "dependencies": {
     "@scarf/scarf": "^1.1.1",
-    "angular-draggable-droppable": "^8.0.0",
-    "angular-resizable-element": "^7.0.0",
     "calendar-utils": "^0.10.4",
     "positioning": "^2.0.1",
     "tslib": "^2.4.1"
@@ -196,6 +194,8 @@
     }
   },
   "peerDependencies": {
-    "@angular/core": ">=20.0.0"
+    "@angular/core": ">=20.0.0",
+    "angular-draggable-droppable": "^9.0.0",
+    "angular-resizable-element": "^8.0.0"
   }
 }
