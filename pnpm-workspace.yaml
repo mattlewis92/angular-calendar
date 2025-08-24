@@ -1,0 +1,21 @@
+publicHoistPattern:
+  - '@angular-devkit/*'
+  - webpack
+  - highlight.js
+
+peerDependencyRules:
+  ignoreMissing:
+    - webpack
+    - '@angular-devkit/*'
+
+ignoredBuiltDependencies:
+  - '@compodoc/compodoc'
+  - '@scarf/scarf'
+  - core-js
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - nice-napi
+  - lmdb
+  - msgpackr-extract

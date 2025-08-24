@@ -6,26 +6,6 @@
     "url": "https://github.com/sponsors/mattlewis92"
   },
   "packageManager": "pnpm@10.15.0",
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "webpack",
-        "@angular-devkit/*"
-      ]
-    },
-    "ignoredBuiltDependencies": [
-      "@compodoc/compodoc",
-      "@scarf/scarf",
-      "core-js"
-    ],
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild",
-      "lmdb",
-      "msgpackr-extract",
-      "nice-napi"
-    ]
-  },
   "scripts": {
     "start": "pnpm ng serve --open",
     "build:copy-package-json": "copyfiles package.json projects/angular-calendar & copyfiles package.json projects/angular-calendar/schematics/ng-add",
