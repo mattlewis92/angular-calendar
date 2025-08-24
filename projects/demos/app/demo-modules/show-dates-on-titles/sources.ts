@@ -1,7 +1,7 @@
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
 import component from './component' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
-import custom_event_title_formatter_provider from './custom-event-title-formatter.provider' with { loader: 'text' };
+import customEventTitleFormatterProvider from './custom-event-title-formatter.provider' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
 import template from './template.html' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
@@ -14,7 +14,7 @@ export const sources = [
   },
   {
     filename: 'custom-event-title-formatter.provider.ts',
-    contents: custom_event_title_formatter_provider,
+    contents: customEventTitleFormatterProvider,
   },
   {
     filename: 'template.html',

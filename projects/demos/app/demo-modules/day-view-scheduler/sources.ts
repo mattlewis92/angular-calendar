@@ -3,9 +3,9 @@ import component from './component' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
 import template from './template.html' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
-import day_view_scheduler_component from './day-view-scheduler.component' with { loader: 'text' };
+import dayViewSchedulerComponent from './day-view-scheduler.component' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
-import day_view_scheduler_component_html from './day-view-scheduler.component.html' with { loader: 'text' };
+import dayViewSchedulerComponentHtml from './day-view-scheduler.component.html' with { loader: 'text' };
 // @ts-expect-error TypeScript cannot provide types based on attributes yet
 import module from './module' with { loader: 'text' };
 
@@ -20,11 +20,11 @@ export const sources = [
   },
   {
     filename: 'day-view-scheduler.component.ts',
-    contents: day_view_scheduler_component,
+    contents: dayViewSchedulerComponent,
   },
   {
     filename: 'day-view-scheduler.component.html',
-    contents: day_view_scheduler_component_html,
+    contents: dayViewSchedulerComponentHtml,
   },
   {
     filename: 'module.ts',
