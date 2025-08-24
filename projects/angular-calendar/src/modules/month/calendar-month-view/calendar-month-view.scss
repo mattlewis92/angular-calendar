@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use 'sass:color';
-@import '../../../variables';
+@use '../../../variables' as *;
 
 $cal-month-view-vars: () !default;
 $cal-month-view-vars: map.merge($cal-vars, $cal-month-view-vars);

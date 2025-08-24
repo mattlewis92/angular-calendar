@@ -1,5 +1,5 @@
 @use 'sass:map';
-@import '../../../variables';
+@use '../../../variables' as *;
 
 $cal-tooltip-vars: () !default;
 $cal-tooltip-vars: map.merge($cal-vars, $cal-tooltip-vars);
