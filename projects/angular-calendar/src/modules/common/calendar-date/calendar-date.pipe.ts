@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, LOCALE_ID, Inject } from '@angular/core';
+import { Pipe, PipeTransform, LOCALE_ID, inject } from '@angular/core';
 import { CalendarDateFormatter } from '../calendar-date-formatter/calendar-date-formatter.provider';
 
 /**
@@ -13,11 +13,6 @@ import { CalendarDateFormatter } from '../calendar-date-formatter/calendar-date-
   standalone: false,
 })
 export class CalendarDatePipe implements PipeTransform {
-  constructor(
-    private dateFormatter: CalendarDateFormatter,
-    @Inject(LOCALE_ID) private locale: string,
-  ) {}
-
   transform(
     date: Date,
     method: string,
@@ -44,4 +39,14 @@ export class CalendarDatePipe implements PipeTransform {
       daysInWeek,
     });
   }
+
+  /**
+   * @hidden
+   */
+  private dateFormatter = inject(CalendarDateFormatter);
+
+  /**
+   * @hidden
+   */
+  private locale = inject(LOCALE_ID);
 }

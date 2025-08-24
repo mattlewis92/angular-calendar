@@ -10,12 +10,12 @@ import {
   ViewContainerRef,
   ElementRef,
   ComponentFactory,
-  Inject,
   Renderer2,
   TemplateRef,
   OnChanges,
   SimpleChanges,
   DOCUMENT,
+  inject,
 } from '@angular/core';
 
 import { PlacementArray, positionElements } from 'positioning';
@@ -80,14 +80,9 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
   private cancelTooltipDelay$ = new Subject<void>();
 
-  constructor(
-    private elementRef: ElementRef,
-    private injector: Injector,
-    private renderer: Renderer2,
-    componentFactoryResolver: ComponentFactoryResolver,
-    private viewContainerRef: ViewContainerRef,
-    @Inject(DOCUMENT) private document, // eslint-disable-line
-  ) {
+  constructor() {
+    const componentFactoryResolver = inject(ComponentFactoryResolver);
+
     this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
       CalendarTooltipWindowComponent,
     );
@@ -177,4 +172,29 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
       }
     }
   }
+
+  /**
+   * @hidden
+   */
+  private elementRef = inject(ElementRef);
+
+  /**
+   * @hidden
+   */
+  private injector = inject(Injector);
+
+  /**
+   * @hidden
+   */
+  private renderer = inject(Renderer2);
+
+  /**
+   * @hidden
+   */
+  private viewContainerRef = inject(ViewContainerRef);
+
+  /**
+   * @hidden
+   */
+  private document = inject(DOCUMENT);
 }

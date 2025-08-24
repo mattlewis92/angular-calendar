@@ -7,6 +7,7 @@ import {
   Renderer2,
   OnInit,
   OnDestroy,
+  inject,
 } from '@angular/core';
 
 @Directive({
@@ -17,12 +18,6 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
   @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // eslint-disable-line
 
   private keydownListener: VoidFunction | null = null;
-
-  constructor(
-    private host: ElementRef<HTMLElement>,
-    private ngZone: NgZone,
-    private renderer: Renderer2,
-  ) {}
 
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {
@@ -53,4 +48,19 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
       this.keydownListener = null;
     }
   }
+
+  /**
+   * @hidden
+   */
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  /**
+   * @hidden
+   */
+  private ngZone = inject(NgZone);
+
+  /**
+   * @hidden
+   */
+  private renderer = inject(Renderer2);
 }

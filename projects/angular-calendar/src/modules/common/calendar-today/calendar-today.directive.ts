@@ -4,6 +4,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  inject,
 } from '@angular/core';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 
@@ -33,8 +34,6 @@ export class CalendarTodayDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
-  constructor(private dateAdapter: DateAdapter) {}
-
   /**
    * @hidden
    */
@@ -42,4 +41,8 @@ export class CalendarTodayDirective {
   onClick(): void {
     this.viewDateChange.emit(this.dateAdapter.startOfDay(new Date()));
   }
+  /**
+   * @hidden
+   */
+  private dateAdapter = inject(DateAdapter);
 }

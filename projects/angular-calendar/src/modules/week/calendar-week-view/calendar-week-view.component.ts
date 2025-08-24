@@ -8,10 +8,10 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
   ElementRef,
   AfterViewInit,
+  inject,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import {
@@ -744,19 +744,6 @@ export class CalendarWeekViewComponent
    * @hidden
    */
   private lastDragEnterDate: Date;
-
-  /**
-   * @hidden
-   */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-    protected element: ElementRef<HTMLElement>,
-  ) {
-    this.locale = locale;
-  }
 
   /**
    * @hidden
@@ -1510,4 +1497,24 @@ export class CalendarWeekViewComponent
 
     return { start, end };
   }
+
+  /**
+   * @hidden
+   */
+  protected cdr = inject(ChangeDetectorRef);
+
+  /**
+   * @hidden
+   */
+  protected utils = inject(CalendarUtils);
+
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
+
+  /**
+   * @hidden
+   */
+  protected element = inject<ElementRef<HTMLElement>>(ElementRef);
 }

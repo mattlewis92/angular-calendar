@@ -1,4 +1,4 @@
-import { InjectionToken, Inject, Injectable } from '@angular/core';
+import { InjectionToken, Injectable, inject } from '@angular/core';
 import {
   CalendarDateFormatterInterface,
   DateFormatterParams,
@@ -28,14 +28,6 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 export class CalendarMomentDateFormatter
   implements CalendarDateFormatterInterface
 {
-  /**
-   * @hidden
-   */
-  constructor(
-    @Inject(MOMENT) protected moment: any,
-    protected dateAdapter: DateAdapter,
-  ) {}
-
   /**
    * The month view header week day labels
    */
@@ -121,4 +113,14 @@ export class CalendarMomentDateFormatter
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd, LL'); // dddd = Thursday
   } // LL = locale-dependent Month Day, Year
+
+  /**
+   * @hidden
+   */
+  protected moment = inject(MOMENT) as any;
+
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
 }

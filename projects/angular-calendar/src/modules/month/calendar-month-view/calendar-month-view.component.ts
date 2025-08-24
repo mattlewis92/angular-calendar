@@ -8,8 +8,8 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -311,18 +311,6 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-  ) {
-    this.locale = locale;
-  }
-
-  /**
-   * @hidden
-   */
   trackByRowOffset = (index: number, offset: number) =>
     this.view.days
       .slice(offset, this.view.totalDaysVisibleInWeek)
@@ -338,6 +326,9 @@ export class CalendarMonthViewComponent
    * @hidden
    */
   ngOnInit(): void {
+    if (!this.locale) {
+      this.locale = this.localeInjected;
+    }
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
         this.refreshAll();
@@ -496,4 +487,24 @@ export class CalendarMonthViewComponent
       });
     }
   }
+
+  /**
+   * @hidden
+   */
+  protected cdr = inject(ChangeDetectorRef);
+
+  /**
+   * @hidden
+   */
+  protected utils = inject(CalendarUtils);
+
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
+
+  /**
+   * @hidden
+   */
+  private localeInjected = inject(LOCALE_ID);
 }

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, LOCALE_ID, Inject } from '@angular/core';
+import { Pipe, PipeTransform, LOCALE_ID, inject } from '@angular/core';
 import { CalendarA11y } from './calendar-a11y.provider';
 import { A11yParams } from './calendar-a11y.interface';
 
@@ -14,11 +14,6 @@ import { A11yParams } from './calendar-a11y.interface';
   standalone: false,
 })
 export class CalendarA11yPipe implements PipeTransform {
-  constructor(
-    private calendarA11y: CalendarA11y,
-    @Inject(LOCALE_ID) private locale: string,
-  ) {}
-
   transform(a11yParams: A11yParams, method: string): string {
     a11yParams.locale = a11yParams.locale || this.locale;
     if (typeof this.calendarA11y[method] === 'undefined') {
@@ -33,4 +28,14 @@ export class CalendarA11yPipe implements PipeTransform {
     }
     return this.calendarA11y[method](a11yParams);
   }
+
+  /**
+   * @hidden
+   */
+  private calendarA11y = inject(CalendarA11y);
+
+  /**
+   * @hidden
+   */
+  private locale = inject(LOCALE_ID);
 }

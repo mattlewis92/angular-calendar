@@ -4,6 +4,7 @@ import {
   HostListener,
   Input,
   Output,
+  inject,
 } from '@angular/core';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 import { CalendarView } from '../calendar-view/calendar-view.enum';
@@ -51,8 +52,6 @@ export class CalendarNextViewDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
-  constructor(private dateAdapter: DateAdapter) {}
-
   /**
    * @hidden
    */
@@ -86,4 +85,8 @@ export class CalendarNextViewDirective {
       this.viewDateChange.emit(addFn(this.viewDate, 1));
     }
   }
+  /**
+   * @hidden
+   */
+  private dateAdapter = inject(DateAdapter);
 }

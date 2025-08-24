@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { switchMapTo, startWith, map, switchMap } from 'rxjs/operators';
@@ -46,6 +47,16 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
   standalone: false,
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
+  /**
+   * @hidden
+   */
+  private dateAdapter = inject(DateAdapter);
+
+  /**
+   * @hidden
+   */
+  private zone = inject(NgZone);
+
   @Input() columnDate: Date;
 
   @Input() dayStartHour: number;
@@ -97,11 +108,6 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
       };
     }),
   );
-
-  constructor(
-    private dateAdapter: DateAdapter,
-    private zone: NgZone,
-  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.columnDate) {
