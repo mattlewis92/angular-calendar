@@ -1,8 +1,8 @@
-<h1 align="center">angular 20.0+ calendar</h1>
+# angular 20.0+ calendar
 
 <div align="center">
 
-[![Sponsorship](https://img.shields.io/badge/funding-github-%23EA4AAA)](https://github.com/users/mattlewis92/sponsorship)
+[![Sponsorship](https://img.shields.io/badge/funding-github-%23EA4AA)](https://github.com/users/mattlewis92/sponsorship)
 [![Build Status](https://github.com/mattlewis92/angular-calendar/actions/workflows/ci.yml/badge.svg)](https://github.com/mattlewis92/angular-calendar/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/mattlewis92/angular-calendar/branch/main/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-calendar)
 [![npm version](https://badge.fury.io/js/angular-calendar.svg)](http://badge.fury.io/js/angular-calendar)
@@ -11,7 +11,7 @@
 
 </div>
 
-<h2 align="center">Demo</h2>
+## Demo
 
 <div align="center">
 
@@ -19,7 +19,7 @@ https://mattlewis92.github.io/angular-calendar/
 
 </div>
 
-<h2 align="center">Sponsors</h2>
+## Sponsors
 
 <div align="center">
   
@@ -33,6 +33,9 @@ https://mattlewis92.github.io/angular-calendar/
 
 - [About](#about)
 - [Getting started](#getting-started)
+  - [Standalone Components (Recommended)](#standalone-components-recommended)
+  - [NgModules (Legacy)](#ngmodules-legacy)
+- [Migration to Standalone](#migration-to-standalone)
 - [Documentation](#documentation)
 - [Breaking changes](#breaking-changes)
 - [FAQ](#faq)
@@ -40,19 +43,85 @@ https://mattlewis92.github.io/angular-calendar/
 - [Development](#development)
 - [License](#license)
 
-<h2 align="center">About</h2>
+## About
 
 A calendar component for angular 20.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
-<h2 align="center">Getting started</h2>
+✨ **Now with Standalone Components Support!** ✨
 
-### ng add (recommended)
+## Getting started
+
+### Standalone Components (Recommended)
+
+Angular Calendar now supports standalone components! This is the recommended approach for new projects.
+
+#### Install
+
+```bash
+npm install angular-calendar date-fns
+```
+
+#### Setup
+
+Include the CSS file in your global styles:
+
+```css
+/* src/styles.css */
+@import '../node_modules/angular-calendar/css/angular-calendar.css';
+```
+
+Configure your standalone application:
+
+```typescript
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideCalendar } from 'angular-calendar';
+import { DateAdapter } from 'angular-calendar/date-adapters/date-adapter';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AppComponent } from './app.component';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+    provideCalendar({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+  ],
+}).catch((err) => console.error(err));
+```
+
+Use in your components:
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { CalendarMonthViewComponent } from 'angular-calendar';
+
+@Component({
+  selector: 'app-root',
+  imports: [CalendarMonthViewComponent], // Import components directly
+  template: ` <mwl-calendar-month-view [viewDate]="viewDate" [events]="events"> </mwl-calendar-month-view> `,
+})
+export class AppComponent {
+  viewDate = new Date();
+  events: CalendarEvent[] = [];
+}
+```
+
+### NgModules (Legacy)
+
+> ⚠️ **Deprecated**: NgModule approach is still supported but deprecated. Please migrate to standalone components.
+
+#### ng add (automated setup)
 
 ```sh
 ng add angular-calendar
 ```
 
-### Manual setup (ng add will do this all for you)
+#### Manual setup
 
 First install through npm:
 
@@ -60,14 +129,14 @@ First install through npm:
 npm install angular-calendar date-fns
 ```
 
-Next include the CSS file in the global (not component scoped) styles of your app:
+Include the CSS file in your global styles:
 
-```
-/* angular-cli file: src/styles.css */
-@import "../node_modules/angular-calendar/css/angular-calendar.css";
+```css
+/* src/styles.css */
+@import '../node_modules/angular-calendar/css/angular-calendar.css';
 ```
 
-Finally import the calendar module into your apps module:
+Import the calendar module:
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -86,6 +155,53 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 })
 export class MyModule {}
 ```
+
+## Migration to Standalone
+
+Migrating from NgModules to standalone components is straightforward:
+
+### Before (NgModule)
+
+```typescript
+@NgModule({
+  imports: [
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+  ],
+})
+export class MyModule {}
+```
+
+### After (Standalone)
+
+```typescript
+// main.ts
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideCalendar({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+  ],
+});
+
+// component.ts
+@Component({
+  imports: [CalendarMonthViewComponent], // Import what you need
+  template: `<mwl-calendar-month-view [viewDate]="viewDate"></mwl-calendar-month-view>`,
+})
+export class MyComponent {}
+```
+
+### Available Standalone Components
+
+- `CalendarMonthViewComponent`
+- `CalendarWeekViewComponent`
+- `CalendarDayViewComponent`
+
+Import only the components you need for better tree-shaking and smaller bundles!
 
 In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the [demos list](https://mattlewis92.github.io/angular-calendar/) for a series of comprehensive examples of how to use this library within your application.
 
