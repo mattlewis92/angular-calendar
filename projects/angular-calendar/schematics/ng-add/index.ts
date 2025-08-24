@@ -32,6 +32,7 @@ import {
 import { Schema } from './schema';
 import {
   dateFnsVersion,
+  luxonVersion,
   momentVersion,
   angularCalendarVersion,
 } from './version-names';
@@ -59,6 +60,7 @@ function addPackageJsonDependencies(options: Schema): Rule {
     const dateAdapters: { [key: string]: string } = {
       moment: momentVersion,
       'date-fns': dateFnsVersion,
+      'luxon': luxonVersion,
     };
 
     const angularCalendarDependency: NodeDependency = nodeDependencyFactory(
@@ -113,7 +115,7 @@ function addModuleToImports(options: Schema): Rule {
     const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: ${
       options.dateAdapter === 'moment'
         ? 'momentAdapterFactory'
-        : 'adapterFactory'
+        : (options.dateAdapter === 'luxon' ? 'luxonAdapterFactory' : 'adapterFactory')
     } })`;
     const moduleCalendarSrc = 'angular-calendar';
 
@@ -153,6 +155,26 @@ function addModuleToImports(options: Schema): Rule {
   return adapterFactory(moment);
 }`,
         ) as InsertChange,
+      );
+    }
+
+    if (options.dateAdapter === 'luxon') {
+      updates.push(
+        insertWildcardImport(
+          moduleSource as ts.SourceFile,
+          appModulePath,
+          'luxon',
+          'luxon'
+        ) as InsertChange
+      );
+      updates.push(
+        insertAfterImports(
+          moduleSource as ts.SourceFile,
+          appModulePath,
+          `;\n\nexport function luxonAdapterFactory() {
+  return adapterFactory();
+}`
+        ) as InsertChange
       );
     }
 

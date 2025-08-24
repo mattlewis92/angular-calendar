@@ -208,6 +208,17 @@
       "fesm2015": "./date-adapters/esm/moment/index.js",
       "default": "./date-adapters/esm/moment/index.js"
     },
+    "./date-adapters/luxon": {
+      "main": "./date-adapters/luxon/index.js",
+      "types": "./date-adapters/luxon/index.d.ts",
+      "require": "./date-adapters/luxon/index.js",
+      "import": "./date-adapters/esm/luxon/index.js",
+      "es2020": "./date-adapters/esm/luxon/index.js",
+      "esm2020": "./date-adapters/esm/luxon/index.js",
+      "fesm2020": "./date-adapters/esm/luxon/index.js",
+      "fesm2015": "./date-adapters/esm/luxon/index.js",
+      "default": "./date-adapters/esm/luxon/index.js"
+    },
     "./scss/*": {
       "sass": "./scss/*"
     }
