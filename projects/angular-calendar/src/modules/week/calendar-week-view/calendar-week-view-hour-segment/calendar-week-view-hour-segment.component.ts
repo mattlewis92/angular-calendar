@@ -26,14 +26,16 @@ import { WeekViewHourSegment } from 'calendar-utils';
         [class.cal-after-hour-start]="!segment.isStart"
         [ngClass]="segment.cssClass"
       >
-        <div class="cal-time" *ngIf="isTimeLabel">
-          {{
-            segment.displayDate
-              | calendarDate
-                : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
-                : locale
-          }}
-        </div>
+        @if (isTimeLabel) {
+          <div class="cal-time">
+            {{
+              segment.displayDate
+                | calendarDate
+                  : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
+                  : locale
+            }}
+          </div>
+        }
       </div>
     </ng-template>
     <ng-template
