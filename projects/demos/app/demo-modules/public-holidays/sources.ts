@@ -1,34 +1,21 @@
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import component from './component' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import template from './template.html' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import module from './module' with { loader: 'text' };
+
 export const sources = [
   {
     filename: 'component.ts',
-    contents: {
-      raw: {
-        default: require('!!raw-loader!./component').default.replace(
-          '8eb2582d-3a4c-4fc5-94c8-3e21487d4e23',
-          'REPLACE_WITH_YOUR_OWN_TOKEN',
-        ),
-      },
-      highlighted: {
-        default:
-          require('!!raw-loader!highlightjs-loader?lang=typescript!./component').default.replace(
-            '8eb2582d-3a4c-4fc5-94c8-3e21487d4e23',
-            'REPLACE_WITH_YOUR_OWN_TOKEN',
-          ),
-      },
-    },
+    contents: component,
   },
   {
     filename: 'template.html',
-    contents: {
-      raw: require('!!raw-loader!./template.html'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=xml!./template.html'),
-    },
+    contents: template,
   },
   {
     filename: 'module.ts',
-    contents: {
-      raw: require('!!raw-loader!./module'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./module'),
-    },
+    contents: module,
   },
 ];

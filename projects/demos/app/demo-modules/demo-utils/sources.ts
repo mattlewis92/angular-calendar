@@ -1,23 +1,21 @@
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import calendar_header_component from './calendar-header.component' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import colors from './colors' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import module from './module' with { loader: 'text' };
+
 export const sources = [
   {
     filename: 'calendar-header.component.ts',
-    contents: {
-      raw: require('!!raw-loader!./calendar-header.component'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./calendar-header.component'),
-    },
+    contents: calendar_header_component,
   },
   {
     filename: 'colors.ts',
-    contents: {
-      raw: require('!!raw-loader!./colors'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./colors'),
-    },
+    contents: colors,
   },
   {
     filename: 'module.ts',
-    contents: {
-      raw: require('!!raw-loader!./module'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./module'),
-    },
+    contents: module,
   },
 ];

@@ -5,7 +5,8 @@ import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
-import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
+import { HighlightJS } from 'ngx-highlightjs';
 
 interface Source {
   filename: string;
@@ -24,26 +25,68 @@ interface Demo {
   tags: string[];
 }
 
-function getSources(folder: string): Promise<Source[]> {
+function getSources(
+  folder: string,
+  highlightJS: HighlightJS,
+): Promise<Source[]> {
   return import('./demo-modules/' + folder + '/sources.ts').then(
     ({ sources }) => {
-      return sources.map(({ filename, contents }) => {
+      const promises = sources.map(async ({ filename, contents }) => {
         const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
         const languages: { [extension: string]: string } = {
           ts: 'typescript',
-          html: 'html',
+          html: 'xml',
           css: 'css',
+          scss: 'scss',
         };
-        return {
-          filename,
-          contents: {
-            raw: contents.raw.default
+
+        let rawContent: string;
+        let highlightedContent: string;
+
+        if (typeof contents === 'string') {
+          // New format
+          rawContent = contents
+            .replace(
+              ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
+              '',
+            )
+            .replace("\nimport { RouterModule } from '@angular/router';", '');
+
+          const language = languages[extension];
+          try {
+            const result = await highlightJS.highlight(rawContent, {
+              language,
+            });
+            highlightedContent = result.value;
+          } catch (e) {
+            highlightedContent = rawContent; // fallback to non-highlighted
+          }
+        } else {
+          // Handle special cases like dark-theme with .default property
+          const contentsObj = contents as any;
+          if (contentsObj.default) {
+            rawContent = contentsObj.default.replace(
+              '../../../../angular-calendar/src/angular-calendar.scss',
+              'angular-calendar/scss/angular-calendar.scss',
+            );
+            const language = languages[extension];
+            try {
+              const result = await highlightJS.highlight(rawContent, {
+                language,
+              });
+              highlightedContent = result.value;
+            } catch (e) {
+              highlightedContent = rawContent; // fallback to non-highlighted
+            }
+          } else {
+            // Legacy format (should not happen after migration)
+            rawContent = contentsObj.raw.default
               .replace(
                 ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
                 '',
               )
-              .replace("\nimport { RouterModule } from '@angular/router';", ''),
-            highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
+              .replace("\nimport { RouterModule } from '@angular/router';", '');
+            highlightedContent = contentsObj.highlighted.default
               .replace(
                 ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
                 '',
@@ -51,11 +94,21 @@ function getSources(folder: string): Promise<Source[]> {
               .replace(
                 '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
                 '',
-              ),
+              );
+          }
+        }
+
+        return {
+          filename,
+          contents: {
+            raw: rawContent,
+            highlighted: highlightedContent,
           },
           language: languages[extension],
         };
       });
+
+      return Promise.all(promises);
     },
   );
 }
@@ -100,6 +153,7 @@ export class DemoAppComponent implements OnInit {
   constructor(
     private router: Router,
     analytics: Angulartics2GoogleGlobalSiteTag,
+    private highlightJS: HighlightJS,
   ) {
     analytics.startTracking();
   }
@@ -140,7 +194,7 @@ export class DemoAppComponent implements OnInit {
         this.activeDemo = this.demos.find(
           (demo) => `/${demo.path}` === event.url,
         );
-        getSources(this.activeDemo.path).then((sources) => {
+        getSources(this.activeDemo.path, this.highlightJS).then((sources) => {
           this.activeDemo.sources = sources;
         });
       });
@@ -205,7 +259,10 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
     };
 
     demoUtilsSources.forEach((source) => {
-      files[`demo-utils/${source.filename}`] = source.contents.raw.default;
+      files[`demo-utils/${source.filename}`] =
+        typeof source.contents === 'string'
+          ? source.contents
+          : source.contents.raw.default;
     });
 
     demo.sources.forEach((source) => {

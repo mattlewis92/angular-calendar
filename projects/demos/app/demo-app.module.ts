@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [DemoAppComponent, CarbonAdComponent],
@@ -31,6 +32,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
       developerMode: !environment.production,
     }),
     ClipboardModule,
+    HighlightModule,
     DefaultDemoModule,
     RouterModule.forRoot(
       [
@@ -496,6 +498,20 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
         useHash: true,
       },
     ),
+  ],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+        languages: {
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          css: () => import('highlight.js/lib/languages/css'),
+          xml: () => import('highlight.js/lib/languages/xml'),
+          scss: () => import('highlight.js/lib/languages/scss'),
+        },
+      },
+    },
   ],
   bootstrap: [DemoAppComponent],
 })
