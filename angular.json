@@ -147,7 +147,7 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/angular-calendar/src/test-entry.ts",
             "tsConfig": "projects/angular-calendar/tsconfig.spec.json",

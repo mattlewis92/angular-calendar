@@ -5,7 +5,7 @@ peerDependencyRules:
   ignoreMissing:
     - '@angular-devkit/*'
   allowedVersions:
-    chokidar: 4
+    chokidar: '4'
 
 ignoredBuiltDependencies:
   - '@compodoc/compodoc'

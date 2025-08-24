@@ -74,6 +74,7 @@
   },
   "homepage": "https://github.com/mattlewis92/angular-calendar#readme",
   "devDependencies": {
+    "@angular-devkit/build-angular": "^20.2.0",
     "@angular-devkit/schematics": "^20.2.0",
     "@angular-eslint/builder": "20.2.0",
     "@angular-eslint/eslint-plugin": "20.2.0",
