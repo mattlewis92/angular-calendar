@@ -9,9 +9,17 @@ export {
   CalendarDayViewBeforeRenderEvent,
 } from './calendar-day-view/calendar-day-view.component';
 
+/**
+ * @deprecated Use standalone components instead. Import `CalendarDayViewComponent` directly.
+ * See https://angular.dev/guide/standalone-components for more information.
+ */
 @NgModule({
-  imports: [CommonModule, CalendarCommonModule, CalendarWeekModule],
-  declarations: [CalendarDayViewComponent],
+  imports: [
+    CommonModule,
+    CalendarCommonModule,
+    CalendarWeekModule,
+    CalendarDayViewComponent,
+  ],
   exports: [CalendarDayViewComponent],
 })
 export class CalendarDayModule {}

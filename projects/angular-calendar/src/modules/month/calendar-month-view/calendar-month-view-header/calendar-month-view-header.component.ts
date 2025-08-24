@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { WeekDay } from 'calendar-utils';
 import { trackByWeekDayHeaderDate } from '../../../common/util/util';
+import { NgFor, NgClass, NgTemplateOutlet } from '@angular/common';
+import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pipe';
 
 @Component({
   selector: 'mwl-calendar-month-view-header',
@@ -49,7 +51,7 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
     >
     </ng-template>
   `,
-  standalone: false,
+  imports: [NgFor, NgClass, NgTemplateOutlet, CalendarDatePipe],
 })
 export class CalendarMonthViewHeaderComponent {
   @Input() days: WeekDay[];

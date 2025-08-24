@@ -1,4 +1,10 @@
-import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
+import {
+  ModuleWithProviders,
+  NgModule,
+  Provider,
+  EnvironmentProviders,
+  makeEnvironmentProviders,
+} from '@angular/core';
 import { CommonModule, I18nPluralPipe } from '@angular/common';
 import { CalendarEventActionsComponent } from './calendar-event-actions/calendar-event-actions.component';
 import { CalendarEventTitleComponent } from './calendar-event-title/calendar-event-title.component';
@@ -63,6 +69,26 @@ export {
 } from 'calendar-utils';
 
 /**
+ * Provides common calendar services for standalone components.
+ *
+ * @param dateAdapter The date adapter provider
+ * @param config Optional configuration for the calendar
+ * @returns Environment providers for the common calendar services
+ */
+export function provideCalendarCommon(
+  dateAdapter: Provider,
+  config: CalendarModuleConfig = {},
+): EnvironmentProviders {
+  return makeEnvironmentProviders([
+    dateAdapter,
+    config.eventTitleFormatter || CalendarEventTitleFormatter,
+    config.dateFormatter || CalendarDateFormatter,
+    config.utils || CalendarUtils,
+    config.a11y || CalendarA11y,
+  ]);
+}
+
+/**
  * Import this module to if you're just using a singular view and want to save on bundle size. Example usage:
  *
  * ```typescript
@@ -77,9 +103,13 @@ export {
  * class MyModule {}
  * ```
  *
+ * @deprecated Use the standalone `provideCalendarCommon` function instead.
+ * See https://angular.dev/guide/standalone-components for more information.
+ *
  */
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     CalendarEventActionsComponent,
     CalendarEventTitleComponent,
     CalendarTooltipWindowComponent,
@@ -93,7 +123,6 @@ export {
     ClickDirective,
     KeydownEnterDirective,
   ],
-  imports: [CommonModule],
   exports: [
     CalendarEventActionsComponent,
     CalendarEventTitleComponent,
@@ -111,6 +140,9 @@ export {
   providers: [I18nPluralPipe],
 })
 export class CalendarCommonModule {
+  /**
+   * @deprecated Use the standalone `provideCalendarCommon` function instead.
+   */
   static forRoot(
     dateAdapter: Provider,
     config: CalendarModuleConfig = {},

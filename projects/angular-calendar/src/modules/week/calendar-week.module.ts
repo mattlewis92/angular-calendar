@@ -26,14 +26,16 @@ export { CalendarWeekViewEventComponent as ɵCalendarWeekViewEventComponent } fr
 export { CalendarWeekViewHourSegmentComponent as ɵCalendarWeekViewHourSegmentComponent } from './calendar-week-view/calendar-week-view-hour-segment/calendar-week-view-hour-segment.component';
 export { CalendarWeekViewCurrentTimeMarkerComponent as ɵCalendarWeekViewCurrentTimeMarkerComponent } from './calendar-week-view/calendar-week-view-current-time-marker/calendar-week-view-current-time-marker.component';
 
+/**
+ * @deprecated Use standalone components instead. Import `CalendarWeekViewComponent` directly.
+ * See https://angular.dev/guide/standalone-components for more information.
+ */
 @NgModule({
   imports: [
     CommonModule,
     ResizableModule,
     DragAndDropModule,
     CalendarCommonModule,
-  ],
-  declarations: [
     CalendarWeekViewComponent,
     CalendarWeekViewHeaderComponent,
     CalendarWeekViewEventComponent,

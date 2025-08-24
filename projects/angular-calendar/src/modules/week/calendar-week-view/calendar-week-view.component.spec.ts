@@ -40,7 +40,7 @@ import { formatDate } from '@angular/common';
     ></mwl-calendar-week-view>
     <mwl-external-event></mwl-external-event>
   `,
-  standalone: false,
+  imports: [DragAndDropModule],
 })
 class TestComponent {
   viewDate: Date;
@@ -65,8 +65,9 @@ describe('calendarWeekView component', () => {
           },
         ),
         DragAndDropModule,
+        TestComponent,
       ],
-      declarations: [ExternalEventComponent, TestComponent],
+      declarations: [ExternalEventComponent],
       providers: [{ provide: MOMENT, useValue: moment }],
     });
   });

@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 import { CalendarEvent, WeekDay } from 'calendar-utils';
 import { trackByWeekDayHeaderDate } from '../../../common/util/util';
+import { NgFor, NgClass, NgTemplateOutlet } from '@angular/common';
+import { DroppableDirective } from 'angular-draggable-droppable';
+import { ClickDirective } from '../../../common/click/click.directive';
+import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pipe';
 
 @Component({
   selector: 'mwl-calendar-week-view-header',
@@ -63,7 +67,14 @@ import { trackByWeekDayHeaderDate } from '../../../common/util/util';
     >
     </ng-template>
   `,
-  standalone: false,
+  imports: [
+    NgFor,
+    DroppableDirective,
+    NgClass,
+    ClickDirective,
+    NgTemplateOutlet,
+    CalendarDatePipe,
+  ],
 })
 export class CalendarWeekViewHeaderComponent {
   @Input() days: WeekDay[];

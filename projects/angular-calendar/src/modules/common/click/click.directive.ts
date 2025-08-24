@@ -15,10 +15,7 @@ import {
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-@Directive({
-  selector: '[mwlClick]',
-  standalone: false,
-})
+@Directive({ selector: '[mwlClick]' })
 export class ClickDirective implements OnInit, OnDestroy {
   @Input() clickListenerDisabled = false;
 

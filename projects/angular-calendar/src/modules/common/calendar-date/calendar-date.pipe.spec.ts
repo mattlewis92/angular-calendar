@@ -15,7 +15,6 @@ import { DateAdapter } from 'angular-calendar';
 @Component({
   template:
     '{{ date | calendarDate:method:locale:weekStartsOn:excludeDays:daysInWeek }}',
-  standalone: false,
 })
 class TestComponent {
   date: Date;
@@ -44,8 +43,8 @@ describe('calendarDate pipe', () => {
             },
           },
         ),
+        TestComponent,
       ],
-      declarations: [TestComponent],
       providers: [{ provide: MOMENT, useValue: moment }],
     });
   });

@@ -1,5 +1,9 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { CalendarEvent, EventAction } from 'calendar-utils';
+import { NgIf, NgFor, NgClass, NgTemplateOutlet } from '@angular/common';
+import { ClickDirective } from '../click/click.directive';
+import { KeydownEnterDirective } from '../keydown-enter/keydown-enter.directive';
+import { CalendarA11yPipe } from '../calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-event-actions',
@@ -38,7 +42,15 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
     >
     </ng-template>
   `,
-  standalone: false,
+  imports: [
+    NgIf,
+    NgFor,
+    NgClass,
+    ClickDirective,
+    KeydownEnterDirective,
+    NgTemplateOutlet,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarEventActionsComponent {
   @Input() event: CalendarEvent;
