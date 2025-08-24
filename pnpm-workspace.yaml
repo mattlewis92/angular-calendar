@@ -1,12 +1,11 @@
 publicHoistPattern:
   - '@angular-devkit/*'
-  - webpack
-  - highlight.js
 
 peerDependencyRules:
   ignoreMissing:
-    - webpack
     - '@angular-devkit/*'
+  allowedVersions:
+    chokidar: '4'
 
 ignoredBuiltDependencies:
   - '@compodoc/compodoc'

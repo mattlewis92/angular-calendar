@@ -1,30 +1,27 @@
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import component from './component' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import customEventTitleFormatterProvider from './custom-event-title-formatter.provider' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import template from './template.html' with { loader: 'text' };
+// @ts-expect-error TypeScript cannot provide types based on attributes yet
+import module from './module' with { loader: 'text' };
+
 export const sources = [
   {
     filename: 'component.ts',
-    contents: {
-      raw: require('!!raw-loader!./component'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./component'),
-    },
+    contents: component,
   },
   {
     filename: 'custom-event-title-formatter.provider.ts',
-    contents: {
-      raw: require('!!raw-loader!./custom-event-title-formatter.provider'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./custom-event-title-formatter.provider'),
-    },
+    contents: customEventTitleFormatterProvider,
   },
   {
     filename: 'template.html',
-    contents: {
-      raw: require('!!raw-loader!./template.html'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=xml!./template.html'),
-    },
+    contents: template,
   },
   {
     filename: 'module.ts',
-    contents: {
-      raw: require('!!raw-loader!./module'),
-      highlighted: require('!!raw-loader!highlightjs-loader?lang=typescript!./module'),
-    },
+    contents: module,
   },
 ];

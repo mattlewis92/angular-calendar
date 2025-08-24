@@ -32,12 +32,14 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/demos",
+            "outputPath": {
+              "base": "dist/demos",
+              "browser": ""
+            },
             "index": "projects/demos/index.html",
-            "main": "projects/demos/main.ts",
-            "polyfills": "projects/demos/polyfills.ts",
+            "polyfills": ["projects/demos/polyfills.ts"],
             "tsConfig": "projects/demos/tsconfig.app.json",
             "assets": [
               "projects/demos/favicon.ico",
@@ -46,12 +48,14 @@
             ],
             "styles": ["projects/demos/styles.scss"],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/demos/main.ts",
+            "stylePreprocessorOptions": {
+              "includePaths": ["."]
+            }
           },
           "configurations": {
             "production": {
@@ -71,16 +75,34 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false
+              "extractLicenses": true
             }
           },
           "defaultConfiguration": ""
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
-            "buildTarget": "demos:build"
+            "buildTarget": "demos:build",
+            "prebundle": {
+              "exclude": [
+                "@angular/core/package.json",
+                "@angular/router/package.json",
+                "calendar-utils/package.json",
+                "angular-resizable-element/package.json",
+                "angular-draggable-droppable/package.json",
+                "date-fns/package.json",
+                "rxjs/package.json",
+                "bootstrap/package.json",
+                "zone.js/package.json",
+                "@ng-bootstrap/ng-bootstrap/package.json",
+                "rrule/package.json",
+                "@fortawesome/fontawesome-free/package.json",
+                "positioning/package.json",
+                "flatpickr/package.json",
+                "angularx-flatpickr/package.json"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -100,8 +122,8 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "noSilent": true,
-            "noBuild": true
+            "noBuild": true,
+            "dir": "dist/demos"
           }
         }
       }
@@ -113,7 +135,7 @@
       "prefix": "mwl",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-calendar/tsconfig.lib.json",
             "project": "projects/angular-calendar/ng-package.json"

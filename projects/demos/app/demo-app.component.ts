@@ -5,7 +5,24 @@ import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
-import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
+import { HighlightJS } from 'ngx-highlightjs';
+import angularCorePackage from '@angular/core/package.json';
+import angularRouterPackage from '@angular/router/package.json';
+import angularCalendarPackage from '../../../package.json';
+import calendarUtilsPackage from 'calendar-utils/package.json';
+import angularResizableElementPackage from 'angular-resizable-element/package.json';
+import angularDraggableDroppablePackage from 'angular-draggable-droppable/package.json';
+import dateFnsPackage from 'date-fns/package.json';
+import rxjsPackage from 'rxjs/package.json';
+import bootstrapPackage from 'bootstrap/package.json';
+import zoneJsPackage from 'zone.js/package.json';
+import ngBootstrapPackage from '@ng-bootstrap/ng-bootstrap/package.json';
+import rrulePackage from 'rrule/package.json';
+import fontAwesomePackage from '@fortawesome/fontawesome-free/package.json';
+import positioningPackage from 'positioning/package.json';
+import flatpickrPackage from 'flatpickr/package.json';
+import angularxFlatpickrPackage from 'angularx-flatpickr/package.json';
 
 interface Source {
   filename: string;
@@ -24,61 +41,66 @@ interface Demo {
   tags: string[];
 }
 
-function getSources(folder: string): Promise<Source[]> {
+function getSources(
+  folder: string,
+  highlightJS: HighlightJS,
+): Promise<Source[]> {
   return import('./demo-modules/' + folder + '/sources.ts').then(
     ({ sources }) => {
-      return sources.map(({ filename, contents }) => {
+      const promises = sources.map(async ({ filename, contents }) => {
         const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
-        const languages: { [extension: string]: string } = {
+        const languages = {
           ts: 'typescript',
-          html: 'html',
+          html: 'xml',
           css: 'css',
-        };
+          scss: 'scss',
+        } as const;
+
+        const rawContent = contents
+          .replace(
+            ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
+            '',
+          )
+          .replace("\nimport { RouterModule } from '@angular/router';", '');
+
+        const language = languages[extension];
+        const result = await highlightJS.highlight(rawContent, {
+          language,
+        });
+        const highlightedContent = result.value;
+
         return {
           filename,
           contents: {
-            raw: contents.raw.default
-              .replace(
-                ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-                '',
-              )
-              .replace("\nimport { RouterModule } from '@angular/router';", ''),
-            highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
-              .replace(
-                ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
-                '',
-              )
-              .replace(
-                '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
-                '',
-              ),
+            raw: rawContent,
+            highlighted: highlightedContent,
           },
           language: languages[extension],
         };
       });
+
+      return Promise.all(promises);
     },
   );
 }
 
-const dependencyVersions: any = {
-  angular: require('@angular/core/package.json').version,
-  angularRouter: require('@angular/router/package.json').version,
-  angularCalendar: require('../../../package.json').version,
-  calendarUtils: require('calendar-utils/package.json').version,
-  angularResizableElement: require('angular-resizable-element/package.json')
-    .version,
-  angularDraggableDroppable: require('angular-draggable-droppable/package.json')
-    .version,
-  dateFns: require('date-fns/package.json').version,
-  rxjs: require('rxjs/package.json').version,
-  bootstrap: require('bootstrap/package.json').version,
-  zoneJs: require('zone.js/package.json').version,
-  ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
-  rrule: require('rrule/package.json').version,
-  fontAwesome: require('@fortawesome/fontawesome-free/package.json').version,
-  positioning: require('positioning/package.json').version,
-  flatpickr: require('flatpickr/package.json').version,
-  angularxFlatpickr: require('angularx-flatpickr/package.json').version,
+const dependencyVersions: Record<string, string> = {
+  angular: angularCorePackage.version,
+  angularRouter: angularRouterPackage.version,
+  angularCalendar: angularCalendarPackage.version,
+  calendarUtils: calendarUtilsPackage.version,
+  angularResizableElement: angularResizableElementPackage.version,
+  angularDraggableDroppable: angularDraggableDroppablePackage.version,
+  dateFns: dateFnsPackage.version,
+  rxjs: rxjsPackage.version,
+  bootstrap: bootstrapPackage.version,
+  zoneJs: zoneJsPackage.version,
+  ngBootstrap: ngBootstrapPackage.version,
+  rrule: rrulePackage.version,
+  fontAwesome: fontAwesomePackage.version,
+  positioning: positioningPackage.version,
+  flatpickr: flatpickrPackage.version,
+  angularxFlatpickr: angularxFlatpickrPackage.version,
 };
 
 @Component({
@@ -100,6 +122,7 @@ export class DemoAppComponent implements OnInit {
   constructor(
     private router: Router,
     analytics: Angulartics2GoogleGlobalSiteTag,
+    private highlightJS: HighlightJS,
   ) {
     analytics.startTracking();
   }
@@ -140,7 +163,7 @@ export class DemoAppComponent implements OnInit {
         this.activeDemo = this.demos.find(
           (demo) => `/${demo.path}` === event.url,
         );
-        getSources(this.activeDemo.path).then((sources) => {
+        getSources(this.activeDemo.path, this.highlightJS).then((sources) => {
           this.activeDemo.sources = sources;
         });
       });
@@ -205,7 +228,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
     };
 
     demoUtilsSources.forEach((source) => {
-      files[`demo-utils/${source.filename}`] = source.contents.raw.default;
+      files[`demo-utils/${source.filename}`] = source.contents;
     });
 
     demo.sources.forEach((source) => {

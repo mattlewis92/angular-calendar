@@ -4,6 +4,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "esModuleInterop": true,
     "declaration": false,
     "module": "es2020",
     "moduleResolution": "bundler",
@@ -22,7 +23,6 @@
         "./projects/angular-calendar/src/date-adapters/moment"
       ]
     },
-    "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
