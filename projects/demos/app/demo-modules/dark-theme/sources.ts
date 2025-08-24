@@ -18,12 +18,10 @@ export const sources = [
   },
   {
     filename: 'styles.scss',
-    contents: {
-      default: stylesRaw.replace(
-        '../../../../angular-calendar/src/angular-calendar.scss',
-        'angular-calendar/scss/angular-calendar.scss',
-      ),
-    },
+    contents: stylesRaw.replace(
+      '../../../../angular-calendar/src/angular-calendar',
+      'angular-calendar/scss/angular-calendar',
+    ),
   },
   {
     filename: 'module.ts',

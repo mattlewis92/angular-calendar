@@ -35,7 +35,8 @@
           "builder": "@angular/build:application",
           "options": {
             "outputPath": {
-              "base": "dist/demos"
+              "base": "dist/demos",
+              "browser": ""
             },
             "index": "projects/demos/index.html",
             "polyfills": ["projects/demos/polyfills.ts"],
@@ -82,7 +83,26 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "buildTarget": "demos:build"
+            "buildTarget": "demos:build",
+            "prebundle": {
+              "exclude": [
+                "@angular/core/package.json",
+                "@angular/router/package.json",
+                "calendar-utils/package.json",
+                "angular-resizable-element/package.json",
+                "angular-draggable-droppable/package.json",
+                "date-fns/package.json",
+                "rxjs/package.json",
+                "bootstrap/package.json",
+                "zone.js/package.json",
+                "@ng-bootstrap/ng-bootstrap/package.json",
+                "rrule/package.json",
+                "@fortawesome/fontawesome-free/package.json",
+                "positioning/package.json",
+                "flatpickr/package.json",
+                "angularx-flatpickr/package.json"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -102,9 +122,8 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "noSilent": true,
             "noBuild": true,
-            "dir": "dist/demos/browser"
+            "dir": "dist/demos"
           }
         }
       }
