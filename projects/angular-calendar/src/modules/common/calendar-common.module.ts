@@ -70,7 +70,7 @@ export {
  * class MyModule {}
  * ```
  *
- * @deprecated use `provideCalendar(adapterFactory())` and import the standalone `CalendarPreviousViewDirective` / `CalendarNextViewDirective` / `CalendarTodayDirective` / `CalendarDatePipe` directives + pipes instead
+ * @deprecated use `provideCalendar({provide: DateAdapter, useFactory: adapterFactory})` and import the standalone `CalendarPreviousViewDirective` / `CalendarNextViewDirective` / `CalendarTodayDirective` / `CalendarDatePipe` directives + pipes instead
  *
  */
 @NgModule({

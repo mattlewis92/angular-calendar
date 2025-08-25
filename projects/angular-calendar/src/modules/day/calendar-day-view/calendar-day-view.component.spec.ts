@@ -32,12 +32,15 @@ describe('CalendarDayViewComponent component', () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: MOMENT, useValue: moment },
-        provideCalendar(adapterFactory(), {
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter,
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter,
+            },
           },
-        }),
+        ),
       ],
     });
   });

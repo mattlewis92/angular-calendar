@@ -44,7 +44,7 @@ export * from './day/calendar-day.module';
  *     CalendarDayViewComponent,
  *   ],
  *   providers: [
- *     provideCalendar(adapterFactory())
+ *     provideCalendar({provide: DateAdapter, useFactory: adapterFactory})
  *   ],
  * })
  * class MyComponent {}

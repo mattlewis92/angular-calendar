@@ -18,6 +18,7 @@ import {
   CalendarWeekViewComponent,
   CalendarWeekViewBeforeRenderEvent,
   provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import * as sinon from 'sinon';
@@ -52,12 +53,15 @@ describe('calendarWeekView component', () => {
       imports: [TestComponent],
       providers: [
         { provide: MOMENT, useValue: moment },
-        provideCalendar(adapterFactory(), {
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter,
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter,
+            },
           },
-        }),
+        ),
       ],
     });
   });

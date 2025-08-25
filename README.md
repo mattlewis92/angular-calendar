@@ -72,13 +72,13 @@ Finally import the calendar module into your apps module:
 ```typescript
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { CalendarModule, DateAdapter, provideCalendar } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    CalendarModule.forRoot({
+  imports: [BrowserAnimationsModule],
+  providers: [
+    provideCalendar({
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),

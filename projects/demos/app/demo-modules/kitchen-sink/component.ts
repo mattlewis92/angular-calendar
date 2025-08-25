@@ -30,6 +30,7 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   CalendarDatePipe,
+  DateAdapter,
 } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
 import { FormsModule } from '@angular/forms';
@@ -80,7 +81,10 @@ const colors: Record<string, EventColor> = {
     JsonPipe,
     CalendarDatePipe,
   ],
-  providers: [provideFlatpickrDefaults(), provideCalendar(adapterFactory())],
+  providers: [
+    provideFlatpickrDefaults(),
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;

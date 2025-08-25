@@ -6,6 +6,7 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -21,7 +22,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
-  providers: [provideCalendar(adapterFactory())],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

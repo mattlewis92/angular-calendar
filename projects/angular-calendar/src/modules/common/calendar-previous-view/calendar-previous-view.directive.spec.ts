@@ -34,7 +34,9 @@ describe('calendarPreviousView directive', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TestComponent],
-      providers: [provideCalendar(adapterFactory())],
+      providers: [
+        provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+      ],
     });
   });
 

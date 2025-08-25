@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import {
   CalendarModule,
   CalendarNextViewDirective,
+  CalendarView,
   DateAdapter,
   provideCalendar,
 } from 'angular-calendar';
@@ -24,7 +25,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   imports: [CalendarNextViewDirective],
 })
 class TestComponent {
-  view: string;
+  view: CalendarView;
   viewDate: Date;
   excludeDays: number[] = [];
   daysInWeek: number;
@@ -34,13 +35,15 @@ describe('mwlCalendarNextView directive', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TestComponent],
-      providers: [provideCalendar(adapterFactory())],
+      providers: [
+        provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+      ],
     });
   });
 
   it('should increase the view date by 1 month', () => {
     const fixture = TestBed.createComponent<TestComponent>(TestComponent);
-    fixture.componentInstance.view = 'month';
+    fixture.componentInstance.view = CalendarView.Month;
     fixture.componentInstance.viewDate = new Date('2017-01-28');
     fixture.detectChanges();
     fixture.nativeElement.querySelector('button').click();
@@ -53,7 +56,7 @@ describe('mwlCalendarNextView directive', () => {
 
   it('should increase the view date by 1 week', () => {
     const fixture = TestBed.createComponent<TestComponent>(TestComponent);
-    fixture.componentInstance.view = 'week';
+    fixture.componentInstance.view = CalendarView.Week;
     fixture.componentInstance.viewDate = new Date('2017-01-28');
     fixture.detectChanges();
     fixture.nativeElement.querySelector('button').click();
@@ -66,7 +69,7 @@ describe('mwlCalendarNextView directive', () => {
 
   it('should increase the view date by 1 day', () => {
     const fixture = TestBed.createComponent<TestComponent>(TestComponent);
-    fixture.componentInstance.view = 'day';
+    fixture.componentInstance.view = CalendarView.Day;
     fixture.componentInstance.viewDate = new Date('2017-01-28');
     fixture.detectChanges();
     fixture.nativeElement.querySelector('button').click();
@@ -79,7 +82,7 @@ describe('mwlCalendarNextView directive', () => {
 
   it('should increase the view date by 1 day, skipping weekends', () => {
     const fixture = TestBed.createComponent<TestComponent>(TestComponent);
-    fixture.componentInstance.view = 'day';
+    fixture.componentInstance.view = CalendarView.Day;
     fixture.componentInstance.viewDate = new Date('2018-06-15');
     fixture.componentInstance.excludeDays = [0, 6];
     fixture.detectChanges();
@@ -93,7 +96,7 @@ describe('mwlCalendarNextView directive', () => {
 
   it('should increase the view date by 4 days, skipping weekends', () => {
     const fixture = TestBed.createComponent<TestComponent>(TestComponent);
-    fixture.componentInstance.view = 'week';
+    fixture.componentInstance.view = CalendarView.Week;
     fixture.componentInstance.viewDate = new Date('2018-07-27');
     fixture.componentInstance.excludeDays = [0, 6];
     fixture.componentInstance.daysInWeek = 4;

@@ -11,7 +11,7 @@ import { DemoAppComponent } from './app/demo-app.component';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { provideFlatpickrDefaults } from 'angularx-flatpickr';
 import { provideHttpClient } from '@angular/common/http';
-import { provideCalendar } from 'angular-calendar';
+import { DateAdapter, provideCalendar } from 'angular-calendar';
 
 if (environment.production) {
   enableProdMode();
@@ -24,7 +24,7 @@ bootstrapApplication(DemoAppComponent, {
         developerMode: !environment.production,
       }),
     ),
-    provideCalendar(adapterFactory()),
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
     provideFlatpickrDefaults(),
     {
       provide: HIGHLIGHT_OPTIONS,

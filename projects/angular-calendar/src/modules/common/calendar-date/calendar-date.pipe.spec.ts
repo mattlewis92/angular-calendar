@@ -9,6 +9,7 @@ import {
   MOMENT,
   CalendarDatePipe,
   provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -34,12 +35,15 @@ describe('calendarDate pipe', () => {
       imports: [TestComponent],
       providers: [
         { provide: MOMENT, useValue: moment },
-        provideCalendar(adapterFactory(), {
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter,
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter,
+            },
           },
-        }),
+        ),
       ],
     });
   });

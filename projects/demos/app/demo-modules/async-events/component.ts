@@ -13,6 +13,7 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
 import {
   isSameMonth,
@@ -59,7 +60,9 @@ function getTimezoneOffsetString(date: Date): string {
     CalendarDayViewComponent,
     AsyncPipe,
   ],
-  providers: [provideCalendar(adapterFactory())],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

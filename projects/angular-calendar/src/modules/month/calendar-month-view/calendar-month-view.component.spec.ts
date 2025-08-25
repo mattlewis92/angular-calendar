@@ -16,7 +16,6 @@ import {
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  CalendarModule,
   MOMENT,
   CalendarMonthViewDay,
   DAYS_OF_WEEK,
@@ -41,12 +40,15 @@ describe('calendarMonthView component', () => {
       imports: [BrowserAnimationsModule],
       providers: [
         { provide: MOMENT, useValue: moment },
-        provideCalendar(adapterFactory(), {
-          dateFormatter: {
-            provide: CalendarDateFormatter,
-            useClass: CalendarMomentDateFormatter,
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
+          {
+            dateFormatter: {
+              provide: CalendarDateFormatter,
+              useClass: CalendarMomentDateFormatter,
+            },
           },
-        }),
+        ),
       ],
     });
   });
