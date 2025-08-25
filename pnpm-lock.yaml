@@ -20,6 +20,12 @@ importers:
       calendar-utils:
         specifier: ^0.10.4
         version: 0.10.4
+      date-fns:
+        specifier: ^2.29.3
+        version: 2.30.0
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
       positioning:
         specifier: ^2.0.1
         version: 2.0.1
@@ -171,9 +177,6 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      date-fns:
-        specifier: ^2.29.3
-        version: 2.30.0
       dayjs:
         specifier: ^1.11.7
         version: 1.11.13
@@ -213,9 +216,6 @@ importers:
       mocha:
         specifier: ^10.2.0
         version: 10.8.2
-      moment:
-        specifier: ^2.29.4
-        version: 2.30.1
       moment-timezone:
         specifier: ^0.5.40
         version: 0.5.48

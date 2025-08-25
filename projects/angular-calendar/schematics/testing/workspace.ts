@@ -38,3 +38,32 @@ export async function createTestApp(
     workspace,
   );
 }
+
+export async function createStandaloneTestApp(
+  appOptions: AppOptions,
+): Promise<UnitTestTree> {
+  const runner = new SchematicTestRunner(
+    'angular-calendar-schematics',
+    collectionPath,
+  );
+  const workspace = await runner.runExternalSchematic(
+    SCHEMATICS_PACKAGE_NAME,
+    'workspace',
+    {
+      name: 'workspace',
+      version: '9.0.0',
+      newProjectRoot: 'projects',
+    },
+  );
+
+  return runner.runExternalSchematic(
+    SCHEMATICS_PACKAGE_NAME,
+    'application',
+    {
+      name: appOptions.name,
+      ...appOptions,
+      standalone: true,
+    },
+    workspace,
+  );
+}

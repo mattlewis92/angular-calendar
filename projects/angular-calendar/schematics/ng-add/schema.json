@@ -24,10 +24,32 @@
         ]
       }
     },
-    "module": {
+    "standalone": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install to a standalone component (default) or NgModule",
+      "x-prompt": {
+        "message": "Install to a standalone component or NgModule?",
+        "type": "list",
+        "items": [
+          {
+            "value": true,
+            "label": "Standalone component (recommended)"
+          },
+          {
+            "value": false,
+            "label": "NgModule"
+          }
+        ]
+      }
+    },
+    "installToPath": {
       "type": "string",
-      "description": "Where to add the module import",
-      "x-prompt": "Please enter a path to the NgModule that will use the calendar. It should be relative to the root project directory, for example src/app/app.module.ts (optional, will use the root app module if not specified)"
+      "description": "Path to the component or NgModule file relative to the project root (e.g., 'src/app/my-component.ts')",
+      "x-prompt": {
+        "message": "Please enter the path to the component or NgModule file (optional, will use the root app component/module if not specified)",
+        "type": "input"
+      }
     },
     "projectName": {
       "type": "string",
