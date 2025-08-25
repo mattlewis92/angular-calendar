@@ -67,24 +67,56 @@ Next include the CSS file in the global (not component scoped) styles of your ap
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 ```
 
-Finally import the calendar module into your apps module:
+Finally add the calendar to a component in your app:
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { Component } from '@angular/core';
+import { DateAdapter, provideCalendar, CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarEvent, CalendarView } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
-@NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    CalendarModule.forRoot({
+@Component({
+  imports: [CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent],
+  providers: [
+    provideCalendar({
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
   ],
+  template: `
+    <button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Previous</button>
+    <button mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+    <button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</button>
+    <h3>{{ viewDate | calendarDate: view + 'ViewTitle' : 'en' }}</h3>
+    <button (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">Month</button>
+    <button (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">Week</button>
+    <button (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">Day</button>
+    @switch (view) {
+      @case (CalendarView.Month) {
+        <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" />
+      }
+      @case (CalendarView.Week) {
+        <mwl-calendar-week-view [viewDate]="viewDate" [events]="events" />
+      }
+      @case (CalendarView.Day) {
+        <mwl-calendar-day-view [viewDate]="viewDate" [events]="events" />
+      }
+    }
+  `,
 })
-export class MyModule {}
+export class MyComponent {
+  readonly CalendarView = CalendarView;
+  viewDate = new Date();
+  events: CalendarEvent[] = [
+    {
+      start: new Date(),
+      title: 'An event',
+    },
+  ];
+
+  setView(view: CalendarView) {
+    this.view = view;
+  }
+}
 ```
 
 In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the [demos list](https://mattlewis92.github.io/angular-calendar/) for a series of comprehensive examples of how to use this library within your application.

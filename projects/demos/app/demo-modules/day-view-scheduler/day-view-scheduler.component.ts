@@ -16,6 +16,10 @@ import {
   CalendarWeekViewComponent,
   DateAdapter,
   getWeekViewPeriod,
+  CalendarWeekViewEventComponent,
+  CalendarWeekViewHourSegmentComponent,
+  CalendarWeekViewCurrentTimeMarkerComponent,
+  ClickDirective,
 } from 'angular-calendar';
 import {
   WeekView,
@@ -26,7 +30,17 @@ import {
   WeekViewAllDayEventRow,
   WeekViewAllDayEvent,
 } from 'calendar-utils';
-import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
+import {
+  DragEndEvent,
+  DragMoveEvent,
+  DroppableDirective,
+  DraggableDirective,
+} from 'angular-draggable-droppable';
+import { NgTemplateOutlet, NgClass } from '@angular/common';
+import {
+  ResizableDirective,
+  ResizeHandleDirective,
+} from 'angular-resizable-element';
 
 export interface User {
   id: number;
@@ -82,7 +96,18 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
   selector: 'mwl-day-view-scheduler',
   templateUrl: 'day-view-scheduler.component.html',
   providers: [DayViewSchedulerCalendarUtils],
-  standalone: false,
+  imports: [
+    DroppableDirective,
+    NgTemplateOutlet,
+    DraggableDirective,
+    NgClass,
+    CalendarWeekViewEventComponent,
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent,
+    ResizableDirective,
+    ResizeHandleDirective,
+    ClickDirective,
+  ],
 })
 export class DayViewSchedulerComponent
   extends CalendarWeekViewComponent

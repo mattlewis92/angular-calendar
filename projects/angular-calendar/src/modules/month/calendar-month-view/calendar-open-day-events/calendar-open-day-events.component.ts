@@ -15,6 +15,13 @@ import {
 } from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold } from '../../../common/util/util';
+import { DraggableDirective } from 'angular-draggable-droppable';
+import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { CalendarEventTitleComponent } from '../../../common/calendar-event-title/calendar-event-title.component';
+import { ClickDirective } from '../../../common/click/click.directive';
+import { KeydownEnterDirective } from '../../../common/keydown-enter/keydown-enter.directive';
+import { CalendarEventActionsComponent } from '../../../common/calendar-event-actions/calendar-event-actions.component';
+import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pipe';
 
 export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
   state(
@@ -121,7 +128,17 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
     />
   `,
   animations: [collapseAnimation],
-  standalone: false,
+  imports: [
+    DraggableDirective,
+    NgClass,
+    NgStyle,
+    CalendarEventTitleComponent,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarEventActionsComponent,
+    NgTemplateOutlet,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarOpenDayEventsComponent {
   @Input() locale: string;

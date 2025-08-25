@@ -7,8 +7,18 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { differenceInMinutes, startOfDay, startOfHour } from 'date-fns';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -22,7 +32,15 @@ import { differenceInMinutes, startOfDay, startOfHour } from 'date-fns';
       }
     `,
   ],
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent implements AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer: ElementRef<HTMLElement>;

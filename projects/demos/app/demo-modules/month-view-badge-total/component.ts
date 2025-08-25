@@ -1,12 +1,22 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarMonthViewDay,
+  CalendarMonthViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { colors } from '../demo-utils/colors';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [CalendarMonthViewComponent],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   viewDate: Date = new Date();

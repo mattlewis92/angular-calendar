@@ -3,9 +3,20 @@ import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
+import {
+  DroppableDirective,
+  DraggableDirective,
+} from 'angular-draggable-droppable';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -23,7 +34,17 @@ import { colors } from '../demo-utils/colors';
       }
     `,
   ],
-  standalone: false,
+  imports: [
+    DroppableDirective,
+    DraggableDirective,
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   CalendarView = CalendarView;

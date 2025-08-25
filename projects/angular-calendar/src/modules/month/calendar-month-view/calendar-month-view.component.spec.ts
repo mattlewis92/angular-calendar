@@ -16,7 +16,6 @@ import {
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  CalendarModule,
   MOMENT,
   CalendarMonthViewDay,
   DAYS_OF_WEEK,
@@ -24,6 +23,7 @@ import {
   CalendarMonthViewComponent,
   DateAdapter,
   CalendarMonthViewEventTimesChangedEvent,
+  provideCalendar,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { triggerDomEvent } from '../../../test/util';
@@ -37,13 +37,11 @@ registerLocaleData(localeDe);
 describe('calendarMonthView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        CalendarModule.forRoot(
-          {
-            provide: DateAdapter,
-            useFactory: adapterFactory,
-          },
+      imports: [BrowserAnimationsModule],
+      providers: [
+        { provide: MOMENT, useValue: moment },
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
@@ -52,7 +50,6 @@ describe('calendarMonthView component', () => {
           },
         ),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 

@@ -3,9 +3,24 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarTooltipDirective,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  CalendarDatePipe,
+  CalendarEventTitlePipe,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+import { ContextMenuModule } from '@perfectmemory/ngx-contextmenu';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -13,7 +28,20 @@ import { colors } from '../demo-utils/colors';
   templateUrl: 'template.html',
   styleUrls: ['./styles.scss'],
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    ContextMenuModule,
+    NgClass,
+    CalendarTooltipDirective,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    CalendarDatePipe,
+    CalendarEventTitlePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

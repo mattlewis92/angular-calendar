@@ -3,9 +3,19 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { addDays, addHours, startOfDay } from 'date-fns';
 import { colors } from '../demo-utils/colors';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -23,7 +33,15 @@ import { colors } from '../demo-utils/colors';
       }
     `,
   ],
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;

@@ -1,5 +1,8 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
+import { NgTemplateOutlet } from '@angular/common';
+import { CalendarEventTitlePipe } from './calendar-event-title.pipe';
+import { CalendarA11yPipe } from '../calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-event-title',
@@ -20,7 +23,7 @@ import { CalendarEvent } from 'calendar-utils';
       }"
     />
   `,
-  standalone: false,
+  imports: [NgTemplateOutlet, CalendarEventTitlePipe, CalendarA11yPipe],
 })
 export class CalendarEventTitleComponent {
   @Input() event: CalendarEvent;

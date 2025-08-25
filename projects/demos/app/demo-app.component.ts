@@ -1,11 +1,27 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import {
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  RouterOutlet,
+  RouterLink,
+} from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
-import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbNav,
+  NgbCollapse,
+  NgbTooltip,
+  NgbNavItem,
+  NgbNavItemRole,
+  NgbNavLink,
+  NgbNavLinkBase,
+  NgbNavContent,
+  NgbNavOutlet,
+} from '@ng-bootstrap/ng-bootstrap';
 import { HighlightJS } from 'ngx-highlightjs';
 import angularCorePackage from '@angular/core/package.json';
 import angularRouterPackage from '@angular/router/package.json';
@@ -23,6 +39,11 @@ import fontAwesomePackage from '@fortawesome/fontawesome-free/package.json';
 import positioningPackage from 'positioning/package.json';
 import flatpickrPackage from 'flatpickr/package.json';
 import angularxFlatpickrPackage from 'angularx-flatpickr/package.json';
+import { DraggableScrollContainerDirective } from 'angular-draggable-droppable';
+import { ClipboardModule } from 'ngx-clipboard';
+import { NgClass, AsyncPipe } from '@angular/common';
+import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
+import { FormsModule } from '@angular/forms';
 
 interface Source {
   filename: string;
@@ -45,39 +66,38 @@ function getSources(
   folder: string,
   highlightJS: HighlightJS,
 ): Promise<Source[]> {
-  return import('./demo-modules/' + folder + '/sources.ts').then(
-    ({ sources }) => {
-      const promises = sources.map(async ({ filename, contents }) => {
-        const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
-        const languages = {
-          ts: 'typescript',
-          html: 'xml',
-          css: 'css',
-          scss: 'scss',
-        } as const;
+  return import(`./demo-modules/${folder}/sources.ts`).then(
+    ({
+      sources,
+    }: {
+      sources: Array<{ filename: string; contents: string }>;
+    }) => {
+      const promises = sources.map(
+        async ({ filename, contents: rawContent }) => {
+          const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
+          const languages = {
+            ts: 'typescript',
+            html: 'xml',
+            css: 'css',
+            scss: 'scss',
+          } as const;
 
-        const rawContent = contents
-          .replace(
-            ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-            '',
-          )
-          .replace("\nimport { RouterModule } from '@angular/router';", '');
+          const language = languages[extension];
+          const result = await highlightJS.highlight(rawContent, {
+            language,
+          });
+          const highlightedContent = result.value;
 
-        const language = languages[extension];
-        const result = await highlightJS.highlight(rawContent, {
-          language,
-        });
-        const highlightedContent = result.value;
-
-        return {
-          filename,
-          contents: {
-            raw: rawContent,
-            highlighted: highlightedContent,
-          },
-          language: languages[extension],
-        };
-      });
+          return {
+            filename,
+            contents: {
+              raw: rawContent,
+              highlighted: highlightedContent,
+            },
+            language: languages[extension],
+          };
+        },
+      );
 
       return Promise.all(promises);
     },
@@ -107,7 +127,25 @@ const dependencyVersions: Record<string, string> = {
   selector: 'mwl-demo-app',
   styleUrls: ['./demo-app.css'],
   templateUrl: './demo-app.html',
-  standalone: false,
+  imports: [
+    NgbCollapse,
+    NgbTooltip,
+    DraggableScrollContainerDirective,
+    NgbNav,
+    NgbNavItem,
+    NgbNavItemRole,
+    NgbNavLink,
+    NgbNavLinkBase,
+    NgbNavContent,
+    RouterOutlet,
+    ClipboardModule,
+    NgClass,
+    NgbNavOutlet,
+    CarbonAdComponent,
+    FormsModule,
+    RouterLink,
+    AsyncPipe,
+  ],
 })
 export class DemoAppComponent implements OnInit {
   @ViewChild('nav') nav: NgbNav;

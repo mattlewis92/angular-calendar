@@ -27,6 +27,14 @@ import { CalendarUtils } from '../../common/calendar-utils/calendar-utils.provid
 import { validateEvents } from '../../common/util/util';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 import { PlacementArray } from 'positioning';
+import { CalendarMonthViewHeaderComponent } from './calendar-month-view-header/calendar-month-view-header.component';
+import { CalendarMonthCellComponent } from './calendar-month-cell/calendar-month-cell.component';
+import { DroppableDirective } from 'angular-draggable-droppable';
+import { NgClass, NgStyle, SlicePipe } from '@angular/common';
+import { ClickDirective } from '../../common/click/click.directive';
+import { KeydownEnterDirective } from '../../common/keydown-enter/keydown-enter.directive';
+import { CalendarOpenDayEventsComponent } from './calendar-open-day-events/calendar-open-day-events.component';
+import { CalendarA11yPipe } from '../../common/calendar-a11y/calendar-a11y.pipe';
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -139,7 +147,18 @@ export interface CalendarMonthViewEventTimesChangedEvent<
       </div>
     </div>
   `,
-  standalone: false,
+  imports: [
+    CalendarMonthViewHeaderComponent,
+    CalendarMonthCellComponent,
+    DroppableDirective,
+    NgClass,
+    NgStyle,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarOpenDayEventsComponent,
+    SlicePipe,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy

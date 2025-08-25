@@ -10,10 +10,7 @@ import {
   inject,
 } from '@angular/core';
 
-@Directive({
-  selector: '[mwlKeydownEnter]',
-  standalone: false,
-})
+@Directive({ selector: '[mwlKeydownEnter]' })
 export class KeydownEnterDirective implements OnInit, OnDestroy {
   @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // eslint-disable-line
 

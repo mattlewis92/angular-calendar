@@ -7,7 +7,14 @@ import {
   CalendarEvent,
   CalendarMonthViewDay,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  CalendarDatePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   subMonths,
   addMonths,
@@ -75,7 +82,15 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   ],
   // this is a hack to get styles to apply to the inner component. Your app should just use a global stylesheet
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  imports: [
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    CalendarDatePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   view: CalendarView | CalendarPeriod = CalendarView.Month;

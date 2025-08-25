@@ -2,10 +2,7 @@ import { Pipe, PipeTransform, inject } from '@angular/core';
 import { CalendarEvent } from 'calendar-utils';
 import { CalendarEventTitleFormatter } from '../calendar-event-title-formatter/calendar-event-title-formatter.provider';
 
-@Pipe({
-  name: 'calendarEventTitle',
-  standalone: false,
-})
+@Pipe({ name: 'calendarEventTitle' })
 export class CalendarEventTitlePipe implements PipeTransform {
   private calendarEventTitle = inject(CalendarEventTitleFormatter);
 

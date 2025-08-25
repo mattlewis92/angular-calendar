@@ -7,7 +7,13 @@ import {
   inject,
 } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { CalendarView } from 'angular-calendar';
+import {
+  CalendarView,
+  CalendarWeekViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -15,7 +21,10 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './template.html',
-  standalone: false,
+  imports: [CalendarWeekViewComponent],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Week;

@@ -14,9 +14,19 @@ import {
   CalendarMonthViewBeforeRenderEvent,
   CalendarView,
   CalendarWeekViewBeforeRenderEvent,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+  CalendarDateFormatter,
+  CalendarMomentDateFormatter,
+  MOMENT,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import { colors } from '../demo-utils/colors';
 import { ViewPeriod } from 'calendar-utils';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 interface RecurringEvent {
   title: string;
@@ -37,7 +47,30 @@ moment.tz.setDefault('Utc');
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar(
+      {
+        provide: DateAdapter,
+        useFactory: () => adapterFactory(moment),
+      },
+      {
+        dateFormatter: {
+          provide: CalendarDateFormatter,
+          useClass: CalendarMomentDateFormatter,
+        },
+      },
+    ),
+    {
+      provide: MOMENT,
+      useValue: moment,
+    },
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
