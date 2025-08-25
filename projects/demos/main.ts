@@ -271,10 +271,10 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'additional-event-properties',
-          loadChildren: () =>
+          loadComponent: () =>
             import(
-              './app/demo-modules/additional-event-properties/module'
-            ).then((m) => m.DemoModule),
+              './app/demo-modules/additional-event-properties/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Additional event properties',
           },

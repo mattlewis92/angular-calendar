@@ -14,8 +14,4 @@ export const sources = [
     filename: 'template.html',
     contents: template,
   },
-  {
-    filename: 'module.ts',
-    contents: module,
-  },
 ];
