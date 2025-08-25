@@ -24,7 +24,6 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { HighlightJS } from 'ngx-highlightjs';
 import angularCorePackage from '@angular/core/package.json';
-import angularRouterPackage from '@angular/router/package.json';
 import angularCalendarPackage from '../../../package.json';
 import calendarUtilsPackage from 'calendar-utils/package.json';
 import angularResizableElementPackage from 'angular-resizable-element/package.json';
@@ -106,7 +105,6 @@ function getSources(
 
 const dependencyVersions: Record<string, string> = {
   angular: angularCorePackage.version,
-  angularRouter: angularRouterPackage.version,
   angularCalendar: angularCalendarPackage.version,
   calendarUtils: calendarUtilsPackage.version,
   angularResizableElement: angularResizableElementPackage.version,
@@ -227,48 +225,124 @@ export class DemoAppComponent implements OnInit {
     const files: {
       [path: string]: string;
     } = {
-      'index.html': `
+      'src/index.html': `
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@${dependencyVersions.bootstrap}/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://unpkg.com/@fortawesome/fontawesome-free@${dependencyVersions.fontAwesome}/css/all.css" rel="stylesheet">
 <link href="https://unpkg.com/angular-calendar@${dependencyVersions.angularCalendar}/css/angular-calendar.css" rel="stylesheet">
 <link href="https://unpkg.com/flatpickr@${dependencyVersions.flatpickr}/dist/flatpickr.css" rel="stylesheet">
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
-      'main.ts': `
+      'src/main.ts': `
 import 'zone.js';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { DemoModule } from './demo/module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 import { DemoComponent } from './demo/component';
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    DemoModule
-  ],
-  bootstrap: [DemoComponent]
-})
-export class BootstrapModule {}
-
-platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
-  // Ensure Angular destroys itself on hot reloads.
-  if (window['ngRef']) {
-    window['ngRef'].destroy();
-  }
-  window['ngRef'] = ref;
-
-  // Otherwise, log the boot error
+bootstrapApplication(DemoComponent, {
+  providers: [provideHttpClient()],
 }).catch(err => console.error(err));
+`.trim(),
+      'angular.json': `
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "newProjectRoot": "projects",
+  "projects": {
+    "demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "namedChunks": true,
+              "optimization": false,
+              "sourceMap": true,
+              "aot": true
+            },
+            "production": {
+              "aot": true,
+              "extractLicenses": true,
+              "namedChunks": false,
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false
+            }
+          },
+          "options": {
+            "assets": [],
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "outputPath": "dist/demo",
+            "polyfills": ["zone.js"],
+            "scripts": [],
+            "styles": [],
+            "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "demo:build:development"
+            },
+            "production": {
+              "buildTarget": "demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "",
+      "schematics": {},
+      "sourceRoot": "src"
+    }
+  },
+  "version": 1
+}`.trim(),
+      'tsconfig.app.json': `
+      {
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictStandalone": true
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"]
+}
 `.trim(),
     };
 
     demoUtilsSources.forEach((source) => {
-      files[`demo-utils/${source.filename}`] = source.contents;
+      files[`src/demo-utils/${source.filename}`] = source.contents;
     });
 
     demo.sources.forEach((source) => {
-      files[`demo/${source.filename}`] = source.contents.raw;
+      files[`src/demo/${source.filename}`] = source.contents.raw;
     });
 
     StackBlitzSDK.openProject(
@@ -283,7 +357,6 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/common': dependencyVersions.angular,
           '@angular/compiler': dependencyVersions.angular,
           '@angular/platform-browser': dependencyVersions.angular,
-          '@angular/platform-browser-dynamic': dependencyVersions.angular,
           '@angular/router': dependencyVersions.angular,
           '@angular/forms': dependencyVersions.angular,
           rxjs: dependencyVersions.rxjs,
@@ -292,7 +365,7 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           'angular-resizable-element': `^${dependencyVersions.angularResizableElement}`,
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
-          '@ng-bootstrap/ng-bootstrap': '5.0.0', // pinned due to issue with stackblitz generation
+          '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
           rrule: dependencyVersions.rrule,
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
