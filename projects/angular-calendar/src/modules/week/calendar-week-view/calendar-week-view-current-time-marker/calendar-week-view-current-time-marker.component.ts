@@ -10,6 +10,7 @@ import {
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { startWith, map, switchMap } from 'rxjs/operators';
 import { DateAdapter } from '../../../../date-adapters/date-adapter';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'mwl-calendar-week-view-current-time-marker',
@@ -42,7 +43,7 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
     >
     </ng-template>
   `,
-  standalone: false,
+  imports: [NgTemplateOutlet, AsyncPipe],
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
   @Input() columnDate: Date;

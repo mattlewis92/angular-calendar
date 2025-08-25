@@ -1,5 +1,8 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { WeekViewHourSegment } from 'calendar-utils';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pipe';
+import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-week-view-hour-segment',
@@ -50,7 +53,7 @@ import { WeekViewHourSegment } from 'calendar-utils';
     >
     </ng-template>
   `,
-  standalone: false,
+  imports: [NgClass, NgTemplateOutlet, CalendarDatePipe, CalendarA11yPipe],
 })
 export class CalendarWeekViewHourSegmentComponent {
   @Input() segment: WeekViewHourSegment;

@@ -16,7 +16,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       Next
     </button>
   `,
-  standalone: false,
 })
 class TestComponent {
   view: string;
@@ -33,8 +32,8 @@ describe('mwlCalendarNextView directive', () => {
           provide: DateAdapter,
           useFactory: adapterFactory,
         }),
+        TestComponent,
       ],
-      declarations: [TestComponent],
     });
   });
 

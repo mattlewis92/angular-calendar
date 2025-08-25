@@ -11,6 +11,7 @@ import { CalendarEventTimesChangedEvent } from '../../common/calendar-event-time
 import { PlacementArray } from 'positioning';
 import { CalendarWeekViewBeforeRenderEvent } from '../../week/calendar-week.module';
 import { ResizeCursors } from 'angular-resizable-element';
+import { CalendarWeekViewComponent } from '../../week/calendar-week-view/calendar-week-view.component';
 
 export type CalendarDayViewBeforeRenderEvent =
   CalendarWeekViewBeforeRenderEvent;
@@ -63,7 +64,7 @@ export type CalendarDayViewBeforeRenderEvent =
       (beforeViewRender)="beforeViewRender.emit($event)"
     ></mwl-calendar-week-view>
   `,
-  standalone: false,
+  imports: [CalendarWeekViewComponent],
 })
 export class CalendarDayViewComponent {
   /**

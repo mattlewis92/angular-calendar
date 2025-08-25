@@ -8,10 +8,7 @@ import { CalendarDateFormatter } from '../calendar-date-formatter/calendar-date-
  * {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
  * ```
  */
-@Pipe({
-  name: 'calendarDate',
-  standalone: false,
-})
+@Pipe({ name: 'calendarDate' })
 export class CalendarDatePipe implements PipeTransform {
   private dateFormatter = inject(CalendarDateFormatter);
 

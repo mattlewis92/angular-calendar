@@ -19,10 +19,7 @@ import { DateAdapter } from '../../../date-adapters/date-adapter';
  * </button>
  * ```
  */
-@Directive({
-  selector: '[mwlCalendarToday]',
-  standalone: false,
-})
+@Directive({ selector: '[mwlCalendarToday]' })
 export class CalendarTodayDirective {
   /**
    * The current view date

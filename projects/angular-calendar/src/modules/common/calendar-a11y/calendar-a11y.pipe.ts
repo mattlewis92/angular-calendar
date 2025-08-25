@@ -9,10 +9,7 @@ import { A11yParams } from './calendar-a11y.interface';
  * {{ { event: myEvent, locale: myLocale } | calendarA11y: 'eventDescription' }}
  * ```
  */
-@Pipe({
-  name: 'calendarA11y',
-  standalone: false,
-})
+@Pipe({ name: 'calendarA11y' })
 export class CalendarA11yPipe implements PipeTransform {
   private calendarA11y = inject(CalendarA11y);
 

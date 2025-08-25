@@ -8,6 +8,13 @@ import {
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold } from '../../../common/util/util';
 import { PlacementArray } from 'positioning';
+import { DraggableDirective } from 'angular-draggable-droppable';
+import { NgStyle, NgClass, NgTemplateOutlet } from '@angular/common';
+import { CalendarTooltipDirective } from '../../../common/calendar-tooltip/calendar-tooltip.directive';
+import { ClickDirective } from '../../../common/click/click.directive';
+import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pipe';
+import { CalendarEventTitlePipe } from '../../../common/calendar-event-title/calendar-event-title.pipe';
+import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-month-cell',
@@ -104,7 +111,17 @@ import { PlacementArray } from 'positioning';
     '[class.cal-open]': 'day === openDay',
     '[class.cal-event-highlight]': '!!day.backgroundColor',
   },
-  standalone: false,
+  imports: [
+    DraggableDirective,
+    NgStyle,
+    NgClass,
+    CalendarTooltipDirective,
+    ClickDirective,
+    NgTemplateOutlet,
+    CalendarDatePipe,
+    CalendarEventTitlePipe,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarMonthCellComponent {
   @Input() day: MonthViewDay;

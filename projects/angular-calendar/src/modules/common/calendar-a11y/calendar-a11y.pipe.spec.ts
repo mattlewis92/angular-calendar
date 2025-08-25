@@ -4,10 +4,7 @@ import { expect } from 'chai';
 import { A11yParams, CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
-@Component({
-  template: '{{ a11yParams | calendarA11y:method }}',
-  standalone: false,
-})
+@Component({ template: '{{ a11yParams | calendarA11y:method }}' })
 class TestComponent {
   a11yParams: A11yParams;
   method: string;
@@ -21,8 +18,8 @@ describe('calendarA11y pipe', () => {
           provide: DateAdapter,
           useFactory: adapterFactory,
         }),
+        TestComponent,
       ],
-      declarations: [TestComponent],
     });
   });
 

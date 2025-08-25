@@ -26,7 +26,11 @@ import {
   WeekViewHour,
   WeekViewAllDayEventRow,
 } from 'calendar-utils';
-import { ResizeEvent } from 'angular-resizable-element';
+import {
+  ResizeEvent,
+  ResizableDirective,
+  ResizeHandleDirective,
+} from 'angular-resizable-element';
 import { ResizeCursors } from 'angular-resizable-element';
 import { CalendarDragHelper } from '../../common/calendar-drag-helper/calendar-drag-helper.provider';
 import { CalendarResizeHelper } from '../../common/calendar-resize-helper/calendar-resize-helper.provider';
@@ -51,8 +55,16 @@ import {
   DropEvent,
   DragMoveEvent,
   ValidateDrag,
+  DroppableDirective,
+  DraggableDirective,
 } from 'angular-draggable-droppable';
 import { PlacementArray } from 'positioning';
+import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header/calendar-week-view-header.component';
+import { NgTemplateOutlet, NgClass } from '@angular/common';
+import { CalendarWeekViewEventComponent } from './calendar-week-view-event/calendar-week-view-event.component';
+import { CalendarWeekViewHourSegmentComponent } from './calendar-week-view-hour-segment/calendar-week-view-hour-segment.component';
+import { CalendarWeekViewCurrentTimeMarkerComponent } from './calendar-week-view-current-time-marker/calendar-week-view-current-time-marker.component';
+import { ClickDirective } from '../../common/click/click.directive';
 
 export interface WeekViewAllDayEventResize {
   originalOffset: number;
@@ -450,7 +462,19 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
       </div>
     </div>
   `,
-  standalone: false,
+  imports: [
+    CalendarWeekViewHeaderComponent,
+    DroppableDirective,
+    NgTemplateOutlet,
+    ResizableDirective,
+    DraggableDirective,
+    NgClass,
+    ResizeHandleDirective,
+    CalendarWeekViewEventComponent,
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent,
+    ClickDirective,
+  ],
 })
 export class CalendarWeekViewComponent
   implements OnChanges, OnInit, OnDestroy, AfterViewInit

@@ -19,6 +19,7 @@ import { PlacementArray, positionElements } from 'positioning';
 import { CalendarEvent } from 'calendar-utils';
 import { Observable, of, Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'mwl-calendar-tooltip-window',
@@ -44,7 +45,7 @@ import { takeUntil } from 'rxjs/operators';
     >
     </ng-template>
   `,
-  standalone: false,
+  imports: [NgClass, NgTemplateOutlet],
 })
 export class CalendarTooltipWindowComponent {
   @Input() contents: string;
@@ -56,10 +57,7 @@ export class CalendarTooltipWindowComponent {
   @Input() customTemplate: TemplateRef<any>;
 }
 
-@Directive({
-  selector: '[mwlCalendarTooltip]',
-  standalone: false,
-})
+@Directive({ selector: '[mwlCalendarTooltip]' })
 export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   @Input('mwlCalendarTooltip') contents: string; // eslint-disable-line  @angular-eslint/no-input-rename
 
