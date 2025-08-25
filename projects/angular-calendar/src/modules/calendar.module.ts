@@ -4,12 +4,12 @@ import {
   CalendarCommonModule,
   CalendarDateFormatter,
   CalendarEventTitleFormatter,
+  CalendarProviderConfig,
   CalendarUtils,
 } from './common/calendar-common.module';
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';
 import { CalendarDayModule } from './day/calendar-day.module';
-import { CalendarProviderConfig } from './common/provide-calendar/provide-calendar.function';
 
 export * from './common/calendar-common.module';
 export * from './month/calendar-month.module';

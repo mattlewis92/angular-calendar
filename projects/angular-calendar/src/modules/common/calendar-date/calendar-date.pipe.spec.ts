@@ -4,17 +4,18 @@ import { expect } from 'chai';
 import { spy } from 'sinon';
 import moment from 'moment';
 import {
-  CalendarModule,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
   MOMENT,
+  CalendarDatePipe,
+  provideCalendar,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { DateAdapter } from 'angular-calendar';
 
 @Component({
   template:
     '{{ date | calendarDate:method:locale:weekStartsOn:excludeDays:daysInWeek }}',
+  imports: [CalendarDatePipe],
 })
 class TestComponent {
   date: Date;
@@ -30,22 +31,16 @@ class TestComponent {
 describe('calendarDate pipe', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot(
-          {
-            provide: DateAdapter,
-            useFactory: adapterFactory,
+      imports: [TestComponent],
+      providers: [
+        { provide: MOMENT, useValue: moment },
+        provideCalendar(adapterFactory(), {
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter,
           },
-          {
-            dateFormatter: {
-              provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter,
-            },
-          },
-        ),
-        TestComponent,
+        }),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 

@@ -12,15 +12,13 @@ import {
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  CalendarModule,
   MOMENT,
   CalendarEventTimesChangedEvent,
   DAYS_OF_WEEK,
   CalendarWeekViewComponent,
-  DateAdapter,
   CalendarWeekViewBeforeRenderEvent,
+  provideCalendar,
 } from 'angular-calendar';
-import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Subject } from 'rxjs';
 import * as sinon from 'sinon';
 import { triggerDomEvent, ExternalEventComponent } from '../../../test/util';
@@ -40,7 +38,7 @@ import { formatDate } from '@angular/common';
     />
     <mwl-external-event />
   `,
-  imports: [DragAndDropModule],
+  imports: [CalendarWeekViewComponent, ExternalEventComponent],
 })
 class TestComponent {
   viewDate: Date;
@@ -51,24 +49,16 @@ class TestComponent {
 describe('calendarWeekView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot(
-          {
-            provide: DateAdapter,
-            useFactory: adapterFactory,
+      imports: [TestComponent],
+      providers: [
+        { provide: MOMENT, useValue: moment },
+        provideCalendar(adapterFactory(), {
+          dateFormatter: {
+            provide: CalendarDateFormatter,
+            useClass: CalendarMomentDateFormatter,
           },
-          {
-            dateFormatter: {
-              provide: CalendarDateFormatter,
-              useClass: CalendarMomentDateFormatter,
-            },
-          },
-        ),
-        DragAndDropModule,
-        TestComponent,
-        ExternalEventComponent,
+        }),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 

@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import { A11yParams, CalendarModule, DateAdapter } from 'angular-calendar';
+import {
+  A11yParams,
+  CalendarA11yPipe,
+  CalendarModule,
+  DateAdapter,
+  provideCalendar,
+} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
-@Component({ template: '{{ a11yParams | calendarA11y:method }}' })
+@Component({
+  template: '{{ a11yParams | calendarA11y:method }}',
+  imports: [CalendarA11yPipe],
+})
 class TestComponent {
   a11yParams: A11yParams;
   method: string;
@@ -13,13 +22,8 @@ class TestComponent {
 describe('calendarA11y pipe', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory,
-        }),
-        TestComponent,
-      ],
+      imports: [TestComponent],
+      providers: [provideCalendar(adapterFactory())],
     });
   });
 

@@ -13,11 +13,11 @@ import { CalendarEventTitlePipe } from './calendar-event-title/calendar-event-ti
 import { ClickDirective } from './click/click.directive';
 import { KeydownEnterDirective } from './keydown-enter/keydown-enter.directive';
 import { CalendarA11yPipe } from './calendar-a11y/calendar-a11y.pipe';
-import { CalendarProviderConfig } from './provide-calendar/provide-calendar.function';
 import { CalendarEventTitleFormatter } from './calendar-event-title-formatter/calendar-event-title-formatter.provider';
 import { CalendarDateFormatter } from './calendar-date-formatter/calendar-date-formatter.provider';
 import { CalendarUtils } from './calendar-utils/calendar-utils.provider';
 import { CalendarA11y } from './calendar-a11y/calendar-a11y.provider';
+import { CalendarProviderConfig } from './provide-calendar/provide-calendar.function';
 
 export * from './calendar-event-title-formatter/calendar-event-title-formatter.provider';
 export * from './calendar-moment-date-formatter/calendar-moment-date-formatter.provider';

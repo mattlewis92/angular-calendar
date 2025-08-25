@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+import {
+  CalendarModule,
+  CalendarPreviousViewDirective,
+  DateAdapter,
+  provideCalendar,
+} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @Component({
@@ -16,6 +21,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       Previous
     </button>
   `,
+  imports: [CalendarPreviousViewDirective],
 })
 class TestComponent {
   public view: string;
@@ -27,13 +33,8 @@ class TestComponent {
 describe('calendarPreviousView directive', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory,
-        }),
-        TestComponent,
-      ],
+      imports: [TestComponent],
+      providers: [provideCalendar(adapterFactory())],
     });
   });
 

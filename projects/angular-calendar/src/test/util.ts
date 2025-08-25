@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
+import { DraggableDirective } from 'angular-draggable-droppable';
 
 export function triggerDomEvent(
   eventType: string,
@@ -28,6 +29,7 @@ export function triggerDomEvent(
       }
     `,
   ],
+  imports: [DraggableDirective],
 })
 export class ExternalEventComponent {
   event: CalendarEvent = {
