@@ -14,7 +14,6 @@ import { ClickDirective } from './click/click.directive';
 import { KeydownEnterDirective } from './keydown-enter/keydown-enter.directive';
 import { CalendarA11yPipe } from './calendar-a11y/calendar-a11y.pipe';
 import { CalendarProviderConfig } from './provide-calendar/provide-calendar.function';
-import { DateAdapter } from '../../date-adapters/date-adapter';
 import { CalendarEventTitleFormatter } from './calendar-event-title-formatter/calendar-event-title-formatter.provider';
 import { CalendarDateFormatter } from './calendar-date-formatter/calendar-date-formatter.provider';
 import { CalendarUtils } from './calendar-utils/calendar-utils.provider';
@@ -32,6 +31,7 @@ export * from './calendar-date-formatter/calendar-date-formatter.interface';
 export * from './calendar-event-times-changed-event/calendar-event-times-changed-event.interface';
 export * from '../../date-adapters/date-adapter';
 export * from './calendar-view/calendar-view.enum';
+export * from './provide-calendar/provide-calendar.function';
 
 export { CalendarEventActionsComponent } from './calendar-event-actions/calendar-event-actions.component';
 export { CalendarEventTitleComponent } from './calendar-event-title/calendar-event-title.component';

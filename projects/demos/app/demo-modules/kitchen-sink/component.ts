@@ -18,6 +18,7 @@ import {
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
+  provideCalendar,
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
@@ -32,8 +33,9 @@ import {
 } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
 import { FormsModule } from '@angular/forms';
-import { FlatpickrModule } from 'angularx-flatpickr';
+import { FlatpickrModule, provideFlatpickrDefaults } from 'angularx-flatpickr';
 import { JsonPipe } from '@angular/common';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -78,6 +80,7 @@ const colors: Record<string, EventColor> = {
     JsonPipe,
     CalendarDatePipe,
   ],
+  providers: [provideFlatpickrDefaults(), provideCalendar(adapterFactory())],
 })
 export class DemoComponent {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;

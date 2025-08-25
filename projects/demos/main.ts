@@ -8,9 +8,10 @@ import { Angulartics2Module } from 'angulartics2';
 import { withHashLocation, provideRouter } from '@angular/router';
 import { DemoComponent as DefaultDemoComponent } from './app/demo-modules/kitchen-sink/component';
 import { DemoAppComponent } from './app/demo-app.component';
-import { provideCalendar } from '../angular-calendar/src/modules/common/provide-calendar/provide-calendar.function';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { provideFlatpickrDefaults } from 'angularx-flatpickr';
+import { provideHttpClient } from '@angular/common/http';
+import { provideCalendar } from 'angular-calendar';
 
 if (environment.production) {
   enableProdMode();
@@ -37,6 +38,7 @@ bootstrapApplication(DemoAppComponent, {
         },
       },
     },
+    provideHttpClient(),
     provideAnimations(),
     provideRouter(
       [
@@ -49,9 +51,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'async-events',
-          loadChildren: () =>
-            import('./app/demo-modules/async-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/async-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Async events',

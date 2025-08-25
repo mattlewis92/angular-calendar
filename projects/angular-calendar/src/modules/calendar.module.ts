@@ -5,7 +5,6 @@ import {
   CalendarDateFormatter,
   CalendarEventTitleFormatter,
   CalendarUtils,
-  DateAdapter,
 } from './common/calendar-common.module';
 import { CalendarMonthModule } from './month/calendar-month.module';
 import { CalendarWeekModule } from './week/calendar-week.module';

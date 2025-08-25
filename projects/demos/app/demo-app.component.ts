@@ -66,39 +66,38 @@ function getSources(
   folder: string,
   highlightJS: HighlightJS,
 ): Promise<Source[]> {
-  return import('./demo-modules/' + folder + '/sources.ts').then(
-    ({ sources }) => {
-      const promises = sources.map(async ({ filename, contents }) => {
-        const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
-        const languages = {
-          ts: 'typescript',
-          html: 'xml',
-          css: 'css',
-          scss: 'scss',
-        } as const;
+  return import(`./demo-modules/${folder}/sources.ts`).then(
+    ({
+      sources,
+    }: {
+      sources: Array<{ filename: string; contents: string }>;
+    }) => {
+      const promises = sources.map(
+        async ({ filename, contents: rawContent }) => {
+          const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
+          const languages = {
+            ts: 'typescript',
+            html: 'xml',
+            css: 'css',
+            scss: 'scss',
+          } as const;
 
-        const rawContent = contents
-          .replace(
-            ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-            '',
-          )
-          .replace("\nimport { RouterModule } from '@angular/router';", '');
+          const language = languages[extension];
+          const result = await highlightJS.highlight(rawContent, {
+            language,
+          });
+          const highlightedContent = result.value;
 
-        const language = languages[extension];
-        const result = await highlightJS.highlight(rawContent, {
-          language,
-        });
-        const highlightedContent = result.value;
-
-        return {
-          filename,
-          contents: {
-            raw: rawContent,
-            highlighted: highlightedContent,
-          },
-          language: languages[extension],
-        };
-      });
+          return {
+            filename,
+            contents: {
+              raw: rawContent,
+              highlighted: highlightedContent,
+            },
+            language: languages[extension],
+          };
+        },
+      );
 
       return Promise.all(promises);
     },
