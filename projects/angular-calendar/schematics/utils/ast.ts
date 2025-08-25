@@ -104,9 +104,7 @@ export function insertWildcardImport(
  * @param source TypeScript source file
  * @returns true if standalone: true, false if standalone: false, undefined if not specified
  */
-export function isStandaloneComponent(
-  source: ts.SourceFile,
-): boolean | undefined {
+export function isStandaloneComponent(source: ts.SourceFile): boolean {
   const nodes = findNodes(source, ts.SyntaxKind.Decorator);
 
   for (const node of nodes) {
@@ -144,7 +142,7 @@ export function isStandaloneComponent(
     }
   }
 
-  return undefined; // standalone not specified - defaults to true
+  return true; // standalone not specified - defaults to true
 }
 
 /**
