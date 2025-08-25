@@ -87,7 +87,6 @@
             "prebundle": {
               "exclude": [
                 "@angular/core/package.json",
-                "@angular/router/package.json",
                 "calendar-utils/package.json",
                 "angular-resizable-element/package.json",
                 "angular-draggable-droppable/package.json",
