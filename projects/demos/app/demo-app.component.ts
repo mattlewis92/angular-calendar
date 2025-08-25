@@ -380,7 +380,7 @@ bootstrapApplication(DemoComponent, {
         },
       },
       {
-        openFile: 'demo/component.ts',
+        openFile: 'src/demo/component.ts',
       },
     );
   }
