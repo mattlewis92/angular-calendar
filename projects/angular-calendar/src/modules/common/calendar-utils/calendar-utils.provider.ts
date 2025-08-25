@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   GetMonthViewArgs,
   MonthView,
@@ -14,8 +14,10 @@ import { DateAdapter } from '../../../date-adapters/date-adapter';
 
 @Injectable()
 export class CalendarUtils {
-  constructor(protected dateAdapter: DateAdapter) {}
-
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
   getMonthView(args: GetMonthViewArgs): MonthView {
     return getMonthView(this.dateAdapter, args);
   }

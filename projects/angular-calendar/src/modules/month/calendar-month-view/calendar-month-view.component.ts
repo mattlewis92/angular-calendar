@@ -8,8 +8,8 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -311,12 +311,22 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-  ) {
+
+  /**
+   * @hidden
+   */
+  protected cdr = inject(ChangeDetectorRef);
+  /**
+   * @hidden
+   */
+  protected utils = inject(CalendarUtils);
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
+  constructor() {
+    const locale = inject(LOCALE_ID);
+
     this.locale = locale;
   }
 

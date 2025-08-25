@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { formatDate, I18nPluralPipe } from '@angular/common';
 import { A11yParams } from './calendar-a11y.interface';
 
@@ -44,12 +44,15 @@ import { A11yParams } from './calendar-a11y.interface';
  */
 @Injectable()
 export class CalendarA11y {
-  constructor(protected i18nPlural: I18nPluralPipe) {}
-
   /**
    * Aria label for the badges/date of a cell
    * @example: `Saturday October 19 1 event click to expand`
    */
+
+  /**
+   * @hidden
+   */
+  protected i18nPlural = inject(I18nPluralPipe);
   public monthCell({ day, locale }: A11yParams): string {
     if (day.badgeTotal > 0) {
       return `

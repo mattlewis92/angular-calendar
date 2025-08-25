@@ -4,6 +4,7 @@ import {
   Component,
   Injectable,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { CalendarEvent, CalendarEventTitleFormatter } from 'angular-calendar';
 import { WeekViewHourSegment } from 'calendar-utils';
@@ -55,6 +56,11 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   standalone: false,
 })
 export class DemoComponent {
+  /**
+   * @hidden
+   */
+  private cdr = inject(ChangeDetectorRef);
+
   viewDate = new Date();
 
   events: CalendarEvent[] = [];
@@ -62,8 +68,6 @@ export class DemoComponent {
   dragToCreateActive = false;
 
   weekStartsOn: 0 = 0;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   startDragToCreate(
     segment: WeekViewHourSegment,

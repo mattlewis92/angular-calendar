@@ -5,6 +5,7 @@ import {
   Component,
   ElementRef,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { differenceInMinutes, startOfDay, startOfHour } from 'date-fns';
@@ -32,8 +33,10 @@ export class DemoComponent implements AfterViewInit {
 
   events: CalendarEvent[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
+  /**
+   * @hidden
+   */
+  private cdr = inject(ChangeDetectorRef);
   ngAfterViewInit() {
     this.scrollToCurrentView();
   }

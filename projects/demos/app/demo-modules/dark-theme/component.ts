@@ -1,11 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
   DOCUMENT,
+  inject,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 
@@ -20,6 +20,8 @@ import { colors } from '../demo-utils/colors';
   standalone: false,
 })
 export class DemoComponent implements OnInit, OnDestroy {
+  private document = inject<Document>(DOCUMENT);
+
   view: CalendarView = CalendarView.Month;
 
   viewDate = new Date();
@@ -33,8 +35,6 @@ export class DemoComponent implements OnInit, OnDestroy {
   ];
 
   private readonly darkThemeClass = 'dark-theme';
-
-  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit(): void {
     this.document.body.classList.add(this.darkThemeClass);

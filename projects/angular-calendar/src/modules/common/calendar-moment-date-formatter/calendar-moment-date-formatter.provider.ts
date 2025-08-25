@@ -1,4 +1,4 @@
-import { InjectionToken, Inject, Injectable } from '@angular/core';
+import { InjectionToken, Injectable, inject } from '@angular/core';
 import {
   CalendarDateFormatterInterface,
   DateFormatterParams,
@@ -29,16 +29,17 @@ export class CalendarMomentDateFormatter
   implements CalendarDateFormatterInterface
 {
   /**
-   * @hidden
-   */
-  constructor(
-    @Inject(MOMENT) protected moment: any,
-    protected dateAdapter: DateAdapter,
-  ) {}
-
-  /**
    * The month view header week day labels
    */
+
+  /**
+   * @hidden
+   */
+  protected moment: any = inject(MOMENT);
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd');
   }

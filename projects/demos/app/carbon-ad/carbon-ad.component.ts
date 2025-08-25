@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 
 @Component({
@@ -13,7 +14,7 @@ import {
   standalone: false,
 })
 export class CarbonAdComponent implements AfterViewInit {
-  constructor(private elementRef: ElementRef<HTMLElement>) {}
+  private elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
   ngAfterViewInit(): void {
     const script = document.createElement('script');

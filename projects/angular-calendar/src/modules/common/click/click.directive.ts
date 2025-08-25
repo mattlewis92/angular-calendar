@@ -6,10 +6,10 @@ import {
   OnDestroy,
   Output,
   EventEmitter,
-  Inject,
   Input,
   NgZone,
   DOCUMENT,
+  inject,
 } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
@@ -20,18 +20,22 @@ import { takeUntil } from 'rxjs/operators';
   standalone: false,
 })
 export class ClickDirective implements OnInit, OnDestroy {
+  private elm = inject<ElementRef<HTMLElement>>(ElementRef);
+
   @Input() clickListenerDisabled = false;
 
   @Output('mwlClick') click = new EventEmitter<MouseEvent>(); // eslint-disable-line
 
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private renderer: Renderer2,
-    private elm: ElementRef<HTMLElement>,
-    @Inject(DOCUMENT) private document,
-  ) {}
-
+  /**
+   * @hidden
+   */
+  private renderer = inject(Renderer2);
+  /**
+   * @hidden
+   */
+  private document = inject(DOCUMENT);
   ngOnInit(): void {
     if (!this.clickListenerDisabled) {
       this.listen()
