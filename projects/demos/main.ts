@@ -191,9 +191,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'before-view-render',
-          loadChildren: () =>
-            import('./app/demo-modules/before-view-render/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/before-view-render/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Before view render',
