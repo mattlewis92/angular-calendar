@@ -1,4 +1,5 @@
 import {
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -17,6 +18,7 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { ViewPeriod } from 'calendar-utils';
@@ -47,6 +49,8 @@ moment.tz.setDefault('Utc');
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
+  providers: [provideCalendar(adapterFactory())],
+
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

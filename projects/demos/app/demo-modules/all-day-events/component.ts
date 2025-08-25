@@ -1,5 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent, CalendarDayViewComponent } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {
+  CalendarEvent,
+  CalendarDayViewComponent,
+  provideCalendar,
+} from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
 @Component({
@@ -7,6 +12,7 @@ import { colors } from '../demo-utils/colors';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
   imports: [CalendarDayViewComponent],
+  providers: [provideCalendar(adapterFactory())],
 })
 export class DemoComponent {
   viewDate: Date = new Date();

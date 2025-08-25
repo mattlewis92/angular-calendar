@@ -1,4 +1,5 @@
 import {
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   OnInit,
@@ -29,7 +30,6 @@ import { Observable } from 'rxjs';
 import { colors } from '../demo-utils/colors';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 import { AsyncPipe } from '@angular/common';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 interface Film {
   id: number;

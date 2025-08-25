@@ -1,4 +1,5 @@
 import {
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -13,6 +14,7 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
 } from 'angular-calendar';
 import { differenceInMinutes, startOfDay, startOfHour } from 'date-fns';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -35,6 +37,7 @@ import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
+  providers: [provideCalendar(adapterFactory())],
 })
 export class DemoComponent implements AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer: ElementRef<HTMLElement>;

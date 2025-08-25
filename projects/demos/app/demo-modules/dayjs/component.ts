@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   CalendarEvent,
   CalendarView,
@@ -6,6 +7,7 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
 } from 'angular-calendar';
 import dayjs from 'dayjs';
 import en from 'dayjs/locale/en';
@@ -26,6 +28,8 @@ dayjs.locale({
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
+  providers: [provideCalendar(adapterFactory())],
+
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   CalendarEvent,
   CalendarMonthViewDay,
@@ -12,6 +13,7 @@ import {
   CalendarDayViewComponent,
   CalendarDatePipe,
   CalendarEventTitlePipe,
+  provideCalendar,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { isSameMinute, startOfDay } from 'date-fns';
@@ -52,6 +54,8 @@ interface EventGroupMeta {
     CalendarDatePipe,
     CalendarEventTitlePipe,
   ],
+  providers: [provideCalendar(adapterFactory())],
+
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

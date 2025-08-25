@@ -1,4 +1,5 @@
 import {
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   ViewEncapsulation,
@@ -10,6 +11,7 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -38,6 +40,8 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
+  providers: [provideCalendar(adapterFactory())],
+
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

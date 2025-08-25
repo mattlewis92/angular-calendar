@@ -1,4 +1,5 @@
 import {
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   ViewChild,
@@ -35,7 +36,6 @@ import { EventColor } from 'calendar-utils';
 import { FormsModule } from '@angular/forms';
 import { FlatpickrModule, provideFlatpickrDefaults } from 'angularx-flatpickr';
 import { JsonPipe } from '@angular/common';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 const colors: Record<string, EventColor> = {
   red: {
