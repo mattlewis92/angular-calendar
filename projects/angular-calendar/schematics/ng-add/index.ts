@@ -62,7 +62,7 @@ export default function (options: Schema): Rule {
 function getSetupStrategy(options: Schema): Rule {
   return options.standalone
     ? addToStandaloneComponent(options)
-    : addModuleToImports(options);
+    : addToNgModule(options);
 }
 
 function installPackageJsonDependencies(): Rule {
@@ -141,6 +141,24 @@ function nodeDependencyFactory(
   };
 }
 
+function getCalendarImports(): string[] {
+  return [
+    'CalendarPreviousViewDirective',
+    'CalendarTodayDirective',
+    'CalendarNextViewDirective',
+    'CalendarMonthViewComponent',
+    'CalendarWeekViewComponent',
+    'CalendarDayViewComponent',
+    'CalendarDatePipe',
+  ];
+}
+
+function getProviderFunction(options: Schema): string {
+  return `provideCalendar({\n      provide: DateAdapter,\n      useFactory: ${
+    options.dateAdapter === 'moment' ? 'momentAdapterFactory' : 'adapterFactory'
+  },\n    })`;
+}
+
 function addToStandaloneComponent(options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
     context.logger.log(
@@ -172,22 +190,10 @@ function addToStandaloneComponent(options: Schema): Rule {
     }
 
     // Add imports to the component
-    const calendarImports = [
-      'CalendarPreviousViewDirective',
-      'CalendarTodayDirective',
-      'CalendarNextViewDirective',
-      'CalendarMonthViewComponent',
-      'CalendarWeekViewComponent',
-      'CalendarDayViewComponent',
-      'CalendarDatePipe',
-    ];
+    const calendarImports = getCalendarImports();
 
     // Add providers to the component
-    const providerFunction = `provideCalendar({\n      provide: DateAdapter,\n      useFactory: ${
-      options.dateAdapter === 'moment'
-        ? 'momentAdapterFactory'
-        : 'adapterFactory'
-    },\n    })`;
+    const providerFunction = getProviderFunction(options);
 
     const updates: InsertChange[] = [
       // Add import statements
@@ -272,7 +278,7 @@ function getAppComponentPath(
   return possiblePaths[0];
 }
 
-function addModuleToImports(options: Schema): Rule {
+function addToNgModule(options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
     context.logger.log(
       'info',
@@ -289,22 +295,10 @@ function addModuleToImports(options: Schema): Rule {
     const moduleSource = getSourceFile(host, appModulePath);
 
     // Add imports to the NgModule
-    const calendarImports = [
-      'CalendarPreviousViewDirective',
-      'CalendarTodayDirective',
-      'CalendarNextViewDirective',
-      'CalendarMonthViewComponent',
-      'CalendarWeekViewComponent',
-      'CalendarDayViewComponent',
-      'CalendarDatePipe',
-    ];
+    const calendarImports = getCalendarImports();
 
     // Add providers to the NgModule
-    const providerFunction = `provideCalendar({\n      provide: DateAdapter,\n      useFactory: ${
-      options.dateAdapter === 'moment'
-        ? 'momentAdapterFactory'
-        : 'adapterFactory'
-    },\n    })`;
+    const providerFunction = getProviderFunction(options);
 
     const updates: InsertChange[] = [
       // Add import statements

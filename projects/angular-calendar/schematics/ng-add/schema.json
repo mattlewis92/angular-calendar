@@ -26,7 +26,7 @@
     },
     "standalone": {
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Install to a standalone component (default) or NgModule",
       "x-prompt": {
         "message": "Install to a standalone component or NgModule?",
