@@ -14,7 +14,10 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   CalendarDatePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { colors } from '../demo-utils/colors';
 
 @Component({
@@ -30,6 +33,9 @@ import { colors } from '../demo-utils/colors';
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
     CalendarDatePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

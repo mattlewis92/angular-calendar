@@ -6,8 +6,14 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+  CalendarDateFormatter,
+  CalendarMomentDateFormatter,
+  MOMENT,
 } from 'angular-calendar';
 import moment from 'moment';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 // weekStartsOn option is ignored when using moment, as it needs to be configured globally for the moment locale
@@ -27,6 +33,24 @@ moment.updateLocale('en', {
     CalendarMonthViewComponent,
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar(
+      {
+        provide: DateAdapter,
+        useFactory: () => adapterFactory(moment),
+      },
+      {
+        dateFormatter: {
+          provide: CalendarDateFormatter,
+          useClass: CalendarMomentDateFormatter,
+        },
+      },
+    ),
+    {
+      provide: MOMENT,
+      useValue: moment,
+    },
   ],
 })
 export class DemoComponent {

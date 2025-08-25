@@ -12,7 +12,10 @@ import {
   CalendarDayViewComponent,
   CalendarDatePipe,
   CalendarEventTitlePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -35,6 +38,9 @@ import { NgClass } from '@angular/common';
     CalendarDayViewComponent,
     CalendarDatePipe,
     CalendarEventTitlePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

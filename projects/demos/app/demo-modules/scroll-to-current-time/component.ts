@@ -13,7 +13,10 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { differenceInMinutes, startOfDay, startOfHour } from 'date-fns';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
@@ -34,6 +37,9 @@ import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component
     CalendarMonthViewComponent,
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent implements AfterViewInit {

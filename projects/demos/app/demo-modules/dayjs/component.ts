@@ -6,9 +6,15 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+  CalendarDateFormatter,
+  CalendarMomentDateFormatter,
+  MOMENT,
 } from 'angular-calendar';
 import dayjs from 'dayjs';
 import en from 'dayjs/locale/en';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 dayjs.locale({
@@ -25,6 +31,24 @@ dayjs.locale({
     CalendarMonthViewComponent,
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar(
+      {
+        provide: DateAdapter,
+        useFactory: () => adapterFactory(dayjs),
+      },
+      {
+        dateFormatter: {
+          provide: CalendarDateFormatter,
+          useClass: CalendarMomentDateFormatter,
+        },
+      },
+    ),
+    {
+      provide: MOMENT,
+      useValue: dayjs,
+    },
   ],
 })
 export class DemoComponent {

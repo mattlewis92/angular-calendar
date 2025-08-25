@@ -11,7 +11,10 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { HttpClient } from '@angular/common/http';
 import { startOfYear, subYears } from 'date-fns';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -40,6 +43,9 @@ type CalendarEventWithMeta = CalendarEvent<
     CalendarMonthViewComponent,
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent implements OnInit {

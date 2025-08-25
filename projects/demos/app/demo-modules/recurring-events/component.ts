@@ -17,7 +17,13 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+  CalendarDateFormatter,
+  CalendarMomentDateFormatter,
+  MOMENT,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import { colors } from '../demo-utils/colors';
 import { ViewPeriod } from 'calendar-utils';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -46,6 +52,24 @@ moment.tz.setDefault('Utc');
     CalendarMonthViewComponent,
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar(
+      {
+        provide: DateAdapter,
+        useFactory: () => adapterFactory(moment),
+      },
+      {
+        dateFormatter: {
+          provide: CalendarDateFormatter,
+          useClass: CalendarMomentDateFormatter,
+        },
+      },
+    ),
+    {
+      provide: MOMENT,
+      useValue: moment,
+    },
   ],
 })
 export class DemoComponent {

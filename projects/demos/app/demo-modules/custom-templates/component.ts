@@ -6,7 +6,10 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   CalendarDatePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
@@ -19,6 +22,9 @@ import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
     CalendarDatePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

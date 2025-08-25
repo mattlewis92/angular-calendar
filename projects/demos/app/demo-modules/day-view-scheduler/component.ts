@@ -6,7 +6,10 @@ import {
   CalendarTodayDirective,
   CalendarNextViewDirective,
   CalendarDatePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { colors } from '../demo-utils/colors';
 import { addHours, startOfDay } from 'date-fns';
 import {
@@ -37,6 +40,9 @@ const users: User[] = [
     CalendarNextViewDirective,
     DayViewSchedulerComponent,
     CalendarDatePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

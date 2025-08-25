@@ -14,7 +14,10 @@ import {
   CalendarNextViewDirective,
   CalendarWeekViewComponent,
   CalendarDatePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { WeekViewHourSegment } from 'calendar-utils';
 import { fromEvent } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -49,10 +52,15 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
   providers: [
-    {
-      provide: CalendarEventTitleFormatter,
-      useClass: CustomEventTitleFormatter,
-    },
+    provideCalendar(
+      { provide: DateAdapter, useFactory: adapterFactory },
+      {
+        eventTitleFormatter: {
+          provide: CalendarEventTitleFormatter,
+          useClass: CustomEventTitleFormatter,
+        },
+      },
+    ),
   ],
   styles: [
     `

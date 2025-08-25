@@ -3,7 +3,10 @@ import {
   CalendarEvent,
   CalendarUtils,
   CalendarMonthViewComponent,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { subWeeks, startOfMonth, endOfMonth, addWeeks } from 'date-fns';
 import { GetMonthViewArgs, MonthView } from 'calendar-utils';
 
@@ -21,10 +24,15 @@ export class MyCalendarUtils extends CalendarUtils {
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
   providers: [
-    {
-      provide: CalendarUtils,
-      useClass: MyCalendarUtils,
-    },
+    provideCalendar(
+      { provide: DateAdapter, useFactory: adapterFactory },
+      {
+        utils: {
+          provide: CalendarUtils,
+          useClass: MyCalendarUtils,
+        },
+      },
+    ),
   ],
   imports: [CalendarMonthViewComponent],
 })

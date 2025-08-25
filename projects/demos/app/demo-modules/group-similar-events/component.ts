@@ -12,7 +12,10 @@ import {
   CalendarDayViewComponent,
   CalendarDatePipe,
   CalendarEventTitlePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { colors } from '../demo-utils/colors';
 import { isSameMinute, startOfDay } from 'date-fns';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
@@ -51,6 +54,9 @@ interface EventGroupMeta {
     CalendarDayViewComponent,
     CalendarDatePipe,
     CalendarEventTitlePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent implements OnInit {

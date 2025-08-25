@@ -11,7 +11,10 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   CalendarDatePipe,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   subMonths,
   addMonths,
@@ -84,6 +87,9 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
     CalendarDatePipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

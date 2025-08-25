@@ -61,29 +61,29 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'optional-event-end-dates',
-          loadChildren: () =>
-            import('./app/demo-modules/optional-event-end-dates/module').then(
-              (m) => m.DemoModule,
-            ),
+          loadComponent: () =>
+            import(
+              './app/demo-modules/optional-event-end-dates/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Optional event end dates',
           },
         },
         {
           path: 'editable-deletable-events',
-          loadChildren: () =>
-            import('./app/demo-modules/editable-deletable-events/module').then(
-              (m) => m.DemoModule,
-            ),
+          loadComponent: () =>
+            import(
+              './app/demo-modules/editable-deletable-events/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Editable / deletable events',
           },
         },
         {
           path: 'draggable-events',
-          loadChildren: () =>
-            import('./app/demo-modules/draggable-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/draggable-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Draggable events',
@@ -91,9 +91,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'resizable-events',
-          loadChildren: () =>
-            import('./app/demo-modules/resizable-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/resizable-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Resizable events',
@@ -101,9 +101,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'month-view-badge-total',
-          loadChildren: () =>
-            import('./app/demo-modules/month-view-badge-total/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/month-view-badge-total/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Month view badge total',
@@ -111,9 +111,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'recurring-events',
-          loadChildren: () =>
-            import('./app/demo-modules/recurring-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/recurring-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Recurring events',
@@ -121,9 +121,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'custom-event-class',
-          loadChildren: () =>
-            import('./app/demo-modules/custom-event-class/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/custom-event-class/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Custom event class',
@@ -131,9 +131,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'clickable-events',
-          loadChildren: () =>
-            import('./app/demo-modules/clickable-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/clickable-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Clickable events',
@@ -141,9 +141,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'clickable-days',
-          loadChildren: () =>
-            import('./app/demo-modules/clickable-days/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/clickable-days/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Clickable times',
@@ -151,9 +151,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'custom-hour-duration',
-          loadChildren: () =>
-            import('./app/demo-modules/custom-hour-duration/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/custom-hour-duration/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Custom hour duration',
@@ -161,9 +161,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'day-view-start-end',
-          loadChildren: () =>
-            import('./app/demo-modules/day-view-start-end/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/day-view-start-end/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Day view start / end time',
@@ -171,9 +171,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'day-view-hour-split',
-          loadChildren: () =>
-            import('./app/demo-modules/day-view-hour-split/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/day-view-hour-split/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Day view hour split',
@@ -181,10 +181,10 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'navigating-between-views',
-          loadChildren: () =>
-            import('./app/demo-modules/navigating-between-views/module').then(
-              (m) => m.DemoModule,
-            ),
+          loadComponent: () =>
+            import(
+              './app/demo-modules/navigating-between-views/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Navigating between views',
           },
@@ -202,9 +202,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'exclude-days',
-          loadChildren: () =>
-            import('./app/demo-modules/exclude-days/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/exclude-days/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Exclude Weekends',
@@ -212,8 +212,10 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'i18n',
-          loadChildren: () =>
-            import('./app/demo-modules/i18n/module').then((m) => m.DemoModule),
+          loadComponent: () =>
+            import('./app/demo-modules/i18n/component').then(
+              (c) => c.DemoComponent,
+            ),
           data: {
             label: 'Internationalisation',
             tags: ['translation', 'i18n', 'translate', 'locale'],
@@ -221,19 +223,19 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'draggable-external-events',
-          loadChildren: () =>
-            import('./app/demo-modules/draggable-external-events/module').then(
-              (m) => m.DemoModule,
-            ),
+          loadComponent: () =>
+            import(
+              './app/demo-modules/draggable-external-events/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Draggable external events',
           },
         },
         {
           path: 'all-day-events',
-          loadChildren: () =>
-            import('./app/demo-modules/all-day-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/all-day-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'All day events',
@@ -241,9 +243,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'customise-date-formats',
-          loadChildren: () =>
-            import('./app/demo-modules/customise-date-formats/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/customise-date-formats/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Customise date formats',
@@ -251,9 +253,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'show-dates-on-titles',
-          loadChildren: () =>
-            import('./app/demo-modules/show-dates-on-titles/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/show-dates-on-titles/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Show dates on title',
@@ -261,9 +263,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'disable-tooltips',
-          loadChildren: () =>
-            import('./app/demo-modules/disable-tooltips/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/disable-tooltips/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Disable tooltips',
@@ -281,9 +283,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'selectable-period',
-          loadChildren: () =>
-            import('./app/demo-modules/selectable-period/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/selectable-period/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Selectable period',
@@ -291,9 +293,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'min-max-date',
-          loadChildren: () =>
-            import('./app/demo-modules/min-max-date/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/min-max-date/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Min max date',
@@ -301,9 +303,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'refreshing-the-view',
-          loadChildren: () =>
-            import('./app/demo-modules/refreshing-the-view/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/refreshing-the-view/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Refreshing the view',
@@ -311,9 +313,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'custom-templates',
-          loadChildren: () =>
-            import('./app/demo-modules/custom-templates/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/custom-templates/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Custom templates',
@@ -321,9 +323,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'group-similar-events',
-          loadChildren: () =>
-            import('./app/demo-modules/group-similar-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/group-similar-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Group similar events',
@@ -331,9 +333,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'context-menu',
-          loadChildren: () =>
-            import('./app/demo-modules/context-menu/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/context-menu/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Context menu',
@@ -342,19 +344,19 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'week-view-minute-precision',
-          loadChildren: () =>
-            import('./app/demo-modules/week-view-minute-precision/module').then(
-              (m) => m.DemoModule,
-            ),
+          loadComponent: () =>
+            import(
+              './app/demo-modules/week-view-minute-precision/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Week view minute precision',
           },
         },
         {
           path: 'extra-month-view-weeks',
-          loadChildren: () =>
-            import('./app/demo-modules/extra-month-view-weeks/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/extra-month-view-weeks/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Extra month view weeks',
@@ -362,9 +364,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'disable-slide-animation',
-          loadChildren: () =>
-            import('./app/demo-modules/disable-slide-animation/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/disable-slide-animation/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Disable slide animation',
@@ -372,9 +374,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'no-events-label',
-          loadChildren: () =>
-            import('./app/demo-modules/no-events-label/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/no-events-label/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'No events label',
@@ -382,9 +384,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'moment',
-          loadChildren: () =>
-            import('./app/demo-modules/moment/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/moment/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Use moment',
@@ -392,17 +394,19 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'dayjs',
-          loadChildren: () =>
-            import('./app/demo-modules/dayjs/module').then((m) => m.DemoModule),
+          loadComponent: () =>
+            import('./app/demo-modules/dayjs/component').then(
+              (c) => c.DemoComponent,
+            ),
           data: {
             label: 'Use dayjs',
           },
         },
         {
           path: 'day-view-scheduler',
-          loadChildren: () =>
-            import('./app/demo-modules/day-view-scheduler/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/day-view-scheduler/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Day view scheduler',
@@ -410,9 +414,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'drag-to-create-events',
-          loadChildren: () =>
-            import('./app/demo-modules/drag-to-create-events/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/drag-to-create-events/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Drag to create events',
@@ -420,9 +424,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'responsive-week-view',
-          loadChildren: () =>
-            import('./app/demo-modules/responsive-week-view/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/responsive-week-view/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Responsive week view',
@@ -430,9 +434,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'dark-theme',
-          loadChildren: () =>
-            import('./app/demo-modules/dark-theme/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/dark-theme/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Dark theme',
@@ -441,9 +445,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'week-view-event-margin',
-          loadChildren: () =>
-            import('./app/demo-modules/week-view-event-margin/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/week-view-event-margin/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Week view event margin',
@@ -451,19 +455,19 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'customise-current-time-marker',
-          loadChildren: () =>
+          loadComponent: () =>
             import(
-              './app/demo-modules/customise-current-time-marker/module'
-            ).then((m) => m.DemoModule),
+              './app/demo-modules/customise-current-time-marker/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Customise current time marker',
           },
         },
         {
           path: 'public-holidays',
-          loadChildren: () =>
-            import('./app/demo-modules/public-holidays/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/public-holidays/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Public holidays',
@@ -471,9 +475,9 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'scroll-to-current-time',
-          loadChildren: () =>
-            import('./app/demo-modules/scroll-to-current-time/module').then(
-              (m) => m.DemoModule,
+          loadComponent: () =>
+            import('./app/demo-modules/scroll-to-current-time/component').then(
+              (c) => c.DemoComponent,
             ),
           data: {
             label: 'Scroll to current time',
@@ -481,18 +485,20 @@ bootstrapApplication(DemoAppComponent, {
         },
         {
           path: 'rtl',
-          loadChildren: () =>
-            import('./app/demo-modules/rtl/module').then((m) => m.DemoModule),
+          loadComponent: () =>
+            import('./app/demo-modules/rtl/component').then(
+              (c) => c.DemoComponent,
+            ),
           data: {
             label: 'RTL',
           },
         },
         {
           path: 'validate-drag-and-resize',
-          loadChildren: () =>
-            import('./app/demo-modules/validate-drag-and-resize/module').then(
-              (m) => m.DemoModule,
-            ),
+          loadComponent: () =>
+            import(
+              './app/demo-modules/validate-drag-and-resize/component'
+            ).then((c) => c.DemoComponent),
           data: {
             label: 'Validate dragging and resizing',
           },
