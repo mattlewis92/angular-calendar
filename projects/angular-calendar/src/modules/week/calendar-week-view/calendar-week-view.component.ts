@@ -428,9 +428,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                           sourceEvent: $event,
                         })
                       "
-                      [clickListenerDisabled]="
-                        hourSegmentClicked.observers.length === 0
-                      "
+                      [clickListenerDisabled]="!hourSegmentClicked.observed"
                       mwlDroppable
                       [dragOverClass]="
                         !dragActive || !snapDraggedEvents

@@ -86,7 +86,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                   (mwlClick)="
                     dayClicked.emit({ day: day, sourceEvent: $event })
                   "
-                  [clickListenerDisabled]="dayClicked.observers.length === 0"
+                  [clickListenerDisabled]="!dayClicked.observed"
                   (mwlKeydownEnter)="
                     dayClicked.emit({ day: day, sourceEvent: $event })
                   "
