@@ -1,7 +1,7 @@
 {
   "name": "angular-calendar",
   "version": "0.31.1",
-  "description": "A calendar component for angular 20.0+ that can display events on a month, week or day view",
+  "description": "A calendar component for angular 20.2+ that can display events on a month, week or day view",
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
   },
@@ -190,7 +190,7 @@
     }
   },
   "peerDependencies": {
-    "@angular/core": ">=20.0.0",
+    "@angular/core": ">=20.2.0",
     "angular-draggable-droppable": "^9.0.1",
     "angular-resizable-element": "^8.0.0"
   }
