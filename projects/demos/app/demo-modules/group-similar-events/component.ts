@@ -3,9 +3,21 @@ import {
   CalendarEvent,
   CalendarMonthViewDay,
   CalendarView,
+  CalendarEventActionsComponent,
+  CalendarEventTitleComponent,
+  CalendarTooltipDirective,
+  ClickDirective,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  CalendarDatePipe,
+  CalendarEventTitlePipe,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { isSameMinute, startOfDay } from 'date-fns';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { NgStyle } from '@angular/common';
 
 interface EventGroupMeta {
   type: string;
@@ -26,7 +38,20 @@ interface EventGroupMeta {
       }
     `,
   ],
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarEventActionsComponent,
+    CalendarEventTitleComponent,
+    NgbPopover,
+    NgStyle,
+    CalendarTooltipDirective,
+    ClickDirective,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    CalendarDatePipe,
+    CalendarEventTitlePipe,
+  ],
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

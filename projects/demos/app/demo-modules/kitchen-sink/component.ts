@@ -22,8 +22,18 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
   CalendarView,
+  CalendarPreviousViewDirective,
+  CalendarTodayDirective,
+  CalendarNextViewDirective,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  CalendarDatePipe,
 } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
+import { FormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { JsonPipe } from '@angular/common';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -56,7 +66,18 @@ const colors: Record<string, EventColor> = {
     `,
   ],
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [
+    CalendarPreviousViewDirective,
+    CalendarTodayDirective,
+    CalendarNextViewDirective,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    FormsModule,
+    FlatpickrModule,
+    JsonPipe,
+    CalendarDatePipe,
+  ],
 })
 export class DemoComponent {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;

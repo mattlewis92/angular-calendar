@@ -43,8 +43,8 @@ describe('CalendarDayViewComponent component', () => {
           },
         ),
         DragAndDropModule,
+        ExternalEventComponent,
       ],
-      declarations: [ExternalEventComponent],
       providers: [{ provide: MOMENT, useValue: moment }],
     });
   });

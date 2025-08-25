@@ -17,8 +17,8 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
     NgbPopoverModule,
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
+    DemoComponent,
   ],
-  declarations: [DemoComponent],
   exports: [DemoComponent],
 })
 export class DemoModule {}

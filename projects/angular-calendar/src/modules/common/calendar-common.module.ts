@@ -111,7 +111,7 @@ export class CalendarCommonModule {
     return {
       ngModule: CalendarCommonModule,
       providers: [
-        { provide: DateAdapter, useValue: dateAdapter },
+        dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
         config.utils || CalendarUtils,

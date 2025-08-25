@@ -5,9 +5,16 @@ import {
   ChangeDetectorRef,
   inject,
 } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+} from 'angular-calendar';
 import { HttpClient } from '@angular/common/http';
 import { startOfYear, subYears } from 'date-fns';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 // get your own key from https://holidayapi.com/
 const HOLIDAY_API_KEY = '8eb2582d-3a4c-4fc5-94c8-3e21487d4e23';
@@ -28,7 +35,12 @@ type CalendarEventWithMeta = CalendarEvent<
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

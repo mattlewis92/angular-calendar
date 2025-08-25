@@ -5,8 +5,7 @@ import { CalendarModule } from 'angular-calendar';
 import { CalendarHeaderComponent } from './calendar-header.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, CalendarModule],
-  declarations: [CalendarHeaderComponent],
+  imports: [CommonModule, FormsModule, CalendarModule, CalendarHeaderComponent],
   exports: [CalendarHeaderComponent],
 })
 export class DemoUtilsModule {}

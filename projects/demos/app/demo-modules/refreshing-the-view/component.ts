@@ -7,8 +7,12 @@ import {
   CalendarEvent,
   CalendarMonthViewDay,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 const RED_CELL: 'red-cell' = 'red-cell';
 const BLUE_CELL: 'blue-cell' = 'blue-cell';
@@ -28,7 +32,12 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
       }
     `,
   ],
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

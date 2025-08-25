@@ -66,8 +66,8 @@ describe('calendarWeekView component', () => {
         ),
         DragAndDropModule,
         TestComponent,
+        ExternalEventComponent,
       ],
-      declarations: [ExternalEventComponent],
       providers: [{ provide: MOMENT, useValue: moment }],
     });
   });

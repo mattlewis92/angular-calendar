@@ -1,7 +1,15 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent, CalendarView, DAYS_OF_WEEK } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  DAYS_OF_WEEK,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+} from 'angular-calendar';
 import dayjs from 'dayjs';
 import en from 'dayjs/locale/en';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 dayjs.locale({
   ...en,
@@ -12,7 +20,12 @@ dayjs.locale({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

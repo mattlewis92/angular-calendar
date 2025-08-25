@@ -11,7 +11,6 @@ import { DemoComponent } from './component';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
-  declarations: [DemoComponent],
   exports: [DemoComponent],
   imports: [
     CommonModule,
@@ -21,6 +20,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
+    DemoComponent,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })

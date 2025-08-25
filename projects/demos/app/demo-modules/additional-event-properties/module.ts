@@ -15,8 +15,8 @@ import { DemoComponent } from './component';
     }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
+    DemoComponent,
   ],
-  declarations: [DemoComponent],
   exports: [DemoComponent],
 })
 export class DemoModule {}

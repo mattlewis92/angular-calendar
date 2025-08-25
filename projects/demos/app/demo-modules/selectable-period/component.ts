@@ -8,8 +8,12 @@ import {
   CalendarMonthViewDay,
   CalendarView,
   CalendarWeekViewBeforeRenderEvent,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
 } from 'angular-calendar';
 import { WeekViewHour, WeekViewHourColumn } from 'calendar-utils';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -25,7 +29,12 @@ import { WeekViewHour, WeekViewHourColumn } from 'calendar-utils';
     `,
   ],
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

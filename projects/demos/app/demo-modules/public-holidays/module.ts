@@ -11,7 +11,6 @@ import {
 } from '@angular/common/http';
 
 @NgModule({
-  declarations: [DemoComponent],
   exports: [DemoComponent],
   imports: [
     CommonModule,
@@ -21,6 +20,7 @@ import {
     }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
+    DemoComponent,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })

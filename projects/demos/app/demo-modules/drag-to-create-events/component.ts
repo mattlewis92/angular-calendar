@@ -6,11 +6,20 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { CalendarEvent, CalendarEventTitleFormatter } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarEventTitleFormatter,
+  CalendarPreviousViewDirective,
+  CalendarTodayDirective,
+  CalendarNextViewDirective,
+  CalendarWeekViewComponent,
+  CalendarDatePipe,
+} from 'angular-calendar';
 import { WeekViewHourSegment } from 'calendar-utils';
 import { fromEvent } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { addDays, addMinutes, endOfWeek } from 'date-fns';
+import { NgClass } from '@angular/common';
 
 function floorToNearest(amount: number, precision: number) {
   return Math.floor(amount / precision) * precision;
@@ -53,7 +62,14 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
     `,
   ],
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  imports: [
+    CalendarPreviousViewDirective,
+    CalendarTodayDirective,
+    CalendarNextViewDirective,
+    NgClass,
+    CalendarWeekViewComponent,
+    CalendarDatePipe,
+  ],
 })
 export class DemoComponent {
   viewDate = new Date();

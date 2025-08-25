@@ -2,10 +2,17 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
+  CalendarPreviousViewDirective,
+  CalendarTodayDirective,
+  CalendarNextViewDirective,
+  CalendarDatePipe,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { addHours, startOfDay } from 'date-fns';
-import { User } from './day-view-scheduler.component';
+import {
+  User,
+  DayViewSchedulerComponent,
+} from './day-view-scheduler.component';
 
 const users: User[] = [
   {
@@ -24,7 +31,13 @@ const users: User[] = [
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [
+    CalendarPreviousViewDirective,
+    CalendarTodayDirective,
+    CalendarNextViewDirective,
+    DayViewSchedulerComponent,
+    CalendarDatePipe,
+  ],
 })
 export class DemoComponent {
   viewDate = new Date();

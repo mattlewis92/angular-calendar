@@ -8,6 +8,9 @@ import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import {
@@ -19,6 +22,7 @@ import {
   subDays,
   subSeconds,
 } from 'date-fns';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -33,7 +37,12 @@ import {
     `,
   ],
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;

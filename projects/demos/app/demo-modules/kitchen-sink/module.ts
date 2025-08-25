@@ -17,8 +17,8 @@ import { DemoComponent } from './component';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    DemoComponent,
   ],
-  declarations: [DemoComponent],
   exports: [DemoComponent],
 })
 export class DemoModule {}

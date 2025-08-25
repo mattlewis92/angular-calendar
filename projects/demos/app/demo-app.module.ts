@@ -19,7 +19,7 @@ import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
-  declarations: [DemoAppComponent, CarbonAdComponent],
+  declarations: [DemoAppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -498,6 +498,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
         useHash: true,
       },
     ),
+    CarbonAdComponent,
   ],
   providers: [
     {

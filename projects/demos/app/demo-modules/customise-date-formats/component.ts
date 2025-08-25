@@ -3,8 +3,12 @@ import {
   CalendarEvent,
   CalendarDateFormatter,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
 } from 'angular-calendar';
 import { CustomDateFormatter } from './custom-date-formatter.provider';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -16,7 +20,12 @@ import { CustomDateFormatter } from './custom-date-formatter.provider';
       useClass: CustomDateFormatter,
     },
   ],
-  standalone: false,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

@@ -17,8 +17,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     DragAndDropModule,
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
+    DemoComponent,
   ],
-  declarations: [DemoComponent],
   exports: [DemoComponent],
 })
 export class DemoModule {}

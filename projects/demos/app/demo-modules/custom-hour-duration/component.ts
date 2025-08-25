@@ -5,13 +5,14 @@ import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
   CalendarView,
+  CalendarWeekViewComponent,
 } from 'angular-calendar';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
-  standalone: false,
+  imports: [CalendarWeekViewComponent],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Week;

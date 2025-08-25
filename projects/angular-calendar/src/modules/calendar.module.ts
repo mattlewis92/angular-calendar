@@ -73,7 +73,7 @@ export class CalendarModule {
     return {
       ngModule: CalendarModule,
       providers: [
-        { provide: DateAdapter, useValue: dateAdapter },
+        dateAdapter,
         config.eventTitleFormatter || CalendarEventTitleFormatter,
         config.dateFormatter || CalendarDateFormatter,
         config.utils || CalendarUtils,

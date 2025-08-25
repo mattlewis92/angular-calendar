@@ -1,5 +1,9 @@
 import { Component, ChangeDetectionStrategy, Injectable } from '@angular/core';
-import { CalendarEvent, CalendarUtils } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarUtils,
+  CalendarMonthViewComponent,
+} from 'angular-calendar';
 import { subWeeks, startOfMonth, endOfMonth, addWeeks } from 'date-fns';
 import { GetMonthViewArgs, MonthView } from 'calendar-utils';
 
@@ -22,7 +26,7 @@ export class MyCalendarUtils extends CalendarUtils {
       useClass: MyCalendarUtils,
     },
   ],
-  standalone: false,
+  imports: [CalendarMonthViewComponent],
 })
 export class DemoComponent {
   viewDate: Date = new Date();

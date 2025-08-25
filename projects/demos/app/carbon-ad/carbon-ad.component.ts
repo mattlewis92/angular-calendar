@@ -11,7 +11,6 @@ import {
   templateUrl: './carbon-ad.component.html',
   styleUrls: ['./carbon-ad.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
 })
 export class CarbonAdComponent implements AfterViewInit {
   private elementRef = inject<ElementRef<HTMLElement>>(ElementRef);

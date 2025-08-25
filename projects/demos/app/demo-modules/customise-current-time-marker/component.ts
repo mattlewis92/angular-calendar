@@ -1,12 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarWeekViewComponent } from 'angular-calendar';
 import { getHours } from 'date-fns';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './template.html',
   styleUrls: ['./styles.scss'],
-  standalone: false,
+  imports: [FormsModule, CalendarWeekViewComponent],
 })
 export class DemoComponent {
   viewDate = new Date();

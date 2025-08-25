@@ -15,8 +15,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     }),
     DemoUtilsModule,
     RouterModule.forChild([{ path: '', component: DemoComponent }]),
+    DemoComponent,
   ],
-  declarations: [DemoComponent],
   exports: [DemoComponent],
 })
 export class DemoModule {}
