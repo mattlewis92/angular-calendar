@@ -23,17 +23,17 @@
     [contextMenuValue]="day.date"
   >
     <div class="cal-cell-top">
-      <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
-        >{{ day.badgeTotal }}</span
-      >
+      @if (day.badgeTotal > 0) {
+      <span class="cal-day-badge">{{ day.badgeTotal }}</span>
+      }
       <span class="cal-day-number"
         >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
       >
     </div>
     <div class="cal-events">
+      @for (event of day.events; track event) {
       <div
         class="cal-event"
-        *ngFor="let event of day.events"
         [style.backgroundColor]="event.color.primary"
         [ngClass]="event?.cssClass"
         (mouseenter)="highlightDay.emit({event: event})"
@@ -42,6 +42,7 @@
         [tooltipPlacement]="tooltipPlacement"
         (click)="$event.stopPropagation(); eventClicked.emit({event: event})"
       ></div>
+      }
     </div>
   </div>
 </ng-template>
@@ -53,9 +54,9 @@
   let-dayHeaderClicked="dayHeaderClicked"
 >
   <div class="cal-day-headers">
+    @for (day of days; track day) {
     <div
       class="cal-header"
-      *ngFor="let day of days"
       [class.cal-past]="day.isPast"
       [class.cal-today]="day.isToday"
       [class.cal-future]="day.isFuture"
@@ -69,6 +70,7 @@
         >{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}</span
       >
     </div>
+    }
   </div>
 </ng-template>
 
@@ -109,23 +111,25 @@
     [contextMenu]="basicMenu"
     [contextMenuValue]="segment.date"
   >
-    <div class="cal-time" *ngIf="isTimeLabel">
+    @if (isTimeLabel) {
+    <div class="cal-time">
       {{ segment.date | calendarDate: 'weekViewHour':locale }}
     </div>
+    }
   </div>
 </ng-template>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
     [cellTemplate]="monthCellTemplate"
   >
   </mwl-calendar-month-view>
+  } @case ('week') {
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -133,12 +137,13 @@
     [hourSegmentTemplate]="weekViewHourSegment"
   >
   </mwl-calendar-week-view>
+  } @case ('day') {
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
     [hourSegmentTemplate]="dayHourSegmentTemplate"
   >
   </mwl-calendar-day-view>
+  } }
 </div>

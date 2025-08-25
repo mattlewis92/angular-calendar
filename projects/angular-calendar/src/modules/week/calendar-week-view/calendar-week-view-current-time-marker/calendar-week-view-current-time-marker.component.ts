@@ -23,11 +23,9 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
       let-isVisible="isVisible"
       let-topPx="topPx"
     >
-      <div
-        class="cal-current-time-marker"
-        *ngIf="isVisible"
-        [style.top.px]="topPx"
-      ></div>
+      @if (isVisible) {
+        <div class="cal-current-time-marker" [style.top.px]="topPx"></div>
+      }
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"

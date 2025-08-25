@@ -97,22 +97,14 @@
   </div>
 </nav>
 
-<ng-template #loading>
-  <div class="card">
-    <div class="card-body text-center">
-      <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
-      Loading demo...
-    </div>
-  </div>
-</ng-template>
-
 <div class="container-fluid main-content">
   <div class="row fill-height">
     <div
       class="col fill-height scroll-y demo-container"
       mwlDraggableScrollContainer
     >
-      <div class="card" *ngIf="firstDemoLoaded; else loading">
+      @if (firstDemoLoaded) {
+      <div class="card">
         <div class="card-header">
           <div class="row">
             <div class="col-md-6"><h3>{{ activeDemo.label }}</h3></div>
@@ -135,13 +127,19 @@
               </ng-template>
             </li>
 
-            <li ngbNavItem *ngFor="let source of activeDemo?.sources">
+            @for (source of activeDemo?.sources; track source) {
+            <li ngbNavItem>
               <a ngbNavLink>
-                <span [ngSwitch]="source.language">
-                  <i class="fab fa-fw fa-html5" *ngSwitchCase="'xml'"></i>
-                  <i class="fab fa-fw fa-css3" *ngSwitchCase="'css'"></i>
-                  <i class="fab fa-fw fa-css3" *ngSwitchCase="'scss'"></i>
-                  <i class="fas fa-fw fa-code" *ngSwitchDefault></i>
+                <span>
+                  @switch (source.language) { @case ('xml') {
+                  <i class="fab fa-fw fa-html5"></i>
+                  } @case ('css') {
+                  <i class="fab fa-fw fa-css3"></i>
+                  } @case ('scss') {
+                  <i class="fab fa-fw fa-css3"></i>
+                  } @default {
+                  <i class="fas fa-fw fa-code"></i>
+                  } }
                 </span>
                 {{ source.filename }}
               </a>
@@ -164,10 +162,21 @@
                 </div>
               </ng-template>
             </li>
+            }
           </ul>
           <div [ngbNavOutlet]="nav"></div>
         </div>
       </div>
+      } @else {
+
+      <div class="card">
+        <div class="card-body text-center">
+          <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
+          Loading demo...
+        </div>
+      </div>
+
+      }
     </div>
     <div class="fill-height sidebar-nav scroll-y">
       <mwl-carbon-ad></mwl-carbon-ad>
@@ -179,7 +188,8 @@
         (ngModelChange)="updateFilteredDemos()"
       />
       <ul class="list-unstyled spacer-top">
-        <li *ngFor="let demo of filteredDemos">
+        @for (demo of filteredDemos; track demo) {
+        <li>
           <a
             [routerLink]="[demo.path]"
             [class.active]="activeDemo?.path === demo.path"
@@ -188,8 +198,11 @@
             {{ demo.label }}
           </a>
         </li>
+        }
       </ul>
-      <em *ngIf="filteredDemos.length === 0">No matching demos found</em>
+      @if (filteredDemos.length === 0) {
+      <em>No matching demos found</em>
+      }
     </div>
   </div>
 </div>

@@ -63,79 +63,82 @@ export interface CalendarMonthViewEventTimesChangedEvent<
       >
       </mwl-calendar-month-view-header>
       <div class="cal-days">
-        <div
-          *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"
-        >
-          <div role="row" class="cal-cell-row">
-            <mwl-calendar-month-cell
-              role="gridcell"
-              *ngFor="
-                let day of view.days
+        @for (rowIndex of view.rowOffsets; track rowIndex) {
+          <div>
+            <div role="row" class="cal-cell-row">
+              @for (
+                day of view.days
                   | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;
-                trackBy: trackByDate
-              "
-              [ngClass]="day?.cssClass"
-              [day]="day"
-              [openDay]="openDay"
+                track day.date.toISOString()
+              ) {
+                <mwl-calendar-month-cell
+                  role="gridcell"
+                  [ngClass]="day?.cssClass"
+                  [day]="day"
+                  [openDay]="openDay"
+                  [locale]="locale"
+                  [tooltipPlacement]="tooltipPlacement"
+                  [tooltipAppendToBody]="tooltipAppendToBody"
+                  [tooltipTemplate]="tooltipTemplate"
+                  [tooltipDelay]="tooltipDelay"
+                  [customTemplate]="cellTemplate"
+                  [ngStyle]="{ backgroundColor: day.backgroundColor }"
+                  (mwlClick)="
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  "
+                  [clickListenerDisabled]="dayClicked.observers.length === 0"
+                  (mwlKeydownEnter)="
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  "
+                  (highlightDay)="toggleDayHighlight($event.event, true)"
+                  (unhighlightDay)="toggleDayHighlight($event.event, false)"
+                  mwlDroppable
+                  dragOverClass="cal-drag-over"
+                  (drop)="
+                    eventDropped(
+                      day,
+                      $event.dropData.event,
+                      $event.dropData.draggedFrom
+                    )
+                  "
+                  (eventClicked)="
+                    eventClicked.emit({
+                      event: $event.event,
+                      sourceEvent: $event.sourceEvent,
+                    })
+                  "
+                  [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
+                >
+                </mwl-calendar-month-cell>
+              }
+            </div>
+            <mwl-calendar-open-day-events
               [locale]="locale"
-              [tooltipPlacement]="tooltipPlacement"
-              [tooltipAppendToBody]="tooltipAppendToBody"
-              [tooltipTemplate]="tooltipTemplate"
-              [tooltipDelay]="tooltipDelay"
-              [customTemplate]="cellTemplate"
-              [ngStyle]="{ backgroundColor: day.backgroundColor }"
-              (mwlClick)="dayClicked.emit({ day: day, sourceEvent: $event })"
-              [clickListenerDisabled]="dayClicked.observers.length === 0"
-              (mwlKeydownEnter)="
-                dayClicked.emit({ day: day, sourceEvent: $event })
-              "
-              (highlightDay)="toggleDayHighlight($event.event, true)"
-              (unhighlightDay)="toggleDayHighlight($event.event, false)"
-              mwlDroppable
-              dragOverClass="cal-drag-over"
-              (drop)="
-                eventDropped(
-                  day,
-                  $event.dropData.event,
-                  $event.dropData.draggedFrom
-                )
-              "
+              [isOpen]="openRowIndex === rowIndex"
+              [events]="openDay?.events"
+              [date]="openDay?.date"
+              [customTemplate]="openDayEventsTemplate"
+              [eventTitleTemplate]="eventTitleTemplate"
+              [eventActionsTemplate]="eventActionsTemplate"
               (eventClicked)="
                 eventClicked.emit({
                   event: $event.event,
                   sourceEvent: $event.sourceEvent,
                 })
               "
-              [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
+              mwlDroppable
+              dragOverClass="cal-drag-over"
+              (drop)="
+                eventDropped(
+                  openDay,
+                  $event.dropData.event,
+                  $event.dropData.draggedFrom
+                )
+              "
             >
-            </mwl-calendar-month-cell>
+            </mwl-calendar-open-day-events>
           </div>
-          <mwl-calendar-open-day-events
-            [locale]="locale"
-            [isOpen]="openRowIndex === rowIndex"
-            [events]="openDay?.events"
-            [date]="openDay?.date"
-            [customTemplate]="openDayEventsTemplate"
-            [eventTitleTemplate]="eventTitleTemplate"
-            [eventActionsTemplate]="eventActionsTemplate"
-            (eventClicked)="
-              eventClicked.emit({
-                event: $event.event,
-                sourceEvent: $event.sourceEvent,
-              })
-            "
-            mwlDroppable
-            dragOverClass="cal-drag-over"
-            (drop)="
-              eventDropped(
-                openDay,
-                $event.dropData.event,
-                $event.dropData.draggedFrom
-              )
-            "
-          >
-          </mwl-calendar-open-day-events>
-        </div>
+        }
       </div>
     </div>
   `,
@@ -319,20 +322,6 @@ export class CalendarMonthViewComponent
   ) {
     this.locale = locale;
   }
-
-  /**
-   * @hidden
-   */
-  trackByRowOffset = (index: number, offset: number) =>
-    this.view.days
-      .slice(offset, this.view.totalDaysVisibleInWeek)
-      .map((day) => day.date.toISOString())
-      .join('-');
-
-  /**
-   * @hidden
-   */
-  trackByDate = (index: number, day: MonthViewDay) => day.date.toISOString();
 
   /**
    * @hidden
