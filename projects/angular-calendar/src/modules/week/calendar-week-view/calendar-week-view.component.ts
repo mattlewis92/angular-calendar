@@ -479,7 +479,7 @@ export class CalendarWeekViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string = inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip

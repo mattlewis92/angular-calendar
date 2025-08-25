@@ -181,7 +181,7 @@ export class CalendarMonthViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string = inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip
@@ -329,15 +329,7 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  private localeInjected = inject(LOCALE_ID);
-
-  /**
-   * @hidden
-   */
   ngOnInit(): void {
-    if (!this.locale) {
-      this.locale = this.localeInjected;
-    }
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
         this.refreshAll();
