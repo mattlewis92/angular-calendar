@@ -34,6 +34,8 @@ import {
   isStandaloneComponent,
   addImportsToComponent,
   addProvidersToComponent,
+  addImportsToNgModule,
+  addProvidersToNgModule,
 } from '../utils';
 
 import { Schema } from './schema';
@@ -272,7 +274,10 @@ function getAppComponentPath(
 
 function addModuleToImports(options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
-    context.logger.log('info', `Add modules imports options...`);
+    context.logger.log(
+      'info',
+      `Adding calendar components and providers to NgModule...`,
+    );
 
     const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.projectName);
@@ -281,29 +286,39 @@ function addModuleToImports(options: Schema): Rule {
       ? normalize(project.root + '/' + options.installToPath)
       : getAppModulePath(host, mainPath);
 
-    const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: ${
+    const moduleSource = getSourceFile(host, appModulePath);
+
+    // Add imports to the NgModule
+    const calendarImports = [
+      'CalendarPreviousViewDirective',
+      'CalendarTodayDirective',
+      'CalendarNextViewDirective',
+      'CalendarMonthViewComponent',
+      'CalendarWeekViewComponent',
+      'CalendarDayViewComponent',
+      'CalendarDatePipe',
+    ];
+
+    // Add providers to the NgModule
+    const providerFunction = `provideCalendar({\n      provide: DateAdapter,\n      useFactory: ${
       options.dateAdapter === 'moment'
         ? 'momentAdapterFactory'
         : 'adapterFactory'
-    } })`;
-    const moduleCalendarSrc = 'angular-calendar';
-
-    addModuleImportToRootModule(host, moduleName, moduleCalendarSrc, project);
-
-    const moduleSource = getSourceFile(host, appModulePath);
+    },\n    })`;
 
     const updates: InsertChange[] = [
+      // Add import statements
       insertImport(
         moduleSource as ts.SourceFile,
         appModulePath,
-        'DateAdapter',
-        moduleCalendarSrc,
+        `${calendarImports.join(', ')}, DateAdapter, provideCalendar`,
+        'angular-calendar',
       ) as InsertChange,
       insertImport(
         moduleSource as ts.SourceFile,
         appModulePath,
         'adapterFactory',
-        `${moduleCalendarSrc}/date-adapters/${options.dateAdapter}`,
+        `angular-calendar/date-adapters/${options.dateAdapter}`,
       ) as InsertChange,
     ];
 
@@ -320,16 +335,28 @@ function addModuleToImports(options: Schema): Rule {
         insertAfterImports(
           moduleSource as ts.SourceFile,
           appModulePath,
-          `;\n\nexport function momentAdapterFactory() {
-  return adapterFactory(moment);
-}`,
+          `;\n\nexport function momentAdapterFactory() {\n  return adapterFactory(moment);\n}`,
         ) as InsertChange,
       );
     }
 
+    // Add imports and providers to NgModule decorator
+    const importsChanges = addImportsToNgModule(
+      moduleSource,
+      appModulePath,
+      calendarImports,
+    );
+    const providersChanges = addProvidersToNgModule(
+      moduleSource,
+      appModulePath,
+      [providerFunction],
+    );
+
     const recorder = host.beginUpdate(appModulePath);
-    updates.forEach((update) => {
-      recorder.insertLeft(update.pos, update.toAdd);
+    [...updates, ...importsChanges, ...providersChanges].forEach((update) => {
+      if (update instanceof InsertChange) {
+        recorder.insertLeft(update.pos, update.toAdd);
+      }
     });
     host.commitUpdate(recorder);
 

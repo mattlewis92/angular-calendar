@@ -33,7 +33,7 @@ const defaultAngularCalendarStylePath =
 
 describe('angular-calendar schematics', () => {
   const projectName = 'angular-calendar-app';
-  const defaultOptions = {} as Schema;
+  const defaultOptions = { standalone: false } as Schema;
   let tree: UnitTestTree;
   let appTree: UnitTestTree;
   let runner: SchematicTestRunner;
@@ -73,18 +73,18 @@ describe('angular-calendar schematics', () => {
     expect(tasks.length).to.equal(1);
   });
 
-  it('should import angular-calendar module to root module', async () => {
+  it('should import angular-calendar components and providers to root module', async () => {
     const rootModulePath = `/projects/${projectName}/src/app/app-module.ts`;
     tree = await runner.runSchematic('ng-add', defaultOptions, appTree);
     expect(tree.files).contain(rootModulePath);
 
     const rootModule = tree.readContent(rootModulePath);
 
-    const calendarModuleImport = `import { CalendarModule, DateAdapter } from 'angular-calendar';`;
-    expect(rootModule).contain(calendarModuleImport);
+    const calendarImportsImport = `import { CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe, DateAdapter, provideCalendar } from 'angular-calendar';`;
+    expect(rootModule).contain(calendarImportsImport);
   });
 
-  it('should import angular-calendar module to root module when passed as an option', async () => {
+  it('should import angular-calendar components and providers to root module when passed as an option', async () => {
     const rootModulePath = `/projects/${projectName}/src/app/app-module.ts`;
     tree = await runner.runSchematic(
       'ng-add',
@@ -98,8 +98,8 @@ describe('angular-calendar schematics', () => {
 
     const rootModule = tree.readContent(rootModulePath);
 
-    const calendarModuleImport = `import { CalendarModule, DateAdapter } from 'angular-calendar';`;
-    expect(rootModule).contain(calendarModuleImport);
+    const calendarImportsImport = `import { CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe, DateAdapter, provideCalendar } from 'angular-calendar';`;
+    expect(rootModule).contain(calendarImportsImport);
   });
 
   it('should add angular-calendar css to architect builder', async () => {
@@ -288,13 +288,13 @@ export class CustomComponent {}
     });
   });
 
-  it('should auto-detect NgModule projects and use NgModule approach', async () => {
+  it('should use NgModule approach when standalone=false', async () => {
     const rootModulePath = `/projects/${projectName}/src/app/app-module.ts`;
     tree = await runner.runSchematic(
       'ng-add',
       {
         ...defaultOptions,
-        // Note: standalone is not explicitly set, should auto-detect NgModule
+        standalone: false,
       },
       appTree,
     );
@@ -302,8 +302,8 @@ export class CustomComponent {}
     expect(tree.files).contain(rootModulePath);
     const rootModule = tree.readContent(rootModulePath);
 
-    // Should detect NgModule and add NgModule imports
-    const calendarModuleImport = `import { CalendarModule, DateAdapter } from 'angular-calendar';`;
-    expect(rootModule).contain(calendarModuleImport);
+    // Should add individual components and providers instead of CalendarModule
+    const calendarImportsImport = `import { CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe, DateAdapter, provideCalendar } from 'angular-calendar';`;
+    expect(rootModule).contain(calendarImportsImport);
   });
 });
