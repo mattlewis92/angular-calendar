@@ -38,6 +38,8 @@ import fontAwesomePackage from '@fortawesome/fontawesome-free/package.json';
 import positioningPackage from 'positioning/package.json';
 import flatpickrPackage from 'flatpickr/package.json';
 import angularxFlatpickrPackage from 'angularx-flatpickr/package.json';
+import popperPackage from '@popperjs/core/package.json';
+import typescriptPackage from 'typescript/package.json';
 import { DraggableScrollContainerDirective } from 'angular-draggable-droppable';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NgClass, AsyncPipe } from '@angular/common';
@@ -119,6 +121,8 @@ const dependencyVersions: Record<string, string> = {
   positioning: positioningPackage.version,
   flatpickr: flatpickrPackage.version,
   angularxFlatpickr: angularxFlatpickrPackage.version,
+  popper: popperPackage.version,
+  typescript: typescriptPackage.version,
 };
 
 @Component({
@@ -356,6 +360,7 @@ bootstrapApplication(DemoComponent, {
           '@angular/core': dependencyVersions.angular,
           '@angular/common': dependencyVersions.angular,
           '@angular/compiler': dependencyVersions.angular,
+          '@angular/compiler-cli': dependencyVersions.angular,
           '@angular/platform-browser': dependencyVersions.angular,
           '@angular/router': dependencyVersions.angular,
           '@angular/forms': dependencyVersions.angular,
@@ -370,6 +375,8 @@ bootstrapApplication(DemoComponent, {
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
           'angularx-flatpickr': dependencyVersions.angularxFlatpickr,
+          '@popperjs/core': dependencyVersions.popper,
+          typescript: dependencyVersions.typescript,
         },
       },
       {

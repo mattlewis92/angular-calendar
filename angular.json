@@ -99,7 +99,9 @@
                 "@fortawesome/fontawesome-free/package.json",
                 "positioning/package.json",
                 "flatpickr/package.json",
-                "angularx-flatpickr/package.json"
+                "angularx-flatpickr/package.json",
+                "@popperjs/core/package.json",
+                "typescript/package.json"
               ]
             }
           },
