@@ -12,8 +12,8 @@ importers:
         specifier: ^1.1.1
         version: 1.4.0
       angular-draggable-droppable:
-        specifier: ^9.0.0
-        version: 9.0.0(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))
+        specifier: ^9.0.1
+        version: 9.0.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))
       angular-resizable-element:
         specifier: ^8.0.0
         version: 8.0.0(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))
@@ -2719,8 +2719,8 @@ packages:
     resolution: {integrity: sha512-eVyyCgtoXtSXxsgI59fYow+wBrAOAxPZ6eMwIieSpQI+8Gunq2DtNalicEoDPqD69LHaPmNiI8jEwgkzZt0WTw==}
     hasBin: true
 
-  angular-draggable-droppable@9.0.0:
-    resolution: {integrity: sha512-aBBl2LTYEs8eihMk04HgwFHvBKOH2rqFFTtpQMC0Go4TIFxS4KdFtA3YLMJmQom29vRfMZNREzQU/A25qb8Vlg==}
+  angular-draggable-droppable@9.0.1:
+    resolution: {integrity: sha512-nxxFzBMEzB6RsRUqnHWelt9G7QXG2wc18czYL75YhJ9IkBJOBkxXBd0ZOTeDgV9C3mmkkw+PMLJOayx0GH6gXA==}
     peerDependencies:
       '@angular/core': '>=20.0.0'
 
@@ -10901,7 +10901,7 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  angular-draggable-droppable@9.0.0(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1)):
+  angular-draggable-droppable@9.0.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1)):
     dependencies:
       '@angular/core': 20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1)
       '@mattlewis92/dom-autoscroller': 2.4.2
