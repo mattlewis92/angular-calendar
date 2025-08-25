@@ -1,26 +1,27 @@
 <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
 </mwl-demo-utils-calendar-header>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="calendarEvents"
     (beforeViewRender)="updateCalendarEvents($event)"
   >
   </mwl-calendar-month-view>
+  } @case ('week') {
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="calendarEvents"
     (beforeViewRender)="updateCalendarEvents($event)"
   >
   </mwl-calendar-week-view>
+  } @case ('day') {
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="calendarEvents"
     (beforeViewRender)="updateCalendarEvents($event)"
   >
   </mwl-calendar-day-view>
+  } }
 </div>

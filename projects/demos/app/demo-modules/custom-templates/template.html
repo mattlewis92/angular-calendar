@@ -11,9 +11,9 @@
 
 <ng-template #customCellTemplate let-day="day" let-locale="locale">
   <div class="cal-cell-top">
-    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
-      >{{ day.badgeTotal }}</span
-    >
+    @if (day.badgeTotal > 0) {
+    <span class="cal-day-badge">{{ day.badgeTotal }}</span>
+    }
     <span class="cal-day-number"
       >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
     >
@@ -23,24 +23,19 @@
   >
 </ng-template>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
     [cellTemplate]="customCellTemplate"
   >
   </mwl-calendar-month-view>
-  <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
-    [viewDate]="viewDate"
-    [events]="events"
-  >
+  } @case ('week') {
+  <mwl-calendar-week-view [viewDate]="viewDate" [events]="events">
   </mwl-calendar-week-view>
-  <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
-    [viewDate]="viewDate"
-    [events]="events"
-  >
+  } @case ('day') {
+  <mwl-calendar-day-view [viewDate]="viewDate" [events]="events">
   </mwl-calendar-day-view>
+  } }
 </div>

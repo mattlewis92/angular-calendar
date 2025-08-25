@@ -5,29 +5,30 @@
   Click on a month view day or a time on the week or day view to select it
 </div>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeMonthViewRender($event)"
     (dayClicked)="dayClicked($event.day)"
   >
   </mwl-calendar-month-view>
+  } @case ('week') {
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeWeekOrDayViewRender($event)"
     (hourSegmentClicked)="hourSegmentClicked($event.date)"
   >
   </mwl-calendar-week-view>
+  } @case ('day') {
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeWeekOrDayViewRender($event)"
     (hourSegmentClicked)="hourSegmentClicked($event.date)"
   >
   </mwl-calendar-day-view>
+  } }
 </div>

@@ -1,9 +1,9 @@
 @use 'sass:map';
 @use 'sass:color';
-@import '../../../variables';
+@use '../../../variables';
 
 $cal-month-view-vars: () !default;
-$cal-month-view-vars: map.merge($cal-vars, $cal-month-view-vars);
+$cal-month-view-vars: map.merge(variables.$cal-vars, $cal-month-view-vars);
 
 @mixin cal-month-view-theme($overrides) {
   $theme: map.merge($cal-month-view-vars, $overrides);

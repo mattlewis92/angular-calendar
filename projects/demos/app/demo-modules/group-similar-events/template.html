@@ -3,20 +3,17 @@
 
 <ng-template #customCellTemplate let-day="day" let-locale="locale">
   <div class="cal-cell-top">
-    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
-      >{{ day.badgeTotal }}</span
-    >
+    @if (day.badgeTotal > 0) {
+    <span class="cal-day-badge">{{ day.badgeTotal }}</span>
+    }
     <span class="cal-day-number"
       >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
     >
   </div>
   <div class="cell-totals">
-    <span
-      *ngFor="let group of day.eventGroups"
-      class="badge text-bg-{{ group[0] }}"
-    >
-      {{ group[1].length }}
-    </span>
+    @for (group of day.eventGroups; track group) {
+    <span class="badge text-bg-{{ group[0] }}"> {{ group[1].length }} </span>
+    }
   </div>
 </ng-template>
 
@@ -33,13 +30,15 @@
 >
   <ng-template #groupedEventsTemplate>
     <div style="min-width: 150px">
-      <div *ngFor="let event of weekEvent.event.meta.groupedEvents">
+      @for (event of weekEvent.event.meta.groupedEvents; track event) {
+      <div>
         <mwl-calendar-event-actions [event]="event">
         </mwl-calendar-event-actions>
         &ngsp;
         <mwl-calendar-event-title [event]="event" view="week">
         </mwl-calendar-event-title>
       </div>
+      }
     </div>
   </ng-template>
 
@@ -65,19 +64,19 @@
     [tooltipDelay]="tooltipDelay"
     (mwlClick)="eventClicked.emit()"
   >
-    <ng-container *ngIf="!weekEvent.event.meta.groupedEvents">
-      <mwl-calendar-event-actions [event]="weekEvent.event">
-      </mwl-calendar-event-actions>
-      &ngsp;
-    </ng-container>
+    @if (!weekEvent.event.meta.groupedEvents) {
+
+    <mwl-calendar-event-actions [event]="weekEvent.event">
+    </mwl-calendar-event-actions>
+    &ngsp; }
     <mwl-calendar-event-title [event]="weekEvent.event" view="week">
     </mwl-calendar-event-title>
   </div>
 </ng-template>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
     [cellTemplate]="customCellTemplate"
@@ -85,18 +84,19 @@
     [activeDayIsOpen]="true"
   >
   </mwl-calendar-month-view>
+  } @case ('week') {
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="groupedSimilarEvents"
     [eventTemplate]="customEventTemplate"
   >
   </mwl-calendar-week-view>
+  } @case ('day') {
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="groupedSimilarEvents"
     [eventTemplate]="customEventTemplate"
   >
   </mwl-calendar-day-view>
+  } }
 </div>

@@ -6,7 +6,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { MonthViewDay, CalendarEvent } from 'calendar-utils';
-import { isWithinThreshold, trackByEventId } from '../../../common/util/util';
+import { isWithinThreshold } from '../../../common/util/util';
 import { PlacementArray } from 'positioning';
 
 @Component({
@@ -24,7 +24,6 @@ import { PlacementArray } from 'positioning';
       let-tooltipTemplate="tooltipTemplate"
       let-tooltipAppendToBody="tooltipAppendToBody"
       let-tooltipDelay="tooltipDelay"
-      let-trackByEventId="trackByEventId"
       let-validateDrag="validateDrag"
     >
       <div
@@ -34,41 +33,46 @@ import { PlacementArray } from 'positioning';
         "
       >
         <span aria-hidden="true">
-          <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
-            day.badgeTotal
-          }}</span>
+          @if (day.badgeTotal > 0) {
+            <span class="cal-day-badge">{{ day.badgeTotal }}</span>
+          }
           <span class="cal-day-number">{{
             day.date | calendarDate: 'monthViewDayNumber' : locale
           }}</span>
         </span>
       </div>
-      <div class="cal-events" *ngIf="day.events.length > 0">
-        <div
-          class="cal-event"
-          *ngFor="let event of day.events; trackBy: trackByEventId"
-          [ngStyle]="{ backgroundColor: event.color?.primary }"
-          [ngClass]="event?.cssClass"
-          (mouseenter)="highlightDay.emit({ event: event })"
-          (mouseleave)="unhighlightDay.emit({ event: event })"
-          [mwlCalendarTooltip]="
-            event.title | calendarEventTitle: 'monthTooltip' : event
-          "
-          [tooltipPlacement]="tooltipPlacement"
-          [tooltipEvent]="event"
-          [tooltipTemplate]="tooltipTemplate"
-          [tooltipAppendToBody]="tooltipAppendToBody"
-          [tooltipDelay]="tooltipDelay"
-          mwlDraggable
-          [class.cal-draggable]="event.draggable"
-          dragActiveClass="cal-drag-active"
-          [dropData]="{ event: event, draggedFrom: day }"
-          [dragAxis]="{ x: event.draggable, y: event.draggable }"
-          [validateDrag]="validateDrag"
-          [touchStartLongPress]="{ delay: 300, delta: 30 }"
-          (mwlClick)="eventClicked.emit({ event: event, sourceEvent: $event })"
-          [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
-        ></div>
-      </div>
+      @if (day.events.length > 0) {
+        <div class="cal-events">
+          @for (event of day.events; track event.id ?? event) {
+            <div
+              class="cal-event"
+              [ngStyle]="{ backgroundColor: event.color?.primary }"
+              [ngClass]="event?.cssClass"
+              (mouseenter)="highlightDay.emit({ event: event })"
+              (mouseleave)="unhighlightDay.emit({ event: event })"
+              [mwlCalendarTooltip]="
+                event.title | calendarEventTitle: 'monthTooltip' : event
+              "
+              [tooltipPlacement]="tooltipPlacement"
+              [tooltipEvent]="event"
+              [tooltipTemplate]="tooltipTemplate"
+              [tooltipAppendToBody]="tooltipAppendToBody"
+              [tooltipDelay]="tooltipDelay"
+              mwlDraggable
+              [class.cal-draggable]="event.draggable"
+              dragActiveClass="cal-drag-active"
+              [dropData]="{ event: event, draggedFrom: day }"
+              [dragAxis]="{ x: event.draggable, y: event.draggable }"
+              [validateDrag]="validateDrag"
+              [touchStartLongPress]="{ delay: 300, delta: 30 }"
+              (mwlClick)="
+                eventClicked.emit({ event: event, sourceEvent: $event })
+              "
+              [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
+            ></div>
+          }
+        </div>
+      }
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
@@ -83,7 +87,6 @@ import { PlacementArray } from 'positioning';
         tooltipTemplate: tooltipTemplate,
         tooltipAppendToBody: tooltipAppendToBody,
         tooltipDelay: tooltipDelay,
-        trackByEventId: trackByEventId,
         validateDrag: validateDrag,
       }"
     >
@@ -128,8 +131,6 @@ export class CalendarMonthCellComponent {
     event: CalendarEvent;
     sourceEvent: MouseEvent;
   }>();
-
-  trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
 }

@@ -6,11 +6,8 @@ import {
   Input,
   ComponentRef,
   Injector,
-  ComponentFactoryResolver,
   ViewContainerRef,
   ElementRef,
-  ComponentFactory,
-  Renderer2,
   TemplateRef,
   OnChanges,
   SimpleChanges,
@@ -76,17 +73,17 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
 
   @Input('tooltipDelay') delay: number | null = null; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
+  private elementRef = inject(ElementRef);
+
+  private injector = inject(Injector);
+
+  private viewContainerRef = inject(ViewContainerRef);
+
+  private document = inject(DOCUMENT);
+
   private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
+
   private cancelTooltipDelay$ = new Subject<void>();
-
-  constructor() {
-    const componentFactoryResolver = inject(ComponentFactoryResolver);
-
-    this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
-      CalendarTooltipWindowComponent,
-    );
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -125,10 +122,12 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   private show(): void {
     if (!this.tooltipRef && this.contents) {
       this.tooltipRef = this.viewContainerRef.createComponent(
-        this.tooltipFactory,
-        0,
-        this.injector,
-        [],
+        CalendarTooltipWindowComponent,
+        {
+          index: 0,
+          injector: this.injector,
+          projectableNodes: [],
+        },
       );
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.customTemplate = this.customTemplate;
@@ -172,29 +171,4 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
       }
     }
   }
-
-  /**
-   * @hidden
-   */
-  private elementRef = inject(ElementRef);
-
-  /**
-   * @hidden
-   */
-  private injector = inject(Injector);
-
-  /**
-   * @hidden
-   */
-  private renderer = inject(Renderer2);
-
-  /**
-   * @hidden
-   */
-  private viewContainerRef = inject(ViewContainerRef);
-
-  /**
-   * @hidden
-   */
-  private document = inject(DOCUMENT);
 }

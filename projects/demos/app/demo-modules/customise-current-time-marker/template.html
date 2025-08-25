@@ -8,11 +8,9 @@
   let-isVisible="isVisible"
   let-topPx="topPx"
 >
-  <div
-    class="cal-current-time-marker"
-    *ngIf="isVisible && showMarker"
-    [style.top.px]="topPx"
-  ></div>
+  @if (isVisible && showMarker) {
+  <div class="cal-current-time-marker" [style.top.px]="topPx"></div>
+  }
 </ng-template>
 
 <div class="form-group form-check">

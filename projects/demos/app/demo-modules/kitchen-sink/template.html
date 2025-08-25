@@ -58,9 +58,9 @@
   </div>
 </div>
 <br />
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case (CalendarView.Month) {
   <mwl-calendar-month-view
-    *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -70,8 +70,8 @@
     (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-month-view>
+  } @case (CalendarView.Week) {
   <mwl-calendar-week-view
-    *ngSwitchCase="CalendarView.Week"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -79,8 +79,8 @@
     (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-week-view>
+  } @case (CalendarView.Day) {
   <mwl-calendar-day-view
-    *ngSwitchCase="CalendarView.Day"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -88,6 +88,7 @@
     (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-day-view>
+  } }
 </div>
 
 <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
@@ -116,7 +117,8 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let event of events">
+      @for (event of events; track event) {
+      <tr>
         <td>
           <input
             type="text"
@@ -181,6 +183,7 @@
           </button>
         </td>
       </tr>
+      }
     </tbody>
   </table>
 </div>

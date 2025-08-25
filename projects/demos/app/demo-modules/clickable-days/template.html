@@ -2,37 +2,36 @@
 </mwl-demo-utils-calendar-header>
 
 <div class="alert alert-info">
-  Click on a day or time slot on the view.
-  <strong *ngIf="clickedDate"
-    >You clicked on this time: {{ clickedDate | date:'medium' }}</strong
-  >
-  <strong *ngIf="clickedColumn !== undefined"
-    >You clicked on this column: {{ clickedColumn }}</strong
-  >
+  Click on a day or time slot on the view. @if (clickedDate) {
+  <strong>You clicked on this time: {{ clickedDate | date:'medium' }}</strong>
+  } @if (clickedColumn !== undefined) {
+  <strong>You clicked on this column: {{ clickedColumn }}</strong>
+  }
 </div>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
     (columnHeaderClicked)="clickedColumn = $event.isoDayNumber"
     (dayClicked)="clickedDate = $event.day.date"
   >
   </mwl-calendar-month-view>
+  } @case ('week') {
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
     (dayHeaderClicked)="clickedDate = $event.day.date"
     (hourSegmentClicked)="clickedDate = $event.date"
   >
   </mwl-calendar-week-view>
+  } @case ('day') {
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
     (hourSegmentClicked)="clickedDate = $event.date"
   >
   </mwl-calendar-day-view>
+  } }
 </div>

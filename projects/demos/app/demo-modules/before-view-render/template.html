@@ -6,26 +6,27 @@
   different cells to add styling for disabled time slots
 </div>
 
-<div [ngSwitch]="view">
+<div>
+  @switch (view) { @case ('month') {
   <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeMonthViewRender($event)"
   >
   </mwl-calendar-month-view>
+  } @case ('week') {
   <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeWeekViewRender($event)"
   >
   </mwl-calendar-week-view>
+  } @case ('day') {
   <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeDayViewRender($event)"
   >
   </mwl-calendar-day-view>
+  } }
 </div>
