@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   CalendarEvent,
   CalendarEventTitleFormatter,
@@ -7,7 +6,6 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
-  provideCalendar,
 } from 'angular-calendar';
 import { CustomEventTitleFormatter } from './custom-event-title-formatter.provider';
 import { colors } from '../demo-utils/colors';
@@ -21,8 +19,7 @@ import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component
     {
       provide: CalendarEventTitleFormatter,
       useClass: CustomEventTitleFormatter,
-    },,
-    provideCalendar(adapterFactory()),
+    },
   ],
   imports: [
     CalendarHeaderComponent,

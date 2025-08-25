@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
@@ -7,7 +6,6 @@ import {
   CalendarTodayDirective,
   CalendarNextViewDirective,
   CalendarDatePipe,
-  provideCalendar,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { addHours, startOfDay } from 'date-fns';
@@ -40,8 +38,6 @@ const users: User[] = [
     DayViewSchedulerComponent,
     CalendarDatePipe,
   ],
-  providers: [provideCalendar(adapterFactory())],
-
 })
 export class DemoComponent {
   viewDate = new Date();

@@ -1,8 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { CalendarEvent, CalendarMonthViewComponent ,
-  provideCalendar,
-} from 'angular-calendar';
+import { CalendarEvent, CalendarMonthViewComponent } from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 import { colors } from '../demo-utils/colors';
 
@@ -11,8 +8,6 @@ import { colors } from '../demo-utils/colors';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
   imports: [CalendarMonthViewComponent],
-  providers: [provideCalendar(adapterFactory())],
-
 })
 export class DemoComponent {
   viewDate: Date = new Date();

@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   CalendarEvent,
   CalendarView,
@@ -10,6 +9,7 @@ import {
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @Component({
   selector: 'mwl-demo-component',

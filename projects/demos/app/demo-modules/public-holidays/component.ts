@@ -1,5 +1,4 @@
 import {
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   OnInit,
@@ -12,7 +11,6 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
-  provideCalendar,
 } from 'angular-calendar';
 import { HttpClient } from '@angular/common/http';
 import { startOfYear, subYears } from 'date-fns';
@@ -43,8 +41,6 @@ type CalendarEventWithMeta = CalendarEvent<
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
-  providers: [provideCalendar(adapterFactory())],
-
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;

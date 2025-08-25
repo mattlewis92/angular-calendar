@@ -1,5 +1,4 @@
 import {
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   ViewEncapsulation,
@@ -15,7 +14,6 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   CalendarDatePipe,
-  provideCalendar,
 } from 'angular-calendar';
 import { colors } from '../demo-utils/colors';
 
@@ -33,7 +31,6 @@ import { colors } from '../demo-utils/colors';
     CalendarDayViewComponent,
     CalendarDatePipe,
   ],
-  providers: [provideCalendar(adapterFactory())],
 })
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;

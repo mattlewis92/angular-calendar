@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
@@ -7,7 +6,6 @@ import {
   CalendarMonthViewComponent,
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
-  provideCalendar,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { colors } from '../demo-utils/colors';
@@ -41,8 +39,6 @@ import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component
     CalendarWeekViewComponent,
     CalendarDayViewComponent,
   ],
-  providers: [provideCalendar(adapterFactory())],
-
 })
 export class DemoComponent {
   CalendarView = CalendarView;

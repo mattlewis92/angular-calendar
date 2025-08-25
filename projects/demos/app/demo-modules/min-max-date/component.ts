@@ -1,5 +1,4 @@
 import {
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   Component,
   ChangeDetectionStrategy,
   ViewEncapsulation,
@@ -12,7 +11,6 @@ import {
   CalendarWeekViewComponent,
   CalendarDayViewComponent,
   CalendarDatePipe,
-  provideCalendar,
 } from 'angular-calendar';
 import {
   subMonths,
@@ -87,8 +85,6 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
     CalendarDayViewComponent,
     CalendarDatePipe,
   ],
-  providers: [provideCalendar(adapterFactory())],
-
 })
 export class DemoComponent {
   view: CalendarView | CalendarPeriod = CalendarView.Month;

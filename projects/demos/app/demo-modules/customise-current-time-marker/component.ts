@@ -1,8 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { CalendarWeekViewComponent ,
-  provideCalendar,
-} from 'angular-calendar';
+import { CalendarWeekViewComponent } from 'angular-calendar';
 import { getHours } from 'date-fns';
 import { FormsModule } from '@angular/forms';
 
@@ -12,8 +9,6 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './template.html',
   styleUrls: ['./styles.scss'],
   imports: [FormsModule, CalendarWeekViewComponent],
-  providers: [provideCalendar(adapterFactory())],
-
 })
 export class DemoComponent {
   viewDate = new Date();
