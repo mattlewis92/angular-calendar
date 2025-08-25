@@ -18,8 +18,7 @@ import { CalendarEvent } from 'calendar-utils';
         event: event,
         view: view,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

@@ -89,8 +89,7 @@ import { PlacementArray } from 'positioning';
         tooltipDelay: tooltipDelay,
         validateDrag: validateDrag,
       }"
-    >
-    </ng-template>
+    />
   `,
   host: {
     class: 'cal-cell cal-day-cell',

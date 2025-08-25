@@ -3,8 +3,7 @@
   [(viewDate)]="viewDate"
   (viewDateChange)="fetchEvents()"
   (viewChange)="fetchEvents()"
->
-</mwl-demo-utils-calendar-header>
+/>
 
 @if (events$ | async; as events) {
 <div>
@@ -16,22 +15,19 @@
       [activeDayIsOpen]="activeDayIsOpen"
       (dayClicked)="dayClicked($event.day)"
       (eventClicked)="eventClicked($event.event)"
-    >
-    </mwl-calendar-month-view>
+    />
     } @case ('week') {
     <mwl-calendar-week-view
       [viewDate]="viewDate"
       [events]="events"
       (eventClicked)="eventClicked($event.event)"
-    >
-    </mwl-calendar-week-view>
+    />
     } @case ('day') {
     <mwl-calendar-day-view
       [viewDate]="viewDate"
       [events]="events"
       (eventClicked)="eventClicked($event.event)"
-    >
-    </mwl-calendar-day-view>
+    />
     } }
   </div>
 </div>

@@ -33,8 +33,7 @@ import { CalendarEvent, EventAction } from 'calendar-utils';
       [ngTemplateOutletContext]="{
         event: event,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

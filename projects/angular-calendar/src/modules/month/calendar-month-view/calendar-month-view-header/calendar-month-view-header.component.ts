@@ -40,8 +40,7 @@ import { WeekDay } from 'calendar-utils';
         days: days,
         locale: locale,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

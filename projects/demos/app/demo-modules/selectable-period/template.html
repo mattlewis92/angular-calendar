@@ -1,5 +1,4 @@
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 <div class="alert alert-info">
   Click on a month view day or a time on the week or day view to select it
@@ -12,23 +11,20 @@
     [events]="events"
     (beforeViewRender)="beforeMonthViewRender($event)"
     (dayClicked)="dayClicked($event.day)"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeWeekOrDayViewRender($event)"
     (hourSegmentClicked)="hourSegmentClicked($event.date)"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeWeekOrDayViewRender($event)"
     (hourSegmentClicked)="hourSegmentClicked($event.date)"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

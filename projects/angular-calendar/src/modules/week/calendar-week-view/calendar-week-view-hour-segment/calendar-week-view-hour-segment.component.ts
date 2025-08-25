@@ -47,8 +47,7 @@ import { WeekViewHourSegment } from 'calendar-utils';
         isTimeLabel: isTimeLabel,
         daysInWeek: daysInWeek,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

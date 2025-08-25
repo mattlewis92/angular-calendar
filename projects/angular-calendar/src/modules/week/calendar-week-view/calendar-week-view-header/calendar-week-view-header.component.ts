@@ -60,8 +60,7 @@ import { CalendarEvent, WeekDay } from 'calendar-utils';
         eventDropped: eventDropped,
         dragEnter: dragEnter,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

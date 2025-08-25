@@ -1,5 +1,4 @@
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 <div class="alert alert-info">
   You can use each views beforeViewRender output to add a custom cssClass to
@@ -12,21 +11,18 @@
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeMonthViewRender($event)"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeWeekViewRender($event)"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeDayViewRender($event)"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

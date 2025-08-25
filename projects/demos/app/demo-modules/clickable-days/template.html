@@ -1,5 +1,4 @@
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 <div class="alert alert-info">
   Click on a day or time slot on the view. @if (clickedDate) {
@@ -16,22 +15,19 @@
     [events]="events"
     (columnHeaderClicked)="clickedColumn = $event.isoDayNumber"
     (dayClicked)="clickedDate = $event.day.date"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="events"
     (dayHeaderClicked)="clickedDate = $event.day.date"
     (hourSegmentClicked)="clickedDate = $event.date"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="events"
     (hourSegmentClicked)="clickedDate = $event.date"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

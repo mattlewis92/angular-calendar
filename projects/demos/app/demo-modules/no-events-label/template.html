@@ -1,5 +1,4 @@
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 @if (period?.events.length === 0) {
 <div class="alert alert-warning">There are no events on this {{ view }}</div>
@@ -12,21 +11,18 @@
     [events]="events"
     [activeDayIsOpen]="true"
     (beforeViewRender)="beforeViewRender($event)"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeViewRender($event)"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="events"
     (beforeViewRender)="beforeViewRender($event)"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

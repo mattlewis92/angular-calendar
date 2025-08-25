@@ -41,8 +41,7 @@ import { takeUntil } from 'rxjs/operators';
         placement: placement,
         event: event,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

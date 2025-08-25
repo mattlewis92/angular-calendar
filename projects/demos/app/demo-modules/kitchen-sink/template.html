@@ -68,8 +68,7 @@
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case (CalendarView.Week) {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
@@ -77,8 +76,7 @@
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case (CalendarView.Day) {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
@@ -86,8 +84,7 @@
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>
 

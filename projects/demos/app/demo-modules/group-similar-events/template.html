@@ -1,5 +1,4 @@
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 <ng-template #customCellTemplate let-day="day" let-locale="locale">
   <div class="cal-cell-top">
@@ -32,11 +31,9 @@
     <div style="min-width: 150px">
       @for (event of weekEvent.event.meta.groupedEvents; track event) {
       <div>
-        <mwl-calendar-event-actions [event]="event">
-        </mwl-calendar-event-actions>
+        <mwl-calendar-event-actions [event]="event" />
         &ngsp;
-        <mwl-calendar-event-title [event]="event" view="week">
-        </mwl-calendar-event-title>
+        <mwl-calendar-event-title [event]="event" view="week" />
       </div>
       }
     </div>
@@ -66,11 +63,9 @@
   >
     @if (!weekEvent.event.meta.groupedEvents) {
 
-    <mwl-calendar-event-actions [event]="weekEvent.event">
-    </mwl-calendar-event-actions>
+    <mwl-calendar-event-actions [event]="weekEvent.event" />
     &ngsp; }
-    <mwl-calendar-event-title [event]="weekEvent.event" view="week">
-    </mwl-calendar-event-title>
+    <mwl-calendar-event-title [event]="weekEvent.event" view="week" />
   </div>
 </ng-template>
 
@@ -82,21 +77,18 @@
     [cellTemplate]="customCellTemplate"
     (beforeViewRender)="beforeMonthViewRender($event)"
     [activeDayIsOpen]="true"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="groupedSimilarEvents"
     [eventTemplate]="customEventTemplate"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="groupedSimilarEvents"
     [eventTemplate]="customEventTemplate"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

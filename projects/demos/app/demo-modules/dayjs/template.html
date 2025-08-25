@@ -4,18 +4,14 @@
   in a different timezone than the users browser via dayjs-locale
 </div>
 
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 <div>
   @switch (view) { @case ('month') {
-  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events">
-  </mwl-calendar-month-view>
+  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" />
   } @case ('week') {
-  <mwl-calendar-week-view [viewDate]="viewDate" [events]="events">
-  </mwl-calendar-week-view>
+  <mwl-calendar-week-view [viewDate]="viewDate" [events]="events" />
   } @case ('day') {
-  <mwl-calendar-day-view [viewDate]="viewDate" [events]="events">
-  </mwl-calendar-day-view>
+  <mwl-calendar-day-view [viewDate]="viewDate" [events]="events" />
   } }
 </div>

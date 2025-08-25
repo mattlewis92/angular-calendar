@@ -60,8 +60,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
         [locale]="locale"
         (columnHeaderClicked)="columnHeaderClicked.emit($event)"
         [customTemplate]="headerTemplate"
-      >
-      </mwl-calendar-month-view-header>
+      />
       <div class="cal-days">
         @for (rowIndex of view.rowOffsets; track rowIndex) {
           <div>
@@ -108,8 +107,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                     })
                   "
                   [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
-                >
-                </mwl-calendar-month-cell>
+                />
               }
             </div>
             <mwl-calendar-open-day-events
@@ -135,8 +133,7 @@ export interface CalendarMonthViewEventTimesChangedEvent<
                   $event.dropData.draggedFrom
                 )
               "
-            >
-            </mwl-calendar-open-day-events>
+            />
           </div>
         }
       </div>

@@ -39,8 +39,7 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
         isVisible: (marker$ | async)?.isVisible,
         topPx: (marker$ | async)?.top,
       }"
-    >
-    </ng-template>
+    />
   `,
   standalone: false,
 })

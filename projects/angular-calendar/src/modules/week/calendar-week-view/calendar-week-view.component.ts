@@ -87,8 +87,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           eventDropped({ dropData: $event }, $event.newStart, true)
         "
         (dragEnter)="dateDragEnter($event.date)"
-      >
-      </mwl-calendar-week-view-header>
+      />
       @if (view.allDayEventRows.length > 0) {
         <div
           class="cal-all-day-events"
@@ -99,9 +98,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
         >
           <div class="cal-day-columns">
             <div class="cal-time-label-column">
-              <ng-container
-                *ngTemplateOutlet="allDayEventsLabelTemplate"
-              ></ng-container>
+              <ng-container *ngTemplateOutlet="allDayEventsLabelTemplate" />
             </div>
             @for (day of days; track day.date.toISOString()) {
               <div
@@ -206,8 +203,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                         sourceEvent: $event.sourceEvent,
                       })
                     "
-                  >
-                  </mwl-calendar-week-view-event>
+                  />
                   @if (
                     allDayEvent.event?.resizable?.afterEnd &&
                     !allDayEvent.endsAfterWeek
@@ -250,8 +246,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                     [customTemplate]="hourSegmentTemplate"
                     [isTimeLabel]="true"
                     [daysInWeek]="daysInWeek"
-                  >
-                  </mwl-calendar-week-view-hour-segment>
+                  />
                 }
               </div>
             }
@@ -279,7 +274,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                 [hourDuration]="hourDuration"
                 [hourSegmentHeight]="hourSegmentHeight"
                 [customTemplate]="currentTimeMarkerTemplate"
-              ></mwl-calendar-week-view-current-time-marker>
+              />
               <div class="cal-events-container">
                 @for (
                   timeEvent of column.events;
@@ -361,9 +356,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                         }"
                       ></div>
                     }
-                    <ng-template
-                      [ngTemplateOutlet]="weekEventTemplate"
-                    ></ng-template>
+                    <ng-template [ngTemplateOutlet]="weekEventTemplate" />
                     <ng-template #weekEventTemplate>
                       <mwl-calendar-week-view-event
                         [locale]="locale"
@@ -386,8 +379,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                             sourceEvent: $event.sourceEvent,
                           })
                         "
-                      >
-                      </mwl-calendar-week-view-event>
+                      />
                     </ng-template>
                     @if (
                       timeEvent.event?.resizable?.afterEnd &&
@@ -439,8 +431,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                       (drop)="eventDropped($event, segment.date, false)"
                       (dragEnter)="dateDragEnter(segment.date)"
                       [isTimeLabel]="daysInWeek === 1"
-                    >
-                    </mwl-calendar-week-view-hour-segment>
+                    />
                   }
                 </div>
               }
