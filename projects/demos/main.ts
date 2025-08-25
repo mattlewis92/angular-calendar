@@ -1,22 +1,16 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 
 import { environment } from './environments/environment';
-import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import {
-  NgbNavModule,
-  NgbCollapseModule,
-  NgbTooltipModule,
-} from '@ng-bootstrap/ng-bootstrap';
-import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Angulartics2Module } from 'angulartics2';
-import { ClipboardModule } from 'ngx-clipboard';
-import { DemoModule as DefaultDemoModule } from './app/demo-modules/kitchen-sink/module';
 import { withHashLocation, provideRouter } from '@angular/router';
 import { DemoComponent as DefaultDemoComponent } from './app/demo-modules/kitchen-sink/component';
 import { DemoAppComponent } from './app/demo-app.component';
+import { provideCalendar } from '../angular-calendar/src/modules/common/provide-calendar/provide-calendar.function';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { provideFlatpickrDefaults } from 'angularx-flatpickr';
 
 if (environment.production) {
   enableProdMode();
@@ -25,18 +19,12 @@ if (environment.production) {
 bootstrapApplication(DemoAppComponent, {
   providers: [
     importProvidersFrom(
-      FormsModule,
-      NgbNavModule,
-      NgbCollapseModule,
-      NgbTooltipModule,
-      DragAndDropModule,
       Angulartics2Module.forRoot({
         developerMode: !environment.production,
       }),
-      ClipboardModule,
-      HighlightModule,
-      DefaultDemoModule,
     ),
+    provideCalendar(adapterFactory()),
+    provideFlatpickrDefaults(),
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
