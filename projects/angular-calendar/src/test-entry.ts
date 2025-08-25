@@ -11,6 +11,7 @@ import {
   BrowserTestingModule,
   platformBrowserTesting,
 } from '@angular/platform-browser/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 use(sinonChai);
 

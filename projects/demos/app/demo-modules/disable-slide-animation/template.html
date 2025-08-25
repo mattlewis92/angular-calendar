@@ -1,11 +1,6 @@
-<!-- Disable CSS animations by overriding the transition property -->
-<style>
-  .cal-open-day-events {
-    transition: none !important;
-  }
-</style>
-
+<!-- Disable Angular animations by using [@.disabled] -->
 <mwl-calendar-month-view
+  [@.disabled]="true"
   [viewDate]="viewDate"
   [events]="events"
   [activeDayIsOpen]="activeDayIsOpen"

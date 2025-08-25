@@ -30,6 +30,7 @@ import { take } from 'rxjs/operators';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import localeDe from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeDe);
 
@@ -37,6 +38,7 @@ describe('calendarMonthView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
+        NoopAnimationsModule,
         CalendarModule.forRoot(
           {
             provide: DateAdapter,
