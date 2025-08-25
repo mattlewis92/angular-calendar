@@ -34,13 +34,17 @@ export class DemoComponent implements OnInit, OnDestroy {
 
   private readonly darkThemeClass = 'dark-theme';
 
-  constructor(@Inject(DOCUMENT) private document) {}
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit(): void {
     this.document.body.classList.add(this.darkThemeClass);
+    // Required if using bootstrap
+    this.document.body.parentElement.setAttribute('data-bs-theme', 'dark');
   }
 
   ngOnDestroy(): void {
     this.document.body.classList.remove(this.darkThemeClass);
+    // Required if using bootstrap
+    this.document.body.parentElement.removeAttribute('data-bs-theme');
   }
 }

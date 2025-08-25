@@ -1,4 +1,4 @@
-@import '../../../../angular-calendar/src/angular-calendar';
+@use '../../../../angular-calendar/src/angular-calendar';
 
 .dark-theme {
   // First define some global color variables for your app, these are just for the demo, they can be anything you like
@@ -11,7 +11,7 @@
   // Call the calendar mixin with a sass color map of your theme. Every property is optional.
   // For a list of all variables and how they are used,
   // see https://github.com/mattlewis92/angular-calendar/tree/main/projects/angular-calendar/src/variables.scss
-  @include cal-theme(
+  @include angular-calendar.cal-theme(
     (
       bg-primary: $bg-dark-primary,
       bg-secondary: $bg-dark-secondary,
@@ -27,36 +27,5 @@
   // How to override a non themable property, this was copied from chrome -> inspect element -> styles panel
   .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
     opacity: 0.15;
-  }
-
-  // Everything else below is just themes the demo, it's probably not relevant to your app
-  background-color: $bg-dark-primary;
-  color: $text-color;
-
-  .card {
-    border-color: $border-color;
-  }
-
-  .card-header {
-    background-color: $bg-dark-secondary;
-  }
-
-  .card-body {
-    background-color: $bg-dark-primary;
-  }
-
-  .nav-tabs {
-    border-bottom-color: $border-color;
-  }
-
-  .nav-tabs .nav-link.active {
-    background-color: $bg-dark-primary;
-    color: $text-color;
-    border-color: $border-color;
-  }
-
-  .nav-tabs .nav-link:hover,
-  .nav-tabs .nav-link:focus {
-    border-color: $border-color;
   }
 }
