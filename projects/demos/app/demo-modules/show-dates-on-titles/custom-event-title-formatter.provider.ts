@@ -1,12 +1,10 @@
-import { LOCALE_ID, Inject, Injectable } from '@angular/core';
+import { LOCALE_ID, Injectable, inject } from '@angular/core';
 import { CalendarEventTitleFormatter, CalendarEvent } from 'angular-calendar';
 import { formatDate } from '@angular/common';
 
 @Injectable()
 export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
-  constructor(@Inject(LOCALE_ID) private locale: string) {
-    super();
-  }
+  private locale = inject(LOCALE_ID);
 
   // you can override any of the methods defined in the parent class
 

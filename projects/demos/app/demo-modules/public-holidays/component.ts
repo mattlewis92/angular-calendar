@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { HttpClient } from '@angular/common/http';
@@ -36,10 +37,9 @@ export class DemoComponent implements OnInit {
 
   events: CalendarEventWithMeta[] = [];
 
-  constructor(
-    private http: HttpClient,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  private http = inject(HttpClient);
+
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.fetchHolidays();

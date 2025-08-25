@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
@@ -48,7 +53,7 @@ export class DemoComponent implements OnInit {
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   ngOnInit(): void {
     this.fetchEvents();

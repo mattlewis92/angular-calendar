@@ -2,6 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -34,7 +35,7 @@ export class DemoComponent {
 
   period: CalendarViewPeriod;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  private cdr = inject(ChangeDetectorRef);
 
   beforeViewRender(
     event:

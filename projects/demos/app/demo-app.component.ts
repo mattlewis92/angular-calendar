@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
@@ -118,12 +118,12 @@ export class DemoAppComponent implements OnInit {
   firstDemoLoaded = false;
   searchText = '';
   copied$ = new Subject<boolean>();
+  private router = inject(Router);
+  private highlightJS = inject(HighlightJS);
 
-  constructor(
-    private router: Router,
-    analytics: Angulartics2GoogleGlobalSiteTag,
-    private highlightJS: HighlightJS,
-  ) {
+  constructor() {
+    const analytics = inject(Angulartics2GoogleGlobalSiteTag);
+
     analytics.startTracking();
   }
 

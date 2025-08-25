@@ -3,13 +3,13 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Inject,
   Injectable,
   Input,
   LOCALE_ID,
   OnChanges,
   Output,
   SimpleChanges,
+  inject,
 } from '@angular/core';
 import {
   CalendarUtils,
@@ -96,15 +96,10 @@ export class DayViewSchedulerComponent
 
   daysInWeek = 1;
 
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: DayViewSchedulerCalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-    protected element: ElementRef<HTMLElement>,
-  ) {
-    super(cdr, utils, locale, dateAdapter, element);
-  }
+  protected cdr = inject(ChangeDetectorRef);
+  protected utils = inject(DayViewSchedulerCalendarUtils);
+  protected dateAdapter = inject(DateAdapter);
+  protected element = inject<ElementRef<HTMLElement>>(ElementRef);
 
   trackByUserId = (index: number, row: User) => row.id;
 
