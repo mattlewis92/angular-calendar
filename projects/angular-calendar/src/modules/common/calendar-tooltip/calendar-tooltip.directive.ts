@@ -8,11 +8,11 @@ import {
   Injector,
   ViewContainerRef,
   ElementRef,
-  Inject,
   TemplateRef,
   OnChanges,
   SimpleChanges,
   DOCUMENT,
+  inject,
 } from '@angular/core';
 
 import { PlacementArray, positionElements } from 'positioning';
@@ -73,15 +73,17 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
 
   @Input('tooltipDelay') delay: number | null = null; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
-  private cancelTooltipDelay$ = new Subject<void>();
+  private elementRef = inject(ElementRef);
 
-  constructor(
-    private elementRef: ElementRef,
-    private injector: Injector,
-    private viewContainerRef: ViewContainerRef,
-    @Inject(DOCUMENT) private document: Document,
-  ) {}
+  private injector = inject(Injector);
+
+  private viewContainerRef = inject(ViewContainerRef);
+
+  private document = inject(DOCUMENT);
+
+  private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
+
+  private cancelTooltipDelay$ = new Subject<void>();
 
   ngOnChanges(changes: SimpleChanges): void {
     if (

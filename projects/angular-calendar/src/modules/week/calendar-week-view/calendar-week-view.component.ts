@@ -8,10 +8,10 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
   ElementRef,
   AfterViewInit,
+  inject,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import {
@@ -479,7 +479,7 @@ export class CalendarWeekViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string = inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip
@@ -754,15 +754,22 @@ export class CalendarWeekViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-    protected element: ElementRef<HTMLElement>,
-  ) {
-    this.locale = locale;
-  }
+  protected cdr = inject(ChangeDetectorRef);
+
+  /**
+   * @hidden
+   */
+  protected utils = inject(CalendarUtils);
+
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
+
+  /**
+   * @hidden
+   */
+  protected element = inject<ElementRef<HTMLElement>>(ElementRef);
 
   /**
    * @hidden

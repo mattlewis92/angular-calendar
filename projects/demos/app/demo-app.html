@@ -127,7 +127,7 @@
               </ng-template>
             </li>
 
-            @for (source of activeDemo?.sources; track source) {
+            @for (source of activeDemo?.sources; track source.filename) {
             <li ngbNavItem>
               <a ngbNavLink>
                 <span>

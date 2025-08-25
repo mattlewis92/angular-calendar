@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   OnDestroy,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { CalendarView } from 'angular-calendar';
@@ -23,12 +24,11 @@ export class DemoComponent implements OnInit, OnDestroy {
 
   daysInWeek = 7;
 
-  private destroy$ = new Subject<void>();
+  private breakpointObserver = inject(BreakpointObserver);
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private cd: ChangeDetectorRef,
-  ) {}
+  private cd = inject(ChangeDetectorRef);
+
+  private destroy$ = new Subject<void>();
 
   ngOnInit() {
     const CALENDAR_RESPONSIVE = {

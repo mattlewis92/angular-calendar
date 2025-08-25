@@ -3,7 +3,7 @@ import {
   DateFormatterParams,
 } from '../calendar-date-formatter/calendar-date-formatter.interface';
 import { formatDate } from '@angular/common';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 import { getWeekViewPeriod } from '../util/util';
 
@@ -14,7 +14,7 @@ import { getWeekViewPeriod } from '../util/util';
 export class CalendarAngularDateFormatter
   implements CalendarDateFormatterInterface
 {
-  constructor(protected dateAdapter: DateAdapter) {}
+  protected dateAdapter = inject(DateAdapter);
 
   /**
    * The month view header week day labels

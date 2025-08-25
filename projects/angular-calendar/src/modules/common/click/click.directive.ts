@@ -6,10 +6,10 @@ import {
   OnDestroy,
   Output,
   EventEmitter,
-  Inject,
   Input,
   NgZone,
   DOCUMENT,
+  inject,
 } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
@@ -26,11 +26,9 @@ export class ClickDirective implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private renderer: Renderer2,
-    private elm: ElementRef<HTMLElement>,
-    @Inject(DOCUMENT) private document,
-  ) {}
+  private renderer = inject(Renderer2);
+
+  private elm = inject<ElementRef<HTMLElement>>(ElementRef);
 
   ngOnInit(): void {
     if (!this.clickListenerDisabled) {

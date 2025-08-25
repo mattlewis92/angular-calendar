@@ -2,6 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 // As an alternative to rrule there is also rSchedule
 // See https://github.com/mattlewis92/angular-calendar/issues/711#issuecomment-418537158 for more info
@@ -75,7 +76,7 @@ export class DemoComponent {
 
   viewPeriod: ViewPeriod;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  private cdr = inject(ChangeDetectorRef);
 
   updateCalendarEvents(
     viewRender:

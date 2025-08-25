@@ -7,6 +7,7 @@ import {
   Renderer2,
   OnInit,
   OnDestroy,
+  inject,
 } from '@angular/core';
 
 @Directive({
@@ -18,11 +19,11 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
 
   private keydownListener: VoidFunction | null = null;
 
-  constructor(
-    private host: ElementRef<HTMLElement>,
-    private ngZone: NgZone,
-    private renderer: Renderer2,
-  ) {}
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  private ngZone = inject(NgZone);
+
+  private renderer = inject(Renderer2);
 
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {

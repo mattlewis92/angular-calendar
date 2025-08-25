@@ -8,8 +8,8 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -181,7 +181,7 @@ export class CalendarMonthViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string = inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip
@@ -314,14 +314,17 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-  ) {
-    this.locale = locale;
-  }
+  protected cdr = inject(ChangeDetectorRef);
+
+  /**
+   * @hidden
+   */
+  protected utils = inject(CalendarUtils);
+
+  /**
+   * @hidden
+   */
+  protected dateAdapter = inject(DateAdapter);
 
   /**
    * @hidden
