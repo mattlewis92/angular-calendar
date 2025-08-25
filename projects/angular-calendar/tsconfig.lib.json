@@ -3,11 +3,11 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
     "declarationMap": true,
-    "module": "es2015",
+    "module": "es2022",
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2015"]
+    "lib": ["dom", "es2022"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

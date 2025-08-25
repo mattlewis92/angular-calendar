@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
-import { CommonModule, I18nPluralPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CalendarEventActionsComponent } from './calendar-event-actions/calendar-event-actions.component';
 import { CalendarEventTitleComponent } from './calendar-event-title/calendar-event-title.component';
 import {
@@ -108,7 +108,6 @@ export {
     ClickDirective,
     KeydownEnterDirective,
   ],
-  providers: [I18nPluralPipe],
 })
 export class CalendarCommonModule {
   static forRoot(

@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { formatDate, I18nPluralPipe } from '@angular/common';
+import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 import { A11yParams } from './calendar-a11y.interface';
 
 /**
@@ -9,7 +9,7 @@ import { A11yParams } from './calendar-a11y.interface';
  *
  * ```typescript
  * import { A11yParams, CalendarA11y } from 'angular-calendar';
- * import { formatDate, I18nPluralPipe } from '@angular/common';
+ * import { formatDate } from '@angular/common';
  * import { Injectable } from '@angular/core';
  *
  * // adding your own a11y params
@@ -19,10 +19,6 @@ import { A11yParams } from './calendar-a11y.interface';
  *
  * @Injectable()
  * export class CustomCalendarA11y extends CalendarA11y {
- *   constructor(protected i18nPlural: I18nPluralPipe) {
- *     super(i18nPlural);
- *   }
- *
  *   // overriding a function
  *   public openDayEventsLandmark({ date, locale, isDrSuess }: CustomA11yParams): string {
  *     if (isDrSuess) {
@@ -32,6 +28,7 @@ import { A11yParams } from './calendar-a11y.interface';
  *          who is you-er than you!
  *       `;
  *     }
+ *     return super.openDayEventsLandmark({ date, locale });
  *   }
  * }
  *
@@ -44,8 +41,6 @@ import { A11yParams } from './calendar-a11y.interface';
  */
 @Injectable()
 export class CalendarA11y {
-  protected i18nPlural = inject(I18nPluralPipe);
-
   /**
    * Aria label for the badges/date of a cell
    * @example: `Saturday October 19 1 event click to expand`
@@ -54,16 +49,28 @@ export class CalendarA11y {
     if (day.badgeTotal > 0) {
       return `
         ${formatDate(day.date, 'EEEE MMMM d', locale)},
-        ${this.i18nPlural.transform(day.badgeTotal, {
-          '=0': 'No events',
-          '=1': 'One event',
-          other: '# events',
-        })},
+        ${this.pluralizeEvents(day.badgeTotal, locale)},
          click to expand
       `;
     } else {
       return `${formatDate(day.date, 'EEEE MMMM d', locale)}`;
     }
+  }
+
+  /**
+   * Helper method to pluralize event count using native Intl.PluralRules API
+   */
+  private pluralizeEvents(count: number, locale: string): string {
+    const pluralRules = new Intl.PluralRules(locale);
+    const rule = pluralRules.select(count);
+
+    const mapping = {
+      zero: 'no events',
+      one: '1 event',
+      other: `${count} events`,
+    };
+
+    return mapping[rule] ?? mapping.other;
   }
 
   /**
