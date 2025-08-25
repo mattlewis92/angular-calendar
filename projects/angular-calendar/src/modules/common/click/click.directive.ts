@@ -26,6 +26,10 @@ export class ClickDirective implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
+  private renderer = inject(Renderer2);
+
+  private elm = inject<ElementRef<HTMLElement>>(ElementRef);
+
   ngOnInit(): void {
     if (!this.clickListenerDisabled) {
       this.listen()
@@ -48,19 +52,4 @@ export class ClickDirective implements OnInit, OnDestroy {
       });
     });
   }
-
-  /**
-   * @hidden
-   */
-  private renderer = inject(Renderer2);
-
-  /**
-   * @hidden
-   */
-  private elm = inject<ElementRef<HTMLElement>>(ElementRef);
-
-  /**
-   * @hidden
-   */
-  private document = inject(DOCUMENT);
 }

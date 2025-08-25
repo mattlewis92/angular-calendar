@@ -55,6 +55,11 @@ export class CalendarPreviousViewDirective {
   /**
    * @hidden
    */
+  private dateAdapter = inject(DateAdapter);
+
+  /**
+   * @hidden
+   */
   @HostListener('click')
   onClick(): void {
     const subFn: any = {
@@ -85,8 +90,4 @@ export class CalendarPreviousViewDirective {
       this.viewDateChange.emit(subFn(this.viewDate, 1));
     }
   }
-  /**
-   * @hidden
-   */
-  private dateAdapter = inject(DateAdapter);
 }

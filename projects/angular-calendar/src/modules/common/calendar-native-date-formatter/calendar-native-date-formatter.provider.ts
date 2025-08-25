@@ -15,6 +15,8 @@ import { getWeekViewPeriod } from '../util/util';
 export class CalendarNativeDateFormatter
   implements CalendarDateFormatterInterface
 {
+  protected dateAdapter = inject(DateAdapter);
+
   /**
    * The month view header week day labels
    */
@@ -115,8 +117,4 @@ export class CalendarNativeDateFormatter
       weekday: 'long',
     }).format(date);
   }
-  /**
-   * @hidden
-   */
-  protected dateAdapter = inject(DateAdapter);
 }

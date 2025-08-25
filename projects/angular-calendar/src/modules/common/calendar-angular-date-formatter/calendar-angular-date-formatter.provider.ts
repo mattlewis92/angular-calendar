@@ -14,6 +14,8 @@ import { getWeekViewPeriod } from '../util/util';
 export class CalendarAngularDateFormatter
   implements CalendarDateFormatterInterface
 {
+  protected dateAdapter = inject(DateAdapter);
+
   /**
    * The month view header week day labels
    */
@@ -97,8 +99,4 @@ export class CalendarAngularDateFormatter
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
     return formatDate(date, 'EEEE, MMMM d, y', locale);
   }
-  /**
-   * @hidden
-   */
-  protected dateAdapter = inject(DateAdapter);
 }

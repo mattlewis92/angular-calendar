@@ -37,12 +37,13 @@ export class CalendarTodayDirective {
   /**
    * @hidden
    */
+  private dateAdapter = inject(DateAdapter);
+
+  /**
+   * @hidden
+   */
   @HostListener('click')
   onClick(): void {
     this.viewDateChange.emit(this.dateAdapter.startOfDay(new Date()));
   }
-  /**
-   * @hidden
-   */
-  private dateAdapter = inject(DateAdapter);
 }

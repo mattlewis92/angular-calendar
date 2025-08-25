@@ -44,6 +44,8 @@ import { A11yParams } from './calendar-a11y.interface';
  */
 @Injectable()
 export class CalendarA11y {
+  protected i18nPlural = inject(I18nPluralPipe);
+
   /**
    * Aria label for the badges/date of a cell
    * @example: `Saturday October 19 1 event click to expand`
@@ -161,9 +163,4 @@ export class CalendarA11y {
   public hideDayHourSegment(): boolean {
     return true;
   }
-
-  /**
-   * @hidden
-   */
-  protected i18nPlural = inject(I18nPluralPipe);
 }

@@ -14,6 +14,8 @@ import { DateAdapter } from '../../../date-adapters/date-adapter';
 
 @Injectable()
 export class CalendarUtils {
+  protected dateAdapter = inject(DateAdapter);
+
   getMonthView(args: GetMonthViewArgs): MonthView {
     return getMonthView(this.dateAdapter, args);
   }
@@ -25,8 +27,4 @@ export class CalendarUtils {
   getWeekView(args: GetWeekViewArgs): WeekView {
     return getWeekView(this.dateAdapter, args);
   }
-  /**
-   * @hidden
-   */
-  protected dateAdapter = inject(DateAdapter);
 }

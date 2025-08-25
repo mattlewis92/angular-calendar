@@ -7,11 +7,9 @@ import { CalendarEventTitleFormatter } from '../calendar-event-title-formatter/c
   standalone: false,
 })
 export class CalendarEventTitlePipe implements PipeTransform {
+  private calendarEventTitle = inject(CalendarEventTitleFormatter);
+
   transform(title: string, titleType: string, event: CalendarEvent): string {
     return this.calendarEventTitle[titleType](event, title);
   }
-  /**
-   * @hidden
-   */
-  private calendarEventTitle = inject(CalendarEventTitleFormatter);
 }

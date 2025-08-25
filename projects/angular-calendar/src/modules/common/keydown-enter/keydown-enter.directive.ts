@@ -19,6 +19,12 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
 
   private keydownListener: VoidFunction | null = null;
 
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  private ngZone = inject(NgZone);
+
+  private renderer = inject(Renderer2);
+
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {
       this.keydownListener = this.renderer.listen(
@@ -48,19 +54,4 @@ export class KeydownEnterDirective implements OnInit, OnDestroy {
       this.keydownListener = null;
     }
   }
-
-  /**
-   * @hidden
-   */
-  private host = inject<ElementRef<HTMLElement>>(ElementRef);
-
-  /**
-   * @hidden
-   */
-  private ngZone = inject(NgZone);
-
-  /**
-   * @hidden
-   */
-  private renderer = inject(Renderer2);
 }

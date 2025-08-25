@@ -8,7 +8,7 @@ import {
   inject,
 } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
-import { switchMapTo, startWith, map, switchMap } from 'rxjs/operators';
+import { startWith, map, switchMap } from 'rxjs/operators';
 import { DateAdapter } from '../../../../date-adapters/date-adapter';
 
 @Component({
@@ -45,16 +45,6 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
   standalone: false,
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
-  /**
-   * @hidden
-   */
-  private dateAdapter = inject(DateAdapter);
-
-  /**
-   * @hidden
-   */
-  private zone = inject(NgZone);
-
   @Input() columnDate: Date;
 
   @Input() dayStartHour: number;
@@ -75,13 +65,17 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
 
   columnDate$ = new BehaviorSubject<Date>(undefined);
 
+  private dateAdapter = inject(DateAdapter);
+
+  private zone = inject(NgZone);
+
   marker$: Observable<{
     isVisible: boolean;
     top: number;
   }> = this.zone.onStable.pipe(
     switchMap(() => interval(60 * 1000)),
     startWith(0),
-    switchMapTo(this.columnDate$),
+    switchMap(() => this.columnDate$),
     map((columnDate) => {
       const startOfDay = this.dateAdapter.setMinutes(
         this.dateAdapter.setHours(columnDate, this.dayStartHour),

@@ -6,7 +6,7 @@ import {
 import { getWeekViewPeriod } from '../util/util';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 
-export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
+export const MOMENT: InjectionToken<any> = new InjectionToken('Moment');
 
 /**
  * This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:
@@ -28,6 +28,10 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 export class CalendarMomentDateFormatter
   implements CalendarDateFormatterInterface
 {
+  protected moment = inject(MOMENT);
+
+  protected dateAdapter = inject(DateAdapter);
+
   /**
    * The month view header week day labels
    */
@@ -113,14 +117,4 @@ export class CalendarMomentDateFormatter
   public dayViewTitle({ date, locale }: DateFormatterParams): string {
     return this.moment(date).locale(locale).format('dddd, LL'); // dddd = Thursday
   } // LL = locale-dependent Month Day, Year
-
-  /**
-   * @hidden
-   */
-  protected moment = inject(MOMENT) as any;
-
-  /**
-   * @hidden
-   */
-  protected dateAdapter = inject(DateAdapter);
 }

@@ -13,6 +13,10 @@ import { CalendarDateFormatter } from '../calendar-date-formatter/calendar-date-
   standalone: false,
 })
 export class CalendarDatePipe implements PipeTransform {
+  private dateFormatter = inject(CalendarDateFormatter);
+
+  private locale = inject(LOCALE_ID);
+
   transform(
     date: Date,
     method: string,
@@ -39,14 +43,4 @@ export class CalendarDatePipe implements PipeTransform {
       daysInWeek,
     });
   }
-
-  /**
-   * @hidden
-   */
-  private dateFormatter = inject(CalendarDateFormatter);
-
-  /**
-   * @hidden
-   */
-  private locale = inject(LOCALE_ID);
 }
