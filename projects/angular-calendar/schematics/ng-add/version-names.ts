@@ -1,4 +1,4 @@
-const packageJson = require('./package.json');
+const packageJson = require('../../package.json');
 
 export const angularCalendarVersion = `^${packageJson.version}`;
 export const momentVersion = packageJson.devDependencies.moment;

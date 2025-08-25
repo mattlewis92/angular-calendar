@@ -8,7 +8,7 @@
   "packageManager": "pnpm@10.15.0",
   "scripts": {
     "start": "pnpm ng serve --open",
-    "build:copy-package-json": "copyfiles package.json projects/angular-calendar & copyfiles package.json projects/angular-calendar/schematics/ng-add",
+    "build:copy-package-json": "copyfiles package.json projects/angular-calendar",
     "build:lib": "ng build angular-calendar --configuration production",
     "build:date-adapters": "tsc -p tsconfig-date-adapters.json && tsc -p tsconfig-date-adapters.json --module es2015 --outDir ./dist/angular-calendar/date-adapters/esm",
     "build:styles": "sass projects/angular-calendar/src/angular-calendar.scss dist/angular-calendar/css/angular-calendar.css",
