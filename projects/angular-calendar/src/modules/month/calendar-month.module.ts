@@ -12,7 +12,6 @@ export {
   CalendarMonthViewEventTimesChangedEvent,
 } from './calendar-month-view/calendar-month-view.component';
 export { MonthViewDay as CalendarMonthViewDay } from 'calendar-utils';
-export { collapseAnimation } from './calendar-month-view/calendar-open-day-events/calendar-open-day-events.component';
 
 export { CalendarMonthCellComponent } from './calendar-month-view/calendar-month-cell/calendar-month-cell.component';
 export { CalendarMonthViewHeaderComponent } from './calendar-month-view/calendar-month-view-header/calendar-month-view-header.component';

@@ -81,7 +81,6 @@
     "@angular-eslint/eslint-plugin-template": "20.2.0",
     "@angular-eslint/schematics": "20.2.0",
     "@angular-eslint/template-parser": "20.2.0",
-    "@angular/animations": "^20.2.1",
     "@angular/build": "^20.2.0",
     "@angular/cdk": "^20.2.0",
     "@angular/cli": "^20.2.0",

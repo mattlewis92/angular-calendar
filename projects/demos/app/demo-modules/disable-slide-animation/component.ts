@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   CalendarEvent,
   CalendarMonthViewComponent,
@@ -16,6 +20,16 @@ import { colors } from '../demo-utils/colors';
   imports: [CalendarMonthViewComponent],
   providers: [
     provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
+  // This is just for the demo, really you should add these styles to your global stylesheet and use encapsulated component styles
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+      .cal-month-view .cal-open-day-events,
+      .cal-month-view .cal-open-day-events.cal-open-day-events-closing {
+        animation: none;
+      }
+    `,
   ],
 })
 export class DemoComponent {

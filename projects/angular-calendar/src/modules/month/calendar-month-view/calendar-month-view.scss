@@ -186,6 +186,48 @@ $cal-month-view-vars: map.merge(variables.$cal-vars, $cal-month-view-vars);
 
   .cal-open-day-events {
     padding: 15px;
+    overflow: hidden;
+    animation: cal-slide-down 150ms ease-in;
+
+    &.cal-open-day-events-closing {
+      animation: cal-slide-up 150ms ease-out;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  @keyframes cal-slide-down {
+    from {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    to {
+      height: auto;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+
+  @keyframes cal-slide-up {
+    from {
+      height: auto;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    to {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 
   .cal-open-day-events .cal-event {

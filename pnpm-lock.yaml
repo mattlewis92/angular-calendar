@@ -48,9 +48,6 @@ importers:
       '@angular-eslint/template-parser':
         specifier: 20.2.0
         version: 20.2.0(eslint@9.34.0(jiti@2.5.1))(typescript@5.8.3)
-      '@angular/animations':
-        specifier: ^20.2.1
-        version: 20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))
       '@angular/build':
         specifier: ^20.2.0
         version: 20.2.0(e0dd4c2cd6904f6e90a94128ab8cd9b4)
@@ -7915,6 +7912,7 @@ snapshots:
       '@angular/common': 20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1)
       tslib: 2.8.1
+    optional: true
 
   '@angular/build@20.2.0(e0dd4c2cd6904f6e90a94128ab8cd9b4)':
     dependencies:

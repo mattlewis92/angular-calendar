@@ -3,7 +3,6 @@ import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { environment } from './environments/environment';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { withHashLocation, provideRouter } from '@angular/router';
 import { DemoComponent as DefaultDemoComponent } from './app/demo-modules/kitchen-sink/component';
@@ -39,7 +38,6 @@ bootstrapApplication(DemoAppComponent, {
       },
     },
     provideHttpClient(),
-    provideAnimations(),
     provideRouter(
       [
         {

@@ -6,7 +6,6 @@ import {
   flush,
   tick,
 } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import moment from 'moment';
 import * as sinon from 'sinon';
 import { expect } from 'chai';
@@ -37,7 +36,6 @@ registerLocaleData(localeDe);
 describe('calendarMonthView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule],
       providers: [
         { provide: MOMENT, useValue: moment },
         provideCalendar(
