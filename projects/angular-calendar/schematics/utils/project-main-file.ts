@@ -13,13 +13,14 @@ import { getProjectTargetOptions } from './project-targets';
 /** Looks for the main TypeScript file in the given project and returns its path. */
 export function getProjectMainFile(project: ProjectDefinition): string {
   const buildOptions = getProjectTargetOptions(project, 'build');
+  const mainFile = buildOptions.browser ?? buildOptions.main;
 
-  if (typeof buildOptions.browser !== 'string') {
+  if (typeof mainFile !== 'string') {
     throw new SchematicsException(
       `Could not find the project main file inside of the ` +
         `workspace config (${project.sourceRoot})`,
     );
   }
 
-  return buildOptions.browser;
+  return mainFile;
 }

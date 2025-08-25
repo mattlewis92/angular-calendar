@@ -36,7 +36,12 @@ export function addStyle(stylePath: string, projectName?: string): Rule {
 
 function isAngularBrowserProject(projectConfig: ProjectDefinition): boolean {
   const buildConfig = projectConfig.targets.get('build');
-  return buildConfig?.builder === '@angular/build:application';
+  const knownBuilders = [
+    '@angular-devkit/build-angular:browser',
+    '@angular-devkit/build-angular:browser-esbuild',
+    '@angular/build:application',
+  ];
+  return knownBuilders.includes(buildConfig?.builder);
 }
 
 function getAngularAppConfig(
