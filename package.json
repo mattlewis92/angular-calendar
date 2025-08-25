@@ -122,7 +122,6 @@
     "core-js": "^3.26.1",
     "cp-cli": "^2.0.0",
     "cross-env": "^7.0.3",
-    "date-fns": "^2.29.3",
     "dayjs": "^1.11.7",
     "del-cli": "^5.0.0",
     "eslint": "^9.28.0",
@@ -136,7 +135,6 @@
     "karma-mocha-reporter": "^2.2.5",
     "lint-staged": "^13.1.0",
     "mocha": "^10.2.0",
-    "moment": "^2.29.4",
     "moment-timezone": "^0.5.40",
     "ng-packagr": "^20.2.0",
     "ngx-clipboard": "^15.1.0",
@@ -192,6 +190,16 @@
   "peerDependencies": {
     "@angular/core": ">=20.2.0",
     "angular-draggable-droppable": "^9.0.1",
-    "angular-resizable-element": "^8.0.0"
+    "angular-resizable-element": "^8.0.0",
+    "date-fns": "^2.29.3",
+    "moment": "^2.30.1"
+  },
+  "peerDependenciesMeta": {
+    "moment": {
+      "optional": true
+    },
+    "date-fns": {
+      "optional": true
+    }
   }
 }
