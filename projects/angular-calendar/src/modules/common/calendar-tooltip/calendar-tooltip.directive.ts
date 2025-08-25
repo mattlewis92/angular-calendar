@@ -42,8 +42,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
         placement: placement,
         event: event,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [NgClass, NgTemplateOutlet],
 })

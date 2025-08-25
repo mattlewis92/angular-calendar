@@ -67,15 +67,13 @@ import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pi
         <mwl-calendar-event-actions
           [event]="weekEvent.tempEvent || weekEvent.event"
           [customTemplate]="eventActionsTemplate"
-        >
-        </mwl-calendar-event-actions>
+        />
         &ngsp;
         <mwl-calendar-event-title
           [event]="weekEvent.tempEvent || weekEvent.event"
           [customTemplate]="eventTitleTemplate"
           [view]="daysInWeek === 1 ? 'day' : 'week'"
-        >
-        </mwl-calendar-event-title>
+        />
       </div>
     </ng-template>
     <ng-template
@@ -91,8 +89,7 @@ import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pi
         column: column,
         daysInWeek: daysInWeek,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [
     NgStyle,

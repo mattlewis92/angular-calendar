@@ -81,8 +81,7 @@
                     sourceEvent: $event.sourceEvent,
                   })
                 "
-              >
-              </mwl-calendar-week-view-event>
+              />
             </div>
           }
         </div>
@@ -111,8 +110,7 @@
                 [locale]="locale"
                 [customTemplate]="hourSegmentTemplate"
                 [isTimeLabel]="true"
-              >
-              </mwl-calendar-week-view-hour-segment>
+              />
             }
           </div>
         }
@@ -139,7 +137,7 @@
             [hourSegments]="hourSegments"
             [hourSegmentHeight]="hourSegmentHeight"
             [customTemplate]="currentTimeMarkerTemplate"
-          ></mwl-calendar-week-view-current-time-marker>
+          />
           @for (
             timeEvent of column.events;
             track timeEvent.event.id ?? timeEvent.event
@@ -221,8 +219,7 @@
                     sourceEvent: $event.sourceEvent,
                   })
                 "
-              >
-              </mwl-calendar-week-view-event>
+              />
               @if (
                 timeEvent.event?.resizable?.afterEnd && !timeEvent.endsAfterDay
               ) {
@@ -267,8 +264,7 @@
                   "
                   dragActiveClass="cal-drag-active"
                   (drop)="eventDropped($event, segment.date, false)"
-                >
-                </mwl-calendar-week-view-hour-segment>
+                />
               }
             </div>
           }

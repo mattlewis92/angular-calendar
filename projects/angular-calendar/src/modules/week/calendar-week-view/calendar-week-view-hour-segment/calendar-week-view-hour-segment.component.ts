@@ -50,8 +50,7 @@ import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pi
         isTimeLabel: isTimeLabel,
         daysInWeek: daysInWeek,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [NgClass, NgTemplateOutlet, CalendarDatePipe, CalendarA11yPipe],
 })

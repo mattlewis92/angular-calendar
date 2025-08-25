@@ -106,14 +106,12 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
                   { event: event, locale: locale }
                     | calendarA11y: 'eventDescription'
                 "
-              >
-              </mwl-calendar-event-title>
+              />
               &ngsp;
               <mwl-calendar-event-actions
                 [event]="event"
                 [customTemplate]="eventActionsTemplate"
-              >
-              </mwl-calendar-event-actions>
+              />
             </div>
           }
         </div>
@@ -127,8 +125,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         isOpen: isOpen,
         validateDrag: validateDrag,
       }"
-    >
-    </ng-template>
+    />
   `,
   animations: [collapseAnimation],
   imports: [

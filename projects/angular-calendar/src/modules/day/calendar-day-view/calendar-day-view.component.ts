@@ -62,7 +62,7 @@ export type CalendarDayViewBeforeRenderEvent =
       (hourSegmentClicked)="hourSegmentClicked.emit($event)"
       (eventTimesChanged)="eventTimesChanged.emit($event)"
       (beforeViewRender)="beforeViewRender.emit($event)"
-    ></mwl-calendar-week-view>
+    />
   `,
   imports: [CalendarWeekViewComponent],
 })

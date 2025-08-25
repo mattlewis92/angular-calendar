@@ -1,5 +1,4 @@
-<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
 <div>
   @switch (view) { @case ('month') {
@@ -8,21 +7,18 @@
     [events]="events"
     [activeDayIsOpen]="true"
     (eventClicked)="eventClicked($event)"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
     [events]="events"
     (eventClicked)="eventClicked($event)"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="events"
     (eventClicked)="eventClicked($event)"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

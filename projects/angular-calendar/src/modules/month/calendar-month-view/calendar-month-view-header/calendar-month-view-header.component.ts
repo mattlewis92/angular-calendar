@@ -42,8 +42,7 @@ import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pi
         days: days,
         locale: locale,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [NgClass, NgTemplateOutlet, CalendarDatePipe],
 })

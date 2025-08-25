@@ -40,8 +40,7 @@ import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
         isVisible: (marker$ | async)?.isVisible,
         topPx: (marker$ | async)?.top,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [NgTemplateOutlet, AsyncPipe],
 })

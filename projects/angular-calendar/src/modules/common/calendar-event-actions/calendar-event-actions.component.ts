@@ -37,8 +37,7 @@ import { CalendarA11yPipe } from '../calendar-a11y/calendar-a11y.pipe';
       [ngTemplateOutletContext]="{
         event: event,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [
     NgClass,

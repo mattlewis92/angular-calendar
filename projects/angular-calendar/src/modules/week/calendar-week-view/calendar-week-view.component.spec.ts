@@ -37,8 +37,8 @@ import { formatDate } from '@angular/common';
       [viewDate]="viewDate"
       [events]="events"
       (eventTimesChanged)="eventTimesChanged($event)"
-    ></mwl-calendar-week-view>
-    <mwl-external-event></mwl-external-event>
+    />
+    <mwl-external-event />
   `,
   imports: [DragAndDropModule],
 })

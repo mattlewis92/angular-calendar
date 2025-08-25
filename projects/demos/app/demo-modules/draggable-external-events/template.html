@@ -29,8 +29,7 @@
   </div>
 
   <div class="col-md-9">
-    <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-    </mwl-demo-utils-calendar-header>
+    <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
     <div>
       @switch (view) { @case (CalendarView.Month) {
@@ -40,8 +39,7 @@
         [activeDayIsOpen]="activeDayIsOpen"
         [refresh]="refresh"
         (eventTimesChanged)="eventDropped($event)"
-      >
-      </mwl-calendar-month-view>
+      />
       } @case (CalendarView.Week) {
       <mwl-calendar-week-view
         [viewDate]="viewDate"
@@ -49,8 +47,7 @@
         [refresh]="refresh"
         [snapDraggedEvents]="false"
         (eventTimesChanged)="eventDropped($event)"
-      >
-      </mwl-calendar-week-view>
+      />
       } @case (CalendarView.Day) {
       <mwl-calendar-day-view
         [viewDate]="viewDate"
@@ -58,8 +55,7 @@
         [refresh]="refresh"
         [snapDraggedEvents]="false"
         (eventTimesChanged)="eventDropped($event)"
-      >
-      </mwl-calendar-day-view>
+      />
       } }
     </div>
   </div>

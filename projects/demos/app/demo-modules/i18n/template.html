@@ -67,8 +67,7 @@
     [locale]="locale"
     [weekStartsOn]="weekStartsOn"
     [weekendDays]="weekendDays"
-  >
-  </mwl-calendar-month-view>
+  />
   } @case ('week') {
   <mwl-calendar-week-view
     [viewDate]="viewDate"
@@ -76,14 +75,12 @@
     [locale]="locale"
     [weekStartsOn]="weekStartsOn"
     [weekendDays]="weekendDays"
-  >
-  </mwl-calendar-week-view>
+  />
   } @case ('day') {
   <mwl-calendar-day-view
     [viewDate]="viewDate"
     [events]="events"
     [locale]="locale"
-  >
-  </mwl-calendar-day-view>
+  />
   } }
 </div>

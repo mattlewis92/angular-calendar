@@ -96,8 +96,7 @@ import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pi
         tooltipDelay: tooltipDelay,
         validateDrag: validateDrag,
       }"
-    >
-    </ng-template>
+    />
   `,
   host: {
     class: 'cal-cell cal-day-cell',

@@ -64,8 +64,7 @@ import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pi
         eventDropped: eventDropped,
         dragEnter: dragEnter,
       }"
-    >
-    </ng-template>
+    />
   `,
   imports: [
     DroppableDirective,

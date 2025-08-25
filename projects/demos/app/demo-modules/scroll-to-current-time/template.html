@@ -2,18 +2,14 @@
   [(view)]="view"
   [(viewDate)]="viewDate"
   (viewChange)="viewChanged()"
->
-</mwl-demo-utils-calendar-header>
+/>
 
 <div class="scroll-container" #scrollContainer>
   @switch (view) { @case ('month') {
-  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events">
-  </mwl-calendar-month-view>
+  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" />
   } @case ('week') {
-  <mwl-calendar-week-view [viewDate]="viewDate" [events]="events">
-  </mwl-calendar-week-view>
+  <mwl-calendar-week-view [viewDate]="viewDate" [events]="events" />
   } @case ('day') {
-  <mwl-calendar-day-view [viewDate]="viewDate" [events]="events">
-  </mwl-calendar-day-view>
+  <mwl-calendar-day-view [viewDate]="viewDate" [events]="events" />
   } }
 </div>
