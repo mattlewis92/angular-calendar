@@ -6,12 +6,16 @@ import {
   chain,
   source,
   mergeWith,
+  SchematicsException,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { insertImport } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { getWorkspace } from '@schematics/angular/utility/workspace';
+import {
+  getWorkspace,
+  ProjectDefinition,
+} from '@schematics/angular/utility/workspace';
 import {
   addPackageJsonDependency,
   NodeDependency,
@@ -27,6 +31,9 @@ import {
   getProjectFromWorkspace,
   insertWildcardImport,
   insertAfterImports,
+  isStandaloneComponent,
+  addImportsToComponent,
+  addProvidersToComponent,
 } from '../utils';
 
 import { Schema } from './schema';
@@ -39,12 +46,33 @@ import {
 } from './version-names';
 
 export default function (options: Schema): Rule {
+  // Determine which setup strategy to use
+  const setupStrategy = getSetupStrategy(options);
+
   return chain([
     addPackageJsonDependencies(options),
     installPackageJsonDependencies(),
-    addModuleToImports(options),
+    setupStrategy,
     addAngularCalendarStyle(options),
   ]);
+}
+
+function getSetupStrategy(options: Schema): Rule {
+  // If user explicitly set standalone option, use that
+  if (options.standalone !== undefined) {
+    return options.standalone
+      ? addToStandaloneComponent(options)
+      : addModuleToImports(options);
+  }
+
+  // If module path is provided, assume NgModule approach
+  if (options.module) {
+    return addModuleToImports(options);
+  }
+
+  // Default to NgModule approach for backward compatibility
+  // TODO: Implement auto-detection in a future version
+  return addModuleToImports(options);
 }
 
 function installPackageJsonDependencies(): Rule {
@@ -121,6 +149,149 @@ function nodeDependencyFactory(
     version,
     overwrite: true,
   };
+}
+
+function addToStandaloneComponent(options: Schema): Rule {
+  return async (host: Tree, context: SchematicContext) => {
+    context.logger.log(
+      'info',
+      `Adding calendar imports and providers to standalone component...`,
+    );
+
+    const workspace = await getWorkspace(host);
+    const project = getProjectFromWorkspace(workspace, options.projectName);
+    const mainPath = getProjectMainFile(project);
+
+    let componentPath: string;
+    if (options.module) {
+      // User specified a component path
+      componentPath = normalize(project.root + '/' + options.module);
+    } else {
+      // Use default app component
+      componentPath = getAppComponentPath(host, mainPath, project);
+    }
+
+    const componentSource = getSourceFile(host, componentPath);
+
+    // Check if it's a standalone component
+    const standalone = isStandaloneComponent(componentSource);
+    if (standalone === false) {
+      throw new SchematicsException(
+        `Component at ${componentPath} has standalone: false. Please use a standalone component or select the NgModule option.`,
+      );
+    }
+
+    // Add imports to the component
+    const calendarImports = [
+      'CalendarPreviousViewDirective',
+      'CalendarTodayDirective',
+      'CalendarNextViewDirective',
+      'CalendarMonthViewComponent',
+      'CalendarWeekViewComponent',
+      'CalendarDayViewComponent',
+      'CalendarDatePipe',
+    ];
+
+    // Add providers to the component
+    const providerFunction = `provideCalendar({\n      provide: DateAdapter,\n      useFactory: ${
+      options.dateAdapter === 'moment'
+        ? 'momentAdapterFactory'
+        : 'adapterFactory'
+    },\n    })`;
+
+    const updates: InsertChange[] = [
+      // Add import statements
+      insertImport(
+        componentSource as ts.SourceFile,
+        componentPath,
+        calendarImports.join(', '),
+        'angular-calendar',
+      ) as InsertChange,
+      insertImport(
+        componentSource as ts.SourceFile,
+        componentPath,
+        'DateAdapter',
+        'angular-calendar',
+      ) as InsertChange,
+      insertImport(
+        componentSource as ts.SourceFile,
+        componentPath,
+        'provideCalendar',
+        'angular-calendar',
+      ) as InsertChange,
+      insertImport(
+        componentSource as ts.SourceFile,
+        componentPath,
+        'adapterFactory',
+        `angular-calendar/date-adapters/${options.dateAdapter}`,
+      ) as InsertChange,
+    ];
+
+    if (options.dateAdapter === 'moment') {
+      updates.push(
+        insertWildcardImport(
+          componentSource as ts.SourceFile,
+          componentPath,
+          'moment',
+          'moment',
+        ) as InsertChange,
+      );
+      updates.push(
+        insertAfterImports(
+          componentSource as ts.SourceFile,
+          componentPath,
+          `;\n\nexport function momentAdapterFactory() {\n  return adapterFactory(moment);\n}`,
+        ) as InsertChange,
+      );
+    }
+
+    // Add imports and providers to component decorator
+    const importsChanges = addImportsToComponent(
+      componentSource,
+      componentPath,
+      calendarImports,
+    );
+    const providersChanges = addProvidersToComponent(
+      componentSource,
+      componentPath,
+      [providerFunction],
+    );
+
+    const recorder = host.beginUpdate(componentPath);
+    [...updates, ...importsChanges, ...providersChanges].forEach((update) => {
+      if (update instanceof InsertChange) {
+        recorder.insertLeft(update.pos, update.toAdd);
+      }
+    });
+    host.commitUpdate(recorder);
+
+    return mergeWith(source(host));
+  };
+}
+
+/**
+ * Get the path to the default app component
+ */
+function getAppComponentPath(
+  host: Tree,
+  mainPath: string,
+  project: ProjectDefinition,
+): string {
+  // Try common app component paths (both old and new Angular naming conventions)
+  const possiblePaths = [
+    `${project.root}/src/app/app.component.ts`, // Traditional naming
+    `${project.root}/src/app/app.ts`, // Angular 17+ standalone naming
+    `${project.root}/src/app/app-component.ts`, // Fallback
+  ];
+
+  for (const path of possiblePaths) {
+    if (host.exists(path)) {
+      return path;
+    }
+  }
+
+  // Return first possible path as fallback (will be checked for existence elsewhere)
+  return possiblePaths[0];
 }
 
 function addModuleToImports(options: Schema): Rule {
