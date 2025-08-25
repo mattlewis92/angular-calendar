@@ -43,9 +43,9 @@
         ]
       }
     },
-    "module": {
+    "installToPath": {
       "type": "string",
-      "description": "Path to the component or NgModule file",
+      "description": "Path to the component or NgModule file relative to the project root (e.g., 'src/app/my-component.ts')",
       "x-prompt": {
         "message": "Please enter the path to the component or NgModule file (optional, will use the root app component/module if not specified)",
         "type": "input"

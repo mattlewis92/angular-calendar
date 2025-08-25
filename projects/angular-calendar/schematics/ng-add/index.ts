@@ -58,21 +58,9 @@ export default function (options: Schema): Rule {
 }
 
 function getSetupStrategy(options: Schema): Rule {
-  // If user explicitly set standalone option, use that
-  if (options.standalone !== undefined) {
-    return options.standalone
-      ? addToStandaloneComponent(options)
-      : addModuleToImports(options);
-  }
-
-  // If module path is provided, assume NgModule approach
-  if (options.module) {
-    return addModuleToImports(options);
-  }
-
-  // Default to NgModule approach for backward compatibility
-  // TODO: Implement auto-detection in a future version
-  return addModuleToImports(options);
+  return options.standalone
+    ? addToStandaloneComponent(options)
+    : addModuleToImports(options);
 }
 
 function installPackageJsonDependencies(): Rule {
@@ -163,9 +151,9 @@ function addToStandaloneComponent(options: Schema): Rule {
     const mainPath = getProjectMainFile(project);
 
     let componentPath: string;
-    if (options.module) {
+    if (options.installToPath) {
       // User specified a component path
-      componentPath = normalize(project.root + '/' + options.module);
+      componentPath = normalize(project.root + '/' + options.installToPath);
     } else {
       // Use default app component
       componentPath = getAppComponentPath(host, mainPath, project);
@@ -204,19 +192,7 @@ function addToStandaloneComponent(options: Schema): Rule {
       insertImport(
         componentSource as ts.SourceFile,
         componentPath,
-        calendarImports.join(', '),
-        'angular-calendar',
-      ) as InsertChange,
-      insertImport(
-        componentSource as ts.SourceFile,
-        componentPath,
-        'DateAdapter',
-        'angular-calendar',
-      ) as InsertChange,
-      insertImport(
-        componentSource as ts.SourceFile,
-        componentPath,
-        'provideCalendar',
+        `${calendarImports.join(', ')}, DateAdapter, provideCalendar`,
         'angular-calendar',
       ) as InsertChange,
       insertImport(
@@ -301,8 +277,8 @@ function addModuleToImports(options: Schema): Rule {
     const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.projectName);
     const mainPath = getProjectMainFile(project);
-    const appModulePath = options.module
-      ? normalize(project.root + '/' + options.module)
+    const appModulePath = options.installToPath
+      ? normalize(project.root + '/' + options.installToPath)
       : getAppModulePath(host, mainPath);
 
     const moduleName = `CalendarModule.forRoot({ provide: DateAdapter, useFactory: ${

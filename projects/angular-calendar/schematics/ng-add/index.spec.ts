@@ -90,7 +90,7 @@ describe('angular-calendar schematics', () => {
       'ng-add',
       {
         ...defaultOptions,
-        module: 'src/app/app-module.ts',
+        installToPath: 'src/app/app-module.ts',
       },
       appTree,
     );
@@ -241,7 +241,7 @@ export class NonStandaloneComponent {}
           {
             ...defaultOptions,
             standalone: true,
-            module: 'src/app/non-standalone.component.ts',
+            installToPath: 'src/app/non-standalone.component.ts',
           },
           standaloneAppTree,
         );
@@ -274,7 +274,7 @@ export class CustomComponent {}
         {
           ...defaultOptions,
           standalone: true,
-          module: 'src/app/custom.component.ts',
+          installToPath: 'src/app/custom.component.ts',
         },
         standaloneAppTree,
       );
@@ -283,26 +283,6 @@ export class CustomComponent {}
       const component = tree.readContent(customComponentPath);
 
       // Check that custom component has calendar imports
-      expect(component).contain('CalendarPreviousViewDirective');
-      expect(component).contain('provideCalendar');
-    });
-
-    it.skip('should auto-detect standalone components and use standalone approach', async () => {
-      // TODO: Implement auto-detection in a future version
-      const componentPath = `/projects/${projectName}/src/app/app.ts`;
-      tree = await runner.runSchematic(
-        'ng-add',
-        {
-          ...defaultOptions,
-          // Note: standalone is not explicitly set, should auto-detect
-        },
-        standaloneAppTree,
-      );
-
-      expect(tree.files).contain(componentPath);
-      const component = tree.readContent(componentPath);
-
-      // Should detect standalone and add standalone imports
       expect(component).contain('CalendarPreviousViewDirective');
       expect(component).contain('provideCalendar');
     });
