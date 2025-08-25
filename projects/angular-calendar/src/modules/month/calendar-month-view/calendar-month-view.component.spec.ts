@@ -6,7 +6,6 @@ import {
   flush,
   tick,
 } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import moment from 'moment';
 import * as sinon from 'sinon';
 import { expect } from 'chai';
@@ -38,7 +37,6 @@ describe('calendarMonthView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        BrowserAnimationsModule,
         CalendarModule.forRoot(
           {
             provide: DateAdapter,

@@ -5,39 +5,8 @@ import {
   EventEmitter,
   TemplateRef,
 } from '@angular/core';
-import {
-  trigger,
-  style,
-  state,
-  transition,
-  animate,
-  AnimationTriggerMetadata,
-} from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
 import { isWithinThreshold } from '../../../common/util/util';
-
-export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
-  state(
-    'void',
-    style({
-      height: 0,
-      overflow: 'hidden',
-      'padding-top': 0,
-      'padding-bottom': 0,
-    }),
-  ),
-  state(
-    '*',
-    style({
-      height: '*',
-      overflow: 'hidden',
-      'padding-top': '*',
-      'padding-bottom': '*',
-    }),
-  ),
-  transition('* => void', animate('150ms ease-out')),
-  transition('void => *', animate('150ms ease-in')),
-]);
 
 @Component({
   selector: 'mwl-calendar-open-day-events',
@@ -50,7 +19,7 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       let-validateDrag="validateDrag"
     >
       @if (isOpen) {
-        <div class="cal-open-day-events" [@collapse] role="application">
+        <div class="cal-open-day-events" role="application">
           <span
             tabindex="-1"
             role="alert"
@@ -123,7 +92,6 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
     >
     </ng-template>
   `,
-  animations: [collapseAnimation],
   standalone: false,
 })
 export class CalendarOpenDayEventsComponent {
