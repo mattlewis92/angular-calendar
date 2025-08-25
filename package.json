@@ -192,7 +192,7 @@
   },
   "peerDependencies": {
     "@angular/core": ">=20.0.0",
-    "angular-draggable-droppable": "^9.0.0",
+    "angular-draggable-droppable": "^9.0.1",
     "angular-resizable-element": "^8.0.0"
   }
 }
