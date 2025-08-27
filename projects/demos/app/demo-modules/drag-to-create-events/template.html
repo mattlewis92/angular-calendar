@@ -48,9 +48,11 @@
     [ngClass]="segment.cssClass"
     (mousedown)="startDragToCreate(segment, $event, segmentElement)"
   >
-    <div class="cal-time" *ngIf="isTimeLabel">
+    @if (isTimeLabel) {
+    <div class="cal-time">
       {{ segment.date | calendarDate:'weekViewHour':locale }}
     </div>
+    }
   </div>
 </ng-template>
 
@@ -59,5 +61,4 @@
   [events]="events"
   [hourSegmentTemplate]="weekViewHourSegmentTemplate"
   [weekStartsOn]="weekStartsOn"
->
-</mwl-calendar-week-view>
+/>

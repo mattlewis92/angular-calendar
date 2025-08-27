@@ -7,10 +7,12 @@
       dragOverClass="drag-over"
     >
       <div class="card-body">
-        <p *ngIf="externalEvents.length === 0"><em>No events added</em></p>
+        @if (externalEvents.length === 0) {
+        <p><em>No events added</em></p>
+        }
         <ul>
+          @for (event of externalEvents; track event) {
           <li
-            *ngFor="let event of externalEvents"
             mwlDraggable
             [dropData]="{event: event}"
             [touchStartLongPress]="{ delay: 300, delta: 30 }"
@@ -20,43 +22,41 @@
               {{ event.title }}
             </a>
           </li>
+          }
         </ul>
       </div>
     </div>
   </div>
 
   <div class="col-md-9">
-    <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
-    </mwl-demo-utils-calendar-header>
+    <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
 
-    <div [ngSwitch]="view">
+    <div>
+      @switch (view) { @case (CalendarView.Month) {
       <mwl-calendar-month-view
-        *ngSwitchCase="CalendarView.Month"
         [viewDate]="viewDate"
         [events]="events"
         [activeDayIsOpen]="activeDayIsOpen"
         [refresh]="refresh"
         (eventTimesChanged)="eventDropped($event)"
-      >
-      </mwl-calendar-month-view>
+      />
+      } @case (CalendarView.Week) {
       <mwl-calendar-week-view
-        *ngSwitchCase="CalendarView.Week"
         [viewDate]="viewDate"
         [events]="events"
         [refresh]="refresh"
         [snapDraggedEvents]="false"
         (eventTimesChanged)="eventDropped($event)"
-      >
-      </mwl-calendar-week-view>
+      />
+      } @case (CalendarView.Day) {
       <mwl-calendar-day-view
-        *ngSwitchCase="CalendarView.Day"
         [viewDate]="viewDate"
         [events]="events"
         [refresh]="refresh"
         [snapDraggedEvents]="false"
         (eventTimesChanged)="eventDropped($event)"
-      >
-      </mwl-calendar-day-view>
+      />
+      } }
     </div>
   </div>
 </div>

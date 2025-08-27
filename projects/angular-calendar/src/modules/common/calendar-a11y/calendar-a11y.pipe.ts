@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, LOCALE_ID, Inject } from '@angular/core';
+import { Pipe, PipeTransform, LOCALE_ID, inject } from '@angular/core';
 import { CalendarA11y } from './calendar-a11y.provider';
 import { A11yParams } from './calendar-a11y.interface';
 
@@ -9,14 +9,11 @@ import { A11yParams } from './calendar-a11y.interface';
  * {{ { event: myEvent, locale: myLocale } | calendarA11y: 'eventDescription' }}
  * ```
  */
-@Pipe({
-  name: 'calendarA11y',
-})
+@Pipe({ name: 'calendarA11y' })
 export class CalendarA11yPipe implements PipeTransform {
-  constructor(
-    private calendarA11y: CalendarA11y,
-    @Inject(LOCALE_ID) private locale: string,
-  ) {}
+  private calendarA11y = inject(CalendarA11y);
+
+  private locale = inject(LOCALE_ID);
 
   transform(a11yParams: A11yParams, method: string): string {
     a11yParams.locale = a11yParams.locale || this.locale;

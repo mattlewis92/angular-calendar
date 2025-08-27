@@ -6,21 +6,20 @@ import {
   Input,
   ComponentRef,
   Injector,
-  ComponentFactoryResolver,
   ViewContainerRef,
   ElementRef,
-  ComponentFactory,
-  Inject,
-  Renderer2,
   TemplateRef,
   OnChanges,
   SimpleChanges,
+  DOCUMENT,
+  inject,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { PlacementArray, positionElements } from 'positioning';
 import { CalendarEvent } from 'calendar-utils';
 import { Observable, of, Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'mwl-calendar-tooltip-window',
@@ -43,9 +42,9 @@ import { takeUntil } from 'rxjs/operators';
         placement: placement,
         event: event,
       }"
-    >
-    </ng-template>
+    />
   `,
+  imports: [NgClass, NgTemplateOutlet],
 })
 export class CalendarTooltipWindowComponent {
   @Input() contents: string;
@@ -57,9 +56,7 @@ export class CalendarTooltipWindowComponent {
   @Input() customTemplate: TemplateRef<any>;
 }
 
-@Directive({
-  selector: '[mwlCalendarTooltip]',
-})
+@Directive({ selector: '[mwlCalendarTooltip]' })
 export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   @Input('mwlCalendarTooltip') contents: string; // eslint-disable-line  @angular-eslint/no-input-rename
 
@@ -73,22 +70,17 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
 
   @Input('tooltipDelay') delay: number | null = null; // eslint-disable-line  @angular-eslint/no-input-rename
 
-  private tooltipFactory: ComponentFactory<CalendarTooltipWindowComponent>;
-  private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
-  private cancelTooltipDelay$ = new Subject<void>();
+  private elementRef = inject(ElementRef);
 
-  constructor(
-    private elementRef: ElementRef,
-    private injector: Injector,
-    private renderer: Renderer2,
-    componentFactoryResolver: ComponentFactoryResolver,
-    private viewContainerRef: ViewContainerRef,
-    @Inject(DOCUMENT) private document, // eslint-disable-line
-  ) {
-    this.tooltipFactory = componentFactoryResolver.resolveComponentFactory(
-      CalendarTooltipWindowComponent,
-    );
-  }
+  private injector = inject(Injector);
+
+  private viewContainerRef = inject(ViewContainerRef);
+
+  private document = inject(DOCUMENT);
+
+  private tooltipRef: ComponentRef<CalendarTooltipWindowComponent>;
+
+  private cancelTooltipDelay$ = new Subject<void>();
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -127,10 +119,12 @@ export class CalendarTooltipDirective implements OnDestroy, OnChanges {
   private show(): void {
     if (!this.tooltipRef && this.contents) {
       this.tooltipRef = this.viewContainerRef.createComponent(
-        this.tooltipFactory,
-        0,
-        this.injector,
-        [],
+        CalendarTooltipWindowComponent,
+        {
+          index: 0,
+          injector: this.injector,
+          projectableNodes: [],
+        },
       );
       this.tooltipRef.instance.contents = this.contents;
       this.tooltipRef.instance.customTemplate = this.customTemplate;

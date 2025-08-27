@@ -7,8 +7,15 @@ import {
   CalendarEvent,
   CalendarMonthViewDay,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { Subject } from 'rxjs';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 const RED_CELL: 'red-cell' = 'red-cell';
 const BLUE_CELL: 'blue-cell' = 'blue-cell';
@@ -27,6 +34,15 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
         background-color: blue !important;
       }
     `,
+  ],
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

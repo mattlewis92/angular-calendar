@@ -1,15 +1,25 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
+  DOCUMENT,
+  inject,
 } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { colors } from '../demo-utils/colors';
-import { DOCUMENT } from '@angular/common';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -17,6 +27,15 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: 'template.html',
   styleUrls: ['styles.scss'],
   encapsulation: ViewEncapsulation.None,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent implements OnInit, OnDestroy {
   view: CalendarView = CalendarView.Month;
@@ -31,15 +50,19 @@ export class DemoComponent implements OnInit, OnDestroy {
     },
   ];
 
-  private readonly darkThemeClass = 'dark-theme';
+  private document = inject<Document>(DOCUMENT);
 
-  constructor(@Inject(DOCUMENT) private document) {}
+  private readonly darkThemeClass = 'dark-theme';
 
   ngOnInit(): void {
     this.document.body.classList.add(this.darkThemeClass);
+    // Required if using bootstrap
+    this.document.body.parentElement.setAttribute('data-bs-theme', 'dark');
   }
 
   ngOnDestroy(): void {
     this.document.body.classList.remove(this.darkThemeClass);
+    // Required if using bootstrap
+    this.document.body.parentElement.removeAttribute('data-bs-theme');
   }
 }

@@ -3,19 +3,23 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Inject,
   Injectable,
   Input,
   LOCALE_ID,
   OnChanges,
   Output,
   SimpleChanges,
+  inject,
 } from '@angular/core';
 import {
   CalendarUtils,
   CalendarWeekViewComponent,
   DateAdapter,
   getWeekViewPeriod,
+  CalendarWeekViewEventComponent,
+  CalendarWeekViewHourSegmentComponent,
+  CalendarWeekViewCurrentTimeMarkerComponent,
+  ClickDirective,
 } from 'angular-calendar';
 import {
   WeekView,
@@ -26,7 +30,17 @@ import {
   WeekViewAllDayEventRow,
   WeekViewAllDayEvent,
 } from 'calendar-utils';
-import { DragEndEvent, DragMoveEvent } from 'angular-draggable-droppable';
+import {
+  DragEndEvent,
+  DragMoveEvent,
+  DroppableDirective,
+  DraggableDirective,
+} from 'angular-draggable-droppable';
+import { NgTemplateOutlet, NgClass } from '@angular/common';
+import {
+  ResizableDirective,
+  ResizeHandleDirective,
+} from 'angular-resizable-element';
 
 export interface User {
   id: number;
@@ -82,6 +96,18 @@ export class DayViewSchedulerCalendarUtils extends CalendarUtils {
   selector: 'mwl-day-view-scheduler',
   templateUrl: 'day-view-scheduler.component.html',
   providers: [DayViewSchedulerCalendarUtils],
+  imports: [
+    DroppableDirective,
+    NgTemplateOutlet,
+    DraggableDirective,
+    NgClass,
+    CalendarWeekViewEventComponent,
+    CalendarWeekViewHourSegmentComponent,
+    CalendarWeekViewCurrentTimeMarkerComponent,
+    ResizableDirective,
+    ResizeHandleDirective,
+    ClickDirective,
+  ],
 })
 export class DayViewSchedulerComponent
   extends CalendarWeekViewComponent
@@ -95,15 +121,10 @@ export class DayViewSchedulerComponent
 
   daysInWeek = 1;
 
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: DayViewSchedulerCalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-    protected element: ElementRef<HTMLElement>,
-  ) {
-    super(cdr, utils, locale, dateAdapter, element);
-  }
+  protected cdr = inject(ChangeDetectorRef);
+  protected utils = inject(DayViewSchedulerCalendarUtils);
+  protected dateAdapter = inject(DateAdapter);
+  protected element = inject<ElementRef<HTMLElement>>(ElementRef);
 
   trackByUserId = (index: number, row: User) => row.id;
 

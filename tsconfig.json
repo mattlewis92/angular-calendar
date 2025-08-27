@@ -4,14 +4,16 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "esModuleInterop": true,
     "declaration": false,
     "module": "es2020",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "target": "ES2022",
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "lib": ["es2022", "dom"],
+    "skipLibCheck": true,
     "paths": {
       "angular-calendar": ["./projects/angular-calendar/src"],
       "angular-calendar/date-adapters/date-fns": [
@@ -21,7 +23,6 @@
         "./projects/angular-calendar/src/date-adapters/moment"
       ]
     },
-    "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

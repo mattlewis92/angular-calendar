@@ -6,17 +6,16 @@ import {
   OnDestroy,
   Output,
   EventEmitter,
-  Inject,
   Input,
   NgZone,
+  DOCUMENT,
+  inject,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-@Directive({
-  selector: '[mwlClick]',
-})
+@Directive({ selector: '[mwlClick]' })
 export class ClickDirective implements OnInit, OnDestroy {
   @Input() clickListenerDisabled = false;
 
@@ -24,11 +23,9 @@ export class ClickDirective implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private renderer: Renderer2,
-    private elm: ElementRef<HTMLElement>,
-    @Inject(DOCUMENT) private document,
-  ) {}
+  private renderer = inject(Renderer2);
+
+  private elm = inject<ElementRef<HTMLElement>>(ElementRef);
 
   ngOnInit(): void {
     if (!this.clickListenerDisabled) {

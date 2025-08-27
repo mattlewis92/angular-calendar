@@ -11,6 +11,14 @@ import {
   WeekViewHourColumn,
 } from 'calendar-utils';
 import { PlacementArray } from 'positioning';
+import { NgStyle, NgTemplateOutlet } from '@angular/common';
+import { CalendarTooltipDirective } from '../../../common/calendar-tooltip/calendar-tooltip.directive';
+import { ClickDirective } from '../../../common/click/click.directive';
+import { KeydownEnterDirective } from '../../../common/keydown-enter/keydown-enter.directive';
+import { CalendarEventActionsComponent } from '../../../common/calendar-event-actions/calendar-event-actions.component';
+import { CalendarEventTitleComponent } from '../../../common/calendar-event-title/calendar-event-title.component';
+import { CalendarEventTitlePipe } from '../../../common/calendar-event-title/calendar-event-title.pipe';
+import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-week-view-event',
@@ -59,15 +67,13 @@ import { PlacementArray } from 'positioning';
         <mwl-calendar-event-actions
           [event]="weekEvent.tempEvent || weekEvent.event"
           [customTemplate]="eventActionsTemplate"
-        >
-        </mwl-calendar-event-actions>
+        />
         &ngsp;
         <mwl-calendar-event-title
           [event]="weekEvent.tempEvent || weekEvent.event"
           [customTemplate]="eventTitleTemplate"
           [view]="daysInWeek === 1 ? 'day' : 'week'"
-        >
-        </mwl-calendar-event-title>
+        />
       </div>
     </ng-template>
     <ng-template
@@ -83,9 +89,19 @@ import { PlacementArray } from 'positioning';
         column: column,
         daysInWeek: daysInWeek,
       }"
-    >
-    </ng-template>
+    />
   `,
+  imports: [
+    NgStyle,
+    CalendarTooltipDirective,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarEventActionsComponent,
+    CalendarEventTitleComponent,
+    NgTemplateOutlet,
+    CalendarEventTitlePipe,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarWeekViewEventComponent {
   @Input() locale: string;

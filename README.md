@@ -1,4 +1,4 @@
-<h1 align="center">angular 15.0+ calendar</h1>
+<h1 align="center">angular 20.2+ calendar</h1>
 
 <div align="center">
 
@@ -42,7 +42,7 @@ https://mattlewis92.github.io/angular-calendar/
 
 <h2 align="center">About</h2>
 
-A calendar component for angular 15.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
+A calendar component for angular 20.2+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
 
 <h2 align="center">Getting started</h2>
 
@@ -57,7 +57,7 @@ ng add angular-calendar
 First install through npm:
 
 ```bash
-npm install --save angular-calendar date-fns
+npm install angular-calendar date-fns
 ```
 
 Next include the CSS file in the global (not component scoped) styles of your app:
@@ -67,24 +67,56 @@ Next include the CSS file in the global (not component scoped) styles of your ap
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 ```
 
-Finally import the calendar module into your apps module:
+Finally add the calendar to a component in your app:
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { Component } from '@angular/core';
+import { DateAdapter, provideCalendar, CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarEvent, CalendarView, CalendarDatePipe } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
-@NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    CalendarModule.forRoot({
+@Component({
+  imports: [CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe],
+  providers: [
+    provideCalendar({
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
   ],
+  template: `
+    <button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Previous</button>
+    <button mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+    <button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</button>
+    <h3>{{ viewDate | calendarDate: view + 'ViewTitle' : 'en' }}</h3>
+    <button (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">Month</button>
+    <button (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">Week</button>
+    <button (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">Day</button>
+    @switch (view) {
+      @case (CalendarView.Month) {
+        <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" />
+      }
+      @case (CalendarView.Week) {
+        <mwl-calendar-week-view [viewDate]="viewDate" [events]="events" />
+      }
+      @case (CalendarView.Day) {
+        <mwl-calendar-day-view [viewDate]="viewDate" [events]="events" />
+      }
+    }
+  `,
 })
-export class MyModule {}
+export class MyComponent {
+  readonly CalendarView = CalendarView;
+  viewDate = new Date();
+  events: CalendarEvent[] = [
+    {
+      start: new Date(),
+      title: 'An event',
+    },
+  ];
+
+  setView(view: CalendarView) {
+    this.view = view;
+  }
+}
 ```
 
 In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the [demos list](https://mattlewis92.github.io/angular-calendar/) for a series of comprehensive examples of how to use this library within your application.
@@ -111,7 +143,8 @@ Yes.
 
 | Angular major   | Last supported angular-calendar version                                  |
 | --------------- | ------------------------------------------------------------------------ |
-| 15.x and higher | latest version                                                           |
+| 20.x and higher | latest version                                                           |
+| 15.x - 19.x     | [0.31.1](https://github.com/mattlewis92/angular-calendar/tree/v0.31.1)   |
 | 14.x            | [0.30.1](https://github.com/mattlewis92/angular-calendar/tree/v0.30.1)   |
 | 12.x - 13.x     | [0.29.0](https://github.com/mattlewis92/angular-calendar/tree/v0.29.0)   |
 | 6.x - 11.x      | [0.28.28](https://github.com/mattlewis92/angular-calendar/tree/v0.28.28) |

@@ -7,21 +7,20 @@ import {
   Renderer2,
   OnInit,
   OnDestroy,
+  inject,
 } from '@angular/core';
 
-@Directive({
-  selector: '[mwlKeydownEnter]',
-})
+@Directive({ selector: '[mwlKeydownEnter]' })
 export class KeydownEnterDirective implements OnInit, OnDestroy {
   @Output('mwlKeydownEnter') keydown = new EventEmitter<KeyboardEvent>(); // eslint-disable-line
 
   private keydownListener: VoidFunction | null = null;
 
-  constructor(
-    private host: ElementRef<HTMLElement>,
-    private ngZone: NgZone,
-    private renderer: Renderer2,
-  ) {}
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  private ngZone = inject(NgZone);
+
+  private renderer = inject(Renderer2);
 
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {

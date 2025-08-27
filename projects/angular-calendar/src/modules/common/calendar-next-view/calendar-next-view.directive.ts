@@ -4,6 +4,7 @@ import {
   HostListener,
   Input,
   Output,
+  inject,
 } from '@angular/core';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 import { CalendarView } from '../calendar-view/calendar-view.enum';
@@ -21,9 +22,7 @@ import { addDaysWithExclusions } from '../util/util';
  * </button>
  * ```
  */
-@Directive({
-  selector: '[mwlCalendarNextView]',
-})
+@Directive({ selector: '[mwlCalendarNextView]' })
 export class CalendarNextViewDirective {
   /**
    * The current view
@@ -50,7 +49,10 @@ export class CalendarNextViewDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
-  constructor(private dateAdapter: DateAdapter) {}
+  /**
+   * @hidden
+   */
+  private dateAdapter = inject(DateAdapter);
 
   /**
    * @hidden

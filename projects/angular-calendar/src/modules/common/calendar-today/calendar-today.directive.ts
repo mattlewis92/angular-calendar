@@ -4,6 +4,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  inject,
 } from '@angular/core';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 
@@ -18,9 +19,7 @@ import { DateAdapter } from '../../../date-adapters/date-adapter';
  * </button>
  * ```
  */
-@Directive({
-  selector: '[mwlCalendarToday]',
-})
+@Directive({ selector: '[mwlCalendarToday]' })
 export class CalendarTodayDirective {
   /**
    * The current view date
@@ -32,7 +31,10 @@ export class CalendarTodayDirective {
    */
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
 
-  constructor(private dateAdapter: DateAdapter) {}
+  /**
+   * @hidden
+   */
+  private dateAdapter = inject(DateAdapter);
 
   /**
    * @hidden

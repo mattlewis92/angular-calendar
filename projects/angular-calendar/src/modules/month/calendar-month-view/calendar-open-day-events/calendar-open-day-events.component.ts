@@ -5,39 +5,15 @@ import {
   EventEmitter,
   TemplateRef,
 } from '@angular/core';
-import {
-  trigger,
-  style,
-  state,
-  transition,
-  animate,
-  AnimationTriggerMetadata,
-} from '@angular/animations';
 import { CalendarEvent } from 'calendar-utils';
-import { isWithinThreshold, trackByEventId } from '../../../common/util/util';
-
-export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
-  state(
-    'void',
-    style({
-      height: 0,
-      overflow: 'hidden',
-      'padding-top': 0,
-      'padding-bottom': 0,
-    }),
-  ),
-  state(
-    '*',
-    style({
-      height: '*',
-      overflow: 'hidden',
-      'padding-top': '*',
-      'padding-bottom': '*',
-    }),
-  ),
-  transition('* => void', animate('150ms ease-out')),
-  transition('void => *', animate('150ms ease-in')),
-]);
+import { isWithinThreshold } from '../../../common/util/util';
+import { DraggableDirective } from 'angular-draggable-droppable';
+import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { CalendarEventTitleComponent } from '../../../common/calendar-event-title/calendar-event-title.component';
+import { ClickDirective } from '../../../common/click/click.directive';
+import { KeydownEnterDirective } from '../../../common/keydown-enter/keydown-enter.directive';
+import { CalendarEventActionsComponent } from '../../../common/calendar-event-actions/calendar-event-actions.component';
+import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-open-day-events',
@@ -47,72 +23,72 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
       let-events="events"
       let-eventClicked="eventClicked"
       let-isOpen="isOpen"
-      let-trackByEventId="trackByEventId"
       let-validateDrag="validateDrag"
     >
-      <div
-        class="cal-open-day-events"
-        [@collapse]
-        *ngIf="isOpen"
-        role="application"
-      >
-        <span
-          tabindex="-1"
-          role="alert"
-          [attr.aria-label]="
-            { date: date, locale: locale } | calendarA11y: 'openDayEventsAlert'
-          "
-        ></span>
-        <span
-          tabindex="0"
-          role="landmark"
-          [attr.aria-label]="
-            { date: date, locale: locale }
-              | calendarA11y: 'openDayEventsLandmark'
-          "
-        ></span>
+      @if (isOpen) {
         <div
-          *ngFor="let event of events; trackBy: trackByEventId"
-          [ngClass]="event?.cssClass"
-          mwlDraggable
-          [class.cal-draggable]="event.draggable"
-          dragActiveClass="cal-drag-active"
-          [dropData]="{ event: event }"
-          [dragAxis]="{ x: event.draggable, y: event.draggable }"
-          [validateDrag]="validateDrag"
-          [touchStartLongPress]="{ delay: 300, delta: 30 }"
+          class="cal-open-day-events"
+          animate.leave="cal-open-day-events-closing"
+          role="application"
         >
           <span
-            class="cal-event"
-            [ngStyle]="{ backgroundColor: event.color?.primary }"
-          >
-          </span>
-          &ngsp;
-          <mwl-calendar-event-title
-            [event]="event"
-            [customTemplate]="eventTitleTemplate"
-            view="month"
-            (mwlClick)="
-              eventClicked.emit({ event: event, sourceEvent: $event })
-            "
-            (mwlKeydownEnter)="
-              eventClicked.emit({ event: event, sourceEvent: $event })
-            "
-            tabindex="0"
+            tabindex="-1"
+            role="alert"
             [attr.aria-label]="
-              { event: event, locale: locale }
-                | calendarA11y: 'eventDescription'
+              { date: date, locale: locale }
+                | calendarA11y: 'openDayEventsAlert'
             "
-          >
-          </mwl-calendar-event-title>
-          &ngsp;
-          <mwl-calendar-event-actions
-            [event]="event"
-            [customTemplate]="eventActionsTemplate"
-          >
-          </mwl-calendar-event-actions>
+          ></span>
+          <span
+            tabindex="0"
+            role="landmark"
+            [attr.aria-label]="
+              { date: date, locale: locale }
+                | calendarA11y: 'openDayEventsLandmark'
+            "
+          ></span>
+          @for (event of events; track event.id ?? event) {
+            <div
+              [ngClass]="event?.cssClass"
+              mwlDraggable
+              [class.cal-draggable]="event.draggable"
+              dragActiveClass="cal-drag-active"
+              [dropData]="{ event: event }"
+              [dragAxis]="{ x: event.draggable, y: event.draggable }"
+              [validateDrag]="validateDrag"
+              [touchStartLongPress]="{ delay: 300, delta: 30 }"
+            >
+              <span
+                class="cal-event"
+                [ngStyle]="{ backgroundColor: event.color?.primary }"
+              >
+              </span>
+              &ngsp;
+              <mwl-calendar-event-title
+                [event]="event"
+                [customTemplate]="eventTitleTemplate"
+                view="month"
+                (mwlClick)="
+                  eventClicked.emit({ event: event, sourceEvent: $event })
+                "
+                (mwlKeydownEnter)="
+                  eventClicked.emit({ event: event, sourceEvent: $event })
+                "
+                tabindex="0"
+                [attr.aria-label]="
+                  { event: event, locale: locale }
+                    | calendarA11y: 'eventDescription'
+                "
+              />
+              &ngsp;
+              <mwl-calendar-event-actions
+                [event]="event"
+                [customTemplate]="eventActionsTemplate"
+              />
+            </div>
+          }
         </div>
-      </div>
+      }
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
@@ -120,13 +96,21 @@ export const collapseAnimation: AnimationTriggerMetadata = trigger('collapse', [
         events: events,
         eventClicked: eventClicked,
         isOpen: isOpen,
-        trackByEventId: trackByEventId,
         validateDrag: validateDrag,
       }"
-    >
-    </ng-template>
+    />
   `,
-  animations: [collapseAnimation],
+  imports: [
+    DraggableDirective,
+    NgClass,
+    NgStyle,
+    CalendarEventTitleComponent,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarEventActionsComponent,
+    NgTemplateOutlet,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarOpenDayEventsComponent {
   @Input() locale: string;
@@ -147,8 +131,6 @@ export class CalendarOpenDayEventsComponent {
     event: CalendarEvent;
     sourceEvent: MouseEvent | KeyboardEvent;
   }>();
-
-  trackByEventId = trackByEventId;
 
   validateDrag = isWithinThreshold;
 }

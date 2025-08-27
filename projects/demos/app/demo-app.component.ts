@@ -1,11 +1,50 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import {
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  RouterOutlet,
+  RouterLink,
+} from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
-import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
+import {
+  NgbNav,
+  NgbCollapse,
+  NgbTooltip,
+  NgbNavItem,
+  NgbNavItemRole,
+  NgbNavLink,
+  NgbNavLinkBase,
+  NgbNavContent,
+  NgbNavOutlet,
+} from '@ng-bootstrap/ng-bootstrap';
+import { HighlightJS } from 'ngx-highlightjs';
+import angularCorePackage from '@angular/core/package.json';
+import angularCalendarPackage from '../../../package.json';
+import calendarUtilsPackage from 'calendar-utils/package.json';
+import angularResizableElementPackage from 'angular-resizable-element/package.json';
+import angularDraggableDroppablePackage from 'angular-draggable-droppable/package.json';
+import dateFnsPackage from 'date-fns/package.json';
+import rxjsPackage from 'rxjs/package.json';
+import bootstrapPackage from 'bootstrap/package.json';
+import zoneJsPackage from 'zone.js/package.json';
+import ngBootstrapPackage from '@ng-bootstrap/ng-bootstrap/package.json';
+import rrulePackage from 'rrule/package.json';
+import fontAwesomePackage from '@fortawesome/fontawesome-free/package.json';
+import positioningPackage from 'positioning/package.json';
+import flatpickrPackage from 'flatpickr/package.json';
+import angularxFlatpickrPackage from 'angularx-flatpickr/package.json';
+import popperPackage from '@popperjs/core/package.json';
+import typescriptPackage from 'typescript/package.json';
+import { DraggableScrollContainerDirective } from 'angular-draggable-droppable';
+import { ClipboardModule } from 'ngx-clipboard';
+import { NgClass, AsyncPipe } from '@angular/common';
+import { CarbonAdComponent } from './carbon-ad/carbon-ad.component';
+import { FormsModule } from '@angular/forms';
 
 interface Source {
   filename: string;
@@ -24,67 +63,91 @@ interface Demo {
   tags: string[];
 }
 
-function getSources(folder: string): Promise<Source[]> {
-  return import('./demo-modules/' + folder + '/sources.ts').then(
-    ({ sources }) => {
-      return sources.map(({ filename, contents }) => {
-        const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
-        const languages: { [extension: string]: string } = {
-          ts: 'typescript',
-          html: 'html',
-          css: 'css',
-        };
-        return {
-          filename,
-          contents: {
-            raw: contents.raw.default
-              .replace(
-                ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-                '',
-              )
-              .replace("\nimport { RouterModule } from '@angular/router';", ''),
-            highlighted: contents.highlighted.default // TODO - move this into a regexp replace for both
-              .replace(
-                ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
-                '',
-              )
-              .replace(
-                '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
-                '',
-              ),
-          },
-          language: languages[extension],
-        };
-      });
+function getSources(
+  folder: string,
+  highlightJS: HighlightJS,
+): Promise<Source[]> {
+  return import(`./demo-modules/${folder}/sources.ts`).then(
+    ({
+      sources,
+    }: {
+      sources: Array<{ filename: string; contents: string }>;
+    }) => {
+      const promises = sources.map(
+        async ({ filename, contents: rawContent }) => {
+          const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
+          const languages = {
+            ts: 'typescript',
+            html: 'xml',
+            css: 'css',
+            scss: 'scss',
+          } as const;
+
+          const language = languages[extension];
+          const result = await highlightJS.highlight(rawContent, {
+            language,
+          });
+          const highlightedContent = result.value;
+
+          return {
+            filename,
+            contents: {
+              raw: rawContent,
+              highlighted: highlightedContent,
+            },
+            language: languages[extension],
+          };
+        },
+      );
+
+      return Promise.all(promises);
     },
   );
 }
 
-const dependencyVersions: any = {
-  angular: require('@angular/core/package.json').version,
-  angularRouter: require('@angular/router/package.json').version,
-  angularCalendar: require('../../../package.json').version,
-  calendarUtils: require('calendar-utils/package.json').version,
-  angularResizableElement: require('angular-resizable-element/package.json')
-    .version,
-  angularDraggableDroppable: require('angular-draggable-droppable/package.json')
-    .version,
-  dateFns: require('date-fns/package.json').version,
-  rxjs: require('rxjs/package.json').version,
-  bootstrap: require('bootstrap/package.json').version,
-  zoneJs: require('zone.js/package.json').version,
-  ngBootstrap: require('@ng-bootstrap/ng-bootstrap/package.json').version,
-  rrule: require('rrule/package.json').version,
-  fontAwesome: require('@fortawesome/fontawesome-free/package.json').version,
-  positioning: require('positioning/package.json').version,
-  flatpickr: require('flatpickr/package.json').version,
-  angularxFlatpickr: require('angularx-flatpickr/package.json').version,
+const dependencyVersions: Record<string, string> = {
+  angular: angularCorePackage.version,
+  angularCalendar: angularCalendarPackage.version,
+  calendarUtils: calendarUtilsPackage.version,
+  angularResizableElement: angularResizableElementPackage.version,
+  angularDraggableDroppable: angularDraggableDroppablePackage.version,
+  dateFns: dateFnsPackage.version,
+  rxjs: rxjsPackage.version,
+  bootstrap: bootstrapPackage.version,
+  zoneJs: zoneJsPackage.version,
+  ngBootstrap: ngBootstrapPackage.version,
+  rrule: rrulePackage.version,
+  fontAwesome: fontAwesomePackage.version,
+  positioning: positioningPackage.version,
+  flatpickr: flatpickrPackage.version,
+  angularxFlatpickr: angularxFlatpickrPackage.version,
+  popper: popperPackage.version,
+  typescript: typescriptPackage.version,
 };
 
 @Component({
   selector: 'mwl-demo-app',
   styleUrls: ['./demo-app.css'],
   templateUrl: './demo-app.html',
+  imports: [
+    NgbCollapse,
+    NgbTooltip,
+    DraggableScrollContainerDirective,
+    NgbNav,
+    NgbNavItem,
+    NgbNavItemRole,
+    NgbNavLink,
+    NgbNavLinkBase,
+    NgbNavContent,
+    RouterOutlet,
+    ClipboardModule,
+    NgClass,
+    NgbNavOutlet,
+    CarbonAdComponent,
+    FormsModule,
+    RouterLink,
+    AsyncPipe,
+  ],
 })
 export class DemoAppComponent implements OnInit {
   @ViewChild('nav') nav: NgbNav;
@@ -95,11 +158,12 @@ export class DemoAppComponent implements OnInit {
   firstDemoLoaded = false;
   searchText = '';
   copied$ = new Subject<boolean>();
+  private router = inject(Router);
+  private highlightJS = inject(HighlightJS);
 
-  constructor(
-    private router: Router,
-    analytics: Angulartics2GoogleGlobalSiteTag,
-  ) {
+  constructor() {
+    const analytics = inject(Angulartics2GoogleGlobalSiteTag);
+
     analytics.startTracking();
   }
 
@@ -139,7 +203,7 @@ export class DemoAppComponent implements OnInit {
         this.activeDemo = this.demos.find(
           (demo) => `/${demo.path}` === event.url,
         );
-        getSources(this.activeDemo.path).then((sources) => {
+        getSources(this.activeDemo.path, this.highlightJS).then((sources) => {
           this.activeDemo.sources = sources;
         });
       });
@@ -165,50 +229,124 @@ export class DemoAppComponent implements OnInit {
     const files: {
       [path: string]: string;
     } = {
-      'index.html': `
+      'src/index.html': `
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@${dependencyVersions.bootstrap}/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://unpkg.com/@fortawesome/fontawesome-free@${dependencyVersions.fontAwesome}/css/all.css" rel="stylesheet">
 <link href="https://unpkg.com/angular-calendar@${dependencyVersions.angularCalendar}/css/angular-calendar.css" rel="stylesheet">
 <link href="https://unpkg.com/flatpickr@${dependencyVersions.flatpickr}/dist/flatpickr.css" rel="stylesheet">
 <mwl-demo-component>Loading...</mwl-demo-component>
 `.trim(),
-      'main.ts': `
+      'src/main.ts': `
 import 'zone.js';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { DemoModule } from './demo/module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 import { DemoComponent } from './demo/component';
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    DemoModule
-  ],
-  bootstrap: [DemoComponent]
-})
-export class BootstrapModule {}
-
-platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
-  // Ensure Angular destroys itself on hot reloads.
-  if (window['ngRef']) {
-    window['ngRef'].destroy();
-  }
-  window['ngRef'] = ref;
-
-  // Otherwise, log the boot error
+bootstrapApplication(DemoComponent, {
+  providers: [provideHttpClient()],
 }).catch(err => console.error(err));
+`.trim(),
+      'angular.json': `
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "newProjectRoot": "projects",
+  "projects": {
+    "demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "namedChunks": true,
+              "optimization": false,
+              "sourceMap": true,
+              "aot": true
+            },
+            "production": {
+              "aot": true,
+              "extractLicenses": true,
+              "namedChunks": false,
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false
+            }
+          },
+          "options": {
+            "assets": [],
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "outputPath": "dist/demo",
+            "polyfills": ["zone.js"],
+            "scripts": [],
+            "styles": [],
+            "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "demo:build:development"
+            },
+            "production": {
+              "buildTarget": "demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "",
+      "schematics": {},
+      "sourceRoot": "src"
+    }
+  },
+  "version": 1
+}`.trim(),
+      'tsconfig.app.json': `
+      {
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictStandalone": true
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"]
+}
 `.trim(),
     };
 
     demoUtilsSources.forEach((source) => {
-      files[`demo-utils/${source.filename}`] = source.contents.raw.default;
+      files[`src/demo-utils/${source.filename}`] = source.contents;
     });
 
     demo.sources.forEach((source) => {
-      files[`demo/${source.filename}`] = source.contents.raw;
+      files[`src/demo/${source.filename}`] = source.contents.raw;
     });
 
     StackBlitzSDK.openProject(
@@ -222,26 +360,27 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
           '@angular/core': dependencyVersions.angular,
           '@angular/common': dependencyVersions.angular,
           '@angular/compiler': dependencyVersions.angular,
+          '@angular/compiler-cli': dependencyVersions.angular,
           '@angular/platform-browser': dependencyVersions.angular,
-          '@angular/platform-browser-dynamic': dependencyVersions.angular,
           '@angular/router': dependencyVersions.angular,
           '@angular/forms': dependencyVersions.angular,
-          '@angular/animations': dependencyVersions.angular,
           rxjs: dependencyVersions.rxjs,
           'zone.js': dependencyVersions.zoneJs,
           'angular-draggable-droppable': `^${dependencyVersions.angularDraggableDroppable}`,
           'angular-resizable-element': `^${dependencyVersions.angularResizableElement}`,
           'date-fns': dependencyVersions.dateFns,
           'angular-calendar': dependencyVersions.angularCalendar,
-          '@ng-bootstrap/ng-bootstrap': '5.0.0', // pinned due to issue with stackblitz generation
+          '@ng-bootstrap/ng-bootstrap': dependencyVersions.ngBootstrap,
           rrule: dependencyVersions.rrule,
           'calendar-utils': dependencyVersions.calendarUtils,
           flatpickr: dependencyVersions.flatpickr,
           'angularx-flatpickr': dependencyVersions.angularxFlatpickr,
+          '@popperjs/core': dependencyVersions.popper,
+          typescript: dependencyVersions.typescript,
         },
       },
       {
-        openFile: 'demo/component.ts',
+        openFile: 'src/demo/component.ts',
       },
     );
   }

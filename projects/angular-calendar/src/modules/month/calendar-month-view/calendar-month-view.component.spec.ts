@@ -6,7 +6,6 @@ import {
   flush,
   tick,
 } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import moment from 'moment';
 import * as sinon from 'sinon';
 import { expect } from 'chai';
@@ -16,7 +15,6 @@ import {
   CalendarEvent,
   CalendarMomentDateFormatter,
   CalendarDateFormatter,
-  CalendarModule,
   MOMENT,
   CalendarMonthViewDay,
   DAYS_OF_WEEK,
@@ -24,6 +22,7 @@ import {
   CalendarMonthViewComponent,
   DateAdapter,
   CalendarMonthViewEventTimesChangedEvent,
+  provideCalendar,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { triggerDomEvent } from '../../../test/util';
@@ -37,13 +36,10 @@ registerLocaleData(localeDe);
 describe('calendarMonthView component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        CalendarModule.forRoot(
-          {
-            provide: DateAdapter,
-            useFactory: adapterFactory,
-          },
+      providers: [
+        { provide: MOMENT, useValue: moment },
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
@@ -52,7 +48,6 @@ describe('calendarMonthView component', () => {
           },
         ),
       ],
-      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 

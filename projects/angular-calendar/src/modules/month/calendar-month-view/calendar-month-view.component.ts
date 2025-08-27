@@ -8,8 +8,8 @@ import {
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import {
   CalendarEvent,
@@ -27,6 +27,14 @@ import { CalendarUtils } from '../../common/calendar-utils/calendar-utils.provid
 import { validateEvents } from '../../common/util/util';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 import { PlacementArray } from 'positioning';
+import { CalendarMonthViewHeaderComponent } from './calendar-month-view-header/calendar-month-view-header.component';
+import { CalendarMonthCellComponent } from './calendar-month-cell/calendar-month-cell.component';
+import { DroppableDirective } from 'angular-draggable-droppable';
+import { NgClass, NgStyle, SlicePipe } from '@angular/common';
+import { ClickDirective } from '../../common/click/click.directive';
+import { KeydownEnterDirective } from '../../common/keydown-enter/keydown-enter.directive';
+import { CalendarOpenDayEventsComponent } from './calendar-open-day-events/calendar-open-day-events.component';
+import { CalendarA11yPipe } from '../../common/calendar-a11y/calendar-a11y.pipe';
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -60,85 +68,97 @@ export interface CalendarMonthViewEventTimesChangedEvent<
         [locale]="locale"
         (columnHeaderClicked)="columnHeaderClicked.emit($event)"
         [customTemplate]="headerTemplate"
-      >
-      </mwl-calendar-month-view-header>
+      />
       <div class="cal-days">
-        <div
-          *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"
-        >
-          <div role="row" class="cal-cell-row">
-            <mwl-calendar-month-cell
-              role="gridcell"
-              *ngFor="
-                let day of view.days
+        @for (rowIndex of view.rowOffsets; track rowIndex) {
+          <div>
+            <div role="row" class="cal-cell-row">
+              @for (
+                day of view.days
                   | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;
-                trackBy: trackByDate
-              "
-              [ngClass]="day?.cssClass"
-              [day]="day"
-              [openDay]="openDay"
+                track day.date.toISOString()
+              ) {
+                <mwl-calendar-month-cell
+                  role="gridcell"
+                  [ngClass]="day?.cssClass"
+                  [day]="day"
+                  [openDay]="openDay"
+                  [locale]="locale"
+                  [tooltipPlacement]="tooltipPlacement"
+                  [tooltipAppendToBody]="tooltipAppendToBody"
+                  [tooltipTemplate]="tooltipTemplate"
+                  [tooltipDelay]="tooltipDelay"
+                  [customTemplate]="cellTemplate"
+                  [ngStyle]="{ backgroundColor: day.backgroundColor }"
+                  (mwlClick)="
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  "
+                  [clickListenerDisabled]="!dayClicked.observed"
+                  (mwlKeydownEnter)="
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  "
+                  (highlightDay)="toggleDayHighlight($event.event, true)"
+                  (unhighlightDay)="toggleDayHighlight($event.event, false)"
+                  mwlDroppable
+                  dragOverClass="cal-drag-over"
+                  (drop)="
+                    eventDropped(
+                      day,
+                      $event.dropData.event,
+                      $event.dropData.draggedFrom
+                    )
+                  "
+                  (eventClicked)="
+                    eventClicked.emit({
+                      event: $event.event,
+                      sourceEvent: $event.sourceEvent,
+                    })
+                  "
+                  [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
+                />
+              }
+            </div>
+            <mwl-calendar-open-day-events
               [locale]="locale"
-              [tooltipPlacement]="tooltipPlacement"
-              [tooltipAppendToBody]="tooltipAppendToBody"
-              [tooltipTemplate]="tooltipTemplate"
-              [tooltipDelay]="tooltipDelay"
-              [customTemplate]="cellTemplate"
-              [ngStyle]="{ backgroundColor: day.backgroundColor }"
-              (mwlClick)="dayClicked.emit({ day: day, sourceEvent: $event })"
-              [clickListenerDisabled]="dayClicked.observers.length === 0"
-              (mwlKeydownEnter)="
-                dayClicked.emit({ day: day, sourceEvent: $event })
-              "
-              (highlightDay)="toggleDayHighlight($event.event, true)"
-              (unhighlightDay)="toggleDayHighlight($event.event, false)"
-              mwlDroppable
-              dragOverClass="cal-drag-over"
-              (drop)="
-                eventDropped(
-                  day,
-                  $event.dropData.event,
-                  $event.dropData.draggedFrom
-                )
-              "
+              [isOpen]="openRowIndex === rowIndex"
+              [events]="openDay?.events"
+              [date]="openDay?.date"
+              [customTemplate]="openDayEventsTemplate"
+              [eventTitleTemplate]="eventTitleTemplate"
+              [eventActionsTemplate]="eventActionsTemplate"
               (eventClicked)="
                 eventClicked.emit({
                   event: $event.event,
                   sourceEvent: $event.sourceEvent,
                 })
               "
-              [attr.tabindex]="{} | calendarA11y: 'monthCellTabIndex'"
-            >
-            </mwl-calendar-month-cell>
+              mwlDroppable
+              dragOverClass="cal-drag-over"
+              (drop)="
+                eventDropped(
+                  openDay,
+                  $event.dropData.event,
+                  $event.dropData.draggedFrom
+                )
+              "
+            />
           </div>
-          <mwl-calendar-open-day-events
-            [locale]="locale"
-            [isOpen]="openRowIndex === rowIndex"
-            [events]="openDay?.events"
-            [date]="openDay?.date"
-            [customTemplate]="openDayEventsTemplate"
-            [eventTitleTemplate]="eventTitleTemplate"
-            [eventActionsTemplate]="eventActionsTemplate"
-            (eventClicked)="
-              eventClicked.emit({
-                event: $event.event,
-                sourceEvent: $event.sourceEvent,
-              })
-            "
-            mwlDroppable
-            dragOverClass="cal-drag-over"
-            (drop)="
-              eventDropped(
-                openDay,
-                $event.dropData.event,
-                $event.dropData.draggedFrom
-              )
-            "
-          >
-          </mwl-calendar-open-day-events>
-        </div>
+        }
       </div>
     </div>
   `,
+  imports: [
+    CalendarMonthViewHeaderComponent,
+    CalendarMonthCellComponent,
+    DroppableDirective,
+    NgClass,
+    NgStyle,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarOpenDayEventsComponent,
+    SlicePipe,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy
@@ -177,7 +197,7 @@ export class CalendarMonthViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string = inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip
@@ -310,28 +330,17 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter,
-  ) {
-    this.locale = locale;
-  }
+  protected cdr = inject(ChangeDetectorRef);
 
   /**
    * @hidden
    */
-  trackByRowOffset = (index: number, offset: number) =>
-    this.view.days
-      .slice(offset, this.view.totalDaysVisibleInWeek)
-      .map((day) => day.date.toISOString())
-      .join('-');
+  protected utils = inject(CalendarUtils);
 
   /**
    * @hidden
    */
-  trackByDate = (index: number, day: MonthViewDay) => day.date.toISOString();
+  protected dateAdapter = inject(DateAdapter);
 
   /**
    * @hidden

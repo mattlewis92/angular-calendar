@@ -1,5 +1,8 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { WeekViewHourSegment } from 'calendar-utils';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pipe';
+import { CalendarA11yPipe } from '../../../common/calendar-a11y/calendar-a11y.pipe';
 
 @Component({
   selector: 'mwl-calendar-week-view-hour-segment',
@@ -26,14 +29,16 @@ import { WeekViewHourSegment } from 'calendar-utils';
         [class.cal-after-hour-start]="!segment.isStart"
         [ngClass]="segment.cssClass"
       >
-        <div class="cal-time" *ngIf="isTimeLabel">
-          {{
-            segment.displayDate
-              | calendarDate
-                : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
-                : locale
-          }}
-        </div>
+        @if (isTimeLabel) {
+          <div class="cal-time">
+            {{
+              segment.displayDate
+                | calendarDate
+                  : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
+                  : locale
+            }}
+          </div>
+        }
       </div>
     </ng-template>
     <ng-template
@@ -45,9 +50,9 @@ import { WeekViewHourSegment } from 'calendar-utils';
         isTimeLabel: isTimeLabel,
         daysInWeek: daysInWeek,
       }"
-    >
-    </ng-template>
+    />
   `,
+  imports: [NgClass, NgTemplateOutlet, CalendarDatePipe, CalendarA11yPipe],
 })
 export class CalendarWeekViewHourSegmentComponent {
   @Input() segment: WeekViewHourSegment;

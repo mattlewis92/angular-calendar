@@ -3,10 +3,21 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { HttpClient } from '@angular/common/http';
 import { startOfYear, subYears } from 'date-fns';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
 
 // get your own key from https://holidayapi.com/
 const HOLIDAY_API_KEY = '8eb2582d-3a4c-4fc5-94c8-3e21487d4e23';
@@ -27,6 +38,15 @@ type CalendarEventWithMeta = CalendarEvent<
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
@@ -35,10 +55,9 @@ export class DemoComponent implements OnInit {
 
   events: CalendarEventWithMeta[] = [];
 
-  constructor(
-    private http: HttpClient,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  private http = inject(HttpClient);
+
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.fetchHolidays();

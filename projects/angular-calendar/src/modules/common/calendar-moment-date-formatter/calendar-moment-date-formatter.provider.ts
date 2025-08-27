@@ -1,4 +1,4 @@
-import { InjectionToken, Inject, Injectable } from '@angular/core';
+import { InjectionToken, Injectable, inject } from '@angular/core';
 import {
   CalendarDateFormatterInterface,
   DateFormatterParams,
@@ -6,7 +6,7 @@ import {
 import { getWeekViewPeriod } from '../util/util';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
 
-export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
+export const MOMENT: InjectionToken<any> = new InjectionToken('Moment');
 
 /**
  * This will use <a href="http://momentjs.com/" target="_blank">moment</a> to do all date formatting. To use this class:
@@ -28,13 +28,9 @@ export const MOMENT: InjectionToken<string> = new InjectionToken('Moment');
 export class CalendarMomentDateFormatter
   implements CalendarDateFormatterInterface
 {
-  /**
-   * @hidden
-   */
-  constructor(
-    @Inject(MOMENT) protected moment: any,
-    protected dateAdapter: DateAdapter,
-  ) {}
+  protected moment = inject(MOMENT);
+
+  protected dateAdapter = inject(DateAdapter);
 
   /**
    * The month view header week day labels

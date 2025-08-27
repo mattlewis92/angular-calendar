@@ -9,7 +9,14 @@ import {
   CalendarWeekViewBeforeRenderEvent,
   CalendarDayViewBeforeRenderEvent,
   CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
 } from 'angular-calendar';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @Component({
   selector: 'mwl-demo-component',
@@ -24,6 +31,15 @@ import {
         background-color: hotpink !important;
       }
     `,
+  ],
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
 })
 export class DemoComponent {

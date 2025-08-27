@@ -1,8 +1,8 @@
 @use 'sass:map';
-@import '../../../variables';
+@use '../../../variables';
 
 $cal-tooltip-vars: () !default;
-$cal-tooltip-vars: map.merge($cal-vars, $cal-tooltip-vars);
+$cal-tooltip-vars: map.merge(variables.$cal-vars, $cal-tooltip-vars);
 
 @mixin cal-tooltip-theme($overrides) {
   $theme: map.merge($cal-tooltip-vars, $overrides);

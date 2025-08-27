@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import {
   startOfDay,
@@ -17,12 +18,28 @@ import {
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
+  provideCalendar,
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
   CalendarView,
+  CalendarPreviousViewDirective,
+  CalendarTodayDirective,
+  CalendarNextViewDirective,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  CalendarDatePipe,
+  DateAdapter,
 } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
+import { FormsModule } from '@angular/forms';
+import {
+  FlatpickrDirective,
+  provideFlatpickrDefaults,
+} from 'angularx-flatpickr';
+import { JsonPipe } from '@angular/common';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -55,6 +72,22 @@ const colors: Record<string, EventColor> = {
     `,
   ],
   templateUrl: 'template.html',
+  imports: [
+    CalendarPreviousViewDirective,
+    CalendarTodayDirective,
+    CalendarNextViewDirective,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    FormsModule,
+    JsonPipe,
+    CalendarDatePipe,
+    FlatpickrDirective,
+  ],
+  providers: [
+    provideFlatpickrDefaults(),
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
@@ -133,7 +166,7 @@ export class DemoComponent {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
+  private modal = inject(NgbModal);
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

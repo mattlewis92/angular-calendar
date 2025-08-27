@@ -5,10 +5,12 @@ import {
   OnChanges,
   SimpleChanges,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
-import { switchMapTo, startWith, map, switchMap } from 'rxjs/operators';
+import { startWith, map, switchMap } from 'rxjs/operators';
 import { DateAdapter } from '../../../../date-adapters/date-adapter';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'mwl-calendar-week-view-current-time-marker',
@@ -23,11 +25,9 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
       let-isVisible="isVisible"
       let-topPx="topPx"
     >
-      <div
-        class="cal-current-time-marker"
-        *ngIf="isVisible"
-        [style.top.px]="topPx"
-      ></div>
+      @if (isVisible) {
+        <div class="cal-current-time-marker" [style.top.px]="topPx"></div>
+      }
     </ng-template>
     <ng-template
       [ngTemplateOutlet]="customTemplate || defaultTemplate"
@@ -40,9 +40,9 @@ import { DateAdapter } from '../../../../date-adapters/date-adapter';
         isVisible: (marker$ | async)?.isVisible,
         topPx: (marker$ | async)?.top,
       }"
-    >
-    </ng-template>
+    />
   `,
+  imports: [NgTemplateOutlet, AsyncPipe],
 })
 export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
   @Input() columnDate: Date;
@@ -65,13 +65,17 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
 
   columnDate$ = new BehaviorSubject<Date>(undefined);
 
+  private dateAdapter = inject(DateAdapter);
+
+  private zone = inject(NgZone);
+
   marker$: Observable<{
     isVisible: boolean;
     top: number;
   }> = this.zone.onStable.pipe(
     switchMap(() => interval(60 * 1000)),
     startWith(0),
-    switchMapTo(this.columnDate$),
+    switchMap(() => this.columnDate$),
     map((columnDate) => {
       const startOfDay = this.dateAdapter.setMinutes(
         this.dateAdapter.setHours(columnDate, this.dayStartHour),
@@ -96,11 +100,6 @@ export class CalendarWeekViewCurrentTimeMarkerComponent implements OnChanges {
       };
     }),
   );
-
-  constructor(
-    private dateAdapter: DateAdapter,
-    private zone: NgZone,
-  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.columnDate) {

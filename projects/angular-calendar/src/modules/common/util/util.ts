@@ -46,30 +46,6 @@ export function roundToNearest(amount: number, precision: number) {
   return Math.round(amount / precision) * precision;
 }
 
-export const trackByEventId = (index: number, event: CalendarEvent) =>
-  event.id ? event.id : event;
-
-export const trackByWeekDayHeaderDate = (index: number, day: WeekDay) =>
-  day.date.toISOString();
-
-export const trackByHourSegment = (
-  index: number,
-  segment: WeekViewHourSegment,
-) => segment.date.toISOString();
-
-export const trackByHour = (index: number, hour: WeekViewHour) =>
-  hour.segments[0].date.toISOString();
-
-export const trackByWeekAllDayEvent = (
-  index: number,
-  weekEvent: WeekViewAllDayEvent,
-) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
-
-export const trackByWeekTimeEvent = (
-  index: number,
-  weekEvent: WeekViewTimeEvent,
-) => (weekEvent.event.id ? weekEvent.event.id : weekEvent.event);
-
 const MINUTES_IN_HOUR = 60;
 
 function getPixelAmountInMinutes(

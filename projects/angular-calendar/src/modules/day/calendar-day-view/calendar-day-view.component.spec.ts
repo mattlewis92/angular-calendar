@@ -20,21 +20,20 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarDayViewComponent,
   DateAdapter,
+  provideCalendar,
 } from 'angular-calendar';
 import { Subject } from 'rxjs';
-import { triggerDomEvent, ExternalEventComponent } from '../../../test/util';
+import { triggerDomEvent } from '../../../test/util';
 import { take } from 'rxjs/operators';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 describe('CalendarDayViewComponent component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CalendarModule.forRoot(
-          {
-            provide: DateAdapter,
-            useFactory: adapterFactory,
-          },
+      providers: [
+        { provide: MOMENT, useValue: moment },
+        provideCalendar(
+          { provide: DateAdapter, useFactory: adapterFactory },
           {
             dateFormatter: {
               provide: CalendarDateFormatter,
@@ -42,10 +41,7 @@ describe('CalendarDayViewComponent component', () => {
             },
           },
         ),
-        DragAndDropModule,
       ],
-      declarations: [ExternalEventComponent],
-      providers: [{ provide: MOMENT, useValue: moment }],
     });
   });
 

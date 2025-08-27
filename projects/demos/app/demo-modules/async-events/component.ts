@@ -1,7 +1,20 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
 import {
   isSameMonth,
   isSameDay,
@@ -15,6 +28,9 @@ import {
 } from 'date-fns';
 import { Observable } from 'rxjs';
 import { colors } from '../demo-utils/colors';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+import { AsyncPipe } from '@angular/common';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 interface Film {
   id: number;
@@ -37,6 +53,16 @@ function getTimezoneOffsetString(date: Date): string {
   selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'template.html',
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    AsyncPipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
 })
 export class DemoComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
@@ -47,7 +73,7 @@ export class DemoComponent implements OnInit {
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   ngOnInit(): void {
     this.fetchEvents();
