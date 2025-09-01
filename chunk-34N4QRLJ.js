@@ -1,0 +1,17 @@
+import{a as W}from"./chunk-CFSPUUHB.js";import{D as M}from"./chunk-2HQHCNGL.js";import{Ka as C,Kb as a,Mc as k,Nb as V,Nc as S,Ob as v,Pb as x,Rb as g,Ua as u,Yc as T,ad as b,gd as R,hd as E,ia as c,ja as m,jb as f,lb as y,pb as h,qb as w,rb as _,wb as p,yb as D,zb as r}from"./chunk-ODVXNMMH.js";import"./chunk-RACSJ3AQ.js";function F(o,s){if(o&1){let n=p();a(0,`
+  `),w(1,"mwl-calendar-month-view",2),D("beforeViewRender",function(t){c(n);let e=r();return m(e.beforeMonthViewRender(t))})("dayClicked",function(t){c(n);let e=r();return m(e.dayClicked(t.day))}),_(),a(2,`
+  `)}if(o&2){let n=r();C(),h("viewDate",n.viewDate)("events",n.events)}}function O(o,s){if(o&1){let n=p();a(0,`
+  `),w(1,"mwl-calendar-week-view",3),D("beforeViewRender",function(t){c(n);let e=r();return m(e.beforeWeekOrDayViewRender(t))})("hourSegmentClicked",function(t){c(n);let e=r();return m(e.hourSegmentClicked(t.date))}),_(),a(2,`
+  `)}if(o&2){let n=r();C(),h("viewDate",n.viewDate)("events",n.events)}}function B(o,s){if(o&1){let n=p();a(0,`
+  `),w(1,"mwl-calendar-day-view",3),D("beforeViewRender",function(t){c(n);let e=r();return m(e.beforeWeekOrDayViewRender(t))})("hourSegmentClicked",function(t){c(n);let e=r();return m(e.hourSegmentClicked(t.date))}),_(),a(2,`
+  `)}if(o&2){let n=r();C(),h("viewDate",n.viewDate)("events",n.events)}}var L=(()=>{let s=class s{constructor(){this.view=S.Month,this.viewDate=new Date,this.events=[],this.selectedDays=[]}dayClicked(i){this.selectedMonthViewDay=i;let t=this.selectedMonthViewDay.date.getTime(),e=this.selectedDays.findIndex(l=>l.date.getTime()===t);e>-1?(delete this.selectedMonthViewDay.cssClass,this.selectedDays.splice(e,1)):(this.selectedDays.push(this.selectedMonthViewDay),i.cssClass="cal-day-selected",this.selectedMonthViewDay=i)}beforeMonthViewRender({body:i}){i.forEach(t=>{this.selectedDays.some(e=>e.date.getTime()===t.date.getTime())&&(t.cssClass="cal-day-selected")})}hourSegmentClicked(i){this.selectedDayViewDate=i,this.addSelectedDayViewClass()}beforeWeekOrDayViewRender(i){this.hourColumns=i.hourColumns,this.addSelectedDayViewClass()}addSelectedDayViewClass(){this.hourColumns.forEach(i=>{i.hours.forEach(t=>{t.segments.forEach(e=>{delete e.cssClass,this.selectedDayViewDate&&e.date.getTime()===this.selectedDayViewDate.getTime()&&(e.cssClass="cal-day-selected")})})})}};s.\u0275fac=function(t){return new(t||s)},s.\u0275cmp=u({type:s,selectors:[["mwl-demo-component"]],features:[g([T({provide:k,useFactory:M})])],decls:12,vars:3,consts:[[3,"viewChange","viewDateChange","view","viewDate"],[1,"alert","alert-info"],[3,"beforeViewRender","dayClicked","viewDate","events"],[3,"beforeViewRender","hourSegmentClicked","viewDate","events"]],template:function(t,e){if(t&1&&(w(0,"mwl-demo-utils-calendar-header",0),x("viewChange",function(d){return v(e.view,d)||(e.view=d),d})("viewDateChange",function(d){return v(e.viewDate,d)||(e.viewDate=d),d}),_(),a(1,`
+
+`),w(2,"div",1),a(3,`
+  Click on a month view day or a time on the week or day view to select it
+`),_(),a(4,`
+
+`),w(5,"div"),a(6,`
+  `),f(7,F,3,2)(8,O,3,2)(9,B,3,2),a(10,`
+`),_(),a(11,`
+`)),t&2){let l;V("view",e.view)("viewDate",e.viewDate),C(7),y((l=e.view)==="month"?7:l==="week"?8:l==="day"?9:-1)}},dependencies:[W,b,R,E],styles:[`.cal-day-selected,.cal-day-selected:hover{background-color:#ff1493!important}
+`],encapsulation:2,changeDetection:0});let o=s;return o})();export{L as DemoComponent};

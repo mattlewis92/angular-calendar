@@ -1,0 +1,12 @@
+import{a as u}from"./chunk-SIVC2SE7.js";import{a as B}from"./chunk-CFSPUUHB.js";import{D as A,d as D}from"./chunk-2HQHCNGL.js";import{Ka as _,Kb as a,Mc as E,Nb as V,Nc as W,Ob as f,Pb as S,Rb as b,Ua as x,Yc as k,ad as F,f as g,gd as z,hd as M,ia as v,ja as c,jb as y,lb as T,pb as C,qb as l,rb as d,wb as p,yb as h,zb as m}from"./chunk-ODVXNMMH.js";import"./chunk-RACSJ3AQ.js";function I(n,r){if(n&1){let e=p();a(0,`
+  `),l(1,"mwl-calendar-month-view",1),h("eventTimesChanged",function(i){v(e);let t=m();return c(t.eventTimesChanged(i))}),d(),a(2,`
+  `)}if(n&2){let e=m();_(),C("viewDate",e.viewDate)("events",e.events)("activeDayIsOpen",!0)("refresh",e.refresh)}}function O(n,r){if(n&1){let e=p();a(0,`
+  `),l(1,"mwl-calendar-week-view",2),h("eventTimesChanged",function(i){v(e);let t=m();return c(t.eventTimesChanged(i))}),d(),a(2,`
+  `)}if(n&2){let e=m();_(),C("viewDate",e.viewDate)("events",e.events)("refresh",e.refresh)}}function P(n,r){if(n&1){let e=p();a(0,`
+  `),l(1,"mwl-calendar-day-view",2),h("eventTimesChanged",function(i){v(e);let t=m();return c(t.eventTimesChanged(i))}),d(),a(2,`
+  `)}if(n&2){let e=m();_(),C("viewDate",e.viewDate)("events",e.events)("refresh",e.refresh)}}var K=(()=>{let r=class r{constructor(){this.view=W.Week,this.viewDate=new Date,this.events=[{title:"Resizable event",color:u.yellow,start:new Date,end:D(new Date,1),resizable:{beforeStart:!0,afterEnd:!0}},{title:"A non resizable event",color:u.blue,start:new Date,end:D(new Date,1)}],this.refresh=new g}eventTimesChanged({event:o,newStart:i,newEnd:t}){o.start=i,o.end=t,this.refresh.next()}};r.\u0275fac=function(i){return new(i||r)},r.\u0275cmp=x({type:r,selectors:[["mwl-demo-component"]],features:[b([k({provide:E,useFactory:A})])],decls:9,vars:3,consts:[[3,"viewChange","viewDateChange","view","viewDate"],[3,"eventTimesChanged","viewDate","events","activeDayIsOpen","refresh"],[3,"eventTimesChanged","viewDate","events","refresh"]],template:function(i,t){if(i&1&&(l(0,"mwl-demo-utils-calendar-header",0),S("viewChange",function(s){return f(t.view,s)||(t.view=s),s})("viewDateChange",function(s){return f(t.viewDate,s)||(t.viewDate=s),s}),d(),a(1,`
+
+`),l(2,"div"),a(3,`
+  `),y(4,I,3,4)(5,O,3,3)(6,P,3,3),a(7,`
+`),d(),a(8,`
+`)),i&2){let w;V("view",t.view)("viewDate",t.viewDate),_(4),T((w=t.view)==="month"?4:w==="week"?5:w==="day"?6:-1)}},dependencies:[B,F,z,M],encapsulation:2,changeDetection:0});let n=r;return n})();export{K as DemoComponent};

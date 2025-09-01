@@ -1,0 +1,195 @@
+import"./chunk-RACSJ3AQ.js";var e=`import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  inject,
+} from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import {
+  isSameMonth,
+  isSameDay,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  startOfDay,
+  endOfDay,
+  format,
+} from 'date-fns';
+import { Observable } from 'rxjs';
+import { colors } from '../demo-utils/colors';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+import { AsyncPipe } from '@angular/common';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+interface Film {
+  id: number;
+  title: string;
+  release_date: string;
+}
+
+function getTimezoneOffsetString(date: Date): string {
+  const timezoneOffset = date.getTimezoneOffset();
+  const hoursOffset = String(
+    Math.floor(Math.abs(timezoneOffset / 60)),
+  ).padStart(2, '0');
+  const minutesOffset = String(Math.abs(timezoneOffset % 60)).padEnd(2, '0');
+  const direction = timezoneOffset > 0 ? '-' : '+';
+
+  return \`T00:00:00\${direction}\${hoursOffset}:\${minutesOffset}\`;
+}
+
+@Component({
+  selector: 'mwl-demo-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: 'template.html',
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    AsyncPipe,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
+})
+export class DemoComponent implements OnInit {
+  view: CalendarView = CalendarView.Month;
+
+  viewDate: Date = new Date();
+
+  events$: Observable<CalendarEvent<{ film: Film }>[]>;
+
+  activeDayIsOpen: boolean = false;
+
+  private http = inject(HttpClient);
+
+  ngOnInit(): void {
+    this.fetchEvents();
+  }
+
+  fetchEvents(): void {
+    const getStart: any = {
+      month: startOfMonth,
+      week: startOfWeek,
+      day: startOfDay,
+    }[this.view];
+
+    const getEnd: any = {
+      month: endOfMonth,
+      week: endOfWeek,
+      day: endOfDay,
+    }[this.view];
+
+    const params = new HttpParams()
+      .set(
+        'primary_release_date.gte',
+        format(getStart(this.viewDate), 'yyyy-MM-dd'),
+      )
+      .set(
+        'primary_release_date.lte',
+        format(getEnd(this.viewDate), 'yyyy-MM-dd'),
+      )
+      .set('api_key', '0ec33936a68018857d727958dca1424f');
+
+    this.events$ = this.http
+      .get('https://api.themoviedb.org/3/discover/movie', { params })
+      .pipe(
+        map(({ results }: { results: Film[] }) => {
+          return results.map((film: Film) => {
+            return {
+              title: film.title,
+              start: new Date(
+                film.release_date + getTimezoneOffsetString(this.viewDate),
+              ),
+              color: colors.yellow,
+              allDay: true,
+              meta: {
+                film,
+              },
+            };
+          });
+        }),
+      );
+  }
+
+  dayClicked({
+    date,
+    events,
+  }: {
+    date: Date;
+    events: CalendarEvent<{ film: Film }>[];
+  }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+      }
+    }
+  }
+
+  eventClicked(event: CalendarEvent<{ film: Film }>): void {
+    window.open(
+      \`https://www.themoviedb.org/movie/\${event.meta.film.id}\`,
+      '_blank',
+    );
+  }
+}
+`;var t=`<mwl-demo-utils-calendar-header
+  [(view)]="view"
+  [(viewDate)]="viewDate"
+  (viewDateChange)="fetchEvents()"
+  (viewChange)="fetchEvents()"
+/>
+
+@if (events$ | async; as events) {
+<div>
+  <div>
+    @switch (view) { @case ('month') {
+    <mwl-calendar-month-view
+      [viewDate]="viewDate"
+      [events]="events"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="eventClicked($event.event)"
+    />
+    } @case ('week') {
+    <mwl-calendar-week-view
+      [viewDate]="viewDate"
+      [events]="events"
+      (eventClicked)="eventClicked($event.event)"
+    />
+    } @case ('day') {
+    <mwl-calendar-day-view
+      [viewDate]="viewDate"
+      [events]="events"
+      (eventClicked)="eventClicked($event.event)"
+    />
+    } }
+  </div>
+</div>
+} @else {
+
+<div class="text-center">
+  <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
+  Loading events...
+</div>
+
+}
+`;var m=[{filename:"component.ts",contents:e},{filename:"template.html",contents:t}];export{m as sources};

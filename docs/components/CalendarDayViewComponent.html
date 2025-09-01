@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -35,26 +86,29 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   CalendarDayViewComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -67,7 +121,7 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given day. Example usage:</p>
-<div><pre class="line-numbers"><code class="language-typescript">&lt;mwl-calendar-day-view
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&lt;mwl-calendar-day-view
  [viewDate]=&quot;viewDate&quot;
  [events]=&quot;events&quot;&gt;
 &lt;/mwl-calendar-day-view&gt;</code></pre></div>
@@ -76,7 +130,7 @@
 
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
     <table class="table table-sm table-hover metadata">
         <tbody>
@@ -91,9 +145,18 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>mwl-calendar-day-view</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/CalendarWeekViewComponent.html" target="_self" >CalendarWeekViewComponent</a></code>
+                </td>
             </tr>
 
 
@@ -133,7 +196,7 @@
   (hourSegmentClicked)&#x3D;&quot;hourSegmentClicked.emit($event)&quot;
   (eventTimesChanged)&#x3D;&quot;eventTimesChanged.emit($event)&quot;
   (beforeViewRender)&#x3D;&quot;beforeViewRender.emit($event)&quot;
-&gt;&lt;/mwl-calendar-week-view&gt;
+/&gt;
 </code></pre></td>
             </tr>
 
@@ -149,7 +212,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -276,7 +339,7 @@
 </section>
 
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -294,7 +357,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:183</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:185</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -321,7 +384,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:188</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:190</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -353,7 +416,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:114</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -385,7 +448,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:119</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -417,7 +480,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:104</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -449,7 +512,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:109</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -476,7 +539,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:173</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:175</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -508,7 +571,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:79</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -536,7 +599,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:134</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -563,7 +626,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:163</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:165</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -590,7 +653,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:168</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:170</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -617,7 +680,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:94</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -649,7 +712,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:89</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -681,7 +744,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:84</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -708,7 +771,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:160</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -735,7 +798,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:129</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -767,7 +830,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:99</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -794,7 +857,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:122</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:124</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -821,7 +884,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:203</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -853,7 +916,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:178</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:180</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -885,7 +948,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:149</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -917,7 +980,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:155</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -950,7 +1013,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:137</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:139</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -977,7 +1040,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:142</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:144</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1004,7 +1067,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:194</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:196</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1032,7 +1095,7 @@ Return true to allow dragging and resizing to the new location, or false to prev
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:73</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1044,7 +1107,7 @@ Return true to allow dragging and resizing to the new location, or false to prev
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -1056,13 +1119,13 @@ Return true to allow dragging and resizing to the new location, or false to prev
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:231</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="233" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:233</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1084,13 +1147,13 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:208</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:210</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1111,13 +1174,13 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:224</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:226</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1138,13 +1201,13 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:216</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">projects/angular-calendar/src/modules/day/calendar-day-view/calendar-day-view.component.ts:218</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1163,7 +1226,7 @@ If you add the <code>cssClass</code> property to an hour grid segment it will ad
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Component,
   Input,
@@ -1177,6 +1240,7 @@ import { CalendarEventTimesChangedEvent } from &#x27;../../common/calendar-event
 import { PlacementArray } from &#x27;positioning&#x27;;
 import { CalendarWeekViewBeforeRenderEvent } from &#x27;../../week/calendar-week.module&#x27;;
 import { ResizeCursors } from &#x27;angular-resizable-element&#x27;;
+import { CalendarWeekViewComponent } from &#x27;../../week/calendar-week-view/calendar-week-view.component&#x27;;
 
 export type CalendarDayViewBeforeRenderEvent &#x3D;
   CalendarWeekViewBeforeRenderEvent;
@@ -1227,8 +1291,9 @@ export type CalendarDayViewBeforeRenderEvent &#x3D;
       (hourSegmentClicked)&#x3D;&quot;hourSegmentClicked.emit($event)&quot;
       (eventTimesChanged)&#x3D;&quot;eventTimesChanged.emit($event)&quot;
       (beforeViewRender)&#x3D;&quot;beforeViewRender.emit($event)&quot;
-    &gt;&lt;/mwl-calendar-week-view&gt;
+    /&gt;
   &#x60;,
+  imports: [CalendarWeekViewComponent],
 })
 export class CalendarDayViewComponent {
   /**
@@ -1358,7 +1423,7 @@ export class CalendarDayViewComponent {
    * Return true to allow dragging and resizing to the new location, or false to prevent it
    */
   @Input() validateEventTimesChanged: (
-    event: CalendarEventTimesChangedEvent
+    event: CalendarEventTimesChangedEvent,
   ) &#x3D;&gt; boolean;
 
   /**
@@ -1402,7 +1467,7 @@ export class CalendarDayViewComponent {
 
 
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1427,7 +1492,7 @@ export class CalendarDayViewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mwl-calendar-week-view  class="cal-day-view"  [daysInWeek]="1"  [viewDate]="viewDate"  [events]="events"  [hourSegments]="hourSegments"  [hourDuration]="hourDuration"  [hourSegmentHeight]="hourSegmentHeight"  [minimumEventHeight]="minimumEventHeight"  [dayStartHour]="dayStartHour"  [dayStartMinute]="dayStartMinute"  [dayEndHour]="dayEndHour"  [dayEndMinute]="dayEndMinute"  [refresh]="refresh"  [locale]="locale"  [eventSnapSize]="eventSnapSize"  [tooltipPlacement]="tooltipPlacement"  [tooltipTemplate]="tooltipTemplate"  [tooltipAppendToBody]="tooltipAppendToBody"  [tooltipDelay]="tooltipDelay"  [resizeCursors]="resizeCursors"  [hourSegmentTemplate]="hourSegmentTemplate"  [eventTemplate]="eventTemplate"  [eventTitleTemplate]="eventTitleTemplate"  [eventActionsTemplate]="eventActionsTemplate"  [snapDraggedEvents]="snapDraggedEvents"  [allDayEventsLabelTemplate]="allDayEventsLabelTemplate"  [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"  [validateEventTimesChanged]="validateEventTimesChanged"  (eventClicked)="eventClicked.emit($event)"  (hourSegmentClicked)="hourSegmentClicked.emit($event)"  (eventTimesChanged)="eventTimesChanged.emit($event)"  (beforeViewRender)="beforeViewRender.emit($event)"></mwl-calendar-week-view></div>'
+        var COMPONENT_TEMPLATE = '<div><mwl-calendar-week-view  class="cal-day-view"  [daysInWeek]="1"  [viewDate]="viewDate"  [events]="events"  [hourSegments]="hourSegments"  [hourDuration]="hourDuration"  [hourSegmentHeight]="hourSegmentHeight"  [minimumEventHeight]="minimumEventHeight"  [dayStartHour]="dayStartHour"  [dayStartMinute]="dayStartMinute"  [dayEndHour]="dayEndHour"  [dayEndMinute]="dayEndMinute"  [refresh]="refresh"  [locale]="locale"  [eventSnapSize]="eventSnapSize"  [tooltipPlacement]="tooltipPlacement"  [tooltipTemplate]="tooltipTemplate"  [tooltipAppendToBody]="tooltipAppendToBody"  [tooltipDelay]="tooltipDelay"  [resizeCursors]="resizeCursors"  [hourSegmentTemplate]="hourSegmentTemplate"  [eventTemplate]="eventTemplate"  [eventTitleTemplate]="eventTitleTemplate"  [eventActionsTemplate]="eventActionsTemplate"  [snapDraggedEvents]="snapDraggedEvents"  [allDayEventsLabelTemplate]="allDayEventsLabelTemplate"  [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"  [validateEventTimesChanged]="validateEventTimesChanged"  (eventClicked)="eventClicked.emit($event)"  (hourSegmentClicked)="hourSegmentClicked.emit($event)"  (eventTimesChanged)="eventTimesChanged.emit($event)"  (beforeViewRender)="beforeViewRender.emit($event)"/></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarDayViewComponent'};
@@ -1480,6 +1545,19 @@ export class CalendarDayViewComponent {
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -1491,7 +1569,6 @@ export class CalendarDayViewComponent {
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

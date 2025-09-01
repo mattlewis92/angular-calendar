@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -34,22 +85,30 @@
 
 
 <ol class="breadcrumb">
-    <li>Modules</li>
-    <li >CalendarMonthModule</li>
+    <li class="breadcrumb-item">Modules</li>
+    <li class="breadcrumb-item" 
+        class="breadcrumb-item deprecated-name"
+    >CalendarMonthModule</li>
 </ol>
 
 
 <ul class="nav nav-tabs" role="tablist">
-    <li  class="active" >
-        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    <li class="nav-item">
+        <a href="#info" 
+            class="nav-link"
+            class="nav-link active"
+            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
     </li>
-    <li >
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    <li class="nav-item">
+        <a href="#source" 
+            class="nav-link"
+            
+            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
 
         <p class="comment">
             <h3>File</h3>
@@ -59,31 +118,33 @@
         </p>
 
 
+            <p class="comment">
+                <h3 class="deprecated">Deprecated</h3>
+            </p>
+            <p class="comment">
+                import the standalone component `CalendarMonthViewComponent` instead
+            </p>
 
 
 
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank"
-                            title="Official documentation about module declarations"><span class="icon ion-ios-information-circle-outline"></span></a></h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../components/CalendarMonthViewComponent.html">CalendarMonthViewComponent</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module imports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
                             <a href="../modules/CalendarCommonModule.html">CalendarCommonModule</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="../modules/CalendarMonthViewComponent.html">CalendarMonthViewComponent</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" title="Official documentation about module exports"><span
+                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module exports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -98,9 +159,8 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
 import { DragAndDropModule } from &#x27;angular-draggable-droppable&#x27;;
 import { CalendarMonthViewComponent } from &#x27;./calendar-month-view/calendar-month-view.component&#x27;;
 import { CalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view/calendar-month-view-header/calendar-month-view-header.component&#x27;;
@@ -114,16 +174,18 @@ export {
   CalendarMonthViewEventTimesChangedEvent,
 } from &#x27;./calendar-month-view/calendar-month-view.component&#x27;;
 export { MonthViewDay as CalendarMonthViewDay } from &#x27;calendar-utils&#x27;;
-export { collapseAnimation } from &#x27;./calendar-month-view/calendar-open-day-events/calendar-open-day-events.component&#x27;;
 
-// needed for ivy, not part of the public api
-export { CalendarMonthCellComponent as ɵCalendarMonthCellComponent } from &#x27;./calendar-month-view/calendar-month-cell/calendar-month-cell.component&#x27;;
-export { CalendarMonthViewHeaderComponent as ɵCalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view/calendar-month-view-header/calendar-month-view-header.component&#x27;;
-export { CalendarOpenDayEventsComponent as ɵCalendarOpenDayEventsComponent } from &#x27;./calendar-month-view/calendar-open-day-events/calendar-open-day-events.component&#x27;;
+export { CalendarMonthCellComponent } from &#x27;./calendar-month-view/calendar-month-cell/calendar-month-cell.component&#x27;;
+export { CalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view/calendar-month-view-header/calendar-month-view-header.component&#x27;;
+export { CalendarOpenDayEventsComponent } from &#x27;./calendar-month-view/calendar-open-day-events/calendar-open-day-events.component&#x27;;
 
+/**
+ * @deprecated import the standalone component &#x60;CalendarMonthViewComponent&#x60; instead
+ */
 @NgModule({
-  imports: [CommonModule, DragAndDropModule, CalendarCommonModule],
-  declarations: [
+  imports: [
+    DragAndDropModule,
+    CalendarCommonModule,
     CalendarMonthViewComponent,
     CalendarMonthCellComponent,
     CalendarOpenDayEventsComponent,
@@ -188,6 +250,19 @@ export class CalendarMonthModule {}
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -199,7 +274,6 @@ export class CalendarMonthModule {}
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

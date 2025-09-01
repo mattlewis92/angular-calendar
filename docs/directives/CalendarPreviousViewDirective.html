@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -38,21 +89,27 @@
 
 
 <ol class="breadcrumb">
-  <li>Directives</li>
-  <li >CalendarPreviousViewDirective</li>
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >CalendarPreviousViewDirective</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -66,7 +123,7 @@
             </p>
             <p class="comment">
                 <p>Change the view date to the previous view. For example:</p>
-<div><pre class="line-numbers"><code class="language-typescript">&lt;button
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&lt;button
  mwlCalendarPreviousView
  [(viewDate)]=&quot;viewDate&quot;
  [view]=&quot;view&quot;&gt;
@@ -77,7 +134,7 @@
 
 
 
-        <section>
+        <section data-compodoc="block-metadata">
             <h3>Metadata</h3>
             <table class="table table-sm table-hover metadata">
                 <tbody>
@@ -87,11 +144,14 @@
                         <td class="col-md-9"><code>[mwlCalendarPreviousView]</code></td>
                     </tr>
 
+
+
+
                 </tbody>
             </table>
         </section>
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -156,56 +216,8 @@
     </table>
 </section>
 
-            <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(dateAdapter: DateAdapter)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:51</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>dateAdapter</td>
-                                                  
-                                                        <td>
-                                                                    <code>DateAdapter</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
-            <section>
+            <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -223,7 +235,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:45</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -255,7 +267,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:40</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -282,7 +294,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:30</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -309,7 +321,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:35</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -321,7 +333,7 @@
             </tbody>
         </table>
 </section>
-            <section>
+            <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -339,7 +351,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:50</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -352,7 +364,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-host-listener">
     <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -370,8 +382,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">projects/angular-calendar/src/modules/common/calendar-previous-view/calendar-previous-view.directive.ts:61</a></div>
                 </td>
             </tr>
 
@@ -392,13 +404,14 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Directive,
   HostListener,
   Input,
   Output,
   EventEmitter,
+  inject,
 } from &#x27;@angular/core&#x27;;
 import { DateAdapter } from &#x27;../../../date-adapters/date-adapter&#x27;;
 import { CalendarView } from &#x27;../calendar-view/calendar-view.enum&#x27;;
@@ -416,9 +429,7 @@ import { addDaysWithExclusions } from &#x27;../util/util&#x27;;
  * &lt;/button&gt;
  * &#x60;&#x60;&#x60;
  */
-@Directive({
-  selector: &#x27;[mwlCalendarPreviousView]&#x27;,
-})
+@Directive({ selector: &#x27;[mwlCalendarPreviousView]&#x27; })
 export class CalendarPreviousViewDirective {
   /**
    * The current view
@@ -445,7 +456,10 @@ export class CalendarPreviousViewDirective {
    */
   @Output() viewDateChange: EventEmitter&lt;Date&gt; &#x3D; new EventEmitter();
 
-  constructor(private dateAdapter: DateAdapter) {}
+  /**
+   * @hidden
+   */
+  private dateAdapter &#x3D; inject(DateAdapter);
 
   /**
    * @hidden
@@ -464,8 +478,8 @@ export class CalendarPreviousViewDirective {
           this.dateAdapter,
           this.viewDate,
           -1,
-          this.excludeDays
-        )
+          this.excludeDays,
+        ),
       );
     } else if (this.view &#x3D;&#x3D;&#x3D; CalendarView.Week &amp;&amp; this.daysInWeek) {
       this.viewDateChange.emit(
@@ -473,8 +487,8 @@ export class CalendarPreviousViewDirective {
           this.dateAdapter,
           this.viewDate,
           -this.daysInWeek,
-          this.excludeDays
-        )
+          this.excludeDays,
+        ),
       );
     } else {
       this.viewDateChange.emit(subFn(this.viewDate, 1));
@@ -529,6 +543,19 @@ export class CalendarPreviousViewDirective {
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -540,7 +567,6 @@ export class CalendarPreviousViewDirective {
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

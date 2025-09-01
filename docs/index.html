@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,14 +75,14 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 align="center">angular 15.0+ calendar</h1>
+<h1 align="center">angular 20.2+ calendar</h1>
 
 <div align="center">
 
@@ -58,7 +109,7 @@
 <p><a href="https://app.tea.xyz/sign-up?r=_uTUIw6W-Fr" target="_blank"><img src="https://i.imgur.com/dfbyhmW.png"></a></p>
 </div>
 
-<h2 id="table-of-contents">Table of contents</h2>
+<h2>Table of contents</h2>
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#getting-started">Getting started</a></li>
@@ -71,30 +122,62 @@
 </ul>
 <h2 align="center">About</h2>
 
-<p>A calendar component for angular 15.0+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
+<p>A calendar component for angular 20.2+ that can display events on a month, week or day view. The successor of <a href="https://github.com/mattlewis92/angular-bootstrap-calendar">angular-bootstrap-calendar</a>.</p>
 <h2 align="center">Getting started</h2>
 
-<h3 id="ng-add-recommended">ng add (recommended)</h3>
-<div><pre class="line-numbers"><code class="language-sh">ng add angular-calendar</code></pre></div><h3 id="manual-setup-ng-add-will-do-this-all-for-you">Manual setup (ng add will do this all for you)</h3>
+<h3>ng add (recommended)</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">ng add angular-calendar</code></pre></div><h3>Manual setup (ng add will do this all for you)</h3>
 <p>First install through npm:</p>
-<div><pre class="line-numbers"><code class="language-bash">npm install --save angular-calendar date-fns</code></pre></div><p>Next include the CSS file in the global (not component scoped) styles of your app:</p>
-<div><pre class="line-numbers"><code class="language-none">/* angular-cli file: src/styles.css */
-&#64;import &quot;../node_modules/angular-calendar/css/angular-calendar.css&quot;;</code></pre></div><p>Finally import the calendar module into your apps module:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
-import { BrowserAnimationsModule } from &#39;&#64;angular/platform-browser/animations&#39;;
-import { CalendarModule, DateAdapter } from &#39;angular-calendar&#39;;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm install angular-calendar date-fns</code></pre></div><p>Next include the CSS file in the global (not component scoped) styles of your app:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">/* angular-cli file: src/styles.css */
+&#64;import &quot;../node_modules/angular-calendar/css/angular-calendar.css&quot;;</code></pre></div><p>Finally add the calendar to a component in your app:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { Component } from &#39;&#64;angular/core&#39;;
+import { DateAdapter, provideCalendar, CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarEvent, CalendarView, CalendarDatePipe } from &#39;angular-calendar&#39;;
 import { adapterFactory } from &#39;angular-calendar/date-adapters/date-fns&#39;;
 
-&#64;NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    CalendarModule.forRoot({
+&#64;Component({
+  imports: [CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe],
+  providers: [
+    provideCalendar({
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
   ],
+  template: `
+    &lt;button mwlCalendarPreviousView [view]=&quot;view&quot; [(viewDate)]=&quot;viewDate&quot; (viewDateChange)=&quot;closeOpenMonthViewDay()&quot;&gt;Previous&lt;/button&gt;
+    &lt;button mwlCalendarToday [(viewDate)]=&quot;viewDate&quot;&gt;Today&lt;/button&gt;
+    &lt;button mwlCalendarNextView [view]=&quot;view&quot; [(viewDate)]=&quot;viewDate&quot; (viewDateChange)=&quot;closeOpenMonthViewDay()&quot;&gt;Next&lt;/button&gt;
+    &lt;h3&gt;{{ viewDate | calendarDate: view + &#39;ViewTitle&#39; : &#39;en&#39; }}&lt;/h3&gt;
+    &lt;button (click)=&quot;setView(CalendarView.Month)&quot; [class.active]=&quot;view === CalendarView.Month&quot;&gt;Month&lt;/button&gt;
+    &lt;button (click)=&quot;setView(CalendarView.Week)&quot; [class.active]=&quot;view === CalendarView.Week&quot;&gt;Week&lt;/button&gt;
+    &lt;button (click)=&quot;setView(CalendarView.Day)&quot; [class.active]=&quot;view === CalendarView.Day&quot;&gt;Day&lt;/button&gt;
+    &#64;switch (view) {
+      &#64;case (CalendarView.Month) {
+        &lt;mwl-calendar-month-view [viewDate]=&quot;viewDate&quot; [events]=&quot;events&quot; /&gt;
+      }
+      &#64;case (CalendarView.Week) {
+        &lt;mwl-calendar-week-view [viewDate]=&quot;viewDate&quot; [events]=&quot;events&quot; /&gt;
+      }
+      &#64;case (CalendarView.Day) {
+        &lt;mwl-calendar-day-view [viewDate]=&quot;viewDate&quot; [events]=&quot;events&quot; /&gt;
+      }
+    }
+  `,
 })
-export class MyModule {}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
+export class MyComponent {
+  readonly CalendarView = CalendarView;
+  viewDate = new Date();
+  events: CalendarEvent[] = [
+    {
+      start: new Date(),
+      title: &#39;An event&#39;,
+    },
+  ];
+
+  setView(view: CalendarView) {
+    this.view = view;
+  }
+}</code></pre></div><p>In order to allow the most flexibility for all users there is a substantial amount of boilerplate required to get up and running. Please see the <a href="https://mattlewis92.github.io/angular-calendar/">demos list</a> for a series of comprehensive examples of how to use this library within your application.</p>
 <p>Once you are up and running, to access a full list of options for each component, the individual APIs are documented here: <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html"><code>mwl-calendar-month-view</code></a>, <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarWeekViewComponent.html"><code>mwl-calendar-week-view</code></a> and <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarDayViewComponent.html"><code>mwl-calendar-day-view</code></a>.</p>
 <blockquote>
 <p>Please note: angular-calendar uses <a href="https://scarf.sh/">Scarf</a> to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you&#39;d like to opt out, you can do so by setting <code>scarfSettings.enabled = false</code> in your project&#39;s package.json. Alternatively, you can set the environment variable <code>SCARF_ANALYTICS=false</code> before you install.</p>
@@ -107,9 +190,9 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <p>Where possible this library will strictly adhere to <a href="http://semver.org/">semver</a> and only introduce API breaking changes in 0.x releases or new major versions post 1.0. The only exception to this is if you are using custom templates or extending the base components to add additional functionality, whereby critical bug fixes may introduce breakages as the internal API changes.</p>
 <h2 align="center">FAQ</h2>
 
-<h3 id="is-this-library-aot-and-universal-compatible">Is this library AoT and universal compatible?</h3>
+<h3>Is this library AoT and universal compatible?</h3>
 <p>Yes.</p>
-<h3 id="what-major-versions-of-angular-does-this-library-support">What major versions of angular does this library support?</h3>
+<h3>What major versions of angular does this library support?</h3>
 <table class="table table-bordered compodoc-table">
 <thead>
 <tr>
@@ -119,8 +202,12 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 </thead>
 <tbody>
 <tr>
-<td>15.x and higher</td>
+<td>20.x and higher</td>
 <td>latest version</td>
+</tr>
+<tr>
+<td>15.x - 19.x</td>
+<td><a href="https://github.com/mattlewis92/angular-calendar/tree/v0.31.1">0.31.1</a></td>
 </tr>
 <tr>
 <td>14.x</td>
@@ -148,17 +235,17 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 </tr>
 </tbody>
 </table>
-<h3 id="no-styles-are-appearing">No styles are appearing?</h3>
+<h3>No styles are appearing?</h3>
 <p>No component styles are included with each component to make it easier to override them (otherwise you’d have to use <code>!important</code> on every rule that you customised). Thus you need to import the CSS file separately from <code>node_modules/angular-calendar/css/angular-calendar.css</code>.</p>
-<h3 id="how-come-there-are-so-many-dependencies">How come there are so many dependencies?</h3>
+<h3>How come there are so many dependencies?</h3>
 <p>When building the calendar some parts were found to be reusable so they were split out into their own modules. Only the bare minimum that is required is included with the calendar, there is no extra code than if there were no dependencies. <code>date-fns</code> especially only imports directly the functions it needs and not the entire library.</p>
-<h3 id="the-month-week-or-day-view-doesnt-meet-my-project-requirements-but-the-other-views-do">The month, week or day view doesn’t meet my project requirements, but the other views do.</h3>
+<h3>The month, week or day view doesn’t meet my project requirements, but the other views do.</h3>
 <p>Build your own component to replace that view, and use it in place of the one this library provides. It’s impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.</p>
-<h3 id="how-come-theres-no-year-view-like-the-ng1-version">How come there’s no year view like the ng1 version?</h3>
+<h3>How come there’s no year view like the ng1 version?</h3>
 <p>As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like <code>angular-calendar-year-view</code> though ;)</p>
-<h3 id="does-this-calendar-work-with-mobile">Does this calendar work with mobile?</h3>
+<h3>Does this calendar work with mobile?</h3>
 <p>This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens on the month view and showing less days on the <a href="https://mattlewis92.github.io/angular-calendar/#/responsive-week-view">week view</a>.</p>
-<h3 id="how-do-i-use-a-custom-template">How do I use a custom template?</h3>
+<h3>How do I use a custom template?</h3>
 <p>All parts of this calendar can be customised via the use of an <code>ng-template</code>. The recipe for applying one is as follows:</p>
 <ul>
 <li>Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the <a href="https://mattlewis92.github.io/angular-calendar/docs/">documentation</a> for each component. For this example we will pick the <a href="https://mattlewis92.github.io/angular-calendar/docs/components/CalendarMonthViewComponent.html#cellTemplate"><code>cellTemplate</code></a> from the month view.</li>
@@ -167,9 +254,9 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 <li>Finally pass the template to the components input: <code>&lt;mwl-calendar-month-view [cellTemplate]=&quot;cellTemplateId&quot; /&gt;</code></li>
 <li>You can see an e2e working example of this <a href="https://mattlewis92.github.io/angular-calendar/#/custom-templates">here</a></li>
 </ul>
-<h3 id="what-is-the-browser-compatibility">What is the browser compatibility?</h3>
+<h3>What is the browser compatibility?</h3>
 <p>All evergreen browsers supported by angular.</p>
-<h3 id="does-this-library-require-bootstrap">Does this library require bootstrap?</h3>
+<h3>Does this library require bootstrap?</h3>
 <p>No! While the demo site uses bootstrap, it isn&#39;t a requirement of this library. The styling is designed to adapt to whatever global styling your app has.</p>
 <h2 align="center">Angular 1 version</h2>
 
@@ -180,21 +267,21 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
 
 <h2 align="center">Development</h2>
 
-<h3 id="prepare-your-environment">Prepare your environment</h3>
+<h3>Prepare your environment</h3>
 <ul>
-<li>Install <a href="http://nodejs.org/">Node.js (&gt;=14.19.0 or &gt;=16.9.0)</a></li>
+<li>Install <a href="http://nodejs.org/">Node.js (&gt;=24.5.0)</a></li>
 <li>Install pnpm: <code>corepack enable</code></li>
 <li>Install local dev dependencies: <code>pnpm install</code> while current directory is this repo</li>
 </ul>
-<h3 id="development-server">Development server</h3>
+<h3>Development server</h3>
 <p>Run <code>pnpm start</code> to start a development server on port 8000 with auto reload + tests.</p>
-<h3 id="testing">Testing</h3>
+<h3>Testing</h3>
 <p>Run <code>pnpm test</code> to run tests once or <code>pnpm test:watch</code> to continually run tests.</p>
-<h3 id="release">Release</h3>
+<h3>Release</h3>
 <ul>
 <li>Bump the version in package.json (once the module hits 1.0 this will become automatic)</li>
 </ul>
-<div><pre class="line-numbers"><code class="language-bash">pnpm release</code></pre></div>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">pnpm release</code></pre></div>
 
 
 
@@ -245,6 +332,19 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
 
@@ -256,7 +356,6 @@ export class MyModule {}</code></pre></div><p>In order to allow the most flexibi
        <script src="./js/libs/es6-shim.min.js"></script>
        <script src="./js/libs/EventDispatcher.js"></script>
        <script src="./js/libs/promise.min.js"></script>
-       <script src="./js/libs/zepto.min.js"></script>
 
        <script src="./js/compodoc.js"></script>
 

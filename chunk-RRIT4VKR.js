@@ -1,0 +1,175 @@
+import"./chunk-RACSJ3AQ.js";var e=`import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { Subject } from 'rxjs';
+import {
+  CalendarEvent,
+  CalendarEventTimesChangedEvent,
+  CalendarView,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
+  provideCalendar,
+  DateAdapter,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { colors } from '../demo-utils/colors';
+import {
+  addDays,
+  addHours,
+  isSameDay,
+  setDay,
+  startOfDay,
+  subDays,
+  subSeconds,
+} from 'date-fns';
+import { CalendarHeaderComponent } from '../demo-utils/calendar-header.component';
+
+@Component({
+  selector: 'mwl-demo-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: 'template.html',
+  styles: [
+    \`
+      .invalid-position .cal-event {
+        background-color: #ad2121 !important;
+        color: #fff;
+      }
+    \`,
+  ],
+  encapsulation: ViewEncapsulation.None,
+  imports: [
+    CalendarHeaderComponent,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
+  ],
+})
+export class DemoComponent {
+  view: CalendarView = CalendarView.Week;
+
+  viewDate: Date = new Date();
+
+  events: CalendarEvent[] = [
+    {
+      start: subDays(startOfDay(new Date()), 1),
+      end: addDays(new Date(), 1),
+      title: 'A 3 day event',
+      color: colors.blue,
+      allDay: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+    {
+      start: addHours(startOfDay(setDay(new Date(), 3)), 2),
+      end: subSeconds(addHours(startOfDay(setDay(new Date(), 3)), 3), 1),
+      title: 'An short event',
+      color: colors.yellow,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+    {
+      start: addHours(startOfDay(setDay(new Date(), 3)), 5),
+      end: subSeconds(addHours(startOfDay(setDay(new Date(), 3)), 10), 1),
+      title: 'A draggable and resizable event',
+      color: colors.yellow,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+  ];
+
+  refresh = new Subject<void>();
+
+  validateEventTimesChanged = (
+    { event, newStart, newEnd, allDay }: CalendarEventTimesChangedEvent,
+    addCssClass = true,
+  ) => {
+    if (event.allDay) {
+      return true;
+    }
+
+    delete event.cssClass;
+    // don't allow dragging or resizing events to different days
+    const sameDay = isSameDay(newStart, newEnd);
+
+    if (!sameDay) {
+      return false;
+    }
+
+    // don't allow dragging events to the same times as other events
+    const overlappingEvent = this.events.find((otherEvent) => {
+      return (
+        otherEvent !== event &&
+        !otherEvent.allDay &&
+        ((otherEvent.start < newStart && newStart < otherEvent.end) ||
+          (otherEvent.start < newEnd && newStart < otherEvent.end))
+      );
+    });
+
+    if (overlappingEvent) {
+      if (addCssClass) {
+        event.cssClass = 'invalid-position';
+      } else {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  eventTimesChanged(
+    eventTimesChangedEvent: CalendarEventTimesChangedEvent,
+  ): void {
+    delete eventTimesChangedEvent.event.cssClass;
+    if (this.validateEventTimesChanged(eventTimesChangedEvent, false)) {
+      const { event, newStart, newEnd } = eventTimesChangedEvent;
+      event.start = newStart;
+      event.end = newEnd;
+      this.refresh.next();
+    }
+  }
+}
+`;var t=`<mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate" />
+
+<div>
+  @switch (view) { @case ('month') {
+  <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [activeDayIsOpen]="true"
+    [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  />
+  } @case ('week') {
+  <mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [validateEventTimesChanged]="validateEventTimesChanged"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  />
+  } @case ('day') {
+  <mwl-calendar-day-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [validateEventTimesChanged]="validateEventTimesChanged"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  />
+  } }
+</div>
+`;var i=[{filename:"component.ts",contents:e},{filename:"template.html",contents:t}];export{i as sources};

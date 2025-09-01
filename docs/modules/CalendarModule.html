@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -34,22 +85,30 @@
 
 
 <ol class="breadcrumb">
-    <li>Modules</li>
-    <li >CalendarModule</li>
+    <li class="breadcrumb-item">Modules</li>
+    <li class="breadcrumb-item" 
+        class="breadcrumb-item deprecated-name"
+    >CalendarModule</li>
 </ol>
 
 
 <ul class="nav nav-tabs" role="tablist">
-    <li  class="active" >
-        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    <li class="nav-item">
+        <a href="#info" 
+            class="nav-link"
+            class="nav-link active"
+            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
     </li>
-    <li >
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    <li class="nav-item">
+        <a href="#source" 
+            class="nav-link"
+            
+            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
 
         <p class="comment">
             <h3>File</h3>
@@ -59,27 +118,51 @@
         </p>
 
 
+            <p class="comment">
+                <h3 class="deprecated">Deprecated</h3>
+            </p>
+            <p class="comment">
+                instead use `provideCalendar()` and the standalone components/directives/pipes instead
+
+e.g.
+            </p>
 
         <p class="comment">
             <h3>Description</h3>
         </p>
         <p class="comment">
             <p>The main module of this library. Example usage:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from &#39;angular-calendar&#39;;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { CalenderModule } from &#39;angular-calendar&#39;;
 
 &#64;NgModule({
   imports: [
     CalenderModule.forRoot()
   ]
 })
-class MyModule {}</code></pre></div>
+class MyModule {}</code></pre></div><p>e.g.
+  imports: [
+    CalendarPreviousViewDirective,
+    CalendarNextViewDirective,
+    CalendarTodayDirective,
+    CalendarDatePipe,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+  ],
+  providers: [
+    provideCalendar({provide: DateAdapter, useFactory: adapterFactory})
+  ],
+})
+class MyComponent {}</p>
+
         </p>
 
 
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module imports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -97,7 +180,8 @@ class MyModule {}</code></pre></div>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" title="Official documentation about module exports"><span
+                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module exports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -117,7 +201,7 @@ class MyModule {}</code></pre></div>
             </div>
         </div>
 
-        <section>
+        <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -128,7 +212,7 @@ class MyModule {}</code></pre></div>
                 <td class="col-md-4">
                     <a name="forRoot"></a>
                     <span class="name">
-                        <span class="modifier">Static</span>
+                            <span class="modifier">Static</span>
                         <span ><b>forRoot</b></span>
                         <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -136,77 +220,75 @@ class MyModule {}</code></pre></div>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>forRoot(dateAdapter: <a href="https://angular.io/api/core/Provider" target="_blank">Provider</a>, config: <a href="../interfaces/CalendarModuleConfig.html" target="_self">CalendarModuleConfig</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>forRoot(dateAdapter: Provider, config: CalendarProviderConfig)</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">projects/angular-calendar/src/modules/calendar.module.ts:49</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">projects/angular-calendar/src/modules/calendar.module.ts:68</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>dateAdapter</td>
-                                    <td>
-                                                <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dateAdapter</td>
+                                            <td>
+                                                        <code>Provider</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
-                                    <td>
-                                    </td>
+                                            <td>
+                                            </td>
 
-                                </tr>
-                                <tr>
-                                    <td>config</td>
-                                    <td>
-                                                <code><a href="../interfaces/CalendarModuleConfig.html" target="_self" >CalendarModuleConfig</a></code>
-                                    </td>
+                                        </tr>
+                                        <tr>
+                                                <td>config</td>
+                                            <td>
+                                                        <code>CalendarProviderConfig</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
-                                    <td>
-                                        <code>{}</code>
-                                    </td>
+                                            <td>
+                                                    <code>{}</code>
+                                            </td>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ModuleWithProviders&lt;CalendarModule&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../modules/CalendarModule.html" target="_self" >ModuleWithProviders&lt;CalendarModule&gt;</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -215,19 +297,19 @@ class MyModule {}</code></pre></div>
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule, ModuleWithProviders, Provider } from &#x27;@angular/core&#x27;;
 import {
-  CalendarCommonModule,
-  CalendarModuleConfig,
-  CalendarEventTitleFormatter,
-  CalendarDateFormatter,
   CalendarA11y,
+  CalendarCommonModule,
+  CalendarDateFormatter,
+  CalendarEventTitleFormatter,
+  CalendarProviderConfig,
+  CalendarUtils,
 } from &#x27;./common/calendar-common.module&#x27;;
 import { CalendarMonthModule } from &#x27;./month/calendar-month.module&#x27;;
 import { CalendarWeekModule } from &#x27;./week/calendar-week.module&#x27;;
 import { CalendarDayModule } from &#x27;./day/calendar-day.module&#x27;;
-import { CalendarUtils } from &#x27;./common/calendar-utils/calendar-utils.provider&#x27;;
 
 export * from &#x27;./common/calendar-common.module&#x27;;
 export * from &#x27;./month/calendar-month.module&#x27;;
@@ -248,6 +330,25 @@ export * from &#x27;./day/calendar-day.module&#x27;;
  * class MyModule {}
  * &#x60;&#x60;&#x60;
  *
+ * @deprecated instead use &#x60;provideCalendar()&#x60; and the standalone components/directives/pipes instead
+ *
+ * e.g.
+ * @Component({
+ *   imports: [
+ *     CalendarPreviousViewDirective,
+ *     CalendarNextViewDirective,
+ *     CalendarTodayDirective,
+ *     CalendarDatePipe,
+ *     CalendarMonthViewComponent,
+ *     CalendarWeekViewComponent,
+ *     CalendarDayViewComponent,
+ *   ],
+ *   providers: [
+ *     provideCalendar({provide: DateAdapter, useFactory: adapterFactory})
+ *   ],
+ * })
+ * class MyComponent {}
+ *
  */
 @NgModule({
   imports: [
@@ -266,7 +367,7 @@ export * from &#x27;./day/calendar-day.module&#x27;;
 export class CalendarModule {
   static forRoot(
     dateAdapter: Provider,
-    config: CalendarModuleConfig &#x3D; {}
+    config: CalendarProviderConfig &#x3D; {},
   ): ModuleWithProviders&lt;CalendarModule&gt; {
     return {
       ngModule: CalendarModule,
@@ -330,6 +431,19 @@ export class CalendarModule {
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -341,7 +455,6 @@ export class CalendarModule {
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

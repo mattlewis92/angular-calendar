@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -44,23 +95,29 @@
 
 
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
   >
   CalendarMonthViewBeforeRenderEvent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -71,7 +128,7 @@
 
 
 
-        <section>
+        <section data-compodoc="block-index">
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
                 <tbody>
@@ -110,7 +167,7 @@
 
 
 
-            <section>
+            <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
@@ -215,7 +272,7 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Component,
   OnChanges,
@@ -226,8 +283,8 @@
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
+  inject,
 } from &#x27;@angular/core&#x27;;
 import {
   CalendarEvent,
@@ -245,6 +302,14 @@ import { CalendarUtils } from &#x27;../../common/calendar-utils/calendar-utils.p
 import { validateEvents } from &#x27;../../common/util/util&#x27;;
 import { DateAdapter } from &#x27;../../../date-adapters/date-adapter&#x27;;
 import { PlacementArray } from &#x27;positioning&#x27;;
+import { CalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view-header/calendar-month-view-header.component&#x27;;
+import { CalendarMonthCellComponent } from &#x27;./calendar-month-cell/calendar-month-cell.component&#x27;;
+import { DroppableDirective } from &#x27;angular-draggable-droppable&#x27;;
+import { NgClass, NgStyle, SlicePipe } from &#x27;@angular/common&#x27;;
+import { ClickDirective } from &#x27;../../common/click/click.directive&#x27;;
+import { KeydownEnterDirective } from &#x27;../../common/keydown-enter/keydown-enter.directive&#x27;;
+import { CalendarOpenDayEventsComponent } from &#x27;./calendar-open-day-events/calendar-open-day-events.component&#x27;;
+import { CalendarA11yPipe } from &#x27;../../common/calendar-a11y/calendar-a11y.pipe&#x27;;
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -254,7 +319,7 @@ export interface CalendarMonthViewBeforeRenderEvent {
 
 export interface CalendarMonthViewEventTimesChangedEvent&lt;
   EventMetaType &#x3D; any,
-  DayMetaType &#x3D; any
+  DayMetaType &#x3D; any,
 &gt; extends CalendarEventTimesChangedEvent&lt;EventMetaType&gt; {
   day: MonthViewDay&lt;DayMetaType&gt;;
 }
@@ -278,85 +343,97 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
         [locale]&#x3D;&quot;locale&quot;
         (columnHeaderClicked)&#x3D;&quot;columnHeaderClicked.emit($event)&quot;
         [customTemplate]&#x3D;&quot;headerTemplate&quot;
-      &gt;
-      &lt;/mwl-calendar-month-view-header&gt;
+      /&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
-        &lt;div
-          *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackBy: trackByRowOffset&quot;
-        &gt;
-          &lt;div role&#x3D;&quot;row&quot; class&#x3D;&quot;cal-cell-row&quot;&gt;
-            &lt;mwl-calendar-month-cell
-              role&#x3D;&quot;gridcell&quot;
-              *ngFor&#x3D;&quot;
-                let day of view.days
-                  | slice : rowIndex : rowIndex + view.totalDaysVisibleInWeek;
-                trackBy: trackByDate
-              &quot;
-              [ngClass]&#x3D;&quot;day?.cssClass&quot;
-              [day]&#x3D;&quot;day&quot;
-              [openDay]&#x3D;&quot;openDay&quot;
+        @for (rowIndex of view.rowOffsets; track rowIndex) {
+          &lt;div&gt;
+            &lt;div role&#x3D;&quot;row&quot; class&#x3D;&quot;cal-cell-row&quot;&gt;
+              @for (
+                day of view.days
+                  | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;
+                track day.date.toISOString()
+              ) {
+                &lt;mwl-calendar-month-cell
+                  role&#x3D;&quot;gridcell&quot;
+                  [ngClass]&#x3D;&quot;day?.cssClass&quot;
+                  [day]&#x3D;&quot;day&quot;
+                  [openDay]&#x3D;&quot;openDay&quot;
+                  [locale]&#x3D;&quot;locale&quot;
+                  [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+                  [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+                  [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+                  [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
+                  [customTemplate]&#x3D;&quot;cellTemplate&quot;
+                  [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
+                  (mwlClick)&#x3D;&quot;
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  &quot;
+                  [clickListenerDisabled]&#x3D;&quot;!dayClicked.observed&quot;
+                  (mwlKeydownEnter)&#x3D;&quot;
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  &quot;
+                  (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
+                  (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
+                  mwlDroppable
+                  dragOverClass&#x3D;&quot;cal-drag-over&quot;
+                  (drop)&#x3D;&quot;
+                    eventDropped(
+                      day,
+                      $event.dropData.event,
+                      $event.dropData.draggedFrom
+                    )
+                  &quot;
+                  (eventClicked)&#x3D;&quot;
+                    eventClicked.emit({
+                      event: $event.event,
+                      sourceEvent: $event.sourceEvent,
+                    })
+                  &quot;
+                  [attr.tabindex]&#x3D;&quot;{} | calendarA11y: &#x27;monthCellTabIndex&#x27;&quot;
+                /&gt;
+              }
+            &lt;/div&gt;
+            &lt;mwl-calendar-open-day-events
               [locale]&#x3D;&quot;locale&quot;
-              [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
-              [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
-              [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
-              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
-              [customTemplate]&#x3D;&quot;cellTemplate&quot;
-              [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
-              (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day, sourceEvent: $event })&quot;
-              [clickListenerDisabled]&#x3D;&quot;dayClicked.observers.length &#x3D;&#x3D;&#x3D; 0&quot;
-              (mwlKeydownEnter)&#x3D;&quot;
-                dayClicked.emit({ day: day, sourceEvent: $event })
+              [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
+              [events]&#x3D;&quot;openDay?.events&quot;
+              [date]&#x3D;&quot;openDay?.date&quot;
+              [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
+              [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
+              [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
+              (eventClicked)&#x3D;&quot;
+                eventClicked.emit({
+                  event: $event.event,
+                  sourceEvent: $event.sourceEvent,
+                })
               &quot;
-              (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
-              (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
               mwlDroppable
               dragOverClass&#x3D;&quot;cal-drag-over&quot;
               (drop)&#x3D;&quot;
                 eventDropped(
-                  day,
+                  openDay,
                   $event.dropData.event,
                   $event.dropData.draggedFrom
                 )
               &quot;
-              (eventClicked)&#x3D;&quot;
-                eventClicked.emit({
-                  event: $event.event,
-                  sourceEvent: $event.sourceEvent
-                })
-              &quot;
-              [attr.tabindex]&#x3D;&quot;{} | calendarA11y : &#x27;monthCellTabIndex&#x27;&quot;
-            &gt;
-            &lt;/mwl-calendar-month-cell&gt;
+            /&gt;
           &lt;/div&gt;
-          &lt;mwl-calendar-open-day-events
-            [locale]&#x3D;&quot;locale&quot;
-            [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
-            [events]&#x3D;&quot;openDay?.events&quot;
-            [date]&#x3D;&quot;openDay?.date&quot;
-            [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
-            [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
-            [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-            (eventClicked)&#x3D;&quot;
-              eventClicked.emit({
-                event: $event.event,
-                sourceEvent: $event.sourceEvent
-              })
-            &quot;
-            mwlDroppable
-            dragOverClass&#x3D;&quot;cal-drag-over&quot;
-            (drop)&#x3D;&quot;
-              eventDropped(
-                openDay,
-                $event.dropData.event,
-                $event.dropData.draggedFrom
-              )
-            &quot;
-          &gt;
-          &lt;/mwl-calendar-open-day-events&gt;
-        &lt;/div&gt;
+        }
       &lt;/div&gt;
     &lt;/div&gt;
   &#x60;,
+  imports: [
+    CalendarMonthViewHeaderComponent,
+    CalendarMonthCellComponent,
+    DroppableDirective,
+    NgClass,
+    NgStyle,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarOpenDayEventsComponent,
+    SlicePipe,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy
@@ -395,7 +472,7 @@ export class CalendarMonthViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string &#x3D; inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip
@@ -528,28 +605,17 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter
-  ) {
-    this.locale &#x3D; locale;
-  }
+  protected cdr &#x3D; inject(ChangeDetectorRef);
 
   /**
    * @hidden
    */
-  trackByRowOffset &#x3D; (index: number, offset: number) &#x3D;&gt;
-    this.view.days
-      .slice(offset, this.view.totalDaysVisibleInWeek)
-      .map((day) &#x3D;&gt; day.date.toISOString())
-      .join(&#x27;-&#x27;);
+  protected utils &#x3D; inject(CalendarUtils);
 
   /**
    * @hidden
    */
-  trackByDate &#x3D; (index: number, day: MonthViewDay) &#x3D;&gt; day.date.toISOString();
+  protected dateAdapter &#x3D; inject(DateAdapter);
 
   /**
    * @hidden
@@ -631,7 +697,7 @@ export class CalendarMonthViewComponent
   eventDropped(
     droppedOn: MonthViewDay,
     event: CalendarEvent,
-    draggedFrom?: MonthViewDay
+    draggedFrom?: MonthViewDay,
   ): void {
     if (droppedOn !&#x3D;&#x3D; draggedFrom) {
       const year: number &#x3D; this.dateAdapter.getYear(droppedOn.date);
@@ -640,15 +706,15 @@ export class CalendarMonthViewComponent
       const newStart: Date &#x3D; this.dateAdapter.setDate(
         this.dateAdapter.setMonth(
           this.dateAdapter.setYear(event.start, year),
-          month
+          month,
         ),
-        date
+        date,
       );
       let newEnd: Date;
       if (event.end) {
         const secondsDiff: number &#x3D; this.dateAdapter.differenceInSeconds(
           newStart,
-          event.start
+          event.start,
         );
         newEnd &#x3D; this.dateAdapter.addSeconds(event.end, secondsDiff);
       }
@@ -685,7 +751,7 @@ export class CalendarMonthViewComponent
     if (this.activeDayIsOpen &#x3D;&#x3D;&#x3D; true) {
       const activeDay &#x3D; this.activeDay || this.viewDate;
       this.openDay &#x3D; this.view.days.find((day) &#x3D;&gt;
-        this.dateAdapter.isSameDay(day.date, activeDay)
+        this.dateAdapter.isSameDay(day.date, activeDay),
       );
       const index: number &#x3D; this.view.days.indexOf(this.openDay);
       this.openRowIndex &#x3D;
@@ -755,6 +821,19 @@ export class CalendarMonthViewComponent
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -766,7 +845,6 @@ export class CalendarMonthViewComponent
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">angular-calendar documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-calendar documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -35,26 +86,29 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   CalendarMonthViewComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -67,7 +121,7 @@
     </p>
     <p class="comment">
         <p>Shows all events on a given month. Example usage:</p>
-<div><pre class="line-numbers"><code class="language-typescript">&lt;mwl-calendar-month-view
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&lt;mwl-calendar-month-view
  [viewDate]=&quot;viewDate&quot;
  [events]=&quot;events&quot;&gt;
 &lt;/mwl-calendar-month-view&gt;</code></pre></div>
@@ -78,16 +132,17 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                <code>OnChanges</code>
+                <code>OnInit</code>
+                <code>OnDestroy</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
     <table class="table table-sm table-hover metadata">
         <tbody>
+
 
 
 
@@ -105,6 +160,23 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CalendarMonthViewHeaderComponent</code>
+                            <code>CalendarMonthCellComponent</code>
+                            <code>DroppableDirective</code>
+                            <code>NgClass</code>
+                            <code>NgStyle</code>
+                            <code>ClickDirective</code>
+                            <code>KeydownEnterDirective</code>
+                            <code>CalendarOpenDayEventsComponent</code>
+                            <code>SlicePipe</code>
+                            <code>CalendarA11yPipe</code>
+                </td>
+            </tr>
+
+
 
             <tr>
                 <td class="col-md-3">template</td>
@@ -114,82 +186,82 @@
     [locale]&#x3D;&quot;locale&quot;
     (columnHeaderClicked)&#x3D;&quot;columnHeaderClicked.emit($event)&quot;
     [customTemplate]&#x3D;&quot;headerTemplate&quot;
-  &gt;
-  &lt;/mwl-calendar-month-view-header&gt;
+  /&gt;
   &lt;div class&#x3D;&quot;cal-days&quot;&gt;
-    &lt;div
-      *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackBy: trackByRowOffset&quot;
-    &gt;
-      &lt;div role&#x3D;&quot;row&quot; class&#x3D;&quot;cal-cell-row&quot;&gt;
-        &lt;mwl-calendar-month-cell
-          role&#x3D;&quot;gridcell&quot;
-          *ngFor&#x3D;&quot;
-            let day of view.days
-              | slice : rowIndex : rowIndex + view.totalDaysVisibleInWeek;
-            trackBy: trackByDate
-          &quot;
-          [ngClass]&#x3D;&quot;day?.cssClass&quot;
-          [day]&#x3D;&quot;day&quot;
-          [openDay]&#x3D;&quot;openDay&quot;
+    @for (rowIndex of view.rowOffsets; track rowIndex) {
+      &lt;div&gt;
+        &lt;div role&#x3D;&quot;row&quot; class&#x3D;&quot;cal-cell-row&quot;&gt;
+          @for (
+            day of view.days
+              | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;
+            track day.date.toISOString()
+          ) {
+            &lt;mwl-calendar-month-cell
+              role&#x3D;&quot;gridcell&quot;
+              [ngClass]&#x3D;&quot;day?.cssClass&quot;
+              [day]&#x3D;&quot;day&quot;
+              [openDay]&#x3D;&quot;openDay&quot;
+              [locale]&#x3D;&quot;locale&quot;
+              [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+              [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+              [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
+              [customTemplate]&#x3D;&quot;cellTemplate&quot;
+              [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
+              (mwlClick)&#x3D;&quot;
+                dayClicked.emit({ day: day, sourceEvent: $event })
+              &quot;
+              [clickListenerDisabled]&#x3D;&quot;!dayClicked.observed&quot;
+              (mwlKeydownEnter)&#x3D;&quot;
+                dayClicked.emit({ day: day, sourceEvent: $event })
+              &quot;
+              (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
+              (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
+              mwlDroppable
+              dragOverClass&#x3D;&quot;cal-drag-over&quot;
+              (drop)&#x3D;&quot;
+                eventDropped(
+                  day,
+                  $event.dropData.event,
+                  $event.dropData.draggedFrom
+                )
+              &quot;
+              (eventClicked)&#x3D;&quot;
+                eventClicked.emit({
+                  event: $event.event,
+                  sourceEvent: $event.sourceEvent,
+                })
+              &quot;
+              [attr.tabindex]&#x3D;&quot;{} | calendarA11y: &#x27;monthCellTabIndex&#x27;&quot;
+            /&gt;
+          }
+        &lt;/div&gt;
+        &lt;mwl-calendar-open-day-events
           [locale]&#x3D;&quot;locale&quot;
-          [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
-          [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
-          [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
-          [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
-          [customTemplate]&#x3D;&quot;cellTemplate&quot;
-          [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
-          (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day, sourceEvent: $event })&quot;
-          [clickListenerDisabled]&#x3D;&quot;dayClicked.observers.length &#x3D;&#x3D;&#x3D; 0&quot;
-          (mwlKeydownEnter)&#x3D;&quot;
-            dayClicked.emit({ day: day, sourceEvent: $event })
+          [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
+          [events]&#x3D;&quot;openDay?.events&quot;
+          [date]&#x3D;&quot;openDay?.date&quot;
+          [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
+          [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
+          [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
+          (eventClicked)&#x3D;&quot;
+            eventClicked.emit({
+              event: $event.event,
+              sourceEvent: $event.sourceEvent,
+            })
           &quot;
-          (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
-          (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
           mwlDroppable
           dragOverClass&#x3D;&quot;cal-drag-over&quot;
           (drop)&#x3D;&quot;
             eventDropped(
-              day,
+              openDay,
               $event.dropData.event,
               $event.dropData.draggedFrom
             )
           &quot;
-          (eventClicked)&#x3D;&quot;
-            eventClicked.emit({
-              event: $event.event,
-              sourceEvent: $event.sourceEvent
-            })
-          &quot;
-          [attr.tabindex]&#x3D;&quot;{} | calendarA11y : &#x27;monthCellTabIndex&#x27;&quot;
-        &gt;
-        &lt;/mwl-calendar-month-cell&gt;
+        /&gt;
       &lt;/div&gt;
-      &lt;mwl-calendar-open-day-events
-        [locale]&#x3D;&quot;locale&quot;
-        [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
-        [events]&#x3D;&quot;openDay?.events&quot;
-        [date]&#x3D;&quot;openDay?.date&quot;
-        [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
-        [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
-        [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-        (eventClicked)&#x3D;&quot;
-          eventClicked.emit({
-            event: $event.event,
-            sourceEvent: $event.sourceEvent
-          })
-        &quot;
-        mwlDroppable
-        dragOverClass&#x3D;&quot;cal-drag-over&quot;
-        (drop)&#x3D;&quot;
-          eventDropped(
-            openDay,
-            $event.dropData.event,
-            $event.dropData.draggedFrom
-          )
-        &quot;
-      &gt;
-      &lt;/mwl-calendar-open-day-events&gt;
-    &lt;/div&gt;
+    }
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre></td>
@@ -207,7 +279,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -313,7 +385,7 @@
 </section>
 
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -331,7 +403,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:190</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -363,7 +435,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:165</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:185</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -390,7 +462,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:225</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:245</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -417,7 +489,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:240</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="260" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:260</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -449,7 +521,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:155</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:175</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -477,7 +549,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:235</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:255</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -509,7 +581,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:160</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:180</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -536,7 +608,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:240</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -561,9 +633,14 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
 
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(LOCALE_ID)</code>
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:180</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:200</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -590,7 +667,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:230</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="250" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:250</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -617,7 +694,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:175</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:195</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -649,7 +726,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:195</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:215</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -681,7 +758,7 @@ The schema is available here: <a href="https://github.com/mattlewis92/calendar-u
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:221</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -714,7 +791,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:185</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:205</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -741,7 +818,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:190</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:210</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -768,7 +845,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:149</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:169</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -795,7 +872,7 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:245</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="265" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:265</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -822,14 +899,14 @@ will be displayed immediately.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:235</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>The start number of the week.
 If using the moment date adapter this option won&#39;t do anything and you&#39;ll need to set it globally like so:</p>
-<div><pre class="line-numbers"><code class="language-none">moment.updateLocale(&#39;en&#39;, {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">moment.updateLocale(&#39;en&#39;, {
   week: {
     dow: 1, // set start of week to monday instead
     doy: 0,
@@ -840,7 +917,7 @@ If using the moment date adapter this option won&#39;t do anything and you&#39;l
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -852,13 +929,13 @@ If using the moment date adapter this option won&#39;t do anything and you&#39;l
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:251</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:271</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -880,13 +957,13 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:273</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="293" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:293</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -907,13 +984,13 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:257</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:277</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -934,13 +1011,13 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="265" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:265</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="285" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:285</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -961,13 +1038,13 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="282" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:282</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">projects/angular-calendar/src/modules/month/calendar-month-view/calendar-month-view.component.ts:302</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -986,7 +1063,7 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Component,
   OnChanges,
@@ -997,8 +1074,8 @@ If you add the <code>cssClass</code> property to a day in the body it will add t
   OnInit,
   OnDestroy,
   LOCALE_ID,
-  Inject,
   TemplateRef,
+  inject,
 } from &#x27;@angular/core&#x27;;
 import {
   CalendarEvent,
@@ -1016,6 +1093,14 @@ import { CalendarUtils } from &#x27;../../common/calendar-utils/calendar-utils.p
 import { validateEvents } from &#x27;../../common/util/util&#x27;;
 import { DateAdapter } from &#x27;../../../date-adapters/date-adapter&#x27;;
 import { PlacementArray } from &#x27;positioning&#x27;;
+import { CalendarMonthViewHeaderComponent } from &#x27;./calendar-month-view-header/calendar-month-view-header.component&#x27;;
+import { CalendarMonthCellComponent } from &#x27;./calendar-month-cell/calendar-month-cell.component&#x27;;
+import { DroppableDirective } from &#x27;angular-draggable-droppable&#x27;;
+import { NgClass, NgStyle, SlicePipe } from &#x27;@angular/common&#x27;;
+import { ClickDirective } from &#x27;../../common/click/click.directive&#x27;;
+import { KeydownEnterDirective } from &#x27;../../common/keydown-enter/keydown-enter.directive&#x27;;
+import { CalendarOpenDayEventsComponent } from &#x27;./calendar-open-day-events/calendar-open-day-events.component&#x27;;
+import { CalendarA11yPipe } from &#x27;../../common/calendar-a11y/calendar-a11y.pipe&#x27;;
 
 export interface CalendarMonthViewBeforeRenderEvent {
   header: WeekDay[];
@@ -1025,7 +1110,7 @@ export interface CalendarMonthViewBeforeRenderEvent {
 
 export interface CalendarMonthViewEventTimesChangedEvent&lt;
   EventMetaType &#x3D; any,
-  DayMetaType &#x3D; any
+  DayMetaType &#x3D; any,
 &gt; extends CalendarEventTimesChangedEvent&lt;EventMetaType&gt; {
   day: MonthViewDay&lt;DayMetaType&gt;;
 }
@@ -1049,85 +1134,97 @@ export interface CalendarMonthViewEventTimesChangedEvent&lt;
         [locale]&#x3D;&quot;locale&quot;
         (columnHeaderClicked)&#x3D;&quot;columnHeaderClicked.emit($event)&quot;
         [customTemplate]&#x3D;&quot;headerTemplate&quot;
-      &gt;
-      &lt;/mwl-calendar-month-view-header&gt;
+      /&gt;
       &lt;div class&#x3D;&quot;cal-days&quot;&gt;
-        &lt;div
-          *ngFor&#x3D;&quot;let rowIndex of view.rowOffsets; trackBy: trackByRowOffset&quot;
-        &gt;
-          &lt;div role&#x3D;&quot;row&quot; class&#x3D;&quot;cal-cell-row&quot;&gt;
-            &lt;mwl-calendar-month-cell
-              role&#x3D;&quot;gridcell&quot;
-              *ngFor&#x3D;&quot;
-                let day of view.days
-                  | slice : rowIndex : rowIndex + view.totalDaysVisibleInWeek;
-                trackBy: trackByDate
-              &quot;
-              [ngClass]&#x3D;&quot;day?.cssClass&quot;
-              [day]&#x3D;&quot;day&quot;
-              [openDay]&#x3D;&quot;openDay&quot;
+        @for (rowIndex of view.rowOffsets; track rowIndex) {
+          &lt;div&gt;
+            &lt;div role&#x3D;&quot;row&quot; class&#x3D;&quot;cal-cell-row&quot;&gt;
+              @for (
+                day of view.days
+                  | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;
+                track day.date.toISOString()
+              ) {
+                &lt;mwl-calendar-month-cell
+                  role&#x3D;&quot;gridcell&quot;
+                  [ngClass]&#x3D;&quot;day?.cssClass&quot;
+                  [day]&#x3D;&quot;day&quot;
+                  [openDay]&#x3D;&quot;openDay&quot;
+                  [locale]&#x3D;&quot;locale&quot;
+                  [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
+                  [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
+                  [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
+                  [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
+                  [customTemplate]&#x3D;&quot;cellTemplate&quot;
+                  [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
+                  (mwlClick)&#x3D;&quot;
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  &quot;
+                  [clickListenerDisabled]&#x3D;&quot;!dayClicked.observed&quot;
+                  (mwlKeydownEnter)&#x3D;&quot;
+                    dayClicked.emit({ day: day, sourceEvent: $event })
+                  &quot;
+                  (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
+                  (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
+                  mwlDroppable
+                  dragOverClass&#x3D;&quot;cal-drag-over&quot;
+                  (drop)&#x3D;&quot;
+                    eventDropped(
+                      day,
+                      $event.dropData.event,
+                      $event.dropData.draggedFrom
+                    )
+                  &quot;
+                  (eventClicked)&#x3D;&quot;
+                    eventClicked.emit({
+                      event: $event.event,
+                      sourceEvent: $event.sourceEvent,
+                    })
+                  &quot;
+                  [attr.tabindex]&#x3D;&quot;{} | calendarA11y: &#x27;monthCellTabIndex&#x27;&quot;
+                /&gt;
+              }
+            &lt;/div&gt;
+            &lt;mwl-calendar-open-day-events
               [locale]&#x3D;&quot;locale&quot;
-              [tooltipPlacement]&#x3D;&quot;tooltipPlacement&quot;
-              [tooltipAppendToBody]&#x3D;&quot;tooltipAppendToBody&quot;
-              [tooltipTemplate]&#x3D;&quot;tooltipTemplate&quot;
-              [tooltipDelay]&#x3D;&quot;tooltipDelay&quot;
-              [customTemplate]&#x3D;&quot;cellTemplate&quot;
-              [ngStyle]&#x3D;&quot;{ backgroundColor: day.backgroundColor }&quot;
-              (mwlClick)&#x3D;&quot;dayClicked.emit({ day: day, sourceEvent: $event })&quot;
-              [clickListenerDisabled]&#x3D;&quot;dayClicked.observers.length &#x3D;&#x3D;&#x3D; 0&quot;
-              (mwlKeydownEnter)&#x3D;&quot;
-                dayClicked.emit({ day: day, sourceEvent: $event })
+              [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
+              [events]&#x3D;&quot;openDay?.events&quot;
+              [date]&#x3D;&quot;openDay?.date&quot;
+              [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
+              [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
+              [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
+              (eventClicked)&#x3D;&quot;
+                eventClicked.emit({
+                  event: $event.event,
+                  sourceEvent: $event.sourceEvent,
+                })
               &quot;
-              (highlightDay)&#x3D;&quot;toggleDayHighlight($event.event, true)&quot;
-              (unhighlightDay)&#x3D;&quot;toggleDayHighlight($event.event, false)&quot;
               mwlDroppable
               dragOverClass&#x3D;&quot;cal-drag-over&quot;
               (drop)&#x3D;&quot;
                 eventDropped(
-                  day,
+                  openDay,
                   $event.dropData.event,
                   $event.dropData.draggedFrom
                 )
               &quot;
-              (eventClicked)&#x3D;&quot;
-                eventClicked.emit({
-                  event: $event.event,
-                  sourceEvent: $event.sourceEvent
-                })
-              &quot;
-              [attr.tabindex]&#x3D;&quot;{} | calendarA11y : &#x27;monthCellTabIndex&#x27;&quot;
-            &gt;
-            &lt;/mwl-calendar-month-cell&gt;
+            /&gt;
           &lt;/div&gt;
-          &lt;mwl-calendar-open-day-events
-            [locale]&#x3D;&quot;locale&quot;
-            [isOpen]&#x3D;&quot;openRowIndex &#x3D;&#x3D;&#x3D; rowIndex&quot;
-            [events]&#x3D;&quot;openDay?.events&quot;
-            [date]&#x3D;&quot;openDay?.date&quot;
-            [customTemplate]&#x3D;&quot;openDayEventsTemplate&quot;
-            [eventTitleTemplate]&#x3D;&quot;eventTitleTemplate&quot;
-            [eventActionsTemplate]&#x3D;&quot;eventActionsTemplate&quot;
-            (eventClicked)&#x3D;&quot;
-              eventClicked.emit({
-                event: $event.event,
-                sourceEvent: $event.sourceEvent
-              })
-            &quot;
-            mwlDroppable
-            dragOverClass&#x3D;&quot;cal-drag-over&quot;
-            (drop)&#x3D;&quot;
-              eventDropped(
-                openDay,
-                $event.dropData.event,
-                $event.dropData.draggedFrom
-              )
-            &quot;
-          &gt;
-          &lt;/mwl-calendar-open-day-events&gt;
-        &lt;/div&gt;
+        }
       &lt;/div&gt;
     &lt;/div&gt;
   &#x60;,
+  imports: [
+    CalendarMonthViewHeaderComponent,
+    CalendarMonthCellComponent,
+    DroppableDirective,
+    NgClass,
+    NgStyle,
+    ClickDirective,
+    KeydownEnterDirective,
+    CalendarOpenDayEventsComponent,
+    SlicePipe,
+    CalendarA11yPipe,
+  ],
 })
 export class CalendarMonthViewComponent
   implements OnChanges, OnInit, OnDestroy
@@ -1166,7 +1263,7 @@ export class CalendarMonthViewComponent
   /**
    * The locale used to format dates
    */
-  @Input() locale: string;
+  @Input() locale: string &#x3D; inject(LOCALE_ID);
 
   /**
    * The placement of the event tooltip
@@ -1299,28 +1396,17 @@ export class CalendarMonthViewComponent
   /**
    * @hidden
    */
-  constructor(
-    protected cdr: ChangeDetectorRef,
-    protected utils: CalendarUtils,
-    @Inject(LOCALE_ID) locale: string,
-    protected dateAdapter: DateAdapter
-  ) {
-    this.locale &#x3D; locale;
-  }
+  protected cdr &#x3D; inject(ChangeDetectorRef);
 
   /**
    * @hidden
    */
-  trackByRowOffset &#x3D; (index: number, offset: number) &#x3D;&gt;
-    this.view.days
-      .slice(offset, this.view.totalDaysVisibleInWeek)
-      .map((day) &#x3D;&gt; day.date.toISOString())
-      .join(&#x27;-&#x27;);
+  protected utils &#x3D; inject(CalendarUtils);
 
   /**
    * @hidden
    */
-  trackByDate &#x3D; (index: number, day: MonthViewDay) &#x3D;&gt; day.date.toISOString();
+  protected dateAdapter &#x3D; inject(DateAdapter);
 
   /**
    * @hidden
@@ -1402,7 +1488,7 @@ export class CalendarMonthViewComponent
   eventDropped(
     droppedOn: MonthViewDay,
     event: CalendarEvent,
-    draggedFrom?: MonthViewDay
+    draggedFrom?: MonthViewDay,
   ): void {
     if (droppedOn !&#x3D;&#x3D; draggedFrom) {
       const year: number &#x3D; this.dateAdapter.getYear(droppedOn.date);
@@ -1411,15 +1497,15 @@ export class CalendarMonthViewComponent
       const newStart: Date &#x3D; this.dateAdapter.setDate(
         this.dateAdapter.setMonth(
           this.dateAdapter.setYear(event.start, year),
-          month
+          month,
         ),
-        date
+        date,
       );
       let newEnd: Date;
       if (event.end) {
         const secondsDiff: number &#x3D; this.dateAdapter.differenceInSeconds(
           newStart,
-          event.start
+          event.start,
         );
         newEnd &#x3D; this.dateAdapter.addSeconds(event.end, secondsDiff);
       }
@@ -1456,7 +1542,7 @@ export class CalendarMonthViewComponent
     if (this.activeDayIsOpen &#x3D;&#x3D;&#x3D; true) {
       const activeDay &#x3D; this.activeDay || this.viewDate;
       this.openDay &#x3D; this.view.days.find((day) &#x3D;&gt;
-        this.dateAdapter.isSameDay(day.date, activeDay)
+        this.dateAdapter.isSameDay(day.date, activeDay),
       );
       const index: number &#x3D; this.view.days.indexOf(this.openDay);
       this.openRowIndex &#x3D;
@@ -1490,7 +1576,7 @@ export class CalendarMonthViewComponent
 
 
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1515,7 +1601,7 @@ export class CalendarMonthViewComponent
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view" role="grid">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    (columnHeaderClicked)="columnHeaderClicked.emit($event)"    [customTemplate]="headerTemplate"  >  </mwl-calendar-month-view-header>  <div class="cal-days">    <div      *ngFor="let rowIndex of view.rowOffsets; trackBy: trackByRowOffset"    >      <div role="row" class="cal-cell-row">        <mwl-calendar-month-cell          role="gridcell"          *ngFor="            let day of view.days              | slice : rowIndex : rowIndex + view.totalDaysVisibleInWeek;            trackBy: trackByDate          "          [ngClass]="day?.cssClass"          [day]="day"          [openDay]="openDay"          [locale]="locale"          [tooltipPlacement]="tooltipPlacement"          [tooltipAppendToBody]="tooltipAppendToBody"          [tooltipTemplate]="tooltipTemplate"          [tooltipDelay]="tooltipDelay"          [customTemplate]="cellTemplate"          [ngStyle]="{ backgroundColor: day.backgroundColor }"          (mwlClick)="dayClicked.emit({ day: day, sourceEvent: $event })"          [clickListenerDisabled]="dayClicked.observers.length === 0"          (mwlKeydownEnter)="            dayClicked.emit({ day: day, sourceEvent: $event })          "          (highlightDay)="toggleDayHighlight($event.event, true)"          (unhighlightDay)="toggleDayHighlight($event.event, false)"          mwlDroppable          dragOverClass="cal-drag-over"          (drop)="            eventDropped(              day,              $event.dropData.event,              $event.dropData.draggedFrom            )          "          (eventClicked)="            eventClicked.emit({              event: $event.event,              sourceEvent: $event.sourceEvent            })          "          [attr.tabindex]="{} | calendarA11y : \'monthCellTabIndex\'"        >        </mwl-calendar-month-cell>      </div>      <mwl-calendar-open-day-events        [locale]="locale"        [isOpen]="openRowIndex === rowIndex"        [events]="openDay?.events"        [date]="openDay?.date"        [customTemplate]="openDayEventsTemplate"        [eventTitleTemplate]="eventTitleTemplate"        [eventActionsTemplate]="eventActionsTemplate"        (eventClicked)="          eventClicked.emit({            event: $event.event,            sourceEvent: $event.sourceEvent          })        "        mwlDroppable        dragOverClass="cal-drag-over"        (drop)="          eventDropped(            openDay,            $event.dropData.event,            $event.dropData.draggedFrom          )        "      >      </mwl-calendar-open-day-events>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="cal-month-view" role="grid">  <mwl-calendar-month-view-header    [days]="columnHeaders"    [locale]="locale"    (columnHeaderClicked)="columnHeaderClicked.emit($event)"    [customTemplate]="headerTemplate"  />  <div class="cal-days">    @for (rowIndex of view.rowOffsets; track rowIndex) {      <div>        <div role="row" class="cal-cell-row">          @for (            day of view.days              | slice: rowIndex : rowIndex + view.totalDaysVisibleInWeek;            track day.date.toISOString()          ) {            <mwl-calendar-month-cell              role="gridcell"              [ngClass]="day?.cssClass"              [day]="day"              [openDay]="openDay"              [locale]="locale"              [tooltipPlacement]="tooltipPlacement"              [tooltipAppendToBody]="tooltipAppendToBody"              [tooltipTemplate]="tooltipTemplate"              [tooltipDelay]="tooltipDelay"              [customTemplate]="cellTemplate"              [ngStyle]="{ backgroundColor: day.backgroundColor }"              (mwlClick)="                dayClicked.emit({ day: day, sourceEvent: $event })              "              [clickListenerDisabled]="!dayClicked.observed"              (mwlKeydownEnter)="                dayClicked.emit({ day: day, sourceEvent: $event })              "              (highlightDay)="toggleDayHighlight($event.event, true)"              (unhighlightDay)="toggleDayHighlight($event.event, false)"              mwlDroppable              dragOverClass="cal-drag-over"              (drop)="                eventDropped(                  day,                  $event.dropData.event,                  $event.dropData.draggedFrom                )              "              (eventClicked)="                eventClicked.emit({                  event: $event.event,                  sourceEvent: $event.sourceEvent,                })              "              [attr.tabindex]="{} | calendarA11y: \'monthCellTabIndex\'"            />          }        </div>        <mwl-calendar-open-day-events          [locale]="locale"          [isOpen]="openRowIndex === rowIndex"          [events]="openDay?.events"          [date]="openDay?.date"          [customTemplate]="openDayEventsTemplate"          [eventTitleTemplate]="eventTitleTemplate"          [eventActionsTemplate]="eventActionsTemplate"          (eventClicked)="            eventClicked.emit({              event: $event.event,              sourceEvent: $event.sourceEvent,            })          "          mwlDroppable          dragOverClass="cal-drag-over"          (drop)="            eventDropped(              openDay,              $event.dropData.event,              $event.dropData.draggedFrom            )          "        />      </div>    }  </div></div></div>'
     var COMPONENTS = [{'name': 'CalendarDayViewComponent', 'selector': 'mwl-calendar-day-view'},{'name': 'CalendarMonthViewComponent', 'selector': 'mwl-calendar-month-view'},{'name': 'CalendarWeekViewComponent', 'selector': 'mwl-calendar-week-view'}];
     var DIRECTIVES = [{'name': 'CalendarNextViewDirective', 'selector': '[mwlCalendarNextView]'},{'name': 'CalendarPreviousViewDirective', 'selector': '[mwlCalendarPreviousView]'},{'name': 'CalendarTodayDirective', 'selector': '[mwlCalendarToday]'}];
     var ACTUAL_COMPONENT = {'name': 'CalendarMonthViewComponent'};
@@ -1568,6 +1654,19 @@ export class CalendarMonthViewComponent
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -1579,7 +1678,6 @@ export class CalendarMonthViewComponent
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 
