@@ -18,8 +18,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)(zone.js@0.15.1))
       calendar-utils:
-        specifier: ^0.12.3
-        version: 0.12.3(date-fns@4.1.0)(moment@2.30.1)
+        specifier: ^0.12.4
+        version: 0.12.4(date-fns@4.1.0)(moment@2.30.1)
       date-fns:
         specifier: ^4.0.0
         version: 4.1.0
@@ -27,8 +27,8 @@ importers:
         specifier: ^2.0.0
         version: 2.30.1
       positioning:
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.0.1
+        version: 3.0.1
       tslib:
         specifier: ^2.4.1
         version: 2.8.1
@@ -3013,8 +3013,8 @@ packages:
     resolution: {integrity: sha512-A+Fezp4zxnit6FanDmv9EqXNAi3vt9DWp51/71UEhXukb7QUuvtv9344h91dyAxuTLoSYJFU299qzR3tzwPAhw==}
     engines: {node: '>=6'}
 
-  calendar-utils@0.12.3:
-    resolution: {integrity: sha512-RHXh5Ry35nulxVopaiEOUEsscOfwd1+jZtYCaE5XqXjfUz05POscnwaS5w3Za2bDWM2C8cLIRV4evJaWRf24/A==}
+  calendar-utils@0.12.4:
+    resolution: {integrity: sha512-OYhqJdeDRRVUdMYJMUrXtR7Go+80oEcA6VK4T3zjcUloQqcOVQKs/kp7j8Yw0HiLOcGwzF50WhLmzZoUNfkM7A==}
     peerDependencies:
       date-fns: ^4.0.0
       luxon: ^3.0.0
@@ -6084,8 +6084,8 @@ packages:
     resolution: {integrity: sha512-4peoBq4Wks0riS0z8741NVv+/8IiTvqnZAr8QGgtdifrtpdXbNw/FxRS1l6NFqm4EMzuS0EDqNNx4XGaz8cuyQ==}
     engines: {node: '>=18'}
 
-  positioning@3.0.0:
-    resolution: {integrity: sha512-Q6KQmbRdqPj7tE1VzVPHQhDGbjpSfxHjBnN17XDUziciqkcDe+9sHHhh5+3mhi52654G8ckhkoN0wsPyDHxCAA==}
+  positioning@3.0.1:
+    resolution: {integrity: sha512-cqg00fwFtEu14YwlLUuvFih5ztTd9RYUguJA55lWjeIGFQTpik7ca+TMU87YhAgwWjyjcGIG6l80eUh7X6uHog==}
 
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
@@ -11239,7 +11239,7 @@ snapshots:
 
   cachedir@2.3.0: {}
 
-  calendar-utils@0.12.3(date-fns@4.1.0)(moment@2.30.1):
+  calendar-utils@0.12.4(date-fns@4.1.0)(moment@2.30.1):
     optionalDependencies:
       date-fns: 4.1.0
       moment: 2.30.1
@@ -14693,7 +14693,7 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.1
 
-  positioning@3.0.0: {}
+  positioning@3.0.1: {}
 
   possible-typed-array-names@1.1.0: {}
 
