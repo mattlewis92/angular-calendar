@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.32.0](https://github.com/mattlewis92/angular-calendar/compare/v0.31.1...v0.32.0) (2025-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* date-fns v4 is now required to use this package
+* angular 20.2.0 or higher is now required to use this package
+* native Intl.PluralRules is now required to use this library, this should be available in all browsers supported by angular though
+* if extending any of the built in classes and you implement a constructor, you no longer need to call `super()` with any injectables
+* if extending the `CalendarWeekViewComponent` or `CalendarMonthViewComponent` components, or using custom templates, all track by helper functions have been removed in favor of `@for` and inlining the `track` expression inside the template
+
+Before:
+```
+<ng-template let-day="day" let-trackByEventId="trackByEventId">
+	<div *ngFor="let event of day.events; trackBy: trackByEventId">{{ event.title }}</div>
+</ng-template>
+```
+
+After:
+```
+<ng-template let-day="day">
+	@for (event of day.events; track event.id ?? event) {
+		<div>{{ event.title }}</div>
+    }
+</ng-template>
+```
+* the compiled .css is no longer auto prefixed. If using the angular CLI, it will automatically do this for you when you build your app
+* The angular-draggable-droppable and angular-resizable-element dependencies should now be installed as dependencies to use this package
+* angular 20 or higher is now required to use this package
+
+### Features
+
+* add standalone components support and fix NgModule installation in ng-add schematic ([#1783](https://github.com/mattlewis92/angular-calendar/issues/1783)) ([889319f](https://github.com/mattlewis92/angular-calendar/commit/889319f1fb825771ce338d8e5889255c8c2e1b13))
+* convert the library to standalone and deprecate the NgModules ([#1782](https://github.com/mattlewis92/angular-calendar/issues/1782)) ([fd64bfd](https://github.com/mattlewis92/angular-calendar/commit/fd64bfd29b962f24bda49110a536d7e37e6bb878))
+* migrate away from @angular/animations to css animations ([53db311](https://github.com/mattlewis92/angular-calendar/commit/53db3116ceab8c5140ce227faef33dda3b20fa7d)), closes [#1769](https://github.com/mattlewis92/angular-calendar/issues/1769) [#1770](https://github.com/mattlewis92/angular-calendar/issues/1770)
+* migrate repository to use inject() function instead of constructor based DI ([#1776](https://github.com/mattlewis92/angular-calendar/issues/1776)) ([5da56cd](https://github.com/mattlewis92/angular-calendar/commit/5da56cd9ed9d83a29a56995d9b268564a39e93aa))
+* migrate to Angular's new control flow syntax and inline trackBy functions ([#1774](https://github.com/mattlewis92/angular-calendar/issues/1774)) ([9613680](https://github.com/mattlewis92/angular-calendar/commit/961368042b56eed9b757e5d9c107d01c8f13fef3))
+
+
+### Bug Fixes
+
+* address sass deprecation warnings ([d15a1a3](https://github.com/mattlewis92/angular-calendar/commit/d15a1a3c2471d61ecfcd20680ab84c118fce7814)), closes [#1762](https://github.com/mattlewis92/angular-calendar/issues/1762) [#1763](https://github.com/mattlewis92/angular-calendar/issues/1763)
+* don't auto prefix compiled css ([9a2862c](https://github.com/mattlewis92/angular-calendar/commit/9a2862cd051cf2c783e8b2e4f926573437873efd))
+* move angular deps to peer dependencies ([02fe7ef](https://github.com/mattlewis92/angular-calendar/commit/02fe7ef32ba9eb00d51ccc0f254c77c6df5d0080)), closes [#1761](https://github.com/mattlewis92/angular-calendar/issues/1761) [#1547](https://github.com/mattlewis92/angular-calendar/issues/1547)
+* remove dependency on I18nPluralPipe and switch to Intl.PluralRules instead ([8c18a7c](https://github.com/mattlewis92/angular-calendar/commit/8c18a7ca0420cf243d609d0f8f1b0dda3df09cb1))
+
+
+### build
+
+* upgrade to angular 20 ([7b2ef0c](https://github.com/mattlewis92/angular-calendar/commit/7b2ef0c5e54f366e62cd04b6af939a10ffda133c))
+* upgrade to date-fns v4 ([fbebe1c](https://github.com/mattlewis92/angular-calendar/commit/fbebe1cbb5af9b0df67dcbd7fe483bf9f9b8a2af))
+
 ### [0.31.1](https://github.com/mattlewis92/angular-calendar/compare/v0.31.0...v0.31.1) (2024-04-19)
 
 
