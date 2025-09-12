@@ -1,6 +1,6 @@
 {
   "name": "angular-calendar",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "description": "A calendar component for angular 20.2+ that can display events on a month, week or day view",
   "funding": {
     "url": "https://github.com/sponsors/mattlewis92"
