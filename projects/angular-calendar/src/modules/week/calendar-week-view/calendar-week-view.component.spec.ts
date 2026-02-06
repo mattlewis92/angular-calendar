@@ -3500,4 +3500,25 @@ describe('calendarWeekView component', () => {
       expect(eventDropped).to.have.been.calledOnce;
     });
   });
+
+  it('should not produce duplicate track keys when daysInWeek spans a DST transition', () => {
+    const fixture: ComponentFixture<CalendarWeekViewComponent> =
+      TestBed.createComponent(CalendarWeekViewComponent);
+    fixture.componentInstance.viewDate = new Date('2024-01-01');
+    fixture.componentInstance.daysInWeek = 140;
+    fixture.componentInstance.events = [];
+    fixture.componentInstance.ngOnChanges({
+      daysInWeek: {},
+      events: {},
+      viewDate: {},
+    });
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelectorAll('.cal-header').length,
+    ).to.equal(140);
+    expect(
+      fixture.nativeElement.querySelectorAll('.cal-time-events .cal-day-column')
+        .length,
+    ).to.equal(140);
+  });
 });

@@ -112,7 +112,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
             <div class="cal-time-label-column">
               <ng-container *ngTemplateOutlet="allDayEventsLabelTemplate" />
             </div>
-            @for (day of days; track day.date.toISOString()) {
+            @for (day of days; track $index) {
               <div
                 class="cal-day-column"
                 mwlDroppable
@@ -242,14 +242,11 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           <div class="cal-time-label-column">
             @for (
               hour of view.hourColumns[0].hours;
-              track hour.segments[0].date.toISOString();
+              track $index;
               let odd = $odd
             ) {
               <div class="cal-hour" [class.cal-hour-odd]="odd">
-                @for (
-                  segment of hour.segments;
-                  track segment.date.toISOString()
-                ) {
+                @for (segment of hour.segments; track $index) {
                   <mwl-calendar-week-view-hour-segment
                     [style.height.px]="hourSegmentHeight"
                     [segment]="segment"
@@ -269,12 +266,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           [class.cal-resize-active]="timeEventResizes.size > 0"
           #dayColumns
         >
-          @for (
-            column of view.hourColumns;
-            track column.hours[0]
-              ? column.hours[0].segments[0].date.toISOString()
-              : column
-          ) {
+          @for (column of view.hourColumns; track $index) {
             <div class="cal-day-column">
               <mwl-calendar-week-view-current-time-marker
                 [columnDate]="column.date"
@@ -409,16 +401,9 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
                   </div>
                 }
               </div>
-              @for (
-                hour of column.hours;
-                track hour.segments[0].date.toISOString();
-                let odd = $odd
-              ) {
+              @for (hour of column.hours; track $index; let odd = $odd) {
                 <div class="cal-hour" [class.cal-hour-odd]="odd">
-                  @for (
-                    segment of hour.segments;
-                    track segment.date.toISOString()
-                  ) {
+                  @for (segment of hour.segments; track $index) {
                     <mwl-calendar-week-view-hour-segment
                       [style.height.px]="hourSegmentHeight"
                       [segment]="segment"
