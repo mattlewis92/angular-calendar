@@ -160,7 +160,7 @@
   },
   "dependencies": {
     "@scarf/scarf": "^1.1.1",
-    "calendar-utils": "^0.12.4",
+    "calendar-utils": "^0.12.5",
     "positioning": "^3.0.1",
     "tslib": "^2.4.1"
   },
