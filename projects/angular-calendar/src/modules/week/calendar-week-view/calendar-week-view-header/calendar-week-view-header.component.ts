@@ -23,7 +23,7 @@ import { CalendarDatePipe } from '../../../common/calendar-date/calendar-date.pi
       let-dragEnter="dragEnter"
     >
       <div class="cal-day-headers" role="row">
-        @for (day of days; track day.date.toISOString()) {
+        @for (day of days; track $index) {
           <div
             class="cal-header"
             [class.cal-past]="day.isPast"
