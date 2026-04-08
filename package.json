@@ -162,7 +162,8 @@
     "@scarf/scarf": "^1.1.1",
     "calendar-utils": "^0.12.5",
     "positioning": "^3.0.1",
-    "tslib": "^2.4.1"
+    "tslib": "^2.4.1",
+    "date-fns": "^2.30.0"
   },
   "exports": {
     "./date-adapters/date-adapter": {
@@ -192,6 +193,7 @@
     "angular-draggable-droppable": "^9.0.1",
     "angular-resizable-element": "^8.0.0",
     "date-fns": "^4.0.0",
+    "rxjs": "^7.6.0",
     "moment": "^2.0.0"
   },
   "peerDependenciesMeta": {
