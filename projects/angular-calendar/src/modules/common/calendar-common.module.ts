@@ -55,6 +55,11 @@ export {
   ViewPeriod as CalendarViewPeriod,
 } from 'calendar-utils';
 
+export {
+  CalendarResource,
+  CalendarResourceIdType,
+} from './calendar-resource/calendar-resource.interface';
+
 /**
  * Import this module to if you're just using a singular view and want to save on bundle size. Example usage:
  *

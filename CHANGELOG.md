@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [Unreleased]
+
+### Features
+
+* add resource-based week and day views for scheduling events by resource, with drag & drop support to reschedule and reassign them across resources ([#1736](https://github.com/mattlewis92/angular-calendar/issues/1736))
+  * add `CalendarResourceWeekViewComponent` and `CalendarResourceDayViewComponent`, standalone components rendering one row per resource and one column per day
+  * add a `resources` input (`CalendarResource[]`) and a `resources?` property on `CalendarEvent` to associate an event with one or more resources
+  * add `keepUnassignedEvents` / `unassignedRessourceName` inputs to control whether events with no resource are shown in a dedicated "Unassigned" row
+  * dragging an event horizontally changes its day only, keeping its time and assigned resources unchanged
+  * dragging an event vertically onto another resource's row reassigns it, replacing the source resource with the target resource
+  * dropping onto a resource the event is already assigned to cancels the move
+  * add a `mimicDragAcrossResources` input (default `true`) that mirrors the horizontal drag movement across every other resource row the same event is assigned to
+  * add `CalendarView.ResourceWeek` / `CalendarView.ResourceDay` enum members
+  * add a `resource-view` demo showing resource management, optional per-event resource assignment, drag & drop between resources, and a custom event template showing each event's start/end time
+  * export `CalendarResource`, `CalendarResourceIdType`, `getResourceWeekView` and the related `ResourceWeekView*` types from the public API
+
 ### [0.32.2](https://github.com/mattlewis92/angular-calendar/compare/v0.32.1...v0.32.2) (2026-04-08)
 
 
