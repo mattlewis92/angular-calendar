@@ -1,0 +1,12 @@
+.cal-resource-day-view {
+  /* stylelint-disable-next-line selector-type-no-unknown */
+  mwl-calendar-resource-week-view-header {
+    display: none;
+  }
+
+  .cal-events-container {
+    [dir='rtl'] & {
+      margin-left: initial;
+    }
+  }
+}

@@ -11,6 +11,11 @@ import {
   getWeekView,
 } from 'calendar-utils';
 import { DateAdapter } from '../../../date-adapters/date-adapter';
+import { getResourceWeekView } from '../calendar-resource/get-resource-week-view';
+import {
+  ResourceWeekView,
+  GetResourceWeekViewArgs,
+} from '../calendar-resource/calendar-resource.interface';
 
 @Injectable()
 export class CalendarUtils {
@@ -26,5 +31,9 @@ export class CalendarUtils {
 
   getWeekView(args: GetWeekViewArgs): WeekView {
     return getWeekView(this.dateAdapter, args);
+  }
+
+  getResourceWeekView(args: GetResourceWeekViewArgs): ResourceWeekView {
+    return getResourceWeekView(this.dateAdapter, args);
   }
 }

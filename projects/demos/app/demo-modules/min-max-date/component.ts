@@ -93,7 +93,7 @@ function endOfPeriod(period: CalendarPeriod, date: Date): Date {
   ],
 })
 export class DemoComponent {
-  view: CalendarView | CalendarPeriod = CalendarView.Month;
+  view: CalendarPeriod = CalendarView.Month;
 
   viewDate: Date = new Date();
 

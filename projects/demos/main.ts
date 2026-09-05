@@ -401,6 +401,16 @@ bootstrapApplication(DemoAppComponent, {
           },
         },
         {
+          path: 'resource-view',
+          loadComponent: () =>
+            import('./app/demo-modules/resource-view/component').then(
+              (c) => c.DemoComponent,
+            ),
+          data: {
+            label: 'Resource view',
+          },
+        },
+        {
           path: 'day-view-scheduler',
           loadComponent: () =>
             import('./app/demo-modules/day-view-scheduler/component').then(

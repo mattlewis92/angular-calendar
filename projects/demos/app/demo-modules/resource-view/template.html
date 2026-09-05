@@ -1,0 +1,356 @@
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+        Today
+      </div>
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Month)"
+        [class.active]="view === CalendarView.Month"
+      >
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Week)"
+        [class.active]="view === CalendarView.Week"
+      >
+        Week
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Day)"
+        [class.active]="view === CalendarView.Day"
+      >
+        Day
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div>
+  @switch (view) { @case (CalendarView.Month) {
+  <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+  />
+  } @case (CalendarView.Week) {
+  <mwl-calendar-resource-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [resources]="resources"
+    [mimicDragAcrossResources]="mimicDragAcrossResources"
+    [keepUnassignedEvents]="keepUnassignedEvents"
+    [unassignedRessourceName]="unassignedRessourceName"
+    [eventTemplate]="resourceEventTemplate"
+    [hourSegmentHeight]="60"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  />
+  } @case (CalendarView.Day) {
+  <mwl-calendar-resource-day-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [resources]="resources"
+    [mimicDragAcrossResources]="mimicDragAcrossResources"
+    [keepUnassignedEvents]="keepUnassignedEvents"
+    [unassignedRessourceName]="unassignedRessourceName"
+    [eventTemplate]="resourceEventTemplate"
+    [hourSegmentHeight]="60"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  />
+  } }
+</div>
+
+<ng-template
+  #resourceEventTemplate
+  let-weekEvent="weekEvent"
+  let-tooltipPlacement="tooltipPlacement"
+  let-eventClicked="eventClicked"
+  let-tooltipTemplate="tooltipTemplate"
+  let-tooltipAppendToBody="tooltipAppendToBody"
+  let-tooltipDisabled="tooltipDisabled"
+  let-tooltipDelay="tooltipDelay"
+  let-daysInWeek="daysInWeek"
+>
+  <div
+    class="cal-event"
+    [ngStyle]="{
+      color: weekEvent.event.color?.secondaryText,
+      backgroundColor: weekEvent.event.color?.secondary,
+      borderColor: weekEvent.event.color?.primary
+    }"
+    [mwlCalendarTooltip]="!tooltipDisabled ? weekEvent.event.title : ''"
+    [tooltipPlacement]="tooltipPlacement"
+    [tooltipEvent]="weekEvent.tempEvent || weekEvent.event"
+    [tooltipTemplate]="tooltipTemplate"
+    [tooltipAppendToBody]="tooltipAppendToBody"
+    [tooltipDelay]="tooltipDelay"
+    (mwlClick)="eventClicked.emit({ sourceEvent: $event })"
+    tabindex="0"
+  >
+    <mwl-calendar-event-actions
+      [event]="weekEvent.tempEvent || weekEvent.event"
+    />
+    @if (!weekEvent.event.allDay) {
+    <div class="resource-event-time">
+      {{ weekEvent.event.start | calendarDate: (daysInWeek === 1 ? 'dayViewHour'
+      : 'weekViewHour') : locale }} @if (weekEvent.event.end) { - {{
+      weekEvent.event.end | calendarDate: (daysInWeek === 1 ? 'dayViewHour' :
+      'weekViewHour') : locale }} } |
+    </div>
+    }
+    <div class="resource-event-title">
+      {{ weekEvent.tempEvent?.title || weekEvent.event.title }}
+    </div>
+  </div>
+</ng-template>
+
+<div class="form-check" style="margin-top: 20px">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="mimicDragAcrossResources"
+    [(ngModel)]="mimicDragAcrossResources"
+  />
+  <label class="form-check-label" for="mimicDragAcrossResources">
+    Mimic dragged event across the resources it's assigned to
+  </label>
+</div>
+
+<div class="form-check" style="margin-top: 10px">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="keepUnassignedEvents"
+    [(ngModel)]="keepUnassignedEvents"
+  />
+  <label class="form-check-label" for="unassignedRessourceName">
+    Unassigned resource label
+  </label>
+  <input
+    type="text"
+    id="unassignedRessourceName"
+    class="form-control d-inline-block"
+    style="width: auto; margin-left: 10px"
+    [(ngModel)]="unassignedRessourceName"
+    [disabled]="!keepUnassignedEvents"
+    (ngModelChange)="refresh.next()"
+  />
+</div>
+
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+<br /><br /><br />
+
+<h3>
+  Edit resources
+  <button class="btn btn-primary float-end" (click)="addResource()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (resource of resources; track resource.id) {
+      <tr>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="resource.name"
+            (keyup)="refresh.next()"
+          />
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteResource(resource)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<br /><br /><br />
+
+<h3>
+  Edit events
+  <button class="btn btn-primary float-end" (click)="addEvent()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Primary color</th>
+        <th>Secondary + text color</th>
+        <th>Starts at</th>
+        <th>Ends at</th>
+        <th>Resources</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (event of events; track event) {
+      <tr>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="event.title"
+            (keyup)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color.primary"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color.secondary"
+            (change)="refresh.next()"
+          />
+          <input
+            type="color"
+            [ngModel]="event.color.secondaryText ?? '#1e90ff'"
+            (ngModelChange)="event.color.secondaryText = $event"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.start"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.end"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <select
+            class="form-control"
+            multiple
+            (change)="updateEventResources(event, $event)"
+          >
+            @for (resource of resources; track resource.id) {
+            <option
+              [value]="resource.id"
+              [selected]="isResourceAssigned(event, resource)"
+            >
+              {{ resource.name }}
+            </option>
+            }
+          </select>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEvent(event)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
+  </div>
+</ng-template>
