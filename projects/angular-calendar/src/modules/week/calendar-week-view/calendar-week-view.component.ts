@@ -585,7 +585,7 @@ export class CalendarWeekViewComponent
   @Input() hourSegmentHeight: number = 30;
 
   /**
-   * The minimum height in pixels of each event
+   * The minimum height in minutes of each event
    */
   @Input() minimumEventHeight: number = 30;
 
